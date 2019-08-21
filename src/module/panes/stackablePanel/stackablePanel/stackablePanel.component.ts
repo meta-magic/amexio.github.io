@@ -9,6 +9,8 @@ import { StackableItemComponent } from '../StackablePanel-Item/stackablePanel-it
 export class StackablePanelComponent implements AfterContentInit {
 
   totalCount = 0;
+  public text = 'Show All';
+  expand = true;
 
   @Input('panel-name') panelName = 'Comments';
   show = false;
@@ -36,7 +38,14 @@ export class StackablePanelComponent implements AfterContentInit {
 
   showAll() {
     this.groups.toArray().forEach((data: any) => {
-      data.opened = !data.opened;
+      if (!this.expand) {
+        data.opened = !data.opened;
+        this.text = 'Show All';
+      } else {
+        data.opened = !data.opened;
+        this.text = 'Hide All';
+      }
+      this.expand = !this.expand;
     });
   }
 }
