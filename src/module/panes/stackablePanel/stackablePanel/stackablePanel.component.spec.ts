@@ -10,10 +10,10 @@ import { AmexioButtonComponent } from '../../../forms/buttons/button.component';
 @Component({
   selector: 'test-cmp',
   template: `
-  <stackable-panel>
-      <stackable-panel-item>
-      </stackable-panel-item>
-  </stackable-panel>`,
+  <amexio-stackable-panel>
+      <amexio-stackablepanel-item>
+      </amexio-stackablepanel-item>
+  </amexio-stackable-panel>`,
 })
 class TestWrapperComponent { }
 describe('StackablePanelComponent', () => {
