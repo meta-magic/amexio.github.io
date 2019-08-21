@@ -214,6 +214,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   currrentDate: any;
   dateModel: any;
   isValid: boolean;
+  roundedgeclass: string;
   @Output() isComponentValid: any = new EventEmitter<any>();
   backArrowFlag = false;
   forwardArrowFlag = false;
@@ -1483,5 +1484,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
     document.getElementById(itemid['id']).focus();
   }
+
+  setRoundEdge(type: any) {
+    if (type === 'round-edge') {
+        this.roundedgeclass = 'roundEdgeCommonCss';
+    } else if (type === 'classic') {
+        this.roundedgeclass = 'classicCommonCss';
+    }
+}
 
 }

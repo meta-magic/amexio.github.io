@@ -3,6 +3,7 @@
   <label>
     {{fieldlabel}}
   </label>
+
   <br/>
 
   <div *ngIf="!inlineColorPicker" class="input-container" style="display: inline-flex;
@@ -17,8 +18,8 @@
        [ngClass]="{'card-container': (!inlineColorPicker)}" 
        [ngStyle]="{'position': (inlineColorPicker) ? 'relative':'absolute',
                      'height': (showColorPicker) ? '270px': 'auto','margin-top': (showColorPicker) ? '15px': '0px' }"
-       style="align-items: center;z-index:700">
-    <div class="color-wrapper"  style="justify-content: center;">
+       style="align-items: center;z-index:70">
+    <div class="color-wrapper {{roundedgeclass}}"  style="justify-content: center;">
       <color-palette [hue]="hue" [position]="position" (color)="selectedPaletteColor($event)"></color-palette>
       <color-slider [offsetY]="offsetY" [selected-hue]="hue" (color)="selectedHue($event)" style="margin-left:0px">
       </color-slider>

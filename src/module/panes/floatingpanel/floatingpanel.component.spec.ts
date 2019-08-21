@@ -4,7 +4,6 @@ import { IconLoaderService } from '../../../index';
 import { AmexioFloatingPanelComponent } from './floatingpanel.component';
 import { AmexioFormsModule } from '../../forms/amexio.forms.module';
 import { SimpleChange, ElementRef, Type, Renderer2 } from '@angular/core';
-import { Client } from '_debugger';
 
 
 describe('amexio-floating-panel', () => {

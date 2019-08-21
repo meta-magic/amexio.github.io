@@ -28,6 +28,7 @@ export class ColorPickerComponent extends ValueAccessorBase<string> implements O
   public hue = 'rgba(255,3,0,1)';
   public color: string;
   showColorPicker: boolean;
+  roundedgeclass: string;
   offsetY: any;
   position: any;
   constructor() {
@@ -64,4 +65,11 @@ export class ColorPickerComponent extends ValueAccessorBase<string> implements O
   closeColorPicker() {
    this.showColorPicker  = false;
   }
+  setRoundEdge(type: any) {
+    if (type === 'round-edge') {
+        this.roundedgeclass = 'roundEdgeCommonCss';
+    } else if (type === 'classic') {
+        this.roundedgeclass = 'classicCommonCss';
+    }
+}
 }

@@ -30,6 +30,8 @@ import { AmexioHeaderComponent } from '../header/pane.action.header';
 
 import { MinimizeService } from './minimize-service.service';
 
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 @Component({
   selector: 'amexio-window',
   templateUrl: './window.pane.component.html',
@@ -47,7 +49,7 @@ import { MinimizeService } from './minimize-service.service';
     ]),
   ],
 })
-export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, AfterContentInit {
+export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements OnChanges, OnInit, OnDestroy, AfterContentInit {
   maximumWindowStyle: any;
 
   dummyWidth: string;
@@ -239,8 +241,10 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
   globalListenFunc: () => void;
   globalClickListenFunc: () => void;
   globalDragListenFunc: () => void;
-  constructor(private appRef: ApplicationRef, private componentFactoryResolver: ComponentFactoryResolver, private injector: Injector,
-              private renderer: Renderer2, private _miniService: MinimizeService) {
+  constructor(
+    private appRef: ApplicationRef, private componentFactoryResolver: ComponentFactoryResolver, private injector: Injector,
+    private renderer: Renderer2, private _miniService: MinimizeService) {
+    super();
     this.x = 0;
     this.y = 0;
     this.px = 0;
