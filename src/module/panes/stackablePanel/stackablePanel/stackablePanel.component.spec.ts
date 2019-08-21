@@ -85,9 +85,9 @@ describe('StackablePanelComponent', () => {
 
   it('check showAll if method check', () => {
     fixture.detectChanges();
-    comp.expand = false;
     comp.showAll();
     comp.groups.toArray().forEach((data: any) => {
+      comp.expand = false;
       expect(comp.expand).toEqual(false);
       data.opened = !data.opened;
       comp.text = 'Show All';
@@ -96,9 +96,9 @@ describe('StackablePanelComponent', () => {
 
   it('check showAll else method check', () => {
     fixture.detectChanges();
-    comp.expand = true;
     comp.showAll();
     comp.groups.toArray().forEach((data: any) => {
+      comp.expand = true;
       expect(comp.expand).toEqual(true);
       data.opened = !data.opened;
       comp.text = 'Hide All';
