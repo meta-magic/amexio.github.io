@@ -1630,7 +1630,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
         const filterObj1 = [];
         filterObj1.push(filteredObj[0]);
         this.filterOperation(filterObj1, this.filterResultData);
-      } else if (filteredObj[i].index > 0 && filteredObj[i - 1].option === 'OR') {
+      }
+      if (filteredObj[i].index > 0 && filteredObj[i - 1].option === 'OR') {
         this.filterOperation(filteredObj, this.filterCloneData);
       } else if (filteredObj[i].index > 0 && filteredObj[i - 1].option === 'AND') {
         const filterObj1 = [];
