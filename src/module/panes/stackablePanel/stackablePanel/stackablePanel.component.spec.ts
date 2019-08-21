@@ -86,11 +86,13 @@ describe('StackablePanelComponent', () => {
   it('check showAll if method check', () => {
     fixture.detectChanges();
     comp.showAll();
+    comp.expand = false;
     comp.groups.toArray().forEach((data: any) => {
       comp.expand = false;
       expect(comp.expand).toEqual(false);
       data.opened = !data.opened;
       comp.text = 'Show All';
+      comp.expand = !comp.expand;
     });
   });
 
@@ -102,6 +104,7 @@ describe('StackablePanelComponent', () => {
       expect(comp.expand).toEqual(true);
       data.opened = !data.opened;
       comp.text = 'Hide All';
+      comp.expand = !comp.expand;
     });
   });
 });
