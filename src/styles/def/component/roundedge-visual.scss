@@ -478,12 +478,12 @@
 
 }
 
-.classicCommonCss .color-palette{
-    border-radius: 0px 0px 0px 0px !important;
+.classicCommonCss color-palette .color-palette{
+    border-radius: 10px 0px 0px 10px;
 }
 
-.classicCommonCss .color-slider{
-    border-radius: 0px 0px 0px 0px !important;
+.classicCommonCss color-slider .color-slider{
+    border-radius: 0px 10px 10px 0px;
 }
 
 .classicCommonCss .main-content{

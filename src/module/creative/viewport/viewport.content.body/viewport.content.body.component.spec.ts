@@ -19,6 +19,20 @@ describe('ViewportContentBodyComponent', () => {
     fixture.detectChanges();
   });
 
+  it('setRoundEdge If round-edge()', () => {
+    let type = 'round-edge';
+    component.setRoundEdge('round-edge');
+    expect(type).toEqual('round-edge')
+    component.roundedgeclass = 'roundEdgeCommonCss';
+  });
+
+  it('setRoundEdge If classic', () => {
+    let type = 'classic';
+    component.setRoundEdge('classic');
+    expect(type).toEqual('classic')
+    component.roundedgeclass = 'classicCommonCss';
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });

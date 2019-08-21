@@ -12,9 +12,16 @@ export class ViewportContentBodyComponent implements OnInit {
   @Input('scrollable') scrollable = false;
 
   navbarOpacity: boolean;
-
+  roundedgeclass: string;
   constructor() { }
 
   ngOnInit() { }
 
+  setRoundEdge(type: any) {
+    if (type === 'round-edge') {
+    this.roundedgeclass = 'roundEdgeCommonCss';
+    } else {
+      this.roundedgeclass = 'classicCommonCss';
+    }
+  }
 }
