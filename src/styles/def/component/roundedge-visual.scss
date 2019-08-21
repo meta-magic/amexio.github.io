@@ -85,7 +85,11 @@
 }
 
 .roundEdgeCommonCss .dialogue-content header{
-    border-radius: 10px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.roundEdgeCommonCss .dialogue-content footer{
+    border-radius: 0px 0px 10px 10px;
 }
 
 .roundEdgeCommonCss .floatingpanel-header{
@@ -214,11 +218,11 @@
     border-radius: 10px;
 }
 
-.roundEdgeCommonCss .color-palette{
+.roundEdgeCommonCss color-palette .color-palette{
     border-radius: 10px 0px 0px 10px;
 }
 
-.roundEdgeCommonCss .color-slider{
+.roundEdgeCommonCss color-slider .color-slider{
     border-radius: 0px 10px 10px 0px;
 }
 
@@ -227,6 +231,14 @@
 }
 
 .roundEdgeCommonCss .card-container-ce-color{
+    border-radius: 10px;
+}
+
+.roundEdgeCommonCss .card-container-ce-main{
+    border-radius: 10px;
+}
+
+.roundEdgeCommonCss amexio-action-ce div{
     border-radius: 10px;
 }
 
@@ -480,4 +492,12 @@
 
 .classicCommonCss .card-container-ce-color{
     border-radius: 0px !important;
+}
+
+.classicCommonCss .card-container-ce-main{
+    border-radius: 10px;
+}
+
+.classicCommonCss amexio-action-ce div{
+    border-radius: 10px;
 }
