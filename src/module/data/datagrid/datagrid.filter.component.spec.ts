@@ -55,7 +55,7 @@ describe('amexio-datagrid-filter', () => {
             }
 
             let event = {
-                filterOption: "OR",
+                filterOption: "AND",
                 selected: true
             }
 
@@ -87,7 +87,7 @@ describe('amexio-datagrid-filter', () => {
             }
 
             comp.setSelectedOption(col, event);
-            expect(event.filterOption).toEqual('OR');
+            expect(event.filterOption).not.toEqual('AND');
             comp.option = 'OR';
             comp.keyUpSearch(col);
 
