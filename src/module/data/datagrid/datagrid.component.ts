@@ -926,7 +926,9 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     rowData.isSelected = !rowData.isSelected;
     rowIndex = 'row' + rowIndex;
     this.rowId = rowIndex;
-    this.rowSelect.emit(rowData);
+    const emitData = JSON.parse(JSON.stringify(rowData));
+    delete emitData['checkBoxSelectClass'];
+    this.rowSelect.emit(emitData);
     this.selectedRowNo = rowIndex;
   }
 
@@ -1021,8 +1023,13 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
         sRows.push(sr);
       }
     }
-    this.selectedRowData.emit(sRows);
-
+    const selectedAllData = JSON.parse(JSON.stringify(sRows));
+    selectedAllData.forEach((select: any) => {
+      if (select) {
+        delete select['checkBoxSelectClass'];
+      }
+    });
+    this.selectedRowData.emit(selectedAllData);
   }
 
   setCheckBoxSelectClass() {
