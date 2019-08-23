@@ -6,7 +6,7 @@ import { NgControl, NgModel } from '@angular/forms';
 })
 export class RoundEdgesDirective implements OnInit {
 
-    @Input('theme-style') themeStyle: string;
+    @Input('theme-style') themeStyle = 'classic';
     hostComponent: any;
 
     constructor(private _viewContainerRef: ViewContainerRef) {

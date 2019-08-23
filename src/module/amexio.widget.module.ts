@@ -19,6 +19,7 @@ import { DeviceQueryService } from './services/device/device.query.service';
 import { IconLoaderService } from './services/icon/icon.service';
 
 import { ColorPaletteDirective } from './directive/color-palette.directive';
+import { AmexioFullScreenDirective } from './directive/full-screen.directive';
 import { RoundEdgesDirective } from './directive/round-edge.directive';
 export * from './services/data/common.data.service';
 export * from './services/device/device.query.service';
@@ -60,8 +61,9 @@ export * from '../models/propertyGridModel';
     AmexioRuntimeModule,
     ColorPaletteDirective,
     RoundEdgesDirective,
+    AmexioFullScreenDirective,
   ],
-  declarations: [ColorPaletteDirective, RoundEdgesDirective],
+  declarations: [ColorPaletteDirective, RoundEdgesDirective, AmexioFullScreenDirective],
   providers: [CommonDataService, DeviceQueryService, IconLoaderService],
 })
 export class AmexioWidgetModule {

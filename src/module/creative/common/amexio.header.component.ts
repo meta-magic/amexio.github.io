@@ -81,6 +81,10 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   amexioComponentId: string;
 
+  fullScreenFlag: boolean;
+
+  fullscreenMax: boolean;
+
   maximize = false;
   ribbonType = false;
   iconPosition: {
@@ -122,11 +126,16 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
     this.maximizeBehaiourCe.next(this.isFullWindowCe);
   }
 
+  // On maximize click
   sizeChange() {
     this.isFullWindowCe = !this.isFullWindowCe;
     this.maximizeBehaiourCe.next(this.isFullWindowCe);
     this.maximizeWindow.emit(this,  this.isFullWindowCe);
-
+    if (this.fullScreenFlag) {
+      this.fullscreenMax = !this.fullscreenMax;
+      this.maximizeBehaiourCe.next(this.fullscreenMax);
+      this.maximizeWindow.emit(this, this.fullscreenMax);
+    }
   }
 
   onCloseClick() {

@@ -28,9 +28,10 @@ import { BehaviorSubject } from 'rxjs/index';
   <em  *ngIf="minimize" class="fa fa-window-minimize" (click)="onMinimizeClick($event)"
   style = "cursor: pointer"></em>
 
-  <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(isFullWindow && maximize )"
+  <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(isFullWindow && maximize ) || (fullScreenFlag && fullscreenMax)"
   [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
-  <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(!isFullWindow && maximize )"
+  <amexio-c-icon style = "padding-left: 10px" class="cursor-style"
+  *ngIf="(!isFullWindow && maximize ) || (fullScreenFlag && !fullscreenMax)"
   [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
 
   <amexio-c-icon class="cursor-style"
@@ -67,6 +68,8 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
 
   @Output() closeDataEmit: any = new EventEmitter<any>();
 
+  @Output() maximizeWindow: any = new EventEmitter<any>();
+
   @Input('minimized-icon') minimizeIcon: any;
 
   minimize = false;
@@ -76,6 +79,10 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
   maximize = false;
 
   isFullWindow = false;
+
+  fullScreenFlag: boolean;
+
+  fullscreenMax: boolean;
 
   closeableBehaiour = new BehaviorSubject(false);
 
@@ -123,6 +130,11 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
   sizeChange() {
     this.isFullWindow = !this.isFullWindow;
     this.maximizeBehaiour.next(this.isFullWindow);
+    if (this.fullScreenFlag) {
+      this.fullscreenMax = !this.fullscreenMax;
+      this.maximizeBehaiour.next(this.fullscreenMax);
+      this.maximizeWindow.emit(this, this.fullscreenMax);
+    }
   }
 
   onCloseClick() {
@@ -134,4 +146,5 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
     this.closeableBehaiour.next(false);
     this.minimizeWindow.emit(this);
   }
+
 }

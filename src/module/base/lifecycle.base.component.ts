@@ -26,6 +26,7 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
     @Output() initiated: any = new EventEmitter<any>();
     @Output() ready: any = new EventEmitter<any>();
     @Output() destroy: any = new EventEmitter<any>();
+    yesFullScreen: boolean;
     roundedgeclass: string;
     ngOnInit() {
         if (this.enableLifeCycleEvents === 'all' || this.enableLifeCycleEvents === 'init') {
@@ -60,4 +61,10 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
             this.roundedgeclass = 'classicCommonCss';
         }
     }
+
+    setFullScreen(type: any) {
+        if (type === 'browser') {
+          this.yesFullScreen = true;
+        }
+      }
 }

@@ -71,6 +71,8 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   polarideStyleMapCE: Map<any, string>;
 
   slidercss = '';
+  fullScreenFlag = false;
+  maximizeflagchanged = true;
 
   @ContentChildren(AmexioCardCEHeaderComponent) AmexioCardCEHeaderQueryList: QueryList<AmexioCardCEHeaderComponent>;
 
@@ -188,12 +190,21 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
       if (this.amexioCardHeaderList && this.amexioCardHeaderList.length > 0) {
         this.amexioCardHeaderList.forEach((element: any) => {
           element.amexioComponentId = this.amexioComponentId;
+          element.fullScreenFlag = this.yesFullScreen;
+          element.fullscreenMax = true;
         });
         if (this.styleType === 'ribbon-style') {
           this.amexioCardHeaderList[0].ribbonType = true;
         }
       }
     }
+    if (this.yesFullScreen) {
+      this.AmexioCardCEHeaderQueryList.toArray()[0].fullScreenFlag = this.yesFullScreen;
+      this.AmexioCardCEHeaderQueryList.toArray()[0].maximizeWindow.subscribe((event: any) => {
+        this.maximizeflagchanged = event.fullscreenMax;
+      });
+    }
+
     if (this.AmexioCardCEBodyQueryList) {
       this.amexioCardBodyList = this.AmexioCardCEBodyQueryList.toArray();
       if (this.styleType === 'ribbon-style') {
@@ -201,6 +212,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
         this.cclass = this.cclass + ' card-container-wider-header card-container-ribbon-style';
       }
     }
+
     this.setCardAligementForAllInnerComponent();
   }
 
@@ -242,7 +254,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   }
 
   onmouseleave() {
-    if ((!this.flip || !this.zoom)  && this.overlaytype === this.slidereffect) {
+    if ((!this.flip || !this.zoom) && this.overlaytype === this.slidereffect) {
       this.ishover = false;
     }
   }

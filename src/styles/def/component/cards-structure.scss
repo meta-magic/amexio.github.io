@@ -19,7 +19,7 @@
 }
 
 .card-header{
-  display: flex;
+  // display: flex;
   padding: 10px 24px;
   //border-bottom: $cardBorderSize solid $cardBorderColor;
   font-size: 20px;
@@ -55,4 +55,13 @@
 .card-footer{
   display: flex;
   border-top: $cardBorderSize solid $cardBorderColor;
+}
+
+.full-screen-card{
+  position: fixed;
+  top: 0;
+  height: 100%;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
 }

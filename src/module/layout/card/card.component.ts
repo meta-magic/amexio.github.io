@@ -151,9 +151,8 @@ description : Context Menu provides the list of menus on right click.
 
   themeCss: any;
   polarideStyleMap: Map<any, string>;
-
   tempPolaride: any;
-
+  maximizeflagchanged = true;
   @ContentChildren(AmexioHeaderComponent) amexioHeader: QueryList<AmexioHeaderComponent>;
   headerComponentList: AmexioHeaderComponent[];
   @ContentChildren(AmexioBodyComponent) amexioBody: QueryList<AmexioBodyComponent>;
@@ -190,6 +189,8 @@ description : Context Menu provides the list of menus on right click.
     // FOR HEADER PADING
     this.headerComponentList = this.amexioHeader.toArray();
     this.headerComponentList.forEach((item: AmexioHeaderComponent, currentIndex) => {
+      item.fullScreenFlag = this.yesFullScreen;
+      item.fullscreenMax = true;
       item.aComponent = 'card';
       if (item.padding) {
         this.headerPadding = item.padding;
@@ -212,6 +213,13 @@ description : Context Menu provides the list of menus on right click.
       item.setFooterAlignment(this.footeralign);
     });
     this.onResize();
+
+    if (this.yesFullScreen) {
+      this.amexioHeader.toArray()[0].fullScreenFlag = this.yesFullScreen;
+      this.amexioHeader.toArray()[0].maximizeWindow.subscribe((event: any) => {
+        this.maximizeflagchanged = event.fullscreenMax;
+      });
+    }
   }
 
   adjustHeight(event: any) {
