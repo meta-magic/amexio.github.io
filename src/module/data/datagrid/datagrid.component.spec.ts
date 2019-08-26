@@ -392,11 +392,11 @@ describe('amexio-datagrid', () => {
                 expect(filteredObj[i].index).toBeGreaterThan(0)
                 expect(filteredObj[i - 1].option).toEqual('OR')
                 comp.filterOperation(filteredObj, filterCloneData);
-            }  
+            }
         }
     });
 
-    it ('multipleColumnFilter greaterthan0 and AND', () => {
+    it('multipleColumnFilter greaterthan0 and AND', () => {
         comp.filterResultData = [{
             checkBoxSelectClass: "checkbox default",
             emailAddress: "tomhanks@gmail.com",
@@ -449,11 +449,11 @@ describe('amexio-datagrid', () => {
         });
         for (let i = 0; i < filteredObj.length; i++) {
             if (i > 0) {
-            expect(filteredObj[i].index).toBeGreaterThan(0)
-            expect(filteredObj[i - 1].option).toEqual('AND')
-            let filterObj1 = [];
-            filterObj1.push(filteredObj[i]);
-            comp.filterOperation(filterObj1, comp.filterResultData);
+                expect(filteredObj[i].index).toBeGreaterThan(0)
+                expect(filteredObj[i - 1].option).toEqual('AND')
+                let filterObj1 = [];
+                filterObj1.push(filteredObj[i]);
+                comp.filterOperation(filterObj1, comp.filterResultData);
             }
         }
 
@@ -481,5 +481,53 @@ describe('amexio-datagrid', () => {
 
     // })
 
+    it('emitSelectedRows method if condition', () => {
+        comp.emitSelectedRows();
+        const sRows = [
+            {
+                "countryName": "British Indian Ocean Teritory",
+                "countryCode1": "IO",
+                "countryCode2": "IOT",
+                "countryFlag": "IO.png",
+                "capital": "",
+                "currencyCode": "USD",
+                "currencyName": "Dollar",
+                "currencySymbol": "$",
+                "isoNumeric": 86,
+                "isSelected": false,
+                "checkBoxSelectClass": "checkbox default"
+            }
+        ];
+        fixture.detectChanges();
+        const selectedAllData = JSON.parse(JSON.stringify(sRows));
+        selectedAllData.forEach((select: any) => {
+            expect(select).toBeDefined();
+            delete select['checkBoxSelectClass'];
+        });
+        comp.selectedRowData.emit(selectedAllData);
+    })
 
+
+    it('emitSelectedRows method else condition', () => {
+        comp.emitSelectedRows();
+        const sRows = [{}];
+        fixture.detectChanges();
+        const selectedAllData = JSON.parse(JSON.stringify(sRows));
+        selectedAllData.forEach((select: any) => {
+            expect(select).toEqual({});
+        });
+    });
+
+
+    it('onRowClick method  condition', () => {
+        const rowData = { "countryName": "Latvia", "countryCode1": "LV", "countryCode2": "LVA", "countryFlag": "LV.png", "capital": "", "currencyCode": "LVL", "currencyName": "Lat", "currencySymbol": "Ls", "isoNumeric": 428, "isSelected": false, "checkBoxSelectClass": "checkbox default" };
+        const rowIndex = 2;
+        comp.onRowClick(rowData, rowIndex);
+        const emitData = JSON.parse(JSON.stringify(rowData));
+        delete emitData['checkBoxSelectClass'];
+        comp.rowSelect.subscribe((g: any) => {
+            expect(comp.rowSelect).toEqual(g, emitData);
+        });
+        comp.selectedRowNo = rowIndex;
+    });
 });
