@@ -142,5 +142,24 @@ describe('amexio-header-ce', () => {
         expect(comp.minimizeIcon).toEqual('fa fa-home');
         return comp.textName = 'kedar';
     });
-    
+      it('sizeChange if call', () => {
+        comp.fullScreenFlag = true; 
+        comp.sizeChange();
+        comp.isFullWindowCe = !comp.isFullWindowCe;
+        comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
+        comp.maximizeWindow.emit(comp,  comp.isFullWindowCe);
+        expect(comp.fullScreenFlag).toEqual(true);
+          comp.fullscreenMax = !comp.fullscreenMax;
+          comp.maximizeBehaiourCe.next(comp.fullscreenMax);
+          comp.maximizeWindow.emit(this, comp.fullscreenMax);
+    });
+
+    it('sizeChange else call', () => {
+        comp.fullScreenFlag = false; 
+        comp.sizeChange();
+        comp.isFullWindowCe = !comp.isFullWindowCe;
+        comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
+        comp.maximizeWindow.emit(this,  comp.isFullWindowCe);
+        expect(comp.fullScreenFlag).toEqual(false);
+    });
 });

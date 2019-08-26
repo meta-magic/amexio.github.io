@@ -24,5 +24,16 @@ describe('lifecycle', () => {
     expect(type).toEqual('classic')
     comp1.roundedgeclass = 'classicCommonCss';
   });
+  it('setFullScreen if call', () => {
+    let type = 'browser';
+    comp1.setFullScreen(type);
+    expect(type).toEqual('browser')
+    comp1.yesFullScreen = true;
+    });
 
+    it('setFullScreen else call', () => {
+      let type = 'classic';
+      comp1.setFullScreen(type);
+      expect(type).not.toEqual('browser');
+      });
 });
