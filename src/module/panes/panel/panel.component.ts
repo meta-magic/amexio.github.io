@@ -191,6 +191,8 @@ description : Fires the on accordion pane click event.
 
   panelstyle: any;
   componentId: any;
+  fullscreenMax: boolean;
+
   globalClickListenFunc: () => void;
   constructor(private renderer: Renderer2) {
     super();
@@ -297,6 +299,10 @@ description : Fires the on accordion pane click event.
 
   changeHeaderColor() {
     this.gradientFlag = true;
+  }
+  sizeChange(event: any) {
+    event.stopPropagation();
+    this.fullscreenMax = !this.fullscreenMax;
   }
 
 }

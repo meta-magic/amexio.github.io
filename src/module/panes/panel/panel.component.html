@@ -1,7 +1,7 @@
 
 
 
-<div    #id style="width: 100%" class="{{roundedgeclass}}" (contextmenu)="loadContextMenu({event:$event,ref:id})"  >
+<div    #id style="width: 100%" class="{{roundedgeclass}}" [ngClass]="{'panel-full-screen': yesFullScreen && fullscreenMax}" (contextmenu)="loadContextMenu({event:$event,ref:id})"  >
     <ng-container *ngIf="collapsible; else elseBlock"> 
         <div id="{{componentId}}" [ngStyle]="{'background': bgColor, 'color': color}"
         *ngIf="header" class="panel-accordion"  [ngClass]="themeCss"
@@ -19,6 +19,12 @@
                 </amexio-toolbar-item>
                 <amexio-toolbar-item [ngStyle]="{'color': gradientFlag ? 'black':''}" position-right>
                     <ng-content select="amexio-panel-header"></ng-content>
+                </amexio-toolbar-item>
+                <amexio-toolbar-item [ngStyle]="{'color': gradientFlag ? 'black':''}" style="margin:auto" position-right>     
+                    <amexio-c-icon style="padding-right:10px" class="cursor-style" *ngIf="(yesFullScreen && fullscreenMax)" [key]="'window_restore'" (onClick)="sizeChange($event)"></amexio-c-icon>
+                </amexio-toolbar-item>
+                <amexio-toolbar-item [ngStyle]="{'color': gradientFlag ? 'black':''}" style="margin:auto" position-right>
+                                      <amexio-c-icon style="padding-right:10px" class="cursor-style" *ngIf="(yesFullScreen && !fullscreenMax)" [key]="'window_maximize'" (onClick)="sizeChange($event)"></amexio-c-icon>
                 </amexio-toolbar-item>
                 <amexio-toolbar-item [ngStyle]="{'color': gradientFlag ? 'black':''}" style="margin:auto" position-right>
                     <i [class]="iconclassKey" aria-hidden="true" #btn1></i>

@@ -78,3 +78,16 @@
   margin: auto;
 }
 
+.panel-full-screen{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 2000;
+}
+
+.panel-full-screen .panel-panel {
+  height: 100% !important;
+}
+
