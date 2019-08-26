@@ -1025,9 +1025,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     }
     const selectedAllData = JSON.parse(JSON.stringify(sRows));
     selectedAllData.forEach((select: any) => {
-      if (select) {
         delete select['checkBoxSelectClass'];
-      }
     });
     this.selectedRowData.emit(selectedAllData);
   }

@@ -501,22 +501,10 @@ describe('amexio-datagrid', () => {
         fixture.detectChanges();
         const selectedAllData = JSON.parse(JSON.stringify(sRows));
         selectedAllData.forEach((select: any) => {
-            expect(select).toBeDefined();
             delete select['checkBoxSelectClass'];
         });
         comp.selectedRowData.emit(selectedAllData);
     })
-
-
-    it('emitSelectedRows method else condition', () => {
-        comp.emitSelectedRows();
-        const sRows = [{}];
-        fixture.detectChanges();
-        const selectedAllData = JSON.parse(JSON.stringify(sRows));
-        selectedAllData.forEach((select: any) => {
-            expect(select).toEqual({});
-        });
-    });
 
 
     it('onRowClick method  condition', () => {
