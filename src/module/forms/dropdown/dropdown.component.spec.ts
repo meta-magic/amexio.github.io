@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { AmexioDropDownComponent } from './dropdown.component';
 import { CommonDataService } from '../../services/data/common.data.service';
-import { HttpClientModule,HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
 import { DisplayFieldService } from '../../services/data/display.field.service';
@@ -19,14 +19,14 @@ describe('amexio-dropdown', () => {
   let data: any;
   let responsedata: true;
   let displayService: DisplayFieldService;
-  let dataService :CommonDataService;
+  let dataService: CommonDataService;
   let _http: HttpClient;
- 
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule],
       declarations: [AmexioDropDownComponent, DisplayFieldComponent, CommonIconComponent],
-      providers: [IconLoaderService, CommonDataService, DisplayFieldService,HttpClient],
+      providers: [IconLoaderService, CommonDataService, DisplayFieldService, HttpClient],
     });
     fixture = TestBed.createComponent(AmexioDropDownComponent);
     comp = fixture.componentInstance;
@@ -39,15 +39,15 @@ describe('amexio-dropdown', () => {
     it('true is true', () => expect(true).toBe(true));
   });
 
-//   it('set data method', () => {
-//     let value: any;
-//     (<any>comp)._data = value;
-//     (<any>comp)['componentLoaded'] = true;
-//     expect((<any>comp)).toBeDefined;
-//     (<any>comp).setData((<any>comp)._data);
-//     expect((<any>comp)['componentLoaded']).toEqual(true);
-//     expect((<any>comp).setData()).toHaveBeenCalled;
-// });
+  //   it('set data method', () => {
+  //     let value: any;
+  //     (<any>comp)._data = value;
+  //     (<any>comp)['componentLoaded'] = true;
+  //     expect((<any>comp)).toBeDefined;
+  //     (<any>comp).setData((<any>comp)._data);
+  //     expect((<any>comp)['componentLoaded']).toEqual(true);
+  //     expect((<any>comp).setData()).toHaveBeenCalled;
+  // });
   //check variables 
   it('check variables in dropdown component ', () => {
     expect(comp.selectedindex).toEqual(-1);
@@ -60,39 +60,39 @@ describe('amexio-dropdown', () => {
   });
 
   // it('setUserSelection  method', () => {
-    
+
   // });
 
   // it('setData method for datareader not equal to null', () => {
   //   let responsedata: any;
   //   let httpResponse: any;
   //   httpResponse = {
-  //     "data": [
+  //     'data': [
   //       {
-  //         "countryName": "Myanmar",
-  //         "countryCode1": "MM",
-  //         "countryCode2": "MMR",
-  //         "countryFlag": "MM.png",
-  //         "capital": "",
-  //         "currencyCode": "MMK",
-  //         "currencyName": "Kyat",
-  //         "currencySymbol": "K",
-  //         "capitalLatitude": null,
-  //         "capitalLongitude": null,
-  //         "isoNumeric": 104
+  //         'countryName': 'Myanmar',
+  //         'countryCode1': 'MM',
+  //         'countryCode2': 'MMR',
+  //         'countryFlag': 'MM.png',
+  //         'capital': '',
+  //         'currencyCode': 'MMK',
+  //         'currencyName': 'Kyat',
+  //         'currencySymbol': 'K',
+  //         'capitalLatitude': null,
+  //         'capitalLongitude': null,
+  //         'isoNumeric': 104
   //       },
   //       {
-  //         "countryName": "U.S. Virgin Island",
-  //         "countryCode1": "VI",
-  //         "countryCode2": "VIR",
-  //         "countryFlag": "VI.png",
-  //         "capital": "",
-  //         "currencyCode": "USD",
-  //         "currencyName": "Dollar",
-  //         "currencySymbol": "$",
-  //         "capitalLatitude": null,
-  //         "capitalLongitude": null,
-  //         "isoNumeric": 850
+  //         'countryName': 'U.S. Virgin Island',
+  //         'countryCode1': 'VI',
+  //         'countryCode2': 'VIR',
+  //         'countryFlag': 'VI.png',
+  //         'capital': '',
+  //         'currencyCode': 'USD',
+  //         'currencyName': 'Dollar',
+  //         'currencySymbol': '$',
+  //         'capitalLatitude': null,
+  //         'capitalLongitude': null,
+  //         'isoNumeric': 850
   //       }]
   //   }
   //   comp.setData(httpResponse);
@@ -113,33 +113,33 @@ describe('amexio-dropdown', () => {
 
   it('setData method for datareader equal to null', () => {
     let httpResponse: any;
-    httpResponse = 
+    httpResponse =
       [
         {
-          "countryName": "Myanmar",
-          "countryCode1": "MM",
-          "countryCode2": "MMR",
-          "countryFlag": "MM.png",
-          "capital": "",
-          "currencyCode": "MMK",
-          "currencyName": "Kyat",
-          "currencySymbol": "K",
-          "capitalLatitude": null,
-          "capitalLongitude": null,
-          "isoNumeric": 104
+          'countryName': 'Myanmar',
+          'countryCode1': 'MM',
+          'countryCode2': 'MMR',
+          'countryFlag': 'MM.png',
+          'capital': '',
+          'currencyCode': 'MMK',
+          'currencyName': 'Kyat',
+          'currencySymbol': 'K',
+          'capitalLatitude': null,
+          'capitalLongitude': null,
+          'isoNumeric': 104
         },
         {
-          "countryName": "U.S. Virgin Island",
-          "countryCode1": "VI",
-          "countryCode2": "VIR",
-          "countryFlag": "VI.png",
-          "capital": "",
-          "currencyCode": "USD",
-          "currencyName": "Dollar",
-          "currencySymbol": "$",
-          "capitalLatitude": null,
-          "capitalLongitude": null,
-          "isoNumeric": 850
+          'countryName': 'U.S. Virgin Island',
+          'countryCode1': 'VI',
+          'countryCode2': 'VIR',
+          'countryFlag': 'VI.png',
+          'capital': '',
+          'currencyCode': 'USD',
+          'currencyName': 'Dollar',
+          'currencySymbol': '$',
+          'capitalLatitude': null,
+          'capitalLongitude': null,
+          'isoNumeric': 850
         }];
     comp.datareader = null;
     comp.setData(httpResponse);
@@ -152,28 +152,28 @@ describe('amexio-dropdown', () => {
   });
   // it('setResponseData method', () => {
   //   let responsedata = {
-  //     "data": [
+  //     'data': [
   //       {
-  //         "countryName": "Myanmar",
-  //         "countryCode1": "MM",
-  //         "countryCode2": "MMR",
-  //         "countryFlag": "MM.png",
-  //         "capital": "",
-  //         "currencyCode": "MMK",
-  //         "currencyName": "Kyat",
-  //         "currencySymbol": "K",
-  //         "isoNumeric": 104
+  //         'countryName': 'Myanmar',
+  //         'countryCode1': 'MM',
+  //         'countryCode2': 'MMR',
+  //         'countryFlag': 'MM.png',
+  //         'capital': '',
+  //         'currencyCode': 'MMK',
+  //         'currencyName': 'Kyat',
+  //         'currencySymbol': 'K',
+  //         'isoNumeric': 104
   //       },
   //       {
-  //         "countryName": "U.S. Virgin Island",
-  //         "countryCode1": "VI",
-  //         "countryCode2": "VIR",
-  //         "countryFlag": "VI.png",
-  //         "capital": "",
-  //         "currencyCode": "USD",
-  //         "currencyName": "Dollar",
-  //         "currencySymbol": "$",
-  //         "isoNumeric": 850
+  //         'countryName': 'U.S. Virgin Island',
+  //         'countryCode1': 'VI',
+  //         'countryCode2': 'VIR',
+  //         'countryFlag': 'VI.png',
+  //         'capital': '',
+  //         'currencyCode': 'USD',
+  //         'currencyName': 'Dollar',
+  //         'currencySymbol': '$',
+  //         'isoNumeric': 850
   //       }]
   //   }
 
@@ -189,28 +189,28 @@ describe('amexio-dropdown', () => {
   // });
   // it('setResponseData else block',()=>{
   //   let responsedata = {
-  //     "data": [
+  //     'data': [
   //       {
-  //         "countryName": "Myanmar",
-  //         "countryCode1": "MM",
-  //         "countryCode2": "MMR",
-  //         "countryFlag": "MM.png",
-  //         "capital": "",
-  //         "currencyCode": "MMK",
-  //         "currencyName": "Kyat",
-  //         "currencySymbol": "K",
-  //         "isoNumeric": 104
+  //         'countryName': 'Myanmar',
+  //         'countryCode1': 'MM',
+  //         'countryCode2': 'MMR',
+  //         'countryFlag': 'MM.png',
+  //         'capital': '',
+  //         'currencyCode': 'MMK',
+  //         'currencyName': 'Kyat',
+  //         'currencySymbol': 'K',
+  //         'isoNumeric': 104
   //       },
   //       {
-  //         "countryName": "U.S. Virgin Island",
-  //         "countryCode1": "VI",
-  //         "countryCode2": "VIR",
-  //         "countryFlag": "VI.png",
-  //         "capital": "",
-  //         "currencyCode": "USD",
-  //         "currencyName": "Dollar",
-  //         "currencySymbol": "$",
-  //         "isoNumeric": 850
+  //         'countryName': 'U.S. Virgin Island',
+  //         'countryCode1': 'VI',
+  //         'countryCode2': 'VIR',
+  //         'countryFlag': 'VI.png',
+  //         'capital': '',
+  //         'currencyCode': 'USD',
+  //         'currencyName': 'Dollar',
+  //         'currencySymbol': '$',
+  //         'isoNumeric': 850
   //       }]
   //   }
   //   comp.setResponseData(responsedata);
@@ -227,28 +227,28 @@ describe('amexio-dropdown', () => {
   // });
   // it('setResponseData else block2',()=>{
   //   let responsedata = {
-  //     "data": [
+  //     'data': [
   //       {
-  //         "countryName": "Myanmar",
-  //         "countryCode1": "MM",
-  //         "countryCode2": "MMR",
-  //         "countryFlag": "MM.png",
-  //         "capital": "",
-  //         "currencyCode": "MMK",
-  //         "currencyName": "Kyat",
-  //         "currencySymbol": "K",
-  //         "isoNumeric": 104
+  //         'countryName': 'Myanmar',
+  //         'countryCode1': 'MM',
+  //         'countryCode2': 'MMR',
+  //         'countryFlag': 'MM.png',
+  //         'capital': '',
+  //         'currencyCode': 'MMK',
+  //         'currencyName': 'Kyat',
+  //         'currencySymbol': 'K',
+  //         'isoNumeric': 104
   //       },
   //       {
-  //         "countryName": "U.S. Virgin Island",
-  //         "countryCode1": "VI",
-  //         "countryCode2": "VIR",
-  //         "countryFlag": "VI.png",
-  //         "capital": "",
-  //         "currencyCode": "USD",
-  //         "currencyName": "Dollar",
-  //         "currencySymbol": "$",
-  //         "isoNumeric": 850
+  //         'countryName': 'U.S. Virgin Island',
+  //         'countryCode1': 'VI',
+  //         'countryCode2': 'VIR',
+  //         'countryFlag': 'VI.png',
+  //         'capital': '',
+  //         'currencyCode': 'USD',
+  //         'currencyName': 'Dollar',
+  //         'currencySymbol': '$',
+  //         'isoNumeric': 850
   //       }]
   //   }
   //   comp.setResponseData(responsedata);
@@ -266,28 +266,28 @@ describe('amexio-dropdown', () => {
 
   it('sortDataAscending', () => {
     let data2 = {
-      "data": [
+      'data': [
         {
-          "countryName": "Myanmar",
-          "countryCode1": "MM",
-          "countryCode2": "MMR",
-          "countryFlag": "MM.png",
-          "capital": "",
-          "currencyCode": "MMK",
-          "currencyName": "Kyat",
-          "currencySymbol": "K",
-          "isoNumeric": 104
+          'countryName': 'Myanmar',
+          'countryCode1': 'MM',
+          'countryCode2': 'MMR',
+          'countryFlag': 'MM.png',
+          'capital': '',
+          'currencyCode': 'MMK',
+          'currencyName': 'Kyat',
+          'currencySymbol': 'K',
+          'isoNumeric': 104
         },
         {
-          "countryName": "U.S. Virgin Island",
-          "countryCode1": "VI",
-          "countryCode2": "VIR",
-          "countryFlag": "VI.png",
-          "capital": "",
-          "currencyCode": "USD",
-          "currencyName": "Dollar",
-          "currencySymbol": "$",
-          "isoNumeric": 850
+          'countryName': 'U.S. Virgin Island',
+          'countryCode1': 'VI',
+          'countryCode2': 'VIR',
+          'countryFlag': 'VI.png',
+          'capital': '',
+          'currencyCode': 'USD',
+          'currencyName': 'Dollar',
+          'currencySymbol': '$',
+          'isoNumeric': 850
         }]
     }
     comp.sortDataAscending(data);
@@ -300,29 +300,29 @@ describe('amexio-dropdown', () => {
     comp.generateIndex(comp.filteredOptions);
   });
   it('sortDataDescending', () => {
-    let data3 =  [
-        {
-          "countryName": "Myanmar",
-          "countryCode1": "MM",
-          "countryCode2": "MMR",
-          "countryFlag": "MM.png",
-          "capital": "",
-          "currencyCode": "MMK",
-          "currencyName": "Kyat",
-          "currencySymbol": "K",
-          "isoNumeric": 104
-        },
-        {
-          "countryName": "U.S. Virgin Island",
-          "countryCode1": "VI",
-          "countryCode2": "VIR",
-          "countryFlag": "VI.png",
-          "capital": "",
-          "currencyCode": "USD",
-          "currencyName": "Dollar",
-          "currencySymbol": "$",
-          "isoNumeric": 850
-        }]
+    let data3 = [
+      {
+        'countryName': 'Myanmar',
+        'countryCode1': 'MM',
+        'countryCode2': 'MMR',
+        'countryFlag': 'MM.png',
+        'capital': '',
+        'currencyCode': 'MMK',
+        'currencyName': 'Kyat',
+        'currencySymbol': 'K',
+        'isoNumeric': 104
+      },
+      {
+        'countryName': 'U.S. Virgin Island',
+        'countryCode1': 'VI',
+        'countryCode2': 'VIR',
+        'countryFlag': 'VI.png',
+        'capital': '',
+        'currencyCode': 'USD',
+        'currencyName': 'Dollar',
+        'currencySymbol': '$',
+        'isoNumeric': 850
+      }]
     comp.sortDataDescending(data);
     comp.displayfield = 'countryName';
     comp.viewData = data.sort((a: any, b: any) => displayService.findValue(comp.displayfield, a).toLowerCase()
@@ -334,30 +334,30 @@ describe('amexio-dropdown', () => {
   })
   it('generateIndex Method ', () => {
     let data = [
-        {
-          "countryName": "Myanmar",
-          "countryCode1": "MM",
-          "countryCode2": "MMR",
-          "countryFlag": "MM.png",
-          "capital": "",
-          "currencyCode": "MMK",
-          "currencyName": "Kyat",
-          "currencySymbol": "K",
-          "isoNumeric": 104
-        },
-        {
-          "countryName": "U.S. Virgin Island",
-          "countryCode1": "VI",
-          "countryCode2": "VIR",
-          "countryFlag": "VI.png",
-          "capital": "",
-          "currencyCode": "USD",
-          "currencyName": "Dollar",
-          "currencySymbol": "$",
-          "isoNumeric": 850
-        }]
+      {
+        'countryName': 'Myanmar',
+        'countryCode1': 'MM',
+        'countryCode2': 'MMR',
+        'countryFlag': 'MM.png',
+        'capital': '',
+        'currencyCode': 'MMK',
+        'currencyName': 'Kyat',
+        'currencySymbol': 'K',
+        'isoNumeric': 104
+      },
+      {
+        'countryName': 'U.S. Virgin Island',
+        'countryCode1': 'VI',
+        'countryCode2': 'VIR',
+        'countryFlag': 'VI.png',
+        'capital': '',
+        'currencyCode': 'USD',
+        'currencyName': 'Dollar',
+        'currencySymbol': '$',
+        'isoNumeric': 850
+      }]
     comp.generateIndex(data);
-    comp.componentId = "dropdown_countryName_1448";
+    comp.componentId = 'dropdown_countryName_1448';
     data.forEach((element: any, index: number) => {
       element['index'] = comp.componentId + 'listitem' + index;
     });
@@ -365,9 +365,9 @@ describe('amexio-dropdown', () => {
   it('setMultiSelect', () => {
     comp.setMultiSelect();
     comp.multiselectValues = [{
-      fruitName: "Apple", code: "Apple", checked: true, index: "dropdown_fruitName_1912listitem0"
+      fruitName: 'Apple', code: 'Apple', checked: true, index: 'dropdown_fruitName_1912listitem0'
     }, {
-      fruitName: "Apple1", code: "Apple1", checked: true, index: "dropdown_fruitName_1912listitem1"
+      fruitName: 'Apple1', code: 'Apple1', checked: true, index: 'dropdown_fruitName_1912listitem1'
     }]
     comp.setMultiSelectData();
     comp.displayfield = 'fruitName';
@@ -384,7 +384,7 @@ describe('amexio-dropdown', () => {
     comp.setMultiSelectData();
     comp.multiselectValues = [];
     comp.innerValue = ['Apple'];
-    comp.filteredOptions = [{ fruitName: "Apple", code: "Apple", checked: false, index: "dropdown_fruitName_1977listitem0" }];
+    comp.filteredOptions = [{ fruitName: 'Apple', code: 'Apple', checked: false, index: 'dropdown_fruitName_1977listitem0' }];
     expect(comp.innerValue).toBeDefined()
     expect(comp.innerValue.length).toBeGreaterThan(0);
     const modelValue = comp.innerValue;
@@ -401,9 +401,9 @@ describe('amexio-dropdown', () => {
   it('multiSelection', () => {
     comp.multiSelection();
     comp.multiselect = true;
-    comp.viewData = [{ fruitName: "Apple", code: "Apple", checked: true, index: "dropdown_fruitName_1953listitem0" },
-    { fruitName: "Avacado", code: "Avacado", checked: true, index: "dropdown_fruitName_1953listitem1" },
-    { fruitName: "Banana", code: "Banana", checked: true, index: "dropdown_fruitName_1953listitem2" }]
+    comp.viewData = [{ fruitName: 'Apple', code: 'Apple', checked: true, index: 'dropdown_fruitName_1953listitem0' },
+    { fruitName: 'Avacado', code: 'Avacado', checked: true, index: 'dropdown_fruitName_1953listitem1' },
+    { fruitName: 'Banana', code: 'Banana', checked: true, index: 'dropdown_fruitName_1953listitem2' }]
     expect(comp.multiselect).toEqual(true)
     expect(comp.viewData).toBeDefined();
     let preSelectedMultiValues = '';
@@ -423,9 +423,9 @@ describe('amexio-dropdown', () => {
   })
   it('multiSelection for else', () => {
     comp.multiselect = true;
-    comp.viewData = [{ fruitName: "Apple", code: "Apple", index: "dropdown_fruitName_1953listitem0" },
-    { fruitName: "Avacado", code: "Avacado", index: "dropdown_fruitName_1953listitem1" },
-    { fruitName: "Banana", code: "Banana", index: "dropdown_fruitName_1953listitem2" }]
+    comp.viewData = [{ fruitName: 'Apple', code: 'Apple', index: 'dropdown_fruitName_1953listitem0' },
+    { fruitName: 'Avacado', code: 'Avacado', index: 'dropdown_fruitName_1953listitem1' },
+    { fruitName: 'Banana', code: 'Banana', index: 'dropdown_fruitName_1953listitem2' }]
     expect(comp.multiselect).toEqual(true)
     expect(comp.viewData).toBeDefined();
     comp.displayfield = 'fruitName'
@@ -498,11 +498,11 @@ describe('amexio-dropdown', () => {
   //setUserSelection check
 
   it('check setUserSelection method', () => {
-    comp.key ='index';
+    comp.key = 'index';
     comp.valuefield = 'countryCode1';
     comp.displayfield = 'countryName';
     comp.innerValue = 'AF';
-    comp.viewData = [{ countryName: "Afghanistan", countryCode1: "AF", countryCode2: "AFG", countryFlag: "AF.png" }]
+    comp.viewData = [{ countryName: 'Afghanistan', countryCode1: 'AF', countryCode2: 'AFG', countryFlag: 'AF.png' }]
     comp.setUserSelection();
     expect(comp.innerValue).not.toBe(null);
     const valueKey = comp.valuefield;
@@ -519,11 +519,11 @@ describe('amexio-dropdown', () => {
     })
   })
   it('check setUserSelection method else condition', () => {
-    comp.key ='index';
+    comp.key = 'index';
     comp.valuefield = 'countryCode1';
     comp.displayfield = 'countryName';
     comp.innerValue = null;
-    comp.viewData = [{ countryName: "Afghanistan", countryCode1: "AF", countryCode2: "AFG", countryFlag: "AF.png" }]
+    comp.viewData = [{ countryName: 'Afghanistan', countryCode1: 'AF', countryCode2: 'AFG', countryFlag: 'AF.png' }]
     comp.setUserSelection();
     expect(comp.innerValue).toBe(null);
   })
@@ -610,47 +610,47 @@ describe('amexio-dropdown', () => {
   it('on onIconClick()', () => {
     let item = event;
     comp.disabled = true;
-    comp.dropdownstyle.visibility = "hidden";
+    comp.dropdownstyle.visibility = 'hidden';
     comp.onIconClick();
-    expect( comp.dropdownstyle.visibility).toEqual("hidden");
+    expect(comp.dropdownstyle.visibility).toEqual('hidden');
     comp.showToolTip = false;
     expect(comp.disabled).toEqual(true);
-    comp.showToolTip = !comp.showToolTip;  
+    comp.showToolTip = !comp.showToolTip;
 
   });
   it('on onIconClick() nestesd if condition', () => {
     comp.disabled = false;
     comp.onIconClick();
-    comp.dropdownstyle.visibility = "hidden";
-    expect( comp.dropdownstyle.visibility).toEqual("hidden");
+    comp.dropdownstyle.visibility = 'hidden';
+    expect(comp.dropdownstyle.visibility).toEqual('hidden');
     comp.showToolTip = false;
     expect(comp.disabled).toBe(false);
     expect(comp.showToolTip).toEqual(false);
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
-    comp.showToolTip = !comp.showToolTip; 
+    comp.showToolTip = !comp.showToolTip;
   });
   it('on onIconClick() hidden false else condition', () => {
     comp.onIconClick();
-    comp.dropdownstyle.visibility = "visible";
-    expect(comp.dropdownstyle.visibility).not.toEqual("hidden"); 
+    comp.dropdownstyle.visibility = 'visible';
+    expect(comp.dropdownstyle.visibility).not.toEqual('hidden');
   });
   it('on onIconClick() hidden true  else condition', () => {
     comp.onIconClick();
-    comp.dropdownstyle.visibility = "hidden";
-    expect(comp.dropdownstyle.visibility).toEqual("hidden"); 
+    comp.dropdownstyle.visibility = 'hidden';
+    expect(comp.dropdownstyle.visibility).toEqual('hidden');
     comp.showToolTip = false;
   });
-  
+
   it('on onIconClick() showToolTip not undefined condition', () => {
     comp.disabled = false;
     comp.onIconClick();
     comp.showToolTip = true;
-    comp.dropdownstyle.visibility = "visible";
-    expect(comp.dropdownstyle.visibility).not.toEqual("hidden");
+    comp.dropdownstyle.visibility = 'visible';
+    expect(comp.dropdownstyle.visibility).not.toEqual('hidden');
     expect(comp.disabled).toEqual(false);
     expect(comp.showToolTip).toEqual(true);
     expect(comp.onBaseBlurEvent({})).toHaveBeenCalled;
-    comp.showToolTip = !comp.showToolTip;  
+    comp.showToolTip = !comp.showToolTip;
   });
   it('on onIconClick()showToolTip false condition', () => {
     comp.disabled = false;
@@ -659,7 +659,7 @@ describe('amexio-dropdown', () => {
     expect(comp.disabled).toBe(false);
     expect(comp.showToolTip).toEqual(false);
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
-    comp.showToolTip = !comp.showToolTip;  
+    comp.showToolTip = !comp.showToolTip;
   });
   it('on onIconClick() showtooltip undefined  condition', () => {
     comp.disabled = false;
@@ -668,7 +668,7 @@ describe('amexio-dropdown', () => {
     expect(comp.disabled).toBe(false);
     expect(comp.showToolTip).toEqual(undefined);
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
-    comp.showToolTip = !comp.showToolTip;  
+    comp.showToolTip = !comp.showToolTip;
   });
   //writeChangedValue () 
   it('on writeChangedValue()', () => {
@@ -743,8 +743,8 @@ describe('amexio-dropdown', () => {
     comp.valuefield = 'code';
     comp.innerValue = ['apple'];
     comp.filteredOptions = [{
-      checked: true, code: "apple", fruitName: "apple",
-      index: "dropdown_fruitName_1169listitem0", selected: false
+      checked: true, code: 'apple', fruitName: 'apple',
+      index: 'dropdown_fruitName_1169listitem0', selected: false
     }
     ];
     expect(comp.innerValue).toBeDefined();
@@ -758,5 +758,30 @@ describe('amexio-dropdown', () => {
         comp.multiselectValues.push(test);
       });
     });
+  });
+
+  it('set onDropDownSearchKeyUp check ', () => {
+    let event = {
+      'code': 'Backspace',
+      'composed': true,
+      'ctrlKey': false,
+      'isTrusted': true,
+      'defaultPrevented': false,
+      'detail': 0,
+      'eventPhase': 0,
+      'isComposing': false,
+      'key': 'Backspace',
+      'keyCode': 8,
+      'location': 0,
+      'metaKey': false,
+      'target': {
+        'value': 'American Samo'
+      }
+    }
+    comp.onDropDownSearchKeyUp(event);
+    
+    expect(event.keyCode).toEqual(8);
+    comp.innerValue = '';
+    comp.displayValue = event.target.value;
   });
 });
