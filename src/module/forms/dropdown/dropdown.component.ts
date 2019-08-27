@@ -477,6 +477,7 @@ description : Set enable / disable popover.
       this.onSingleSelect.emit(selectedItem);
     }
     this.isValid = true;
+    this.hide();
     this.isComponentValid.emit(true);
   }
   setMultiSelectData() {
@@ -591,6 +592,7 @@ description : Set enable / disable popover.
     }
     if (event.keyCode === 8) {
       this.innerValue = '';
+      this.displayValue = event.target.value;
     }
     if (event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13) {
       this.navigateUsingKey(event);
