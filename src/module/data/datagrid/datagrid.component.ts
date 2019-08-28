@@ -23,20 +23,23 @@
  column hide/unhide, single/multi selection, user define template for rendering for column
  header and column data, displaying summation of numeric column.
  */
+import { DOCUMENT } from '@angular/common';
 import {
-  AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
+  AfterContentInit, AfterViewInit, ChangeDetectorRef, Component,
+  ContentChildren, ElementRef, EventEmitter, HostListener, Inject, Input,
   OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewChildren,
 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { AmexioGridColumnComponent } from './data.grid.column';
 import { DataGridFilterComponent } from './datagrid.filter.component';
 
+import { LifeCycleBaseComponent } from './../../base/lifecycle.base.component';
 @Component({
   selector: 'amexio-datagrid',
   templateUrl: './datagrid.component.html',
 })
 
-export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentInit, AfterViewInit {
+export class AmexioDatagridComponent extends LifeCycleBaseComponent implements OnInit, OnDestroy, AfterContentInit, AfterViewInit {
   private componentLoaded: boolean;
   /*
    Properties
@@ -434,6 +437,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   gridId: string;
 
+  elem: any;
+
   stringFilterArray: any[] = [];
 
   numberFilterArray: any[] = [];
@@ -449,7 +454,9 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   constructor(
     public element: ElementRef, public dataTableService: CommonDataService,
     private cd: ChangeDetectorRef, private renderer: Renderer2,
+    @Inject(DOCUMENT) public document: any,
   ) {
+    super();
     this.selectedRows = [];
     this.sortBy = -1;
 
@@ -463,6 +470,11 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   }
 
   ngOnInit() {
+    this.elem = document.documentElement;
+    document.addEventListener('webkitfullscreenchange', this.exitHandler.bind(this), false);
+    document.addEventListener('mozfullscreenchange', this.exitHandler.bind(this), false);
+    document.addEventListener('fullscreenexit', this.exitHandler.bind(this), false);
+    document.addEventListener('MSFullscreenChange', this.exitHandler.bind(this), false);
     if (this.enablecolumnfiter) {
       this.enablecolumnfilter = this.enablecolumnfiter;
     }
@@ -1025,7 +1037,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     }
     const selectedAllData = JSON.parse(JSON.stringify(sRows));
     selectedAllData.forEach((select: any) => {
-        delete select['checkBoxSelectClass'];
+      delete select['checkBoxSelectClass'];
     });
     this.selectedRowData.emit(selectedAllData);
   }
@@ -1644,6 +1656,47 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
         filterObj1.push(filteredObj[i]);
         this.filterOperation(filterObj1, this.filterResultData);
       }
+    }
+  }
+
+  maxScreenChange(event: any) {
+    event.stopPropagation();
+    this.fullscreenMax = !this.fullscreenMax;
+    if (this.elem.requestFullscreen) {
+      this.elem.requestFullscreen();
+    } else if (this.elem.mozRequestFullScreen && this.desktopFlag) {
+      /* Firefox */
+      this.elem.mozRequestFullScreen();
+    } else if (this.elem.webkitRequestFullscreen && this.desktopFlag) {
+      /* Chrome, Safari and Opera */
+      this.elem.webkitRequestFullscreen();
+    } else if (this.elem.msRequestFullscreen && this.desktopFlag) {
+      /* IE/Edge */
+      this.elem.msRequestFullscreen();
+    }
+  }
+
+  minScreenChange(event: any) {
+    event.stopPropagation();
+    this.fullscreenMax = !this.fullscreenMax;
+
+    if (this.document.exitFullscreen && this.desktopFlag) {
+      this.document.exitFullscreen();
+    } else if (this.document.mozCancelFullScreen && this.desktopFlag) {
+      /* Firefox */
+      this.document.mozCancelFullScreen();
+    } else if (this.document.webkitExitFullscreen && this.desktopFlag) {
+      /* Chrome, Safari and Opera */
+      this.document.webkitExitFullscreen();
+    } else if (this.document.msExitFullscreen && this.desktopFlag) {
+      /* IE/Edge */
+      this.document.msExitFullscreen();
+    }
+  }
+
+  exitHandler() {
+    if (!document.webkitIsFullScreen) {
+     this.fullscreenMax = false;
     }
   }
 }

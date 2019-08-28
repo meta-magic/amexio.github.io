@@ -295,6 +295,16 @@ const ICON_MAPPING =
     fa: 'fa fa-clock-o',
     mat: 'access_time',
   },
+  {
+    component: 'full-screen-max-icon',
+    fa: 'fa fa-expand-alt',
+    mat: '',
+  },
+  {
+    component: 'full-screen-min-icon',
+    fa: 'fa fa-compress-alt',
+    mat: '',
+  },
 ];
 
 export default ICON_MAPPING;

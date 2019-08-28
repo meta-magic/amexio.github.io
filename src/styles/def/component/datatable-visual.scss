@@ -60,6 +60,8 @@
   background-color: $datatableOddRowColor;
 }
 
+
+
 .datatable-col:focus {
 background-color: $datatableRowHoverBG;
 color : $componentHoverFontColor;
@@ -93,4 +95,8 @@ outline: none;
   background-color: $datatableRowHoverBG;
   color : $componentHoverFontColor;
   outline: none;
+}
+
+.datatable-row:nth-child(even){
+  background-color: white;
 }

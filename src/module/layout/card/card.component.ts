@@ -17,7 +17,8 @@
 */
 
 import {
-  AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output,
+  AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef,
+  EventEmitter, HostListener, Input, OnDestroy, OnInit, Output,
   Renderer2, ViewChild,
 } from '@angular/core';
 import { ContentChildren, QueryList } from '@angular/core';
@@ -190,6 +191,7 @@ description : Context Menu provides the list of menus on right click.
     this.headerComponentList = this.amexioHeader.toArray();
     this.headerComponentList.forEach((item: AmexioHeaderComponent, currentIndex) => {
       item.fullScreenFlag = this.yesFullScreen;
+      item.desktopFlag = this.desktopFlag;
       item.fullscreenMax = true;
       item.aComponent = 'card';
       if (item.padding) {

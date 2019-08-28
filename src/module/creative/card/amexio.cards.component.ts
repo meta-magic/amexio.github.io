@@ -191,6 +191,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
         this.amexioCardHeaderList.forEach((element: any) => {
           element.amexioComponentId = this.amexioComponentId;
           element.fullScreenFlag = this.yesFullScreen;
+          element.desktopFlag = this.desktopFlag;
           element.fullscreenMax = true;
         });
         if (this.styleType === 'ribbon-style') {

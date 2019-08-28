@@ -15,7 +15,11 @@
 *
 *  Created by sagar on 4/02/2019.
 */
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {
+  AfterViewInit, Component, ElementRef, EventEmitter, Inject,
+  Input, OnInit, Output, ViewChild,
+} from '@angular/core';
 import { BehaviorSubject } from 'rxjs/index';
 
 @Component({
@@ -82,9 +86,9 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
   amexioComponentId: string;
 
   fullScreenFlag: boolean;
-
+  elem: any;
   fullscreenMax: boolean;
-
+  desktopFlag: boolean;
   maximize = false;
   ribbonType = false;
   iconPosition: {
@@ -92,9 +96,14 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
     bottom: string;
   };
 
-  constructor() {
+  constructor( @Inject(DOCUMENT) public document: any) {
   }
   ngOnInit() {
+    this.elem = document.documentElement;
+    document.addEventListener('webkitfullscreenchange', this.exitHandler.bind(this), false);
+    document.addEventListener('mozfullscreenchange', this.exitHandler.bind(this), false);
+    document.addEventListener('fullscreenexit', this.exitHandler.bind(this), false);
+    document.addEventListener('MSFullscreenChange', this.exitHandler.bind(this), false);
     if (this.borderbottom) {
       this.cclass = 'card-header-border';
     }
@@ -130,12 +139,7 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
   sizeChange() {
     this.isFullWindowCe = !this.isFullWindowCe;
     this.maximizeBehaiourCe.next(this.isFullWindowCe);
-    this.maximizeWindow.emit(this,  this.isFullWindowCe);
-    if (this.fullScreenFlag) {
-      this.fullscreenMax = !this.fullscreenMax;
-      this.maximizeBehaiourCe.next(this.fullscreenMax);
-      this.maximizeWindow.emit(this, this.fullscreenMax);
-    }
+    this.maximizeWindow.emit(this, this.isFullWindowCe);
   }
 
   onCloseClick() {
@@ -173,4 +177,47 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
     this.themeCss = themeClass;
   }
 
+  maxScreenChange(event: any) {
+    event.stopPropagation();
+    this.fullscreenMax = !this.fullscreenMax;
+    if (this.elem.requestFullscreen && this.desktopFlag) {
+      this.elem.requestFullscreen();
+    } else if (this.elem.mozRequestFullScreen && this.desktopFlag) {
+      /* Firefox */
+      this.elem.mozRequestFullScreen();
+    } else if (this.elem.webkitRequestFullscreen && this.desktopFlag) {
+      /* Chrome, Safari and Opera */
+      this.elem.webkitRequestFullscreen();
+    } else if (this.elem.msRequestFullscreen && this.desktopFlag) {
+      /* IE/Edge */
+      this.elem.msRequestFullscreen();
+    }
+    this.maximizeBehaiourCe.next(this.fullscreenMax);
+    this.maximizeWindow.emit(this, this.fullscreenMax);
+  }
+
+  minScreenChange(event: any) {
+    event.stopPropagation();
+    this.fullscreenMax = !this.fullscreenMax;
+
+    if (this.document.exitFullscreen && this.desktopFlag) {
+      this.document.exitFullscreen();
+    } else if (this.document.mozCancelFullScreen && this.desktopFlag) {
+      /* Firefox */
+      this.document.mozCancelFullScreen();
+    } else if (this.document.webkitExitFullscreen && this.desktopFlag) {
+      /* Chrome, Safari and Opera */
+      this.document.webkitExitFullscreen();
+    } else if (this.document.msExitFullscreen && this.desktopFlag) {
+      /* IE/Edge */
+      this.document.msExitFullscreen();
+    }
+    this.maximizeBehaiourCe.next(this.fullscreenMax);
+    this.maximizeWindow.emit(this, this.fullscreenMax);
+  }
+  exitHandler() {
+    if (!document.webkitIsFullScreen) {
+     this.fullscreenMax = false;
+    }
+  }
 }

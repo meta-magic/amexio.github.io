@@ -323,6 +323,16 @@ const ICON_MAPPING =
       fa: 'fa fa-user-circle',
       mat: 'person_pin',
     },
+    {
+      component: 'full-screen-max-icon',
+      fa: 'fa fa-expand',
+      mat: '',
+    },
+    {
+      component: 'full-screen-min-icon',
+      fa: 'fa fa-compress',
+      mat: '',
+    },
   ];
 
 @Injectable()

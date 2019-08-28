@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, Input, OnInit, QueryList } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, Input, OnInit } from '@angular/core';
 import { AmexioImageComponent } from '../../../media/image/image.component';
 import { AmexioVideoPlayerComponent } from '../../../media/video-player/video.player.component';
 

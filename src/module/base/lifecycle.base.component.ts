@@ -15,8 +15,9 @@
 *
 *Created by ashwini on 01/03/19.
 */
+import { DOCUMENT } from '@angular/common';
+import { AfterViewInit, Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
 
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 @Component({
     selector: 'life-cycle',
     template: './lifecycle.base.component.html',
@@ -28,6 +29,11 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
     @Output() destroy: any = new EventEmitter<any>();
     yesFullScreen: boolean;
     roundedgeclass: string;
+    fullscreenMax: boolean;
+    desktopFlag: boolean;
+    constructor() {
+
+    }
     ngOnInit() {
         if (this.enableLifeCycleEvents === 'all' || this.enableLifeCycleEvents === 'init') {
             this.lifeCycleInit();
@@ -63,8 +69,11 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
     }
 
     setFullScreen(type: any) {
+        this.yesFullScreen = true;
         if (type === 'browser') {
-          this.yesFullScreen = true;
+            this.desktopFlag = false;
+        } else if (type === 'desktop') {
+            this.desktopFlag = true;
         }
-      }
+    }
 }

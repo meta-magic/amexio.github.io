@@ -2,6 +2,7 @@
 .datatabletitle{
   font-size: $datatableTitleFontSize;
   margin: .1em 0 .35em;
+  background: white;
 }
 
 .datatable {
@@ -99,4 +100,15 @@
   padding-right: 5px;
 }
 
+
+
+.datagrid-full-screen {
+  height: 100%;
+  width: 100%;
+position: fixed;
+left: 0;
+top:0;
+z-index: 2000;
+background: white;
+}
 

@@ -21,10 +21,10 @@
                     <ng-content select="amexio-panel-header"></ng-content>
                 </amexio-toolbar-item>
                 <amexio-toolbar-item [ngStyle]="{'color': gradientFlag ? 'black':''}" style="margin:auto" position-right>     
-                    <amexio-c-icon style="padding-right:10px" class="cursor-style" *ngIf="(yesFullScreen && fullscreenMax)" [key]="'window_restore'" (onClick)="sizeChange($event)"></amexio-c-icon>
+                    <amexio-c-icon style="padding-right:10px" class="cursor-style" *ngIf="(yesFullScreen && fullscreenMax)" [key]="'full-screen-min-icon'" (onClick)="minScreenChange($event)"></amexio-c-icon>
                 </amexio-toolbar-item>
                 <amexio-toolbar-item [ngStyle]="{'color': gradientFlag ? 'black':''}" style="margin:auto" position-right>
-                                      <amexio-c-icon style="padding-right:10px" class="cursor-style" *ngIf="(yesFullScreen && !fullscreenMax)" [key]="'window_maximize'" (onClick)="sizeChange($event)"></amexio-c-icon>
+                                      <amexio-c-icon style="padding-right:10px" class="cursor-style" *ngIf="(yesFullScreen && !fullscreenMax)" [key]="'full-screen-max-icon'" (onClick)="maxScreenChange($event)"></amexio-c-icon>
                 </amexio-toolbar-item>
                 <amexio-toolbar-item [ngStyle]="{'color': gradientFlag ? 'black':''}" style="margin:auto" position-right>
                     <i [class]="iconclassKey" aria-hidden="true" #btn1></i>
