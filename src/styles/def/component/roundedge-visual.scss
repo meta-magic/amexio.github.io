@@ -513,3 +513,15 @@
   .roundEdgeCommonCss .datatable{
       border-radius: 10px !important;
   }
+
+  .classicCommonCss .datatable-header .datatable-col:nth-child(1) {
+    border-radius: 0px 0px 0px 0px!important;
+  }
+
+  .classicCommonCss .datatable-header .datatable-col:last-child{
+    border-radius: 0px 0px 0px 0px!important;
+  }
+  
+  .classicCommonCss .datatable{
+      border-radius: 0px !important;
+  }
