@@ -1,26 +1,19 @@
- <div (mouseover)="onmouseover()" (mouseleave)="onmouseleave()" 
-[ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null,
+<div (mouseover)="onmouseover()" (mouseleave)="onmouseleave()" [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null,
 
-            'height': height, 'transform-origin': zoom ? zoomtransitionorigin: null, 'position':(!maximizeflagchanged) ? 'fixed' :'relative', 'z-index':(!maximizeflagchanged) ? '500' :'0', 'width':(!maximizeflagchanged) ? '100%' : width}" [ngClass]="cclass"
-        >
-        <div  class="{{roundedgeclass}} {{innerCardCss}}" [ngClass]="{'card-ce-overlay-slideeffect-hover': ishover }" [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align ,
+            'height': height, 'transform-origin': zoom ? zoomtransitionorigin: null, 'position':(!maximizeflagchanged) ? 'fixed' :'relative', 'z-index':(!maximizeflagchanged) ? '500' :'0', 'width':(!maximizeflagchanged) ? '100%' : width}"
+        [ngClass]="cclass">
+        <div class="{{roundedgeclass}} {{innerCardCss}}" [ngClass]="{'card-ce-overlay-slideeffect-hover': ishover }" [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align ,
                 'color':color, 
                 'background': background}">
 
                 <div [ngClass]="{'ce-flip-card-front': flip,
-                                 'ce-flip-card-zoom' : zoom}" 
-                                 class="ce-flip-card-front" 
-                                 *ngIf="flip || zoom"
-                        [ngStyle]="{'height': height , 'width': width }">
+                                 'ce-flip-card-zoom' : zoom}" class="ce-flip-card-front" *ngIf="flip || zoom" [ngStyle]="{'height': height , 'width': width }">
                         <img [src]="coverimage" alt="" class="img-fluid" style="height: 100%; width: 100%" />
                 </div>
 
-                <div [ngClass]="{'ce-flip-card-back': flip , 'ce-zoom-card-back':zoom, 'card-container-ce ' : !(flip && !zoom)}"
-                        [ngStyle]="{'height': height,'width': width, 'background': (coverimage && zoom && !zoomflipflag && !flip) ? 'url(' + coverimage + ') center/cover no-repeat' : null}">
+                <div [ngClass]="{'ce-flip-card-back': flip , 'ce-zoom-card-back':zoom, 'card-container-ce ' : !(flip && !zoom)}" [ngStyle]="{'height': height,'width': width, 'background': (coverimage && zoom && !zoomflipflag && !flip) ? 'url(' + coverimage + ') center/cover no-repeat' : null}">
                         <ng-content></ng-content>
                 </div>
                 <div>
 
                 </div>
-
- 

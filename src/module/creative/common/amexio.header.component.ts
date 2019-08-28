@@ -178,8 +178,9 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
   }
 
   maxScreenChange(event: any) {
-    event.stopPropagation();
     this.fullscreenMax = !this.fullscreenMax;
+    this.maximizeBehaiourCe.next(this.fullscreenMax);
+    this.maximizeWindow.emit(this, this.fullscreenMax);
     if (this.elem.requestFullscreen && this.desktopFlag) {
       this.elem.requestFullscreen();
     } else if (this.elem.mozRequestFullScreen && this.desktopFlag) {
@@ -192,14 +193,12 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
       /* IE/Edge */
       this.elem.msRequestFullscreen();
     }
-    this.maximizeBehaiourCe.next(this.fullscreenMax);
-    this.maximizeWindow.emit(this, this.fullscreenMax);
   }
 
   minScreenChange(event: any) {
-    event.stopPropagation();
     this.fullscreenMax = !this.fullscreenMax;
-
+    this.maximizeBehaiourCe.next(this.fullscreenMax);
+    this.maximizeWindow.emit(this, this.fullscreenMax);
     if (this.document.exitFullscreen && this.desktopFlag) {
       this.document.exitFullscreen();
     } else if (this.document.mozCancelFullScreen && this.desktopFlag) {
@@ -212,12 +211,12 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
       /* IE/Edge */
       this.document.msExitFullscreen();
     }
-    this.maximizeBehaiourCe.next(this.fullscreenMax);
-    this.maximizeWindow.emit(this, this.fullscreenMax);
   }
   exitHandler() {
     if (!document.webkitIsFullScreen) {
-     this.fullscreenMax = false;
+      this.fullscreenMax = true;
+      this.maximizeBehaiourCe.next(this.fullscreenMax);
+      this.maximizeWindow.emit(this, this.fullscreenMax);
     }
   }
 }

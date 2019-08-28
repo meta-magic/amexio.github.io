@@ -501,3 +501,15 @@
 .classicCommonCss amexio-action-ce div{
     border-radius: 10px;
 }
+
+.roundEdgeCommonCss .datatable-header .datatable-col:nth-child(1) {
+    border-radius: 10px 0px 0px 0px!important;
+  }
+
+  .roundEdgeCommonCss .datatable-header .datatable-col:last-child{
+    border-radius: 0px 10px 0px 0px!important;
+  }
+  
+  .roundEdgeCommonCss .datatable{
+      border-radius: 10px !important;
+  }

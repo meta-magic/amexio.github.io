@@ -173,7 +173,6 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
   }
 
   minScreenChange(event: any) {
-    event.stopPropagation();
     this.fullscreenMax = false;
     this.maximizeBehaiour.next(this.fullscreenMax);
     this.maximizeWindow.emit(this, this.fullscreenMax);
@@ -192,7 +191,7 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
   }
   exitHandler() {
     if (!document.webkitIsFullScreen) {
-     this.fullscreenMax = !this.fullscreenMax;
+     this.fullscreenMax = true;
      this.maximizeBehaiour.next(this.fullscreenMax);
      this.maximizeWindow.emit(this, this.fullscreenMax);
     }
