@@ -37,6 +37,7 @@
         "@angular/core": "6.0.4",
         "@angular/forms": "6.0.4",
         "@angular/http": "6.0.4",
+        "@angular/router": "6.1.0",
         "@angular/language-service": "6.0.4",
         "@angular/platform-browser": "6.0.4",
         "angular-font-awesome": "3.1.2",

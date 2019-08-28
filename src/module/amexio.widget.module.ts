@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AmexioTabPillComponent } from '../index';
 
@@ -17,10 +18,13 @@ import { AmexioPaneModule } from './panes/amexio.pane.module';
 import { CommonDataService } from './services/data/common.data.service';
 import { DeviceQueryService } from './services/device/device.query.service';
 import { IconLoaderService } from './services/icon/icon.service';
+import { RouterService } from './services/routing/routing.service';
 
 import { ColorPaletteDirective } from './directive/color-palette.directive';
 import { AmexioFullScreenDirective } from './directive/full-screen.directive';
 import { RoundEdgesDirective } from './directive/round-edge.directive';
+import { RoutedirDirective } from './directive/router-animation.directive';
+
 export * from './services/data/common.data.service';
 export * from './services/device/device.query.service';
 export * from './services/icon/icon.service';
@@ -34,6 +38,8 @@ export * from '../models/day.model';
 export * from '../models/time.model';
 export * from '../models/time.util';
 export * from '../models/propertyGridModel';
+export * from './directive/router-animation.directive';
+export * from './services/routing/routing.service';
 
 @NgModule({
   imports: [
@@ -47,6 +53,7 @@ export * from '../models/propertyGridModel';
     HttpClientModule,
     AmexioCreativeModule,
     AmexioBaseContextMenuModule,
+    RouterModule,
   ],
   entryComponents: [AmexioTabPillComponent],
   exports: [
@@ -62,15 +69,16 @@ export * from '../models/propertyGridModel';
     ColorPaletteDirective,
     RoundEdgesDirective,
     AmexioFullScreenDirective,
+    RoutedirDirective,
   ],
-  declarations: [ColorPaletteDirective, RoundEdgesDirective, AmexioFullScreenDirective],
-  providers: [CommonDataService, DeviceQueryService, IconLoaderService],
+  declarations: [ColorPaletteDirective, RoutedirDirective, RoundEdgesDirective, AmexioFullScreenDirective],
+  providers: [CommonDataService, DeviceQueryService, IconLoaderService, RouterService],
 })
 export class AmexioWidgetModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioWidgetModule,
-      providers: [CommonDataService, DeviceQueryService, IconLoaderService],
+      providers: [CommonDataService, DeviceQueryService, IconLoaderService, RouterService],
     };
   }
 }

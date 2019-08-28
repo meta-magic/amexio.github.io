@@ -1,0 +1,192 @@
+ 
+  .myanislideleft {
+      position: relative;
+      display: block;
+      animation-name: slideleft;
+       animation-duration: 1s;
+       animation-fill-mode: forwards;
+
+  }
+
+  @keyframes slideleft {
+      0%{
+          left: -1000px;
+      }
+
+      100%{
+          left: 0;
+      }
+  }
+
+  .myanislideright {
+      position: relative;
+      display: block;
+      animation-name: slideright;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+
+  }
+
+  @keyframes slideright {
+      0%{
+          right: -1000px;
+      }
+
+      100% {
+          right: 0;
+      }
+  }
+
+  .myanifadingeffect {
+      position: relative;
+      display: block;
+      animation-name: fadeeffect;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      opacity:0;
+  }
+
+  @keyframes fadeeffect { 
+      0%{
+          opacity: 0;
+      }
+
+      100% {
+          opacity: 1;
+      }
+  }
+
+  .myanislidetop {
+      position: relative;
+      display: block;
+      animation-name: slidetop;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+
+    }
+
+@keyframes slidetop  {
+    0% {
+        top: -1000px;
+    }
+
+    100% {
+        top: 0;
+    }
+}   
+
+
+.myanislidebottom {
+    position: relative;
+    display: block;
+    animation-name: slidebottom;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes slidebottom {
+    0% {
+        bottom: -1000px;
+    }
+    
+    100% {
+        bottom: 0;
+    }
+}
+
+.myanislidetopleft {
+    position: relative;
+    display: block;
+    animation-name: lefttop;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes lefttop {
+  0% {
+    left: -1000px;
+    top: -1000px;
+    }
+
+  100% {
+    left:0;
+    top: 0;
+      }
+}
+
+.myanislidebottomleft {
+    position: relative;
+    display: block;
+    animation-name: leftbottom;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes leftbottom {
+    0% {
+        left: -1000px;
+        bottom: -1000px;
+    }
+
+    100% {
+        left: 0;
+        bottom: 0;
+    }
+}
+
+.myanislidetopright {
+    position: relative;
+    display: block;
+    animation-name: topright;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes topright {
+    0% {
+        top: -1000px;
+        right:-1000px;
+    }
+
+    100% {
+        top: 0;
+        right: 0
+    }
+}
+
+.myanislidebottomright {
+    position: relative;
+    display: block;
+    animation-name: bottomright;
+    animation-duration: 1s;
+    animation-fill-mode: both; 
+    animation-fill-mode: forwards;
+
+
+}
+
+@keyframes bottomright {
+    0%, 20%, 50%, 80% {
+        bottom: -1000px;
+        right: -1000px;
+        transform: translateY(0);
+    }
+
+   40% {
+       transform: translateY(-30px);
+   }
+
+   60% {
+       transform: translateY(-15px);
+   }
+
+    100% {
+        bottom: 0;
+        right: 0;
+        transform: translateY(0);
+    }
+}
