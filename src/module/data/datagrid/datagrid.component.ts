@@ -456,7 +456,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     private cd: ChangeDetectorRef, private renderer: Renderer2,
     @Inject(DOCUMENT) public document: any,
   ) {
-    super();
+    super(document);
     this.selectedRows = [];
     this.sortBy = -1;
 
@@ -470,11 +470,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   ngOnInit() {
-    this.elem = document.documentElement;
-    document.addEventListener('webkitfullscreenchange', this.exitHandler.bind(this), false);
-    document.addEventListener('mozfullscreenchange', this.exitHandler.bind(this), false);
-    document.addEventListener('fullscreenexit', this.exitHandler.bind(this), false);
-    document.addEventListener('MSFullscreenChange', this.exitHandler.bind(this), false);
+    super.ngOnInit();
     if (this.enablecolumnfiter) {
       this.enablecolumnfilter = this.enablecolumnfiter;
     }
@@ -1656,47 +1652,6 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
         filterObj1.push(filteredObj[i]);
         this.filterOperation(filterObj1, this.filterResultData);
       }
-    }
-  }
-
-  maxScreenChange(event: any) {
-    event.stopPropagation();
-    this.fullscreenMax = !this.fullscreenMax;
-    if (this.elem.requestFullscreen) {
-      this.elem.requestFullscreen();
-    } else if (this.elem.mozRequestFullScreen && this.desktopFlag) {
-      /* Firefox */
-      this.elem.mozRequestFullScreen();
-    } else if (this.elem.webkitRequestFullscreen && this.desktopFlag) {
-      /* Chrome, Safari and Opera */
-      this.elem.webkitRequestFullscreen();
-    } else if (this.elem.msRequestFullscreen && this.desktopFlag) {
-      /* IE/Edge */
-      this.elem.msRequestFullscreen();
-    }
-  }
-
-  minScreenChange(event: any) {
-    event.stopPropagation();
-    this.fullscreenMax = !this.fullscreenMax;
-
-    if (this.document.exitFullscreen && this.desktopFlag) {
-      this.document.exitFullscreen();
-    } else if (this.document.mozCancelFullScreen && this.desktopFlag) {
-      /* Firefox */
-      this.document.mozCancelFullScreen();
-    } else if (this.document.webkitExitFullscreen && this.desktopFlag) {
-      /* Chrome, Safari and Opera */
-      this.document.webkitExitFullscreen();
-    } else if (this.document.msExitFullscreen && this.desktopFlag) {
-      /* IE/Edge */
-      this.document.msExitFullscreen();
-    }
-  }
-
-  exitHandler() {
-    if (!document.webkitIsFullScreen) {
-     this.fullscreenMax = false;
     }
   }
 }

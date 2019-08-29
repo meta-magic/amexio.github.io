@@ -20,8 +20,8 @@
                         <span class="float-right" style="display:flex">
                             <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
                             <span *ngIf="yesFullScreen" style="padding-right: 4px;">
-                                <amexio-c-icon class="cursor-style" *ngIf="((yesFullScreen && fullscreenMax))" [key]="'full-screen-min-icon'" (onClick)="sizeChange1()"></amexio-c-icon>
-                                <amexio-c-icon class="cursor-style" *ngIf="((yesFullScreen && !fullscreenMax))" [key]="'full-screen-max-icon'" (onClick)="sizeChange()"></amexio-c-icon>
+                                <amexio-c-icon class="cursor-style" *ngIf="((yesFullScreen && fullscreenMax))" [key]="'full-screen-min-icon'" (onClick)="minScreenChange($event)"></amexio-c-icon>
+                                <amexio-c-icon class="cursor-style" *ngIf="((yesFullScreen && !fullscreenMax))" [key]="'full-screen-max-icon'" (onClick)="maxScreenChange($event)"></amexio-c-icon>
                             </span>
                         </span>
                     </ng-container>

@@ -12,6 +12,10 @@ export enum Icon {
 const faFaCaretIcon  = 'fa fa-caret-down';
 
 const faFaTimesIcon    = 'fa fa-times';
+
+const faExpand = 'fa fa-expand';
+
+const faCompress = 'fa fa-compress';
 /**
  * Icon Map Config
  */
@@ -297,12 +301,12 @@ const ICON_MAPPING =
   },
   {
     component: 'full-screen-max-icon',
-    fa: 'fa fa-expand-alt',
+    fa: faExpand,
     mat: '',
   },
   {
     component: 'full-screen-min-icon',
-    fa: 'fa fa-compress-alt',
+    fa: faCompress,
     mat: '',
   },
 ];

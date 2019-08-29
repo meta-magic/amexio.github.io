@@ -23,6 +23,10 @@ const faFaCaretIcon = 'fa fa-caret-down';
 
 const faFaTimesIcon = 'fa fa-times';
 
+const faExpand = 'fa fa-expand';
+
+const faCompress = 'fa fa-compress';
+
 const ICON_MAPPING =
   [
     {
@@ -325,12 +329,12 @@ const ICON_MAPPING =
     },
     {
       component: 'full-screen-max-icon',
-      fa: 'fa fa-expand',
+      fa: faExpand,
       mat: '',
     },
     {
       component: 'full-screen-min-icon',
-      fa: 'fa fa-compress',
+      fa: faCompress,
       mat: '',
     },
   ];

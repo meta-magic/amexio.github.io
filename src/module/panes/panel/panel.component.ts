@@ -19,7 +19,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, EventEmitter, HostListener, Inject, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
+
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
 
 @Component({
@@ -193,18 +195,13 @@ description : Fires the on accordion pane click event.
   panelstyle: any;
   componentId: any;
   fullscreenMax: boolean;
-  elem: any;
   globalClickListenFunc: () => void;
   constructor(private renderer: Renderer2, @Inject(DOCUMENT) public document: any) {
-    super();
+    super(document);
     this.panelstyle = { visibility: 'visible' };
   }
   ngOnInit() {
-    this.elem = document.documentElement;
-    document.addEventListener('webkitfullscreenchange', this.exitHandler.bind(this), false);
-    document.addEventListener('mozfullscreenchange', this.exitHandler.bind(this), false);
-    document.addEventListener('fullscreenexit', this.exitHandler.bind(this), false);
-    document.addEventListener('MSFullscreenChange', this.exitHandler.bind(this), false);
+    super.ngOnInit();
     this.componentId = Math.random() * 1000 + 'panel';
     if (!this.collapsible) {
       this.expanded = true;
@@ -306,49 +303,4 @@ description : Fires the on accordion pane click event.
   changeHeaderColor() {
     this.gradientFlag = true;
   }
-  sizeChange(event: any) {
-    event.stopPropagation();
-    this.fullscreenMax = !this.fullscreenMax;
-  }
-
-  minScreenChange(event: any) {
-    event.stopPropagation();
-    this.fullscreenMax = !this.fullscreenMax;
-
-    if (this.document.exitFullscreen && this.desktopFlag) {
-      this.document.exitFullscreen();
-    } else if (this.document.mozCancelFullScreen && this.desktopFlag) {
-      /* Firefox */
-      this.document.mozCancelFullScreen();
-    } else if (this.document.webkitExitFullscreen && this.desktopFlag) {
-      /* Chrome, Safari and Opera */
-      this.document.webkitExitFullscreen();
-    } else if (this.document.msExitFullscreen && this.desktopFlag) {
-      /* IE/Edge */
-      this.document.msExitFullscreen();
-    }
-  }
-
-  maxScreenChange(event: any) {
-    event.stopPropagation();
-    this.fullscreenMax = !this.fullscreenMax;
-    if (this.elem.requestFullscreen) {
-      this.elem.requestFullscreen();
-    } else if (this.elem.mozRequestFullScreen && this.desktopFlag) {
-      /* Firefox */
-      this.elem.mozRequestFullScreen();
-    } else if (this.elem.webkitRequestFullscreen && this.desktopFlag) {
-      /* Chrome, Safari and Opera */
-      this.elem.webkitRequestFullscreen();
-    } else if (this.elem.msRequestFullscreen && this.desktopFlag) {
-      /* IE/Edge */
-      this.elem.msRequestFullscreen();
-    }
-  }
-  exitHandler() {
-    if (!document.webkitIsFullScreen) {
-      this.fullscreenMax = false;
-    }
-  }
-
 }
