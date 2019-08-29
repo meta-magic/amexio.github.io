@@ -17,7 +17,7 @@
 */
 
 import { Component, EventEmitter, Injectable, Output } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class RouterService {

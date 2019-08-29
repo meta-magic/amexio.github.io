@@ -1,6 +1,6 @@
 import { ContentChild, Directive, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
 
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 import { RouterService } from '../services/routing/routing.service';
 @Directive({
@@ -14,17 +14,23 @@ export class RoutedirDirective {
     slideBottom = 'slide-bottom';
     slideRight = 'slide-right';
     slideLeft = 'slide-left';
-    amimationTop = 'myanislidetop';
+    animationTop = 'myanislidetop';
     animationBottom = 'myanislidebottom';
     animationLeft = 'myanislideleft';
     animationRight = 'myanislideright';
+    animationClasses: any[];
 
     constructor(private routerInstance: RouterService, private el: ElementRef, private renderer: Renderer2) {
+        this.animationClasses = [];
+        this.animationClasses.push(this.animationTop);
+        this.animationClasses.push(this.animationBottom);
+        this.animationClasses.push(this.animationLeft);
+        this.animationClasses.push(this.animationRight);
+
         this.routerInstance.routerEvent.subscribe(
             (router: any) => {
                 if (router) {
                     router.events.subscribe((event1: any) => {
-
                         this.navigationMethod(event1);
                     });
                 }
@@ -32,37 +38,51 @@ export class RoutedirDirective {
         );
     }
 
-    addTopBottomCss() {
-        if (this.routeAnimation === this.slideTop) {
-            this.addDynamicClass(this.amimationTop);
-        }
-
+    addBottomCss() {
         if (this.routeAnimation === this.slideBottom) {
             this.addDynamicClass(this.animationBottom);
         }
     }
 
-    addLeftRightCss() {
-        if (this.routeAnimation === this.slideLeft) {
-            this.addDynamicClass(this.animationLeft);
+    addTopCss() {
+        if (this.routeAnimation === this.slideTop) {
+            this.addDynamicClass(this.animationTop);
         }
+    }
+
+    addRightCss() {
+
         if (this.routeAnimation === this.slideRight) {
             this.addDynamicClass(this.animationRight);
         }
     }
 
+    addLeftCss() {
+        if (this.routeAnimation === this.slideLeft) {
+            this.addDynamicClass(this.animationLeft);
+        }
+    }
     addDynamicClass(className: any) {
-        this.renderer.addClass(this.el.nativeElement.parentNode, className);
+        setTimeout(() => {
+            this.animationClasses.forEach((cls: any) => {
+                this.renderer.removeClass(this.el.nativeElement.parentNode, cls);
+            });
+            this.renderer.addClass(this.el.nativeElement.parentNode, className);
+        }, 0);
     }
 
     navigationMethod(event1: any) {
-        if (event1 instanceof NavigationStart) {
-            if (this.routeAnimation === ('slide-left' || 'slide-right')) {
-                this.addLeftRightCss();
-            }
-            if (this.routeAnimation === ('slide-top' || 'slide-bottom')) {
-                this.addTopBottomCss();
-            }
+        if (this.routeAnimation === 'slide-left') {
+            this.addLeftCss();
+        }
+        if (this.routeAnimation === 'slide-right') {
+            this.addRightCss();
+        }
+        if (this.routeAnimation === 'slide-top') {
+            this.addTopCss();
+        }
+        if (this.routeAnimation === 'slide-bottom') {
+            this.addBottomCss();
         }
     }
 }
