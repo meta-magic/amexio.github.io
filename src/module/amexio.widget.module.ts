@@ -20,7 +20,7 @@ import { DeviceQueryService } from './services/device/device.query.service';
 import { IconLoaderService } from './services/icon/icon.service';
 import { RouterService } from './services/routing/routing.service';
 
-import { ColorPaletteDirective } from './directive/color-palette.directive';
+import { AmexioCommonModule } from './base/amexio.common.module';
 import { AmexioFullScreenDirective } from './directive/full-screen.directive';
 import { RoundEdgesDirective } from './directive/round-edge.directive';
 import { RoutedirDirective } from './directive/router-animation.directive';
@@ -51,6 +51,7 @@ export * from './services/routing/routing.service';
     AmexioMediaModule,
     AmexioPaneModule,
     HttpClientModule,
+    AmexioCommonModule,
     AmexioCreativeModule,
     AmexioBaseContextMenuModule,
     RouterModule,
@@ -62,16 +63,16 @@ export * from './services/routing/routing.service';
     AmexioDataModule,
     AmexioLayoutModule,
     AmexioMediaModule,
+    AmexioCommonModule,
     AmexioPaneModule,
     AmexioBaseContextMenuModule,
     AmexioCreativeModule,
     AmexioRuntimeModule,
-    ColorPaletteDirective,
     RoundEdgesDirective,
     AmexioFullScreenDirective,
     RoutedirDirective,
   ],
-  declarations: [ColorPaletteDirective, RoutedirDirective, RoundEdgesDirective, AmexioFullScreenDirective],
+  declarations: [ RoutedirDirective, RoundEdgesDirective, AmexioFullScreenDirective],
   providers: [CommonDataService, DeviceQueryService, IconLoaderService, RouterService],
 })
 export class AmexioWidgetModule {

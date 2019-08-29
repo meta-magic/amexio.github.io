@@ -16,6 +16,8 @@ import { BaseInputEventComponent } from './base.inputevent.component';
 import { LifeCycleBaseComponent } from './lifecycle.base.component';
 import { ListBaseDatepickerComponent } from './list.base.datepicker.component';
 
+import { ColorPaletteDirective } from '../directive/color-palette.directive';
+
 export * from '../services/data/display.field.service';
 
 const COMMON_COMPONENTS = [
@@ -26,6 +28,7 @@ const COMMON_COMPONENTS = [
   ListBaseDatepickerComponent,
   LifeCycleBaseComponent,
   BaseInputEventComponent,
+  ColorPaletteDirective,
 
 ];
 

@@ -29,10 +29,13 @@ import { AmexioNotificationComponent } from './notification/notification.compone
 import { AmexioSideNavComponent } from './sidenav/sidenav.component';
 import { AmexioSideNavInnerNodeComponent } from './sidenav/sidenavinnernode.component';
 import { SideNavNodeComponent } from './sidenav/sidenavnode.component';
+import { AmexioTaskbarItemComponent } from './taskbar/taskbar-item/taskbar-item.component';
+import { AmexioTaskbarComponent } from './taskbar/taskbar.component';
 
 import { AmexioBannerComponent } from './navbar/banner/banner.component';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
+import { AmexioPaneModule } from '../panes/amexio.pane.module';
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -40,6 +43,8 @@ export * from './sidenav/sidenav.component';
 export * from './sidenav/sidenavnode.component';
 export * from './navbar/navbar.component';
 export * from './notification/notification.component';
+export * from './taskbar/taskbar-item/taskbar-item.component';
+export * from './taskbar/taskbar.component';
 
 const NAV_COMPONENTS = [
   AmexioSideNavComponent,
@@ -59,6 +64,8 @@ const NAV_COMPONENTS = [
   AmexioBreadcrumbComponent,
   AmexioSideNavInnerNodeComponent,
   AmexioBannerComponent,
+  AmexioTaskbarComponent,
+  AmexioTaskbarItemComponent,
 
 ];
 
@@ -69,6 +76,7 @@ const NAV_COMPONENTS = [
     AmexioMediaModule,
     AmexioLayoutModule,
     AmexioFormsModule,
+    AmexioPaneModule,
     HttpClientModule,
     AmexioCommonModule.forRoot(),
   ],
