@@ -13,9 +13,6 @@ const faFaCaretIcon  = 'fa fa-caret-down';
 
 const faFaTimesIcon    = 'fa fa-times';
 
-const faExpand = 'fa fa-expand';
-
-const faCompress = 'fa fa-compress';
 /**
  * Icon Map Config
  */
@@ -298,16 +295,6 @@ const ICON_MAPPING =
     component: 'datepicker-clock-icon',
     fa: 'fa fa-clock-o',
     mat: 'access_time',
-  },
-  {
-    component: 'full-screen-max-icon',
-    fa: faExpand,
-    mat: '',
-  },
-  {
-    component: 'full-screen-min-icon',
-    fa: faCompress,
-    mat: '',
   },
 ];
 
