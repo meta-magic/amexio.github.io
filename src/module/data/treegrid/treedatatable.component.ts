@@ -15,8 +15,10 @@ Component Name : Amexio tree data table
 Component Selector : <amexio-tree-data-table>
 Component Description :  A Simple Expandable Tree component which create Tree View based on standard datasource attached.
 */
+import { DOCUMENT } from '@angular/common';
 import {
-  AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList,
+  AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, Inject,
+  Input, OnInit, Output, QueryList,
   ViewChild,
 } from '@angular/core';
 
@@ -145,11 +147,20 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, AfterVi
   mask = true;
 
   generatedId: any;
+  yesFullScreen: boolean;
+  desktopFlag: boolean;
+  elem: any;
+  fullscreenMax: boolean;
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
-  constructor(public treeDataTableService: CommonDataService) {
+  constructor(public treeDataTableService: CommonDataService, @Inject(DOCUMENT) private document: any ) {
   }
   ngOnInit() {
+    this.elem = document.documentElement;
+    document.addEventListener('webkitfullscreenchange', this.exitHandler.bind(this), false);
+    document.addEventListener('mozfullscreenchange', this.exitHandler.bind(this), false);
+    document.addEventListener('fullscreenexit', this.exitHandler.bind(this), false);
+    document.addEventListener('MSFullscreenChange', this.exitHandler.bind(this), false);
     if (this.httpmethod && this.httpurl) {
       this.treeDataTableService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
@@ -462,6 +473,53 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, AfterVi
     } else {
       const generatedId = firstId + '' + unitId;
       document.getElementById(randomNo + '-' + (parseInt(generatedId, 10)).toString()).focus();
+    }
+  }
+
+  setFullScreen(type: any) {
+    if (type === 'browser') {
+      this.yesFullScreen = true;
+      this.desktopFlag = false;
+    } else if (type === 'desktop') {
+      this.yesFullScreen = true;
+      this.desktopFlag = true;
+    }
+
+  }
+  sizeChange(event: any) {
+    this.fullscreenMax = !this.fullscreenMax;
+    if (this.elem.requestFullscreen) {
+      this.elem.requestFullscreen();
+    } else if (this.elem.mozRequestFullScreen && this.desktopFlag) {
+      /* Firefox */
+      this.elem.mozRequestFullScreen();
+    } else if (this.elem.webkitRequestFullscreen && this.desktopFlag) {
+      /* Chrome, Safari and Opera */
+      this.elem.webkitRequestFullscreen();
+    } else if (this.elem.msRequestFullscreen && this.desktopFlag) {
+      /* IE/Edge */
+      this.elem.msRequestFullscreen();
+    }
+  }
+  sizeChange1(event: any) {
+    this.fullscreenMax = !this.fullscreenMax;
+    if (this.document.exitFullscreen && this.desktopFlag) {
+      this.document.exitFullscreen();
+    } else if (this.document.mozCancelFullScreen && this.desktopFlag) {
+      /* Firefox */
+      this.document.mozCancelFullScreen();
+    } else if (this.document.webkitExitFullscreen && this.desktopFlag) {
+      /* Chrome, Safari and Opera */
+      this.document.webkitExitFullscreen();
+    } else if (this.document.msExitFullscreen && this.desktopFlag) {
+      /* IE/Edge */
+      this.document.msExitFullscreen();
+    }
+  }
+
+  exitHandler() {
+    if (!document.webkitIsFullScreen) {
+      this.fullscreenMax = false;
     }
   }
 }
