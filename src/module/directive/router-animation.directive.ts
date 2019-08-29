@@ -56,7 +56,6 @@ export class RoutedirDirective {
     }
 
     navigationMethod(event1: any) {
-        debugger;
         if (event1 instanceof NavigationStart) {
             if (this.routeAnimation === ('slide-left' || 'slide-right')) {
                 this.addLeftRightCss();
