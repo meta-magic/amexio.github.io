@@ -10,22 +10,22 @@ import { RouterService } from '../services/routing/routing.service';
 export class RoutedirDirective {
 
     @Input('style-type') routeAnimation: string;
+    slideTop = 'slide-top';
+    slideBottom = 'slide-bottom';
+    slideRight = 'slide-right';
+    slideLeft = 'slide-left';
+    amimationTop = 'myanislidetop';
+    animationBottom = 'myanislidebottom';
+    animationLeft = 'myanislideleft';
+    animationRight = 'myanislideright';
 
     constructor(private routerInstance: RouterService, private el: ElementRef, private renderer: Renderer2) {
         this.routerInstance.routerEvent.subscribe(
             (router: any) => {
                 if (router) {
                     router.events.subscribe((event1: any) => {
-                        if (this.routeAnimation === 'slide-left') {
-                            this.addDynamicClass('myanislideleft');
-                        }
-                        if (this.routeAnimation === 'slide-right') {
-                            this.addDynamicClass('myanislideright');
-                        }
 
-                        if (this.routeAnimation === ('slide-top' || 'slide-bottom')) {
-                            this.addTopBottomCss();
-                        }
+                        this.navigationMethod(event1);
                     });
                 }
             },
@@ -33,16 +33,37 @@ export class RoutedirDirective {
     }
 
     addTopBottomCss() {
-        if (this.routeAnimation === 'slide-top') {
-            this.addDynamicClass('myanislidetop');
+        if (this.routeAnimation === this.slideTop) {
+            this.addDynamicClass(this.amimationTop);
         }
 
-        if (this.routeAnimation === 'slide-bottom') {
-            this.addDynamicClass('myanislidebottom');
+        if (this.routeAnimation === this.slideBottom) {
+            this.addDynamicClass(this.animationBottom);
+        }
+    }
+
+    addLeftRightCss() {
+        if (this.routeAnimation === this.slideLeft) {
+            this.addDynamicClass(this.animationLeft);
+        }
+        if (this.routeAnimation === this.slideRight) {
+            this.addDynamicClass(this.animationRight);
         }
     }
 
     addDynamicClass(className: any) {
         this.renderer.addClass(this.el.nativeElement.parentNode, className);
+    }
+
+    navigationMethod(event1: any) {
+        debugger;
+        if (event1 instanceof NavigationStart) {
+            if (this.routeAnimation === ('slide-left' || 'slide-right')) {
+                this.addLeftRightCss();
+            }
+            if (this.routeAnimation === ('slide-top' || 'slide-bottom')) {
+                this.addTopBottomCss();
+            }
+        }
     }
 }
