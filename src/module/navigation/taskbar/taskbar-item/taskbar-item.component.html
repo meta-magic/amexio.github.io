@@ -3,14 +3,14 @@
 <amexio-button 
 [label]="title"
  [type]="'theme-color'" 
- (onClick)="taskbarItemClick(item)">
+ (onClick)="taskbarItemClick()">
 </amexio-button>
 
 <ng-container *ngIf="displayFlag">
 
   <div   
   [ngStyle]="{'width.px': relativePosition ? widthOfItem: ''}"
-  (onClick)="taskbarItemClick(item)" 
+  (onClick)="taskbarItemClick()" 
   [ngClass]="{'display-relative': relativePosition , 'display-fixed': !relativePosition }">
   <amexio-panel 
   
@@ -18,7 +18,7 @@
       
 
       amexioColorPalette 
-      (onClick)="taskbarItemClick(item)" 
+      (onClick)="taskbarItemClick()" 
       [title]="title"
       [color-palette]="'vibrant'" [gradient]="true" 
       [border]="true" [height]="heightOfItem" [header]="true" 
