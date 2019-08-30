@@ -1,10 +1,10 @@
-.mypanel {
-    background-color: white;
+.stackablepanel {
+    background-color: $stackPanelBGColor;
     size:10px;
-    color: #222;
+    color: $componentFontColor;
   }
   
-  .mypanel .title {
+  .stackablepanel .title {
     /* background-color: #ccc; */
     width: 100%;
     padding: 3.5px;
@@ -13,11 +13,11 @@
     /* border-bottom: 0.4px solid #666; */
   }
   
-  .mypanel .body {
+  .stackablepanel .body {
     padding: 0px 10px 10px 10px;
 
   }
   
-  .mypanel .body.hidden {
+  .stackablepanel .body.hidden {
     display: none;
   }

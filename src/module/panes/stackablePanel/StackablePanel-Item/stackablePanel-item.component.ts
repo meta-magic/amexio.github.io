@@ -3,8 +3,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'amexio-stackablepanel-item',
   templateUrl: './stackablePanel-item.component.html',
-  styleUrls: ['./stackablePanel-item.component.css'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StackableItemComponent {
 
