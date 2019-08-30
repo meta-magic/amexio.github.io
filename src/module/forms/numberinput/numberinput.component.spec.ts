@@ -30,12 +30,10 @@ describe('NUMBER INPUT', () => {
   });
 
 
-  // it('get innervalue', () => {
-  //   comp.value='sagfaf';
-
-  // //this.fixture.detectChanges();
-  //        expect(comp.value()).toEqual(comp['innerValue']);
-  //     });
+  it('ngOninit Method', () => {
+    comp.ngOnInit();
+    comp.componentId = comp.createCompId('numberinput', comp.name);
+  });
 
   //wrking 1- set errormsg
 
@@ -69,41 +67,41 @@ describe('NUMBER INPUT', () => {
   })
   it('validate method call allowblank true', () => {
     comp.allowblank = true;
-    let c:FormControl;
+    let c: FormControl;
     comp.validate(c);
     expect(comp.allowblank).toEqual(true);
     let isValid = comp.allowblank;
     expect(isValid).toEqual(true);
     return null;
- });
-   it('validate method call allowblank false', () => {
+  });
+  it('validate method call allowblank false', () => {
     comp.allowblank = false;
-    let c:FormControl;
+    let c: FormControl;
     comp.validate(c);
     expect(comp.allowblank).toEqual(false);
     expect(comp.isFieldValidate()).toHaveBeenCalled;
     let isValid = comp.allowblank && comp.isFieldValidate();
     expect(isValid).toEqual(false);
-      return {
+    return {
       jsonParseError: {
-          valid: true,
+        valid: true,
       },
-  }; ;
- });
+    };;
+  });
 
- it('validate method call isvalid true', () => {
+  it('validate method call isvalid true', () => {
 
-  let c:FormControl;
-  comp.validate(c);
-  comp.allowblank = true;
-  expect(comp.allowblank).toEqual(true);
-  expect(comp.isFieldValidate()).toHaveBeenCalled;
-  let isValid = comp.allowblank;
-  expect(isValid).toEqual(true);
-  return null;
-});
+    let c: FormControl;
+    comp.validate(c);
+    comp.allowblank = true;
+    expect(comp.allowblank).toEqual(true);
+    expect(comp.isFieldValidate()).toHaveBeenCalled;
+    let isValid = comp.allowblank;
+    expect(isValid).toEqual(true);
+    return null;
+  });
 
-   })
+})
   //on focus()
   // it('on focus()', () => {
   //   //comp.showToolTip=true;
