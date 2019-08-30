@@ -46,5 +46,21 @@ describe('amexio-checkbox', () => {
     comp.ngOnInit();
     comp.componentId =comp.createCompId('checkbox',comp.name);
   })
+
+  it('createCompId If Method', () => {
+    let inputType = 'checkbox';
+    comp.createCompId(inputType, name);
+    expect(name).toEqual('');
+    expect(name).toEqual(null);
+    return inputType + '_' + Math.floor(Math.random() * 1000 + 999);
+  })
+
+  it('createCompId Else Method', () => {
+    let inputType = 'checkbox';
+    comp.createCompId(inputType, name);
+    expect(name).not.toEqual('');
+    expect(name).not.toEqual(null);
+    return inputType + '_' + name;
+  })
  
 });

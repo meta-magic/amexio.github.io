@@ -723,6 +723,7 @@ describe('amexio-dropdown', () => {
     let item = event;
     comp.showToolTip = false;
     comp.onItemSelect(item);
+    comp.hide();
     expect(comp.showToolTip).toEqual(false);
     // comp.posixUp = comp.getListPosition(item);
     // comp.focus.emit();
