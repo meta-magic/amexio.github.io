@@ -49,14 +49,15 @@ describe('amexio-checkbox', () => {
 
   it('createCompId If Method', () => {
     let inputType = 'checkbox';
+    let name = null;
     comp.createCompId(inputType, name);
-    expect(name).toEqual('');
     expect(name).toEqual(null);
     return inputType + '_' + Math.floor(Math.random() * 1000 + 999);
   })
 
   it('createCompId Else Method', () => {
     let inputType = 'checkbox';
+    let name = 'chk';
     comp.createCompId(inputType, name);
     expect(name).not.toEqual('');
     expect(name).not.toEqual(null);

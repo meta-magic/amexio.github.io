@@ -109,7 +109,7 @@ describe('amexio-radio-group-component', () => {
 
   it('ngOninit Method', () => {
     comp.ngOnInit();
-    comp.name = this.generateName(comp.name, comp.fieldlabel, 'radioinput');
+    comp.name = comp.generateName(comp.name, comp.fieldlabel, 'radioinput');
     comp.componentId = comp.createCompId('radioinput', comp.name);
   });
 

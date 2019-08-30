@@ -81,7 +81,7 @@ describe('amexio-email-input', () => {
 
   it('ngOninit Method', () => {
     comp.ngOnInit();
-    comp.name = this.generateName(comp.name, comp.fieldlabel, 'emailinput');
+    comp.name = comp.generateName(comp.name, comp.fieldlabel, 'emailinput');
     comp.componentId = comp.createCompId('emailinput', comp.name);
   });
 

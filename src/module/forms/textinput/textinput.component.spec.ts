@@ -68,7 +68,7 @@ describe('Text INPUT', () => {
 
   it('ngOninit Method', () => {
     comp.ngOnInit();
-    comp.name = this.generateName(comp.name, comp.fieldlabel, 'textinput');
+    comp.name = comp.generateName(comp.name, comp.fieldlabel, 'textinput');
     comp.componentId = comp.createCompId('textinput', comp.name);
   });
 

@@ -44,7 +44,7 @@ describe('Password INPUT', () => {
 
   it('ngOninit Method', () => {
     comp.ngOnInit();
-    comp.name = this.generateName(comp.name, comp.fieldlabel, 'pwdinput');
+    comp.name = comp.generateName(comp.name, comp.fieldlabel, 'pwdinput');
     comp.componentId = comp.createCompId('pwdinput', comp.name);
   });
 
