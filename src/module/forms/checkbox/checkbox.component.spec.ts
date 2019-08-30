@@ -55,6 +55,14 @@ describe('amexio-checkbox', () => {
     return inputType + '_' + Math.floor(Math.random() * 1000 + 999);
   })
 
+  it('createCompId If blank Method', () => {
+    let inputType = 'checkbox';
+    let name = '';
+    comp.createCompId(inputType, name);
+    expect(name).toEqual('');
+    return inputType + '_' + Math.floor(Math.random() * 1000 + 999);
+  })
+
   it('createCompId Else Method', () => {
     let inputType = 'checkbox';
     let name = 'chk';

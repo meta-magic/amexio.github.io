@@ -102,4 +102,10 @@ describe('TextArea ', () => {
     event.stopPropagation();
   })
 
+  it('ngOninit Method', () => {
+    comp.ngOnInit();
+    comp.name = comp.generateName(comp.name, comp.fieldlabel, 'textareainput');
+    comp.componentId = comp.createCompId('textareainput', comp.name);
+  });
+
 });
