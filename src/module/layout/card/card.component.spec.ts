@@ -18,7 +18,7 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
        `,
 })
 class TestCardComponent { }
-fdescribe('amexio-card-ce', () => {
+describe('amexio-card-ce', () => {
     let comp: AmexioCardComponent;
     let fixture: ComponentFixture<TestCardComponent>;
     let miniservice: any;
