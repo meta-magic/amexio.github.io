@@ -242,7 +242,6 @@ description : On field value change event
   ngOnInit() {
     this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
     this.componentId = this.createCompId('textinput', this.name);
-    console.log('this.componentID', this.componentId);
   }
   public validate(c: FormControl) {
     return this.isFieldValid() ? null : {
