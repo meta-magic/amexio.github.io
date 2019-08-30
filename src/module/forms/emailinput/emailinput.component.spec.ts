@@ -79,6 +79,11 @@ describe('amexio-email-input', () => {
     expect(comp.regEx).toEqual(regEx);
   });
 
+  it('ngOninit Method', () => {
+    comp.ngOnInit();
+    comp.name = this.generateName(comp.name, comp.fieldlabel, 'emailinput');
+    comp.componentId = comp.createCompId('emailinput', comp.name);
+  });
 
   // //get onblur
   // it('get onblur()', () => {

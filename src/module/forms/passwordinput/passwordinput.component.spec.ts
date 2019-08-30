@@ -42,6 +42,11 @@ describe('Password INPUT', () => {
     expect(comp['onChangeCallback']).toEqual(fn);
   })
 
+  it('ngOninit Method', () => {
+    comp.ngOnInit();
+    comp.name = this.generateName(comp.name, comp.fieldlabel, 'pwdinput');
+    comp.componentId = comp.createCompId('pwdinput', comp.name);
+  });
 
   it('register on touched', () => {
     let fn: any;

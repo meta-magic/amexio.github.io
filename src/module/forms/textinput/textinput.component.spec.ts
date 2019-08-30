@@ -66,6 +66,11 @@ describe('Text INPUT', () => {
     expect(comp.value).toEqual(fixture);
   });
 
+  it('ngOninit Method', () => {
+    comp.ngOnInit();
+    comp.name = this.generateName(comp.name, comp.fieldlabel, 'textinput');
+    comp.componentId = comp.createCompId('textinput', comp.name);
+  });
 
   it('getCssClass()', () => {
   });

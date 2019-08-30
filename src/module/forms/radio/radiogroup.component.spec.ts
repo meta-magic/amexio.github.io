@@ -107,6 +107,13 @@ describe('amexio-radio-group-component', () => {
     expect(comp.onTouchedCallback).toEqual(fn);
   });
 
+  it('ngOninit Method', () => {
+    comp.ngOnInit();
+    comp.name = this.generateName(comp.name, comp.fieldlabel, 'radioinput');
+    comp.componentId = comp.createCompId('radioinput', comp.name);
+  });
+
+
   // it('writeValue()', () => {
   //   // let value = 'sdf';
   //   // comp.writeValue(value);

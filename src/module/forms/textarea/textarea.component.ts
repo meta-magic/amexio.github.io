@@ -245,8 +245,8 @@ description : Set enable / disable popover.
     this.showToolTip = false;
   }
   ngOnInit() {
-    this.componentId = this.createCompId('textareainput', this.name);
     this.name = this.generateName(this.name, this.fieldlabel, 'textareainput');
+    this.componentId = this.createCompId('textareainput', this.name);
   }
 
   // Set touched on blur
