@@ -71,7 +71,6 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   polarideStyleMapCE: Map<any, string>;
 
   slidercss = '';
-  fullScreenFlag = false;
   maximizeflagchanged = true;
 
   @ContentChildren(AmexioCardCEHeaderComponent) AmexioCardCEHeaderQueryList: QueryList<AmexioCardCEHeaderComponent>;
