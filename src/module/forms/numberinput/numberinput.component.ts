@@ -222,8 +222,8 @@ description : Set enable / disable popover.
   }
 
   ngOnInit() {
-    this.componentId = this.createCompId('numberinput', this.name);
     this.name = this.generateName(this.name, this.fieldlabel, 'numberinput');
+    this.componentId = this.createCompId('numberinput', this.name);
   }
   // THIS METHOD FOR KEYBORAD KEY HOME PRESS.
   onKeyUpHome(event: any) {

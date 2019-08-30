@@ -167,8 +167,8 @@ description : Sets the error message for validation
   }
 
   ngOnInit() {
-    this.componentId = this.createCompId('emailinput', this.name);
     this.name = this.generateName(this.name, this.fieldlabel, 'emailinput');
+    this.componentId = this.createCompId('emailinput', this.name);
   }
   public validate(c: FormControl) {
     return this.isEmailFieldValid() ? null : {

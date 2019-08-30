@@ -182,9 +182,9 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
   }
 
   ngOnInit() {
+    this.name = this.generateName(this.name, this.fieldlabel, 'radiogroup');
     this.componentId = this.createCompId('radiogroup', this.name);
 
-    this.name = this.generateName(this.name, this.fieldlabel, 'radiogroup');
     if (this.defaultSelectedValue) {
       this.value = this.defaultSelectedValue;
     }

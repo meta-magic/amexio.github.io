@@ -207,9 +207,9 @@ description : Set enable / disable popover.
     this.showToolTip = false;
   }
   ngOnInit() {
-    this.componentId = this.createCompId('passwordinput', this.name);
     this.isValid = this.isFieldValid();
     this.name = this.generateName(this.name, this.fieldlabel, 'passwordinput');
+    this.componentId = this.createCompId('passwordinput', this.name);
   }
   public validate(c: FormControl) {
     return this.isFieldValid() ? null : {
