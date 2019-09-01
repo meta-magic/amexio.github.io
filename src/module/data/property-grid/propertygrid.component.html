@@ -1,5 +1,11 @@
 <ng-container *ngIf="data && data.length > 0">
-  <table [ngClass]="{'borderStyle': hasBorder}" style="width: 100%">
+  <table aria-describedby="propertyGrid" [ngClass]="{'borderStyle': hasBorder}" style="width: 100%">
+      <ng-container *ngIf="data && data.length == 0">
+      <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+      </tr>      
+      </ng-container>
     <tr *ngFor="let item of data">
       <td class="field-name-align" [ngClass]="{'borderStyle': hasBorder}">
         <span *ngIf="item.fieldIcon" style="padding-right: 5px">
