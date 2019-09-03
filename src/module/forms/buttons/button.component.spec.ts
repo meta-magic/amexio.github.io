@@ -17,6 +17,8 @@ describe('amexio-button', () => {
     });
     fixture = TestBed.createComponent(AmexioButtonComponent);
     comp = fixture.componentInstance;
+    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+
   });
 
 
@@ -103,26 +105,38 @@ describe('amexio-button', () => {
     });
   });
 
+  it('check setDisabled method', () => {
+    let dis: boolean;
+    comp.setDisabled(dis);
+    comp.disabled = true;
+    expect(comp.disabled).toEqual(comp.disabled);
+  });
 
-    it('check setDisabled method', () => {
-      let dis: boolean;
-      comp.setDisabled(dis);
-      comp.disabled = true;
-      expect(comp.disabled).toEqual(comp.disabled);
-    });
+  it('setRoundEdge If round-edge()', () => {
+    let type = 'round-edge';
+    comp.setRoundEdge('round-edge');
+    expect(type).toEqual('round-edge')
+    comp.roundedgeclass = 'roundEdgeCommonCss';
+  });
 
-    it('setRoundEdge If round-edge()', () => {
-      let type = 'round-edge';
-      comp.setRoundEdge('round-edge');
-      expect(type).toEqual('round-edge')
-      comp.roundedgeclass = 'roundEdgeCommonCss';
+  it('setRoundEdge If classic', () => {
+    let type = 'classic';
+    comp.setRoundEdge('classic');
+    expect(type).toEqual('classic')
+    comp.roundedgeclass = 'classicCommonCss';
+  });
+
+  it('IconClick If classic', () => {
+    comp.disabled = false;
+
+    comp.IconClick(event);
+    expect(comp.disabled).toEqual(false);
+    event.stopPropagation();
+    comp.onIconClick.subscribe((g: any) => {
+      expect(event).toEqual(g);
     });
-  
-    it('setRoundEdge If classic', () => {
-      let type = 'classic';
-      comp.setRoundEdge('classic');
-      expect(type).toEqual('classic')
-      comp.roundedgeclass = 'classicCommonCss';
-    });
-  
+  });
+
+
+
 });

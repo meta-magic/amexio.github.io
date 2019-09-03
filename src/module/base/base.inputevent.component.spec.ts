@@ -32,7 +32,7 @@ describe('base-inputevent', () => {
   it('on input()', () => {
     comp1.onInputEvent(event);
     comp1.eventPropagationText(event);
-    this.isValid = comp1.isFieldValid();
+    comp1.isValid = comp1.isFieldValid();
    
     comp1.input.emit(comp1.value);
   })
