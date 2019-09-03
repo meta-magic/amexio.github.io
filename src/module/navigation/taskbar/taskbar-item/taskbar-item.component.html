@@ -1,37 +1,35 @@
+<div #taskbarItemId>
 
-
-<amexio-button 
-[label]="title"
- [type]="'theme-color'" 
- (onClick)="taskbarItemClick()">
-</amexio-button>
-
-<ng-container *ngIf="displayFlag">
-
-  <div   
-  [ngStyle]="{'width.px': relativePosition ? widthOfItem: ''}"
-  (onClick)="taskbarItemClick()" 
-  [ngClass]="{'display-relative': relativePosition , 'display-fixed': !relativePosition }">
-  <amexio-panel 
+  <div *ngIf="!iconClose">
+    <amexio-button  *ngIf="close" 
+      [label]="title"
+      [type]="'theme-color'"
+      [right-icon]="'fa fa-close'" 
+      (onIconClick)="iconClick(taskbarItemId)"
+      (onClick)="taskbarItemClick()">
+  </amexio-button>
+  <amexio-button  *ngIf="!close"
+      [label]="title"
+      [type]="'theme-color'"
+      (onClick)="taskbarItemClick()">
+  </amexio-button>
   
-  [ngStyle]="{'width.px': !relativePosition ? widthOfItem: ''}"
-      
-
-      amexioColorPalette 
-      (onClick)="taskbarItemClick()" 
-      [title]="title"
-      [color-palette]="'vibrant'" [gradient]="true" 
-      [border]="true" [height]="heightOfItem" [header]="true" 
-      [expanded]="false">
-
-      <ng-content></ng-content>
-      
-    </amexio-panel>
   </div>
-</ng-container>
-
-
-
-
-<!--  [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}"  -->
-<!-- [style.width.px]="widthOfItem" -->
+  
+  <ng-container *ngIf="displayFlag">
+    <div [ngStyle]="{'width.px': relativePosition ? widthOfItem: ''}" 
+    (onClick)="taskbarItemClick()"
+      [ngClass]="{'taskbar-item-display-relative': relativePosition , 'taskbar-item-display-fixed': !relativePosition }">
+      <amexio-panel [ngStyle]="{'width.px': !relativePosition ? widthOfItem: ''}" 
+      amexioColorPalette
+        (onClick)="taskbarItemClick()" 
+        [title]="title" [color-palette]="'vibrant'" 
+        [gradient]="true" [border]="true"
+        [height]="heightOfItem" [header]="true"
+         [expanded]="false">
+        <ng-content></ng-content>
+      </amexio-panel>
+    </div>
+  </ng-container>
+  
+  </div>

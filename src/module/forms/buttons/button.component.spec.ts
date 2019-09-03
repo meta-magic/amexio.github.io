@@ -115,7 +115,7 @@ describe('amexio-button', () => {
   it('setRoundEdge If round-edge()', () => {
     let type = 'round-edge';
     comp.setRoundEdge('round-edge');
-    expect(type).toEqual('round-edge')
+    expect(type).toEqual('round-edge');
     comp.roundedgeclass = 'roundEdgeCommonCss';
   });
 

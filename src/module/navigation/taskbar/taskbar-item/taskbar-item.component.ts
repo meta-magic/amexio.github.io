@@ -1,9 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'amexio-task-bar-item',
   templateUrl: './taskbar-item.component.html',
-  styleUrls: ['./taskbar-item.component.css'],
 })
 export class AmexioTaskbarItemComponent implements OnInit {
 
@@ -15,17 +14,37 @@ export class AmexioTaskbarItemComponent implements OnInit {
 
   @Input('relative') relativePosition = false;
 
+  @Input('close') close = false;
+
   displayFlag = false;
+
+  closeIcon: any;
 
   left: any;
   top: any;
+  iconClose = false;
 
-  constructor() { }
+  @ViewChild('taskbarItemId') public taskbarItemId: ElementRef;
+
+  @Output('onCloseEvent') onCloseEvent = new EventEmitter<any>();
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
-
   taskbarItemClick() {
     this.displayFlag = !this.displayFlag;
+  }
+
+  iconClick(event: any) {
+    if (this.close) {
+      this.iconClose = true;
+      this.displayFlag = false;
+      if (event) {
+        this.taskbarItemId.nativeElement.parentNode.remove();
+      }
+    }
+    this.onCloseEvent.emit(this.taskbarItemId);
   }
 }

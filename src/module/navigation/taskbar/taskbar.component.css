@@ -1,9 +1,0 @@
-
-.taskbar {
-    display:flex;
-    position: fixed;
-    z-index: 999;
-    bottom: 0px;
-    padding: 10px  0px 10px 4px;
-    width: 100%;
-}
