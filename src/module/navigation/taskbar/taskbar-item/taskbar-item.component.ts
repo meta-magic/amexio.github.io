@@ -19,7 +19,6 @@ export class AmexioTaskbarItemComponent implements OnInit {
   displayFlag = false;
 
   closeIcon: any;
-
   left: any;
   top: any;
   iconClose = false;
