@@ -126,7 +126,7 @@ describe('amexio-button', () => {
     comp.roundedgeclass = 'classicCommonCss';
   });
 
-  it('IconClick If classic', () => {
+  it('IconClick If condition', () => {
     comp.disabled = false;
 
     comp.IconClick(event);
@@ -136,7 +136,10 @@ describe('amexio-button', () => {
       expect(event).toEqual(g);
     });
   });
-
-
-
+  it('IconClick else condition', () => {
+    comp.disabled = true;
+    expect(comp.disabled).toEqual(true);
+    comp.IconClick(event);
+    expect(comp.disabled).toEqual(true);
+  });
 });
