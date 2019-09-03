@@ -3,7 +3,8 @@
     <thead>
         <tr>
             <td [attr.colspan]="headers.length">
-                <table>
+                <table role="none">
+
                     <tr #headerRow>
                         <td class="calendar-header-items calendar-user-active-timeslot" style="width:50px;"> &nbsp;</td>
                         <td class="calendar-header-items" style="cursor: pointer;" (click)="onHeaderClick(header)" *ngFor="let header of headers">
@@ -25,7 +26,7 @@
                 <div class="calendar-scroller">
                     <div style="width: 100%; position: relative;">
                         <div class="calendar-bg">
-                            <table>
+                            <table role="none">
                                 <tr *ngFor="let calendarRow of calendaryData">
 
                                     <td class="calendar-header-items calendar-week-timeslot" style="width:50px;">
