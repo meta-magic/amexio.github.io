@@ -124,6 +124,16 @@ export class AmexioButtonComponent implements OnInit {
   */
   @Output() onClick: any = new EventEmitter<any>();
   /*
+ Events
+ name : onIconClick
+ datatype :  none
+ version : none
+ default : none
+ description : Fire when button click
+ */
+  @Output() onIconClick: any = new EventEmitter<any>();
+
+  /*
 Properties
 name : block
 datatype :  boolean
@@ -153,6 +163,8 @@ description : Set the color
 */
   @Input('color') color: string;
 
+  @Input('right-icon') rightIcon: string;
+
   bgBorderColor = '';
 
   badgeCssClass = '';
@@ -164,6 +176,12 @@ description : Set the color
     this.ispressed = !this.ispressed;
     if (!this.disabled) {
       this.onClick.emit(event);
+    }
+  }
+  IconClick(event: any) {
+    if (!this.disabled) {
+      event.stopPropagation();
+      this.onIconClick.emit(event);
     }
   }
   ngOnInit(): void {
