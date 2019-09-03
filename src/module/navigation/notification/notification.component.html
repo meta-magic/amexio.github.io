@@ -8,15 +8,15 @@
         </ng-container>
       </span>
 
-            <table  aria-describedby="table" role="none">
+            <table  aria-describedby="table" role="presentation">
                 <ng-container *ngIf="icon">
-                    <th scope="col">
+                    <th>
                         <amexio-c-icon style=" padding-right: 18px;" [ngClass]="icon">
                         </amexio-c-icon>
                     </th>
                 </ng-container>
 
-                <th scope="col" style=" text-align: left;">
+                <th style=" text-align: left;">
 
                     <span>{{msg}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                 </th>
@@ -35,14 +35,14 @@
         </ng-container>
       </span>
 
-            <table aria-describedby="table" role="none" >
+            <table aria-describedby="table" role="presentation" >
                 <ng-container *ngIf="icon">
-                    <th scope="col">
+                    <th>
                         <amexio-c-icon style=" padding-right: 18px;" [ngClass]="icon">
                         </amexio-c-icon>
                     </th>
                 </ng-container>
-                <th scope="col" style=" text-align: left;">
+                <th style=" text-align: left;">
                     <ng-template [ngTemplateOutlet]="notificationTemplate" [ngTemplateOutletContext]="{data:msg}">
                     </ng-template>
                 </th>
