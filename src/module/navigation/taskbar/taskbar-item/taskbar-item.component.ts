@@ -29,6 +29,7 @@ export class AmexioTaskbarItemComponent implements OnInit {
   @Output('onCloseEvent') onCloseEvent = new EventEmitter<any>();
 
   constructor() {
+    this.displayFlag = true;
   }
 
   ngOnInit() {
