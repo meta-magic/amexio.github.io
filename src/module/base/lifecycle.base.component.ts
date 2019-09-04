@@ -17,6 +17,7 @@
 */
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/index';
 
 @Component({
     selector: 'life-cycle',
@@ -26,12 +27,16 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
     @Input('enable-lifecycle-events') enableLifeCycleEvents: string;
     @Output() initiated: any = new EventEmitter<any>();
     @Output() ready: any = new EventEmitter<any>();
+    @Output() minimizeWindow2: any = new EventEmitter<any>();
     @Output() destroy: any = new EventEmitter<any>();
     yesFullScreen: boolean;
     roundedgeclass: string;
-    fullscreenMax: boolean;
+    fullscreenMax = false;
     desktopFlag: boolean;
     elem: any;
+    instance: any;
+
+    maximizeBehaiourCe1 = new BehaviorSubject(false);
     constructor( @Inject(DOCUMENT) public document?: any) {
 
     }
@@ -41,6 +46,7 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
         document.addEventListener('mozfullscreenchange', this.exitHandler.bind(this), false);
         document.addEventListener('fullscreenexit', this.exitHandler.bind(this), false);
         document.addEventListener('MSFullscreenChange', this.exitHandler.bind(this), false);
+
         if (this.enableLifeCycleEvents === 'all' || this.enableLifeCycleEvents === 'init') {
             this.lifeCycleInit();
         }
@@ -86,7 +92,7 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
     maxScreenChange(event: any) {
         event.stopPropagation();
         this.fullscreenMax = !this.fullscreenMax;
-        if (this.elem.requestFullscreen) {
+        if (this.elem.requestFullscreen && this.desktopFlag) {
             this.elem.requestFullscreen();
         } else if (this.elem.mozRequestFullScreen && this.desktopFlag) {
             /* Firefox */
@@ -98,10 +104,13 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
             /* IE/Edge */
             this.elem.msRequestFullscreen();
         }
+        return this.fullscreenMax;
     }
+
     minScreenChange(event: any) {
         event.stopPropagation();
         this.fullscreenMax = !this.fullscreenMax;
+
         if (this.document.exitFullscreen && this.desktopFlag) {
             this.document.exitFullscreen();
         } else if (this.document.mozCancelFullScreen && this.desktopFlag) {
@@ -114,11 +123,16 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
             /* IE/Edge */
             this.document.msExitFullscreen();
         }
+        return this.fullscreenMax;
     }
 
     exitHandler() {
         if (!document.webkitIsFullScreen) {
             this.fullscreenMax = false;
+            if (this.instance.amexioComponentId === 'amexio-card-ce' || this.instance.amexioComponentId === 'amexio-card') {
+                this.instance.maximizeflagchanged = false;
+                this.instance.headerinst.fullscreenMaxCard = true;
+            }
         }
     }
 }

@@ -16,8 +16,10 @@
  * Created by kedar on 8/8/19.
  */
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Inject,
-Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Inject,
+  Input, OnInit, Output, ViewChild,
+} from '@angular/core';
 import { BehaviorSubject } from 'rxjs/index';
 
 @Component({
@@ -35,11 +37,11 @@ import { BehaviorSubject } from 'rxjs/index';
   *ngIf="(!isFullWindow && maximize )"
   [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
 
-  <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(fullScreenFlag && fullscreenMax)"
-  [key]="'full-screen-max-icon'" (onClick)="maxScreenChange($event)"></amexio-c-icon>
+  <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(fullScreenFlag && fullscreenMaxCard)"
+  [key]="'full-screen-max-icon'" (onClick)="maxScreenChangeCard($event)"></amexio-c-icon>
   <amexio-c-icon style = "padding-left: 10px" class="cursor-style"
-  *ngIf="(fullScreenFlag && !fullscreenMax)"
-  [key]="'full-screen-min-icon'" (click)="minScreenChange($event)"></amexio-c-icon>
+  *ngIf="(fullScreenFlag && !fullscreenMaxCard)"
+  [key]="'full-screen-min-icon'" (click)="minScreenChangeCard($event)"></amexio-c-icon>
 
   <amexio-c-icon class="cursor-style"
   style = "padding-left: 10px"
@@ -76,7 +78,8 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
   @Output() closeDataEmit: any = new EventEmitter<any>();
 
   @Output() maximizeWindow: any = new EventEmitter<any>();
-
+  @Output() maximizeWindow1: any = new EventEmitter<any>();
+  @Output() minimizeWindow1: any = new EventEmitter<any>();
   @Input('minimized-icon') minimizeIcon: any;
 
   minimize = false;
@@ -89,26 +92,20 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
 
   fullScreenFlag: boolean;
 
-  fullscreenMax: boolean;
+  fullscreenMaxCard: boolean;
 
   closeableBehaiour = new BehaviorSubject(false);
 
   maximizeBehaiour = new BehaviorSubject(false);
-  desktopFlag: boolean;
   aComponent: string;
   aComponent1: string;
   textName: any;
   elem: any;
-  constructor(@Inject(DOCUMENT) public document: any) {
+  constructor( @Inject(DOCUMENT) public document: any) {
 
   }
 
   ngOnInit() {
-    this.elem = document.documentElement;
-    document.addEventListener('webkitfullscreenchange', this.exitHandler.bind(this), false);
-    document.addEventListener('mozfullscreenchange', this.exitHandler.bind(this), false);
-    document.addEventListener('fullscreenexit', this.exitHandler.bind(this), false);
-    document.addEventListener('MSFullscreenChange', this.exitHandler.bind(this), false);
   }
   ngAfterViewInit() {
     this.textName = this.content.nativeElement.textContent;
@@ -153,47 +150,11 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
     this.minimizeWindow.emit(this);
   }
 
-  maxScreenChange(event: any) {
-    event.stopPropagation();
-    this.fullscreenMax = !this.fullscreenMax;
-    this.maximizeBehaiour.next(this.fullscreenMax);
-    this.maximizeWindow.emit(this, this.fullscreenMax);
-    if (this.elem.requestFullscreen && this.desktopFlag) {
-      this.elem.requestFullscreen();
-    } else if (this.elem.mozRequestFullScreen && this.desktopFlag) {
-      /* Firefox */
-      this.elem.mozRequestFullScreen();
-    } else if (this.elem.webkitRequestFullscreen && this.desktopFlag) {
-      /* Chrome, Safari and Opera */
-      this.elem.webkitRequestFullscreen();
-    } else if (this.elem.msRequestFullscreen && this.desktopFlag) {
-      /* IE/Edge */
-      this.elem.msRequestFullscreen();
-    }
+  maxScreenChangeCard(event: any) {
+    this.maximizeWindow1.emit({ tempEvent: event, tempThis: this });
   }
 
-  minScreenChange(event: any) {
-    this.fullscreenMax = false;
-    this.maximizeBehaiour.next(this.fullscreenMax);
-    this.maximizeWindow.emit(this, this.fullscreenMax);
-    if (this.document.exitFullscreen && this.desktopFlag) {
-      this.document.exitFullscreen();
-    } else if (this.document.mozCancelFullScreen && this.desktopFlag) {
-      /* Firefox */
-      this.document.mozCancelFullScreen();
-    } else if (this.document.webkitExitFullscreen && this.desktopFlag) {
-      /* Chrome, Safari and Opera */
-      this.document.webkitExitFullscreen();
-    } else if (this.document.msExitFullscreen && this.desktopFlag) {
-      /* IE/Edge */
-      this.document.msExitFullscreen();
-    }
-  }
-  exitHandler() {
-    if (!document.webkitIsFullScreen) {
-     this.fullscreenMax = true;
-     this.maximizeBehaiour.next(this.fullscreenMax);
-     this.maximizeWindow.emit(this, this.fullscreenMax);
-    }
+  minScreenChangeCard(event: any) {
+    this.minimizeWindow1.emit({ tempEvent: event, tempThis: this });
   }
 }

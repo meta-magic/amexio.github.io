@@ -96,7 +96,7 @@ export class ColorPaletteDirective implements OnInit {
 
   getBGColorStyles(hostComponent: any) {
     switch (hostComponent.amexioComponentId) {
-      case (ColorPaletteConstants.card): {
+      case (ColorPaletteConstants.card || ColorPaletteConstants.cardce): {
         hostComponent.setColorPalette(ColorPaletteConstants.amexioTheme4);
         break;
       }
@@ -145,7 +145,7 @@ export class ColorPaletteDirective implements OnInit {
 
   getGradientStyles(hostComponent: any) {
     switch (hostComponent.amexioComponentId) {
-      case (ColorPaletteConstants.card): {
+      case (ColorPaletteConstants.card || ColorPaletteConstants.cardce): {
         hostComponent.setColorPalette(ColorPaletteConstants.amexioThemeGradient4);
         break;
       }

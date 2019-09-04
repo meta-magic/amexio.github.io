@@ -15,8 +15,9 @@
 *
 *  Created by sagar on 4/02/2019.
 */
+import { DOCUMENT } from '@angular/common';
 import {
-  AfterContentInit, AfterViewInit, Component, ContentChildren, Input, OnDestroy, OnInit, QueryList,
+  AfterContentInit, AfterViewInit, Component, ContentChildren, Inject, Input, OnDestroy, OnInit, QueryList,
 } from '@angular/core';
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { AmexioCardCEActionComponent } from '../common/amexio.action.component';
@@ -62,7 +63,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   slidereffecton = false;
   themeCss: any;
   ishover = false;
-  amexioComponentId = 'amexio-card';
+  amexioComponentId = 'amexio-card-ce';
 
   cclass: string;
 
@@ -71,7 +72,8 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   polarideStyleMapCE: Map<any, string>;
 
   slidercss = '';
-  maximizeflagchanged = true;
+  maximizeflagchanged = false;
+  headerinst: any;
 
   @ContentChildren(AmexioCardCEHeaderComponent) AmexioCardCEHeaderQueryList: QueryList<AmexioCardCEHeaderComponent>;
 
@@ -89,12 +91,14 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   slidereffect = 'slider-effect';
   tempPolarideCE: string;
 
-  constructor() {
-    super();
+  constructor( @Inject(DOCUMENT) public document: any) {
+    super(document);
     this.height = '100%';
   }
 
   ngOnInit() {
+    this.instance = this;
+
     if (this.zoomflipflag) {
       this.zoom = true;
       this.flip = true;
@@ -182,7 +186,6 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
         break;
     }
   }
-
   ngAfterContentInit() {
     if (this.AmexioCardCEHeaderQueryList) {
       this.amexioCardHeaderList = this.AmexioCardCEHeaderQueryList.toArray();
@@ -190,8 +193,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
         this.amexioCardHeaderList.forEach((element: any) => {
           element.amexioComponentId = this.amexioComponentId;
           element.fullScreenFlag = this.yesFullScreen;
-          element.desktopFlag = this.desktopFlag;
-          element.fullscreenMax = true;
+          element.fullscreenMaxCard = true;
         });
         if (this.styleType === 'ribbon-style') {
           this.amexioCardHeaderList[0].ribbonType = true;
@@ -199,9 +201,17 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
       }
     }
     if (this.yesFullScreen) {
-      this.AmexioCardCEHeaderQueryList.toArray()[0].fullScreenFlag = this.yesFullScreen;
-      this.AmexioCardCEHeaderQueryList.toArray()[0].maximizeWindow.subscribe((event: any) => {
-        this.maximizeflagchanged = event.fullscreenMax;
+      this.AmexioCardCEHeaderQueryList.toArray()[0].maximizeWindow1.subscribe((obj: any) => {
+        this.headerinst = obj.this;
+        this.maximizeflagchanged = this.maxScreenChange(obj.event);
+        obj.this.fullscreenMaxCard = !this.maximizeflagchanged;
+
+      });
+      this.AmexioCardCEHeaderQueryList.toArray()[0].minimizeWindow1.subscribe((obj: any) => {
+
+        this.headerinst = obj.this;
+        this.maximizeflagchanged = this.minScreenChange(obj.event);
+        obj.this.fullscreenMaxCard = !this.maximizeflagchanged;
       });
     }
 

@@ -59,6 +59,9 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   @Output() maximizeWindow: any = new EventEmitter<any>();
 
+  @Output() maximizeWindow1: any = new EventEmitter<any>();
+  @Output() minimizeWindow1: any = new EventEmitter<any>();
+
   @Output() closeDataEmit: any = new EventEmitter<any>();
 
   @Input('minimized-icon') minimizeIcon: any;
@@ -87,8 +90,7 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   fullScreenFlag: boolean;
   elem: any;
-  fullscreenMax: boolean;
-  desktopFlag: boolean;
+  // desktopFlag: boolean;
   maximize = false;
   ribbonType = false;
   iconPosition: {
@@ -97,13 +99,10 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
   };
 
   constructor( @Inject(DOCUMENT) public document: any) {
+    // super(document)
   }
+  fullscreenMaxCard: boolean;
   ngOnInit() {
-    this.elem = document.documentElement;
-    document.addEventListener('webkitfullscreenchange', this.exitHandler.bind(this), false);
-    document.addEventListener('mozfullscreenchange', this.exitHandler.bind(this), false);
-    document.addEventListener('fullscreenexit', this.exitHandler.bind(this), false);
-    document.addEventListener('MSFullscreenChange', this.exitHandler.bind(this), false);
     if (this.borderbottom) {
       this.cclass = 'card-header-border';
     }
@@ -177,46 +176,12 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
     this.themeCss = themeClass;
   }
 
-  maxScreenChange(event: any) {
-    this.fullscreenMax = !this.fullscreenMax;
-    this.maximizeBehaiourCe.next(this.fullscreenMax);
-    this.maximizeWindow.emit(this, this.fullscreenMax);
-    if (this.elem.requestFullscreen && this.desktopFlag) {
-      this.elem.requestFullscreen();
-    } else if (this.elem.mozRequestFullScreen && this.desktopFlag) {
-      /* Firefox */
-      this.elem.mozRequestFullScreen();
-    } else if (this.elem.webkitRequestFullscreen && this.desktopFlag) {
-      /* Chrome, Safari and Opera */
-      this.elem.webkitRequestFullscreen();
-    } else if (this.elem.msRequestFullscreen && this.desktopFlag) {
-      /* IE/Edge */
-      this.elem.msRequestFullscreen();
-    }
+  maxScreenChange1(event: any) {
+    this.maximizeWindow1.emit({ tempEvent: event, tempThis: this });
   }
 
-  minScreenChange(event: any) {
-    this.fullscreenMax = !this.fullscreenMax;
-    this.maximizeBehaiourCe.next(this.fullscreenMax);
-    this.maximizeWindow.emit(this, this.fullscreenMax);
-    if (this.document.exitFullscreen && this.desktopFlag) {
-      this.document.exitFullscreen();
-    } else if (this.document.mozCancelFullScreen && this.desktopFlag) {
-      /* Firefox */
-      this.document.mozCancelFullScreen();
-    } else if (this.document.webkitExitFullscreen && this.desktopFlag) {
-      /* Chrome, Safari and Opera */
-      this.document.webkitExitFullscreen();
-    } else if (this.document.msExitFullscreen && this.desktopFlag) {
-      /* IE/Edge */
-      this.document.msExitFullscreen();
-    }
+  minScreenChange1(event: any) {
+    this.minimizeWindow1.emit({ tempEvent: event, tempThis: this });
   }
-  exitHandler() {
-    if (!document.webkitIsFullScreen) {
-      this.fullscreenMax = true;
-      this.maximizeBehaiourCe.next(this.fullscreenMax);
-      this.maximizeWindow.emit(this, this.fullscreenMax);
-    }
-  }
+
 }

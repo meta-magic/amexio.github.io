@@ -16,9 +16,10 @@
 * Created by ketangote on 12/18/17.
 */
 
+import { DOCUMENT } from '@angular/common';
 import {
   AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef,
-  EventEmitter, HostListener, Input, OnDestroy, OnInit, Output,
+  EventEmitter, HostListener, Inject, Input, OnDestroy, OnInit, Output,
   Renderer2, ViewChild,
 } from '@angular/core';
 import { ContentChildren, QueryList } from '@angular/core';
@@ -32,7 +33,7 @@ import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
   templateUrl: './card.component.html',
 })
 export class AmexioCardComponent extends LifeCycleBaseComponent implements OnInit, OnDestroy, AfterContentChecked,
- AfterViewInit, AfterContentInit {
+  AfterViewInit, AfterContentInit {
   /*
 Properties
 name : header-align
@@ -153,7 +154,8 @@ description : Context Menu provides the list of menus on right click.
   themeCss: any;
   polarideStyleMap: Map<any, string>;
   tempPolaride: any;
-  maximizeflagchanged = true;
+  maximizeflagchanged = false;
+  headerinst: any;
   @ContentChildren(AmexioHeaderComponent) amexioHeader: QueryList<AmexioHeaderComponent>;
   headerComponentList: AmexioHeaderComponent[];
   @ContentChildren(AmexioBodyComponent) amexioBody: QueryList<AmexioBodyComponent>;
@@ -161,13 +163,15 @@ description : Context Menu provides the list of menus on right click.
   @ContentChildren(AmexioFooterComponent) amexioFooter: QueryList<AmexioFooterComponent>;
   footerComponentList: AmexioFooterComponent[];
   globalClickListenFunc: () => void;
-  constructor(private renderer: Renderer2) {
-    super();
+  constructor(private renderer: Renderer2, @Inject(DOCUMENT) public document: any) {
+    super(document);
     this.headeralign = 'left';
     this.footeralign = 'right';
   }
   ngOnInit() {
     super.ngOnInit();
+
+    this.instance = this;
     this.polarideStyleMap = new Map();
     this.polarideStyleMap.set('tilted-minus-2-degree', 'card-container-pol-styl');
     this.polarideStyleMap.set('tilted-2-degree', 'card-container-pol-styl2');
@@ -175,7 +179,7 @@ description : Context Menu provides the list of menus on right click.
     this.polarideStyleMap.set('tilted-minus-4-degree', 'card-container-pol-styl4');
     this.polarideStyleMap.forEach((ele: any, key: any) => {
       if (key === this.styletype) {
-         this.tempPolaride = ele;
+        this.tempPolaride = ele;
       }
     });
     return 'this.tempPolaide';
@@ -191,8 +195,7 @@ description : Context Menu provides the list of menus on right click.
     this.headerComponentList = this.amexioHeader.toArray();
     this.headerComponentList.forEach((item: AmexioHeaderComponent, currentIndex) => {
       item.fullScreenFlag = this.yesFullScreen;
-      item.desktopFlag = this.desktopFlag;
-      item.fullscreenMax = true;
+      item.fullscreenMaxCard = true;
       item.aComponent = 'card';
       if (item.padding) {
         this.headerPadding = item.padding;
@@ -217,10 +220,20 @@ description : Context Menu provides the list of menus on right click.
     this.onResize();
 
     if (this.yesFullScreen) {
-      this.amexioHeader.toArray()[0].fullScreenFlag = this.yesFullScreen;
-      this.amexioHeader.toArray()[0].maximizeWindow.subscribe((event: any) => {
-        this.maximizeflagchanged = event.fullscreenMax;
+
+      this.amexioHeader.toArray()[0].maximizeWindow1.subscribe((obj: any) => {
+        this.headerinst = obj.this;
+        this.maximizeflagchanged = this.maxScreenChange(obj.event);
+        obj.this.fullscreenMaxCard = !this.maximizeflagchanged;
+
       });
+      this.amexioHeader.toArray()[0].minimizeWindow1.subscribe((obj: any) => {
+
+        this.headerinst = obj.this;
+        this.maximizeflagchanged = this.minScreenChange(obj.event);
+        obj.this.fullscreenMaxCard = !this.maximizeflagchanged;
+      });
+
     }
   }
 
@@ -300,6 +313,6 @@ description : Context Menu provides the list of menus on right click.
 
   // Theme Apply
   setColorPalette(themeClass: any) {
-   this.themeCss = themeClass;
+    this.themeCss = themeClass;
   }
 }

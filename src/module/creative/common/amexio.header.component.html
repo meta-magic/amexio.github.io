@@ -18,8 +18,8 @@
                 (onClick)="onCloseClick()"></amexio-c-icon>
         </span>
         <span *ngIf="fullScreenFlag" class="creative-header-icon-div-full-screen" [ngStyle]="iconPosition">
-            <amexio-c-icon class="cursor-style" *ngIf="((fullScreenFlag && !fullscreenMax))" [key]="'full-screen-min-icon'" (onClick)="minScreenChange($event)"></amexio-c-icon>
-            <amexio-c-icon class="cursor-style" *ngIf="((fullScreenFlag && fullscreenMax))" [key]="'full-screen-max-icon'" (click)="maxScreenChange($event)"></amexio-c-icon>
+            <amexio-c-icon class="cursor-style" *ngIf="((fullScreenFlag && !fullscreenMaxCard))" [key]="'full-screen-min-icon'" (onClick)="minScreenChange1($event)"></amexio-c-icon>
+            <amexio-c-icon class="cursor-style" *ngIf="((fullScreenFlag && fullscreenMaxCard))" [key]="'full-screen-max-icon'" (click)="maxScreenChange1($event)"></amexio-c-icon>
         </span>
     </header>
 </div>

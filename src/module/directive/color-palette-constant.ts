@@ -1,5 +1,6 @@
 export class ColorPaletteConstants {
     static  card = 'amexio-card';
+    static  cardce = 'amexio-card-ce';
     static  navbar = 'amexio-navbar';
     static  accordion = 'amexio-accordion';
     static  panel = 'amexio-panel';
