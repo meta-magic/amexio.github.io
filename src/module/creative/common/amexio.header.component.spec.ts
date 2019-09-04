@@ -149,9 +149,9 @@ describe('amexio-header-ce', () => {
         comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
         comp.maximizeWindow.emit(comp,  comp.isFullWindowCe);
         expect(comp.fullScreenFlag).toEqual(true);
-          comp.fullscreenMax = !comp.fullscreenMax;
-          comp.maximizeBehaiourCe.next(comp.fullscreenMax);
-          comp.maximizeWindow.emit(this, comp.fullscreenMax);
+        //   comp.fullscreenMax = !comp.fullscreenMax;
+        //   comp.maximizeBehaiourCe.next(comp.fullscreenMax);
+        //   comp.maximizeWindow.emit(this, comp.fullscreenMax);
     });
 
     it('sizeChange else call', () => {

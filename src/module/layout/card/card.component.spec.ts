@@ -56,8 +56,8 @@ describe('amexio-card-ce', () => {
         comp.headerComponentList = comp.amexioHeader.toArray();
         comp.headerComponentList.forEach((item: AmexioHeaderComponent, currentIndex) => {
             item.fullScreenFlag = comp.yesFullScreen;
-            item.desktopFlag = comp.desktopFlag;
-            item.fullscreenMax = true;
+            // item.desktopFlag = comp.desktopFlag;
+            // item.fullscreenMax = true;
             item.aComponent = 'card';  
         })
     });
