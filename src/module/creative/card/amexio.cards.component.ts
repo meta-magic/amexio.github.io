@@ -202,7 +202,6 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
     }
     if (this.yesFullScreen) {
       this.AmexioCardCEHeaderQueryList.toArray()[0].maximizeWindow1.subscribe((obj: any) => {
-        console.log("maximizeWindow1", obj);
         this.headerinst = obj.tempThis;
         this.maximizeflagchanged = this.maxScreenChange(obj.tempEvent);
         obj.tempThis.fullscreenMaxCard = !this.maximizeflagchanged;
