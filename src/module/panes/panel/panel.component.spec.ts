@@ -11,7 +11,7 @@ import {ToolbaroneComponent} from '../../forms/toolbar/toolbarone.component';
 import {AmexioLabelComponent} from '../../forms/label/label.component';
 import {AmexioContextMenuComponent} from '../../base/base.contextmenu.component';
 import {ToolbarComponent} from '../../forms/toolbar/toolbar.component';
-fdescribe('amexio-panels', () => {
+describe('amexio-panels', () => {
     let comp: AmexioPanelComponent;
     let fixture: ComponentFixture<AmexioPanelComponent>;
     let renderer2: Renderer2;
