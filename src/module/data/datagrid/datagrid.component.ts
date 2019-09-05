@@ -37,6 +37,7 @@ import { LifeCycleBaseComponent } from './../../base/lifecycle.base.component';
 @Component({
   selector: 'amexio-datagrid',
   templateUrl: './datagrid.component.html',
+  providers: [CommonDataService],
 })
 
 export class AmexioDatagridComponent extends LifeCycleBaseComponent implements OnInit, OnDestroy, AfterContentInit, AfterViewInit {
@@ -445,6 +446,8 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
 
   fliterFlag = false;
 
+  cloneResponseData: any;
+
   @ViewChildren(DataGridFilterComponent) filterRef: QueryList<DataGridFilterComponent>;
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
@@ -487,7 +490,8 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     if (this.httpmethod && this.httpurl) {
       this.dataTableService.fetchData(this.httpurl, this.httpmethod).subscribe(
         (response: any) => {
-          this.responseData = response;
+          this.cloneResponseData = response;
+          this.responseData = JSON.parse(JSON.stringify(this.cloneResponseData));
         },
         (error: any) => {
         },
@@ -1618,7 +1622,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   setColorPalette(themeClass: any) {
     this.themeCss = themeClass;
   }
-  filterOperation(filteredObj: any, dataForFilter: any) {
+  filterOperation(filteredObj: any, dataForFilter: any): any {
     const resultData: any = [];
     dataForFilter.forEach((option: any) => {
       if (this.filterOpertion(option, filteredObj)) {
@@ -1631,27 +1635,44 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     }
     this.data = resultData;
     this.filterResultData = resultData;
+    dataForFilter = resultData;
+    return dataForFilter;
+
   }
 
   multipleColumnFilter(filteredObj: any) {
+    const checkData = JSON.parse(JSON.stringify(this.filterCloneData));
+    let ANDData = JSON.parse(JSON.stringify(checkData));
+    let ORData = JSON.parse(JSON.stringify(checkData));
     filteredObj.sort((a: any, b: any) => {
       return a.index - b.index;
     });
     for (let i = 0; i < filteredObj.length; i++) {
-      if (filteredObj[0].index === 0 && filteredObj[0].option === 'OR') {
-        this.filterOperation(filteredObj, this.filterCloneData);
-      } else if (filteredObj[0].index === 0 && filteredObj[0].option === 'AND') {
+      if (filteredObj[0].index === 0 && filteredObj[1].option === 'OR') {
+        ORData = this.filterOperation(filteredObj, this.filterCloneData);
+      } else if (filteredObj[0].index === 0 && filteredObj[1].option === 'AND') {
         const filterObj1 = [];
         filterObj1.push(filteredObj[0]);
-        this.filterOperation(filterObj1, this.filterResultData);
+        ANDData = this.filterOperation(filterObj1, this.filterResultData);
       }
-      if (filteredObj[i].index > 0 && filteredObj[i - 1].option === 'OR') {
-        this.filterOperation(filteredObj, this.filterCloneData);
-      } else if (filteredObj[i].index > 0 && filteredObj[i - 1].option === 'AND') {
+      if (filteredObj[i].index > 0 && filteredObj[i].option === 'OR') {
+        this.assignAndOrData(filteredObj, i, ORData, ANDData);
+      } else if (filteredObj[i].index > 0 && filteredObj[i].option === 'AND') {
         const filterObj1 = [];
         filterObj1.push(filteredObj[i]);
-        this.filterOperation(filterObj1, this.filterResultData);
+        this.filterOperation(filterObj1, ANDData);
       }
+    }
+  }
+
+  assignAndOrData(filteredObj: any, i: any, ORData: any, ANDData: any) {
+    if (filteredObj[i - 1].option === 'OR') {
+      this.filterOperation(filteredObj, ORData);
+
+    }
+    if (filteredObj[i - 1].option === 'AND') {
+      this.filterOperation(filteredObj, ANDData);
+
     }
   }
 }

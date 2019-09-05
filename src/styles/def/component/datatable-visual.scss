@@ -86,6 +86,13 @@ color : $componentHoverFontColor;
 outline: none;
 }
 
+.datatable-filter-icon1:focus{
+  background-color: $datatableRowHoverBG;
+color : $componentHoverFontColor;
+outline: none;
+}
+
+
 
 .float-right-datagridlist{
   float: right;
