@@ -222,16 +222,16 @@ description : Context Menu provides the list of menus on right click.
     if (this.yesFullScreen) {
 
       this.amexioHeader.toArray()[0].maximizeWindow1.subscribe((obj: any) => {
-        this.headerinst = obj.this;
-        this.maximizeflagchanged = this.maxScreenChange(obj.event);
-        obj.this.fullscreenMaxCard = !this.maximizeflagchanged;
+        this.headerinst = obj.tempThis;
+        this.maximizeflagchanged = this.maxScreenChange(obj.tempEvent);
+        obj.tempThis.fullscreenMaxCard = !this.maximizeflagchanged;
 
       });
       this.amexioHeader.toArray()[0].minimizeWindow1.subscribe((obj: any) => {
 
-        this.headerinst = obj.this;
-        this.maximizeflagchanged = this.minScreenChange(obj.event);
-        obj.this.fullscreenMaxCard = !this.maximizeflagchanged;
+        this.headerinst = obj.tempThis;
+        this.maximizeflagchanged = this.minScreenChange(obj.tempEvent);
+        obj.tempThis.fullscreenMaxCard = !this.maximizeflagchanged;
       });
 
     }

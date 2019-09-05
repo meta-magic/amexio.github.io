@@ -74,11 +74,16 @@ describe('amexio-card-ce', () => {
           });
 
           expect(comp.yesFullScreen).toEqual(true);
-          comp.AmexioCardCEHeaderQueryList.toArray()[0].fullScreenFlag = comp.yesFullScreen;
-          comp.AmexioCardCEHeaderQueryList.toArray()[0].maximizeWindow.subscribe((event: any) => {
-          comp.maximizeflagchanged = event.fullscreenMax;
-          })
-
+          comp.AmexioCardCEHeaderQueryList.toArray()[0].maximizeWindow1.subscribe((obj: any) => {
+            comp.headerinst = obj.this;
+            comp.maximizeflagchanged = comp.maxScreenChange(obj.event);
+            obj.this.fullscreenMaxCard = !comp.maximizeflagchanged;
+          });
+          comp.AmexioCardCEHeaderQueryList.toArray()[0].minimizeWindow1.subscribe((obj: any) => {
+            comp.headerinst = obj.this;
+            comp.maximizeflagchanged = comp.minScreenChange(obj.event);
+            obj.this.fullscreenMaxCard = !comp.maximizeflagchanged;
+          });
     });
    
 });
