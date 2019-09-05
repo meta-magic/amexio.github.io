@@ -234,230 +234,230 @@ describe('amexio-datagrid', () => {
         comp.filterResultData = resultData;
     })
 
-    it('multipleColumnFilter lessthan0 and OR', () => {
-        comp.filterCloneData = [{
-            checkBoxSelectClass: "checkbox default",
-            emailAddress: "tomhanks@gmail.com",
-            employeeCode: "E3",
-            firstName: "Tom",
-            isSelected: false,
-            jobTitle: "Program Direct",
-            lastName: "Hanks",
-            phoneNumber: "408-2222222",
-            preferredFullName: "Tom Hanks",
-            region: "CA",
-            salary: 14000000,
-            userId: "0",
-        }, {
-            checkBoxSelectClass: "checkbox default",
-            emailAddress: "tomhanks@gmail.com",
-            employeeCode: "E3",
-            firstName: "Tom",
-            isSelected: false,
-            jobTitle: "Architect",
-            lastName: "Hanks",
-            phoneNumber: "408-2222222",
-            preferredFullName: "Anish Hanks",
-            region: "CA",
-            salary: 14000000,
-            userId: "0",
-        }];
-        let filteredObj = [{
-            filter: "1",
-            index: 0,
-            key: "preferredFullName",
-            lastColumn: 3,
-            option: "OR",
-            type: "string",
-            value: "a",
-        }]
-        fixture.detectChanges();
-        comp.multipleColumnFilter(filteredObj)
-        filteredObj.sort((a: any, b: any) => {
-            return a.index - b.index;
-        });
-        for (let i = 0; i < filteredObj.length; i++) {
-            expect(filteredObj[0].index).toEqual(0)
-            expect(filteredObj[0].option).toEqual('OR')
-            comp.filterOperation(filteredObj, comp.filterCloneData);
-        }
-    })
+    // it('multipleColumnFilter lessthan0 and OR', () => {
+    //     comp.filterCloneData = [{
+    //         checkBoxSelectClass: "checkbox default",
+    //         emailAddress: "tomhanks@gmail.com",
+    //         employeeCode: "E3",
+    //         firstName: "Tom",
+    //         isSelected: false,
+    //         jobTitle: "Program Direct",
+    //         lastName: "Hanks",
+    //         phoneNumber: "408-2222222",
+    //         preferredFullName: "Tom Hanks",
+    //         region: "CA",
+    //         salary: 14000000,
+    //         userId: "0",
+    //     }, {
+    //         checkBoxSelectClass: "checkbox default",
+    //         emailAddress: "tomhanks@gmail.com",
+    //         employeeCode: "E3",
+    //         firstName: "Tom",
+    //         isSelected: false,
+    //         jobTitle: "Architect",
+    //         lastName: "Hanks",
+    //         phoneNumber: "408-2222222",
+    //         preferredFullName: "Anish Hanks",
+    //         region: "CA",
+    //         salary: 14000000,
+    //         userId: "0",
+    //     }];
+    //     let filteredObj = [{
+    //         filter: "1",
+    //         index: 0,
+    //         key: "preferredFullName",
+    //         lastColumn: 3,
+    //         option: "OR",
+    //         type: "string",
+    //         value: "a",
+    //     }]
+    //     fixture.detectChanges();
+    //     comp.multipleColumnFilter(filteredObj)
+    //     filteredObj.sort((a: any, b: any) => {
+    //         return a.index - b.index;
+    //     });
+    //     for (let i = 0; i < filteredObj.length; i++) {
+    //         expect(filteredObj[0].index).toEqual(0)
+    //         expect(filteredObj[0].option).toEqual('OR')
+    //         comp.filterOperation(filteredObj, comp.filterCloneData);
+    //     }
+    // })
 
-    it('multipleColumnFilter lessthan0 and AND', () => {
-        comp.filterResultData = [{
-            checkBoxSelectClass: "checkbox default",
-            emailAddress: "tomhanks@gmail.com",
-            employeeCode: "E3",
-            firstName: "Tom",
-            isSelected: false,
-            jobTitle: "Program Direct",
-            lastName: "Hanks",
-            phoneNumber: "408-2222222",
-            preferredFullName: "Avanti Hanks",
-            region: "CA",
-            salary: 14000000,
-            userId: "0",
-        }, {
-            checkBoxSelectClass: "checkbox default",
-            emailAddress: "tomhanks@gmail.com",
-            employeeCode: "E3",
-            firstName: "Tom",
-            isSelected: false,
-            jobTitle: "Architect",
-            lastName: "Hanks",
-            phoneNumber: "408-2222222",
-            preferredFullName: "Anish Hanks",
-            region: "CA",
-            salary: 14000000,
-            userId: "0",
-        }];
-        let filteredObj = [{
-            filter: "1",
-            index: 0,
-            key: "preferredFullName",
-            lastColumn: 3,
-            option: "AND",
-            type: "string",
-            value: "a",
-        }]
-        fixture.detectChanges();
-        comp.multipleColumnFilter(filteredObj);
+    // it('multipleColumnFilter lessthan0 and AND', () => {
+    //     comp.filterResultData = [{
+    //         checkBoxSelectClass: "checkbox default",
+    //         emailAddress: "tomhanks@gmail.com",
+    //         employeeCode: "E3",
+    //         firstName: "Tom",
+    //         isSelected: false,
+    //         jobTitle: "Program Direct",
+    //         lastName: "Hanks",
+    //         phoneNumber: "408-2222222",
+    //         preferredFullName: "Avanti Hanks",
+    //         region: "CA",
+    //         salary: 14000000,
+    //         userId: "0",
+    //     }, {
+    //         checkBoxSelectClass: "checkbox default",
+    //         emailAddress: "tomhanks@gmail.com",
+    //         employeeCode: "E3",
+    //         firstName: "Tom",
+    //         isSelected: false,
+    //         jobTitle: "Architect",
+    //         lastName: "Hanks",
+    //         phoneNumber: "408-2222222",
+    //         preferredFullName: "Anish Hanks",
+    //         region: "CA",
+    //         salary: 14000000,
+    //         userId: "0",
+    //     }];
+    //     let filteredObj = [{
+    //         filter: "1",
+    //         index: 0,
+    //         key: "preferredFullName",
+    //         lastColumn: 3,
+    //         option: "AND",
+    //         type: "string",
+    //         value: "a",
+    //     }]
+    //     fixture.detectChanges();
+    //     comp.multipleColumnFilter(filteredObj);
 
-        filteredObj.sort((a: any, b: any) => {
-            return a.index - b.index;
-        });
-        for (let i = 0; i < filteredObj.length; i++) {
-            expect(filteredObj[0].index).toEqual(0)
-            expect(filteredObj[0].option).toEqual('AND')
-            const filterObj1 = [];
-            filterObj1.push(filteredObj[0]);
-            comp.filterOperation(filterObj1, comp.filterResultData);
-        }
-    });
+    //     filteredObj.sort((a: any, b: any) => {
+    //         return a.index - b.index;
+    //     });
+    //     for (let i = 0; i < filteredObj.length; i++) {
+    //         expect(filteredObj[0].index).toEqual(0)
+    //         expect(filteredObj[0].option).toEqual('AND')
+    //         const filterObj1 = [];
+    //         filterObj1.push(filteredObj[0]);
+    //         comp.filterOperation(filterObj1, comp.filterResultData);
+    //     }
+    // });
 
-    it('multipleColumnFilter greaterthan0 and OR', () => {
-        comp.filterCloneData = [{
-            checkBoxSelectClass: "checkbox default",
-            emailAddress: "tomhanks@gmail.com",
-            employeeCode: "E3",
-            firstName: "Tom",
-            isSelected: false,
-            jobTitle: "Program Direct",
-            lastName: "Hanks",
-            phoneNumber: "408-2222222",
-            preferredFullName: "Anna Hanks",
-            region: "CA",
-            salary: 14000000,
-            userId: "0",
-        }, {
-            checkBoxSelectClass: "checkbox default",
-            emailAddress: "tomhanks@gmail.com",
-            employeeCode: "E3",
-            firstName: "Tom",
-            isSelected: false,
-            jobTitle: "Architect",
-            lastName: "Hanks",
-            phoneNumber: "408-2222222",
-            preferredFullName: "Anish Hanks",
-            region: "CA",
-            salary: 14000000,
-            userId: "0",
-        }];
-        let filteredObj = [{
-            filter: "1",
-            index: 0,
-            key: "preferredFullName",
-            lastColumn: 3,
-            option: "OR",
-            type: "string",
-            value: "a",
+    // it('multipleColumnFilter greaterthan0 and OR', () => {
+    //     comp.filterCloneData = [{
+    //         checkBoxSelectClass: "checkbox default",
+    //         emailAddress: "tomhanks@gmail.com",
+    //         employeeCode: "E3",
+    //         firstName: "Tom",
+    //         isSelected: false,
+    //         jobTitle: "Program Direct",
+    //         lastName: "Hanks",
+    //         phoneNumber: "408-2222222",
+    //         preferredFullName: "Anna Hanks",
+    //         region: "CA",
+    //         salary: 14000000,
+    //         userId: "0",
+    //     }, {
+    //         checkBoxSelectClass: "checkbox default",
+    //         emailAddress: "tomhanks@gmail.com",
+    //         employeeCode: "E3",
+    //         firstName: "Tom",
+    //         isSelected: false,
+    //         jobTitle: "Architect",
+    //         lastName: "Hanks",
+    //         phoneNumber: "408-2222222",
+    //         preferredFullName: "Anish Hanks",
+    //         region: "CA",
+    //         salary: 14000000,
+    //         userId: "0",
+    //     }];
+    //     let filteredObj = [{
+    //         filter: "1",
+    //         index: 0,
+    //         key: "preferredFullName",
+    //         lastColumn: 3,
+    //         option: "OR",
+    //         type: "string",
+    //         value: "a",
 
-        }, {
-            filter: "1",
-            index: 1,
-            key: "jobTitle",
-            lastColumn: 3,
-            option: "OR",
-            type: "string",
-            value: "v",
-        }]
+    //     }, {
+    //         filter: "1",
+    //         index: 1,
+    //         key: "jobTitle",
+    //         lastColumn: 3,
+    //         option: "OR",
+    //         type: "string",
+    //         value: "v",
+    //     }]
 
-        fixture.detectChanges();
-        comp.multipleColumnFilter(filteredObj)
-        filteredObj.sort((a: any, b: any) => {
-            return a.index - b.index;
-        });
-        for (let i = 0; i < filteredObj.length; i++) {
-            if (i > 0) {
-                expect(filteredObj[i].index).toBeGreaterThan(0)
-                expect(filteredObj[i - 1].option).toEqual('OR')
-                comp.filterOperation(filteredObj, filterCloneData);
-            }
-        }
-    });
+    //     fixture.detectChanges();
+    //     comp.multipleColumnFilter(filteredObj)
+    //     filteredObj.sort((a: any, b: any) => {
+    //         return a.index - b.index;
+    //     });
+    //     for (let i = 0; i < filteredObj.length; i++) {
+    //         if (i > 0) {
+    //             expect(filteredObj[i].index).toBeGreaterThan(0)
+    //             expect(filteredObj[i - 1].option).toEqual('OR')
+    //             comp.filterOperation(filteredObj, filterCloneData);
+    //         }
+    //     }
+    // });
 
-    it('multipleColumnFilter greaterthan0 and AND', () => {
-        comp.filterResultData = [{
-            checkBoxSelectClass: "checkbox default",
-            emailAddress: "tomhanks@gmail.com",
-            employeeCode: "E3",
-            firstName: "Tom",
-            isSelected: false,
-            jobTitle: "Program Direct",
-            lastName: "Hanks",
-            phoneNumber: "408-2222222",
-            preferredFullName: "Anna Hanks",
-            region: "CA",
-            salary: 14000000,
-            userId: "0",
-        }, {
-            checkBoxSelectClass: "checkbox default",
-            emailAddress: "tomhanks@gmail.com",
-            employeeCode: "E3",
-            firstName: "Tom",
-            isSelected: false,
-            jobTitle: "Architect",
-            lastName: "Hanks",
-            phoneNumber: "408-2222222",
-            preferredFullName: "Anish Hanks",
-            region: "CA",
-            salary: 14000000,
-            userId: "0",
-        }];
-        let filteredObj = [{
-            filter: "1",
-            index: 0,
-            key: "preferredFullName",
-            lastColumn: 3,
-            option: "AND",
-            type: "string",
-            value: "a",
+    // it('multipleColumnFilter greaterthan0 and AND', () => {
+    //     comp.filterResultData = [{
+    //         checkBoxSelectClass: "checkbox default",
+    //         emailAddress: "tomhanks@gmail.com",
+    //         employeeCode: "E3",
+    //         firstName: "Tom",
+    //         isSelected: false,
+    //         jobTitle: "Program Direct",
+    //         lastName: "Hanks",
+    //         phoneNumber: "408-2222222",
+    //         preferredFullName: "Anna Hanks",
+    //         region: "CA",
+    //         salary: 14000000,
+    //         userId: "0",
+    //     }, {
+    //         checkBoxSelectClass: "checkbox default",
+    //         emailAddress: "tomhanks@gmail.com",
+    //         employeeCode: "E3",
+    //         firstName: "Tom",
+    //         isSelected: false,
+    //         jobTitle: "Architect",
+    //         lastName: "Hanks",
+    //         phoneNumber: "408-2222222",
+    //         preferredFullName: "Anish Hanks",
+    //         region: "CA",
+    //         salary: 14000000,
+    //         userId: "0",
+    //     }];
+    //     let filteredObj = [{
+    //         filter: "1",
+    //         index: 0,
+    //         key: "preferredFullName",
+    //         lastColumn: 3,
+    //         option: "AND",
+    //         type: "string",
+    //         value: "a",
 
-        }, {
-            filter: "1",
-            index: 1,
-            key: "jobTitle",
-            lastColumn: 3,
-            option: "OR",
-            type: "string",
-            value: "a",
-        }]
-        fixture.detectChanges();
-        comp.multipleColumnFilter(filteredObj)
-        filteredObj.sort((a: any, b: any) => {
-            return a.index - b.index;
-        });
-        for (let i = 0; i < filteredObj.length; i++) {
-            if (i > 0) {
-                expect(filteredObj[i].index).toBeGreaterThan(0)
-                expect(filteredObj[i - 1].option).toEqual('AND')
-                let filterObj1 = [];
-                filterObj1.push(filteredObj[i]);
-                comp.filterOperation(filterObj1, comp.filterResultData);
-            }
-        }
+    //     }, {
+    //         filter: "1",
+    //         index: 1,
+    //         key: "jobTitle",
+    //         lastColumn: 3,
+    //         option: "OR",
+    //         type: "string",
+    //         value: "a",
+    //     }]
+    //     fixture.detectChanges();
+    //     comp.multipleColumnFilter(filteredObj)
+    //     filteredObj.sort((a: any, b: any) => {
+    //         return a.index - b.index;
+    //     });
+    //     for (let i = 0; i < filteredObj.length; i++) {
+    //         if (i > 0) {
+    //             expect(filteredObj[i].index).toBeGreaterThan(0)
+    //             expect(filteredObj[i - 1].option).toEqual('AND')
+    //             let filterObj1 = [];
+    //             filterObj1.push(filteredObj[i]);
+    //             comp.filterOperation(filterObj1, comp.filterResultData);
+    //         }
+    //     }
 
-    })
+    // })
 
     it('createConfig method', () => {
         comp.createConfig();
