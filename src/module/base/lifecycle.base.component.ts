@@ -129,9 +129,12 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
     exitHandler() {
         if (!document.webkitIsFullScreen) {
             this.fullscreenMax = false;
-            if (this.instance.amexioComponentId === 'amexio-card-ce' || this.instance.amexioComponentId === 'amexio-card') {
+            if (this.instance !== undefined &&
+                (this.instance.amexioComponentId === 'amexio-card-ce' || this.instance.amexioComponentId === 'amexio-card')) {
                 this.instance.maximizeflagchanged = false;
-                this.instance.headerinst.fullscreenMaxCard = true;
+                if (this.instance.headerinst !== undefined) {
+                    this.instance.headerinst.fullscreenMaxCard = true;
+                }
             }
         }
     }

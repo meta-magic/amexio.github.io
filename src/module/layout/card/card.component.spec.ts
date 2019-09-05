@@ -62,14 +62,14 @@ describe('amexio-card-ce', () => {
 
         expect(comp.yesFullScreen).toEqual(true)
         comp.amexioHeader.toArray()[0].maximizeWindow1.subscribe((obj: any) => {
-            comp.headerinst = obj.this;
-            comp.maximizeflagchanged = comp.maxScreenChange(obj.event);
-            obj.this.fullscreenMaxCard = !comp.maximizeflagchanged;
+            comp.headerinst = obj.tempThis;
+            comp.maximizeflagchanged = comp.maxScreenChange(obj.tempEvent);
+            obj.tempThis.fullscreenMaxCard = !comp.maximizeflagchanged;
           });
           comp.amexioHeader.toArray()[0].minimizeWindow1.subscribe((obj: any) => {
-            comp.headerinst = obj.this;
-            comp.maximizeflagchanged = comp.minScreenChange(obj.event);
-            obj.this.fullscreenMaxCard = !comp.maximizeflagchanged;
+            comp.headerinst = obj.tempThis;
+            comp.maximizeflagchanged = comp.minScreenChange(obj.tempEvent);
+            obj.tempThis.fullscreenMaxCard = !comp.maximizeflagchanged;
           });
         });
 
