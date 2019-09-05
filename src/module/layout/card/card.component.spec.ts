@@ -48,7 +48,6 @@ describe('amexio-card-ce', () => {
 
     });
 
-
     it('ngAfterContentInit  method check', () => {
         fixture.detectChanges();
         comp.ngAfterContentInit();
@@ -60,6 +59,18 @@ describe('amexio-card-ce', () => {
             // item.fullscreenMax = true;
             item.aComponent = 'card';  
         })
-    });
+
+        expect(comp.yesFullScreen).toEqual(true)
+        comp.amexioHeader.toArray()[0].maximizeWindow1.subscribe((obj: any) => {
+            comp.headerinst = obj.this;
+            comp.maximizeflagchanged = comp.maxScreenChange(obj.event);
+            obj.this.fullscreenMaxCard = !comp.maximizeflagchanged;
+          });
+          comp.amexioHeader.toArray()[0].minimizeWindow1.subscribe((obj: any) => {
+            comp.headerinst = obj.this;
+            comp.maximizeflagchanged = comp.minScreenChange(obj.event);
+            obj.this.fullscreenMaxCard = !comp.maximizeflagchanged;
+          });
+        });
 
 });
