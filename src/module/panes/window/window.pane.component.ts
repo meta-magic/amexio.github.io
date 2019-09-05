@@ -223,6 +223,9 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   @Input('context-menu') contextmenu: any[];
 
   @Input('width') width: any = '90%';
+
+  @Input('window-model') windowModel = true;
+
   textName: any;
 
   @Output() nodeRightClick: any = new EventEmitter<any>();

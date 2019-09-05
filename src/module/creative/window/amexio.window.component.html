@@ -1,8 +1,20 @@
-<div *ngIf="show" class="amexio-root-window-ce {{roundedgeclass}}" [style.justify-content]="horizontalposition">
-  <div class="amexio-root-window-content-ce" (mousedown)='onWindowPress($event)' (mousemove)='onWindowDrag($event)'
+<div *ngIf="show" 
+[ngClass]="{'amexio-root-window-ce': windowModel, 'amexio-root-window-ce-windowModel': !windowModel}"
+ 
+class="{{roundedgeclass}}"
+ [style.justify-content]="horizontalposition">
+
+  <div  
+
+  [ngClass]="{'content-max-height': (maximize && isFullWindow), 'amexio-root-window-content-ce': windowModel, 'amexio-root-window-content-ce-windowModel': !windowModel}"
+  
+  (mousedown)='onWindowPress($event)' (mousemove)='onWindowDrag($event)'
+
     [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}" [style.width]="width"
     [style.height]="height" [style.top.px]='y' [style.left.px]='x' [style.justify-content]="verticalposition"
-    [ngStyle]="maximumWindowStyle" [ngClass]="{'content-max-height': (maximize && isFullWindow)}">
+    [ngStyle]="maximumWindowStyle" >
+    
+    
     <div
       [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null,'resize': resizable ? 'both':'','overflow':resizable ?'auto':'', 'height':(maximize && maximizeflagchanged) ? '100%' :'' }"
       [ngClass]="cclass">

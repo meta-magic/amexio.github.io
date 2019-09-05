@@ -99,3 +99,57 @@
   .modal-card-header {
    display: flex;
 }
+
+
+
+.amexio-root-window-windowModel{ 
+    width: 100%;
+    position: fixed;
+    z-index: 700;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+// ---------------amexio-root-window-content-windowModel--------------
+
+.amexio-root-window-content-windowModel{
+    position: relative;
+}
+
+.amexio-root-window-content-windowModel {
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2) !important; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 96%;
+    width: 400px;
+    top: 0px;
+    left: 0px;
+    justify-content: flex-start;
+    transform: none;
+    opacity: 1;
+    padding: 5px;
+    pointer-events: all;
+}
+
+.amexio-root-window-content-windowModel .window-middle::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.amexio-root-window-content-windowModel .window-middle::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+@media only screen and (max-width: 600px) {
+    .amexio-root-window-content-windowModel {
+        width: 100%;
+    }
+}
+.amexio-root-window-content-windowModel>* {
+    padding: 10px 16px;
+}

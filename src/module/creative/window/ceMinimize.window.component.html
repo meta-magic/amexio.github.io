@@ -1,8 +1,4 @@
-<div style="  display:block;
-position:fixed;
-z-index: 999; 
-bottom: 0px;
-width: 100%;" [class.minimize-window-bg]="ceMiniButton"
+<div class="minimize-btn-css" [class.minimize-window-bg]="ceMiniButton"
     [ngStyle]="{'padding': ceMiniButton ? '10px  0px 10px 0px': '0px'}">
 
     <ng-container *ngIf="ceMiniButton">

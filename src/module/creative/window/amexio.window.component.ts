@@ -88,6 +88,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   @Input() closable = true;
 
   @Input('width') width: any = '90%';
+  @Input('window-model') windowModel = true;
 
   @ContentChildren(AmexioCardCEHeaderComponent) amexioHeader: QueryList<AmexioCardCEHeaderComponent>;
   amexioCardHeaderList: AmexioCardCEHeaderComponent[];

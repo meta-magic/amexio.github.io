@@ -26,6 +26,6 @@ export class CeMinimizeWindowComponent implements OnInit {
 
     ceMiniBtnClick(data: any) {
         data.show = true;
-        this.ceMiniButton = false;
+        this.ceMiniButton = true;
     }
 }

@@ -38,10 +38,10 @@ describe('amexio-minimize-window', () => {
         const data = {
             show: true,
         };
-        comp.minimizeButton = false;
+        comp.minimizeButton = true;
         comp.minimizeBtnClick(data);
         expect(data.show).toEqual(true);
-        expect(comp.minimizeButton).toEqual(false);
+        expect(comp.minimizeButton).toEqual(true);
     });
 
     it('should trigger ngOnInit with detectChanges if condition', () => {

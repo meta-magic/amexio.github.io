@@ -27,6 +27,6 @@ export class MinimizeWindowComponent implements OnInit {
     }
     minimizeBtnClick(data: any) {
         data.show = true;
-        this.minimizeButton = false;
+        this.minimizeButton = true;
     }
 }

@@ -35,10 +35,10 @@ describe('amexio-minimize-ce-window', () => {
         const data = {
             show: true,
         };
-        comp.ceMiniButton = false;
+        comp.ceMiniButton = true;
         comp.ceMiniBtnClick(data);
         expect(data.show).toEqual(true);
-        expect(comp.ceMiniButton).toEqual(false);
+        expect(comp.ceMiniButton).toEqual(true);
     });
 
     it('should trigger ngOnInit with detectChanges if condition', () => {
