@@ -1,52 +1,58 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-// import { FormsModule } from '@angular/forms';
-// import { By } from '@angular/platform-browser';
-// import { IconLoaderService } from '../../../index';
-// import { AmexioPanelComponent } from './panel.component';
-// import { AmexioStepsComponent } from '../steps/steps.component';
-// import { AmexioIconPaneComponent } from '../icon/icon.component';
-// import { toUnicode } from 'punycode';
-// import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import {DOCUMENT} from '@angular/common';
+import {Renderer2} from '@angular/core';
+import { IconLoaderService } from '../../../index';
+import { AmexioPanelComponent } from './panel.component';
+import {CommonIconComponent} from '../../base/components/common.icon.component';
+import { AmexioStepsComponent } from '../steps/steps.component';
+import {ToolbaroneComponent} from '../../forms/toolbar/toolbarone.component';
+import {AmexioLabelComponent} from '../../forms/label/label.component';
+import {AmexioContextMenuComponent} from '../../base/base.contextmenu.component';
+import {ToolbarComponent} from '../../forms/toolbar/toolbar.component';
+fdescribe('amexio-panels', () => {
+    let comp: AmexioPanelComponent;
+    let fixture: ComponentFixture<AmexioPanelComponent>;
+    let renderer2: Renderer2;
 
-// describe('amexio-steps', () => {
-//     let comp: AmexioPanelComponent;
-//     let fixture: ComponentFixture<AmexioPanelComponent>;
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [FormsModule],
+            declarations: [AmexioPanelComponent, AmexioContextMenuComponent, ToolbarComponent, AmexioLabelComponent, CommonIconComponent, ToolbaroneComponent, AmexioStepsComponent],
+            providers: [IconLoaderService],
+        });
+        fixture = TestBed.createComponent(AmexioPanelComponent);
+        comp = fixture.componentInstance;
+    });
+it ('constructor', () => {
+})
+    it('checking css', () => {
 
-//     beforeEach(() => {
-//         TestBed.configureTestingModule({
-//             imports: [FormsModule],
-//             declarations: [AmexioPanelComponent, AmexioStepsComponent, AmexioIconPaneComponent],
-//             providers: [IconLoaderService],
-//         });
-//         fixture = TestBed.createComponent(AmexioPanelComponent);
-//         comp = fixture.componentInstance;
-//     });
+        (<any>comp).faFaIconUPCss = 'fa fa-caret-up';
+        (<any>comp).faFaIconDownCss = 'fa fa-caret-down';
 
-//     it('checking css', () => {
+        expect((<any>comp).faFaIconUPCss).toEqual('fa fa-caret-up');
+        expect((<any>comp).faFaIconDownCss).toEqual('fa fa-caret-down');
 
-//         (<any>comp).faFaIconUPCss = 'fa fa-caret-up';
-//         (<any>comp).faFaIconDownCss = 'fa fa-caret-down';
+    });
+    it('checking ngOnInit method', () => {
+        comp.ngOnInit();
+        comp.header = false;
+        expect(comp.header).toEqual(false);
+        comp.expanded = true;
+        expect(comp.expanded).toEqual(true);
 
-//         expect((<any>comp).faFaIconUPCss).toEqual('fa fa-caret-up');
-//         expect((<any>comp).faFaIconDownCss).toEqual('fa fa-caret-down');
+        comp.header = true;
+        comp.height = 20;
+        comp.ngOnInit();
+        expect(comp.height).toEqual(20); 
 
-//     });
-//     it('checking ngOnInit method', () => {
+    });
 
-//         comp.ngOnInit();
-//         comp.header = false;
-//         expect(comp.header).toEqual(false);
-//         comp.expanded = true;
-//         expect(comp.expanded).toEqual(true);
+    it('constructor  super call ()', () => {
+        expect(comp.ngOnInit).toBeTruthy();
+      });
 
-//         comp.header = true;
-//         comp.height = 20;
-//         comp.ngOnInit();
-//         expect(comp.height).toEqual(20);
-        
-        
-
-//     });
-
-// });
+});
 

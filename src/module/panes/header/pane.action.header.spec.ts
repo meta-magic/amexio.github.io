@@ -97,4 +97,14 @@ it('ngAfterViewInit  method check this.minimizeIcon && this.textName', () => {
   expect(comp.minimizeIcon).toEqual('fa fa-home');
   return comp.textName = 'kedar';
 });
+
+it('maxScreenChangeCard Method', () => {
+  comp.maxScreenChangeCard(event);
+  comp.maximizeWindow1.emit({ tempEvent: event, tempThis: this });
+});
+
+it('minScreenChangeCard Method', () => {
+  comp.minScreenChangeCard(event);
+  comp.minimizeWindow1.emit({ tempEvent: event, tempThis: this });
+});
 });
