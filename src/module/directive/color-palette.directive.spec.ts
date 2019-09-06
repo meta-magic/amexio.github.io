@@ -211,6 +211,62 @@ describe('Directive: Color', () => {
         dirIn.ColorPaletteConstants.window = 'amexio-window'
         expect(dirIn.ColorPaletteConstants.window).toBeDefined();
     });
+
+    it('getBGColorStyles()case8', () => {
+      let obj = {amexioComponentId: 'amexio-dialogue', setColorPalette: ()=>{}}
+      dirIn.hostComponent = obj
+      dirIn.hostComponent.amexioComponentId = 'amexio-dialogue';
+      dirIn.getBGColorStyles(dirIn.hostComponent);
+      let c;
+       dirIn.ColorPaletteConstants = {dialogue:  c };
+      expect(dirIn.ColorPaletteConstants.dialogue).toBeUndefined();
+      dirIn.ColorPaletteConstants = {dialogue: 'amexio-dialogue' };
+        dirIn.ColorPaletteConstants.dialogue = 'amexio-dialogue'
+        expect(dirIn.ColorPaletteConstants.dialogue).toBeDefined();
+    });
+
+
+    it('getBGColorStyles()case9', () => {
+      let obj = {amexioComponentId: 'amexio-box', setColorPalette: ()=>{}}
+      dirIn.hostComponent = obj
+      dirIn.hostComponent.amexioComponentId = 'amexio-box';
+      dirIn.getBGColorStyles(dirIn.hostComponent);
+      let c;
+       dirIn.ColorPaletteConstants = {box:  c };
+      expect(dirIn.ColorPaletteConstants.box).toBeUndefined();
+      dirIn.ColorPaletteConstants = {box: 'amexio-box' };
+        dirIn.ColorPaletteConstants.box = 'amexio-box'
+        expect(dirIn.ColorPaletteConstants.box).toBeDefined();
+    });
+
+
+    it('getBGColorStyles()case10', () => {
+      let obj = {amexioComponentId: 'amexio-grid', setColorPalette: ()=>{}}
+      dirIn.hostComponent = obj
+      dirIn.hostComponent.amexioComponentId = 'amexio-grid';
+      dirIn.getBGColorStyles(dirIn.hostComponent);
+      let c;
+       dirIn.ColorPaletteConstants = {grid:  c };
+      expect(dirIn.ColorPaletteConstants.grid).toBeUndefined();
+      dirIn.ColorPaletteConstants = {grid: 'amexio-grid' };
+        dirIn.ColorPaletteConstants.grid = 'amexio-grid'
+        expect(dirIn.ColorPaletteConstants.grid).toBeDefined();
+    });
+
+
+
+    it('getBGColorStyles()case11', () => {
+      let obj = {amexioComponentId: 'amexio-tab', setColorPalette: ()=>{}}
+      dirIn.hostComponent = obj
+      dirIn.hostComponent.amexioComponentId = 'amexio-tab';
+      dirIn.getBGColorStyles(dirIn.hostComponent);
+      let c;
+       dirIn.ColorPaletteConstants = {tab:  c };
+      expect(dirIn.ColorPaletteConstants.tab).toBeUndefined();
+      dirIn.ColorPaletteConstants = {tab: 'amexio-tab' };
+        dirIn.ColorPaletteConstants.tab = 'amexio-tab'
+        expect(dirIn.ColorPaletteConstants.tab).toBeDefined();
+    });
 // ###########################################
 
 it('getGradientStyles()case2', () => {
@@ -292,7 +348,61 @@ it('getGradientStyles()case7', () => {
 });
 
 
+it('getGradientStyles()case8', () => {
+  let obj = {amexioComponentId: 'amexio-dialogue', setColorPalette: ()=>{}}
+  dirIn.hostComponent = obj
+  dirIn.hostComponent.amexioComponentId = 'amexio-dialogue';
+  dirIn.getGradientStyles(dirIn.hostComponent);
+  let c;
+   dirIn.ColorPaletteConstants = {dialogue:  c };
+  expect(dirIn.ColorPaletteConstants.dialogue).toBeUndefined();
+  dirIn.ColorPaletteConstants = {dialogue: 'amexio-dialogue' };
+    dirIn.ColorPaletteConstants.dialogue = 'amexio-dialogue'
+    expect(dirIn.ColorPaletteConstants.dialogue).toBeDefined();
+});
 
+
+it('getGradientStyles()case9', () => {
+  let obj = {amexioComponentId: 'amexio-box', setColorPalette: ()=>{}}
+  dirIn.hostComponent = obj
+  dirIn.hostComponent.amexioComponentId = 'amexio-box';
+  dirIn.getGradientStyles(dirIn.hostComponent);
+  let c;
+   dirIn.ColorPaletteConstants = {box:  c };
+  expect(dirIn.ColorPaletteConstants.box).toBeUndefined();
+  dirIn.ColorPaletteConstants = {box: 'amexio-box' };
+    dirIn.ColorPaletteConstants.box = 'amexio-box'
+    expect(dirIn.ColorPaletteConstants.box).toBeDefined();
+});
+
+
+it('getGradientStyles()case10', () => {
+  let obj = {amexioComponentId: 'amexio-grid', setColorPalette: ()=>{}}
+  dirIn.hostComponent = obj
+  dirIn.hostComponent.amexioComponentId = 'amexio-grid';
+  dirIn.getGradientStyles(dirIn.hostComponent);
+  let c;
+   dirIn.ColorPaletteConstants = {grid:  c };
+  expect(dirIn.ColorPaletteConstants.grid).toBeUndefined();
+  dirIn.ColorPaletteConstants = {grid: 'amexio-grid' };
+    dirIn.ColorPaletteConstants.grid = 'amexio-grid'
+    expect(dirIn.ColorPaletteConstants.grid).toBeDefined();
+});
+
+
+
+it('getGradientStyles()case11', () => {
+  let obj = {amexioComponentId: 'amexio-tab', setColorPalette: ()=>{}}
+  dirIn.hostComponent = obj
+  dirIn.hostComponent.amexioComponentId = 'amexio-tab';
+  dirIn.getGradientStyles(dirIn.hostComponent);
+  let c;
+   dirIn.ColorPaletteConstants = {tab:  c };
+  expect(dirIn.ColorPaletteConstants.tab).toBeUndefined();
+  dirIn.ColorPaletteConstants = {tab: 'amexio-tab' };
+    dirIn.ColorPaletteConstants.tab = 'amexio-tab'
+    expect(dirIn.ColorPaletteConstants.tab).toBeDefined();
+});
 
 it('getGradientStyles()', () => {
       let obj = {amexioComponentId: 'amexio-card', setColorPalette: ()=>{}} 
