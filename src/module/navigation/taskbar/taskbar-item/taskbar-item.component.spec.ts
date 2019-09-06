@@ -15,6 +15,8 @@ import { ToolbarComponent } from '../../../forms/toolbar/toolbar.component';
 import { ToolbaroneComponent } from '../../../forms/toolbar/toolbarone.component';
 
 import { AmexioContextMenuComponent } from '../../../base/base.contextmenu.component';
+import { AmexioImageComponent } from '../../../media/image/image.component';
+import { AmexioPanelHeaderComponent } from '../../../panes/panel/panel.header.component';
 
 describe('TaskbarItemComponent', () => {
     let comp: AmexioTaskbarItemComponent;
@@ -25,7 +27,8 @@ describe('TaskbarItemComponent', () => {
             imports: [FormsModule],
             declarations: [CommonIconComponent, AmexioButtonComponent,
                 AmexioLabelComponent, ToolbarComponent, ToolbaroneComponent,
-                AmexioContextMenuComponent,
+                AmexioContextMenuComponent, AmexioImageComponent,
+                AmexioPanelHeaderComponent,
                 AmexioTaskbarItemComponent, ColorPaletteDirective, AmexioPanelComponent],
             providers: [],
 
