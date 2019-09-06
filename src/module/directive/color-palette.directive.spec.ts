@@ -1,7 +1,7 @@
 import { ColorPaletteDirective } from './color-palette.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { ViewContainerRef, Component, DebugElement } from '@angular/core';
+import { ViewContainerRef, Component, DebugElement, ElementRef } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 // Simple test component that will not in the actual app
@@ -102,6 +102,52 @@ describe('Directive: Color', () => {
         setTimeout(() => {
             dirIn.getGradientStyles(dirIn.hostComponent);
         }, 1000);
+    });
+
+    it('getBGColorStyles()', () => {
+      let obj = {amexioComponentId: 'amexio-card', setColorPalette: ()=>{}}
+      dirIn.hostComponent = obj
+      dirIn.hostComponent.amexioComponentId = 'amexio-card';
+      dirIn.getBGColorStyles(dirIn.hostComponent);
+      let c;
+      dirIn.ColorPaletteConstants = {card:  c, cardce: c}
+
+      expect(dirIn.ColorPaletteConstants.card).toBeUndefined();
+      expect(dirIn.ColorPaletteConstants.cardce).toBeUndefined();
+
+      dirIn.ColorPaletteConstants = {card: 'amexio-card', cardce: 'amexio-card-ce'};
+        dirIn.ColorPaletteConstants.card = 'amexio-card'
+        dirIn.ColorPaletteConstants.cardce = 'amexio-card-ce'
+
+        expect(dirIn.ColorPaletteConstants.card).toBeDefined();
+        expect(dirIn.ColorPaletteConstants.cardce).toBeDefined(); 
+
+    });
+
+
+it('getGradientStyles()', () => {
+      let obj = {amexioComponentId: 'amexio-card', setColorPalette: ()=>{}} 
+      dirIn.hostComponent = obj
+      dirIn.hostComponent.amexioComponentId = 'amexio-card';
+      // dirIn.getBGColorStyles(dirIn.hostComponent);
+      let c;
+      dirIn.ColorPaletteConstants = {card:  c, cardce: c}
+ 
+
+      dirIn.getGradientStyles(dirIn.hostComponent);
+      // case (ColorPaletteConstants.card || ColorPaletteConstants.cardce): {
+
+      expect(dirIn.ColorPaletteConstants.card).toBeUndefined();
+      expect(dirIn.ColorPaletteConstants.cardce).toBeUndefined();
+
+      dirIn.ColorPaletteConstants = {card: 'amexio-card', cardce: 'amexio-card-ce'};
+        dirIn.ColorPaletteConstants.card = 'amexio-card'
+        dirIn.ColorPaletteConstants.cardce = 'amexio-card-ce'
+
+        expect(dirIn.ColorPaletteConstants.card).toBeDefined(); 
+
+        expect(dirIn.ColorPaletteConstants.cardce).toBeDefined(); 
+    
     });
 
    
