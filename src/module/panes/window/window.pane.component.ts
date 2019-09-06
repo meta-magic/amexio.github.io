@@ -414,21 +414,6 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
     if (this.amexioBody && this.bodyHeight) {
       this.amexioBody.toArray()[0].height = this.bodyHeight + '%';
     }
-
-    if (this.yesFullScreen) {
-      this.amexioHeader.toArray()[0].maximizeWindow1.subscribe((obj: any) => {
-        this.headerinst = obj.tempThis;
-        this.maximizeflagchanged = this.maxScreenChange(obj.tempEvent);
-        obj.tempThis.fullscreenMaxCard = !this.maximizeflagchanged;
-      });
-      this.amexioHeader.toArray()[0].minimizeWindow1.subscribe((obj: any) => {
-
-        this.headerinst = obj.tempThis;
-        this.maximizeflagchanged = this.minScreenChange(obj.tempEvent);
-        obj.tempThis.fullscreenMaxCard = !this.maximizeflagchanged;
-      });
-
-    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
