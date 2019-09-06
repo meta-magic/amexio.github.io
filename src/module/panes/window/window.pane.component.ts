@@ -17,9 +17,10 @@
 */
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { DOCUMENT } from '@angular/common';
 import {
   AfterContentInit, ApplicationRef, Component, ComponentFactoryResolver, ContentChildren, ElementRef, EmbeddedViewRef,
-  EventEmitter, Injector, Input, OnChanges, OnDestroy,
+  EventEmitter, Inject, Injector, Input, OnChanges, OnDestroy,
   OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
 } from '@angular/core';
 import { MinimizeWindowComponent } from './minimize.window.component';
@@ -31,7 +32,6 @@ import { AmexioHeaderComponent } from '../header/pane.action.header';
 import { MinimizeService } from './minimize-service.service';
 
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
-
 @Component({
   selector: 'amexio-window',
   templateUrl: './window.pane.component.html',
@@ -71,6 +71,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   rightClickNodeData: any;
 
   themeCss: any;
+  headerinst: any;
 
   amexioComponentId = 'amexio-window' + Math.floor(Math.random() * 1000 + 999);
   /*
@@ -231,7 +232,15 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   @Output() nodeRightClick: any = new EventEmitter<any>();
 
   @Output() rightClick: any = new EventEmitter<any>();
+
+  @Output() onMinimize: any = new EventEmitter<any>();
+
+  @Output() onMaximize: any = new EventEmitter<any>();
+
+  @Output() onFullScreen: any = new EventEmitter<any>();
+
   componentRef: any;
+  maximizeflagchanged = false;
 
   @ContentChildren(AmexioHeaderComponent) amexioHeader: QueryList<AmexioHeaderComponent>;
   @ContentChildren(AmexioFooterComponent) amexioFooter: QueryList<AmexioFooterComponent>;
@@ -245,7 +254,8 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   globalClickListenFunc: () => void;
   globalDragListenFunc: () => void;
   constructor(
-    private appRef: ApplicationRef, private componentFactoryResolver: ComponentFactoryResolver, private injector: Injector,
+    @Inject(DOCUMENT) public document: any, private appRef: ApplicationRef,
+    private componentFactoryResolver: ComponentFactoryResolver, private injector: Injector,
     private renderer: Renderer2, private _miniService: MinimizeService) {
     super();
     this.x = 0;
@@ -269,6 +279,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   }
 
   ngOnInit() {
+    super.ngOnInit();
     this.appendComponentToBody(MinimizeWindowComponent);
     this.setVerticlePosition();
     this.setHorizontalPosition();
@@ -380,6 +391,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
         this.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
           this.textName = event.textName;
           this._miniService.onMinimizeClick(this);
+          this.onMinimize.emit(event);
         });
         this.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
           this._miniService.onCloseClick(this);
@@ -388,9 +400,10 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
       this.amexioHeader.toArray()[0].closeable = this.closable;
       this.amexioHeader.toArray()[0].aComponent1 = 'window';
       if (this.maximize) {
-        this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow);
+        this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow, event);
         this.amexioHeader.toArray()[0].maximizeBehaiour.subscribe((max: any) => {
-          this.maximumWindowStyle = this.setMaximizeClass(max);
+          this.maximumWindowStyle = this.setMaximizeClass(max.isFullWindow);
+          this.onMaximize.emit(max.event1);
         });
       }
       this.amexioHeader.toArray()[0].setMaterialDesignStatus(this.materialDesign);
@@ -400,6 +413,21 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
     }
     if (this.amexioBody && this.bodyHeight) {
       this.amexioBody.toArray()[0].height = this.bodyHeight + '%';
+    }
+
+    if (this.yesFullScreen) {
+      this.amexioHeader.toArray()[0].maximizeWindow1.subscribe((obj: any) => {
+        this.headerinst = obj.tempThis;
+        this.maximizeflagchanged = this.maxScreenChange(obj.tempEvent);
+        obj.tempThis.fullscreenMaxCard = !this.maximizeflagchanged;
+      });
+      this.amexioHeader.toArray()[0].minimizeWindow1.subscribe((obj: any) => {
+
+        this.headerinst = obj.tempThis;
+        this.maximizeflagchanged = this.minScreenChange(obj.tempEvent);
+        obj.tempThis.fullscreenMaxCard = !this.maximizeflagchanged;
+      });
+
     }
   }
 

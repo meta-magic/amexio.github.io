@@ -9,7 +9,7 @@ class="amexio-root-window"
     
     [style.justify-content]="verticalposition" [ngStyle]="maximumWindowStyle"
 
-    [ngClass]="{'content-max-height': (maximize && isFullWindow), 'amexio-root-window-content': windowModel, 'amexio-root-window-content-windowModel': !windowModel}"
+    [ngClass]="{'content-max-height': (maximize && isFullWindow), 'amexio-root-window-content': windowModel, 'amexio-root-window-content-windowModel': !windowModel, 'full-screen-card': maximizeflagchanged}"
     
     
     [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}"

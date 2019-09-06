@@ -76,6 +76,17 @@ describe('amexio-datagrid', () => {
         comp.checkBoxActive = 'checkbox active';
     });
 
+it('ngOninit Method', () => {
+    comp.httpmethod = 'get';
+comp.httpurl = ''
+expect(comp.httpmethod).toBeDefined()
+expect(comp.httpurl).toBeDefined()
+comp.dataTableService.fetchData(comp.httpurl, comp.httpmethod).subscribe(
+    (response: any) => {
+      this.cloneResponseData = response;
+      this.responseData = JSON.parse(JSON.stringify(this.cloneResponseData));
+    })
+});
 
     it('setCheckBoxSelectClass  if Check', () => {
         comp.selectAll = true;

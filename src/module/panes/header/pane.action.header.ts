@@ -32,10 +32,10 @@ import { BehaviorSubject } from 'rxjs/index';
   style = "cursor: pointer"></em>
 
   <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(isFullWindow && maximize )"
-  [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
+  [key]="'window_maximize'" (onClick)="sizeChange($event)"></amexio-c-icon>
   <amexio-c-icon style = "padding-left: 10px" class="cursor-style"
   *ngIf="(!isFullWindow && maximize )"
-  [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
+  [key]="'window_restore'" (click)="sizeChange($event)"></amexio-c-icon>
 
   <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(fullScreenFlag && fullscreenMaxCard)"
   [key]="'full-screen-max-icon'" (onClick)="maxScreenChangeCard($event)"></amexio-c-icon>
@@ -96,7 +96,7 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
 
   closeableBehaiour = new BehaviorSubject(false);
 
-  maximizeBehaiour = new BehaviorSubject(false);
+  maximizeBehaiour = new BehaviorSubject(null);
   aComponent: string;
   aComponent1: string;
   textName: any;
@@ -122,10 +122,10 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
     }
   }
 
-  setMaximizeData(maximize: boolean, isFullWindow: boolean) {
+  setMaximizeData(maximize: boolean, isFullWindow: boolean, event: any) {
     this.maximize = maximize;
     this.isFullWindow = isFullWindow;
-    this.maximizeBehaiour.next(this.isFullWindow);
+    this.maximizeBehaiour.next({isFullWindow: this.isFullWindow, event1: event});
   }
 
   setMaterialDesignStatus(materialDesign: boolean) {
@@ -135,9 +135,9 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
     }
   }
 
-  sizeChange() {
+  sizeChange(event: any) {
     this.isFullWindow = !this.isFullWindow;
-    this.maximizeBehaiour.next(this.isFullWindow);
+    this.maximizeBehaiour.next({isFullWindow: this.isFullWindow, event1: event});
   }
 
   onCloseClick() {
