@@ -177,6 +177,7 @@ description : sets background color for active tab
    description : It will gives you row clicked data.
    */
   @Output() rightClick: any = new EventEmitter<any>();
+  @Output() onCloseClick: any = new EventEmitter<any>();
 
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
   @ViewChild('tabAction', { read: ElementRef }) public tabAction: ElementRef;
@@ -421,7 +422,6 @@ description : sets background color for active tab
     });
     tabList[tabList.length - 1].active = true;
     this.asignTabPillClass(tabList[tabList.length - 1]);
-
   }
 
   // Method to set active tab on the basis of tab sequence or tab title
@@ -674,6 +674,8 @@ description : sets background color for active tab
     if (newTab.length === 1) {
       newTab[0].closable = false;
     }
+
+    this.onCloseClick.emit(tabNode);
   }
   tabDomRemove(tab: any) {
     const removeNode = document.getElementById(tab.tabId).parentNode;
@@ -963,7 +965,7 @@ description : sets background color for active tab
           this.closeTab(tabs);
         }
       });
-    }else if (typeof input === 'object') {
+    } else if (typeof input === 'object') {
       this.deletetypeObject(input);
     }
   }
