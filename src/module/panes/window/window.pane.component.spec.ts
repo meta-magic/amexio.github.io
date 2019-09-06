@@ -107,7 +107,7 @@ describe('amexio-window', () => {
         expect(comp.amexioHeader).toBeDefined();
         expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
         expect(comp.maximize).toEqual(true);
-        comp.amexioHeader.toArray()[0].setMaximizeData(comp.maximize, comp.isFullWindow);
+        comp.amexioHeader.toArray()[0].setMaximizeData(comp.maximize, comp.isFullWindow, event);
         comp.amexioHeader.toArray()[0].maximizeBehaiour.subscribe((max: any) => {
             comp.maximumWindowStyle = comp.setMaximizeClass(max);
           });
