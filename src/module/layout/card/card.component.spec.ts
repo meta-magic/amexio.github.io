@@ -62,6 +62,8 @@ describe('amexio-card-ce', () => {
 
         expect(comp.yesFullScreen).toEqual(true)
         comp.amexioHeader.toArray()[0].maximizeWindow1.subscribe((obj: any) => {
+            obj = {tempEvent: {isTrusted: true, screenX: 1301, screenY: 224, clientX: 1371, clientY: 138},
+                    tempThis: {document: document, jstyfy: "space-between", background: "", color: "", fullscreenMaxCard: true }          }
             comp.headerinst = obj.tempThis;
             comp.maximizeflagchanged = comp.maxScreenChange(obj.tempEvent);
             obj.tempThis.fullscreenMaxCard = !comp.maximizeflagchanged;
