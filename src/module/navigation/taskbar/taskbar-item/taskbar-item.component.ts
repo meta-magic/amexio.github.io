@@ -16,6 +16,8 @@ export class AmexioTaskbarItemComponent implements OnInit {
 
   @Input('close') close = false;
 
+  @Input('taskbar-Icon') taskbarIcon: any;
+
   displayFlag = false;
 
   closeIcon: any;

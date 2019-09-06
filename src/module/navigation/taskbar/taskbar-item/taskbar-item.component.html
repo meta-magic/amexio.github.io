@@ -27,6 +27,13 @@
         [gradient]="true" [border]="true"
         [height]="heightOfItem" [header]="true"
          [expanded]="false">
+         <amexio-panel-header>
+          <amexio-image 
+          style="margin-top : auto;" 
+          [icon-class]="taskbarIcon"
+          [tooltip]="'Information'">
+          </amexio-image>
+      </amexio-panel-header>
         <ng-content></ng-content>
       </amexio-panel>
     </div>
