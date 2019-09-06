@@ -162,4 +162,22 @@ describe('amexio-header-ce', () => {
         comp.maximizeWindow.emit(this,  comp.isFullWindowCe);
         expect(comp.fullScreenFlag).toEqual(false);
     });
+
+    it('maxScreenChange1  method check', () => {
+        let event  = {
+        }
+        comp.maxScreenChange1(event);
+        comp.maximizeWindow1.subscribe((g: any) => {
+            expect(event).toEqual({ tempEvent: event, tempThis: this }, g);
+        });
+    });
+    it('minScreenChange1  method check', () => {
+        let event  = {
+        }
+        comp.minScreenChange1(event);
+        comp.minimizeWindow1.subscribe((g: any) => {
+            expect(event).toEqual({ tempEvent: event, tempThis: this }, g);
+        });
+    });
 });
+

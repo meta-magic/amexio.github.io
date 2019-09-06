@@ -2,9 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AmexioHeaderComponent } from './pane.action.header';
 import { BehaviorSubject } from 'rxjs/index';
 import { HttpClient } from '@angular/common/http';
-import {HttpClientModule} from '@angular/common/http';
-import {CommonIconComponent} from '../../base/components/common.icon.component'
-describe('AmexioHeaderComponent', () => {  
+import { HttpClientModule } from '@angular/common/http';
+import { CommonIconComponent } from '../../base/components/common.icon.component'
+describe('AmexioHeaderComponent', () => {
   let comp: AmexioHeaderComponent;
   let fixture: ComponentFixture<AmexioHeaderComponent>;
 
@@ -13,12 +13,12 @@ describe('AmexioHeaderComponent', () => {
       imports: [
         HttpClientModule,
       ],
-      declarations: [AmexioHeaderComponent,CommonIconComponent],
+      declarations: [AmexioHeaderComponent, CommonIconComponent],
       providers: [HttpClient],
 
     });
     fixture = TestBed.createComponent(AmexioHeaderComponent);
-    comp = fixture.componentInstance;    
+    comp = fixture.componentInstance;
   });
 
   it('onCloseClick call ()', () => {
@@ -31,80 +31,87 @@ describe('AmexioHeaderComponent', () => {
     comp.onMinimizeClick();
     comp.closeableBehaiour.next(false);
     comp.minimizeWindow.subscribe((g: any) => {
-        expect(event).toEqual(this, g);
+      expect(event).toEqual(this, g);
     });
-});
+  });
 
-it('ngAfterViewInit  method check 1st if', () => {
-  comp.textName = comp.content.nativeElement.innerText;
-  comp.ngAfterViewInit();
-  comp.textName = 'kedar';
-  comp.minimizeIcon = 'fa fa-home';
-  expect(comp.textName).toEqual('kedar');
-  expect(comp.minimizeIcon).toEqual('fa fa-home');
-  return comp.textName;
-});
-it('ngAfterViewInit  method check 1st els', () => {
-  comp.textName = comp.content.nativeElement.innerText;
-  comp.ngAfterViewInit();
-  comp.textName = '';
-  comp.minimizeIcon = '';
-  expect(comp.textName).toEqual('');
-  expect(comp.minimizeIcon).toEqual('');
-});
-it('ngAfterViewInit  method check 2nd if', () => {
-  comp.textName = comp.content.nativeElement.innerText;
-  comp.ngAfterViewInit();
-  comp.textName = 'kedar';
-  comp.minimizeIcon = 'fa fa-home';
-  expect(comp.textName).toEqual('kedar');
-  expect(comp.minimizeIcon).toEqual('fa fa-home');
-  comp.ngAfterViewInit();
-  comp.textName = 'kedar';
-  comp.minimizeIcon = '';
-  expect(comp.textName).toEqual('kedar');
-  expect(comp.minimizeIcon).toEqual('');
-  return comp.textName;
-});
-it('ngAfterViewInit  method check 2nd else', () => {
-  comp.textName = comp.content.nativeElement.innerText;
-  comp.ngAfterViewInit();
-  comp.textName = 'kedar';
-  comp.minimizeIcon = 'fa fa-home';
-  expect(comp.textName).toEqual('kedar');
-  expect(comp.minimizeIcon).toEqual('fa fa-home');
-  comp.textName = '';
-  comp.minimizeIcon = 'fa fa-home'
-  expect(comp.textName).toEqual('');
-  expect(comp.minimizeIcon).toEqual('fa fa-home');
-  return comp.minimizeIcon;
-});
-it('ngAfterViewInit  method check !this.minimizeIcon && !this.textName', () => {
-  comp.textName = comp.content.nativeElement.innerText;
-  comp.ngAfterViewInit();
-  comp.textName = '';
-  comp.minimizeIcon = ''
-  expect(comp.textName).toEqual('');
-  expect(comp.minimizeIcon).toEqual('');
-  return comp.minimizeIcon = 'fa fa-file';
-});
-it('ngAfterViewInit  method check this.minimizeIcon && this.textName', () => {
-  comp.textName = comp.content.nativeElement.innerText;
-  comp.ngAfterViewInit();
-  comp.textName = 'kedar';
-  comp.minimizeIcon = 'fa fa-home';
-  expect(comp.textName).toEqual('kedar');
-  expect(comp.minimizeIcon).toEqual('fa fa-home');
-  return comp.textName = 'kedar';
-});
+  it('ngAfterViewInit  method check 1st if', () => {
+    comp.textName = comp.content.nativeElement.innerText;
+    comp.ngAfterViewInit();
+    comp.textName = 'kedar';
+    comp.minimizeIcon = 'fa fa-home';
+    expect(comp.textName).toEqual('kedar');
+    expect(comp.minimizeIcon).toEqual('fa fa-home');
+    return comp.textName;
+  });
+  it('ngAfterViewInit  method check 1st els', () => {
+    comp.textName = comp.content.nativeElement.innerText;
+    comp.ngAfterViewInit();
+    comp.textName = '';
+    comp.minimizeIcon = '';
+    expect(comp.textName).toEqual('');
+    expect(comp.minimizeIcon).toEqual('');
+  });
+  it('ngAfterViewInit  method check 2nd if', () => {
+    comp.textName = comp.content.nativeElement.innerText;
+    comp.ngAfterViewInit();
+    comp.textName = 'kedar';
+    comp.minimizeIcon = 'fa fa-home';
+    expect(comp.textName).toEqual('kedar');
+    expect(comp.minimizeIcon).toEqual('fa fa-home');
+    comp.ngAfterViewInit();
+    comp.textName = 'kedar';
+    comp.minimizeIcon = '';
+    expect(comp.textName).toEqual('kedar');
+    expect(comp.minimizeIcon).toEqual('');
+    return comp.textName;
+  });
+  it('ngAfterViewInit  method check 2nd else', () => {
+    comp.textName = comp.content.nativeElement.innerText;
+    comp.ngAfterViewInit();
+    comp.textName = 'kedar';
+    comp.minimizeIcon = 'fa fa-home';
+    expect(comp.textName).toEqual('kedar');
+    expect(comp.minimizeIcon).toEqual('fa fa-home');
+    comp.textName = '';
+    comp.minimizeIcon = 'fa fa-home'
+    expect(comp.textName).toEqual('');
+    expect(comp.minimizeIcon).toEqual('fa fa-home');
+    return comp.minimizeIcon;
+  });
+  it('ngAfterViewInit  method check !this.minimizeIcon && !this.textName', () => {
+    comp.textName = comp.content.nativeElement.innerText;
+    comp.ngAfterViewInit();
+    comp.textName = '';
+    comp.minimizeIcon = ''
+    expect(comp.textName).toEqual('');
+    expect(comp.minimizeIcon).toEqual('');
+    return comp.minimizeIcon = 'fa fa-file';
+  });
+  it('ngAfterViewInit  method check this.minimizeIcon && this.textName', () => {
+    comp.textName = comp.content.nativeElement.innerText;
+    comp.ngAfterViewInit();
+    comp.textName = 'kedar';
+    comp.minimizeIcon = 'fa fa-home';
+    expect(comp.textName).toEqual('kedar');
+    expect(comp.minimizeIcon).toEqual('fa fa-home');
+    return comp.textName = 'kedar';
+  });
 
-it('maxScreenChangeCard Method', () => {
-  comp.maxScreenChangeCard(event);
-  comp.maximizeWindow1.emit({ tempEvent: event, tempThis: this });
-});
+  it('maxScreenChangeCard Method', () => {
+    comp.maxScreenChangeCard(event);
+    comp.maximizeWindow1.emit({ tempEvent: event, tempThis: this });
+  });
 
-it('minScreenChangeCard Method', () => {
-  comp.minScreenChangeCard(event);
-  comp.minimizeWindow1.emit({ tempEvent: event, tempThis: this });
-});
+  it('minScreenChangeCard Method', () => {
+    comp.minScreenChangeCard(event);
+    comp.minimizeWindow1.emit({ tempEvent: event, tempThis: this });
+  });
+
+  it('sizeChange call ()', () => {
+    let event = false;
+    comp.sizeChange(event);
+    comp.isFullWindow = !comp.isFullWindow;
+    comp.maximizeBehaiour.next({ isFullWindow: comp.isFullWindow, event1: event });
+  });
 });
