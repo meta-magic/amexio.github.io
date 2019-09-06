@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
 class TestWrapperComponent {
 
 }
-fdescribe('amexio-datagrid', () => {
+describe('amexio-datagrid', () => {
     let comp: AmexioDatagridComponent;
     let fixture: ComponentFixture<TestWrapperComponent>;
 

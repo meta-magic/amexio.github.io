@@ -4,8 +4,14 @@
 // import { FormsModule } from "@angular/forms";
 // import { ValueAccessorBase } from "./value-accessor";
 
+// class MyClass extends ValueAccessorBase<any> {
+//     // just mock any abstract method
+//     createCompId(c: any, b: any) {
+//         return c + '_' + Math.floor(Math.random() * 1000 + 999);  
+//     }
+//   }
 
-// describe('amexio-value-accessor', () => {
+// fdescribe('amexio-value-accessor', () => {
 //   let comp: MyClass;
 //   let fixture: ComponentFixture<MyClass>;
 //   let de: DebugElement;    // => Handle to to Components DOM instance
@@ -20,13 +26,6 @@
 //     fixture = TestBed.createComponent(MyClass);  // => Fixture Creates the environment surrounding the component & the has access to the instance itself.
 //     comp = fixture.componentInstance;
 //   });
-
-//   class MyClass extends ValueAccessorBase<any> {
-//     // just mock any abstract method
-//     createCompId(c: any, b: any) {
-//         return c + '_' + Math.floor(Math.random() * 1000 + 999);  
-//     }
-//   }
 
 //   it('createCompId If Method', () => {
 //     let inputType = 'checkbox';
