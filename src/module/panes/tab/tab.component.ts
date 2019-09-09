@@ -177,7 +177,10 @@ description : sets background color for active tab
    description : It will gives you row clicked data.
    */
   @Output() rightClick: any = new EventEmitter<any>();
-
+  @Output() onCloseClick: any = new EventEmitter<any>();
+  @Input('enable-confirm-box') enableConfirmBox: boolean;
+  @Input('message-title') messageTitle = 'confirm';
+  @Input('message') message = 'Are You Sure?';
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
   @ViewChild('tabAction', { read: ElementRef }) public tabAction: ElementRef;
   @ViewChild('headerWidth', { read: ElementRef }) public headerWidth: ElementRef;
@@ -262,6 +265,8 @@ description : sets background color for active tab
 
   themeCss: any;
   amexioComponentId = 'amexio-tab';
+  openDialogue = false;
+  tempTab: any;
 
   globalClickListenFunc: () => void;
 
@@ -642,6 +647,17 @@ description : sets background color for active tab
   }
 
   closeTab(tabNode: AmexioTabPillComponent) {
+    if (this.enableConfirmBox) {
+      this.openDialogue = true;
+      this.tempTab = tabNode;
+    }
+    if (!this.enableConfirmBox) {
+      this.tabPillClose(tabNode);
+    }
+    this.onCloseClick.emit(tabNode);
+  }
+
+  tabPillClose(tabNode: any) {
     const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
     let tabHighlightIndex = 0;
@@ -675,6 +691,7 @@ description : sets background color for active tab
       newTab[0].closable = false;
     }
   }
+
   tabDomRemove(tab: any) {
     const removeNode = document.getElementById(tab.tabId).parentNode;
     const parentRefNode = removeNode.parentNode;
@@ -963,7 +980,7 @@ description : sets background color for active tab
           this.closeTab(tabs);
         }
       });
-    }else if (typeof input === 'object') {
+    } else if (typeof input === 'object') {
       this.deletetypeObject(input);
     }
   }
@@ -990,5 +1007,14 @@ description : sets background color for active tab
         tabs.title = replacetab;
       }
     });
+  }
+
+  onOkClick(event: any) {
+    this.tabPillClose(this.tempTab);
+    this.openDialogue = false;
+  }
+
+  onCancelClick(event: any) {
+    this.openDialogue = false;
   }
 }
