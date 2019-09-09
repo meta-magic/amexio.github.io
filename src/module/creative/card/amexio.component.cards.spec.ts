@@ -23,6 +23,7 @@ class TestCeWindowComponent { }
 describe('amexio-card-ce', () => {
     let comp: AmexioCardCEComponent;
     let fixture: ComponentFixture<TestCeWindowComponent>;
+    let obj : any;
     let miniservice:any;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -47,6 +48,10 @@ describe('amexio-card-ce', () => {
         fixture.detectChanges();
         comp.yesFullScreen = true;
         miniservice = TestBed.get(MinimizeService);
+        obj = {tempEvent: {isTrusted: true, screenX: 1301, screenY: 224, clientX: 1371, clientY: 138},
+        tempThis: {document: document, jstyfy: "space-between", background: "", color: "", fullscreenMaxCard: true }          }
+   
+        comp.amexioCardHeaderList[0].maximizeWindow1.next(obj);
     });
 
 
@@ -74,11 +79,9 @@ describe('amexio-card-ce', () => {
           });
 
           expect(comp.yesFullScreen).toEqual(true);
-         
-          comp.AmexioCardCEHeaderQueryList.toArray()[0].maximizeWindow1.subscribe((obj: any) => {
-            obj = {tempEvent: {isTrusted: true, screenX: 1301, screenY: 224, clientX: 1371, clientY: 138},
-            tempThis: {document: document, jstyfy: "space-between", background: "", color: "", fullscreenMaxCard: true }          }
-            comp.headerinst = obj.tempThis;
+          fixture.detectChanges();
+          comp.amexioCardHeaderList[0].maximizeWindow1.subscribe((obj: any) => {
+            fixture.detectChanges();
             comp.maximizeflagchanged = comp.maxScreenChange(obj.tempEvent);
             obj.tempThis.fullscreenMaxCard = !comp.maximizeflagchanged;
           });
