@@ -1,7 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import {  NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ValueAccessorBase } from '../../base/value-accessor';
+import { ValueAccessorBaseComponent } from '../../base/value-accessor';
 
 @Component({
   selector: 'amexio-color-picker',
@@ -21,7 +21,7 @@ import { ValueAccessorBase } from '../../base/value-accessor';
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ColorPickerComponent), multi: true,
   }],
 })
-export class ColorPickerComponent extends ValueAccessorBase<string> implements OnInit {
+export class ColorPickerComponent extends ValueAccessorBaseComponent<string> implements OnInit {
   @Output() selectedColor: any = new EventEmitter<any>();
   @Input('inline-color-picker') inlineColorPicker = false;
   @Input('field-label') fieldlabel: string;

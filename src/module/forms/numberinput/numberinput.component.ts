@@ -19,7 +19,7 @@ import {
 } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { BaseInputEventComponent } from '../../base/base.inputevent.component';
-import { ValueAccessorBase } from '../../base/value-accessor';
+import { ValueAccessorBaseComponent } from '../../base/value-accessor';
 @Component({
   selector: 'amexio-number-input',
   templateUrl: './numberinput.component.html',

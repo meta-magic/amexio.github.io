@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { InputValidator } from './input.validator';
-import { ValueAccessorBase } from './value-accessor';
+import { ValueAccessorBaseComponent } from './value-accessor';
 @Component({
     selector: 'list.base.datepicker',
     template: './list.base.datepicker.component.html',
   })
-export class BaseInputEventComponent extends ValueAccessorBase<string>  {
+export class BaseInputEventComponent extends ValueAccessorBaseComponent<string>  {
     showToolTip: boolean;
     isValid = false;
     emailpattern: any = /\S+@\S+\.\S+/;

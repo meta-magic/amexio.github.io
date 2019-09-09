@@ -18,7 +18,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { BaseInputEventComponent } from '../../base/base.inputevent.component';
-import { ValueAccessorBase } from '../../base/value-accessor';
+import { ValueAccessorBaseComponent } from '../../base/value-accessor';
 
 @Component({
   selector: 'amexio-email-input',

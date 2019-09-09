@@ -15,9 +15,9 @@
 */
 
 import { InputValidator } from './input.validator';
-import { ValueAccessorBase } from './value-accessor';
+import { ValueAccessorBaseComponent } from './value-accessor';
 
-export class BaseInput<T> extends ValueAccessorBase<T> {
+export class BaseInput<T> extends ValueAccessorBaseComponent<T> {
 
     onBaseInputFocus(event: any) {
         this.checkValidity();

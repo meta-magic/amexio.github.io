@@ -20,7 +20,7 @@ import { Component, ElementRef, EventEmitter, forwardRef, Input, NgZone, OnDestr
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DomHandler } from './slider.handler';
 
-import { ValueAccessorBase } from '../../base/value-accessor';
+import { ValueAccessorBaseComponent } from '../../base/value-accessor';
 
 @Component({
   selector: 'amexio-slider',
@@ -29,7 +29,7 @@ import { ValueAccessorBase } from '../../base/value-accessor';
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioSliderComponent), multi: true,
   }],
 })
-export class AmexioSliderComponent extends ValueAccessorBase<number> implements OnInit, OnDestroy, ControlValueAccessor {
+export class AmexioSliderComponent extends ValueAccessorBaseComponent<number> implements OnInit, OnDestroy, ControlValueAccessor {
 
   /*
 Properties

@@ -17,7 +17,7 @@
 
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import { ValueAccessorBase } from '../../base/value-accessor';
+import { ValueAccessorBaseComponent } from '../../base/value-accessor';
 
 @Component({
   selector: 'amexio-textarea-input',
@@ -28,7 +28,7 @@ import { ValueAccessorBase } from '../../base/value-accessor';
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true,
   }],
 })
-export class AmexioTextAreaComponent extends ValueAccessorBase<string> implements OnInit, Validators {
+export class AmexioTextAreaComponent extends ValueAccessorBaseComponent<string> implements OnInit, Validators {
 
   /*
 Properties

@@ -17,7 +17,7 @@
 
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { ValueAccessorBase } from '../../base/value-accessor';
+import { ValueAccessorBaseComponent } from '../../base/value-accessor';
 import { CommonDataService } from '../../services/data/common.data.service';
 
 import { of } from 'rxjs';
@@ -30,7 +30,7 @@ import { of } from 'rxjs';
     { provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioCheckBoxGroupComponent), multi: true },
   ],
 })
-export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
+export class AmexioCheckBoxGroupComponent extends ValueAccessorBaseComponent<any>
   implements OnInit, Validators {
 
   /*

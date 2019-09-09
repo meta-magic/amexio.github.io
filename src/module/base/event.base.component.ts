@@ -16,9 +16,9 @@
 */
 
 import { ChangeDetectorRef, ElementRef, Renderer2 } from '@angular/core';
-import { ValueAccessorBase } from './value-accessor';
+import { ValueAccessorBaseComponent } from './value-accessor';
 
-export class  EventBaseComponent<T> extends ValueAccessorBase<T> {
+export class  EventBaseComponent<T> extends ValueAccessorBaseComponent<T> {
 
     self = false;
     itemClick = false;

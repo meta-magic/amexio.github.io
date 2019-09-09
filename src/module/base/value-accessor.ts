@@ -14,12 +14,18 @@
 * limitations under the License.
 */
 
+import { Component } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
 const noop = () => {
 };
 
-export abstract class ValueAccessorBase<T> implements ControlValueAccessor {
+@Component({
+  selector: 'value-accessor',
+  template: './value-accessor.component.html',
+})
+
+export class ValueAccessorBaseComponent<T> implements ControlValueAccessor {
 
   onTouchedCallback: () => void = noop;
   onChangeCallback: (_: any) => void = noop;

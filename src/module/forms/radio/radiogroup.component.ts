@@ -19,7 +19,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { CommonDataService } from '../../services/data/common.data.service';
-import { ValueAccessorBase } from './../../base/value-accessor';
+import { ValueAccessorBaseComponent } from './../../base/value-accessor';
 import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 
 import { of } from 'rxjs';
@@ -37,7 +37,7 @@ const noop = () => {
   }],
 })
 
-export class AmexioRadioGroupComponent extends ValueAccessorBase<string> implements OnInit, Validators {
+export class AmexioRadioGroupComponent extends ValueAccessorBaseComponent<string> implements OnInit, Validators {
 
   /*
    Properties
