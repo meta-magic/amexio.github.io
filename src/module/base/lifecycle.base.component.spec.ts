@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LifeCycleBaseComponent } from '../base/lifecycle.base.component';
 import { DOCUMENT } from '@angular/common';
 
-fdescribe('lifecycle', () => {
+describe('lifecycle', () => {
   let comp1: LifeCycleBaseComponent;
   let fixture1: ComponentFixture<LifeCycleBaseComponent>;
 
