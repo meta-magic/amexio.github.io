@@ -76,7 +76,7 @@ describe('lifecycle', () => {
 
 
 
- 
+
   // it('maxScreenChange Call', () => {
   //   comp1.maxScreenChange(event)
   //   // comp1.elem = document.documentElement;
@@ -97,89 +97,181 @@ describe('lifecycle', () => {
   //   return comp1.fullscreenMax;
   // })
 
-  it('exitHandler Call if ', () => {
+
+
+  it('minScreenChange call msExitFullscreen true other false', () => {
+    comp1.minScreenChange(event);
+    event.stopPropagation();
+    comp1.desktopFlag = true;
+    comp1.fullscreenMax = !comp1.fullscreenMax;
+    comp1.document.exitFullscreen = false;
+    comp1.document.mozCancelFullScreen = false;
+    comp1.document.webkitExitFullscreen = false;
+    comp1.document.msExitFullscreen = true;
+
+    expect(comp1.desktopFlag).toEqual(true);
+    expect(comp1.document.exitFullscreen).toEqual(false);
+    expect(comp1.document.mozCancelFullScreen).toEqual(false);
+    expect(comp1.document.webkitExitFullscreen).toEqual(false);
+
+    expect(comp1.document.msExitFullscreen).toEqual(true);
+    // expect(comp1.document.msExitFullscreen()).toHaveBeenCalled;
+  });
+
+  it('minScreenChange call webkitExitFullscreen true other false', () => {
+    comp1.minScreenChange(event);
+    event.stopPropagation();
+    comp1.desktopFlag = true;
+    comp1.fullscreenMax = !comp1.fullscreenMax;
+    comp1.document.exitFullscreen = false;
+    comp1.document.mozCancelFullScreen = false;
+    comp1.document.webkitExitFullscreen = true;
+    comp1.document.msExitFullscreen = false;
+
+    expect(comp1.desktopFlag).toEqual(true);
+    expect(comp1.document.exitFullscreen).toEqual(false);
+    expect(comp1.document.mozCancelFullScreen).toEqual(false);
+    expect(comp1.document.webkitExitFullscreen).toEqual(true);
+
+    expect(comp1.document.msExitFullscreen).toEqual(false);
+    // expect(comp1.document.webkitExitFullscreen()).toHaveBeenCalled;
+  });
+
+  it('minScreenChange call mozCancelFullScreen true other false', () => {
+    comp1.minScreenChange(event);
+    event.stopPropagation();
+    comp1.desktopFlag = true;
+    comp1.fullscreenMax = !comp1.fullscreenMax;
+    comp1.document.exitFullscreen = false;
+    comp1.document.mozCancelFullScreen = true;
+    comp1.document.webkitExitFullscreen = false;
+    comp1.document.msExitFullscreen = false;
+
+    expect(comp1.desktopFlag).toEqual(true);
+    expect(comp1.document.exitFullscreen).toEqual(false);
+    expect(comp1.document.mozCancelFullScreen).toEqual(true);
+    expect(comp1.document.webkitExitFullscreen).toEqual(false);
+
+    expect(comp1.document.msExitFullscreen).toEqual(false);
+    // expect(comp1.document.mozCancelFullScreen()).toHaveBeenCalled;
+  });
+  it('minScreenChange call mozCancelFullScreen true other false', () => {
+
+    comp1.minScreenChange(event);
+    event.stopPropagation();
+    comp1.desktopFlag = true;
+    comp1.fullscreenMax = !comp1.fullscreenMax;
+    comp1.document.exitFullscreen = true;
+    comp1.document.mozCancelFullScreen = false;
+    comp1.document.webkitExitFullscreen = false;
+    comp1.document.msExitFullscreen = false;
+
+    expect(comp1.desktopFlag).toEqual(true);
+    expect(comp1.document.exitFullscreen).toEqual(true);
+    expect(comp1.document.mozCancelFullScreen).toEqual(false);
+    expect(comp1.document.webkitExitFullscreen).toEqual(false);
+
+    expect(comp1.document.msExitFullscreen).toEqual(false);
+    // comp1.document.msExitFullscreen();
+  });
+
+
+
+  it('exitHandler Call if for amexio-card-ce ', () => {
     comp1.exitHandler();
     comp1.fullscreenMax = false;
     expect(comp1.document.webkitIsFullScreen).toEqual(false);
     comp1.fullscreenMax = false;
-  
+    fixture1.detectChanges();
+    comp1.instance = {
+      amexioComponentId: "amexio-card-ce",
+      footeralign: "right",
+      headerinst: {
+        dirty: false,
+        first: undefined,
+        last: undefined,
+        length: 0,
+        fullscreenMaxCard: false,
+      },
+      fullscreenMax: false
+    }
+
+    expect(comp1.instance).toBeDefined();
+    expect(comp1.instance.amexioComponentId).toEqual('amexio-card-ce');
+    comp1.instance.maximizeflagchanged = false;
+    expect(comp1.instance.headerinst).toBeDefined();
+    comp1.instance.headerinst.fullscreenMaxCard = true
+  }); 
+  it('exitHandler Call if for amexio-card ', () => {
+    comp1.exitHandler();
+    comp1.fullscreenMax = false;
+    expect(comp1.document.webkitIsFullScreen).toEqual(false);
+    comp1.fullscreenMax = false;
+    comp1.instance = {
+      amexioComponentId: "amexio-card",
+      footeralign: "right",
+      headerinst: {
+        dirty: false,
+        first: undefined,
+        last: undefined,
+        length: 0,
+        fullscreenMaxCard: false,
+      },
+      fullscreenMax: false
+    }
+
+    expect(comp1.instance).toBeDefined();
+    expect(comp1.instance.amexioComponentId).toEqual('amexio-card');
+    comp1.instance.maximizeflagchanged = false;
+    expect(comp1.instance.headerinst).toBeDefined();
+    comp1.instance.headerinst.fullscreenMaxCard = true;
+  });
+
+
+  it('exitHandler Call if for amexio-window', () => {
+    comp1.exitHandler();
+    comp1.fullscreenMax = false;
+    expect(comp1.document.webkitIsFullScreen).toEqual(false);
+    comp1.fullscreenMax = false;
+    comp1.instance = {
+      amexioComponentId: "amexio-window",
+      footeralign: "right",
+      headerinst: {
+        dirty: false,
+        first: undefined,
+        last: undefined,
+        fullscreenMaxCard: false,
+        length: 0
+      },
+      fullscreenMax: false
+    }
+
+    expect(comp1.instance).toBeDefined();
+    expect(comp1.instance.amexioComponentId).toEqual('amexio-window');
+    comp1.instance.maximizeflagchanged = false;
+    expect(comp1.instance.headerinst).toBeDefined();
+    comp1.instance.headerinst.fullscreenMaxCard = true
+  });
+
+  it('exitHandler Call else  ', () => {
+    comp1.exitHandler();
+    comp1.fullscreenMax = false;
+    expect(comp1.document.webkitIsFullScreen).toEqual(false);
+    comp1.fullscreenMax = false;
+    comp1.instance = {
+      amexioComponentId: "amexio-window",
+      footeralign: "right",
+      fullscreenMax: false
+    }
+
+    expect(comp1.instance).not.toBe(undefined);
+    expect(comp1.instance.amexioComponentId).toEqual('amexio-window');
+    comp1.instance.maximizeflagchanged = false;
+
+    expect(comp1.instance.headerinst).toBeUndefined();
+   
+  });
+
 });
 
-
-it('minScreenChange call msExitFullscreen true other false', () => {
-  comp1.minScreenChange(event);
-  event.stopPropagation();
-  comp1.desktopFlag = true;
-  comp1.fullscreenMax = !comp1.fullscreenMax;
-  comp1.document.exitFullscreen = false;
-  comp1.document.mozCancelFullScreen = false;
-  comp1.document.webkitExitFullscreen = false;
-  comp1.document.msExitFullscreen =true;
-
-  expect(comp1.desktopFlag).toEqual(true);
-  expect(comp1.document.exitFullscreen).toEqual(false);
-  expect(comp1.document.mozCancelFullScreen).toEqual(false);
-  expect(comp1.document.webkitExitFullscreen).toEqual(false);
-
-  expect(comp1.document.msExitFullscreen).toEqual(true);
-  // expect(comp1.document.msExitFullscreen()).toHaveBeenCalled;
-});
-
-it('minScreenChange call webkitExitFullscreen true other false', () => {
-  comp1.minScreenChange(event);
-  event.stopPropagation();
-  comp1.desktopFlag = true;
-  comp1.fullscreenMax = !comp1.fullscreenMax;
-  comp1.document.exitFullscreen = false;
-  comp1.document.mozCancelFullScreen = false;
-  comp1.document.webkitExitFullscreen = true;
-  comp1.document.msExitFullscreen =false;
-
-  expect(comp1.desktopFlag).toEqual(true);
-  expect(comp1.document.exitFullscreen).toEqual(false);
-  expect(comp1.document.mozCancelFullScreen).toEqual(false);
-  expect(comp1.document.webkitExitFullscreen).toEqual(true);
-
-  expect(comp1.document.msExitFullscreen).toEqual(false);
-  // expect(comp1.document.webkitExitFullscreen()).toHaveBeenCalled;
-});
-
-it('minScreenChange call mozCancelFullScreen true other false', () => {
-  comp1.minScreenChange(event);
-  event.stopPropagation();
-  comp1.desktopFlag = true;
-  comp1.fullscreenMax = !comp1.fullscreenMax;
-  comp1.document.exitFullscreen = false;
-  comp1.document.mozCancelFullScreen = true;
-  comp1.document.webkitExitFullscreen = false;
-  comp1.document.msExitFullscreen =false;
-
-  expect(comp1.desktopFlag).toEqual(true);
-  expect(comp1.document.exitFullscreen).toEqual(false);
-  expect(comp1.document.mozCancelFullScreen).toEqual(true);
-  expect(comp1.document.webkitExitFullscreen).toEqual(false);
-
-  expect(comp1.document.msExitFullscreen).toEqual(false);
-  // expect(comp1.document.mozCancelFullScreen()).toHaveBeenCalled;
-});
-it('minScreenChange call mozCancelFullScreen true other false', () => {
-
-  comp1.minScreenChange(event);
-  event.stopPropagation();
-  comp1.desktopFlag = true;
-  comp1.fullscreenMax = !comp1.fullscreenMax;
-  comp1.document.exitFullscreen = true;
-  comp1.document.mozCancelFullScreen = false;
-  comp1.document.webkitExitFullscreen = false;
-  comp1.document.msExitFullscreen =false;
-
-  expect(comp1.desktopFlag).toEqual(true);
-  expect(comp1.document.exitFullscreen).toEqual(true);
-  expect(comp1.document.mozCancelFullScreen).toEqual(false);
-  expect(comp1.document.webkitExitFullscreen).toEqual(false);
-
-  expect(comp1.document.msExitFullscreen).toEqual(false);
-  // comp1.document.msExitFullscreen();
-});
-});
 
