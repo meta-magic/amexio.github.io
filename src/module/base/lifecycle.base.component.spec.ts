@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LifeCycleBaseComponent } from '../base/lifecycle.base.component';
 import { DOCUMENT } from '@angular/common';
 
-describe('lifecycle', () => {
+fdescribe('lifecycle', () => {
   let comp1: LifeCycleBaseComponent;
   let fixture1: ComponentFixture<LifeCycleBaseComponent>;
 
@@ -198,6 +198,8 @@ describe('lifecycle', () => {
 
     expect(comp1.instance).toBeDefined();
     expect(comp1.instance.amexioComponentId).toEqual('amexio-card-ce');
+    expect(comp1.instance.amexioComponentId).not.toEqual('amexio-card');
+    expect(comp1.instance.amexioComponentId).not.toEqual('amexio-window');
     comp1.instance.maximizeflagchanged = false;
     expect(comp1.instance.headerinst).toBeDefined();
     comp1.instance.headerinst.fullscreenMaxCard = true
@@ -222,6 +224,9 @@ describe('lifecycle', () => {
 
     expect(comp1.instance).toBeDefined();
     expect(comp1.instance.amexioComponentId).toEqual('amexio-card');
+    expect(comp1.instance.amexioComponentId).not.toEqual('amexio-card-ce');
+    expect(comp1.instance.amexioComponentId).not.toEqual('amexio-window');
+   
     comp1.instance.maximizeflagchanged = false;
     expect(comp1.instance.headerinst).toBeDefined();
     comp1.instance.headerinst.fullscreenMaxCard = true;
@@ -247,6 +252,8 @@ describe('lifecycle', () => {
     }
 
     expect(comp1.instance).toBeDefined();
+    expect(comp1.instance.amexioComponentId).not.toEqual('amexio-card-ce');
+    expect(comp1.instance.amexioComponentId).not.toEqual('amexio-card');
     expect(comp1.instance.amexioComponentId).toEqual('amexio-window');
     comp1.instance.maximizeflagchanged = false;
     expect(comp1.instance.headerinst).toBeDefined();
@@ -259,15 +266,14 @@ describe('lifecycle', () => {
     expect(comp1.document.webkitIsFullScreen).toEqual(false);
     comp1.fullscreenMax = false;
     comp1.instance = {
-      amexioComponentId: "amexio-window",
+      amexioComponentId: "amexio",
       footeralign: "right",
       fullscreenMax: false
     }
-
-    expect(comp1.instance).not.toBe(undefined);
-    expect(comp1.instance.amexioComponentId).toEqual('amexio-window');
-    comp1.instance.maximizeflagchanged = false;
-
+    expect(comp1.instance).toBeDefined();
+    expect(comp1.instance.amexioComponentId).not.toEqual('amexio-card-ce');
+    expect(comp1.instance.amexioComponentId).not.toEqual('amexio-card');
+    expect(comp1.instance.amexioComponentId).not.toEqual('amexio-window');
     expect(comp1.instance.headerinst).toBeUndefined();
    
   });
