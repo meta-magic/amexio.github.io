@@ -61,3 +61,14 @@
         [position-up]="posixUp">
     </base-contextmenu>
 </ng-container>
+
+<amexio-dialogue  [(show)]="openDialogue"
+[button-size]="'medium'"
+[material-design]="true"
+[title]="messageTitle"
+[message]="message"
+[message-type]="'confirm'"
+(onSuccess)="onOkClick($event)" 
+(onFailure)="onCancelClick($event)"
+>
+</amexio-dialogue>

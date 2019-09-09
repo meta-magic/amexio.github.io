@@ -177,6 +177,10 @@ description : sets background color for active tab
    description : It will gives you row clicked data.
    */
   @Output() rightClick: any = new EventEmitter<any>();
+
+  @Input('enable-confirm-box') enableConfirmBox: boolean;
+  @Input('message-title') messageTitle = 'confirm';
+  @Input('message') message = 'Are You Sure?';
   @Output() onCloseClick: any = new EventEmitter<any>();
 
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
@@ -263,7 +267,8 @@ description : sets background color for active tab
 
   themeCss: any;
   amexioComponentId = 'amexio-tab';
-
+  openDialogue: boolean;
+  tempTab: any;
   globalClickListenFunc: () => void;
 
   constructor(
@@ -641,7 +646,27 @@ description : sets background color for active tab
     this.shownext = true;
   }
 
+  onOkClick(event: any) {
+    this.tabPillClose(this.tempTab);
+    this.openDialogue = false;
+  }
+
+  onCancelClick(event: any) {
+    this.openDialogue = false;
+  }
+
   closeTab(tabNode: AmexioTabPillComponent) {
+    if (this.enableConfirmBox) {
+      this.openDialogue = true;
+      this.tempTab = tabNode;
+    }
+    if (!this.enableConfirmBox) {
+      this.tabPillClose(tabNode);
+    }
+    this.onCloseClick.emit(tabNode);
+  }
+
+  tabPillClose(tabNode: any) {
     const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
     let tabHighlightIndex = 0;
@@ -674,9 +699,8 @@ description : sets background color for active tab
     if (newTab.length === 1) {
       newTab[0].closable = false;
     }
-
-    this.onCloseClick.emit(tabNode);
   }
+
   tabDomRemove(tab: any) {
     const removeNode = document.getElementById(tab.tabId).parentNode;
     const parentRefNode = removeNode.parentNode;
