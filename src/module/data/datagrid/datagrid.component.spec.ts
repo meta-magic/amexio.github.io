@@ -27,18 +27,21 @@ class TestWrapperComponent {
 describe('amexio-datagrid', () => {
     let comp: AmexioDatagridComponent;
     let fixture: ComponentFixture<TestWrapperComponent>;
-
+    let comDataService: CommonDataService;
     let filterCloneData: any;
     let columnRefArray: any;
+
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule, HttpClientModule],
-            declarations: [AmexioGridColumnComponent, AmexioDatagridComponent, TestWrapperComponent, 
+            declarations: [AmexioGridColumnComponent, AmexioDatagridComponent, TestWrapperComponent,
                 AmexioRadioGroupComponent, AmexioPaginatorComponent, AmexioContextMenuComponent, DisplayFieldComponent, CommonIconComponent, DataGridFilterComponent],
-            providers: [IconLoaderService, CommonDataService],
+            providers: [IconLoaderService,
+                CommonDataService],
         }).compileComponents();
     });
     beforeEach(() => {
+        comDataService = TestBed.get(CommonDataService);
         fixture = TestBed.createComponent(TestWrapperComponent);
         comp = fixture.debugElement.children[0].componentInstance;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
@@ -283,7 +286,6 @@ describe('amexio-datagrid', () => {
         let resultData: any = [];
         filterCloneData.forEach((option: any, index: any) => {
             if (index == 0) {
-                console.log("************************8comp.filterOpertion(option, filteredObj)", comp.filterOpertion(option, filteredObj))
                 // expect(comp.filterOpertion(option, filteredObj)).toEqual(true);
                 // resultData.push(option);
             }
@@ -341,7 +343,6 @@ describe('amexio-datagrid', () => {
             // expect(filterOpt.type).toEqual('number') 
             //     statusCollection.push(comp.checkStringFilter(filterOpt.filter, data[filterOpt.key].toLowerCase(), filterOpt.value.toLowerCase()));
             // }
-            console.log("statusCollection************************8", statusCollection)
             expect(statusCollection.filter((status: any) => status === true).length).toEqual(0)
             condition = true;
 
@@ -469,7 +470,6 @@ describe('amexio-datagrid', () => {
     //         expect(filteredObj[1].option).toEqual('AND')
     //         const filterObj1 = [];
     //         filterObj1.push(filteredObj[0]);
-    //         console.log("filterCloneData@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", filterCloneData);
     //         ANDData = comp.filterOperation(filterObj1, filterCloneData);
     //     }
     // });
@@ -1066,4 +1066,44 @@ describe('amexio-datagrid', () => {
         }
 
     })
+
+
+
+    it('ngOnInit  method testing if ', () => {
+        fixture.detectChanges();
+        comp.httpmethod = 'get';
+        comp.httpurl = 'https/rgh';
+        comp.ngOnInit();
+        expect(comp.httpmethod).toEqual('get');
+        expect(comp.httpurl).toEqual('https/rgh');
+        comDataService.fetchData(comp.httpurl, comp.httpmethod).subscribe(
+            (response: any) => {
+                comp.cloneResponseData = response;
+                comp.responseData = JSON.parse(JSON.stringify(comp.cloneResponseData));
+            },
+            (error: any) => {
+            },
+            () => {
+                comp.setData(comp.responseData);
+            }
+        );
+    });
+
+    // it('ngOnInit  method testing else', () => {
+    //     fixture.detectChanges();
+    //     comp.httpmethod = 'ok';
+    //     comp.httpurl = 'https/gh';
+    //     comp.ngOnInit();
+
+    //     comp.data = [
+    //         {
+    //             selected: true,
+    //             tabindex: '0'
+    //         }
+    //     ];
+    //     expect(comp.httpmethod).not.toEqual('get');
+    //     expect(comp.httpurl).not.toEqual('https/rgh');
+    //     expect(comp.data).toBeDefined();
+
+    // });
 });
