@@ -1,0 +1,19 @@
+<div class="card-container" style="margin-left:15px; position: absolute; height: 130px; margin-top: 15px;align-items: center;z-index:70">
+    <amexio-label size="small-bold" [enable-click]="false" [word-wrap]="true"> {{value}}</amexio-label>
+
+    <span class="btnspan">
+        <span *ngFor="let item of btnArray1" class="btn">
+            <button type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+        </span>
+        <span class="btn">
+            <button type="button" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
+            </button>
+        </span>
+        <br>
+        <span *ngFor="let item of btnArray2" class="btn">
+            <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+        </span>
+
+    </span>
+
+</div>

@@ -1,0 +1,9 @@
+.btncolor {
+    background-color: $componentActiveBGColor;
+    color: $componentActiveFontColor;
+}
+
+.btncolor:hover {
+    background-color: $componentHoverBGColor;
+    color: $componentHoverFontColor;
+}

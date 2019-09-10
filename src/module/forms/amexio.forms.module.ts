@@ -20,6 +20,7 @@ import { AmexioChipsComponent } from './chips/chips.component';
 import { AmexioCreditcardComponent } from './creditcard/creditcard.component';
 import { DarkmodeComponent } from './darkmode/darkmode.component';
 import { AmexioDateTimePickerComponent } from './datetimepicker/datetimepicker.component';
+import { AmexioDialpadComponent } from './dialpad/dialpad.component';
 import { AmexioDropDownMenuComponent } from './dropdown-menu/dropdownmenu.component';
 import { AmexioDropDownitemsComponent } from './dropdown-menu/dropdownmenu.component.items';
 import { AmexioDropDownComponent } from './dropdown/dropdown.component';
@@ -125,7 +126,7 @@ const FORM_COMPONENTS = [
   AmexioMultipleDatePickerComponent,
   GeolocComponent,
   AmexioInputPatternDirective,
-
+  AmexioDialpadComponent,
 ];
 
 @NgModule({

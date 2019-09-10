@@ -499,4 +499,19 @@
 
 @import "component/multidatepicker-structure.scss";
 
+/****************************************************************************
+    Component Name : Dialpad
+    Version : Amexio v5.19 onwards
+*****************************************************************************/
+
+@import "component/dialpad-vars.scss";
+
+/** dialpad - Visual CSS **/
+
+@import "component/dialpad-visual.scss";
+
+/** dialpad - Structure CSS **/
+
+@import "component/dialpad-structure.scss";
+
 
