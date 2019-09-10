@@ -706,7 +706,7 @@ describe('amexio-datagrid', () => {
         comp.selectedRowNo = rowIndex;
     });
 
-    it('assignAndOrData Method', () => {
+    it('assignAndOrData Method if case', () => {
         comp.filterCloneData = [{
             checkBoxSelectClass: "checkbox default",
             emailAddress: "tomhanks@gmail.com",
@@ -813,12 +813,134 @@ describe('amexio-datagrid', () => {
                 expect(filteredObj[i - 1].option).toEqual('OR');
                 // comp.filterOperation(filteredObj, ORData);
 
-                comp.filterOperation(filteredObj, comp.filterCloneData);
+                comp.filterOperation(filteredObj, ORData);
             }
             if (i === 2) {
                 expect(filteredObj[i - 1].option).toEqual('AND');
                 // comp.filterOperation(filteredObj, ANDData);
-                comp.filterOperation(filteredObj, comp.filterCloneData);
+                comp.filterOperation(filteredObj, ANDData);
+            }
+
+
+
+        }
+
+    })
+
+    it('assignAndOrData Method else case', () => {
+        comp.filterCloneData = [{
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Program Direct",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Tom Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }, {
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Architect",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anish Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }];
+
+        let ORData = [{
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Program Direct",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Tom Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }, {
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Architect",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anish Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }];
+
+        let ANDData = [{
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Program Direct",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Tom Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }, {
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Architect",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anish Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }];
+        let filteredObj = [{
+            filter: "1",
+            index: 0,
+            key: "preferredFullName",
+            lastColumn: 3,
+            option: "ORN",
+            type: "string",
+            value: "T"
+        }, {
+            filter: "1",
+            index: 1,
+            key: "jobTitle",
+            lastColumn: 3,
+            option: "ORN",
+            type: "string",
+            value: "A"
+        }];
+        for (let i = 1; i < filteredObj.length; i++) {
+            fixture.detectChanges();
+            comp.assignAndOrData(filteredObj, i, ORData, ANDData)
+            if (i === 1) {
+                expect(filteredObj[i - 1].option).not.toEqual('OR');
+                // comp.filterOperation(filteredObj, ORData);
+
+                // comp.filterOperation(filteredObj, comp.filterCloneData);
+            }
+            if (i === 2) {
+                expect(filteredObj[i - 1].option).not.toEqual('AND');
+                // comp.filterOperation(filteredObj, ANDData);
+                // comp.filterOperation(filteredObj, comp.filterCloneData);
             }
 
 
