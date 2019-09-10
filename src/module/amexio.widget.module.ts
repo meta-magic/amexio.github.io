@@ -27,12 +27,6 @@ import { RoutedirDirective } from './directive/router-animation.directive';
 
 import { ValueAccessorBaseComponent } from '../module/base/value-accessor';
 
-import { ListBaseDatepickerComponent } from '../module/base/list.base.datepicker.component';
-
-import { LifeCycleBaseComponent } from '../module/base/lifecycle.base.component';
-
-import { BaseInputEventComponent } from '../module/base/base.inputevent.component';
-
 export * from './services/data/common.data.service';
 export * from './services/device/device.query.service';
 export * from './services/icon/icon.service';
@@ -80,7 +74,6 @@ export * from './services/routing/routing.service';
     RoutedirDirective,
   ],
   declarations: [RoutedirDirective, RoundEdgesDirective, AmexioFullScreenDirective,
-    ListBaseDatepickerComponent, BaseInputEventComponent, LifeCycleBaseComponent, BaseInputEventComponent,
     ValueAccessorBaseComponent],
   providers: [CommonDataService, DeviceQueryService, IconLoaderService, RouterService],
 })
