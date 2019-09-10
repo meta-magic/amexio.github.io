@@ -42,7 +42,7 @@ export class CheckboxComponent implements OnInit {
   @Input() disabled: boolean;
 
   componentId: string;
-  constructor(@Host() private checkboxGroup: AmexioCheckBoxGroupComponent) {
+  constructor( @Host() private checkboxGroup: AmexioCheckBoxGroupComponent) {
 
   }
 
@@ -72,10 +72,6 @@ export class CheckboxComponent implements OnInit {
   }
 
   createCompId(inputType: any, name: any) {
-    if (name === '' || name === null) {
-      return inputType + '_' + Math.floor(Math.random() * 1000 + 999);
-    } else {
-      return inputType + '_' + name;
-    }
+    return inputType + '_' + name + '_' + Math.floor(Math.random() * 1000 + 999);
   }
 }
