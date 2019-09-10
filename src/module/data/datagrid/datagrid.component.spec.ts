@@ -33,7 +33,8 @@ describe('amexio-datagrid', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule, HttpClientModule],
-            declarations: [AmexioGridColumnComponent, AmexioDatagridComponent, TestWrapperComponent, AmexioRadioGroupComponent, AmexioPaginatorComponent, AmexioContextMenuComponent, DisplayFieldComponent, CommonIconComponent, DataGridFilterComponent],
+            declarations: [AmexioGridColumnComponent, AmexioDatagridComponent, TestWrapperComponent, 
+                AmexioRadioGroupComponent, AmexioPaginatorComponent, AmexioContextMenuComponent, DisplayFieldComponent, CommonIconComponent, DataGridFilterComponent],
             providers: [IconLoaderService, CommonDataService],
         }).compileComponents();
     });
@@ -706,7 +707,7 @@ describe('amexio-datagrid', () => {
         comp.selectedRowNo = rowIndex;
     });
 
-    it('assignAndOrData Method if case', () => {
+    it('assignAndOrData Method if case for OR', () => {
         comp.filterCloneData = [{
             checkBoxSelectClass: "checkbox default",
             emailAddress: "tomhanks@gmail.com",
@@ -827,6 +828,123 @@ describe('amexio-datagrid', () => {
 
     })
 
+
+    it('assignAndOrData Method if case  for AND ', () => {
+        comp.filterCloneData = [{
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Program Direct",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Tom Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }, {
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Architect",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anish Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }];
+
+        let ORData = [{
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Program Direct",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Tom Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }, {
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Architect",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anish Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }];
+
+        let ANDData = [{
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Program Direct",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Tom Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }, {
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Architect",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anish Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0"
+        }];
+        let filteredObj = [{
+            filter: "1",
+            index: 0,
+            key: "preferredFullName",
+            lastColumn: 3,
+            option: "AND",
+            type: "string",
+            value: "T"
+        }, {
+            filter: "1",
+            index: 1,
+            key: "jobTitle",
+            lastColumn: 3,
+            option: "AND",
+            type: "string",
+            value: "A"
+        }];
+        for (let i = 1; i < filteredObj.length; i++) {
+            comp.assignAndOrData(filteredObj, i, ORData, ANDData)
+            if (i === 1) {
+                expect(filteredObj[i - 1].option).not.toEqual('OR');
+                // comp.filterOperation(filteredObj, ORData);
+
+                comp.filterOperation(filteredObj, ORData);
+            }
+            if (i === 2) {
+                expect(filteredObj[i - 1].option).toEqual('AND');
+                // comp.filterOperation(filteredObj, ANDData);
+                comp.filterOperation(filteredObj, ANDData);
+            }
+        }
+    })
     it('assignAndOrData Method else case', () => {
         comp.filterCloneData = [{
             checkBoxSelectClass: "checkbox default",
