@@ -4,7 +4,7 @@
     <amexio-button  *ngIf="close" 
       [label]="title"
       [type]="'theme-color'"
-      [right-icon]="'fa fa-close'" 
+      [closable-icon]="true"
       (onIconClick)="iconClick(taskbarItemId)"
       (onClick)="taskbarItemClick()">
   </amexio-button>

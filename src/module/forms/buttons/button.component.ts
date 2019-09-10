@@ -165,6 +165,8 @@ description : Set the color
 
   @Input('right-icon') rightIcon: string;
 
+  @Input('closable-icon') closableIcon = false;
+
   bgBorderColor = '';
 
   badgeCssClass = '';
@@ -175,6 +177,7 @@ description : Set the color
   buttonClick(event: any) {
     this.ispressed = !this.ispressed;
     if (!this.disabled) {
+      event.stopPropagation();
       this.onClick.emit(event);
     }
   }

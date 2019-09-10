@@ -39,8 +39,14 @@
     </ng-container>
   </span>
   <ng-container *ngIf="rightIcon">
-    <span style="padding-left: 5px;" *ngIf="rightIcon" (click)="IconClick($event)">
+    <span style="padding-left: 5px;" *ngIf="rightIcon" (click)="buttonClick($event)">
       <amexio-c-icon [customclass]="rightIcon">
+      </amexio-c-icon>
+    </span>
+  </ng-container>
+  <ng-container *ngIf="closableIcon">
+    <span style="padding-left: 5px;" *ngIf="closableIcon" (click)="IconClick($event)">
+      <amexio-c-icon [customclass]="'fa fa-close'">
       </amexio-c-icon>
     </span>
   </ng-container>

@@ -87,24 +87,6 @@ describe('amexio-button', () => {
 
   });
 
-  it('check method  buttonClick', () => {
-    let btn: any;
-    comp.buttonClick(btn);
-    comp.disabled = false;
-
-    expect(comp.disabled).toEqual(false);
-    comp.onClick.subscribe((g: any) => {
-      expect(btn).toEqual(g);
-    });
-
-    comp.disabled = true;
-
-    expect(comp.disabled).toEqual(true);
-    comp.onClick.subscribe((g: any) => {
-      expect(btn).toEqual(g);
-    });
-  });
-
   it('check setDisabled method', () => {
     let dis: boolean;
     comp.setDisabled(dis);
@@ -141,5 +123,22 @@ describe('amexio-button', () => {
     expect(comp.disabled).toEqual(true);
     comp.IconClick(event);
     expect(comp.disabled).toEqual(true);
+  });
+
+  it('check method  buttonClick() if ', () => {
+    comp.buttonClick(event);
+    comp.ispressed = !comp.ispressed;
+    comp.disabled = true;
+    expect(comp.disabled).toEqual(true);
+    event.stopPropagation();
+    comp.onClick.subscribe((g: any) => {
+      expect(event).toEqual(g);
+    });
+  });
+  it('check method  buttonClick() else', () => {
+    comp.buttonClick(event);
+    comp.ispressed = !comp.ispressed;
+    comp.disabled = false;
+    expect(comp.disabled).toEqual(false);
   });
 });
