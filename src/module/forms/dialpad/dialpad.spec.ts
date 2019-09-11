@@ -5,7 +5,7 @@ import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioDialpadComponent } from './dialpad.component';
 import { AmexioLabelComponent } from '../label/label.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
-fdescribe('amexio-dialpad', () => {
+describe('amexio-dialpad', () => {
     let comp: AmexioDialpadComponent;
     let fixture: ComponentFixture<AmexioDialpadComponent>;
 
