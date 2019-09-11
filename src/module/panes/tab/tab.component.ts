@@ -667,13 +667,11 @@ description : sets background color for active tab
   }
 
   tabPillClose(tabNode: any) {
-    console.log('TABNODE', tabNode);
     const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
     let tabHighlightIndex = 0;
     this.tabCollection.forEach((tab: any, i: number) => {
       tab.active = false;
-      console.log('tab', tab);
       if (tab.tabId === tabNode.tabId) {
         tabHighlightIndex = index;
         if (tab.hasOwnProperty('tabpillinstance')) {
