@@ -5,7 +5,7 @@ import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioDialpadComponent } from './dialpad.component';
 import { AmexioLabelComponent } from '../label/label.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
-describe('amexio-dialpad', () => {
+fdescribe('amexio-dialpad', () => {
     let comp: AmexioDialpadComponent;
     let fixture: ComponentFixture<AmexioDialpadComponent>;
 
@@ -18,7 +18,7 @@ describe('amexio-dialpad', () => {
         });
         fixture = TestBed.createComponent(AmexioDialpadComponent);
         comp = fixture.componentInstance;
-        comp.btnValue = '';
+        comp.value = '';
         comp.btnArray1 = [0, 1, 2, 3, 4];
         comp.btnArray2 = [5, 6, 7, 8, 9];
     });
@@ -26,16 +26,16 @@ describe('amexio-dialpad', () => {
     it('getBtnData()', () => {
         let data = 3;
         comp.getBtnData(data);
-        comp.btnValue = comp.btnValue + data;
+        comp.value = comp.value + data;
     });
 
 
     it('eraseData()', () => {
-        comp.btnValue = '123';
+        comp.value = '123';
         comp.eraseData();
         let str;
-        str = comp.btnValue.slice(0, -1);
-        comp.btnValue = str;
+        str = comp.value.slice(0, -1);
+        comp.value = str;
     });
 
 });
