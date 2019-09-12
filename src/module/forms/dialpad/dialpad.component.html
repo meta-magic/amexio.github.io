@@ -17,7 +17,7 @@
 
 </div> -->
 
-<div>
+<!-- <div>
     <amexio-label size="small" [enable-click]="false" [word-wrap]="true"> {{label}}</amexio-label>
     <br>
     <input class="input-control" style=" margin-bottom: 6px" type="{{textType}}" value="{{value}}" readonly>
@@ -40,4 +40,31 @@
         </span>
     </span>
 
-</div>
+</div> -->
+
+<label> {{label}}</label>
+<br>
+<input class="input-control" style=" margin-bottom: 6px" type="{{textType}}" value="{{value}}" readonly>
+
+<span *ngIf="type == '2-rows'" class="btnspan">
+  <span *ngFor="let item of btnArray1" class="btn">
+    <button type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+  </span>
+  <span class="btn">
+    <button type="button" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
+    </button>
+  </span>
+</span>
+<span class="btnspan">
+
+  <span *ngFor="let item of btnArray2" class="btn ">
+    <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+  </span>
+  <span class="btn">
+      <!-- style="margin-top:8px" -->
+      <button type="button" style="margin-top:8px"  class="fa fa-eraser pointer btncolor" (click)="clearData()">
+      </button>
+    </span>
+</span>
+
+
