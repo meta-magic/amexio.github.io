@@ -24,7 +24,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     <a *ngIf="(type=='link')" [ngStyle]="{'color':color}" class="top-nav-link" style="margin-right:20px"
     (click)="onClick($event)"><i *ngIf="icon" [ngClass]="icon"></i>{{title}}</a>
 
-    <button *ngIf="(type=='button')" [ngStyle]="{'color':color}" class="top-nav-button" (click)="onClick($event)">
+    <button *ngIf="(type=='button')" [ngStyle]="{'color':color}" class="top-nav-button" style="cursor: pointer" (click)="onClick($event)">
     <i *ngIf="icon" style="padding-right:10px" [ngClass]="icon"></i>{{title}}</button>
 
     <div  *ngIf="(type=='slider')" style="width: 60px;
