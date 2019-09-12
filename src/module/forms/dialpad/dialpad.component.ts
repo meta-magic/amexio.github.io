@@ -8,25 +8,82 @@ export class AmexioDialpadComponent implements OnInit {
     btnArray1 = [0, 1, 2, 3, 4];
     btnArray2 = [5, 6, 7, 8, 9];
     textType = '';
+    isValid = false;
     @Input() value = '';
     @Input('field-label') label = '';
     @Input() type = '2-rows';
     @Input() random: boolean;
     @Input() password: boolean;
+    @Input('max-length') maxlen: number;
+    @Input('min-length') minlen: number;
+    @Input('icon-feedback') iconfeedback = false;
+
     @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
+
     @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
     ngOnInit() {
+
+        if (!this.minlen && !this.maxlen) {
+            this.minlen = 1;
+            this.validateMinMax();
+        } else {
+            this.validateMinMax();
+        }
         if (this.password) {
             this.textType = 'password';
         } else {
             this.textType = 'text';
         }
     }
+
+    validateMinMax() {
+        if (this.iconfeedback && this.value) {
+            if (this.minlen && this.maxlen) {
+                if (this.value.length >= this.minlen && this.value.length <= this.maxlen) {
+                    this.isValid = true;
+                } else {
+                    this.isValid = false;
+                }
+            }
+            this.validateMinlen();
+            this.validateMaxlen();
+        }
+    }
+
+    // refactored from fun validateMinMax()
+    validateMinlen() {
+        if (this.minlen) {
+            if (this.value.length >= this.minlen) {
+                this.isValid = true;
+            } else {
+                this.isValid = false;
+            }
+
+        }
+    }
+
+    // refactored from fun validateMinMax()
+    validateMaxlen() {
+        if (this.maxlen) {
+            if (this.value.length <= this.maxlen) {
+                this.isValid = true;
+            } else {
+                this.isValid = false;
+            }
+        }
+    }
+
     getBtnData(data: any) {
         this.value = this.value + data;
         this.emitBtnData(data);
         this.valueChange.emit(this.value);
+        if (!this.minlen && !this.maxlen) {
+            this.minlen = 1;
+            this.validateMinMax();
+        } else {
+            this.validateMinMax();
+        }
     }
 
     eraseData() {
@@ -36,6 +93,12 @@ export class AmexioDialpadComponent implements OnInit {
         const object = { data: this.value };
         this.onClick.emit(object);
         this.valueChange.emit(this.value);
+        if (!this.minlen && !this.maxlen) {
+            this.minlen = 1;
+            this.validateMinMax();
+        } else {
+            this.validateMinMax();
+        }
     }
 
     emitBtnData(keycode: any) {

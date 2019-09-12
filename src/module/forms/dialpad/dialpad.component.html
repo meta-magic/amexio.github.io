@@ -42,7 +42,7 @@
 
 </div> -->
 
-<label> {{label}}</label>
+<!-- <label> {{label}}</label>
 <br>
 <input class="input-control" style=" margin-bottom: 6px" type="{{textType}}" value="{{value}}" readonly>
 
@@ -61,10 +61,48 @@
     <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
   </span>
   <span class="btn">
-      <!-- style="margin-top:8px" -->
-      <button type="button" style="margin-top:8px"  class="fa fa-eraser pointer btncolor" (click)="clearData()">
+       style="margin-top:8px" -->
+    <!--  <button type="button" style="margin-top:8px"  class="fa fa-eraser pointer btncolor" (click)="clearData()">
       </button>
     </span>
+</span> -->
+
+<label> {{label}}</label>
+<br>
+<span style="display: flex;background-color: white;">
+  <input class="input-control" [ngStyle]="{'border-color':isValid && iconfeedback ? 'green': '', 'border-color':!isValid && iconfeedback ? 'red': ''}" [(ngModel)]="value" style=" margin-bottom: 6px" type="{{textType}}" maxlength="maxlen" minlength="minlen" value="{{value}}"
+    readonly>
+  <ng-container *ngIf="iconfeedback">
+    <span style="border: none; border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" [ngStyle]="{'border-color':isValid ? 'green': 'red'}">
+      <span *ngIf="!isValid">
+        <em class="fa fa-times" style="margin-top: 13px"></em>
+      </span>
+      <span *ngIf="isValid">
+        <em class="fa fa-check" style="margin-top: 13px"></em>
+      </span>
+    </span>
+  </ng-container>
+</span>
+
+<span *ngIf="type == '2-rows'" class="btnspan">
+  <span *ngFor="let item of btnArray1" class="btn">
+    <button type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+  </span>
+  <span class="btn">
+    <button type="button" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
+    </button>
+  </span>
+</span>
+<span class="btnspan">
+
+  <span *ngFor="let item of btnArray2" class="btn ">
+    <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+  </span>
+  <span class="btn">
+    <!-- style="margin-top:8px" -->
+    <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
+    </button>
+  </span>
 </span>
 
 
