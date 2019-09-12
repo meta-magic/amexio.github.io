@@ -8,7 +8,8 @@ export class AmexioDialpadComponent implements OnInit {
     btnArray1 = [0, 1, 2, 3, 4];
     btnArray2 = [5, 6, 7, 8, 9];
     textType = '';
-    isValid = false;
+    isValid: boolean;
+    cls: any;
     @Input() value = '';
     @Input('field-label') label = '';
     @Input() type = '2-rows';
@@ -23,18 +24,14 @@ export class AmexioDialpadComponent implements OnInit {
     @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
     ngOnInit() {
-
-        if (!this.minlen && !this.maxlen) {
-            this.minlen = 1;
-            this.validateMinMax();
-        } else {
-            this.validateMinMax();
-        }
         if (this.password) {
             this.textType = 'password';
         } else {
             this.textType = 'text';
         }
+
+        // set black cls
+        this.cls = 'nonecls';
     }
 
     validateMinMax() {
@@ -46,25 +43,22 @@ export class AmexioDialpadComponent implements OnInit {
                     this.isValid = false;
                 }
             }
-            this.validateMinlen();
-            this.validateMaxlen();
+            this.validateMin();
+            this.validateMax();
         }
     }
 
-    // refactored from fun validateMinMax()
-    validateMinlen() {
+    validateMin() {
         if (this.minlen) {
             if (this.value.length >= this.minlen) {
                 this.isValid = true;
             } else {
                 this.isValid = false;
             }
-
         }
     }
 
-    // refactored from fun validateMinMax()
-    validateMaxlen() {
+    validateMax() {
         if (this.maxlen) {
             if (this.value.length <= this.maxlen) {
                 this.isValid = true;
@@ -84,6 +78,13 @@ export class AmexioDialpadComponent implements OnInit {
         } else {
             this.validateMinMax();
         }
+        // if isvalid thn set green
+        // if isvalid thn set red
+        if (this.isValid) {
+            this.cls = 'greencls';
+        } else {
+            this.cls = 'redcls';
+        }
     }
 
     eraseData() {
@@ -99,6 +100,17 @@ export class AmexioDialpadComponent implements OnInit {
         } else {
             this.validateMinMax();
         }
+        // if isvalid thn set green
+        // if isvalid thn set red
+        if (this.isValid) {
+            this.cls = 'greencls';
+        } else {
+            this.cls = 'redcls';
+        }
+        if (this.value.length < 1) {
+            this.isValid = null;
+            this.cls = 'nonecls';
+        }
     }
 
     emitBtnData(keycode: any) {
@@ -108,9 +120,12 @@ export class AmexioDialpadComponent implements OnInit {
 
     clearData() {
         this.value = '';
+        this.isValid = null;
         const object = { data: this.value };
         this.onClick.emit(object);
         this.valueChange.emit(this.value);
+        // set black class
+        this.cls = 'nonecls';
     }
 
 }
