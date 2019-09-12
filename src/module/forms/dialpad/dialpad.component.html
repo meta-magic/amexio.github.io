@@ -70,7 +70,7 @@
 <label> {{label}}</label>
 <br>
 <span style="display: flex;background-color: white;">
-  <input class="input-control" [ngStyle]="{'border-color':isValid && iconfeedback ? 'green': '', 'border-color':!isValid && iconfeedback ? 'red': ''}" [(ngModel)]="value" style=" margin-bottom: 6px" type="{{textType}}" maxlength="maxlen" minlength="minlen" value="{{value}}"
+  <input class="input-control" [ngStyle]="{'border-color':isValid && iconfeedback ? 'green': 'red'}" [(ngModel)]="value" style=" margin-bottom: 6px" type="{{textType}}" maxlength="maxlen" minlength="minlen" value="{{value}}"
     readonly>
   <ng-container *ngIf="iconfeedback">
     <span style="border: none; border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" [ngStyle]="{'border-color':isValid ? 'green': 'red'}">
