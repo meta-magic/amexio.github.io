@@ -11,12 +11,8 @@ import { FilterPipe } from '../pipe/filter.pipe';
 import { IconLoaderService } from '../services/icon/icon.service';
 import { CommonIconComponent } from './components/common.icon.component';
 
-import { BaseInput } from './base.input.component';
 import { BaseInputEventComponent } from './base.inputevent.component';
-import { BaseFormValidator } from './base.validator.component';
-import { EventBaseComponent } from './event.base.component';
 import { LifeCycleBaseComponent } from './lifecycle.base.component';
-import { ListBaseComponent } from './list.base.component';
 
 import { ListBaseDatepickerComponent } from './list.base.datepicker.component';
 
@@ -33,10 +29,6 @@ const COMMON_COMPONENTS = [
   LifeCycleBaseComponent,
   BaseInputEventComponent,
   ColorPaletteDirective,
-  ListBaseComponent,
-  BaseFormValidator,
-  BaseInput,
-  EventBaseComponent,
 ];
 
 @NgModule({

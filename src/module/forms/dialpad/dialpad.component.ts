@@ -14,7 +14,6 @@ export class AmexioDialpadComponent implements OnInit {
     @Input() random: boolean;
     @Input() password: boolean;
     @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
-
     @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
     ngOnInit() {
