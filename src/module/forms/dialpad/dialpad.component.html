@@ -1,4 +1,4 @@
-<div class="card-container" style="margin-left:15px; margin-top: 15px;align-items: center;z-index:70">
+<!-- <div class="card-container" style="margin-left:15px; margin-top: 15px;align-items: center;z-index:70">
     <amexio-label size="small-bold" [enable-click]="false" [word-wrap]="true"> {{value}}</amexio-label>
 
     <span class="btnspan">
@@ -14,5 +14,32 @@
             <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
         </span>
     </span>
+
+</div> -->
+
+<div 
+>
+  <!-- <amexio-label size="small-bold" [enable-click]="false" [word-wrap]="true"> {{value}}</amexio-label> -->
+  <amexio-label size="small" [enable-click]="false" [word-wrap]="true"> {{label}}</amexio-label>
+  <br>
+  <input  class="input-control" style=" margin-bottom: 6px"  type="{{textType}}"  value="{{value}}" readonly>
+  
+  <span *ngIf="type == '2-rows'" class="btnspan">
+    <span *ngFor="let item of btnArray1" class="btn">
+          <button type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+      </span>
+      <span class="btn">
+          <button type="button" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
+          </button>
+      </span>
+      <br>
+      <span *ngFor="let item of btnArray2" class="btn">
+          <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+      </span>
+      <span class="btn">
+        <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
+        </button>
+    </span>
+  </span>
 
 </div>
