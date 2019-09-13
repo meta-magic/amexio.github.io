@@ -20,10 +20,10 @@ import { ControlValueAccessor } from '@angular/forms';
 const noop = () => {
 };
 
-@Component({
-  selector: 'value-accessor',
-  template: './value-accessor.component.html',
-})
+// @Component({
+//   selector: 'value-accessor',
+//   template: './value-accessor.component.html',
+// })
 
 export class ValueAccessorBaseComponent<T> implements ControlValueAccessor {
 

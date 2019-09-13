@@ -6,7 +6,7 @@ import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AmexioWindowCEComponent } from './amexio.window.component';
 import { AmexioCardCEHeaderComponent } from '../common/amexio.header.component';
 import { CeMinimizeWindowComponent } from './ceMinimize.window.component';
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+// import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { AmexioCardCEActionComponent } from '../common/amexio.action.component';
 import { AmexioCardCEBodyComponent } from '../common/amexio.body.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
@@ -24,7 +24,7 @@ class TestCeWindowComponent { }
 describe('amexio-window-ce', () => {
     let comp: AmexioWindowCEComponent;
     let fixture: ComponentFixture<TestCeWindowComponent>;
-    let miniservice:any;
+    let miniservice: any;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             schemas: [NO_ERRORS_SCHEMA],
@@ -33,11 +33,10 @@ describe('amexio-window-ce', () => {
                 AmexioCardCEHeaderComponent,
                 TestCeWindowComponent,
                 CeMinimizeWindowComponent,
-                LifeCycleBaseComponent,
                 AmexioCardCEActionComponent,
-                AmexioCardCEBodyComponent
+                AmexioCardCEBodyComponent,
             ],
-            providers: [IconLoaderService, FormBuilder,MinimizeService],
+            providers: [IconLoaderService, FormBuilder, MinimizeService],
         }).overrideModule(BrowserDynamicTestingModule, { set: { entryComponents: [CeMinimizeWindowComponent] } }).compileComponents();
     }));
     beforeEach(() => {
@@ -79,8 +78,8 @@ describe('amexio-window-ce', () => {
         expect(comp.amexioHeader).toBeDefined();
         expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
         expect(comp.minimize).toEqual(true);
-        comp.amexioHeader.toArray()[0].minimize = comp.minimize;       
-        comp.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => { 
+        comp.amexioHeader.toArray()[0].minimize = comp.minimize;
+        comp.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
             comp.textName = event.textName;
             miniservice.onMinimizeClick(this);
         });
@@ -95,7 +94,7 @@ describe('amexio-window-ce', () => {
         expect(comp.minimize).toEqual(false);
         comp.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
             miniservice.onCloseClick(this);
-          });
+        });
     });
     it('ngAfterContentInit  method check maximize check if', () => {
 
@@ -108,7 +107,7 @@ describe('amexio-window-ce', () => {
         comp.amexioHeader.toArray()[0].setMaximizeDataCE(comp.maximize, comp.isFullWindow);
         comp.amexioHeader.toArray()[0].maximizeBehaiourCe.subscribe((max: any) => {
             comp.maximumWindowStyle = comp.setMaximizeClass(max);
-          });
+        });
     });
 
     it('ngAfterContentInit  method check maximize check else', () => {

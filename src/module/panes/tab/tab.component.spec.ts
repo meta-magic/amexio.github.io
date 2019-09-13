@@ -82,19 +82,33 @@ describe('amexio-tab', () => {
         });
     });
 
+
+
+    // it('onOkClick method', () => {
+    //     comp.onOkClick();
+    //     //  comp.tabPillClose(tabNode);
+    //     comp.openDialogue = false;
+    // });
+
     // it('tabPillClose method', () => {
+    //     tabNode = {
+    //         active: false,
+    //         amexiocolor: undefined,
+    //         closable: true,
+    //         disabled: false,
+    //         tabId: 23540,
+    //         tabPillClass: "activecolortab",
+    //         tablk: "21659_tablk"
+    //     }
+
+    //     comp.tabPillClose(tabNode);
     //     const newTab: AmexioTabPillComponent[] = [];
     //     let index = 0;
     //     let tabHighlightIndex = 0;
-    //     comp.tabPillClose(comp.tabNode);
-
     //     comp.tabCollection.forEach((tab: any, i: number) => {
     //         tab.active = false;
-    //         expect(tab.tabId).toEqual(tabNode)
-
+    //         expect(tab.tabId).toEqual(tabNode.tabId);
     //     });
     // });
-
-
 });
 

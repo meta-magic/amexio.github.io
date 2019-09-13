@@ -19,10 +19,10 @@ import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/index';
 
-@Component({
-    selector: 'life-cycle',
-    template: './lifecycle.base.component.html',
-})
+// @Component({
+//     selector: 'life-cycle',
+//     template: './lifecycle.base.component.html',
+// })
 export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit {
     @Input('enable-lifecycle-events') enableLifeCycleEvents: string;
     @Output() initiated: any = new EventEmitter<any>();

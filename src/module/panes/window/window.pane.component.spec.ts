@@ -22,14 +22,13 @@ import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
        <amexio-header>
        </amexio-header>
        </amexio-window>
-       
        `,
 })
 class TestWindowComponent { }
 describe('amexio-window', () => {
     let comp: AmexioWindowPaneComponent;
     let fixture: ComponentFixture<TestWindowComponent>;
-    let miniservice:any;
+    let miniservice: any;
     beforeEach(() => {
         TestBed.configureTestingModule({
             schemas: [NO_ERRORS_SCHEMA],
@@ -41,7 +40,7 @@ describe('amexio-window', () => {
                 AmexioBodyComponent,
                 MinimizeWindowComponent
             ],
-            providers: [IconLoaderService,MinimizeService],
+            providers: [IconLoaderService, MinimizeService],
         }).overrideModule(BrowserDynamicTestingModule, { set: { entryComponents: [MinimizeWindowComponent] } }).compileComponents();
     });
     beforeEach(() => {
@@ -63,7 +62,7 @@ describe('amexio-window', () => {
         expect(comp.x).toEqual(0);
         expect(comp.y).toEqual(0);
         expect(comp.px).toEqual(0);
-        expect(comp.py).toEqual(0);      
+        expect(comp.py).toEqual(0);
         expect(comp.draggingWindow).toEqual(false);
 
     });
@@ -81,8 +80,8 @@ describe('amexio-window', () => {
         expect(comp.amexioHeader).toBeDefined();
         expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
         expect(comp.minimize).toEqual(true);
-        comp.amexioHeader.toArray()[0].minimize = comp.minimize;       
-        comp.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {            
+        comp.amexioHeader.toArray()[0].minimize = comp.minimize;
+        comp.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
             comp.textName = event.textName;
             miniservice.onMinimizeClick(this);
         });
@@ -97,7 +96,7 @@ describe('amexio-window', () => {
         expect(comp.minimize).toEqual(false);
         comp.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
             miniservice.onCloseClick(this);
-          });
+        });
     });
     it('ngAfterContentInit  method check maximize check if', () => {
 
@@ -110,7 +109,7 @@ describe('amexio-window', () => {
         comp.amexioHeader.toArray()[0].setMaximizeData(comp.maximize, comp.isFullWindow, event);
         comp.amexioHeader.toArray()[0].maximizeBehaiour.subscribe((max: any) => {
             comp.maximumWindowStyle = comp.setMaximizeClass(max);
-          });
+        });
     });
 
     it('ngAfterContentInit  method check maximize check else', () => {
