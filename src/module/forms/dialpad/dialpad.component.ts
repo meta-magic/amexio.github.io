@@ -49,7 +49,7 @@ export class AmexioDialpadComponent implements OnInit {
     }
 
     validateMin() {
-        if (this.minlen) {
+        if (this.minlen && (this.maxlen === undefined)) {
             if (this.value.length >= this.minlen) {
                 this.isValid = true;
             } else {
@@ -59,7 +59,7 @@ export class AmexioDialpadComponent implements OnInit {
     }
 
     validateMax() {
-        if (this.maxlen) {
+        if (this.maxlen && (this.minlen === undefined) ) {
             if (this.value.length <= this.maxlen) {
                 this.isValid = true;
             } else {
@@ -109,7 +109,7 @@ export class AmexioDialpadComponent implements OnInit {
         }
         if (this.value.length < 1) {
             this.isValid = null;
-            this.cls = 'nonecls';
+            this.cls = 'redcls';
         }
     }
 
@@ -125,7 +125,7 @@ export class AmexioDialpadComponent implements OnInit {
         this.onClick.emit(object);
         this.valueChange.emit(this.value);
         // set black class
-        this.cls = 'nonecls';
+        this.cls = 'redcls';
     }
 
 }
