@@ -106,39 +106,86 @@
 </span>
 
  -->
+<!-- cls = {{cls}} -->
+<label class="labcolor" style="font-weight: bold; font-size:initial"> {{label}}</label>
+<!-- <br> -->
 <span style="display:flex">
-<input class="input-control" [ngClass]="cls" [(ngModel)]="value" style=" margin-bottom: 6px" type="{{textType}}" maxlength="maxlen"
-  minlength="minlen" value="{{value}}" readonly>
-<ng-container *ngIf="iconfeedback">
-  <!-- [ngStyle]="{'border-color':isValid ? 'green': 'red'}" -->
-  <span style=" border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" [ngClass]="cls">
-    <span *ngIf="!isValid && cls == 'redcls'">
-      <em class="fa fa-times" style="margin-top: 13px"></em>
+  <input class="input-control" [ngClass]="cls" [(ngModel)]="value" style=" margin-bottom: 6px" type="{{textType}}" maxlength="maxlen"
+    minlength="minlen" value="{{value}}" readonly>
+  <ng-container *ngIf="iconfeedback">
+    <!-- [ngStyle]="{'border-color':isValid ? 'green': 'red'}" -->
+    <span style=" border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" [ngClass]="cls">
+      <span *ngIf="!isValid && cls == 'redcls'">
+        <em class="fa fa-times" style="margin-top: 13px"></em>
+      </span>
+      <span *ngIf="isValid && cls == 'greencls'">
+        <em class="fa fa-check" style="margin-top: 13px"></em>
+      </span>
     </span>
-    <span *ngIf="isValid && cls == 'greencls'">
-      <em class="fa fa-check" style="margin-top: 13px"></em>
+  </ng-container>
+</span>
+<ng-container *ngIf="type == '2-rows'">
+  <span class="btnspan">
+    <span *ngFor="let item of btnArray1" class="btn">
+      <button type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+    </span>
+    <span class="btn">
+      <button type="button" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
+      </button>
+    </span>
+  </span>
+
+  <span class="btnspan">
+    <span *ngFor="let item of btnArray2" class="btn ">
+      <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+    </span>
+    <span class="btn">
+      <!-- style="margin-top:8px" -->
+      <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
+      </button>
     </span>
   </span>
 </ng-container>
-</span>
 
-<span *ngIf="type == '2-rows'" class="btnspan">
-  <span *ngFor="let item of btnArray1" class="btn">
-    <button type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+<ng-container *ngIf="type == 'classic'">
+  <span class="btnspan">
+    <span *ngFor="let item of type2Arr1" class="btn">
+      <button type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+    </span>
   </span>
-  <span class="btn">
-    <button type="button" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
-    </button>
-  </span>
-</span>
 
-<span class="btnspan">
-  <span *ngFor="let item of btnArray2" class="btn ">
-    <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+  <span class="btnspan">
+    <span *ngFor="let item of type2Arr2" class="btn ">
+      <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+    </span>
+    <!-- <span class="btn">
+           <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
+          </button>
+        </span> -->
   </span>
-  <span class="btn">
-    <!-- style="margin-top:8px" -->
-    <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
-    </button>
-  </span>
-</span>
+
+  <span class="btnspan">
+      <span *ngFor="let item of type2Arr3" class="btn ">
+        <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+      </span>
+      <!-- <span class="btn">
+             <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
+            </button>
+          </span> -->
+    </span>
+
+    <span class="btnspan">
+      <span class="btn">
+          <button type="button" style="margin-top:8px; width: 42px; height: 35px" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
+          </button>
+        </span>
+        <span class="btn ">
+          <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">0</button>
+        </span>
+        <span class="btn">
+               <button type="button" style="margin-top:8px; width: 42px; height: 35px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
+              </button>
+            </span>
+      </span>
+
+</ng-container>

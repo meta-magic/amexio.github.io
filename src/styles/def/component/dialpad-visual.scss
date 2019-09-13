@@ -2,7 +2,9 @@
     background-color: $componentActiveBGColor;
     color: $componentActiveFontColor;
 }
-
+.labcolor {
+    color: $componentActiveFontColor;
+}
 .btncolor:hover {
     background-color: $componentHoverBGColor;
     color: $componentHoverFontColor;
