@@ -56,7 +56,7 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
 
   @HostBinding('style.justify-content') jstyfy = 'space-between';
 
-  @HostBinding('style.background') private background = '';
+  @HostBinding('style.background') background = '';
 
   @ViewChild('contentWrapper') content: ElementRef;
 
