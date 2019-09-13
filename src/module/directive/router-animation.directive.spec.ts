@@ -142,6 +142,10 @@ describe('Directive: amexio-route-animation', () => {
     it('addDynamicClass() condition', () => {
         dirIn.addDynamicClass();
         setTimeout(() => {
+            fixture = TestBed.createComponent(RouterTestComponent);
+            comp = fixture.componentInstance;
+            const directiveEl = fixture.debugElement.query(By.directive(RoutedirDirective));
+            dirIn = directiveEl.injector.get(RoutedirDirective);
             dirIn.animationClasses.forEach((cls: any) => {
                 dirIn.renderer.removeClass(dirIn.el.nativeElement.parentNode, cls);
             });
