@@ -4,7 +4,6 @@ import { Component, DebugElement, Renderer2 } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { RoutedirDirective } from './router-animation.directive';
 import { RouterService } from '../services/routing/routing.service';
-
 /**
  * Created by kedar on 12/09/19.
  */
@@ -13,8 +12,6 @@ import { RouterService } from '../services/routing/routing.service';
     selector: 'amexio-route-animation',
     template: `
     <router-outlet amexio-route-animation [style-type]="styleType">
-       
-  
   `
 })
 class RouterTestComponent {
