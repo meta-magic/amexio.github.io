@@ -62,7 +62,7 @@
   </span>
   <span class="btn">
        style="margin-top:8px" -->
-    <!--  <button type="button" style="margin-top:8px"  class="fa fa-eraser pointer btncolor" (click)="clearData()">
+<!--  <button type="button" style="margin-top:8px"  class="fa fa-eraser pointer btncolor" (click)="clearData()">
       </button>
     </span>
 </span> -->
@@ -100,31 +100,26 @@
   </span>
   <span class="btn">
     <! style="margin-top:8px" -->
- <!--   <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
+<!--   <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
     </button>
   </span>
 </span>
 
  -->
-
- <input class="input-control" 
-  [ngClass]="cls"
-  [(ngModel)]="value" style=" margin-bottom: 6px" type="{{textType}}" 
-  maxlength="maxlen" minlength="minlen" value="{{value}}"
-    readonly>
-  <ng-container *ngIf="iconfeedback">
-      <!-- [ngStyle]="{'border-color':isValid ? 'green': 'red'}" -->
-    <span style=" border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" 
-    [ngClass]="cls"
-    >
-      <span *ngIf="!isValid && cls == 'redcls'" >
-        <em class="fa fa-times" style="margin-top: 13px"></em>
-      </span>
-      <span *ngIf="isValid && cls == 'greencls'">
-        <em class="fa fa-check" style="margin-top: 13px"></em>
-      </span>
+<span style="display:flex">
+<input class="input-control" [ngClass]="cls" [(ngModel)]="value" style=" margin-bottom: 6px" type="{{textType}}" maxlength="maxlen"
+  minlength="minlen" value="{{value}}" readonly>
+<ng-container *ngIf="iconfeedback">
+  <!-- [ngStyle]="{'border-color':isValid ? 'green': 'red'}" -->
+  <span style=" border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" [ngClass]="cls">
+    <span *ngIf="!isValid && cls == 'redcls'">
+      <em class="fa fa-times" style="margin-top: 13px"></em>
     </span>
-  </ng-container>
+    <span *ngIf="isValid && cls == 'greencls'">
+      <em class="fa fa-check" style="margin-top: 13px"></em>
+    </span>
+  </span>
+</ng-container>
 </span>
 
 <span *ngIf="type == '2-rows'" class="btnspan">
@@ -136,8 +131,8 @@
     </button>
   </span>
 </span>
-<span class="btnspan">
 
+<span class="btnspan">
   <span *ngFor="let item of btnArray2" class="btn ">
     <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
   </span>
@@ -147,4 +142,3 @@
     </button>
   </span>
 </span>
-
