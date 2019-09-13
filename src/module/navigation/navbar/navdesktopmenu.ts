@@ -19,11 +19,14 @@ export class AmexioNavDesktopMenuComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         setTimeout(() => {
-            if ((window.innerWidth - this.menus.nativeElement.getBoundingClientRect().right) < 300) {
-                this.position = 'right';
-            } else {
-                this.position = 'left';
+            if (this.menus && this.menus.nativeElement) {
+                if ((window.innerWidth - this.menus.nativeElement.getBoundingClientRect().right) < 300) {
+                    this.position = 'right';
+                } else {
+                    this.position = 'left';
+                }
             }
+
         }, 100);
     }
 
@@ -37,7 +40,7 @@ export class AmexioNavDesktopMenuComponent implements AfterViewInit {
 
     onMouseLeave(event: any, node: any) {
         debounceTime(200);
-        if ( node.submenus && node.submenus.length > 0) {
+        if (node.submenus && node.submenus.length > 0) {
             node['showInnerMenus'] = false;
         }
         this.nodes.forEach((innernode: any) => {
@@ -54,7 +57,7 @@ export class AmexioNavDesktopMenuComponent implements AfterViewInit {
     }
     onScroll() {
         const scrollBottom = this.divRef.nativeElement.scrollHeight - this.divRef.nativeElement.clientHeight;
-        const marginTop = 330 - (scrollBottom - this.divRef.nativeElement.scrollTop)  ;
+        const marginTop = 330 - (scrollBottom - this.divRef.nativeElement.scrollTop);
         this.marginTop = '-' + marginTop + 'px';
     }
 }

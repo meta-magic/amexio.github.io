@@ -315,6 +315,22 @@
 
 }
 
+
+.nav-dropdown:hover {
+    //background-color: $navbarActiveBG;
+    
+    .dropdownData {
+        display: block;
+    position: absolute;
+    min-width: auto;
+    z-index: 3;
+    padding: 10px 0px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+    transform-origin: 0 0;
+    }
+
+}
 .nav-dropdown-content-subnode{
     display: inline-flex; 
     justify-content: space-between;
