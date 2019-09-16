@@ -5,7 +5,7 @@ import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioDialpadComponent } from './dialpad.component';
 import { AmexioLabelComponent } from '../label/label.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
-fdescribe('amexio-dialpad', () => {
+describe('amexio-dialpad', () => {
     let comp: AmexioDialpadComponent;
     let fixture: ComponentFixture<AmexioDialpadComponent>;
 
@@ -64,7 +64,7 @@ fdescribe('amexio-dialpad', () => {
         expect(comp.iconfeedback).toEqual(false);
     });
 
- 
+
     it('eraseData() if condition', () => {
         comp.value = '123';
         comp.isValid = true;
@@ -105,7 +105,7 @@ fdescribe('amexio-dialpad', () => {
     });
 
     it('eraseData() else condition', () => {
-        comp.value = '123'+'123';
+        comp.value = '123' + '123';
         comp.isValid = false;
         comp.iconfeedback = false;
         comp.eraseData();
@@ -117,5 +117,24 @@ fdescribe('amexio-dialpad', () => {
 
         expect(comp.iconfeedback).toEqual(false);
         expect(comp.value.length).toBeGreaterThan(1);
+    });
+
+
+
+    it('clearData() condition', () => {
+        comp.value = '';
+        comp.minlen = 2;
+        comp.maxlen = 4;
+        comp.isValid = null;
+        const object = { data: comp.value };
+        comp.onClick.emit(object);
+        comp.valueChange.emit(comp.value);
+        comp.clearData();
+        expect(comp.minlen).toEqual(2);
+        expect(comp.maxlen).toEqual(4);
+        comp.isValid = null;
+            comp.cls = 'redcls';
+
+
     });
 });
