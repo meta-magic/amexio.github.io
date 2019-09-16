@@ -15,6 +15,7 @@ export class AmexioDialpadComponent implements OnInit {
     isValid: boolean;
     cls: any;
     randomArr: any[];
+    lastDigit = 0;
     @Input() value = '';
     @Input('field-label') label = '';
     @Input() type = '2-rows';
@@ -50,17 +51,17 @@ export class AmexioDialpadComponent implements OnInit {
             if (this.randomArr.length > 0) {
                 this.btnArray1 = [];
                 this.btnArray2 = [];
-                this.generateTyp1Ayyay();
+                this.generateTyp1Arr();
             }
         }
 
         if (this.random && (this.type === 'classic')) {
             // call random function
-
+            this.generateType2Arr();
         }
     }
 
-    generateTyp1Ayyay() {
+    generateTyp1Arr() {
         this.randomArr.forEach((element: any, index: any) => {
             if ((index >= 0) && (index < 5)) {
                 this.btnArray1.push(element);
@@ -69,6 +70,33 @@ export class AmexioDialpadComponent implements OnInit {
                 this.btnArray2.push(element);
             }
         });
+    }
+
+    generateType2Arr() {
+        this.generateRandomArray();
+        if (this.randomArr.length > 0) {
+            this.type2Arr1 = [];
+            this.type2Arr2 = [];
+            this.type2Arr3 = [];
+            this.generateTyp2Arry();
+        }
+
+    }
+
+    generateTyp2Arry() {
+        this.randomArr.forEach((element: any, index: any) => {
+            if ((index >= 0) && (index < 3)) {
+                this.type2Arr1.push(element);
+            }
+            if ((index > 2) && (index < 6)) {
+                this.type2Arr2.push(element);
+            }
+            if ((index > 5) && (index < 9)) {
+                this.type2Arr3.push(element);
+            }
+        });
+        // initialize last digit
+        this.lastDigit = this.randomArr[this.randomArr.length - 1];
     }
 
     generateRandomArray() {
