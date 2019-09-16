@@ -16,7 +16,6 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
        <amexio-header-ce>
        </amexio-header-ce>
        </amexio-card-ce>
-       
        `,
 })
 class TestCeWindowComponent { }
@@ -97,4 +96,10 @@ describe('amexio-card-ce', () => {
         });
     });
 
+
+    it('variable check', () => {
+      comp.ngOnInit();
+      comp.instance = this;
+
+    });
 });

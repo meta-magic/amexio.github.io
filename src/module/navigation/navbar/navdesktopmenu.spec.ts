@@ -31,36 +31,36 @@ describe('navdesktopmenu', () => {
     jasmine.clock().install();
   });
 
-  // it('ngAfterViewInit if method', () => {
+  it('ngAfterViewInit if method', () => {
 
-  //   fixture1.detectChanges();
-  //   let menus: ElementRef = fixture1.componentInstance.menus;
-  //   expect(menus).toBeDefined();
-  //   comp1.ngAfterViewInit();
-  //   jasmine.clock().tick(101);
-  //   // setTimeout(() => {
-  //     const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
-  //     fixture.detectChanges();
-  //     menus.nativeElement.getBoundingClientRect = () => ({
-  //       right : 1264
-  //       })
-  //     expect(window.innerWidth - menus.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
-  //     comp1.position = 'right';
-  //   // }, 100);
-  // });
-  // it('ngAfterViewInit else block', () => {
-  //   fixture1.detectChanges();
-  //   const menus: ElementRef = fixture1.componentInstance.menus;
-  //   expect(menus).toBeDefined();
-  //   comp1.ngAfterViewInit();
-  //   // setTimeout(() => {
-  //     jasmine.clock().tick(101);
-  //     const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
-  //     fixture.detectChanges();
-  //     expect(window.innerWidth - menus.nativeElement.getBoundingClientRect().right).toBeGreaterThan(300);
-  //     comp1.position = 'left';
-  //   // }, 100);
-  // });
+    fixture1.detectChanges();
+    let menus: ElementRef = fixture1.componentInstance.menus;
+    expect(menus).toBeDefined();
+    comp1.ngAfterViewInit();
+    jasmine.clock().tick(101);
+    // setTimeout(() => {
+      const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
+      fixture.detectChanges();
+      menus.nativeElement.getBoundingClientRect = () => ({
+        right : 1264
+        })
+      expect(window.innerWidth - menus.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
+      comp1.position = 'right';
+    // }, 100);
+  });
+  it('ngAfterViewInit else block', () => {
+    fixture1.detectChanges();
+    const menus: ElementRef = fixture1.componentInstance.menus;
+    expect(menus).toBeDefined();
+    comp1.ngAfterViewInit();
+    // setTimeout(() => {
+      jasmine.clock().tick(101);
+      const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
+      fixture.detectChanges();
+      expect(window.innerWidth - menus.nativeElement.getBoundingClientRect().right).toBeGreaterThan(300);
+      comp1.position = 'left';
+    // }, 100);
+  });
   it('onMouseOver()', () => {
     let event;
     let node = { submenus: 'as' }
