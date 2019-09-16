@@ -1,6 +1,6 @@
 <ng-container *ngIf="column.datatype==='string'">
     <div class="inputgroup">
-        <input style="text-align:center" tabindex="1" type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
+        <input style="text-align:left; padding-left: 25px;" tabindex="1" type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
             type="text" class="input-control" aria-label="Text input with dropdown button">
         <span style=" cursor: pointer;" tabindex="1" (keyup.enter)="onDataFilterIconClick($event)" (click)="onDataFilterIconClick($event)"
             class="datatable-filter-icon1">
@@ -31,7 +31,7 @@
 
 <ng-container *ngIf="column.datatype==='number'">
     <div class="inputgroup">
-        <input style="text-align:center" tabindex="1" type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
+        <input style="text-align:left; padding-left: 25px;" tabindex="1" type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
             type="number" class="input-control" aria-label="Text input with dropdown button">
         <span style=" cursor: pointer;" tabindex="1" (keyup.enter)="onDataFilterIconClick($event)" (click)="onDataFilterIconClick($event)"
             class="datatable-filter-icon1">
