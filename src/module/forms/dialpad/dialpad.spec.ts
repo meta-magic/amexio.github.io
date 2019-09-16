@@ -5,7 +5,7 @@ import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioDialpadComponent } from './dialpad.component';
 import { AmexioLabelComponent } from '../label/label.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
-describe('amexio-dialpad', () => {
+fdescribe('amexio-dialpad', () => {
     let comp: AmexioDialpadComponent;
     let fixture: ComponentFixture<AmexioDialpadComponent>;
 
@@ -23,19 +23,99 @@ describe('amexio-dialpad', () => {
         comp.btnArray2 = [5, 6, 7, 8, 9];
     });
 
-    it('getBtnData()', () => {
+    it('getBtnData() if condition ', () => {
         let data = 3;
+        comp.isValid = true;
+        comp.iconfeedback = true;
         comp.getBtnData(data);
         comp.value = comp.value + data;
+        comp.emitBtnData(data);
+        comp.valueChange.emit(comp.value);
+        comp.validateMinMax();
+        expect(comp.isValid).toEqual(true);
+        expect(comp.iconfeedback).toEqual(true);
+        comp.cls = 'greencls';
     });
 
+    it('getBtnData() else if condition ', () => {
+        let data = 3;
+        comp.isValid = false;
+        comp.iconfeedback = true;
+        comp.getBtnData(data);
+        comp.value = comp.value + data;
+        comp.emitBtnData(data);
+        comp.valueChange.emit(comp.value);
+        comp.validateMinMax();
+        expect(comp.isValid).toEqual(false);
+        expect(comp.iconfeedback).toEqual(true);
+        comp.cls = 'redcls';
+    });
 
-    it('eraseData()', () => {
+    it('getBtnData() else condition ', () => {
+        let data = 3;
+        comp.isValid = false;
+        comp.iconfeedback = false;
+        comp.getBtnData(data);
+        comp.value = comp.value + data;
+        comp.emitBtnData(data);
+        comp.valueChange.emit(comp.value);
+        comp.validateMinMax();
+        expect(comp.isValid).toEqual(false);
+        expect(comp.iconfeedback).toEqual(false);
+    });
+
+ 
+    it('eraseData() if condition', () => {
         comp.value = '123';
+        comp.isValid = true;
+        comp.iconfeedback = true;
         comp.eraseData();
         let str;
         str = comp.value.slice(0, -1);
         comp.value = str;
+        expect(comp.isValid).toEqual(true);
+        expect(comp.iconfeedback).toEqual(true);
+        comp.cls = 'greencls';
+
+        expect(comp.iconfeedback).toEqual(true);
+        expect(comp.value.length).not.toBeGreaterThan(1);
+
+        comp.isValid = null;
+        comp.cls = 'redcls';
+
     });
 
+    it('eraseData() else if condition', () => {
+        comp.value = '123';
+        comp.isValid = false;
+        comp.iconfeedback = true;
+        comp.eraseData();
+        let str;
+        str = comp.value.slice(0, -1);
+        comp.value = str;
+        expect(comp.isValid).toEqual(false);
+        expect(comp.iconfeedback).toEqual(true);
+        comp.cls = 'redcls';
+
+        expect(comp.iconfeedback).toEqual(true);
+        expect(comp.value.length).not.toBeGreaterThan(1);
+        comp.isValid = null;
+        comp.cls = 'redcls';
+
+    });
+
+    it('eraseData() else condition', () => {
+        comp.value = '123'+'123';
+        comp.isValid = false;
+        comp.iconfeedback = false;
+        comp.eraseData();
+        let str;
+        str = comp.value.slice(0, -1);
+        comp.value = str;
+        expect(comp.isValid).toEqual(false);
+        expect(comp.iconfeedback).toEqual(false);
+
+        expect(comp.iconfeedback).toEqual(false);
+        expect(comp.value.length).toBeGreaterThan(1);
+    });
 });
