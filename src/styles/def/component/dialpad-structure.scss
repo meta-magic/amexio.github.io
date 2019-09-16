@@ -1,6 +1,7 @@
 .btnspan {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .btn {
@@ -9,4 +10,8 @@
 
 .pointer {
    cursor: pointer;
+}
+
+.rounded {
+    border-radius: 50%;
 }

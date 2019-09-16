@@ -7,9 +7,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class AmexioDialpadComponent implements OnInit {
     btnArray1 = [0, 1, 2, 3, 4];
     btnArray2 = [5, 6, 7, 8, 9];
+
     type2Arr1 = [1, 2, 3];
     type2Arr2 = [4, 5, 6];
     type2Arr3 = [7, 8, 9];
+
+    type3Arr1 = [7, 8, 9];
+    type3Arr2 = [4, 5, 6];
+    type3Arr3 = [1, 2, 3];
 
     textType = '';
     isValid: boolean;
@@ -23,6 +28,7 @@ export class AmexioDialpadComponent implements OnInit {
     @Input() password: boolean;
     @Input('max-length') maxlen: number;
     @Input('min-length') minlen: number;
+    @Input('button-type') btnType = '';
     iconfeedback = false;
 
     @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
