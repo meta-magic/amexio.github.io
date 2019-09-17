@@ -26,9 +26,11 @@
     </span>
   </ng-container>
   <span class="button-text">
-    <span style="padding-right: 5px;" *ngIf="icon">
+    <ng-container *ngIf="icon && label">
+    <span style="padding-right: 5px;" >
       {{label}}
     </span>
+  </ng-container>
     <span style="padding-right: 5px;" *ngIf="loading">
       <amexio-c-icon key="button-loading-icon" [label]="label"></amexio-c-icon>
     </span>
