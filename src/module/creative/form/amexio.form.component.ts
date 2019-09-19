@@ -127,7 +127,6 @@ export class AmexioFormCEComponent extends LifeCycleBaseComponent implements OnD
         });
         this.AmexioCardCEActionQueryList.toArray()[0].formFlag = true;
         this.AmexioCardCEActionQueryList.toArray()[0].showError = this.showError;
-        this.AmexioCardCEHeaderQueryList.toArray()[0].windowFlag = false;
         this.validateForm();
         this.onResize();
         super.ngAfterViewInit();
