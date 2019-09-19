@@ -47,6 +47,16 @@ description : Set value true for collapsible fieldset.
 */
   @Input() collapsible: boolean;
 
+    /*
+Properties
+name : expanded
+datatype : boolean
+version : 4.0 onwards
+default : true
+description : Set value true for collapsible fieldset.
+*/
+@Input() expanded: boolean;
+
   /*
 Properties
 name : title
@@ -64,7 +74,9 @@ description : Title for fieldset.
   }
 
   ngOnInit() {
-    if (!this.collapsible) {
+    if (!this.collapsible && !this.expanded) {
+      this.isActive = true;
+    } else if (this.collapsible && this.expanded) {
       this.isActive = true;
     }
   }

@@ -269,6 +269,8 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
     if (this.closable) {
       this.showWindow = false;
       this.show = false;
+      this.isFullWindow = true;
+      this.maximumWindowStyle = this.setMaximizeClass(this.isFullWindow);
       this.showChange.emit(false);
       this.close.emit(this.showWindow);
       if (this.windowposition) {
@@ -321,7 +323,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
 
   setMaximizeClass(isFullWindow: boolean) {
     this.isFullWindow = isFullWindow;
-    if (isFullWindow) {
+    if (!isFullWindow) {
       this.width = '100%';
       return {
         'margin-top': '0', 'height': '100%',
