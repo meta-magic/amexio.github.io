@@ -3,7 +3,7 @@
     color: $componentActiveFontColor;
 }
 .labcolor {
-    color: $componentActiveFontColor;
+    color: $labelFontColor;
 }
 .btncolor:hover {
     background-color: $componentHoverBGColor;
@@ -11,7 +11,7 @@
 }
 
 .nonecls {
-    border-color: black !important;
+    border-color: $labelFontColor !important;
 }
 
 .redcls {
