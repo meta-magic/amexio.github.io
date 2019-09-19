@@ -1,0 +1,77 @@
+ 
+<!-- third structure starts-->
+<div  style="width:100%; height:100%; ">
+    <!-- <div style="width: 100%; height:10%">
+            <span style="border: 1px solid blue; margin-left: 15px " *ngFor="let radio of labelData">
+                    <span style="padding: 3px; " [ngStyle]="{'background-color': radio.colorcode}">
+                        <input type="radio" name="{{radio.label}}" value="{{radio.label}}">
+                    </span>      
+                    &nbsp;<span > {{radio.label}}</span> 
+                </span>
+    </div> -->
+    <div #datesdiv style="width: 100%; height:80%; display: -webkit-box">
+        <div style="width:30%; height:100% ; display: grid;">
+            <div [style.height.px]="dateSpanHt" style="width: 100%; float:left; background-color:#DCDCDC; margin-top:5px;">
+                <span style="padding: 5px 0 !important;  
+                                     text-align: center; display: inline-block;
+                                     ">
+                </span>
+            </div>
+            <div>
+                <!-- dates arr -->
+                <ul style="padding: 5px 0 !important; margin: 0; list-style: none;">
+                    <li [style.height.px]="dateSpanHt" style=" margin-bottom: 3px; text-align: center;
+                                                             background-color:#DCDCDC" *ngFor="let item of dateArr[0].dates">
+                        {{item.date | date:'EEE'}} - {{item.date | date: 'd'}}/{{item.date | date: 'MM'}}/{{item.date | date: 'yy'}}
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div>
+            <!-- <div style=" overflow-x: scroll"> -->
+            <span>
+                <ul style="padding: 5px 0px 2px 0px !important; margin: 0; display:flex;
+                                    list-style: none;">
+                    <li [style.height.px]="dateSpanHt" style="text-align: center; display: inline-block; 
+                                            line-height: 20px; margin-bottom: 3px;width:46px;
+                                                            background-color:#DCDCDC; 
+                                                            border-left:3px solid #F6F6F6" 
+                                                            *ngFor="let item of newTimeArr">
+                        {{item}}
+                    </li>
+                </ul>
+            </span>
+            <!-- chk here -->
+            <!-- <span *ngFor="let iterate of dateSpanlist"> -->
+                <span *ngFor="let iterate of dateArr1">
+                <ul style="padding: 0px 0px 0px 0px !important; margin: 0; display:flex;
+                                        list-style: none;">
+                    <li [style.height.px]="dateSpanHt" style="text-align: center; 
+                            display: inline-block; width:46px;
+                                                line-height: 20px; margin-bottom: 3px;
+                                                                background-color:#DCDCDC; 
+                            border-left:3px solid #F6F6F6" 
+                            *ngFor="let item of newTimeArr"
+                            >
+                        <!-- {{item.time}} -->
+                    </li>
+                </ul>
+            </span>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+ 
+<div>
+        <span style=" margin-left: 15px; padding: 6px 4px 4px 4px; " *ngFor="let radio of labelData">
+                <span style="padding: 3px; " [ngStyle]="{'background-color': radio.colorcode}">
+               
+                    <input type="radio" name="{{radio.label}}" 
+                    (change) = "onSelection(radio)"
+                    value="{{radio.label}}">
+                </span>      
+                &nbsp;<span > {{radio.label}}</span> 
+            </span>
+</div>

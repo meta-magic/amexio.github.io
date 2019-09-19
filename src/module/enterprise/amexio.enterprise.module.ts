@@ -16,6 +16,8 @@ import { DeviceQueryService } from '../services/device/device.query.service';
 import { AmexioWeekDayAvailiblityComponent } from './amexio-ee-appointment/amexio-ee-appointment.component';
 import { AmexioYoutubePlayerComponent } from './youtube-player/youtube.player.component';
 
+import { AvailabilityComponent } from './availability/availability.component';
+
 import { AmexioCommonModule } from '../base/amexio.common.module';
 import { AmexioMediaModule } from '../media/amexio.media.module';
 import { AmexioPaneModule } from '../panes/amexio.pane.module';
@@ -27,7 +29,7 @@ import { AmexioCalendarYearComponent } from './calendar/calendar.year.component'
 import { StepWizardComponent } from './stepwizard/stepwizard.component';
 import { StepWizardItemComponent } from './stepwizard/stepwizard.item.component';
 import { AmexioThemeSwitcherComponent } from './themeswitcher/amexio.themeswitcher.component';
-import {TreeTabComponent} from './tree-tab/tree-tab.component';
+import { TreeTabComponent } from './tree-tab/tree-tab.component';
 
 import { AmexioThemeSwitcherService } from '../services/data/amexio.theme.service';
 
@@ -60,6 +62,7 @@ const ENTERPRISE_COMPONENTS = [
   StepWizardComponent,
   StepWizardItemComponent,
   TreeTabComponent,
+  AvailabilityComponent,
 ];
 
 @NgModule({
