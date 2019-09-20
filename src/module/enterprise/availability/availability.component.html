@@ -43,13 +43,10 @@
                     </li>
                 </ul>
             </span>
-            <div *ngFor="let iterate of dateArr1; let i of index">
-                <ul class="availability-right-row-ul">
-                    {{i}}
-                    <li class="availability-right-row" [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt" *ngFor="let item of newTimeArr" [ngStyle]="{'background': i%2 == 0 ? 'blue': ''}">
+                <ul *ngFor="let iterate of dateArr1" class="availability-right-row-ul">
+                    <li class="availability-right-row" [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt" *ngFor="let item of newTimeArr">
                     </li>
                 </ul>
-            </div>
         </div>
     </div>
 </div>
