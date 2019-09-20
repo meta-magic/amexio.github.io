@@ -138,7 +138,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
         divWt1 = this.elementView2.nativeElement.offsetWidth;
 
         this.dateSpanHt = Math.round(divHt / this.datesArrlen);
-        this.dateSpanWt = Math.round((divWt - divWt1) / this.newTimeArr.length);
+        this.dateSpanWt = Math.round((divWt - divWt1) / (this.newTimeArr.length - 1));
     }
 
     generateLegendArr() {

@@ -141,6 +141,7 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
   }
 
   onCloseClick() {
+    this.isFullWindow = true;
     this.closeableBehaiour.next(false);
     this.closeDataEmit.emit(this);
   }
