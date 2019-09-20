@@ -213,7 +213,7 @@ describe('amexio-dialpad', () => {
         expect(comp.maxlen).toEqual(0);
         expect(comp.minlen).toBeUndefined();
         expect(comp.value.length).toBeGreaterThanOrEqual(comp.maxlen);
-        comp.isValid = true;
+        comp.isValid = false;
     });
     it('validateMax() else check ', () => {
         comp.maxlen = 3;
@@ -222,6 +222,7 @@ describe('amexio-dialpad', () => {
         expect(comp.maxlen).toEqual(3);
         expect(comp.minlen).toBeUndefined();
         expect(comp.maxlen).toBeGreaterThanOrEqual(comp.value.length);
-        comp.isValid = false;
+        comp.isValid = true;
     });
+
 });
