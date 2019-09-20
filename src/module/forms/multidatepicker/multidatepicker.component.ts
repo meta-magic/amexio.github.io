@@ -17,7 +17,7 @@
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
-  ChangeDetectorRef, Component, ElementRef,
+  AfterContentInit, ChangeDetectorRef, Component, ElementRef,
   EventEmitter, forwardRef, Input, OnInit, Output, Renderer2,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
@@ -47,7 +47,7 @@ const noop = () => {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioMultipleDatePickerComponent), multi: true,
   }],
 })
-export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerComponent<string> implements OnInit, Validators {
+export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerComponent<string> implements OnInit, AfterContentInit, Validators {
 
   @Input() fromlabel: string;
   @Input() tolabel: string;
@@ -101,8 +101,13 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
  */
   @Input('disabled-date') diabledDate: any[] = [];
 
+  @Input('from-date') rangePickerFromDate = new Date();
+  @Input('to-date') rangePickerToDate = new Date();
+  @Input('date-range-picker') dateRangePickerFlag: boolean;
+  rangepickerFlag: boolean;
   fromdate = new Date();
   todate = new Date();
+  selectedDate = new Date();
   datepicker = false;
   completeDaysArray: any;
   currrentDate: any;
@@ -118,12 +123,81 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
   fromtab = false;
   totab = false;
   totalwidth = 0;
+
+  yearList1: any[];
+  yearList2: any[];
+  monthList1: any[];
+  monthList2: any[];
+  curYear: any;
+  curMonth: any;
+  drop = false;
+  monthNo: any;
+  yearNo: any;
+  okispressed: boolean;
+  listen: boolean;
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(public element: ElementRef, private cdf: ChangeDetectorRef, renderer: Renderer2) {
     super(renderer, element, cdf);
     this.completeDaysArray = [];
 
+    // new functionality
+    this.yearList1 =
+      [{ year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false },
+      ];
+    // generate yearlist1 ids
+    this.yearList1.forEach((yearlist1element: any) => {
+      yearlist1element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+    });
+    this.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }];
+    // generate yearlist2 ids
+    this.yearList2.forEach((yearlist2element: any) => {
+      yearlist2element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+    });
+    this.monthList1 = [
+      { name: 'Jan', flag: false, num: 4, fullname: 'January' },
+      { name: 'Feb', flag: false, fullname: 'febuary' },
+      { name: 'Mar', flag: false, fullname: 'march' },
+      { name: 'Apr', flag: false, fullname: 'april' },
+      { name: 'May', flag: false, fullname: 'may' },
+      { name: 'Jun', flag: false, fullname: 'june' },
+    ];
+    // generate id for monthlist1
+    this.monthList1.forEach((monthlist1element: any) => {
+      monthlist1element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+    });
+    this.monthList2 = [
+      { name: 'Jul', flag: false, fullname: 'july' },
+      { name: 'Aug', flag: false, fullname: 'august' },
+      { name: 'Sep', flag: false, fullname: 'september' },
+      { name: 'Oct', flag: false, fullname: 'october' },
+      { name: 'Nov', flag: false, fullname: 'november' },
+      { name: 'Dec', flag: false, fullname: 'december' },
+    ];
+    // generate id for monthlist 2
+    this.monthList2.forEach((monthlist2element: any) => {
+      monthlist2element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+    });
+
+    this.currrentDate = new Date();
+    this.curYear = this.currrentDate.getFullYear();
+    let i = 0;
+    let j = 0;
+    for (i = 4; i >= 0; i--) {
+      this.yearList1[j].year = this.curYear - i;
+      j++;
+    }
+    j = 0;
+    for (i = 1; i <= 5; i++) {
+      this.yearList2[j].year = this.curYear + i;
+      j++;
+    }
   }
 
   ngOnInit() {
@@ -161,6 +235,25 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
 
     this.fromdate = null;
     this.todate = null;
+  }
+
+  ngAfterContentInit() {
+    // get all values
+    if (this.dateRangePickerFlag) {
+      this.fromdate = this.rangePickerFromDate;
+      this.todate = this.rangePickerToDate;
+      this.rangepickerFlag = this.dateRangePickerFlag;
+      this.dropdownstyle = { visibility: 'visible' };
+      const event = '';
+      const elem = '';
+      this.openPicker(elem);
+      this.resetRange();
+      this.setRange();
+      this.calculateMonthBlocks();
+      this.listen = false;
+      this.fromcardselected = true;
+      this.fromtab = true;
+    }
   }
 
   setfromtooncompletedayarray() {
@@ -204,7 +297,6 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     this.setDisableDaysBeforeFrom();
     this.fromtab = false;
     this.totab = true;
-
     this.tocardselected = true;
     this.fromcardselected = false;
     this.dropdownstyle = { visibility: 'visible' };
@@ -212,7 +304,6 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     this.resetRange();
     this.setRange();
     event.stopPropagation();
-
   }
 
   openPicker(elem: any) {
@@ -227,12 +318,16 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
   }
 
   calculateMonthBlocks() {
-    const screenwidth = window.screen.width;
-    const noofmonthblocks = parseInt(JSON.stringify(screenwidth / 290), 10);
-    if (this.numberofmonths <= 4) {
-      this.totalwidth = this.numberofmonths * 290;
+    if (!this.rangepickerFlag) {
+      const screenwidth = window.screen.width;
+      const noofmonthblocks = parseInt(JSON.stringify(screenwidth / 290), 10);
+      if (this.numberofmonths <= 4) {
+        this.totalwidth = this.numberofmonths * 290;
+      } else {
+        this.totalwidth = noofmonthblocks * 290;
+      }
     } else {
-      this.totalwidth = noofmonthblocks * 290;
+      this.totalwidth = 290;
     }
   }
 
@@ -318,7 +413,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
   }
 
   setDisableDaysBeforeFrom() {
-    if (this.fromdate) {
+    if (this.fromdate && !this.rangepickerFlag) {
       this.completeDaysArray.forEach((daysarray: any) => {
         daysarray.montharray.forEach((dayobject: any) => {
           dayobject.forEach((singleday: any) => {
@@ -332,7 +427,8 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
   }
 
   resetDisabledaysBeforeFrom() {
-    if (this.fromdate) {
+
+    if (this.fromdate && !this.rangepickerFlag) {
       this.completeDaysArray.forEach((daysarray: any) => {
         daysarray.montharray.forEach((dayobject: any) => {
           dayobject.forEach((singleday: any) => {
@@ -589,7 +685,6 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
 
   updateMonthList(operation: string, event: any) {
     event.stopPropagation();
-
     if ((operation === 'plus') && !this.forwardarrowflag) {
       // call plus function
       this.incrementMonthList(event);
@@ -659,4 +754,183 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     });
   }
 
+  altercompleteDaysArray() {
+    this.clearFrom();
+    this.clearTo();
+    const frmDateObj = { date: this.fromdate };
+    this.assignFrom(frmDateObj);
+    const toDateObj = { date: this.todate };
+    this.assignTo(toDateObj);
+    this.alterdatesrange();
+  }
+
+  alterdatesrange() {
+    // clear range flag
+    this.resetRange();
+    // set range flag
+    this.setRange();
+  }
+
+  dropdownDatePicker() {
+    this.drop = !this.drop;
+  }
+
+  arrowClickBack(event: any) {
+    let i;
+    // disable flag logic
+    if (this.minDate.length > 0 || this.maxDate.length > 0) {
+      // arrow click logic
+    } else {
+      for (i = 0; i < 5; i++) {
+        this.yearList1[i].year = this.yearList1[i].year - 10;
+        this.yearList2[i].year = this.yearList2[i].year - 10;
+      } // for ends
+    } // main else ends
+    event.stopPropagation();
+  }
+
+  arrowClickForward(event: any) {
+    let i;
+    for (i = 0; i < 5; i++) {
+      this.yearList1[i].year = this.yearList1[i].year + 10;
+      this.yearList2[i].year = this.yearList2[i].year + 10;
+    }
+    event.stopPropagation();
+  }
+
+  getDropdownYear(year: any) {
+    this.yearList1.forEach((element: any) => {
+      // negate dropdown year flag
+      this.yearFlagNegate(element);
+    });
+    this.yearList2.forEach((element: any) => {
+      // negate dropdown year flag
+      this.yearFlagNegate(element);
+    });
+    this.yearList1.forEach((element: any) => {
+      this.yearFlag(element, year);
+    });
+    this.yearList2.forEach((element: any) => {
+      this.yearFlag(element, year);
+    });
+    this.yearNo = year.year;
+    super.focus({});
+  }
+
+  // this function is broken from getDropdownYear
+  private yearFlagNegate(element: any) {
+    this.elementFlagMethod(element);
+  }
+
+  // Added method to avois recursive code
+  elementFlagMethod(element: any) {
+    if (element.flag) {
+      element.flag = false;
+    }
+  }
+
+  // this function is broken from getDropdownYear
+  yearFlag(element: any, year: any) {
+    if (element.year === year.year) {
+      element.flag = true;
+    }
+  }
+  getDropdownMonth(month: any) {
+    this.monthList1.forEach((element: any) => {
+      this.elementFlagMethod(element);
+    });
+    this.monthList2.forEach((element: any) => {
+      this.elementFlagMethod(element);
+    });
+    this.monthList1.forEach((element: any) => {
+      this.chkMonth(element, month);
+    });
+    this.monthList2.forEach((element: any) => {
+      this.chkMonth(element, month);
+    });
+    switch (month.name) {
+      case 'Jan':
+        this.monthNo = 0;
+        break;
+      case 'Feb':
+        this.monthNo = 1;
+        break;
+      case 'Mar':
+        this.monthNo = 2;
+        break;
+      case 'Apr':
+        this.monthNo = 3;
+        break;
+      case 'May':
+        this.monthNo = 4;
+        break;
+      case 'Jun':
+        this.monthNo = 5;
+        break;
+      case 'Jul':
+        this.monthNo = 6;
+        break;
+      case 'Aug':
+        this.monthNo = 7;
+        break;
+      case 'Sep':
+        this.monthNo = 8;
+        break;
+      case 'Oct':
+        this.monthNo = 9;
+        break;
+      case 'Nov':
+        this.monthNo = 10;
+        break;
+      case 'Dec':
+        this.monthNo = 11;
+        break;
+      default:
+        break;
+    }
+    super.focus({});
+  }
+
+  // this function broken from chk month getDropdownMonth()
+  chkMonth(element: any, month: any) {
+    if (element.name === month.name) {
+      element.flag = true;
+    }
+  }
+  navigateDropdown() {
+    this.okispressed = true;
+    this.selectedDate = new Date();
+    if (this.yearNo != null && this.monthNo != null) {
+      this.selectedDate.setFullYear(this.yearNo);
+      this.selectedDate.setMonth(this.monthNo);
+    } else if (this.yearNo != null && this.monthNo === null) {
+      this.selectedDate.setFullYear(this.yearNo);
+    } else if (this.yearNo === null && this.monthNo != null) {
+      this.selectedDate.setMonth(this.monthNo);
+    }
+    // chk if yr exist
+    this.completeDaysArray.forEach((element: any, index: number) => {
+      const alterDate = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() + index, this.selectedDate.getDate());
+      element.date = alterDate;
+      this.createDaysForCurrentMonths(element.date);
+      element.montharray = this.daysArray;
+
+      element.month = this.getFullMonthName(element.date);
+
+      element.year = element.date.getFullYear();
+    });
+    this.drop = false;
+
+    this.validateMinMaxDate();
+    this.disableddays();
+    this.validateDaysForMinMax();
+    // call set range
+    this.resetRange();
+    this.setRange();
+    // this.fromdate
+  }
+
+  negateDrop() {
+    this.drop = false;
+  }
 }
