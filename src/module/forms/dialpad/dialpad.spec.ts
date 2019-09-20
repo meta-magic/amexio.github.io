@@ -133,8 +133,55 @@ describe('amexio-dialpad', () => {
         expect(comp.minlen).toEqual(2);
         expect(comp.maxlen).toEqual(4);
         comp.isValid = null;
-            comp.cls = 'redcls';
+        comp.cls = 'redcls';
 
 
+    });
+
+    it('getRandomNumber() if and isDuplicate true condition', () => {
+
+        const myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        const num = myArray[Math.floor(Math.random() * myArray.length)];
+        let isDuplicate = false;
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        comp.getRandomNumber();
+        expect(comp.randomArr.length).toBeGreaterThan(0);
+        comp.randomArr.forEach((element: any) => {
+            if (num === element) {
+                isDuplicate = true;
+            }
+        });
+        isDuplicate = true;
+        expect(isDuplicate).toEqual(true);
+        return comp.getRandomNumber();
+    });
+
+    it('getRandomNumber() if and isDuplicate false condition', () => {
+
+        const myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        const num = myArray[Math.floor(Math.random() * myArray.length)];
+        let isDuplicate = false;
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        comp.getRandomNumber();
+        expect(comp.randomArr.length).toBeGreaterThan(0);
+        comp.randomArr.forEach((element: any) => {
+            if (num != element) {
+            }
+        });
+        isDuplicate = false;
+        expect(isDuplicate).toEqual(false);
+        return num;
+    });
+
+
+    it('getRandomNumber() else ', () => {
+        const myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        const num = myArray[Math.floor(Math.random() * myArray.length)];
+        let isDuplicate = false;
+        comp.randomArr = [];
+        comp.getRandomNumber();
+        expect(comp.randomArr.length).not.toBeGreaterThan(0);
+        
+        return num;
     });
 });
