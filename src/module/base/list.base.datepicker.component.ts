@@ -28,6 +28,7 @@ export class ListBaseDatepickerComponent<T> extends AmexioFormValidator {
     itemClick = false;
     dropdownstyle: any;
     documentClickListener: any;
+    listen = true;
 
     constructor(public renderer: Renderer2, public element: ElementRef, private cd: ChangeDetectorRef) {
         super();
@@ -52,12 +53,11 @@ export class ListBaseDatepickerComponent<T> extends AmexioFormValidator {
     }
 
     bindDocumentClickListener() {
-        if (!this.documentClickListener) {
+        if (!this.documentClickListener && this.listen) {
             this.documentClickListener = this.renderer
                 .listen('document', 'click', (event: any) => this.handleDocumentListener(event));
 
         }
-
     }
 
     handleDocumentListener(event: any) {
@@ -79,11 +79,11 @@ export class ListBaseDatepickerComponent<T> extends AmexioFormValidator {
             this.documentClickListener();
             this.documentClickListener = null;
         }
-
     }
 
     hide() {
-        this.dropdownstyle = { visibility: 'hidden' };
+        if (this.listen) {
+            this.dropdownstyle = { visibility: 'hidden' };
+        }
     }
-
 }

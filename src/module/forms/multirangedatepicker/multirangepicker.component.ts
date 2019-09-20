@@ -16,10 +16,11 @@
 */
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AmexioMultipleDatePickerComponent } from '../multidatepicker/multidatepicker.component';
+import { MultiDateRangePicker } from './multirangepicker.component.model';
 @Component({
     selector: 'amexio-date-range-picker',
     templateUrl: './multirangepicker.component.html',
- })
+})
 export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
 
     dateRangePickerFlag = true;
@@ -33,10 +34,12 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
     todayIconFlag: boolean;
     yesterdayIconFlag: boolean;
     disabledChkedIndex = 0;
+    multiDateRangePickerModel: MultiDateRangePicker;
     @Input('disabled-date') disabledDates: any = [];
 
     @ViewChild(AmexioMultipleDatePickerComponent) child: any;
     constructor() {
+        this.multiDateRangePickerModel = new MultiDateRangePicker();
         this.customRange = ['Today', 'Yesterday', 'This week (sun - sat)', 'Last 14 days',
             'This month', 'Last 30 days', 'Last month', 'All time',
         ];
@@ -84,11 +87,14 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
     updateFromTodate() {
         // increment and send date as argument to fun
         let flag = false;
+        //  store returned value =  call function()
+        //  if returned value is false call fun agn
         let incdate = new Date();
 
         do {
             incdate = new Date(incdate.getFullYear(), incdate.getMonth(), incdate.getDate() + 1);
             flag = this.chkDisableddate(incdate);
+
         } while (!flag);
 
         if (flag) {
@@ -96,6 +102,7 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
             this.child.fromdate = incdate;
             this.child.todate = incdate;
             // update selected date in completeDaysArray
+
             this.alterCompleteDaysArray(incdate);
         }
     }
@@ -119,6 +126,7 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
             month.montharray.forEach((monthrowarray: any) => {
                 monthrowarray.forEach((individualday: any) => {
                     if (individualday.selected || individualday.from || individualday.to) {
+
                         individualday.selected = false;
                         individualday.from = false;
                         individualday.to = false;
@@ -132,6 +140,8 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
         this.clearSelectedFlag();
         this.child.completeDaysArray.forEach((month: any) => {
             month.montharray.forEach((monthrowarray: any) => {
+                // monthrow.mon
+                // monthrowarray.forEach(monthrow => {
                 monthrowarray.forEach((individualday: any) => {
                     if ((individualday.date.getFullYear() === incdate.getFullYear()) &&
                         (individualday.date.getMonth() === incdate.getMonth()) &&
@@ -148,7 +158,6 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
     }
 
     selectRangeOption(option: any) {
-
         switch (option) {
             case 'Today':
                 const currentdate = new Date();
@@ -178,6 +187,9 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 break;
 
             case 'This week (sun - sat)':
+                // find index of day of currentdate
+                // and substract tht index frm current day
+
                 const startdate = new Date();
                 const dayindex = startdate.getDay();
                 const enddate = new Date();
@@ -230,29 +242,39 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 this.child.fromdate = d4;
                 this.child.todate = new Date();
                 break;
+
+            case '30 Days upto today':
+                break;
+
+            case '30 Days upto yesterday':
+                break;
         }
         this.child.altercompleteDaysArray();
 
     }
 
     ResetDaysTillToday() {
+
+        // change fromdate
         const d = new Date();
-        const newfrm = new Date(d.getFullYear(), d.getMonth(), (d.getDate() - this.daysOptionToday + 1));
+        const newfrm = new Date(d.getFullYear(), d.getMonth(), (d.getDate() - this.multiDateRangePickerModel.daysOptionToday + 1));
         this.child.fromdate = newfrm;
+        // change todate
         const newto = new Date();
         this.child.todate = newto;
         this.child.altercompleteDaysArray();
+
     }
 
     ResetDaysTillYesterday() {
+
         // change fromdate
         const d = new Date();
-        const newfrm = new Date(d.getFullYear(), d.getMonth(), d.getDate() - this.daysOptionYesterday);
+        const newfrm = new Date(d.getFullYear(), d.getMonth(), d.getDate() - this.multiDateRangePickerModel.daysOptionYesterday);
         this.child.fromdate = newfrm;
         // change todate
         const newto = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 1);
         this.child.todate = newto;
         this.child.altercompleteDaysArray();
     }
-
 }

@@ -1,38 +1,40 @@
 <span style="display:inline-flex">
-    <span style="display:inline-grid; " >
-      <span class="customrangepanel custom">
-        Custom
-      </span>
-      <span *ngFor="let item of customRange ; let i = index"  class="customrangepanel" (click)="selectRangeOption(item)">
-        {{item}}
-        <!-- today tooltip span -->
-        <span *ngIf = " (i == 0) && todayIconFlag" class="tooltip"> <i class="fa fa-info-circle " style="color: red; font-weight: bold" aria-hidden="true"></i>
-          <span class="tooltiptext">
-            today is disabled date
-          </span>
-        </span>
-        <!-- yesterday tooltip span -->
-        <span *ngIf = " (i == 1) && yesterdayIconFlag" class="tooltip"> <i class="fa fa-info-circle " style="color: red; font-weight: bold" aria-hidden="true"></i>
-          <span class="tooltiptext">
-            yesterday is disabled date
-          </span>
+  <span style="display:inline-grid; ">
+    <span class="customRangePanel customRange">
+      Custom
+    </span>
+    <span *ngFor="let item of customRange ; let i = index" class="customRangePanel" (click)="selectRangeOption(item)">
+      {{item}}
+      <!-- today tooltip span -->
+      <span *ngIf=" (i == 0) && todayIconFlag" class="tooltipRange"> <i class="fa fa-info-circle "
+          style="color: red; font-weight: bold" aria-hidden="true"></i>
+        <span class="tooltiptextRange">
+          today is disabled date
         </span>
       </span>
-      <span style="display:inline-grid;   box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);">
-        <!-- blank days upto today -->
-           <span class="customrangepanel">
-            <input [(ngModel)] = "daysOptionToday"  (keyup.enter)="ResetDaysTillToday()" type="text" size="3"> Days upto today
-          </span>
-          <!-- blank days upto Yesterday -->
-          <span class="customrangepanel">
-            <input [(ngModel)] = "daysOptionYesterday" (keyup.enter)="ResetDaysTillYesterday()" type="text" size="3"> Days upto Yesterday
-          </span>
+      <!-- yesterday tooltip span -->
+      <span *ngIf=" (i == 1) && yesterdayIconFlag" class="tooltipRange"> <i class="fa fa-info-circle "
+          style="color: red; font-weight: bold" aria-hidden="true"></i>
+        <span class="tooltiptextRange">
+          yesterday is disabled date
         </span>
-      
-      </span>
-      <span style="display: inline-block; margin-left: 2px;">
-        <amexio-multiple-date-picker [fromlabel]="'Departure'" [tolabel]="'Return'" [number-of-months]="2" 
-           [from-date]="newFromDate" [to-date]="newToDate" [date-range-picker]="true">
-        </amexio-multiple-date-picker>
       </span>
     </span>
+    <span style="display:inline-grid;   box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);">
+      <!-- blank days upto today -->
+      <span class="customRangePanel">
+        <input  [(ngModel)] = "multiDateRangePickerModel.daysOptionToday" (keyup.enter)="ResetDaysTillToday()" type="text" size="3"> Days upto today
+      </span>
+      <!-- blank days upto Yesterday -->
+      <span class="customRangePanel">
+        <input [(ngModel)] = "multiDateRangePickerModel.daysOptionYesterday"  (keyup.enter)="ResetDaysTillYesterday()" type="text" size="3"> Days upto Yesterday
+      </span>
+    </span>
+
+  </span>
+  <span style="display: inline-block; margin-left: 2px;">
+    <amexio-multiple-date-picker [fromlabel]="'Departure'" [tolabel]="'Return'" [number-of-months]="2"
+      [from-date]="newFromDate" [to-date]="newToDate" [date-range-picker]="true">
+    </amexio-multiple-date-picker>
+  </span>
+</span>

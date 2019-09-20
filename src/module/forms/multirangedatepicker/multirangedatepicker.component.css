@@ -1,0 +1,50 @@
+/* .customrangepanel {
+    cursor: pointer;
+    padding: 15px;
+    background-color: white; 
+ }
+
+ .customrangepanel:hover {
+    background-color: aqua;
+}
+
+ .custom {
+     padding-bottom: 20px;
+     padding-top: 20px;
+     border-bottom: 3px solid blue;
+ }
+
+ 
+ .tooltip {
+     position: relative;
+     display: inline-block;
+ }
+
+ .tooltip .tooltiptext {
+     visibility: hidden;
+     width: 120px;
+     background-color: black;
+     color: #fff;
+     text-align: center;
+     border-radius: 6px;
+     padding: 5px 0;
+     position: absolute;
+     z-index: 1000;
+     top: -5px;
+     left: 110%;
+ }
+
+ .tooltip .tooltiptext::after {
+     content: "";
+     position: absolute;
+     top: 50%;
+     right: 100%;
+     /* margin-top: -5px;
+     border-width: 5px; */
+     /* border-style: solid; */
+     /* border-color: black;
+ }
+
+ .tooltip:hover .tooltiptext {
+     visibility: visible;
+ } */ 
