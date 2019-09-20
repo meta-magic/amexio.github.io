@@ -181,7 +181,47 @@ describe('amexio-dialpad', () => {
         comp.randomArr = [];
         comp.getRandomNumber();
         expect(comp.randomArr.length).not.toBeGreaterThan(0);
-        
+
         return num;
+    });
+
+
+    it('validateMin() if check ', () => {
+        comp.minlen = 0;
+        comp.value = 'abc';
+        comp.validateMin();
+        expect(comp.minlen).toEqual(0);
+        expect(comp.maxlen).toBeUndefined();
+        expect(comp.value.length).toBeGreaterThanOrEqual(comp.minlen);
+        comp.isValid = true;
+
+    });
+    it('validateMin() else check ', () => {
+        comp.minlen = 3;
+        comp.value = '';
+        comp.validateMin();
+        expect(comp.minlen).toEqual(3);
+        expect(comp.maxlen).toBeUndefined();
+        expect(comp.minlen).toBeGreaterThanOrEqual(comp.value.length);
+        comp.isValid = false;
+    });
+
+    it('validateMax() if  check ', () => {
+        comp.maxlen = 0;
+        comp.value = 'abc';
+        comp.validateMax();
+        expect(comp.maxlen).toEqual(0);
+        expect(comp.minlen).toBeUndefined();
+        expect(comp.value.length).toBeGreaterThanOrEqual(comp.maxlen);
+        comp.isValid = true;
+    });
+    it('validateMax() else check ', () => {
+        comp.maxlen = 3;
+        comp.value = '';
+        comp.validateMax();
+        expect(comp.maxlen).toEqual(3);
+        expect(comp.minlen).toBeUndefined();
+        expect(comp.maxlen).toBeGreaterThanOrEqual(comp.value.length);
+        comp.isValid = false;
     });
 });
