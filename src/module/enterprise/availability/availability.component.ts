@@ -3,7 +3,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 @Component({
     selector: 'amexio-availability',
     templateUrl: './availability.component.html',
- })
+})
 export class AvailabilityComponent implements OnInit, AfterViewInit {
     @Input('start-date') startDate: string;
     @Input('end-date') endDate: string;
@@ -12,6 +12,8 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
     @Input() timezone: boolean;
     @Input('label-data') labelData: any;
     @ViewChild('datesdiv') elementView: ElementRef;
+    @ViewChild('datesseconddiv') elementView1: ElementRef;
+    @ViewChild('datesfirstdiv') elementView2: ElementRef;
 
     completeNewArr: any = [];
     datesArrlen = 0;
@@ -22,6 +24,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
     dateArr1: any = [];
     completeTimeArr: any = [];
     dateSpanHt = 18;
+    dateSpanWt = 46;
     dateSpanlist: any = [];
     legendObj = {};
     newTimeArr: any = [];
@@ -128,8 +131,14 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         let divHt;
+        let divWt;
+        let divWt1;
         divHt = this.elementView.nativeElement.offsetHeight;
+        divWt = this.elementView1.nativeElement.offsetWidth;
+        divWt1 = this.elementView2.nativeElement.offsetWidth;
+
         this.dateSpanHt = Math.round(divHt / this.datesArrlen);
+        this.dateSpanWt = Math.round((divWt - divWt1) / this.newTimeArr.length);
     }
 
     generateLegendArr() {
@@ -143,6 +152,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
             '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm',
             '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',
         ];
+        
     }
 
     chkRedundancy(sentdate: any) {
