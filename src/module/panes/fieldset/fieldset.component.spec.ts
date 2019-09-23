@@ -22,7 +22,7 @@ describe('amexio-fieldset', () => {
     });
 
 
-   
+
 
     it('onLegendClick if condition', () => {
         comp.collapsible = true;
@@ -47,7 +47,7 @@ describe('amexio-fieldset', () => {
         expect(comp.collapsible).toEqual(false);
         expect(comp.expanded).toEqual(false);
         comp.isActive = true;
-      
+
     });
 
     it('checking ngOnInit method else condition', () => {
@@ -59,7 +59,7 @@ describe('amexio-fieldset', () => {
         expect(comp.collapsible).toEqual(true);
         expect(comp.expanded).toEqual(true);
         comp.isActive = true;
-      
+
     });
 });
 
