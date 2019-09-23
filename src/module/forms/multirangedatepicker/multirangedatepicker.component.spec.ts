@@ -214,8 +214,6 @@ describe('amexio-date-range-picker', () => {
         comp.child.completeDaysArray.forEach((month: any) => {
             month.montharray.forEach((monthrowarray: any) => {
                 monthrowarray.forEach((individualday: any) => {
-                    console.log('ooooooooo', individualday.selected, individualday.from, individualday.to);
-                    console.log();
 
                     individualday.selected = false;
                     individualday.from = false;
@@ -224,6 +222,56 @@ describe('amexio-date-range-picker', () => {
             });
         });
 
+    });
+
+
+    it('check ngAfterViewInit method if todayIconFlag condition ', () => {
+        comp.ngAfterViewInit();
+        comp.fromCardSelected = comp.child.fromcardselected;
+        comp.toCardSelected = comp.child.tocardselected;
+        comp.child.altercompleteDaysArray();
+        expect(comp.disabledDates).toBeDefined();
+        comp.disabledDates.forEach((element: any) => {
+            const dfrom = new Date(element.from);
+            const dto = new Date(element.to);
+            const currentd = new Date();
+            const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
+            if ((currentd <= dto) && (currentd >= dfrom)) {
+                comp.todayIconFlag = true;
+            }
+            if ((yesterdayd <= dto) && (yesterdayd >= dfrom)) {
+                comp.yesterdayIconFlag = true;
+            }
+
+        });
+        comp.todayIconFlag = true;
+        expect(comp.todayIconFlag).toEqual(true);
+        comp.updateFromTodate();
+    });
+
+
+
+    it('check ngAfterViewInit method todayIconFlag else condition ', () => {
+        comp.ngAfterViewInit();
+        comp.fromCardSelected = comp.child.fromcardselected;
+        comp.toCardSelected = comp.child.tocardselected;
+        comp.child.altercompleteDaysArray();
+        expect(comp.disabledDates).toBeDefined();
+        comp.disabledDates.forEach((element: any) => {
+            const dfrom = new Date(element.from);
+            const dto = new Date(element.to);
+            const currentd = new Date();
+            const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
+            if ((currentd <= dto) && (currentd >= dfrom)) {
+                comp.todayIconFlag = true;
+            }
+            if ((yesterdayd <= dto) && (yesterdayd >= dfrom)) {
+                comp.yesterdayIconFlag = true;
+            }
+
+        });
+        comp.todayIconFlag = false;
+        expect(comp.todayIconFlag).toEqual(false);
     });
 
 
