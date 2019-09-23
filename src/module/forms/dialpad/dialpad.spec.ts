@@ -208,6 +208,82 @@ describe('amexio-dialpad', () => {
     });
 
 
+    it('validateMinMax() if condition ', () => {
+        comp.isValid = true;
+        comp.minlen = 2;
+        comp.maxlen = 5;
+        comp.value = '1' + '2' + '3' + '1' + '2' + '3' + '1' + '2' + '3';
+        comp.iconfeedback = true;
+        comp.validateMinMax();
+        expect(comp.iconfeedback).toEqual(true);
+        expect(comp.value).toBeDefined();
+
+        expect(comp.minlen).toEqual(2);
+        expect(comp.maxlen).toEqual(5);
+
+        expect(comp.value.length).toBeGreaterThanOrEqual(comp.minlen);
+        expect(comp.value.length).toBeGreaterThanOrEqual(comp.maxlen);
+        comp.isValid = true;
+
+        comp.validateMin();
+        comp.validateMax();
+
+
+
+
+    });
+
+    it('validateMinMax() if if else condition ', () => {
+        comp.isValid = true;
+        comp.minlen = 2;
+        comp.maxlen = 5;
+        comp.value = '1';
+        comp.iconfeedback = true;
+        comp.validateMinMax();
+        expect(comp.iconfeedback).toEqual(true);
+        expect(comp.value).toBeDefined();
+
+        expect(comp.minlen).toEqual(2);
+        expect(comp.maxlen).toEqual(5);
+
+        expect(comp.value.length).not.toBeGreaterThanOrEqual(comp.minlen);
+        expect(comp.value.length).not.toBeGreaterThanOrEqual(comp.maxlen);
+        comp.isValid = false;
+
+        comp.validateMin();
+        comp.validateMax();
+
+
+
+
+    });
+
+
+    it('validateMinMax() if if else condition ', () => {
+        comp.isValid = true;
+        comp.maxlen = 5;
+        comp.value = '1';
+        comp.iconfeedback = true;
+        comp.validateMinMax();
+        expect(comp.iconfeedback).toEqual(true);
+        expect(comp.value).toBeDefined();
+
+        expect(comp.minlen).toBeUndefined();
+        expect(comp.maxlen).toEqual(5);
+
+        comp.validateMin();
+        comp.validateMax();
+
+    });
+    it('validateMinMax() if if else condition ', () => {
+        comp.value = '1';
+        comp.iconfeedback = false;
+        comp.validateMinMax();
+        expect(comp.iconfeedback).toEqual(false);
+        expect(comp.value).toBeDefined();
+      
+    });
+
     it('getBtnData() if condition ', () => {
         let data = 3;
         comp.isValid = true;
