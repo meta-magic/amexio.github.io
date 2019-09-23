@@ -6,7 +6,7 @@ import { AmexioStepsComponent } from '../steps/steps.component';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-fdescribe('amexio-fieldset', () => {
+describe('amexio-fieldset', () => {
     let comp: AmexioFieldSetComponent;
     let fixture: ComponentFixture<AmexioFieldSetComponent>;
 
@@ -61,8 +61,5 @@ fdescribe('amexio-fieldset', () => {
         comp.isActive = true;
       
     });
-
-
-
 });
 
