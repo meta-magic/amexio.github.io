@@ -19,7 +19,10 @@ describe('amexio-date-range-picker', () => {
         });
         fixture = TestBed.createComponent(AmexioMultiRangePickerComponent);
         comp = fixture.componentInstance;
+
     });
+
+
 
 
     it('check variables  ', () => {
@@ -76,7 +79,7 @@ describe('amexio-date-range-picker', () => {
 
     });
 
-    it('check updateFromTodate method else condition  ', () => {
+    it('check updateFromTodate method else condition ', () => {
         comp.updateFromTodate();
         let flag = false;
         let incdate = new Date();
@@ -87,6 +90,142 @@ describe('amexio-date-range-picker', () => {
         flag = true;
         expect(flag).toEqual(true);
     });
+
+
+    it('check clearSelectedFlag if method', () => {
+        comp.child.completeDaysArray = [
+            {
+                "date": "Mon Sep 23 2019 11:04:46 GMT+0530 ",
+                "month": "September",
+                "montharray": [
+                    [
+                        {
+                            "date": "Mon Aug 26 2019 00:00:00 GMT+0530",
+                            "from": true,
+                            "fulldate": "26 August 2019 Monday",
+                            "id": "31313_id",
+                            "isCurrentMonth": false,
+                            "isDisabled": false,
+                            "range": false,
+                            "selected": true,
+                            "to": true
+                        },
+                        {
+                            "date": "Tue Aug 27 2019 00:00:00 GMT+0530",
+                            "from": true,
+                            "fulldate": "27 August 2019 Tuesday",
+                            "id": "86088_id",
+                            "isCurrentMonth": false,
+                            "isDisabled": false,
+                            "range": false,
+                            "selected": true,
+                            "to": true
+                        }
+                    ],
+                    [
+                        {
+                            "date": "Mon Aug 26 2019 00:00:00 GMT+0530",
+                            "from": true,
+                            "fulldate": "26 August 2019 Monday",
+                            "id": "31313_id",
+                            "isCurrentMonth": false,
+                            "isDisabled": false,
+                            "range": false,
+                            "selected": true,
+                            "to": true
+                        },
+                        {
+                            "date": "Tue Aug 27 2019 00:00:00 GMT+0530",
+                            "from": true,
+                            "fulldate": "27 August 2019 Tuesday",
+                            "id": "86088_id",
+                            "isCurrentMonth": false,
+                            "isDisabled": false,
+                            "range": false,
+                            "selected": true,
+                            "to": true
+                        }
+                    ]
+                ],
+                "nextarrow": false,
+                "prevarrow": true,
+                "year": 2019
+            },
+            {
+                "date": "Wed Oct 23 2019 11:04:46 GMT+0530 ",
+                "month": "October",
+                "montharray": [
+                    [
+                        {
+                            "date": "Mon Aug 26 2019 00:00:00 GMT+0530",
+                            "from": true,
+                            "fulldate": "26 August 2019 Monday",
+                            "id": "31313_id",
+                            "isCurrentMonth": false,
+                            "isDisabled": false,
+                            "range": false,
+                            "selected": true,
+                            "to": true
+                        },
+                        {
+                            "date": "Tue Aug 27 2019 00:00:00 GMT+0530",
+                            "from": true,
+                            "fulldate": "27 August 2019 Tuesday",
+                            "id": "86088_id",
+                            "isCurrentMonth": false,
+                            "isDisabled": false,
+                            "range": false,
+                            "selected": true,
+                            "to": true
+                        }
+                    ],
+                    [
+                        {
+                            "date": "Mon Aug 26 2019 00:00:00 GMT+0530",
+                            "from": true,
+                            "fulldate": "26 August 2019 Monday",
+                            "id": "31313_id",
+                            "isCurrentMonth": false,
+                            "isDisabled": false,
+                            "range": false,
+                            "selected": true,
+                            "to": true
+                        },
+                        {
+                            "date": "Tue Aug 27 2019 00:00:00 GMT+0530",
+                            "from": true,
+                            "fulldate": "27 August 2019 Tuesday",
+                            "id": "86088_id",
+                            "isCurrentMonth": false,
+                            "isDisabled": false,
+                            "range": false,
+                            "selected": true,
+                            "to": true
+                        }
+                    ]
+                ],
+                "nextarrow": false,
+                "prevarrow": false,
+                "year": 2019
+            }
+        ]
+
+        comp.clearSelectedFlag();
+        comp.child.completeDaysArray.forEach((month: any) => {
+            month.montharray.forEach((monthrowarray: any) => {
+                monthrowarray.forEach((individualday: any) => {
+                    console.log('ooooooooo', individualday.selected, individualday.from, individualday.to);
+                    console.log();
+
+                    individualday.selected = false;
+                    individualday.from = false;
+                    individualday.to = false;
+                });
+            });
+        });
+
+    });
+
 
 
 });
