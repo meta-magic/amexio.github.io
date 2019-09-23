@@ -23,6 +23,191 @@ describe('amexio-dialpad', () => {
         comp.btnArray2 = [5, 6, 7, 8, 9];
     });
 
+
+    it('ngOnInit() 1st  condition ', () => {
+        comp.type = '2-rows';
+        comp.minlen = 2;
+        comp.maxlen = 4;
+        comp.random = true;
+        comp.password = true;
+        comp.ngOnInit();
+        expect(comp.password).toEqual(true);
+        comp.textType = 'password';
+        comp.cls = 'nonecls';
+        expect(comp.minlen).toEqual(2);
+        expect(comp.maxlen).toEqual(4);
+        comp.iconfeedback = true;
+        comp.randomArr = [];
+        const num = 0;
+        const i = 0;
+        const foundDuplicate = false;
+        expect(comp.random).toEqual(true);
+        expect(comp.type).toEqual('2-rows');
+        comp.generateRandomArray();
+
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        expect(comp.randomArr.length).toBeGreaterThan(0);
+        comp.btnArray1 = [];
+        comp.btnArray2 = [];
+        comp.generateTyp1Arr();
+
+
+    });
+
+    it('ngOnInit() 2nd condition ', () => {
+        comp.type = '2-rows';
+
+        comp.random = true;
+        comp.password = false;
+        comp.ngOnInit();
+        expect(comp.password).toEqual(false);
+        comp.textType = 'text';
+        comp.cls = 'nonecls';
+        expect(comp.minlen).toBeUndefined();
+        expect(comp.maxlen).toBeUndefined();
+
+        comp.randomArr = [];
+        const num = 0;
+        const i = 0;
+        const foundDuplicate = false;
+        expect(comp.random).toEqual(true);
+        expect(comp.type).toEqual('2-rows');
+        comp.generateRandomArray();
+
+        comp.randomArr = [];
+        expect(comp.randomArr.length).not.toBeGreaterThan(0);
+
+    });
+
+    it('ngOnInit() 3rd condition ', () => {
+        comp.type = 'rows';
+
+        comp.random = false;
+        comp.password = false;
+        comp.ngOnInit();
+        expect(comp.password).toEqual(false);
+        comp.textType = 'text';
+        comp.cls = 'nonecls';
+        expect(comp.minlen).toBeUndefined();
+        expect(comp.maxlen).toBeUndefined();
+
+        comp.randomArr = [];
+        const num = 0;
+        const i = 0;
+        const foundDuplicate = false;
+        expect(comp.random).toEqual(false);
+        expect(comp.type).not.toEqual('2-rows');
+
+        comp.type = 'classic';
+        comp.random = true;
+
+        expect(comp.type).toEqual('classic');
+        expect(comp.random).toEqual(true);
+
+        comp.generateType2Arr();
+
+    });
+
+    it('ngOnInit() 3rd condition ', () => {
+        comp.type = 'rows';
+
+        comp.random = false;
+        comp.password = false;
+        comp.ngOnInit();
+        expect(comp.password).toEqual(false);
+        comp.textType = 'text';
+        comp.cls = 'nonecls';
+        expect(comp.minlen).toBeUndefined();
+        expect(comp.maxlen).toBeUndefined();
+
+        comp.randomArr = [];
+        const num = 0;
+        const i = 0;
+        const foundDuplicate = false;
+        expect(comp.random).toEqual(false);
+        expect(comp.type).not.toEqual('2-rows');
+        expect(comp.type).not.toEqual('classic');
+
+
+    });
+
+    it('generateTyp1Arr() if condition ', () => {
+
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        comp.generateTyp1Arr();
+
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index >= 0) && (index < 5)) {
+                comp.btnArray1.push(element);
+            } if (index > 4) {
+                comp.btnArray2.push(element);
+            }
+        });
+    });
+
+    it('generateTyp1Arr() if condition ', () => {
+
+        comp.randomArr = [];
+        comp.generateTyp1Arr();
+
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index >= 0) && (index < 5)) {
+                comp.btnArray1.push(element);
+            } if (index > 4) {
+                comp.btnArray2.push(element);
+            }
+        });
+    });
+
+    // it('generateType2Arr() if condition ', () => {
+    //     comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+    //     comp.generateRandomArray();
+    //     comp.generateType2Arr();
+
+    //     if (comp.randomArr.length > 0) {
+    //         comp.type2Arr1 = [];
+    //         comp.type2Arr2 = [];
+    //         comp.type2Arr3 = [];
+    //         comp.generateTyp2Arry();
+    //     }
+    // });
+
+    it('generateTyp2Arry() if condition ', () => {
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        comp.generateTyp2Arry();
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index >= 0) && (index < 3)) {
+                comp.type2Arr1.push(element);
+            }
+            if ((index > 2) && (index < 6)) {
+                comp.type2Arr2.push(element);
+            }
+            if ((index > 5) && (index < 9)) {
+                comp.type2Arr3.push(element);
+            }
+
+            comp.lastDigit = comp.randomArr[comp.randomArr.length - 1];
+
+        });
+    });
+
+    it('generateTyp2Arry() else condition ', () => {
+        comp.randomArr = [];
+        comp.generateTyp2Arry();
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index <= 0) && (index > 3)) {
+            }
+            if ((index < 2) && (index > 6)) {
+            }
+            if ((index < 5) && (index > 9)) {
+            }
+
+            comp.lastDigit = comp.randomArr[comp.randomArr.length - 1];
+
+        });
+    });
+
+
     it('getBtnData() if condition ', () => {
         let data = 3;
         comp.isValid = true;
@@ -224,5 +409,6 @@ describe('amexio-dialpad', () => {
         expect(comp.maxlen).toBeGreaterThanOrEqual(comp.value.length);
         comp.isValid = true;
     });
+
 
 });
