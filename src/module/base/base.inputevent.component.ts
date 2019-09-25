@@ -50,6 +50,7 @@ export class BaseInputEventComponent extends ValueAccessorBaseComponent<string> 
         let valid: boolean;
         valid = (!this.allowblank && (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
             (!this.minlength && this.value && this.value.length > 0)) || this.allowblank;
+        this.isValid = valid;
         return valid;
     }
     isFieldValidate(): boolean {
