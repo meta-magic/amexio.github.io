@@ -17,7 +17,7 @@
 
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import {BaseInputEventComponent} from '../../base/base.inputevent.component';
+import { BaseInputEventComponent } from '../../base/base.inputevent.component';
 import { ValueAccessorBaseComponent } from '../../base/value-accessor';
 
 @Component({
@@ -81,25 +81,25 @@ description : Sets if field is required
  default :
  description : Sets the error message for min validation
  */
-@Input('min-error-msg') minerrormsg: string;
-/*
-Properties
-name : max-error-msg
-datatype : string
-version : 4.0 onwards
-default :
-description : Sets the error message for max validation
-*/
-@Input('max-error-msg') maxerrormsg: string;
-/*
-Properties
-name : error-msg
-datatype : string
-version : 4.0 onwards
-default :
-description : Sets the error message for validation
-*/
-@Input('error-msg') errormsg: string;
+  @Input('min-error-msg') minerrormsg: string;
+  /*
+  Properties
+  name : max-error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message for max validation
+  */
+  @Input('max-error-msg') maxerrormsg: string;
+  /*
+  Properties
+  name : error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message for validation
+  */
+  @Input('error-msg') errormsg: string;
   /*
   Properties
   name : place-holder
@@ -163,6 +163,16 @@ description : Set font-family to field
   description : flag to set label
   */
   @Input('has-label') haslabel = true;
+
+  /*
+ Properties
+ name : show-password
+ datatype : boolean
+ version : 5.19 onwards
+ default : false
+ description : flag to set label
+ */
+  @Input('show-password') showpassword = false;
   _pattern: string;
   get pattern(): string {
     return this._pattern;
@@ -201,10 +211,15 @@ description : Set enable / disable popover.
   */
   @ViewChild(NgModel) model: NgModel;
   @Input('name') name: string;
+  show = false;
+  type = 'password';
   componentId: any;
   constructor() {
     super();
     this.showToolTip = false;
+    if (this.showpassword) {
+      this.iconfeedback = false;
+    }
   }
   ngOnInit() {
     this.isValid = this.isFieldValid();
@@ -221,5 +236,15 @@ description : Set enable / disable popover.
 
   onInputPasswordEvent(event: any) {
     super.onInputEvent(event);
+  }
+
+  toggleShow(event: any) {
+    event.stopPropagation();
+    this.show = !this.show;
+    if (this.show) {
+      this.type = 'text';
+    } else {
+      this.type = 'password';
+    }
   }
 }
