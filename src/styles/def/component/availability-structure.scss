@@ -13,10 +13,11 @@
     margin-bottom: 3px; 
     text-align: left;
     padding-left: 5px;
+    background-color: #DCDCDC;
 }
 
 .availability-row:nth-child(odd) {
-    background-color: $availabilityOddRowColor;
+    // background-color: $availabilityOddRowColor;
 }
 
 .mainAvailabilityDiv {
@@ -30,12 +31,12 @@
     width:46px;    
     line-height: 20px; 
     margin-bottom: 3px;
-    // background-color:#DCDCDC; 
+    background-color:#DCDCDC; 
     border-left:3px solid #F6F6F6
 }
 
 .availability-right-row-ul:nth-child(even) .availability-right-row {
-    background-color: $availabilityOddRowColor;
+    // background-color: $availabilityOddRowColor;
 }
 
 .availability-right-row-ul{
@@ -45,3 +46,45 @@
 }
 
 
+// 
+.datespan {
+    background-color: #DCDCDC;
+    height: 5px;
+    line-height: 20px;
+}
+
+.maindiv {
+    border: 1px solid black;
+    
+}
+
+.undoicon {
+    margin-right:1px;
+}
+
+.timezonedrop {
+    margin-left: 5px;
+    /* margin-right:12px; */
+    color: black;
+    background-color:white;
+    padding: 6px 4px 4px;
+    border: 1px solid black;
+}
+
+/*  */
+.datespan1 {
+width: 100%; 
+float:left; 
+background-color:#DCDCDC; 
+margin-top:5px;
+}
+
+.datespan2 {
+    padding: 5px 0 !important; 
+    text-align: center;
+    display: inline-block;                                 
+}
+
+.firstdiv {
+    margin-top: 10px;
+}

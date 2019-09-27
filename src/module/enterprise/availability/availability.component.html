@@ -1,52 +1,83 @@
-<!-- radio starts-->
+ <!-- radio starts-->
 <div>
-    <span style=" margin-left: 15px; padding: 6px 4px 4px 4px; " *ngFor="let radio of labelData">
-        <span style="padding: 5px 4px 3px 3px" [ngStyle]="{'background-color': radio.colorcode}">
-
-            <input type="radio" name="{{radio.label}}" (change)="onSelection(radio)" value="{{radio.label}}">
-        </span>
-        &nbsp;
-        <span> {{radio.label}}</span>
-    </span>
-</div>
-<!-- Radio structure ends here -->
-
-<br>
-<div class="mainAvailabilityDiv">
-    <div #datesdiv style="width: 100%; height:80%; display: -webkit-box">
-        <div #datesfirstdiv style="width:10%; height:100% ; display: grid;">
-            <div [style.height.px]="dateSpanHt" style="width: 100%; float:left; background-color:#DCDCDC; margin-top:5px;">
-                <span style="padding: 5px 0 !important;  
-                                     text-align: center; display: inline-block;
-                                     ">
-                </span>
-            </div>
-            <div>
-                <ul style="padding: 5px 0 !important; margin: 0; list-style: none;">
-                    <li class="availability-row" [style.height.px]="dateSpanHt" *ngFor="let item of dateArr[0].dates">
-                        {{item.date | date:'EEE'}} - {{item.date | date: 'd'}}/{{item.date | date: 'MM'}}/{{item.date | date: 'yy'}}
-
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-        <div #datesseconddiv style="width:90%">
-            <span>
-                <ul style="padding: 5px 0px 2px 0px !important; margin: 0; display:flex;
-                                    list-style: none;">
-                    <li [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt" style="text-align: center; display: inline-block; 
-                                            line-height: 20px; margin-bottom: 3px;width:46px;
-                                                            background-color:#DCDCDC; 
-                                                            border-left:3px solid #F6F6F6" *ngFor="let item of newTimeArr">
-                        {{item}}
-                    </li>
-                </ul>
+    <!-- dropdown -->
+    
+    <select name="timezones" class="timezonedrop" *ngIf="zoneData.length > 0">
+            <option value="timezoneitem.timezone" *ngFor = "let timezoneitem of zoneData" >{{timezoneitem.timezone}}</option>
+    </select>
+    <!-- dropdown ends -->
+        <!-- radio  -->
+        <span style=" margin-left: 15px; padding: 6px 4px 4px 4px; " *ngFor="let radio of labelData">
+            <span style="padding: 5px 4px 3px 3px" [ngStyle]="{'background-color': radio.colorcode}">
+    
+                <input type="radio" name="{{radio.label}}" (change)="onSelection(radio)" value="{{radio.label}}">
             </span>
-                <ul *ngFor="let iterate of dateArr1" class="availability-right-row-ul">
-                    <li class="availability-right-row" [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt" *ngFor="let item of newTimeArr">
+            &nbsp;
+            <span> {{radio.label}}</span>
+        </span>
+    <!-- radio ends -->
+    
+    <!-- undo button starts-->
+    <button style="border: 1px solid black; margin-left: 20px; 
+    background-color:aquamarine; 
+    padding: 6px 4px 4px; cursor: pointer;
+    color:black"  type="button" (click)="onUndoClick()">
+    <i class="fa fa-undo" >
+    
+    </i>
+    Undo</button>
+    
+    <!-- undo button ends -->
+    
+    </div>
+    <!-- Radio structure ends here -->
+    
+    <br>
+    <div class="mainAvailabilityDiv">
+        <div #datesdiv style="width: 100%; height:80%; display: -webkit-box">
+            <div #datesfirstdiv style="width:10%; height:100% ; display: grid;">
+                <div [style.height.px]="dateSpanHt" style="width: 100%; float:left; background-color:#DCDCDC; margin-top:5px;">
+                    <span style="padding: 5px 0 !important;  
+                                         text-align: center; 
+                                         display: inline-block;
+                                         ">
+                    </span>
+                </div>
+                <div>
+                    <ul style="padding: 5px 0 !important; margin: 0; list-style: none;">
+                        <li class="availability-row" [style.height.px]="dateSpanHt" *ngFor="let item of dateArr[0].dates">
+                            {{item.date | date:'EEE'}} - {{item.date | date: 'd'}}/{{item.date | date: 'MM'}}/{{item.date | date: 'yy'}}
+    
+                        </li>
+                    </ul>
+                </div>
+    
+            </div>
+            <div #datesseconddiv style="width:90%">
+                <span>
+                    <ul style="padding: 5px 0px 2px 0px !important; margin: 0; display:flex;
+                                        list-style: none;">
+                        <li [style.height.px]="dateSpanHt" 
+                        [style.width.px]="dateSpanWt" 
+                        style="text-align: center; display: inline-block; 
+                        line-height: 20px; margin-bottom: 3px;width:46px;
+                        background-color:#DCDCDC; 
+                        border-left:3px solid #F6F6F6" 
+    
+                        *ngFor="let item of newTimeArr">
+                        {{item | date: 'h:mm'}}
                     </li>
-                </ul>
+                    </ul>
+                </span>
+                    <ul *ngFor="let iterate of dateArr1; index as parentindex"
+                    class="availability-right-row-ul">
+                        <li class="availability-right-row" [style.height.px]="dateSpanHt" 
+                        [style.width.px]="dateSpanWt" 
+                        
+    [ngStyle]="{'background-color': (item.colorflag) ? item.color : '' , 'cursor': (radioValue.length > 0) ?'pointer':''}"
+                        *ngFor="let item of iterate.slots; index as childindex">
+                        </li>
+                    </ul>
+            </div>
         </div>
     </div>
-</div>
