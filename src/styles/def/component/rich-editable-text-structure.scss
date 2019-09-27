@@ -1,0 +1,31 @@
+
+  .Richeditor {
+    border-radius: 5px;
+    margin: 2px;
+    background-color: antiquewhite;
+    overflow-x: hidden;
+    padding: 1px;
+   }
+
+  .Richbuttons {
+  width: 100%;
+  text-align: end;
+  background: #eff0f1;
+  padding-top: 5px;
+  border-top: 2px solid rgb(196, 188, 188);
+  }
+  .RichFirstDiv { 
+    resize: both;
+    border-radius: 5px;
+    overflow-x: hidden;
+ 
+  }
+  .richButton {
+    width: auto;
+    cursor: pointer;
+    text-align: center;
+    padding: 1px 3px;
+    box-shadow: none;
+    background: #eff0f1;
+  }
+ 

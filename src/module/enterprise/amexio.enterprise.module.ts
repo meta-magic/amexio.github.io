@@ -36,6 +36,8 @@ import { AmexioThemeSwitcherService } from '../services/data/amexio.theme.servic
 import { AmexioLayoutModule } from '../layout/amexio.layout.module';
 import { AmexioNavModule } from '../navigation/amexio.nav.module';
 
+import { AmexioRichEditableTextareaComponent } from './formsInput/rich-editable-textarea/rich-editable-textarea.component';
+
 export * from './ee-carousel/ee.carousel.component';
 export * from './ee-content/ee.content';
 export * from '../services/data/common.data.service';
@@ -63,6 +65,7 @@ const ENTERPRISE_COMPONENTS = [
   StepWizardItemComponent,
   TreeTabComponent,
   AvailabilityComponent,
+  AmexioRichEditableTextareaComponent,
 ];
 
 @NgModule({

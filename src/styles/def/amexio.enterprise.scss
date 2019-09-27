@@ -97,6 +97,18 @@
 
 @import "component/enterprise-calendar-structure.scss";
 
+
+
+/****************************************************************************
+    Component Name : Rich Editable Text
+    Version : Amexio v5.20 onwards
+*****************************************************************************/
+
+@import "component/rich-editable-text-vars.scss";
+@import "component/rich-editable-text-visual.scss";
+@import "component/rich-editable-text-structure.scss";
+
+
 /****************************************************************************
     Component Name : Availability
     Version : Amexio v5.19 onwards
@@ -104,3 +116,4 @@
 
 @import "component/availability-vars.scss";
 @import "component/availability-structure.scss";
+
