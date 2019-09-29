@@ -33,6 +33,8 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   legendArr: any[];
   legendObj = {};
   newTimeArr: any[];
+  minIndex: number;
+  maxIndex: number;
   constructor() {
   }
 
@@ -145,72 +147,123 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
     }
     return this.chkLabels(d, slot);
   }
-
   chkLabels(d: Date, slotArray: any) {
-    let minindex: number;
-    let maxindex: number;
-    let minflag = false;
-    let maxflag = false;
+    let slot;
     this.labelData.forEach((labelelement: any) => {
-      if (labelelement.available) {
-        labelelement.available.forEach((availableElement: any) => {
-          if (availableElement.date) {
-            const dt = new Date(availableElement.date);
-            if (availableElement.time) {
-              availableElement.time.forEach((timeElement: any) => {
-                slotArray.forEach((slotElement: any, slotIndex: number) => {
-                  if (
-                    (dt.getFullYear() === d.getFullYear()) &&
-                    (dt.getMonth() === d.getMonth()) &&
-                    (dt.getDate() === d.getDate())
-                  ) {
-                    const obj = this.getHourMinuteFormat(timeElement.starttime);
-                    if (
-                      ((obj.hours === slotElement.time.getHours()) &&
-                        (obj.minutes === slotElement.time.getMinutes())
-                      )
+      slot = this.lblElementAvaillable(labelelement, d, slotArray);
+    });
+    slotArray = slot;
+    return slotArray;
+  }
 
-                    ) {
-                      minindex = slotIndex;
-                      minflag = true;
-                    }
-                  }
-                  if (
-                    (dt.getFullYear() === d.getFullYear()) &&
-                    (dt.getMonth() === d.getMonth()) &&
-                    (dt.getDate() === d.getDate())
+  lblElementAvaillable(labelelement: any, d: Date, slotArray: any) {
+    let retslot;
+    const minflag = false;
+    const maxflag = false;
+    let flgUpdateObj: any;
+    if (labelelement.available) {
+      labelelement.available.forEach((availableElement: any) => {
+        if (availableElement.date) {
+          const dt = new Date(availableElement.date);
+          if (availableElement.time) {
+            flgUpdateObj = this.isTimeAvailable(slotArray, availableElement, dt, d, { minFlag: minflag, maxFlag: maxflag });
 
-                  ) {
-                    const obj = this.getHourMinuteFormat(timeElement.endtime);
-                    if (
-                      (obj.hours === slotElement.time.getHours()) &&
-                      (obj.minutes === slotElement.time.getMinutes())
-                    ) {
-                      maxindex = slotIndex;
-                      maxflag = true;
-                    }
-                  }
-
-                });
-              });
-            }
-
-            if (minflag && maxflag) {
-              slotArray.forEach((individualSlot: any, slotindex: number) => {
-                if ((slotindex >= minindex) && (slotindex <= maxindex)) {
-                  if (individualSlot.label) {
-                    individualSlot.label = labelelement.label;
-                    individualSlot['color'] = labelelement.colorcode;
-                  } else {
-                    individualSlot['label'] = labelelement.label;
-                    individualSlot['color'] = labelelement.colorcode;
-                  }
-                }
-              });
-            }
           }
 
-        });
+          // minflag maxflag minindex maxindex slotArray reqd
+          if (flgUpdateObj.minflag && flgUpdateObj.maxflag) {
+            retslot = this.iterateSlots(flgUpdateObj, slotArray, labelelement);
+          }
+        }
+
+      });
+    }
+    retslot = slotArray;
+    return slotArray;
+  }
+
+  iterateSlots(flgUpdateObj: any, slotArray: any, labelelement: any) {
+    slotArray.forEach((individualSlot: any, slotindex: number) => {
+
+      if ((slotindex >= flgUpdateObj.minindex) && (slotindex <= flgUpdateObj.maxindex)) {
+        if (individualSlot.label) {
+          individualSlot.label = labelelement.label;
+          individualSlot['color'] = labelelement.colorcode;
+          individualSlot.colorflag = true;
+        } else {
+          individualSlot['label'] = labelelement.label;
+          individualSlot['color'] = labelelement.colorcode;
+          individualSlot.colorflag = true;
+        }
+      }
+    });
+    return slotArray;
+  }
+
+  isTimeAvailable(slotArray: any, availableElement: any, dt: Date, d: Date, flagObj: any) {
+    let minIndex: number;
+    let retObj = {};
+    availableElement.time.forEach((timeElement: any) => {
+      slotArray.forEach((slotElement: any, slotIndex: number) => {
+
+        if (
+          (dt.getFullYear() === d.getFullYear()) &&
+          (dt.getMonth() === d.getMonth()) &&
+          (dt.getDate() === d.getDate())
+
+        ) {
+
+          const obj = this.getHourMinuteFormat(timeElement.starttime);
+          if (
+            ((obj.hours === slotElement.time.getHours()) &&
+              (obj.minutes === slotElement.time.getMinutes())
+            )
+          ) {
+            minIndex = slotIndex;
+            flagObj.minFlag = true;
+          }
+        }
+        if (
+          (dt.getFullYear() === d.getFullYear()) &&
+          (dt.getMonth() === d.getMonth()) &&
+          (dt.getDate() === d.getDate())
+
+        ) {
+          retObj = this.chkMax(timeElement, slotElement, flagObj, slotIndex);
+        }
+
+      });
+    });
+    return {
+      minindex: minIndex, maxindex: retObj['maxindex'],
+      minflag: flagObj.minFlag, maxflag: retObj['maxflag'],
+    };
+  }
+
+  chkMax(timeElement: any, slotElement: any, flagObj: any, slotIndex: number) {
+    let maxIndex;
+    const obj = this.getHourMinuteFormat(timeElement.endtime);
+    if (
+      (obj.hours === slotElement.time.getHours()) &&
+      (obj.minutes === slotElement.time.getMinutes())
+
+    ) {
+      maxIndex = slotIndex;
+      flagObj.maxFlag = true;
+    }
+    return { maxflag: flagObj.maxFlag, maxindex: maxIndex };
+  }
+
+  chkMinMax(slotArray: any, minindex: number, maxindex: number, labelelement: any) {
+    slotArray.forEach((individualSlot: any, slotindex: number) => {
+      if ((slotindex >= minindex) && (slotindex <= maxindex)) {
+        if (individualSlot.label) {
+          individualSlot.label = labelelement.label;
+          individualSlot['color'] = labelelement.colorcode;
+        } else {
+          individualSlot['label'] = labelelement.label;
+          individualSlot['color'] = labelelement.colorcode;
+        }
       }
     });
     return slotArray;
