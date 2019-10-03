@@ -305,7 +305,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
         this.amexioHeader.toArray()[0].amexioComponentId = 'amexio-window';
         this.amexioHeader.toArray()[0].closeable = this.closable;
         this.amexioHeader.toArray()[0].windowFlag = true;
-      }, 3000);
+      }, 1000);
 
       if (this.maximize) {
         this.amexioHeader.toArray()[0].setMaximizeDataCE(this.maximize, this.isFullWindow);

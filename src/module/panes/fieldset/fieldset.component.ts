@@ -74,9 +74,7 @@ description : Title for fieldset.
   }
 
   ngOnInit() {
-    if (!this.collapsible && !this.expanded) {
-      this.isActive = true;
-    } else if (this.collapsible && this.expanded) {
+    if (this.expanded) {
       this.isActive = true;
     }
   }
