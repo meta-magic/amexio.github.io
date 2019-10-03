@@ -223,7 +223,7 @@ fromdate => {{fromdate}}
             <span class="dropspanMulti">
                 <ul class="dropulMulti">
                     <li tabindex="1" (keyup.enter)="arrowClickBack($event)" id="prevyearbutton" aria-label="previous year list push button" [ngClass]="{ 'disablearrow':backArrowFlag}"
-                        class="dropiconpadding" (click)="arrowClickBack($event)">
+                        class="dropiconpaddingMulti" (click)="arrowClickBack($event)">
                         <amexio-c-icon key="paginator_first" (onClick)="arrowClickBack($event)"></amexio-c-icon>
                     </li>
                     <li tabindex="1" (keyup.arrowdown)="yearList1ArrowDown(year)" (keyup.arrowup)="yearList1ArrowUp(year)" id="{{year.id}}" [ngClass]="{ 'disablearrow':year.disabled}"
@@ -241,7 +241,7 @@ fromdate => {{fromdate}}
                 <ul class="dropulMulti2">
 
                     <li tabindex="1" (keyup.enter)="arrowClickForward($event)" id="nextyearbutton" aria-label="next year list push button" [ngClass]="{ 'disablearrow':forwardArrowFlag}"
-                        class="dropiconpadding" (click)="arrowClickForward($event)">
+                        class="dropiconpaddingMulti" (click)="arrowClickForward($event)">
                         <amexio-c-icon key="paginator_last" (onClick)="arrowClickForward($event)"></amexio-c-icon>
                     </li>
                     <li tabindex="1" (keyup.arrowdown)="yearList2ArrowDown(year)" (keyup.arrowup)="yearList2ArrowUp(year)" id="{{year.id}}" [ngClass]="{ 'disablearrow ':year.disabled}"

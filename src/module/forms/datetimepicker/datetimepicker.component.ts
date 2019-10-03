@@ -200,7 +200,6 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   daysTitle: any[];
   tempFlag = true;
   curMonth: any;
-  monthNo: any;
   yearNo: any;
   pickerele: any;
   daysArray: any;
@@ -753,80 +752,12 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.cancelispressed = false;
   }
 
-  // Added method to avois recursive code
-  elementFlagMethod(element: any) {
-    if (element.flag) {
-      element.flag = false;
-    }
-  }
-
   negateDrop() {
     this.cancelispressed = true;
     this.hostFlag = true;
     this.drop = false;
     this.showToolTip = true;
     this.tempFlag = true;
-  }
-  getDropdownMonth(month: any) {
-    this.monthList1.forEach((element: any) => {
-      this.elementFlagMethod(element);
-    });
-    this.monthList2.forEach((element: any) => {
-      this.elementFlagMethod(element);
-    });
-    this.monthList1.forEach((element: any) => {
-      this.chkMonth(element, month);
-    });
-    this.monthList2.forEach((element: any) => {
-      this.chkMonth(element, month);
-    });
-    switch (month.name) {
-      case 'Jan':
-        this.monthNo = 0;
-        break;
-      case 'Feb':
-        this.monthNo = 1;
-        break;
-      case 'Mar':
-        this.monthNo = 2;
-        break;
-      case 'Apr':
-        this.monthNo = 3;
-        break;
-      case 'May':
-        this.monthNo = 4;
-        break;
-      case 'Jun':
-        this.monthNo = 5;
-        break;
-      case 'Jul':
-        this.monthNo = 6;
-        break;
-      case 'Aug':
-        this.monthNo = 7;
-        break;
-      case 'Sep':
-        this.monthNo = 8;
-        break;
-      case 'Oct':
-        this.monthNo = 9;
-        break;
-      case 'Nov':
-        this.monthNo = 10;
-        break;
-      case 'Dec':
-        this.monthNo = 11;
-        break;
-      default:
-        break;
-    }
-    super.focus({});
-  }
-  // this function broken from chk month getDropdownMonth()
-  chkMonth(element: any, month: any) {
-    if (element.name === month.name) {
-      element.flag = true;
-    }
   }
 
   // this function is broken from getDropdownYear
