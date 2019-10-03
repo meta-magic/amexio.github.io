@@ -5,7 +5,6 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
   templateUrl: './availability.component.html',
 })
 export class AvailabilityComponent implements OnInit, AfterViewInit {
-
   @Input('start-date') startDate: string;
   @Input('end-date') endDate: string;
   @Input('start-time') startTime: number;
@@ -148,125 +147,107 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
     return this.chkLabels(d, slot);
   }
   chkLabels(d: Date, slotArray: any) {
-    let slot;
+    const minindex: any = null;
+    const maxindex: any = null;
+    let minflag = false;
+    let maxflag = false;
     this.labelData.forEach((labelelement: any) => {
-      slot = this.lblElementAvaillable(labelelement, d, slotArray);
-    });
-    slotArray = slot;
-    return slotArray;
-  }
 
-  lblElementAvaillable(labelelement: any, d: Date, slotArray: any) {
-    let retslot;
-    const minflag = false;
-    const maxflag = false;
-    let flgUpdateObj: any;
-    if (labelelement.available) {
-      labelelement.available.forEach((availableElement: any) => {
-        if (availableElement.date) {
-          const dt = new Date(availableElement.date);
-          if (availableElement.time) {
-            flgUpdateObj = this.isTimeAvailable(slotArray, availableElement, dt, d, { minFlag: minflag, maxFlag: maxflag });
-
+      if (labelelement.available) {
+        labelelement.available.forEach((availableElement: any) => {
+          if (availableElement.date) {
+            let minmaxarr: any = [];
+            const dt = new Date(availableElement.date);
+            let retflagObj: any;
+            if (availableElement.time) {
+              retflagObj = this.availableTimeTest(availableElement, slotArray, dt, d, minmaxarr);
+              minflag = retflagObj.minFlag;
+              maxflag = retflagObj.maxFlag;
+              minmaxarr = retflagObj.minmaxArr;
+            }
+            this.setRange(minflag, maxflag, slotArray, minmaxarr, labelelement);
           }
 
-          // minflag maxflag minindex maxindex slotArray reqd
-          if (flgUpdateObj.minflag && flgUpdateObj.maxflag) {
-            retslot = this.iterateSlots(flgUpdateObj, slotArray, labelelement);
-          }
-        }
-
-      });
-    }
-    retslot = slotArray;
-    return slotArray;
-  }
-
-  iterateSlots(flgUpdateObj: any, slotArray: any, labelelement: any) {
-    slotArray.forEach((individualSlot: any, slotindex: number) => {
-
-      if ((slotindex >= flgUpdateObj.minindex) && (slotindex <= flgUpdateObj.maxindex)) {
-        if (individualSlot.label) {
-          individualSlot.label = labelelement.label;
-          individualSlot['color'] = labelelement.colorcode;
-          individualSlot.colorflag = true;
-        } else {
-          individualSlot['label'] = labelelement.label;
-          individualSlot['color'] = labelelement.colorcode;
-          individualSlot.colorflag = true;
-        }
+        });
       }
     });
     return slotArray;
   }
 
-  isTimeAvailable(slotArray: any, availableElement: any, dt: Date, d: Date, flagObj: any) {
-    let minIndex: number;
-    let retObj = {};
+  setRange(minflag: boolean, maxflag: boolean, slotArray: any, minmaxarr: any, labelelement: any) {
+    if (minflag && maxflag) {
+      this.setColorRangeTest(slotArray, minmaxarr, labelelement);
+    }
+  }
+
+  availableTimeTest(availableElement: any, slotArray: any, dt: Date, d: Date, minmaxarr: any) {
+    let minindex = null;
+    let maxindex = null;
+    let minflag = false;
+    let maxflag = false;
     availableElement.time.forEach((timeElement: any) => {
-      slotArray.forEach((slotElement: any, slotIndex: number) => {
+      minindex = null;
+      maxindex = null;
+      minflag = false;
+      maxflag = false;
+      const retminmaxObj = this.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+      minflag = retminmaxObj.minFlag;
+      maxflag = retminmaxObj.maxFlag;
+      minindex = retminmaxObj.minIndex;
+      maxindex = retminmaxObj.maxIndex;
+      if (minflag && maxflag) {
+        const minmaxobj = { minIndex: minindex, maxIndex: maxindex };
+        minmaxarr.push(minmaxobj);
+      }
+    });
+    return { minFlag: minflag, maxFlag: maxflag, minmaxArr: minmaxarr };
+  }
 
-        if (
-          (dt.getFullYear() === d.getFullYear()) &&
-          (dt.getMonth() === d.getMonth()) &&
-          (dt.getDate() === d.getDate())
+  setColorRangeTest(slotArray: any, minmaxarr: any, labelelement: any) {
+    slotArray.forEach((individualSlot: any, slotindex: any) => {
 
-        ) {
+      minmaxarr.forEach((minmaxrange: any) => {
 
-          const obj = this.getHourMinuteFormat(timeElement.starttime);
-          if (
-            ((obj.hours === slotElement.time.getHours()) &&
-              (obj.minutes === slotElement.time.getMinutes())
-            )
-          ) {
-            minIndex = slotIndex;
-            flagObj.minFlag = true;
+        if ((slotindex >= minmaxrange.minIndex) && (slotindex <= minmaxrange.maxIndex)) {
+          if (individualSlot.label) {
+            individualSlot.label = labelelement.label;
+            individualSlot['color'] = labelelement.colorcode;
+            individualSlot.colorflag = true;
+          } else {
+            individualSlot['label'] = labelelement.label;
+            individualSlot['color'] = labelelement.colorcode;
+            individualSlot.colorflag = true;
           }
         }
-        if (
-          (dt.getFullYear() === d.getFullYear()) &&
-          (dt.getMonth() === d.getMonth()) &&
-          (dt.getDate() === d.getDate())
-
-        ) {
-          retObj = this.chkMax(timeElement, slotElement, flagObj, slotIndex);
-        }
-
       });
     });
-    return {
-      minindex: minIndex, maxindex: retObj['maxindex'],
-      minflag: flagObj.minFlag, maxflag: retObj['maxflag'],
-    };
   }
 
-  chkMax(timeElement: any, slotElement: any, flagObj: any, slotIndex: number) {
-    let maxIndex;
-    const obj = this.getHourMinuteFormat(timeElement.endtime);
-    if (
-      (obj.hours === slotElement.time.getHours()) &&
-      (obj.minutes === slotElement.time.getMinutes())
-
-    ) {
-      maxIndex = slotIndex;
-      flagObj.maxFlag = true;
-    }
-    return { maxflag: flagObj.maxFlag, maxindex: maxIndex };
-  }
-
-  chkMinMax(slotArray: any, minindex: number, maxindex: number, labelelement: any) {
-    slotArray.forEach((individualSlot: any, slotindex: number) => {
-      if ((slotindex >= minindex) && (slotindex <= maxindex)) {
-        if (individualSlot.label) {
-          individualSlot.label = labelelement.label;
-          individualSlot['color'] = labelelement.colorcode;
-        } else {
-          individualSlot['label'] = labelelement.label;
-          individualSlot['color'] = labelelement.colorcode;
+  chkMinMaxIndexTest(slotArray: any, dt: Date, d: Date, timeElement: any) {
+    let minindex: any = null;
+    let maxindex: any = null;
+    let minflag = false;
+    let maxflag = false;
+    slotArray.forEach((slotElement: any, slotIndex: number) => {
+      if (
+        (dt.getFullYear() === d.getFullYear()) &&
+        (dt.getMonth() === d.getMonth()) && (dt.getDate() === d.getDate())) {
+        const obj = this.getHourMinuteFormat(timeElement.starttime);
+        if (((obj.hours === slotElement.time.getHours()) && (obj.minutes === slotElement.time.getMinutes()))) {
+          minindex = slotIndex;
+          minflag = true;
+        }
+      }
+      if ((dt.getFullYear() === d.getFullYear()) && (dt.getMonth() === d.getMonth()) &&
+        (dt.getDate() === d.getDate())) {
+        const obj = this.getHourMinuteFormat(timeElement.endtime);
+        if ((obj.hours === slotElement.time.getHours()) && (obj.minutes === slotElement.time.getMinutes())) {
+          maxindex = slotIndex;
+          maxflag = true;
         }
       }
     });
-    return slotArray;
+    return { minFlag: minflag, maxFlag: maxflag, minIndex: minindex, maxIndex: maxindex };
   }
 
   getHourMinuteFormat(usertime: number) {
@@ -277,13 +258,10 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     let divHt;
     let divWt;
-    let divWt1;
     divHt = this.elementView.nativeElement.offsetHeight;
     divWt = this.elementView1.nativeElement.offsetWidth;
-    divWt1 = this.elementView2.nativeElement.offsetWidth;
-
     this.dateSpanHt = Math.round(divHt / this.datesArrlen);
-    this.dateSpanWt = Math.round((divWt - divWt1) / this.newTimeArr.length);
+    this.dateSpanWt = Math.round((divWt) / this.newTimeArr.length);
   }
 
   generateLegendArr() {
@@ -292,7 +270,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
     });
 
     this.labelData.forEach((element: any) => {
-      const obj = { label: element.label, colorcode: element.colorcode };
+      const obj = { label: element.label, colorcode: element.colorcode, textcolor: element.textcolor ? element.textcolor : 'black' };
       this.legendArr.push(obj);
     });
 
@@ -305,14 +283,9 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
     ];
   }
 
-  chkRedundancy(sentdate: any) {
-
-  }
-
   generateTimeArr() {
     let startindex;
     let endindex;
-
     this.completeTimeArr.forEach((element: any, index: number) => {
       if (element === this.startTime) {
         startindex = index;
@@ -338,11 +311,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   onSelection(radioData: any) {
     this.styleVar = '';
     const obj = { label: radioData.label, colorcode: radioData.colorcode };
-
     this.styleVar = obj;
-  }
-
-  chkBGColor(parentitem: any, item: any, parentindex: any, childindex: any) {
   }
 
   clearColorFlag() {
@@ -357,13 +326,21 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
 
   onTimeBlockClick(parentiterateitem: any, parentindex: any, childiterateitem: any, childindex: any) {
     const indexobj = { parentsindex: parentindex, childsindex: childindex };
-    this.selectedIndexArr.push(indexobj);
     if (this.radioValue.length > 0) {
       if (this.dateArr1[parentindex].slots[childindex].label) {
         if (this.dateArr1[parentindex].slots[childindex].label === this.styleVar.label) {
-          const newobj = { time: this.dateArr1[parentindex].slots[childindex].time, colorflag: false };
+          // index obj
+          indexobj['initiallabel'] = this.dateArr1[parentindex].slots[childindex].label;
+          indexobj['initialcolor'] = this.dateArr1[parentindex].slots[childindex].color;
+          //  unselect logic
+          const newobj = {
+            time: this.dateArr1[parentindex].slots[childindex].time, colorflag: false,
+          };
           this.dateArr1[parentindex].slots[childindex] = newobj;
         } else {
+
+          indexobj['initiallabel'] = this.dateArr1[parentindex].slots[childindex].label;
+          indexobj['initialcolor'] = this.dateArr1[parentindex].slots[childindex].color;
           this.dateArr1[parentindex].slots[childindex].label = this.styleVar.label;
           this.dateArr1[parentindex].slots[childindex].color = this.styleVar.colorcode;
           this.dateArr1[parentindex].slots[childindex].colorflag = true;
@@ -376,6 +353,8 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
         this.dateArr1[parentindex].slots[childindex] = newobj;
       }
     }
+    this.selectedIndexArr.push(indexobj);
+
     this.onClick.emit({
       time: this.dateArr1[parentindex].slots[childindex].time,
       label: this.dateArr1[parentindex].slots[childindex].label,
@@ -384,14 +363,24 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
 
   onUndoClick() {
     this.selectedIndexArr.forEach((element: any) => {
-      const newobj = {
-        time: this.dateArr1[element.parentsindex].slots[element.childsindex],
-        colorflag: false,
-      };
-
+      let newobj = {};
+      if (element.initiallabel) {
+        newobj = {
+          time: this.dateArr1[element.parentsindex].slots[element.childsindex],
+          colorflag: true,
+          label: element.initiallabel,
+          color: element.initialcolor,
+        };
+      } else {
+        newobj = {
+          time: this.dateArr1[element.parentsindex].slots[element.childsindex],
+          colorflag: false,
+        };
+      }
       this.dateArr1[element.parentsindex].slots[element.childsindex] = newobj;
-
     });
+
+    this.selectedIndexArr = [];
   }
 
 }
