@@ -24,11 +24,11 @@
                         (onClick)="onBgColorClick()">
                 </amexio-button>
 
-                <input class="hidden-input" type="color" id="favColor" (change)="foreColorClick($event)">
-                <input class="hidden-input" type="color" id="backColor" (change)="backgroundColorClick($event)">
+                <input class="hidden-input" type="color" id="favColor" (change)="foreColorClick()">
+                <input class="hidden-input" type="color" id="backColor" (change)="backgroundColorClick()">
 
                 <span>
-                        <select id="selectId" (change)="selectHeaderClick($event)" class="heading-dropdown" required>
+                        <select id="selectId" (change)="selectHeaderClick()" class="heading-dropdown" required>
                                 <option value="" disabled selected>Header</option>
                                 <option [(value)]="item.headerName" *ngFor="let item of headingData">
                                         {{item.headerName}}
@@ -37,7 +37,7 @@
                 </span>
                 &nbsp;&nbsp;
                 <span>
-                        <select id="fontFamilyId" (change)="fontFamilySelectionClick($event)" class="heading-dropdown"
+                        <select id="fontFamilyId" (change)="fontFamilySelectionClick()" class="heading-dropdown"
                                 required>
                                 <option value="" disabled selected>Font Family</option>
                                 <option [(value)]="item.familyType" *ngFor="let item of fontFamilyData">
