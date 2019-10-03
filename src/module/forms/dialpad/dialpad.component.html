@@ -4,14 +4,14 @@
     minlength="minlen" value="{{value}}" readonly>
   <ng-container *ngIf="showpassword">
     <span *ngIf="show" style=" cursor:pointer; border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" [ngClass]="cls"
-      (click)="toggleShow($event)">
+      (click)="toggleShow()">
       <span>
         <em style="margin-top: 13px;
               padding-right: 7px;" class="fa fa-eye"></em>
       </span>
     </span>
     <span *ngIf="!show" style="cursor:pointer; border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" [ngClass]="cls"
-      (click)="toggleShow($event)">
+      (click)="toggleShow()">
       <span>
         <em style="margin-top: 13px;
               padding-right: 7px;" class="fa fa-eye-slash"></em>

@@ -235,8 +235,7 @@ description : Set enable / disable popover.
     super.onInputEvent(event);
   }
 
-  toggleShow(event: any) {
-    event.stopPropagation();
+  toggleShow() {
     this.show = !this.show;
     if (this.show) {
       this.type = 'text';

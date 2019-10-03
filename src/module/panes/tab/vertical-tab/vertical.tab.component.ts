@@ -214,24 +214,6 @@ description : Callback to invoke on activated tab event.
     const parentRefNode = removeNode.parentNode;
     parentRefNode.removeChild(removeNode);
   }
-  asignTabPillClass(tabData: any) {
-    tabData.tabPillClass = '';
-    if ((!tabData.amexiocolor || tabData.amexiocolor === '') && tabData.active && (this.tabPosition === 'top')) {
-      tabData.tabPillClass = 'activetab';
-    }
-    if ((!tabData.amexiocolor || tabData.amexiocolor === '') && (this.tabPosition === 'bottom') && tabData.active) {
-      tabData.tabPillClass = 'bottomActivetab';
-    }
-    if (tabData.disabled) {
-      tabData.tabPillClass = 'disabled-tab';
-    }
-    if ((tabData.amexiocolor !== '') && (this.tabPosition === 'top') && tabData.active) {
-      tabData.tabPillClass = 'activecolortab';
-    }
-    if ((tabData.amexiocolor !== '') && (this.tabPosition === 'bottom') && tabData.active) {
-      tabData.tabPillClass = 'activebottomcolortab';
-    }
-  }
   activateTab(tabId: number) {
     this.tabCollection.forEach((tab) => {
       tab.active = false;

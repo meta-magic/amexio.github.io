@@ -660,28 +660,6 @@ description : sets background color for active tab
     }
   }
 
-  asignTabPillClass(tabData: any) {
-    tabData.tabPillClass = '';
-    if ((!tabData.amexiocolor || tabData.amexiocolor === '') && tabData.active && (this.tabPosition === 'top')) {
-      tabData.tabPillClass = 'activetab';
-    }
-    if ((!tabData.amexiocolor || tabData.amexiocolor === '') && (this.tabPosition === 'bottom') && tabData.active) {
-      tabData.tabPillClass = 'bottomActivetab';
-    }
-    if (tabData.disabled) {
-      tabData.tabPillClass = 'disabled-tab';
-    }
-    if ((tabData.amexiocolor !== '') && (this.tabPosition === 'top') && tabData.active && !this.activeBGColor) {
-      tabData.tabPillClass = 'activecolortab';
-    }
-    if ((tabData.amexiocolor !== '') && (this.tabPosition === 'top') && tabData.active && this.activeBGColor) {
-      tabData.tabPillClass = 'activebgcolortab';
-    }
-    if ((tabData.amexiocolor !== '') && (this.tabPosition === 'bottom') && tabData.active) {
-      tabData.tabPillClass = 'activebottomcolortab';
-    }
-  }
-
   findTabStyleClass() {
     if (this.headeralign === 'right' && !this.fullPageTabs) {
       return 'tabposition-right';

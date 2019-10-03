@@ -229,7 +229,7 @@ export class AmexioDialpadComponent implements OnInit {
         }
     }
 
-    toggleShow(event: any) {
+    toggleShow() {
         this.show = !this.show;
         if (this.show) {
           this.textType = 'text';
