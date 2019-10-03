@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconLoaderService } from '../../../index';
-import { AmexioFieldSetComponent } from './fieldset.component';
 import { AmexioStepsComponent } from '../steps/steps.component';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AmexioFieldSetComponent } from './fieldset.component';
 
 describe('amexio-fieldset', () => {
     let comp: AmexioFieldSetComponent;
@@ -18,48 +18,41 @@ describe('amexio-fieldset', () => {
         });
         fixture = TestBed.createComponent(AmexioFieldSetComponent);
         comp = fixture.componentInstance;
-        fixture.autoDetectChanges()
+        fixture.autoDetectChanges();
     });
 
-
-
-
-    it('onLegendClick if condition', () => {
+    it('onLegendClick if isActive true ', () => {
         comp.collapsible = true;
-        comp.onLegendClick();
-        comp.collapsible = true;
-        expect(comp.collapsible).toEqual(true);
-        comp.isActive = !comp.isActive;
-    });
-    it('onLegendClick else condition', () => {
-        comp.collapsible = false;
-        comp.onLegendClick();
-        comp.collapsible = false;
-        expect(comp.collapsible).toEqual(false);
-    });
-
-    it('checking ngOnInit method if condition', () => {
-        comp.collapsible = false;
-        comp.expanded = false;
-        comp.ngOnInit();
-        comp.collapsible = false;
-        comp.expanded = false;
-        expect(comp.collapsible).toEqual(false);
-        expect(comp.expanded).toEqual(false);
         comp.isActive = true;
 
+        comp.onLegendClick();
+
+        expect(comp.isActive).toBeFalsy();
     });
 
-    it('checking ngOnInit method else condition', () => {
+    it('onLegendClick if isActive false ', () => {
         comp.collapsible = true;
-        comp.expanded = true;
+        comp.isActive = false;
+
+        comp.onLegendClick();
+
+        expect(comp.isActive).toBeTruthy();
+    });
+
+    it('checking ngOnInit() if expanded false', () => {
+        comp.expanded = false;
+
         comp.ngOnInit();
-        comp.collapsible = true;
+
+        expect(comp.isActive).toBeFalsy();
+    });
+
+    it('checking ngOnInit() if expanded true', () => {
         comp.expanded = true;
-        expect(comp.collapsible).toEqual(true);
-        expect(comp.expanded).toEqual(true);
-        comp.isActive = true;
+
+        comp.ngOnInit();
+
+        expect(comp.isActive ).toBeTruthy();
 
     });
 });
-
