@@ -192,12 +192,12 @@ fromdate => {{fromdate}}
 <!--dropdown datepicker -->
 <div style="position: relative; z-index:1000" *ngIf="drop" class="datedropdown">
     <!-- hi -->
-
+<!-- New Refactor code -->
     <div class="dropdivMulti">
         <span tabindex="1" aria-label="month list">
 
-            <span class="dropspan1">
-                <ul class="dropul1">
+            <span class="dropspanMulti">
+                <ul class="dropulMulti">
                     <li tabindex="1" id={{month.id}} class="li4" (click)="getDropdownMonth(month)" *ngFor="let month of monthList1" attr.aria-label="{{month.fullname}}"
                         (keyup.arrowdown)="dropdownListOneArrowDown(month)" (keyup.arrowup)="dropdownListOneArrowUp(month)">
                         <span [ngClass]="{'change4':month.flag}"> {{month.name}}</span>
@@ -206,8 +206,8 @@ fromdate => {{fromdate}}
                 </ul>
             </span>
 
-            <span class="dropspan2">
-                <ul class="dropul2">
+            <span class="dropspanMulti2">
+                <ul class="dropulMulti2">
                     <li class="li4" tabindex="1" id={{month.id}} (click)="getDropdownMonth(month)" *ngFor="let month of monthList2" attr.aria-label="{{month.fullname}}"
                         (keyup.arrowdown)="dropdownListTwoArrowDown(month)" (keyup.arrowup)="dropdownListTwoArrowUp(month)">
                         <span [ngClass]="{'change4':month.flag}"> {{month.name}}</span>
@@ -220,8 +220,8 @@ fromdate => {{fromdate}}
 
         <span tabindex="1" aria-label="year list">
 
-            <span class="dropspan1">
-                <ul class="dropul1">
+            <span class="dropspanMulti">
+                <ul class="dropulMulti">
                     <li tabindex="1" (keyup.enter)="arrowClickBack($event)" id="prevyearbutton" aria-label="previous year list push button" [ngClass]="{ 'disablearrow':backArrowFlag}"
                         class="dropiconpadding" (click)="arrowClickBack($event)">
                         <amexio-c-icon key="paginator_first" (onClick)="arrowClickBack($event)"></amexio-c-icon>
@@ -237,8 +237,8 @@ fromdate => {{fromdate}}
                 </ul>
             </span>
 
-            <span class="dropspan4">
-                <ul class="dropul2">
+            <span class="dropspanMulti4">
+                <ul class="dropulMulti2">
 
                     <li tabindex="1" (keyup.enter)="arrowClickForward($event)" id="nextyearbutton" aria-label="next year list push button" [ngClass]="{ 'disablearrow':forwardArrowFlag}"
                         class="dropiconpadding" (click)="arrowClickForward($event)">
@@ -256,8 +256,8 @@ fromdate => {{fromdate}}
 
         </span>
     </div>
-    <div class="btndiv1">
-        <span class="dropbtnspan">
+    <div class="btndivMulti1">
+        <span class="dropbtnspanMulti">
             <button tabindex="1" role="button" [attr.aria-pressed]="okispressed" (click)="navigateDropdown()" class="datedropbtn">
                 ok
             </button>

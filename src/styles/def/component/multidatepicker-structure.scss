@@ -193,4 +193,40 @@ cursor: not-allowed;
   .dropdivMulti{
     width: 100%;
   }
+
+  .dropspanMulti{
+    float: left;
+    width:25%;
+  }
+
+  .dropulMulti{
+    list-style-type: none;
+    -webkit-padding-start: 5px;
+  }
+
+  .dropspanMulti2{
+    width:25%; 
+    float:left; 
+    border-right: 1px solid $datetimepickerDaysColor;
+   
+  }
+
+  .dropulMulti2{
+    list-style-type: none; 
+    -webkit-padding-start: 15px;
+  }
+
+  .dropspanMulti4{
+    width:25%;  
+    display: table-row-group; 
+  }
  
+  .btndivMulti1{
+    position: relative;
+    bottom: 0;
+  }
+
+  .dropbtnspanMulti{
+    display:inline-flex; 
+    padding-left: 105px;
+   }
