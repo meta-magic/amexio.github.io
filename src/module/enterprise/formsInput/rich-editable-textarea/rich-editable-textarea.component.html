@@ -1,33 +1,55 @@
-<div class="RichFirstDiv" [style.height.px]="areaHeight" [style.width.px]="areaWidth">
+<div class="rich-first-div" [style.height.%]="areaHeight" [style.width.%]="areaWidth">
 
-    <div class="Richeditor" contenteditable="true" [style.height.px]="textAreaHeight">
+        <ng-container *ngIf="displayDiv">
+                <div id="rich-editor" class="rich-text-editor"  contenteditable="true" [style.height.%]="textAreaHeight">
 
-    </div>
+                </div>
+        </ng-container>
 
-    <div class="Richbuttons">
-        <button class="richButton" onclick="document.execCommand( 'bold',false,null);"><i class="fa fa-bold"></i>
-        </button>
-        <button class="richButton" onclick="document.execCommand( 'italic',false,null);"><i class="fa fa-italic"></i>
-        </button>
-        <button class="richButton" onclick="document.execCommand( 'strikethrough',false,null);"><i
-                class="fa fa-strikethrough"></i> </button>
-        <button class="richButton" onclick="document.execCommand( 'underline',false,null);"><i
-                class="fa fa-underline"></i> </button>
-        <button class="richButton" onclick="document.execCommand( 'insertUnorderedList',false,null);"><i
-                class="fa fa-list-ul"></i> </button>
-        <button class="richButton" onclick="document.execCommand( 'insertOrderedList',false,null);"><i
-                class="fa fa-list-ol"></i> </button>
-        <button class="richButton" onclick="document.execCommand( 'formatBlock',false,'<blockquote>');"> <i
-                class="fa fa-quote-right"></i></button>
-        <button class="richButton" (click)="onLinkClick()"><i class="fa fa-link"></i></button>
-        <button class="richButton" (click)="onResetLinkClick()"><i class="fa fa-unlink"></i></button>
+        <div class="rich-editor-buttons">
+                <span *ngFor="let item of editableTextArray">
+                        <amexio-button class="rich-button" [tooltip]="item.title"
+                                [icon]="item.icon" [size]="'small'" (onClick)="onIconClick(item.event)">
+                        </amexio-button>
+                </span>
+                <amexio-button class="rich-button" [tooltip]="'HTML Code'" [icon]="'fa fa-code'" [size]="'small'"
+                        (onClick)="onHtmlCodeClick()">
+                </amexio-button>
+                <amexio-button class="rich-button" [bg-color]="'black'" [color]="'burlywood'" [tooltip]="'Fore Color'"
+                        [icon]="'fa fa-font'" [size]="'small'" (onClick)="onColorBtnClick()">
+                </amexio-button>
 
-        <button disabled style="cursor: not-allowed" class="richButton" onclick="document.execCommand( 'insertText',false,null);"><i
-                class="fa fa-smile-o"></i> </button>
-        <button  disabled style="cursor: not-allowed" class="richButton" onclick="document.execCommand( 'question-circle-o',false,null);"><i
-                class="fa fa-question-circle-o"></i></button>
-        <button  disabled style="cursor: not-allowed" class="richButton">Preview </button>
+                <amexio-button class="rich-button" [bg-color]="'burlywood'" [color]="'black'"
+                        [tooltip]="'Background Color'" [icon]="'fa fa-font'" [size]="'small'"
+                        (onClick)="onBgColorClick()">
+                </amexio-button>
 
+                <input class="hidden-input" type="color" id="favColor" (change)="foreColorClick($event)">
+                <input class="hidden-input" type="color" id="backColor" (change)="backgroundColorClick($event)">
 
-    </div>
+                <span>
+                        <select id="selectId" (change)="selectHeaderClick($event)" class="heading-dropdown" required>
+                                <option value="" disabled selected>Header</option>
+                                <option [(value)]="item.headerName" *ngFor="let item of headingData">
+                                        {{item.headerName}}
+                                </option>
+                        </select>
+                </span>
+                &nbsp;&nbsp;
+                <span>
+                        <select id="fontFamilyId" (change)="fontFamilySelectionClick($event)" class="heading-dropdown"
+                                required>
+                                <option value="" disabled selected>Font Family</option>
+                                <option [(value)]="item.familyType" *ngFor="let item of fontFamilyData">
+                                        {{item.familyType}}
+                                </option>
+                        </select>
+                </span>
+        </div>
+        <ng-container *ngIf="!displayDiv">
+
+                        <div id="rich-editor"  class="text-editor" contenteditable="true" [style.height.%]="textAreaHeight">
+
+                                </div>
+                      </ng-container>
 </div>

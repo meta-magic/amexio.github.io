@@ -1,5 +1,5 @@
 
-  .Richeditor {
+  .rich-text-editor {
     border-radius: 5px;
     margin: 2px;
     background-color: antiquewhite;
@@ -7,25 +7,76 @@
     padding: 1px;
    }
 
-  .Richbuttons {
-  width: 100%;
-  text-align: end;
-  background: #eff0f1;
-  padding-top: 5px;
-  border-top: 2px solid rgb(196, 188, 188);
-  }
-  .RichFirstDiv { 
+ 
+  .rich-first-div { 
     resize: both;
     border-radius: 5px;
     overflow-x: hidden;
  
   }
-  .richButton {
+  .rich-editor-buttons {
+    width: 100%;
+    text-align: start;
+    padding: 3px;
+    border-top: 2px solid rgb(196, 188, 188);
+  }
+  .rich-button {
     width: auto;
     cursor: pointer;
+    line-height: 30px;
     text-align: center;
     padding: 1px 3px;
     box-shadow: none;
-    background: #eff0f1;
   }
  
+  .rich-button .button-small {
+    padding: 3px !important;
+  }
+
+  .hidden-input {
+    position: absolute;
+    width: 1px;
+    left: -10000px;
+    top: auto;
+    height: 1px;
+    overflow: hidden;
+  }
+  .heading-dropdown {
+    width: auto;
+    padding: .375rem 0;
+    background: white;
+    line-height: 2;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid var(--componentFontColor);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  }
+
+  .heading-dropdown:required:invalid {
+    color: gray;
+  }
+  option[value=""][disabled] {
+    display: none;
+  }
+  option {
+    cursor: pointer;
+    color: black;
+  }
+
+
+.rich-text-editor::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  //background-color: #F5F5F5;
+}
+
+.rich-text-editor::-webkit-scrollbar
+{
+  width: 6px;
+  //background-color: #F5F5F5;
+}
+
+.rich-text-editor::-webkit-scrollbar-thumb
+{
+  //background-color: $themeBGColor;
+}

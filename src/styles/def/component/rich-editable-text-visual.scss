@@ -1,10 +1,30 @@
 
-  .RichFirstDiv{ 
-    
+  .rich-first-div{ 
     border: 1px solid $richEditorHoverFontColor;
-    
   }
  
-  .richButton:hover {
-    background-color: $richEditorHoverBGColor;
+  .rich-editor-buttons{
+    background: $richEditorHoverBGColor;
   }
+
+
+.rich-text-editor::-webkit-scrollbar-track
+{
+  background-color: $richEditorScrollBG;
+}
+
+.rich-text-editor::-webkit-scrollbar
+{
+  background-color: $richEditorScrollBG;
+}
+
+.rich-text-editor::-webkit-scrollbar-thumb
+{
+  background-color: $richEditorScrollThumbBG;
+}
+
+// .rich-text-editor:focus{
+//   background-color: $richEditorHoverBGColor;
+//   color: $richEditorHoverFontColor;
+  
+// }
