@@ -148,42 +148,6 @@ description : Callback to invoke on activated tab event.
     });
   }
 
-  tabPillClose(tabNode: AmexioTabPillComponent) {
-    const newTab: AmexioTabPillComponent[] = [];
-    let index = 0;
-    let tabHighlightIndex = 0;
-
-    this.tabCollection.forEach((tab: any, i: number) => {
-      tab.active = false;
-      if (tab.tabId === tabNode.tabId) {
-        tabHighlightIndex = index;
-        if (tab.hasOwnProperty('tabpillinstance')) {
-          tab.target.remove();
-        } else {
-          this.tabDomRemove(tab);
-        }
-      } else if (tab.tabId !== tabNode.tabId) {
-        newTab.push(tab);
-      }
-      index++;
-    });
-
-    if (tabHighlightIndex === newTab.length) {
-      tabHighlightIndex--;
-    }
-    this.tabCollection = newTab;
-    if (tabHighlightIndex > -1) {
-      this.activateTab(newTab[tabHighlightIndex].tabId);
-    } else {
-      this.activateTab(null);
-    }
-    if (this.tabCollection.length === 1) {
-      this.closable = false;
-    }
-    if (newTab.length === 1) {
-      newTab[0].closable = false;
-    }
-  }
   tabDomRemove(tab: any) {
     const removeNode = document.getElementById(tab.tabId).parentNode;
     const parentRefNode = removeNode.parentNode;

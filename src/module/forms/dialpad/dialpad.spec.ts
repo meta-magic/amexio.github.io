@@ -22,7 +22,38 @@ describe('amexio-dialpad', () => {
         comp.btnArray1 = [0, 1, 2, 3, 4];
         comp.btnArray2 = [5, 6, 7, 8, 9];
     });
+    it('ngOnInit() 0st  condition ', () => {
+        comp.type = '2-rows';
+        comp.minlen = 2;
+        comp.maxlen = 4;
+        comp.random = true;
+        comp.password = true;
+        comp.showpassword = true;
+        comp.ngOnInit();
+        expect(comp.showpassword).toEqual(true);
+        comp.textType = 'password';
+        expect(comp.password).toEqual(true);
+        comp.textType = 'password';
+        comp.cls = 'nonecls';
+        expect(comp.minlen).toEqual(2);
+        expect(comp.maxlen).toEqual(4);
+        comp.iconfeedback = true;
+        comp.randomArr = [];
+        const num = 0;
+        const i = 0;
+        const foundDuplicate = false;
+        expect(comp.random).toEqual(true);
+        expect(comp.type).toEqual('2-rows');
+        comp.generateRandomArray();
 
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        expect(comp.randomArr.length).toBeGreaterThan(0);
+        comp.btnArray1 = [];
+        comp.btnArray2 = [];
+        comp.generateTyp1Arr();
+
+
+    });
 
     it('ngOnInit() 1st  condition ', () => {
         comp.type = '2-rows';
@@ -108,7 +139,7 @@ describe('amexio-dialpad', () => {
 
     });
 
-    it('ngOnInit() 3rd condition ', () => {
+    it('ngOnInit() 4th condition ', () => {
         comp.type = 'rows';
 
         comp.random = false;
@@ -130,7 +161,30 @@ describe('amexio-dialpad', () => {
 
 
     });
+    it(' random Arr Less condition ', () => {
+        comp.type = '2-rows';
+        comp.minlen = 2;
+        comp.maxlen = 4;
+        comp.random = true;
+        comp.password = true;
+        comp.ngOnInit();
+        expect(comp.password).toEqual(true);
+        comp.textType = 'password';
+        comp.cls = 'nonecls';
+        expect(comp.minlen).toEqual(2);
+        expect(comp.maxlen).toEqual(4);
+        comp.iconfeedback = true;
+        comp.randomArr = [];
+        const num = 0;
+        const i = 0;
+        const foundDuplicate = false;
+        expect(comp.random).toEqual(true);
+        expect(comp.type).toEqual('2-rows');
+        comp.generateRandomArray();
+        comp.randomArr = [];
+        expect(comp.randomArr.length).toBeLessThanOrEqual(0);
 
+    });
     it('generateTyp1Arr() if condition ', () => {
 
         comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
@@ -281,7 +335,7 @@ describe('amexio-dialpad', () => {
         comp.validateMinMax();
         expect(comp.iconfeedback).toEqual(false);
         expect(comp.value).toBeDefined();
-      
+
     });
 
     it('getBtnData() if condition ', () => {
@@ -485,6 +539,5 @@ describe('amexio-dialpad', () => {
         expect(comp.maxlen).toBeGreaterThanOrEqual(comp.value.length);
         comp.isValid = true;
     });
-
 
 });
