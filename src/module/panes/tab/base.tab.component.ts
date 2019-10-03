@@ -31,6 +31,15 @@ export class BaseTabComponent extends LifeCycleBaseComponent {
      description : This flag will make tab closable.
      */
     @Input() closable: boolean;
+    /*
+Events
+name : onClick
+datatype : none
+version : 4.0 onwards
+default :none
+description : Callback to invoke on activated tab event.
+*/
+    @Output() onClick: any = new EventEmitter<any>();
     singleTabWidth: any;
     minHeight: any;
     totalTabs: number;
@@ -123,6 +132,24 @@ export class BaseTabComponent extends LifeCycleBaseComponent {
         }
     }
 
+    onVerticalTabClick(tab: any) {
+        if (!tab.disabled && !tab.header) {
+            for (const i of this.tabCollection) {
+                if (i === tab) {
+                    i['active'] = true;
+                    this.asignTabPillClass(tab);
+                    this.onClick.emit(tab);
+                } else {
+                    i['active'] = false;
+                    i['tabPillClass'] = '';
+                }
+            }
+            this.tabCollection.forEach((tab1: any) => {
+                this.asignTabPillClass(tab1);
+            });
+        }
+    }
+
     activateTab(tabId: number) {
         if (tabId !== null) {
             this.tabCollection.forEach((tab) => {
@@ -198,6 +225,16 @@ export class BaseTabComponent extends LifeCycleBaseComponent {
             }
             this.minHeight = h;
             this.height = h;
+        }
+    }
+
+    // Code to be done
+    findVerticalTabStyleClass() {
+        if (this.tabPosition === 'top') {
+            return 'tabposition-top';
+        }
+        if (this.tabPosition === 'bottom') {
+            return 'tabposition-bottom';
         }
     }
 }

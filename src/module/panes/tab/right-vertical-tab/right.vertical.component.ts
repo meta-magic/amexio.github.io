@@ -79,15 +79,6 @@ export class AmexioRightVerticalTabComponent extends BaseTabComponent implements
  description : tab header alignment
  */
   @Input() rotate = false;
-  /*
-Events
-name : onClick
-datatype :none
-version : 4.0 onwards
-default : none
-description : Callback to invoke on activated tab event.
-*/
-  @Output() onClick: any = new EventEmitter<any>();
 
   content: string;
 
@@ -114,32 +105,6 @@ description : Callback to invoke on activated tab event.
     this.tabCollection = this.queryTabs.toArray();
   }
 
-  onTabClick(tab: any) {
-    if (!tab.disabled && !tab.header) {
-      for (const i of this.tabCollection) {
-        if (i === tab) {
-          i['active'] = true;
-          this.asignTabPillClass(tab);
-          this.onClick.emit(tab);
-        } else {
-          i['active'] = false;
-          i['tabPillClass'] = '';
-        }
-      }
-      this.tabCollection.forEach((tab1: any) => {
-        this.asignTabPillClass(tab1);
-      });
-    }
-  }
-
-  findTabStyleClass() {
-    if (this.tabPosition === 'top') {
-      return 'tabposition-right-top';
-    }
-    if (this.tabPosition === 'bottom') {
-      return 'tabposition-right-bottom';
-    }
-  }
   closeAllTabs() {
     this.tabCollection.forEach((tabs) => {
       if (tabs.closable === true || this.closable === true) {
