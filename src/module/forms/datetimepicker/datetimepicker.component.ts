@@ -199,19 +199,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   elementId: string;
   daysTitle: any[];
   tempFlag = true;
-  curYear: any;
   curMonth: any;
   monthNo: any;
   yearNo: any;
   pickerele: any;
   daysArray: any;
-  yearList1: any[];
-  yearList2: any[];
-  monthList1: any[];
-  monthList2: any[];
   selectedDate: any;
   hostFlag = false;
-  currrentDate: any;
   dateModel: any;
   isValid: boolean;
   roundedgeclass: string;
@@ -233,66 +227,11 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     super(renderer, element, cdf);
     this.viewmode = '1';
 
-    this.yearList1 =
-      [{ year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false },
-      ];
-    // generate yearlist1 ids
-    this.yearList1.forEach((yearlist1element: any) => {
-      yearlist1element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
-    });
-    this.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }];
-    // generate yearlist2 ids
-    this.yearList2.forEach((yearlist2element: any) => {
-      yearlist2element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
-    });
-    this.monthList1 = [
-      { name: 'Jan', flag: false, num: 4, fullname: 'January' },
-      { name: 'Feb', flag: false, fullname: 'febuary' },
-      { name: 'Mar', flag: false, fullname: 'march' },
-      { name: 'Apr', flag: false, fullname: 'april' },
-      { name: 'May', flag: false, fullname: 'may' },
-      { name: 'Jun', flag: false, fullname: 'june' },
-    ];
-    // generate id for monthlist1
-    this.monthList1.forEach((monthlist1element: any) => {
-      monthlist1element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
-    });
-    this.monthList2 = [
-      { name: 'Jul', flag: false, fullname: 'july' },
-      { name: 'Aug', flag: false, fullname: 'august' },
-      { name: 'Sep', flag: false, fullname: 'september' },
-      { name: 'Oct', flag: false, fullname: 'october' },
-      { name: 'Nov', flag: false, fullname: 'november' },
-      { name: 'Dec', flag: false, fullname: 'december' },
-    ];
-    // generate id for monthlist 2
-    this.monthList2.forEach((monthlist2element: any) => {
-      monthlist2element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
-    });
-
     this.minDate = '';
     this.maxDate = '';
     this.elementId = new Date().getTime() + '';
     this.selectedDate = new Date();
-    this.currrentDate = new Date();
-    this.curYear = this.currrentDate.getFullYear();
-    let i = 0;
-    let j = 0;
-    for (i = 4; i >= 0; i--) {
-      this.yearList1[j].year = this.curYear - i;
-      j++;
-    }
-    j = 0;
-    for (i = 1; i <= 5; i++) {
-      this.yearList2[j].year = this.curYear + i;
-      j++;
-    }
+    this.commonDeclaration();
     this.daysTitle = [];
     this.daysArray = [];
     this.timepicker = false;
@@ -1487,10 +1426,10 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
 
   setRoundEdge(type: any) {
     if (type === 'round-edge') {
-        this.roundedgeclass = 'roundEdgeCommonCss';
+      this.roundedgeclass = 'roundEdgeCommonCss';
     } else if (type === 'classic') {
-        this.roundedgeclass = 'classicCommonCss';
+      this.roundedgeclass = 'classicCommonCss';
     }
-}
+  }
 
 }
