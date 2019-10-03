@@ -59,7 +59,7 @@ export class AmexioDialpadComponent implements OnInit {
         const foundDuplicate = false;
         if (this.random && (this.type === '2-rows')) {
             this.generateRandomArray();
-            if (this.randomArr.length > 0) {
+            if (this.randomArr.length >= 1) {
                 this.btnArray1 = [];
                 this.btnArray2 = [];
                 this.generateTyp1Arr();
@@ -85,7 +85,7 @@ export class AmexioDialpadComponent implements OnInit {
 
     generateType2Arr() {
         this.generateRandomArray();
-        if (this.randomArr.length > 0) {
+        if (this.randomArr.length >= 1) {
             this.type2Arr1 = [];
             this.type2Arr2 = [];
             this.type2Arr3 = [];

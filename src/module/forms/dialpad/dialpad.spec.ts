@@ -47,7 +47,7 @@ describe('amexio-dialpad', () => {
         comp.generateRandomArray();
 
         comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
-        expect(comp.randomArr.length).toBeGreaterThan(0);
+        expect(comp.randomArr.length).toBeGreaterThanOrEqual(1);
         comp.btnArray1 = [];
         comp.btnArray2 = [];
         comp.generateTyp1Arr();
@@ -106,7 +106,7 @@ describe('amexio-dialpad', () => {
         comp.generateRandomArray();
 
         comp.randomArr = [];
-        expect(comp.randomArr.length).not.toBeGreaterThan(0);
+        expect(comp.randomArr.length).not.toBeGreaterThanOrEqual(1);
 
     });
 
@@ -495,7 +495,7 @@ describe('amexio-dialpad', () => {
         let isDuplicate = false;
         comp.randomArr = [];
         comp.getRandomNumber();
-        expect(comp.randomArr.length).not.toBeGreaterThan(0);
+        expect(comp.randomArr.length).not.toBeGreaterThanOrEqual(1);
 
         return num;
     });
@@ -539,5 +539,20 @@ describe('amexio-dialpad', () => {
         expect(comp.maxlen).toBeGreaterThanOrEqual(comp.value.length);
         comp.isValid = true;
     });
+    it('onToggle If call ', () => {
+        comp.show = true;
+        comp.toggleShow();
+        comp.show = !comp.show;
+        expect(comp.show).toEqual(true);
+        comp.type = 'text';
+      })
+    
+      it('onToggle else call ', () => {
+        comp.show = false;
+        comp.toggleShow();
+        comp.show = !comp.show;
+        expect(comp.show).toEqual(false);
+        comp.type = 'password';
+      })
 
 });
