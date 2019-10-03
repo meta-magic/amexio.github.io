@@ -58,5 +58,21 @@ describe('Password INPUT', () => {
     comp.onInputPasswordEvent(event);
     comp.onInputEvent(event);
   })
+
+  it('onToggle If call ', () => {
+    comp.show = true;
+    comp.toggleShow();
+    comp.show = !comp.show;
+    expect(comp.show).toEqual(true);
+    comp.type = 'text';
+  })
+
+  it('onToggle else call ', () => {
+    comp.show = false;
+    comp.toggleShow();
+    comp.show = !comp.show;
+    expect(comp.show).toEqual(false);
+    comp.type = 'password';
+  })
 });
 

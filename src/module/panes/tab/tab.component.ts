@@ -56,16 +56,6 @@ export class AmexioTabComponent extends BaseTabComponent implements AfterContent
 
   /*
    Properties
-   name : closable
-   datatype : boolean
-   version : 4.0 onwards
-   default : false
-   description : This flag will make tab closable.
-   */
-  @Input() closable: boolean;
-
-  /*
-   Properties
    name : header-align
    datatype : string
    version : 4.1.9 onwards
@@ -605,59 +595,6 @@ description : sets background color for active tab
       this.tabPillClose(tabNode);
     }
     this.onCloseClick.emit(tabNode);
-  }
-
-  tabPillClose(tabNode: any) {
-    const newTab: AmexioTabPillComponent[] = [];
-    let index = 0;
-    let tabHighlightIndex = 0;
-    this.tabCollection.forEach((tab: any, i: number) => {
-      tab.active = false;
-      if (tab.tabId === tabNode.tabId) {
-        tabHighlightIndex = index;
-        if (tab.hasOwnProperty('tabpillinstance')) {
-          tab.target.remove();
-        } else {
-          this.tabDomRemove(tab);
-        }
-      } else if (tab.tabId !== tabNode.tabId) {
-        newTab.push(tab);
-      }
-      index++;
-    });
-    if (tabHighlightIndex === newTab.length) {
-      tabHighlightIndex--;
-    }
-    this.tabCollection = newTab;
-    if (tabHighlightIndex > -1) {
-      this.activateTab(newTab[tabHighlightIndex].tabId);
-    } else {
-      this.activateTab(null);
-    }
-    if (this.tabCollection.length === 1) {
-      this.closable = false;
-    }
-    if (newTab.length === 1) {
-      newTab[0].closable = false;
-    }
-  }
-
-  tabDomRemove(tab: any) {
-    const removeNode = document.getElementById(tab.tabId).parentNode;
-    const parentRefNode = removeNode.parentNode;
-    parentRefNode.removeChild(removeNode);
-
-  }
-  activateTab(tabId: number) {
-    if (tabId !== null) {
-      this.tabCollection.forEach((tab) => {
-        tab.active = false;
-        if (tab.tabId === tabId) {
-          tab.active = true;
-        }
-        this.asignTabPillClass(tab);
-      });
-    }
   }
 
   findTabStyleClass() {

@@ -33,7 +33,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { AmexioTabPillComponent } from '../tab.pill.component';
-import { BaseTabComponent} from './../base.tab.component';
+import { BaseTabComponent } from './../base.tab.component';
 
 @Component({
   selector: 'amexio-vertical-tab-view',
@@ -151,11 +151,11 @@ description : Callback to invoke on activated tab event.
   closeAllTabs() {
     this.tabCollection.forEach((tabs) => {
       if (tabs.closable === true || this.closable === true) {
-        this.closeTab(tabs);
+        this.tabPillClose(tabs);
       }
     });
   }
-  closeTab(tabNode: AmexioTabPillComponent) {
+  tabPillClose(tabNode: AmexioTabPillComponent) {
     const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
     let tabHighlightIndex = 0;
@@ -197,7 +197,7 @@ description : Callback to invoke on activated tab event.
       tabs.active = false;
       data.forEach((opt: any) => {
         if (opt.toLowerCase() !== tabs.title.toLowerCase() && (tabs.closable === true || this.closable === true)) {
-          this.closeTab(tabs);
+          this.tabPillClose(tabs);
         } else {
           tabList.push(tabs);
           this.asignTabPillClass(tabs);

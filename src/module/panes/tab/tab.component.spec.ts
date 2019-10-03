@@ -62,7 +62,7 @@ describe('amexio-tab', () => {
     it('closeTab method if condition', () => {
         fixture.detectChanges();
         comp.enableConfirmBox = true;
-        comp.closeTab(tabNode);
+        comp.tabPillClose(tabNode);
         expect(comp.enableConfirmBox).toEqual(true);
         comp.openDialogue = true;
         comp.tempTab = tabNode;
@@ -74,7 +74,7 @@ describe('amexio-tab', () => {
     it('closeTab method second if condition', () => {
         fixture.detectChanges();
         comp.enableConfirmBox = false;
-        comp.closeTab(tabNode);
+        comp.tabPillClose(tabNode);
         expect(comp.enableConfirmBox).toEqual(false);
         comp.tabPillClose(tabNode);
         comp.onCloseClick.subscribe((g: any) => {

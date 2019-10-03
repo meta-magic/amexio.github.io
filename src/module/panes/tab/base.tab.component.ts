@@ -22,7 +22,15 @@ export class BaseTabComponent extends LifeCycleBaseComponent {
     @Input('divide-header-equally') fullPageTabs: boolean;
     @Input('active-bg-color') activeBGColor: boolean;
     @Input('body-height') bodyheight: any;
-
+    /*
+     Properties
+     name : closable
+     datatype : boolean
+     version : 4.0 onwards
+     default : false
+     description : This flag will make tab closable.
+     */
+    @Input() closable: boolean;
     singleTabWidth: any;
     minHeight: any;
     totalTabs: number;
@@ -78,6 +86,60 @@ export class BaseTabComponent extends LifeCycleBaseComponent {
         this.tabCollection.forEach((tab1: any) => {
             this.asignTabPillClass(tab1);
         });
+    }
+
+    tabPillClose(tabNode: AmexioTabPillComponent) {
+        const newTab: AmexioTabPillComponent[] = [];
+        let index = 0;
+        let tabHighlightIndex = 0;
+        this.tabCollection.forEach((tab: any, i: number) => {
+            tab.active = false;
+            if (tab.tabId === tabNode.tabId) {
+                tabHighlightIndex = index;
+                if (tab.hasOwnProperty('tabpillinstance')) {
+                    tab.target.remove();
+                } else {
+                    this.tabDomRemove(tab);
+                }
+            } else if (tab.tabId !== tabNode.tabId) {
+                newTab.push(tab);
+            }
+            index++;
+        });
+        if (tabHighlightIndex === newTab.length) {
+            tabHighlightIndex--;
+        }
+        this.tabCollection = newTab;
+        if (tabHighlightIndex > -1) {
+            this.activateTab(newTab[tabHighlightIndex].tabId);
+        } else {
+            this.activateTab(null);
+        }
+        if (this.tabCollection.length === 1) {
+            this.closable = false;
+        }
+        if (newTab.length === 1) {
+            newTab[0].closable = false;
+        }
+    }
+
+    activateTab(tabId: number) {
+        if (tabId !== null) {
+            this.tabCollection.forEach((tab) => {
+                tab.active = false;
+                if (tab.tabId === tabId) {
+                    tab.active = true;
+                }
+                this.asignTabPillClass(tab);
+            });
+        }
+    }
+
+    tabDomRemove(tab: any) {
+        const removeNode = document.getElementById(tab.tabId).parentNode;
+        const parentRefNode = removeNode.parentNode;
+        parentRefNode.removeChild(removeNode);
+
     }
 
     asignTabPillClass(tabData: any) {

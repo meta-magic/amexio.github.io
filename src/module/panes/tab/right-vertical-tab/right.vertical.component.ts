@@ -33,13 +33,13 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { AmexioTabPillComponent } from '../tab.pill.component';
-import { BaseTabComponent} from './../base.tab.component';
+import { BaseTabComponent } from './../base.tab.component';
 
 @Component({
   selector: 'amexio-right-vertical-tab-view',
   templateUrl: './right.vertical.component.html',
 })
-export class AmexioRightVerticalTabComponent extends  BaseTabComponent implements AfterContentInit, AfterViewInit, OnInit {
+export class AmexioRightVerticalTabComponent extends BaseTabComponent implements AfterContentInit, AfterViewInit, OnInit {
 
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
 
@@ -52,14 +52,14 @@ export class AmexioRightVerticalTabComponent extends  BaseTabComponent implement
   tabCollection: AmexioTabPillComponent[];
 
   componentId = '';
-/*
-   Properties
-   name : closable
-   datatype : boolean
-   version : 4.0 onwards
-   default : false
-   description : This flag will make tab closable.
-   */
+  /*
+     Properties
+     name : closable
+     datatype : boolean
+     version : 4.0 onwards
+     default : false
+     description : This flag will make tab closable.
+     */
   @Input() closable: boolean;
   /*
    Properties
@@ -70,14 +70,14 @@ export class AmexioRightVerticalTabComponent extends  BaseTabComponent implement
    description : Position of tab can be (top/bottom)
    */
   @Input() tabPosition: string;
-    /*
-   Properties
-   name :rotate
-   datatype : boolean
-   version : 5.12.2 onwards
-   default : false
-   description : tab header alignment
-   */
+  /*
+ Properties
+ name :rotate
+ datatype : boolean
+ version : 5.12.2 onwards
+ default : false
+ description : tab header alignment
+ */
   @Input() rotate = false;
   /*
 Events
@@ -102,7 +102,7 @@ description : Callback to invoke on activated tab event.
   }
 
   ngAfterViewInit() {
-     if (this.tabId && this.tabId.nativeElement && this.tabId.nativeElement.offsetWidth) {
+    if (this.tabId && this.tabId.nativeElement && this.tabId.nativeElement.offsetWidth) {
       const tabsheight = this.tabId.nativeElement.offsetWidth + 50;
       if (tabsheight > this.height) {
         this.height = tabsheight;
@@ -116,21 +116,21 @@ description : Callback to invoke on activated tab event.
 
   onTabClick(tab: any) {
     if (!tab.disabled && !tab.header) {
-     for (const i of this.tabCollection) {
-       if (i === tab) {
-         i['active'] = true;
-         this.asignTabPillClass(tab);
-         this.onClick.emit(tab);
+      for (const i of this.tabCollection) {
+        if (i === tab) {
+          i['active'] = true;
+          this.asignTabPillClass(tab);
+          this.onClick.emit(tab);
         } else {
-         i['active'] = false;
-         i['tabPillClass'] = '';
-       }
-     }
-     this.tabCollection.forEach((tab1: any) => {
-       this.asignTabPillClass(tab1);
-     });
-   }
- }
+          i['active'] = false;
+          i['tabPillClass'] = '';
+        }
+      }
+      this.tabCollection.forEach((tab1: any) => {
+        this.asignTabPillClass(tab1);
+      });
+    }
+  }
 
   findTabStyleClass() {
     if (this.tabPosition === 'top') {
@@ -143,12 +143,12 @@ description : Callback to invoke on activated tab event.
   closeAllTabs() {
     this.tabCollection.forEach((tabs) => {
       if (tabs.closable === true || this.closable === true) {
-        this.closeTab(tabs);
+        this.tabPillClose(tabs);
       }
     });
   }
 
-  closeTab(tabNode: AmexioTabPillComponent) {
+  tabPillClose(tabNode: AmexioTabPillComponent) {
     const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
     let tabHighlightIndex = 0;

@@ -15,7 +15,7 @@
                         <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon" aria-hidden="true"></span>
                         <span style="padding-left:5px">{{tabnode.title}}</span>
                         <span *ngIf="closable" class="tablecol">
-                <amexio-c-icon key="tab_close" (onClick)="closeTab(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
+                <amexio-c-icon key="tab_close" (onClick)="tabPillClose(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
               </span>
                     </div>
                 </li>
@@ -30,7 +30,7 @@
                             <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon" aria-hidden="true"></span>
                             <span style="padding-left:5px">{{tabnode.title}}</span>
                             <span *ngIf="closable" class="tablecol">
-                <amexio-c-icon key="tab_close" (onClick)="closeTab(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
+                <amexio-c-icon key="tab_close" (onClick)="tabPillClose(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
               </span>
                         </div>
                     </li>
