@@ -29,6 +29,8 @@ export class AmexioDialpadComponent implements OnInit {
     @Input('max-length') maxlen: number;
     @Input('min-length') minlen: number;
     @Input('button-type') btnType = '';
+    @Input('show-password') showpassword = false;
+    show = false;
     iconfeedback = false;
 
     @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
@@ -36,6 +38,9 @@ export class AmexioDialpadComponent implements OnInit {
     @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
     ngOnInit() {
+        if (this.showpassword) {
+            this.textType = 'password';
+        }
         if (this.password) {
             this.textType = 'password';
         } else {
@@ -223,4 +228,13 @@ export class AmexioDialpadComponent implements OnInit {
             return num;
         }
     }
+
+    toggleShow(event: any) {
+        this.show = !this.show;
+        if (this.show) {
+          this.textType = 'text';
+        } else {
+          this.textType = 'password';
+        }
+      }
 }

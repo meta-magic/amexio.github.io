@@ -217,9 +217,6 @@ description : Set enable / disable popover.
   constructor() {
     super();
     this.showToolTip = false;
-    if (this.showpassword) {
-      this.iconfeedback = false;
-    }
   }
   ngOnInit() {
     this.isValid = this.isFieldValid();

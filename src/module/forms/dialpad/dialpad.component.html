@@ -1,119 +1,24 @@
-<!-- <div class="card-container" style="margin-left:15px; margin-top: 15px;align-items: center;z-index:70">
-    <amexio-label size="small-bold" [enable-click]="false" [word-wrap]="true"> {{value}}</amexio-label>
-
-    <span class="btnspan">
-        <span *ngFor="let item of btnArray1" class="btn">
-            <button type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
-        </span>
-        <span class="btn">
-            <button type="button" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
-            </button>
-        </span>
-        <br>
-        <span *ngFor="let item of btnArray2" class="btn">
-            <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
-        </span>
-    </span>
-
-</div> -->
-
-<!-- <div>
-    <amexio-label size="small" [enable-click]="false" [word-wrap]="true"> {{label}}</amexio-label>
-    <br>
-    <input class="input-control" style=" margin-bottom: 6px" type="{{textType}}" value="{{value}}" readonly>
-
-    <span *ngIf="type == '2-rows'" class="btnspan">
-        <span *ngFor="let item of btnArray1" class="btn">
-            <button type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
-        </span>
-        <span class="btn">
-            <button type="button" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
-            </button>
-        </span>
-        <br>
-        <span *ngFor="let item of btnArray2" class="btn">
-            <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
-        </span>
-        <span class="btn">
-            <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
-            </button>
-        </span>
-    </span>
-
-</div> -->
-
-<!-- <label> {{label}}</label>
-<br>
-<input class="input-control" style=" margin-bottom: 6px" type="{{textType}}" value="{{value}}" readonly>
-
-<span *ngIf="type == '2-rows'" class="btnspan">
-  <span *ngFor="let item of btnArray1" class="btn">
-    <button type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
-  </span>
-  <span class="btn">
-    <button type="button" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
-    </button>
-  </span>
-</span>
-<span class="btnspan">
-
-  <span *ngFor="let item of btnArray2" class="btn ">
-    <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
-  </span>
-  <span class="btn">
-       style="margin-top:8px" -->
-<!--  <button type="button" style="margin-top:8px"  class="fa fa-eraser pointer btncolor" (click)="clearData()">
-      </button>
-    </span>
-</span> -->
-<!-- 
-<label> {{label}}</label>
-<br>
-<span style="display: flex;background-color: white;">
-  <input class="input-control" [ngStyle]="{'border-color':isValid && iconfeedback ? 'green': 'red'}" [(ngModel)]="value" style=" margin-bottom: 6px" type="{{textType}}" maxlength="maxlen" minlength="minlen" value="{{value}}"
-    readonly>
-  <ng-container *ngIf="iconfeedback">
-    <span style="border: none; border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" [ngStyle]="{'border-color':isValid ? 'green': 'red'}">
-      <span *ngIf="!isValid">
-        <em class="fa fa-times" style="margin-top: 13px"></em>
-      </span>
-      <span *ngIf="isValid">
-        <em class="fa fa-check" style="margin-top: 13px"></em>
-      </span>
-    </span>
-  </ng-container>
-</span> -->
-
-<!-- <span *ngIf="type == '2-rows'" class="btnspan">
-  <span *ngFor="let item of btnArray1" class="btn">
-    <button type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
-  </span>
-  <span class="btn">
-    <button type="button" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
-    </button>
-  </span>
-</span>
-<span class="btnspan">
-
-  <span *ngFor="let item of btnArray2" class="btn ">
-    <button style="margin-top:8px" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
-  </span>
-  <span class="btn">
-    <! style="margin-top:8px" -->
-<!--   <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
-    </button>
-  </span>
-</span>
-
- -->
-<!-- cls = {{cls}} -->
 <label class="labcolor"> {{label}}</label>
-<!-- <br> -->
 <span style="display:flex">
   <input class="input-control" [ngClass]="cls" [(ngModel)]="value" style=" margin-bottom: 6px" type="{{textType}}" maxlength="maxlen"
     minlength="minlen" value="{{value}}" readonly>
+  <ng-container *ngIf="showpassword">
+    <span *ngIf="show" style=" cursor:pointer; border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" [ngClass]="cls"
+      (click)="toggleShow($event)">
+      <span>
+        <em style="margin-top: 13px;
+              padding-right: 7px;" class="fa fa-eye"></em>
+      </span>
+    </span>
+    <span *ngIf="!show" style="cursor:pointer; border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" [ngClass]="cls"
+      (click)="toggleShow($event)">
+      <span>
+        <em style="margin-top: 13px;
+              padding-right: 7px;" class="fa fa-eye-slash"></em>
+      </span>
+    </span>
+  </ng-container>
   <ng-container *ngIf="iconfeedback">
-    <!-- [ngStyle]="{'border-color':isValid ? 'green': 'red'}" -->
     <span style=" border-bottom: 1px solid;margin-bottom: 6px; padding: .375rem 0" [ngClass]="cls">
       <span *ngIf="!isValid && cls == 'redcls'">
         <em class="fa fa-times" style="margin-top: 13px"></em>
@@ -127,29 +32,26 @@
 <ng-container *ngIf="type == '2-rows'">
   <span class="btnspan">
     <span *ngFor="let item of btnArray1" class="btn">
-      <button type="button" tabindex="0" (keyup.enter)="getBtnData(item)" [ngClass]="{'rounded': (btnType == 'round')}" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+      <button type="button" tabindex="0" (keyup.enter)="getBtnData(item)" [ngClass]="{'rounded': (btnType == 'round')}" class="pointer btncolor"
+        (click)="getBtnData(item)">{{item}}</button>
     </span>
     <span class="btn">
-      <button type="button" tabindex="0" (keyup.enter) = "eraseData()"
-      [ngClass]="{'rounded': (btnType == 'round')}" aria-label="backspace"
-      class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
+      <button type="button" tabindex="0" (keyup.enter)="eraseData()" [ngClass]="{'rounded': (btnType == 'round')}" aria-label="backspace"
+        class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
       </button>
     </span>
   </span>
 
   <span class="btnspan">
     <span *ngFor="let item of btnArray2" class="btn ">
-      <button style="margin-top:8px" tabindex="0" (keyup.enter)="getBtnData(item)"
-      [ngClass]="{'rounded': btnType == 'round'}" type="button" 
-      class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+      <button style="margin-top:8px" tabindex="0" (keyup.enter)="getBtnData(item)" [ngClass]="{'rounded': btnType == 'round'}"
+        type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
     </span>
     <span class="btn">
-      <!-- style="margin-top:8px" --> 
-      <button type="button" tabindex="0" (keyup.enter) = "clearData()"
-      aria-label="clear data"
-      [ngClass]="{'rounded': (btnType == 'round')}" style="margin-top:8px" class="fa fa-eraser pointer btncolor"
-        (click)="clearData()">
-        
+      <!-- style="margin-top:8px" -->
+      <button type="button" tabindex="0" (keyup.enter)="clearData()" aria-label="clear data" [ngClass]="{'rounded': (btnType == 'round')}"
+        style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
+
       </button>
     </span>
   </span>
@@ -158,17 +60,15 @@
 <ng-container *ngIf="type == 'classic'">
   <span class="btnspan">
     <span *ngFor="let item of type2Arr1" class="btn">
-      <button type="button" tabindex="0" (keyup.enter)="getBtnData(item)"
-      [ngClass]="{'rounded': (btnType == 'round')}" 
-      class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+      <button type="button" tabindex="0" (keyup.enter)="getBtnData(item)" [ngClass]="{'rounded': (btnType == 'round')}" class="pointer btncolor"
+        (click)="getBtnData(item)">{{item}}</button>
     </span>
   </span>
 
   <span class="btnspan">
     <span *ngFor="let item of type2Arr2" class="btn ">
-      <button style="margin-top:8px" tabindex="0" (keyup.enter)="getBtnData(item)"
-      [ngClass]="{'rounded': (btnType == 'round')}" type="button" 
-      class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+      <button style="margin-top:8px" tabindex="0" (keyup.enter)="getBtnData(item)" [ngClass]="{'rounded': (btnType == 'round')}"
+        type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
     </span>
     <!-- <span class="btn">
            <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
@@ -178,31 +78,26 @@
 
   <span class="btnspan">
     <span *ngFor="let item of type2Arr3" class="btn ">
-      <button style="margin-top:8px" tabindex="0" (keyup.enter)="getBtnData(item)"
-      [ngClass]="{'rounded': (btnType == 'round')}" type="button" 
-      class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
+      <button style="margin-top:8px" tabindex="0" (keyup.enter)="getBtnData(item)" [ngClass]="{'rounded': (btnType == 'round')}"
+        type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
     </span>
-    <!-- <span class="btn">
-             <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
-            </button>
-          </span> -->
+
   </span>
 
   <span class="btnspan">
-    <span class="btn ">
-      <button style="margin-top:8px" tabindex="0" [ngClass]="{'rounded': (btnType == 'round')}" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{lastDigit}}</button>
-    </span>
     <span class="btn">
-      <button type="button"  tabindex="0" (keyup.enter)="eraseData()"
-      aria-label="backspace"
-      [ngClass]="{'rounded': (btnType == 'round')}" style="margin-top:8px; width: 42px; height: 35px" class="fa fa-arrow-left pointer btncolor"
-        (click)="eraseData()">
+      <button tabindex="0" (keyup.enter)="clearData()" aria-label="clear data" [ngClass]="{'rounded': (btnType == 'round')}" type="button"
+        style="margin-top:8px; width: 42px; height: 35px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
       </button>
     </span>
+    <span class="btn ">
+      <button style="margin-top:8px" tabindex="0" [ngClass]="{'rounded': (btnType == 'round')}" type="button" class="pointer btncolor"
+        (click)="getBtnData(item)">{{lastDigit}}</button>
+    </span>
+
     <span class="btn">
-      <button tabindex="0" (keyup.enter)="clearData()" aria-label="clear data" 
-      [ngClass]="{'rounded': (btnType == 'round')}" type="button" style="margin-top:8px; width: 42px; height: 35px" class="fa fa-eraser pointer btncolor"
-        (click)="clearData()">
+      <button type="button" tabindex="0" (keyup.enter)="eraseData()" aria-label="backspace" [ngClass]="{'rounded': (btnType == 'round')}"
+        style="margin-top:8px; width: 42px; height: 35px" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
       </button>
     </span>
   </span>
@@ -210,52 +105,45 @@
 </ng-container>
 
 <ng-container *ngIf="type == 'calculator'">
-    <span class="btnspan">
-      <span *ngFor="let item of type3Arr1" class="btn">
-        <button tabindex="0" (keyup.enter)="getBtnData(item)"
-        type="button" [ngClass]="{'rounded': (btnType == 'round')}" 
-        class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
-      </span>
+  <span class="btnspan">
+    <span *ngFor="let item of type3Arr1" class="btn">
+      <button tabindex="0" (keyup.enter)="getBtnData(item)" type="button" [ngClass]="{'rounded': (btnType == 'round')}" class="pointer btncolor"
+        (click)="getBtnData(item)">{{item}}</button>
     </span>
-  
-    <span class="btnspan">
-      <span *ngFor="let item of type3Arr2" class="btn ">
-        <button tabindex="0" (keyup.enter)="getBtnData(item)" style="margin-top:8px" [ngClass]="{'rounded': (btnType == 'round')}" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
-      </span>
-      <!-- <span class="btn">
-             <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
-            </button>
-          </span> -->
+  </span>
+
+  <span class="btnspan">
+    <span *ngFor="let item of type3Arr2" class="btn ">
+      <button tabindex="0" (keyup.enter)="getBtnData(item)" style="margin-top:8px" [ngClass]="{'rounded': (btnType == 'round')}"
+        type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
     </span>
-  
-    <span class="btnspan">
-      <span *ngFor="let item of type3Arr3" class="btn ">
-        <button tabindex="0" (keyup.enter)="getBtnData(item)" style="margin-top:8px" [ngClass]="{'rounded': (btnType == 'round')}" type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
-      </span>
-      <!-- <span class="btn">
-               <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
-              </button>
-            </span> -->
+
+  </span>
+
+  <span class="btnspan">
+    <span *ngFor="let item of type3Arr3" class="btn ">
+      <button tabindex="0" (keyup.enter)="getBtnData(item)" style="margin-top:8px" [ngClass]="{'rounded': (btnType == 'round')}"
+        type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
     </span>
-  
-    <span class="btnspan">
-      <span class="btn ">
-        <button tabindex="0" (keyup.enter)="getBtnData(item)"
-        style="margin-top:8px" [ngClass]="{'rounded': (btnType == 'round')}" type="button" class="pointer btncolor" 
-        (click)="getBtnData(item)">{{lastDigit}}</button>
-      </span>
-      <span class="btn">
-        <button tabindex="0" (keyup.enter)="eraseData()" aria-label="backspace"
-        type="button" [ngClass]="{'rounded': (btnType == 'round')}" style="margin-top:8px; width: 42px; height: 35px" class="fa fa-arrow-left pointer btncolor"
-          (click)="eraseData()">
-        </button>
-      </span>
-      <span class="btn">
-        <button tabindex="0" (keyup.enter)="clearData()" aria-label="clear data"
-        [ngClass]="{'rounded': (btnType == 'round')}" type="button" style="margin-top:8px; width: 42px; height: 35px" class="fa fa-eraser pointer btncolor"
-          (click)="clearData()">
-        </button>
-      </span>
+  </span>
+
+  <span class="btnspan">
+
+    <span class="btn">
+      <button tabindex="0" (keyup.enter)="clearData()" aria-label="clear data" [ngClass]="{'rounded': (btnType == 'round')}" type="button"
+        style="margin-top:8px; width: 42px; height: 35px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
+      </button>
     </span>
-  
-  </ng-container>
+    <span class="btn ">
+      <button tabindex="0" (keyup.enter)="getBtnData(item)" style="margin-top:8px" [ngClass]="{'rounded': (btnType == 'round')}"
+        type="button" class="pointer btncolor" (click)="getBtnData(item)">{{lastDigit}}</button>
+    </span>
+
+    <span class="btn">
+      <button tabindex="0" (keyup.enter)="eraseData()" aria-label="backspace" type="button" [ngClass]="{'rounded': (btnType == 'round')}"
+        style="margin-top:8px; width: 42px; height: 35px" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
+      </button>
+    </span>
+  </span>
+
+</ng-container>

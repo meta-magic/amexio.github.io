@@ -33,12 +33,13 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { AmexioTabPillComponent } from '../tab.pill.component';
+import { BaseTabComponent} from './../base.tab.component';
 
 @Component({
   selector: 'amexio-right-vertical-tab-view',
   templateUrl: './right.vertical.component.html',
 })
-export class AmexioRightVerticalTabComponent implements AfterContentInit, AfterViewInit, OnInit {
+export class AmexioRightVerticalTabComponent extends  BaseTabComponent implements AfterContentInit, AfterViewInit, OnInit {
 
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
 
@@ -49,8 +50,6 @@ export class AmexioRightVerticalTabComponent implements AfterContentInit, AfterV
   @ViewChild('tabId') tabId: ElementRef;
 
   tabCollection: AmexioTabPillComponent[];
-
-  dummyArray: any[] = [];
 
   componentId = '';
 /*
@@ -93,7 +92,8 @@ description : Callback to invoke on activated tab event.
   content: string;
 
   height = 580;
-  constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver) {
+  constructor(public render: Renderer2, public componentFactoryResolver: ComponentFactoryResolver) {
+    super(componentFactoryResolver);
     this.tabPosition = 'top';
   }
 
@@ -162,43 +162,6 @@ description : Callback to invoke on activated tab event.
       if (tabs.closable === true || this.closable === true) {
         this.closeTab(tabs);
       }
-    });
-  }
-  addDynamicTab(title: string, amexiocolor: string, closable: boolean, component: any) {
-    // get a component factory for our TabComponent
-    const tpCF = this.componentFactoryResolver.resolveComponentFactory(AmexioTabPillComponent);
-    const tp = this.target.createComponent(tpCF);
-    // set the according properties on our component instance
-    const instance: AmexioTabPillComponent = tp.instance as AmexioTabPillComponent;
-    instance.title = title;
-    instance.active = true;
-    instance.closable = closable;
-    instance['tabpillinstance'] = this.target;
-    if (instance.amexiocolor === '') {
-      instance.amexiocolor = 'amexio-top-tab-black';
-    } else {
-      instance.amexiocolor = 'amexio-top-tab-' + amexiocolor;
-    }
-    // create dynamic component
-    const dynCF = this.componentFactoryResolver.resolveComponentFactory(
-      component,
-    );
-    const dynCmp = tp.instance.target.createComponent(dynCF);
-
-    // Push new tab and select it.
-    this.dummyArray.push(tp);
-    this.tabCollection.push(tp.instance);
-    this.selectTab(tp.instance);
-    return dynCmp.instance;
-  }
-  selectTab(tab: AmexioTabPillComponent) {
-    // deactivate all tabs
-    this.tabCollection.forEach((tab1: any) => {
-      tab1.active = false;
-    });
-    tab.active = true;
-    this.tabCollection.forEach((tab1: any) => {
-      this.asignTabPillClass(tab1);
     });
   }
 

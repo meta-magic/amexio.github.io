@@ -20,7 +20,7 @@ import {
   AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChildren, ElementRef, EventEmitter,
   HostListener, Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewContainerRef,
 } from '@angular/core';
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+import { BaseTabComponent } from './base.tab.component';
 import { AmexioTabActionComponent } from './tab.action';
 import { AmexioTabPillComponent } from './tab.pill.component';
 
@@ -52,7 +52,7 @@ export const BOTTOM_COMPONENT_CLASS_MAP: any = {
   selector: 'amexio-tab-view',
   templateUrl: './tab.component.html',
 })
-export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterContentInit, AfterViewInit, OnInit, OnDestroy {
+export class AmexioTabComponent extends BaseTabComponent implements AfterContentInit, AfterViewInit, OnInit, OnDestroy {
 
   /*
    Properties
@@ -102,7 +102,7 @@ export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterC
    default : false
    description : If "true" divides all tab equally.
    */
-  @Input('divide-header-equally') fullPageTabs: boolean;
+  // @Input('divide-header-equally') fullPageTabs: boolean;
 
   /*
    Properties
@@ -112,7 +112,7 @@ export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterC
    default : top
    description : Position of tab can be (top/bottom)
    */
-  @Input('tab-position') tabPosition: string;
+  // @Input('tab-position') tabPosition: string;
 
   /*
    Properties
@@ -124,9 +124,9 @@ export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterC
    */
   @Input() header: string;
 
-  height: any;
+  // height: any;
 
-  minHeight: any;
+  // minHeight: any;
 
   /*
    Properties
@@ -136,7 +136,7 @@ export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterC
    default :
    description : Provides form body height.
    */
-  @Input('body-height') bodyheight: any;
+  // @Input('body-height') bodyheight: any;
 
   /*
    Properties
@@ -166,7 +166,7 @@ version : 5.9.3 onwards
 default : false
 description : sets background color for active tab
 */
-  @Input('active-bg-color') activeBGColor: boolean;
+  // @Input('active-bg-color') activeBGColor: boolean;
 
   /*
    Events
@@ -183,16 +183,16 @@ description : sets background color for active tab
   @Input('message') message = 'Are You Sure?';
   @Output() onCloseClick: any = new EventEmitter<any>();
 
-  @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
+  // @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
   @ViewChild('tabAction', { read: ElementRef }) public tabAction: ElementRef;
   @ViewChild('headerWidth', { read: ElementRef }) public headerWidth: ElementRef;
   @ViewChild('headerName', { read: ElementRef }) public headerName: ElementRef;
-  @ViewChild('tabslist', { read: ElementRef }) public tabslist: ElementRef;
+  // @ViewChild('tabslist', { read: ElementRef }) public tabslist: ElementRef;
   @ViewChild('actionProperty', { read: ElementRef }) public actionProperty: ElementRef;
 
-  @ContentChildren(AmexioTabPillComponent) queryTabs: QueryList<AmexioTabPillComponent>;
-  tabCollection: AmexioTabPillComponent[];
-  @ViewChild('target', { read: ViewContainerRef }) target: any;
+  // @ContentChildren(AmexioTabPillComponent) queryTabs: QueryList<AmexioTabPillComponent>;
+  // tabCollection: AmexioTabPillComponent[];
+  // @ViewChild('target', { read: ViewContainerRef }) target: any;
 
   @ContentChildren(AmexioTabActionComponent, { descendants: true }) queryAction: QueryList<AmexioTabActionComponent>;
 
@@ -225,17 +225,12 @@ description : sets background color for active tab
   showprev = false;
 
   private tabWidth1: number;
-  private totalTabs: number;
-
-  shownext = false;
 
   content: string;
 
   widthTabs: any;
 
   headWidth: any;
-
-  singleTabWidth: any;
 
   actionComp: any;
 
@@ -266,19 +261,18 @@ description : sets background color for active tab
   tablk: any;
 
   themeCss: any;
+
   amexioComponentId = 'amexio-tab';
   openDialogue: boolean;
   tempTab: any;
   globalClickListenFunc: () => void;
 
-  constructor(
-    public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver,
-    private renderer: Renderer2,
+  constructor(public componentFactoryResolver: ComponentFactoryResolver, private renderer: Renderer2,
   ) {
-    super();
+    super(componentFactoryResolver);
     this.headeralign = 'left';
+    this.tabType = 'horizontal';
     this.typeActionAlign = 'left';
-    this.tabPosition = 'top';
     this.fullPageTabs = false;
     this.action = false;
   }
@@ -322,28 +316,6 @@ description : sets background color for active tab
     }, 500);
   }
 
-  adjustWidth() {
-    const tWidth = this.tabs.nativeElement.clientWidth;
-    const tlistWidth = this.tabslist.nativeElement.scrollWidth;
-    const hWidth = 0;
-    const totalElWidth = tlistWidth + hWidth;
-
-    if (totalElWidth > tWidth) {
-      this.shownext = true;
-    } else {
-      this.shownext = false;
-    }
-
-    if (this.fullPageTabs === true) {
-      if (totalElWidth > tWidth && this.fullPageTabs) {
-        this.shownext = true;
-      } else {
-        this.singleTabWidth = totalElWidth / this.totalTabs;
-      }
-    }
-    this.onAdjustHeight();
-  }
-
   ngAfterContentInit() {
     if (this.tabLocalData && this.tabLocalData.length > 0) {
       this.tabPreviewData = JSON.parse(JSON.stringify(this.tabLocalData));
@@ -363,37 +335,6 @@ description : sets background color for active tab
 
     this.tabPositionClass = this.findTabStyleClass();
 
-  }
-
-  addDynamicTab(title: string, amexiocolor: string, closable: boolean, component: any) {
-    // get a component factory for our TabComponent
-    const tpCF = this.componentFactoryResolver.resolveComponentFactory(
-      AmexioTabPillComponent,
-    );
-    const tp = this.target.createComponent(tpCF);
-    // set the according properties on our component instance
-    const instance: AmexioTabPillComponent = tp.instance as AmexioTabPillComponent;
-    instance.title = title;
-    instance.active = true;
-    instance.closable = closable;
-    instance['tabpillinstance'] = this.target;
-    if (instance.amexiocolor === '') {
-      instance.amexiocolor = 'amexio-top-tab-black';
-    } else {
-      instance.amexiocolor = 'amexio-top-tab-' + amexiocolor;
-    }
-    // create dynamic component
-    const dynCF = this.componentFactoryResolver.resolveComponentFactory(
-      component,
-    );
-    const dynCmp = tp.instance.target.createComponent(dynCF);
-
-    // Push new tab and select it.
-    this.dummyArray.push(tp);
-    this.tabCollection.push(tp.instance);
-    this.selectTab(tp.instance);
-    this.adjustWidth();
-    return dynCmp.instance;
   }
 
   // Method to close all tab
@@ -534,16 +475,16 @@ description : sets background color for active tab
     });
   }
 
-  selectTab(tab: AmexioTabPillComponent) {
-    // deactivate all tabs
-    this.tabCollection.forEach((tab1: any) => {
-      tab1.active = false;
-    });
-    tab.active = true;
-    this.tabCollection.forEach((tab1: any) => {
-      this.asignTabPillClass(tab1);
-    });
-  }
+  // selectTab(tab: AmexioTabPillComponent) {
+  //   // deactivate all tabs
+  //   this.tabCollection.forEach((tab1: any) => {
+  //     tab1.active = false;
+  //   });
+  //   tab.active = true;
+  //   this.tabCollection.forEach((tab1: any) => {
+  //     this.asignTabPillClass(tab1);
+  //   });
+  // }
   tabNodeProperties() {
 
     const tabWidth = this.tabCollection.length;
@@ -750,22 +691,6 @@ description : sets background color for active tab
     }
     if (this.fullPageTabs === true) {
       return 'equally-align-tabs';
-    }
-  }
-
-  onAdjustHeight() {
-
-    if (this.bodyheight) {
-      let h = (window.innerHeight / 100) * this.bodyheight;
-
-      if (this.tabs && this.tabs.nativeElement && this.tabs.nativeElement.offsetHeight) {
-        h = h - this.tabs.nativeElement.offsetHeight;
-      }
-      if (this.bodyheight === 100) {
-        h = h - 40;
-      }
-      this.minHeight = h;
-      this.height = h;
     }
   }
 
