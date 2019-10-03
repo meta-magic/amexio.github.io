@@ -50,6 +50,8 @@ export * from './calendar/calendar.month';
 export * from './calendar/calendar.year.component';
 export * from '../services/data/amexio.theme.service';
 export * from './themeswitcher/amexio.themeswitcher.component';
+export * from './availability/availability.component';
+export * from './formsInput/rich-editable-textarea/rich-editable-textarea.component';
 
 const ENTERPRISE_COMPONENTS = [
   MultiMediaCarouselComponent,

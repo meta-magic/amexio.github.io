@@ -200,7 +200,6 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   daysTitle: any[];
   tempFlag = true;
   curMonth: any;
-  yearNo: any;
   pickerele: any;
   daysArray: any;
   selectedDate: any;
@@ -760,35 +759,6 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.tempFlag = true;
   }
 
-  // this function is broken from getDropdownYear
-  private yearFlagNegate(element: any) {
-    this.elementFlagMethod(element);
-  }
-  // this function is broken from getDropdownYear
-  yearFlag(element: any, year: any) {
-    if (element.year === year.year) {
-      element.flag = true;
-    }
-  }
-
-  getDropdownYear(year: any) {
-    this.yearList1.forEach((element: any) => {
-      // negate dropdown year flag
-      this.yearFlagNegate(element);
-    });
-    this.yearList2.forEach((element: any) => {
-      // negate dropdown year flag
-      this.yearFlagNegate(element);
-    });
-    this.yearList1.forEach((element: any) => {
-      this.yearFlag(element, year);
-    });
-    this.yearList2.forEach((element: any) => {
-      this.yearFlag(element, year);
-    });
-    this.yearNo = year.year;
-    super.focus({});
-  }
   navigateDropdown() {
     this.okispressed = true;
     this.hostFlag = true;

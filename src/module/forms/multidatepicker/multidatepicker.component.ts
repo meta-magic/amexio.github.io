@@ -125,7 +125,6 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
   totalwidth = 0;
   curMonth: any;
   drop = false;
-  yearNo: any;
   okispressed: boolean;
   listen: boolean;
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
@@ -733,37 +732,6 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
       this.yearList2[i].year = this.yearList2[i].year + 10;
     }
     event.stopPropagation();
-  }
-
-  getDropdownYear(year: any) {
-    this.yearList1.forEach((element: any) => {
-      // negate dropdown year flag
-      this.yearFlagNegate(element);
-    });
-    this.yearList2.forEach((element: any) => {
-      // negate dropdown year flag
-      this.yearFlagNegate(element);
-    });
-    this.yearList1.forEach((element: any) => {
-      this.yearFlag(element, year);
-    });
-    this.yearList2.forEach((element: any) => {
-      this.yearFlag(element, year);
-    });
-    this.yearNo = year.year;
-    super.focus({});
-  }
-
-  // this function is broken from getDropdownYear
-  private yearFlagNegate(element: any) {
-    this.elementFlagMethod(element);
-  }
-
-  // this function is broken from getDropdownYear
-  yearFlag(element: any, year: any) {
-    if (element.year === year.year) {
-      element.flag = true;
-    }
   }
 
   navigateDropdown() {
