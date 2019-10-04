@@ -67,6 +67,16 @@ describe('amexio-dialpad', () => {
         expect(comp.btnArray2.length).toEqual(0);
         spyOn(comp, 'generateTyp1Arr').and.callThrough();
     });
+
+    it('ngOnInit() call generateRandomArray function and do not callgenerateTyp1Arr function', () => {
+        comp.type = '2-rows';
+        comp.random = true;
+        comp.ngOnInit();
+        spyOn(comp, 'generateRandomArray').and.callThrough();
+        comp.randomArr = [1];
+        let spy = spyOn(comp, 'generateTyp1Arr');
+        expect(spy).not.toHaveBeenCalled();
+    });
     
     it('ngOnInit() check type classic and random true and call generateType2Arr function', () => {
         comp.type = 'classic';
