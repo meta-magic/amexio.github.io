@@ -38,10 +38,7 @@ export class AmexioDialpadComponent implements OnInit {
     @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
     ngOnInit() {
-        if (this.showpassword) {
-            this.textType = 'password';
-        }
-        if (this.password) {
+        if (this.password || this.showpassword) {
             this.textType = 'password';
         } else {
             this.textType = 'text';
@@ -54,9 +51,6 @@ export class AmexioDialpadComponent implements OnInit {
             this.iconfeedback = true;
         }
         this.randomArr = [];
-        const num = 0;
-        const i = 0;
-        const foundDuplicate = false;
         if (this.random && (this.type === '2-rows')) {
             this.generateRandomArray();
             if (this.randomArr.length >= 1) {
@@ -232,9 +226,9 @@ export class AmexioDialpadComponent implements OnInit {
     toggleShow() {
         this.show = !this.show;
         if (this.show) {
-          this.textType = 'text';
+            this.textType = 'text';
         } else {
-          this.textType = 'password';
+            this.textType = 'password';
         }
-      }
+    }
 }
