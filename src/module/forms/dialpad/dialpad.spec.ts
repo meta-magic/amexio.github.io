@@ -5,7 +5,7 @@ import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioDialpadComponent } from './dialpad.component';
 import { AmexioLabelComponent } from '../label/label.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
-describe('amexio-dialpad', () => {
+fdescribe('amexio-dialpad', () => {
     let comp: AmexioDialpadComponent;
     let fixture: ComponentFixture<AmexioDialpadComponent>;
 
@@ -46,6 +46,7 @@ describe('amexio-dialpad', () => {
         expect(comp.iconfeedback).toEqual(true);
 
     });
+
     it('ngOnInit() check minlength and maxlength and set iconfeedback to false', () => {
         comp.minlen = 0;
         comp.maxlen = 0;
@@ -67,12 +68,23 @@ describe('amexio-dialpad', () => {
         spyOn(comp, 'generateTyp1Arr').and.callThrough();
     });
     
-    it('ngOnInit() check random array and empty btnarray and call generateTyp1Arr function', () => {
-        comp.type = '2-classic';
+    it('ngOnInit() check type classic and random true and call generateType2Arr function', () => {
+        comp.type = 'classic';
         comp.random = true;
         comp.ngOnInit();
         spyOn(comp, 'generateType2Arr').and.callThrough();
     });
+    
+    it('ngOnInit() check type 2-row and random false and do not call generateType2Arr function', () => {
+        comp.type = '2-row';
+        comp.random = false;
+        comp.ngOnInit();
+        let spy = spyOn(comp, 'generateType2Arr');
+        expect(spy).not.toHaveBeenCalled();
+    });
+
+    
+
     // it('ngOnInit() 0st  condition ', () => {
     //     comp.type = '2-rows';
     //     comp.minlen = 2;
