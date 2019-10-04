@@ -5,7 +5,7 @@ import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioDialpadComponent } from './dialpad.component';
 import { AmexioLabelComponent } from '../label/label.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
-fdescribe('amexio-dialpad', () => {
+describe('amexio-dialpad', () => {
     let comp: AmexioDialpadComponent;
     let fixture: ComponentFixture<AmexioDialpadComponent>;
 
@@ -74,7 +74,7 @@ fdescribe('amexio-dialpad', () => {
         comp.ngOnInit();
         spyOn(comp, 'generateType2Arr').and.callThrough();
     });
-    
+
     it('ngOnInit() check type 2-row and random false and do not call generateType2Arr function', () => {
         comp.type = '2-row';
         comp.random = false;
