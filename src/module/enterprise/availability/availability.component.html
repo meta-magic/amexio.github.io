@@ -84,7 +84,7 @@ background-color:#DCDCDC;
             <span style=" margin-left: 15px; padding: 6px 4px 4px 4px; " [ngStyle]="{'background-color': radio.colorcode}" *ngFor="let radio of legendArr">
                 <span style="padding: 3px; ">
 
-                    <input type="radio" [(ngModel)]="radioValue" name="{{labelData[0].label}}" (change)="onSelection(radio)" value="{{radio.label}}">
+                    <input style="cursor:pointer" type="radio" [(ngModel)]="radioValue" name="{{labelData[0].label}}" (change)="onSelection(radio)" value="{{radio.label}}">
                 </span>
 
                 <span style="margin-right: 2%" [style.color]="radio.textcolor"> {{radio.label}}</span>
