@@ -11,7 +11,7 @@ export class StackablePanelComponent implements AfterContentInit {
   totalCount = 0;
   public text = 'Show All';
   expand = true;
-
+  anyExpand = false;
   @Input('panel-name') panelName = 'Comments';
   show = false;
 
@@ -31,21 +31,23 @@ export class StackablePanelComponent implements AfterContentInit {
   openGroup(group: any) {
     this.groups.toArray().forEach((data: any) => {
       if (data) {
-        group.opened = !group.opened;
+        group.open = !group.open;
       }
     });
   }
 
   showAll() {
     this.groups.toArray().forEach((data: any) => {
-      if (!this.expand) {
-        data.opened = !data.opened;
-        this.text = 'Show All';
+      if (this.text === 'Show All') {
+        data.open = true;
       } else {
-        data.opened = !data.opened;
-        this.text = 'Hide All';
+        data.open = false;
       }
-      this.expand = !this.expand;
     });
+    if (this.text === 'Show All') {
+      this.text = 'Hide All';
+    } else {
+      this.text = 'Show All';
+    }
   }
 }

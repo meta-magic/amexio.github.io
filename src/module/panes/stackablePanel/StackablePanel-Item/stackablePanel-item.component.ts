@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class StackableItemComponent {
 
-  @Input() opened = false;
+  @Input() open = false;
 
   @Input() title: string;
 
