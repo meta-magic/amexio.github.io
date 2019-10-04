@@ -83,6 +83,8 @@ description : Font color of label
  */
   @Input() closable: boolean = null;
 
+  @Input('height') height: any;
+
   tabId: any;
 
   tablk: any;

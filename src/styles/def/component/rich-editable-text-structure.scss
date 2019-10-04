@@ -23,7 +23,7 @@
   .rich-button {
     width: auto;
     cursor: pointer;
-    line-height: 30px;
+    line-height: 34px;
     text-align: center;
     padding: 1px 3px;
     box-shadow: none;
@@ -31,6 +31,10 @@
  
   .rich-button .button-small {
     padding: 3px !important;
+  }
+  
+  .rich-button .button-small span {
+    padding: 0px !important;
   }
 
   .hidden-input {

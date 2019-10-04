@@ -13,11 +13,12 @@ export class AmexioRichEditableTextareaComponent implements OnInit, AfterViewIni
   fontFamilyData: any;
   displayDiv = true;
 
+ @Input('enable-source-code') enableSourceCode = false;
   printContents: any;
-  @Input('field-name') fieldName: string;
+  @Input('rich-height') richHeight = 400;
   @Input('toolbar-position') toolbarPosition = 'top';
-  @Input('width') areaWidth = 100;
-  @Input('height') areaHeight = 100;
+  areaWidth = 100;
+  areaHeight = 100;
 
   @Output() onCodeClick: any = new EventEmitter<any>();
 
