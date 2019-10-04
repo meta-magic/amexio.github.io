@@ -39,14 +39,6 @@ describe('amexio-fieldset', () => {
         expect(comp.isActive).toBeTruthy();
     });
 
-    it('checking ngOnInit() if expanded false', () => {
-        comp.expanded = false;
-
-        comp.ngOnInit();
-
-        expect(comp.isActive).toBeFalsy();
-    });
-
     it('checking ngOnInit() if expanded true', () => {
         comp.expanded = true;
 
