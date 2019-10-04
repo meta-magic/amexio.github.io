@@ -1,8 +1,8 @@
 <div class="stackablepanel">
   <div class="title" (click)="toggle.emit()">
   </div>
+  <div style="text-align: center; font-size: 12px;cursor: pointer " (click)="toggle.emit()">{{title}} </div>
   <div class="body" [ngClass]="{'hidden': !opened}">
-   <div style="text-align: center; font-size: 12px;cursor: pointer " (click)="toggle.emit()">{{title}} </div>
     <ng-content></ng-content>
   </div>
   <div>
