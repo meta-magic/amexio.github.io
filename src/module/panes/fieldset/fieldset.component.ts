@@ -55,7 +55,7 @@ version : 4.0 onwards
 default : true
 description : Set value true for collapsible fieldset.
 */
-@Input() expanded: boolean;
+@Input() expanded = true;
 
   /*
 Properties
