@@ -76,6 +76,8 @@ description : Title for fieldset.
   ngOnInit() {
     if (this.expanded) {
       this.isActive = true;
+    } else {
+      this.isActive = false;
     }
   }
 

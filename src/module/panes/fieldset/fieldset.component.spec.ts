@@ -21,22 +21,28 @@ describe('amexio-fieldset', () => {
         fixture.autoDetectChanges();
     });
 
-    it('onLegendClick if isActive true ', () => {
+    it('onLegendClick if isActive true and collapsible true', () => {
         comp.collapsible = true;
         comp.isActive = true;
-
         comp.onLegendClick();
-
         expect(comp.isActive).toBeFalsy();
     });
 
-    it('onLegendClick if isActive false ', () => {
+    it('onLegendClick if isActive false and collapsible true ', () => {
         comp.collapsible = true;
         comp.isActive = false;
 
         comp.onLegendClick();
 
         expect(comp.isActive).toBeTruthy();
+    });
+  
+    it('checking ngOnInit() if expanded false', () => {
+        comp.expanded = false;
+
+        comp.ngOnInit();
+
+        expect(comp.isActive).toBeFalsy();
     });
 
     it('checking ngOnInit() if expanded true', () => {
@@ -47,4 +53,6 @@ describe('amexio-fieldset', () => {
         expect(comp.isActive ).toBeTruthy();
 
     });
+
+    
 });
