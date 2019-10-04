@@ -55,7 +55,20 @@ describe('navdesktopmenu', () => {
     // }, 100);
   });
 
-  xit('ngAfterViewInit else block', () => {
+  it('ngAfterViewInit() check if menus exist',()=>{
+    fixture1.detectChanges();
+    const menus: ElementRef = fixture1.componentInstance.menus;
+
+    comp1.ngAfterViewInit();
+    jasmine.clock().tick(101);
+    const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
+    fixture.detectChanges();
+
+    expect(menus).toBeDefined();
+    expect(menus.nativeElement).toBeDefined();
+  });
+
+  xit('ngAfterViewInit() else block', () => {
     fixture1.detectChanges();
     const menus: ElementRef = fixture1.componentInstance.menus;
     expect(menus).toBeDefined();
