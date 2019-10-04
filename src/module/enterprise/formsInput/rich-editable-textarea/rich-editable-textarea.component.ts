@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'amexio-rich-textarea',
   templateUrl: './rich-editable-textarea.component.html',
@@ -9,150 +11,44 @@ export class AmexioRichEditableTextareaComponent implements OnInit, AfterViewIni
   headingData: any;
   editableTextArray: any;
   fontFamilyData: any;
+  displayDiv = true;
 
   printContents: any;
   @Input('field-name') fieldName: string;
-  @Input('display-text-edit') displayDiv = true;
+  @Input('toolbar-position') toolbarPosition = 'top';
   @Input('width') areaWidth = 100;
   @Input('height') areaHeight = 100;
 
   @Output() onCodeClick: any = new EventEmitter<any>();
 
   textAreaHeight: number;
-  constructor() {
-    this.editableTextArray = [
-      {
-        title: 'bold',
-        icon: 'fa fa-bold',
-        event: 'bold',
-      },
-      {
-        title: 'italic',
-        icon: 'fa fa-italic',
-        event: 'italic',
-      },
-      {
-        title: 'strikethrough',
-        icon: 'fa fa-strikethrough',
-        event: 'strikethrough',
-      },
-      {
-        title: 'underline',
-        icon: 'fa fa-underline',
-        event: 'underline',
-      },
-      {
-        title: 'insert Unordered List',
-        icon: 'fa fa-list-ul',
-        event: 'insertUnorderedList',
-      },
-      {
-        title: 'insert Ordered List',
-        icon: 'fa fa-list-ol',
-        event: 'insertOrderedList',
-      },
-      {
-        title: 'Create Link',
-        icon: 'fa fa-link',
-        event: 'CreateLink',
-      },
-      {
-        title: 'unlink',
-        icon: 'fa fa-unlink',
-        event: 'unlink',
-      },
-      {
-        title: 'justify Left',
-        icon: 'fa fa-align-left',
-        event: 'justifyLeft',
-      },
-      {
-        title: 'justify Center',
-        icon: 'fa fa-align-center',
-        event: 'justifyCenter',
-      },
-      {
-        title: 'justify Right',
-        icon: 'fa fa-align-right',
-        event: 'justifyRight',
-      },
-      {
-        title: 'justify Full',
-        icon: 'fa fa-align-justify',
-        event: 'justifyFull',
-      },
-      {
-        title: 'cut',
-        icon: 'fa fa-cut',
-        event: 'cut',
-      },
-      {
-        title: 'copy',
-        icon: 'fa fa-copy',
-        event: 'copy',
-      },
-      {
-        title: 'indent',
-        icon: 'fa fa-indent',
-        event: 'indent',
-      },
-      {
-        title: 'outdent',
-        icon: 'fa fa-dedent',
-        event: 'outdent',
-      },
-      {
-        title: 'subscript',
-        icon: 'fa fa-subscript',
-        event: 'subscript',
-      },
-      {
-        title: 'super script ',
-        icon: 'fa fa-superscript',
-        event: 'superscript',
-      },
-      {
-        title: 'undo',
-        icon: 'fa fa-undo',
-        event: 'undo',
-      },
-      {
-        title: 'redo',
-        icon: 'fa fa-repeat',
-        event: 'redo',
-      },
-      {
-        title: 'delete',
-        icon: 'fa fa-trash',
-        event: 'delete',
-      },
-      {
-        title: 'remove Format',
-        icon: 'fa fa-remove',
-        event: 'removeFormat',
-      },
-    ];
+  constructor(private http: HttpClient) {
+
+    this.http.get('https://api.myjson.com/bins/152byf')
+      .subscribe((data: any) => {
+        this.editableTextArray = data;
+      });
     this.headingData =
-    [
-      {
-        headerName: 'H1',
-      },
-      {
-        headerName: 'H2',
-      },
-      {
-        headerName: 'H3',
-      },
-      {
-        headerName: 'H4',
-      },
-      {
-        headerName: 'H5',
-      },
-      {
-        headerName: 'H6',
-      },
-    ];
+      [
+        {
+          headerName: 'H1',
+        },
+        {
+          headerName: 'H2',
+        },
+        {
+          headerName: 'H3',
+        },
+        {
+          headerName: 'H4',
+        },
+        {
+          headerName: 'H5',
+        },
+        {
+          headerName: 'H6',
+        },
+      ];
     this.fontFamilyData =
       [
         {
@@ -183,7 +79,12 @@ export class AmexioRichEditableTextareaComponent implements OnInit, AfterViewIni
 
   }
   ngAfterViewInit() {
-
+    // Toolbar position.
+    if (this.toolbarPosition === 'top') {
+      this.displayDiv = false;
+    } else if (this.toolbarPosition === 'bottom') {
+      this.displayDiv = true;
+    }
     // Toolbar hight will be calculated.
     setTimeout(() => {
       if (this.areaHeight) {
