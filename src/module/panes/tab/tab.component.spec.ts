@@ -19,7 +19,7 @@ import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
        `,
 })
 class TestTabComponent { }
-fdescribe('amexio-tab', () => {
+describe('amexio-tab', () => {
     let comp: AmexioTabComponent;
     let fixture: ComponentFixture<TestTabComponent>;
     let tabNode: any;
@@ -96,19 +96,23 @@ fdescribe('amexio-tab', () => {
         comp.tabPillClose(tabNode);
         comp.onCloseClick.emit(tabNode);
     });
-    // it('Ok method Call', () => {
-    //     console.log("*******************", tabNode);
+//     it('tabPillClose method', () => {
+//         comp.tabPillClose(tabNode);
+//         const newTab: AmexioTabPillComponent[] = [];
+//         let index = 0;
+//         let tabHighlightIndex = 0;
+//         comp.tabCollection.forEach((tab: any, i: number) => {
+//   tab.active = false;
+//   console.log("**************************", tab.tabId);
+//   console.log("#####################", tabNode.tabId);
 
+//         });
+//     })
+    // it('Ok method Call', () => {
     //     comp.onOkClick();
-    //   comp.tabPillClose(comp.tempTab);
+    //   comp.tabPillClose(tabNode);
     //   comp.openDialogue = false;
     // });
-
-
   
-
-
-
-    
 });
 
