@@ -16,8 +16,6 @@ import { AmexioContextMenuComponent } from '../../../base/base.contextmenu.compo
 describe('amexio-rich-textarea', () => {
     let comp: AmexioRichEditableTextareaComponent;
     let fixture: ComponentFixture<AmexioRichEditableTextareaComponent>;
-    let data: any;
-    let obj: any;
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
@@ -29,85 +27,52 @@ describe('amexio-rich-textarea', () => {
         });
         fixture = TestBed.createComponent(AmexioRichEditableTextareaComponent);
         comp = fixture.componentInstance;
-        data = [
-            {
-                title: 'bold',
-                icon: 'fa fa-bold',
-                event: 'bold',
-            },
-            {
-                title: 'italic',
-                icon: 'fa fa-italic',
-                event: 'italic',
-            },
-            {
-                title: 'strikethrough',
-                icon: 'fa fa-strikethrough',
-                event: 'strikethrough',
-            },
-            {
-                title: 'underline',
-                icon: 'fa fa-underline',
-                event: 'underline',
-            },
-            {
-                title: 'insert Unordered List',
-                icon: 'fa fa-list-ul',
-                event: 'insertUnorderedList',
-            },
-            {
-                title: 'insert Ordered List',
-                icon: 'fa fa-list-ol',
-                event: 'insertOrderedList',
-            },
-            {
-                title: 'Create Link',
-                icon: 'fa fa-link',
-                event: 'CreateLink',
-            },
-            {
-                title: 'unlink',
-                icon: 'fa fa-unlink',
-                event: 'unlink',
-            },
-        ];
-        obj = {
-            title: 'unlink',
-            icon: 'fa fa-link',
-            event: 'unlink',
-        },
-            {
-                title: 'CreateLink',
-                icon: 'fa fa-link',
-                event: 'CreateLink',
-            }
     });
 
 
-    it('onIconClick method if condition with the  data == unlink check', () => {
-        comp.onIconClick(data);
-        document.execCommand(obj.title, false, null);
-        obj.title = 'unlink';
-        spyOn(document, 'execCommand').and.callThrough();
-        document.execCommand('foreColor', false, 'black');
-        expect(document.execCommand).toHaveBeenCalledWith('foreColor', false, 'black');
-
-        // expect(document.execCommand('unlink')).toBe('');
-
-    });
     it('onIconClick method if condition with the data == create link check', () => {
+        let data = 'http://www.google.com';
         comp.onIconClick(data);
-        document.execCommand(obj.title, false, null);
-        obj.title = 'CreateLink';
-        expect(document.execCommand('CreateLink', false, 'http://www.google.com')).toBeFalsy();
-        expect(document.execCommand('ForeColor', false, 'blue')).toBeFalsy();
+        expect(data).toEqual('http://www.google.com');
+        document.execCommand(data, false, null);
+
+        spyOn(document, 'execCommand').and.callThrough();
+        document.execCommand('foreColor', false, 'blue');
+        expect(document.execCommand).toHaveBeenCalledWith('foreColor', false, 'blue');
+
+        document.execCommand('CreateLink', false, 'http://www.google.com');
+        expect(document.execCommand).toHaveBeenCalledWith('CreateLink', false, 'http://www.google.com');
+
+        document.designMode = 'off';
         expect(document.designMode).toEqual('off');
     });
 
-    // it('onHtmlCodeClick() method check', () => {
+    it('onIconClick method if condition with the  data == unlink check', () => {
+        let data = 'unlink';
+        comp.onIconClick(data);
+        expect(data).toEqual('unlink');
+        document.execCommand(data, false, null);
+        spyOn(document, 'execCommand').and.callThrough();
 
-    //   // comp.onHtmlCodeClick(); 
-    //   // comp.printContents = document.getElementById('rich-editor').innerHTML;
-    //   // comp.onCodeClick.emit(comp.printContents);
+        document.execCommand('unlink', false, '');
+        expect(document.execCommand).toHaveBeenCalledWith('unlink', false, '');
+
+        document.execCommand('foreColor', false, 'black');
+        expect(document.execCommand).toHaveBeenCalledWith('foreColor', false, 'black');
+
+        document.designMode = 'off';
+    });
+
+
+    // it('variables check', () => {
+    //     comp.displayDiv  = true;
+    //     comp.areaHeight = 100;
+    //     comp.areaWidth = 100;
+    // });
+
+    // it('onColorBtnClick()  method() check', () => {
+    //     comp.onColorBtnClick();
+
+
     // });
 });
