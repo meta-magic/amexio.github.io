@@ -285,6 +285,103 @@ describe('amexio-dialpad', () => {
         expect(max).not.toHaveBeenCalled();
     });
 
+    it('getBtnData() if condition ', () => {
+        let data = 3;
+        comp.isValid = true;
+        comp.iconfeedback = true;
+        comp.getBtnData(data);
+        comp.value = comp.value + data;
+        comp.emitBtnData(data);
+        comp.valueChange.emit(comp.value);
+        comp.validateMinMax();
+        expect(comp.cls).toEqual('greencls');
+    });
+
+    it('getBtnData() else if condition ', () => {
+        let data = 3;
+        comp.isValid = false;
+        comp.iconfeedback = true;
+        comp.getBtnData(data);
+        comp.value = comp.value + data;
+        comp.emitBtnData(data);
+        comp.valueChange.emit(comp.value);
+        comp.validateMinMax();
+        expect(comp.cls).toEqual('redcls');
+    });
+
+    it('getBtnData() else condition ', () => {
+        let data = 3;
+        comp.isValid = false;
+        comp.iconfeedback = false;
+        comp.getBtnData(data);
+        comp.value = comp.value + data;
+        comp.emitBtnData(data);
+        comp.valueChange.emit(comp.value);
+        comp.validateMinMax();
+        expect(comp.cls).toBeUndefined();
+    });
+
+    it('eraseData() if condition', () => {
+        comp.value = '123';
+        comp.isValid = true;
+        comp.iconfeedback = true;
+        comp.eraseData();
+        let str;
+        str = comp.value.slice(0, -1);
+        comp.value = str;
+        expect(comp.cls).toEqual('greencls');
+    });
+
+    it('eraseData() else if condition', () => {
+        comp.value = '123';
+        comp.isValid = false;
+        comp.iconfeedback = true;
+        comp.eraseData();
+        let str;
+        str = comp.value.slice(0, -1);
+        comp.value = str;
+        expect(comp.cls).toEqual('redcls');
+        expect(comp.iconfeedback).toEqual(true);
+        comp.cls = 'redcls';
+    });
+
+    it('eraseData() if if condition', () => {
+        comp.value = '';
+        comp.isValid = true;
+        comp.iconfeedback = true;
+        comp.eraseData();
+        let str;
+        str = comp.value.slice(0, -1);
+        comp.value = str;
+        expect(comp.isValid).toBeNull();
+        expect(comp.cls).toEqual('redcls');
+    });
+
+    it('clearData() if condition', () => {
+        comp.value = '';
+        comp.minlen = 2;
+        comp.maxlen = 4;
+        comp.isValid = null;
+        const object = { data: comp.value };
+        comp.onClick.emit(object);
+        comp.valueChange.emit(comp.value);
+        comp.clearData();
+        expect(comp.isValid).toBeNull();
+        expect(comp.cls).toEqual('redcls');
+    });
+
+    it('clearData() else condition', () => {
+        comp.value = '';
+        comp.minlen = 0;
+        comp.maxlen = 0;
+        comp.isValid = null;
+        const object = { data: comp.value };
+        comp.onClick.emit(object);
+        comp.valueChange.emit(comp.value);
+        comp.clearData();
+        expect(comp.cls).toEqual('nonecls');
+    });
+
     it('onToggle If call ', () => {
         comp.toggleShow();
         comp.show = true;
