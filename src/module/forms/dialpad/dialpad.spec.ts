@@ -221,7 +221,7 @@ describe('amexio-dialpad', () => {
     //     expect(arr).toHaveBeenCalled();
     // });
 
-    it('validateMin() if check ', () => {
+    it('validateMin() if if check ', () => {
         comp.minlen = 0;
         comp.value = 'abc';
         comp.isValid = true;
@@ -229,7 +229,7 @@ describe('amexio-dialpad', () => {
         expect(comp.isValid).toEqual(true);
     });
 
-    it('validateMin() else check ', () => {
+    it('validateMin() if if else check ', () => {
         comp.minlen = 3;
         comp.value = '';
         comp.isValid = false;
@@ -237,7 +237,23 @@ describe('amexio-dialpad', () => {
         expect(comp.isValid).toEqual(false);
     });
 
-    it('validateMax() if  check ', () => {
+    it('validateMin() if else check ', () => {
+        comp.minlen = undefined;
+        comp.maxlen = undefined;
+        comp.isValid = false;
+        comp.validateMin();
+        expect(comp.isValid).toEqual(false);
+    });
+
+    it('validateMax() if if check ', () => {
+        comp.maxlen = 3;
+        comp.value = '';
+        comp.isValid = true;
+        comp.validateMax();
+        expect(comp.isValid).toEqual(true);
+    });
+
+    it('validateMax() if if else check ', () => {
         comp.maxlen = 0;
         comp.value = 'abc';
         comp.isValid = false;
@@ -245,12 +261,12 @@ describe('amexio-dialpad', () => {
         expect(comp.isValid).toEqual(false);
     });
 
-    it('validateMax() else check ', () => {
-        comp.maxlen = 3;
-        comp.value = '';
-        comp.isValid = true;
+    it('validateMax() if else check ', () => {
+        comp.minlen = undefined;
+        comp.maxlen = undefined;
+        comp.isValid = false;
         comp.validateMax();
-        expect(comp.isValid).toEqual(true);
+        expect(comp.isValid).toEqual(false);
     });
 
     it('validateMinMax() if if if condition ', () => {
