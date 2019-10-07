@@ -120,64 +120,6 @@ describe('amexio-dialpad', () => {
         });
     });
 
-    // it('generateType2Arr() call generateRandomArray function and and if randomarray length gt 1 then call generateTyp2Arry', () => {
-    //     comp.generateType2Arr();
-    //     let spy = spyOn(comp, 'generateRandomArray');
-    //     expect(spy).toHaveBeenCalled();
-    //     expect(comp.type2Arr1.length).toEqual(0);
-    //     expect(comp.type2Arr2.length).toEqual(0);
-    //     expect(comp.type2Arr3.length).toEqual(0);
-    //     let arr = spyOn(comp, 'generateTyp2Arry');
-    //     expect(arr).toHaveBeenCalled();
-    // });
-
-    it('generateTyp2Arry() if condition ', () => {
-        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
-        comp.generateTyp2Arry();
-        comp.randomArr.forEach((element: any, index: any) => {
-            if ((index >= 0) && (index < 3)) {
-                comp.type2Arr1.push(element);
-            }
-            if ((index > 2) && (index < 6)) {
-                comp.type2Arr2.push(element);
-            }
-            if ((index > 5) && (index < 9)) {
-                comp.type2Arr3.push(element);
-            }
-
-            comp.lastDigit = comp.randomArr[comp.randomArr.length - 1];
-
-        });
-    });
-
-    it('generateTyp2Arry() else condition ', () => {
-        comp.randomArr = [];
-        comp.generateTyp2Arry();
-        comp.randomArr.forEach((element: any, index: any) => {
-            if ((index <= 0) && (index > 3)) {
-            }
-            if ((index < 2) && (index > 6)) {
-            }
-            if ((index < 5) && (index > 9)) {
-            }
-
-            comp.lastDigit = comp.randomArr[comp.randomArr.length - 1];
-
-        });
-    });
-
-
-    // it('generateRandomArray() call', () => {
-    //     comp.generateRandomArray();
-    //     comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
-    //     let i = 0;
-    //     let num;
-    //     for (i = 0; i < 10; i++) {
-    //         num = comp.getRandomNumber();
-    //         comp.randomArr.push(num);
-    //     }
-    // });
-
     it('getRandomNumber() if and isDuplicate true condition', () => {
 
         const myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -218,6 +160,129 @@ describe('amexio-dialpad', () => {
         comp.randomArr = [];
         comp.getRandomNumber();
         return num;
+    });
+
+
+    it('generateTyp2Arry() if condition ', () => {
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        comp.generateTyp2Arry();
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index >= 0) && (index < 3)) {
+                comp.type2Arr1.push(element);
+            }
+            if ((index > 2) && (index < 6)) {
+                comp.type2Arr2.push(element);
+            }
+            if ((index > 5) && (index < 9)) {
+                comp.type2Arr3.push(element);
+            }
+
+            comp.lastDigit = comp.randomArr[comp.randomArr.length - 1];
+
+        });
+    });
+
+    it('generateTyp2Arry() else condition ', () => {
+        comp.randomArr = [];
+        comp.generateTyp2Arry();
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index <= 0) && (index > 3)) {
+            }
+            if ((index < 2) && (index > 6)) {
+            }
+            if ((index < 5) && (index > 9)) {
+            }
+
+            comp.lastDigit = comp.randomArr[comp.randomArr.length - 1];
+
+        });
+    });
+
+    // it('generateRandomArray() call', () => {
+    //     comp.generateRandomArray();
+    //     let i = 0;
+    //     let num;
+    //     for (i = 0; i < 10; i++) {
+    //         num = comp.getRandomNumber();
+    //         comp.randomArr.push(num);
+    //     }
+    // });
+
+    // it('generateType2Arr() call generateRandomArray function and and if randomarray length gt 1 then call generateTyp2Arry', () => {
+    //     comp.generateType2Arr();
+    //     let spy = spyOn(comp, 'generateRandomArray');
+    //     expect(spy).toHaveBeenCalled();
+    //     expect(comp.type2Arr1.length).toEqual(0);
+    //     expect(comp.type2Arr2.length).toEqual(0);
+    //     expect(comp.type2Arr3.length).toEqual(0);
+    //     let arr = spyOn(comp, 'generateTyp2Arry');
+    //     expect(arr).toHaveBeenCalled();
+    // });
+
+    it('validateMin() if check ', () => {
+        comp.minlen = 0;
+        comp.value = 'abc';
+        comp.isValid = true;
+        comp.validateMin();
+        expect(comp.isValid).toEqual(true);
+    });
+
+    it('validateMin() else check ', () => {
+        comp.minlen = 3;
+        comp.value = '';
+        comp.isValid = false;
+        comp.validateMin();
+        expect(comp.isValid).toEqual(false);
+    });
+
+    it('validateMax() if  check ', () => {
+        comp.maxlen = 0;
+        comp.value = 'abc';
+        comp.isValid = false;
+        comp.validateMax();
+        expect(comp.isValid).toEqual(false);
+    });
+
+    it('validateMax() else check ', () => {
+        comp.maxlen = 3;
+        comp.value = '';
+        comp.isValid = true;
+        comp.validateMax();
+        expect(comp.isValid).toEqual(true);
+    });
+
+    it('validateMinMax() if if if condition ', () => {
+        comp.minlen = 2;
+        comp.maxlen = 5;
+        comp.value = 'abc';
+        comp.iconfeedback = true;
+        comp.isValid = true;
+        comp.validateMinMax();
+        expect(comp.isValid).toEqual(true);   
+        comp.validateMin();
+        comp.validateMax();
+    });
+
+    it('validateMinMax() if if else condition ', () => {
+        comp.isValid = true;
+        comp.minlen = 2;
+        comp.maxlen = 5;
+        comp.value = '1';
+        comp.iconfeedback = true;
+        comp.validateMinMax();
+        expect(comp.isValid ).toEqual(false);
+        comp.validateMin();
+        comp.validateMax();
+    });
+
+    it('validateMinMax() if else condition ', () => {
+        comp.value = '1';
+        comp.iconfeedback = false;
+        comp.validateMinMax();
+        let min = spyOn(comp, 'validateMin');
+        expect(min).not.toHaveBeenCalled();
+        let max = spyOn(comp, 'validateMax');
+        expect(max).not.toHaveBeenCalled();
     });
 
     it('onToggle If call ', () => {
