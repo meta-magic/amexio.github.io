@@ -215,7 +215,7 @@ export class AmexioDialpadComponent implements OnInit {
             });
             if (isDuplicate) {
                 return this.getRandomNumber();
-            } else if (!isDuplicate) {
+            } else {
                 return num;
             }
         } else {
