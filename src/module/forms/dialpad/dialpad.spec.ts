@@ -21,6 +21,9 @@ describe('amexio-dialpad', () => {
         comp.value = '';
         comp.btnArray1 = [0, 1, 2, 3, 4];
         comp.btnArray2 = [5, 6, 7, 8, 9];
+        comp.type2Arr1 = [1, 2, 3];
+        comp.type2Arr2 = [4, 5, 6];
+        comp.type2Arr3 = [7, 8, 9];
     });
 
     it('ngOnInit() set text type password', () => {
@@ -73,7 +76,7 @@ describe('amexio-dialpad', () => {
         comp.random = true;
         comp.ngOnInit();
         spyOn(comp, 'generateRandomArray').and.callThrough();
-        comp.randomArr = [1];
+        comp.randomArr = [];
         let spy = spyOn(comp, 'generateTyp1Arr');
         expect(spy).not.toHaveBeenCalled();
     });
@@ -93,7 +96,144 @@ describe('amexio-dialpad', () => {
         expect(spy).not.toHaveBeenCalled();
     });
 
+    it('generateTyp1Arr() if condition ', () => {
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        comp.generateTyp1Arr();
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index >= 0) && (index < 5)) {
+                comp.btnArray1.push(element);
+            } if (index > 4) {
+                comp.btnArray2.push(element);
+            }
+        });
+    });
+
+    it('generateTyp1Arr() else condition ', () => {
+        comp.randomArr = [];
+        comp.generateTyp1Arr();
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index >= 0) && (index < 5)) {
+                comp.btnArray1.push(element);
+            } if (index > 4) {
+                comp.btnArray2.push(element);
+            }
+        });
+    });
+
+    // it('generateType2Arr() call generateRandomArray function and and if randomarray length gt 1 then call generateTyp2Arry', () => {
+    //     comp.generateType2Arr();
+    //     let spy = spyOn(comp, 'generateRandomArray');
+    //     expect(spy).toHaveBeenCalled();
+    //     expect(comp.type2Arr1.length).toEqual(0);
+    //     expect(comp.type2Arr2.length).toEqual(0);
+    //     expect(comp.type2Arr3.length).toEqual(0);
+    //     let arr = spyOn(comp, 'generateTyp2Arry');
+    //     expect(arr).toHaveBeenCalled();
+    // });
+
+    it('generateTyp2Arry() if condition ', () => {
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        comp.generateTyp2Arry();
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index >= 0) && (index < 3)) {
+                comp.type2Arr1.push(element);
+            }
+            if ((index > 2) && (index < 6)) {
+                comp.type2Arr2.push(element);
+            }
+            if ((index > 5) && (index < 9)) {
+                comp.type2Arr3.push(element);
+            }
+
+            comp.lastDigit = comp.randomArr[comp.randomArr.length - 1];
+
+        });
+    });
+
+    it('generateTyp2Arry() else condition ', () => {
+        comp.randomArr = [];
+        comp.generateTyp2Arry();
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index <= 0) && (index > 3)) {
+            }
+            if ((index < 2) && (index > 6)) {
+            }
+            if ((index < 5) && (index > 9)) {
+            }
+
+            comp.lastDigit = comp.randomArr[comp.randomArr.length - 1];
+
+        });
+    });
+
+
+    // it('generateRandomArray() call', () => {
+    //     comp.generateRandomArray();
+    //     comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+    //     let i = 0;
+    //     let num;
+    //     for (i = 0; i < 10; i++) {
+    //         num = comp.getRandomNumber();
+    //         comp.randomArr.push(num);
+    //     }
+    // });
+
+    it('getRandomNumber() if and isDuplicate true condition', () => {
+
+        const myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        const num = myArray[Math.floor(Math.random() * myArray.length)];
+        let isDuplicate = true;
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        comp.getRandomNumber();
+        expect(comp.randomArr.length).toBeGreaterThan(0);
+        comp.randomArr.forEach((element: any) => {
+            if (num === element) {
+                expect(isDuplicate).toEqual(true);
+            }
+        });
+        isDuplicate = true;
+        return comp.getRandomNumber();
+    });
+
+    it('getRandomNumber() if and isDuplicate false condition', () => {
+
+        const myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        const num = myArray[Math.floor(Math.random() * myArray.length)];
+        let isDuplicate = false;
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        comp.getRandomNumber();
+        expect(comp.randomArr.length).toBeGreaterThan(0);
+        comp.randomArr.forEach((element: any) => {
+            if (num != element) {
+            }
+        });
+        isDuplicate = false;
+        return num;
+    });
+
+
+    it('getRandomNumber() else ', () => {
+        const myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        const num = myArray[Math.floor(Math.random() * myArray.length)];
+        comp.randomArr = [];
+        comp.getRandomNumber();
+        return num;
+    });
+
+    it('onToggle If call ', () => {
+        comp.toggleShow();
+        comp.show = true;
+        comp.show = !comp.show;
+        expect(comp.textType).toEqual('text');
+      })
     
+      it('onToggle else call ', () => {
+        comp.show = !comp.show;
+        comp.toggleShow();
+        comp.show = false;
+        expect(comp.textType).toEqual('password');
+      })
+
 
     // it('ngOnInit() 0st  condition ', () => {
     //     comp.type = '2-rows';
