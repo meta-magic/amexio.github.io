@@ -77,6 +77,8 @@ describe('amexio-dialpad', () => {
         comp.ngOnInit();
         spyOn(comp, 'generateRandomArray').and.callThrough();
         comp.randomArr = [];
+        expect(comp.btnArray1.length).not.toEqual(0);
+        expect(comp.btnArray2.length).not.toEqual(0);
         let spy = spyOn(comp, 'generateTyp1Arr');
         expect(spy).not.toHaveBeenCalled();
     });
@@ -355,6 +357,17 @@ describe('amexio-dialpad', () => {
         comp.value = str;
         expect(comp.isValid).toBeNull();
         expect(comp.cls).toEqual('redcls');
+    });
+
+    it('eraseData() else condition', () => {
+        comp.value = '123' + '123';
+        comp.isValid = false;
+        comp.iconfeedback = false;
+        comp.eraseData();
+        let str;
+        str = comp.value.slice(0, -1);
+        comp.value = str;
+        expect(comp.cls).toBeUndefined();
     });
 
     it('clearData() if condition', () => {
