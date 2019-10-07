@@ -19,7 +19,7 @@ import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
        `,
 })
 class TestTabComponent { }
-describe('amexio-tab', () => {
+fdescribe('amexio-tab', () => {
     let comp: AmexioTabComponent;
     let fixture: ComponentFixture<TestTabComponent>;
     let tabNode: any;
@@ -81,11 +81,31 @@ describe('amexio-tab', () => {
             expect(tabNode).toEqual(g);
         });
     });
-
-    it('Ok method Call', () => {
-      comp.tabPillClose(tabNode);
-      comp.openDialogue = false;
+    it('Close Tab method Call', () => {
+        comp.openDialogue = true;
+        comp.closeTab(tabNode)
+        comp.enableConfirmBox = true;
+        expect(comp.openDialogue).toBeTruthy();
+        comp.tempTab = tabNode;
+        comp.onCloseClick.emit(tabNode);
     });
+
+    it('Close Tab Else method Call', () => {
+        comp.closeTab(tabNode)
+        comp.enableConfirmBox = false;
+        comp.tabPillClose(tabNode);
+        comp.onCloseClick.emit(tabNode);
+    });
+    // it('Ok method Call', () => {
+    //     console.log("*******************", tabNode);
+
+    //     comp.onOkClick();
+    //   comp.tabPillClose(comp.tempTab);
+    //   comp.openDialogue = false;
+    // });
+
+
+  
 
 
 
