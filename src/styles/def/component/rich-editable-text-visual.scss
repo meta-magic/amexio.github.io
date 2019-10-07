@@ -1,12 +1,15 @@
 
   .rich-first-div{ 
-    border: 1px solid $richEditorHoverFontColor;
+    border: 1px solid $richEditorBorderColor;
   }
  
   .rich-editor-buttons{
     background: $richEditorHoverBGColor;
   }
-
+ 
+  .rich-text-editor {
+    background-color: $richEditorBGColor;
+   }
 
 .rich-text-editor::-webkit-scrollbar-track
 {
