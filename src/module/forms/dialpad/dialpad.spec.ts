@@ -411,6 +411,18 @@ describe('amexio-dialpad', () => {
         expect(comp.cls).toEqual('nonecls');
     });
 
+    it('clearData() else condition', () => {
+        comp.value = '';
+        comp.minlen = undefined;
+        comp.maxlen = undefined;
+        comp.isValid = null;
+        const object = { data: comp.value };
+        comp.onClick.emit(object);
+        comp.valueChange.emit(comp.value);
+        comp.clearData();
+        expect(comp.cls).toEqual('nonecls');
+    });
+
     it('onToggle If call ', () => {
         comp.toggleShow();
         comp.show = true;
