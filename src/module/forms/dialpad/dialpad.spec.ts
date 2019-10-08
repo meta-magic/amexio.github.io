@@ -222,15 +222,15 @@ describe('amexio-dialpad', () => {
     // });
 
     it('validateMin() if if check ', () => {
-        comp.minlen = 0;
-        comp.value = 'abc';
+        comp.minlen = 2;
+        comp.value = 'abcd';
         comp.isValid = true;
         comp.validateMin();
         expect(comp.isValid).toEqual(true);
     });
 
     it('validateMin() if if else check ', () => {
-        comp.minlen = 3;
+        comp.minlen = 2;
         comp.value = '';
         comp.isValid = false;
         comp.validateMin();
@@ -246,16 +246,16 @@ describe('amexio-dialpad', () => {
     });
 
     it('validateMax() if if check ', () => {
-        comp.maxlen = 3;
-        comp.value = '';
+        comp.maxlen = 4;
+        comp.value = 'ab';
         comp.isValid = true;
         comp.validateMax();
         expect(comp.isValid).toEqual(true);
     });
 
     it('validateMax() if if else check ', () => {
-        comp.maxlen = 0;
-        comp.value = 'abc';
+        comp.maxlen = 4;
+        comp.value = 'abcdef';
         comp.isValid = false;
         comp.validateMax();
         expect(comp.isValid).toEqual(false);
