@@ -16,7 +16,7 @@ import { AmexioButtonComponent } from '../../../forms/buttons/button.component';
   </amexio-stackable-panel>`,
 })
 class TestWrapperComponent { }
-describe('StackablePanelComponent', () => {
+fdescribe('StackablePanelComponent', () => {
   let comp: StackablePanelComponent;
   let fixture: ComponentFixture<TestWrapperComponent>;
   beforeEach(() => {
@@ -98,23 +98,38 @@ describe('StackablePanelComponent', () => {
   // });
 
   it('check showAll method If check', () => {
+    comp.text = 'Show All';
     comp.showAll();
     comp.groups.toArray().forEach((data: any) => {
-    comp.text = 'Show All';
-    expect(data.open).toBeTruthy();
+      expect(comp.text).toEqual('Hide All');
+
+      expect(data.open).toBeTruthy();
     });
-    expect(comp.text).toEqual('Show All');
 
   });
 
   it('check showAll method Else check', () => {
+    comp.text = 'Hide All';
     comp.showAll();
     comp.groups.toArray().forEach((data: any) => {
-    comp.text = 'Hide All';
-    expect(data.open).toBeTruthy();
+    expect(comp.text).toEqual('Show All');
+
+    expect(data.open).toBeFalsy();
     });
+
+  });
+
+  it('check showAll second If check', () => {
+    comp.text = 'Show All';
+    comp.showAll();
     expect(comp.text).toEqual('Hide All');
 
+  });
+
+  it('check showAll second Else check', () => {
+    comp.text = 'Hide All';
+    comp.showAll();
+    expect(comp.text).toEqual('Show All');
   });
 
 });
