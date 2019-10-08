@@ -7,7 +7,7 @@ import { AmexioTabPillComponent } from './tab.pill.component';
 import { AmexioButtonComponent } from './../../forms/buttons/button.component';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, ComponentFactoryResolver, NO_ERRORS_SCHEMA } from '@angular/core';
 
 @Component({
     selector: 'test-cmp',
@@ -34,7 +34,7 @@ describe('amexio-tab', () => {
                 AmexioTabPillComponent,
                 AmexioButtonComponent,
             ],
-            providers: [IconLoaderService],
+            providers: [ComponentFactoryResolver, IconLoaderService],
         }).overrideModule(BrowserDynamicTestingModule, { set: { entryComponents: [AmexioTabPillComponent] } }).compileComponents();
     });
     beforeEach(() => {
@@ -117,6 +117,10 @@ describe('amexio-tab', () => {
         comp.tabPillClose(comp.tempTab);
         comp.openDialogue = false;
     });
+
+    it ('calls in constructor' , () => {
+        TestBed.createComponent(AmexioTabComponent);
+    })
 
 });
 
