@@ -84,28 +84,37 @@ describe('StackablePanelComponent', () => {
     });
   });
 
-  it('check showAll if method check', () => {
-    comp.expand = false;
-    fixture.detectChanges();
+  // it('check showAll if method check', () => {
+  //   comp.expand = false;
+  //   fixture.detectChanges();
+  //   comp.showAll();
+  //   comp.expand = false;
+  //   comp.groups.toArray().forEach((data: any) => {
+  //     expect(comp.expand).toEqual(false);
+  //     data.opened = !data.opened;
+  //     comp.text = 'Show All';
+  //     comp.expand = !comp.expand;
+  //   });
+  // });
+
+  it('check showAll method If check', () => {
     comp.showAll();
-    comp.expand = false;
     comp.groups.toArray().forEach((data: any) => {
-      expect(comp.expand).toEqual(false);
-      data.opened = !data.opened;
-      comp.text = 'Show All';
-      comp.expand = !comp.expand;
+    comp.text = 'Show All';
+    expect(data.open).toBeTruthy();
     });
+    expect(comp.text).toEqual('Show All');
+
   });
 
-  it('check showAll else method check', () => {
-    fixture.detectChanges();
+  it('check showAll method Else check', () => {
     comp.showAll();
     comp.groups.toArray().forEach((data: any) => {
-      comp.expand = true;
-      expect(comp.expand).toEqual(true);
-      data.opened = !data.opened;
-      comp.text = 'Hide All';
-      comp.expand = !comp.expand;
+    comp.text = 'Hide All';
+    expect(data.open).toBeTruthy();
     });
+    expect(comp.text).toEqual('Hide All');
+
   });
+
 });
