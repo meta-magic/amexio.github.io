@@ -590,8 +590,7 @@ description : sets background color for active tab
     if (this.enableConfirmBox) {
       this.openDialogue = true;
       this.tempTab = tabNode;
-    }
-    if (!this.enableConfirmBox) {
+    } else {
       this.tabPillClose(tabNode);
     }
     this.onCloseClick.emit(tabNode);
