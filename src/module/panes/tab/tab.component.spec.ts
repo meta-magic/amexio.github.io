@@ -13,7 +13,7 @@ import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
     selector: 'test-cmp',
     template: `
     <amexio-tab-view>
-    <amexio-tab>
+    <amexio-tab [enable-confirm-box]="true">
     </amexio-tab>
     </amexio-tab-view>
        `,
@@ -96,23 +96,27 @@ describe('amexio-tab', () => {
         comp.tabPillClose(tabNode);
         comp.onCloseClick.emit(tabNode);
     });
-//     it('tabPillClose method', () => {
-//         comp.tabPillClose(tabNode);
-//         const newTab: AmexioTabPillComponent[] = [];
-//         let index = 0;
-//         let tabHighlightIndex = 0;
-//         comp.tabCollection.forEach((tab: any, i: number) => {
-//   tab.active = false;
-//   console.log("**************************", tab.tabId);
-//   console.log("#####################", tabNode.tabId);
+    it('tabPillClose method', () => {
+        comp.tabPillClose(tabNode);
+        const newTab: AmexioTabPillComponent[] = [];
+        let index = 0;
+        let tabHighlightIndex = 0;
+        comp.tabCollection.forEach((tab: any, i: number) => {
+            tab.active = false;
+            tabNode.tabId = tab.tabId;
+            expect(tab.tabId).toEqual(tabNode.tabId);
+            tabHighlightIndex = index;
 
-//         });
-//     })
-    // it('Ok method Call', () => {
-    //     comp.onOkClick();
-    //   comp.tabPillClose(tabNode);
-    //   comp.openDialogue = false;
-    // });
-  
+        });
+    })
+    it('Ok method Call', () => {
+        comp.tabCollection.forEach((tab: any, i: number) => {
+            comp.tempTab = tab;
+        })
+        comp.onOkClick();
+        comp.tabPillClose(comp.tempTab);
+        comp.openDialogue = false;
+    });
+
 });
 
