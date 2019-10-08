@@ -16,7 +16,7 @@ import { AmexioButtonComponent } from '../../../forms/buttons/button.component';
   </amexio-stackable-panel>`,
 })
 class TestWrapperComponent { }
-fdescribe('StackablePanelComponent', () => {
+describe('StackablePanelComponent', () => {
   let comp: StackablePanelComponent;
   let fixture: ComponentFixture<TestWrapperComponent>;
   beforeEach(() => {
