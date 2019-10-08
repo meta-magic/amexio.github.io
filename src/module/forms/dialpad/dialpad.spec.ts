@@ -386,6 +386,13 @@ describe('amexio-dialpad', () => {
         expect(comp.cls).toBeUndefined();
     });
 
+    it('emitBtnData()', () => {
+        let keycode;
+        const obj = { key: keycode, data: comp.value };
+        comp.emitBtnData(keycode)
+        comp.onClick.emit(obj);
+    });
+
     it('clearData() if condition', () => {
         comp.value = '';
         comp.minlen = 2;
@@ -414,6 +421,30 @@ describe('amexio-dialpad', () => {
     it('clearData() else condition', () => {
         comp.value = '';
         comp.minlen = undefined;
+        comp.maxlen = undefined;
+        comp.isValid = null;
+        const object = { data: comp.value };
+        comp.onClick.emit(object);
+        comp.valueChange.emit(comp.value);
+        comp.clearData();
+        expect(comp.cls).toEqual('nonecls');
+    });
+
+    it('clearData() else condition', () => {
+        comp.value = '';
+        comp.minlen = undefined;
+        comp.maxlen = 0;
+        comp.isValid = null;
+        const object = { data: comp.value };
+        comp.onClick.emit(object);
+        comp.valueChange.emit(comp.value);
+        comp.clearData();
+        expect(comp.cls).toEqual('nonecls');
+    });
+
+    it('clearData() else condition', () => {
+        comp.value = '';
+        comp.minlen = 0;
         comp.maxlen = undefined;
         comp.isValid = null;
         const object = { data: comp.value };
