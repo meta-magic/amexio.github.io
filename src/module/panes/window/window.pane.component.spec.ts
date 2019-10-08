@@ -121,4 +121,26 @@ describe('amexio-window', () => {
         expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
         expect(comp.maximize).toEqual(false);
     });
+
+    it('setMaximizeClass If method', () => {
+        comp.setMaximizeClass(false)
+        comp.isFullWindow = false;
+        expect(comp.width).toBe('100%');
+        return {
+            'margin-top': '0', 'height': '100%',
+        }
+
+    })
+
+    it('setMaximizeClass Else method', () => {
+        comp.setMaximizeClass(true)
+        comp.isFullWindow = true;
+        this.width = this.dummyWidth;
+        expect(comp.width).toBe(comp.dummyWidth);
+        return {
+            'margin-top': '1%', 'height': '96%',
+        }
+
+    })
 });
+
