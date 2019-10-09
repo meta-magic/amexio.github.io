@@ -14,7 +14,7 @@ import { detectChanges } from '@angular/core/src/render3/instructions';
   selector: 'test-cmp',
   template: `
     <amexio-right-vertical-tab-view>
-    <amexio-tab [enable-confirm-box]="true">
+    <amexio-tab [enable-confirm-box]="true" [closable]="true">
     </amexio-tab>
     </amexio-right-vertical-tab-view>
        `,
@@ -49,13 +49,14 @@ describe('amexio-tab', () => {
 
 
   it('onCloseClick  method check', () => {
+    comp.closable = true;
     comp.tabCollection.forEach((tabs) => {
       // tabs.closable = true;
       // comp.closable = true;
       // spyOn(comp, 'tabPillClose');
       // comp.tabPillClose(tabs);
       // expect(comp.tabPillClose).toHaveBeenCalledWith(tabs); 
-      
+      // tabs.closable = true;
       expect(tabs.closable).toBe(true);
       expect(comp.closable).toBe(true);
       comp.tabPillClose(tabs);
