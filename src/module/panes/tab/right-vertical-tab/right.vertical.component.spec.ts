@@ -50,11 +50,15 @@ describe('amexio-tab', () => {
 
   it('onCloseClick  method check', () => {
     comp.tabCollection.forEach((tabs) => {
-      tabs.closable = true;
-      comp.closable = true;
-      spyOn(comp, 'tabPillClose');
+      // tabs.closable = true;
+      // comp.closable = true;
+      // spyOn(comp, 'tabPillClose');
+      // comp.tabPillClose(tabs);
+      // expect(comp.tabPillClose).toHaveBeenCalledWith(tabs); 
+      
+      expect(tabs.closable).toBe(true);
+      expect(comp.closable).toBe(true);
       comp.tabPillClose(tabs);
-      expect(comp.tabPillClose).toHaveBeenCalledWith(tabs);  
      });
   });
 
