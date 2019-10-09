@@ -48,6 +48,7 @@ describe('amexio-vertical-tab', () => {
 
 
   it('onCloseAllTabs both true  method check', () => {
+    comp.closeAllTabs();
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = true;
       comp.closable = true;
@@ -58,6 +59,7 @@ describe('amexio-vertical-tab', () => {
   });
 
   it('onCloseAllTabs tab true  method check', () => {
+    comp.closeAllTabs()
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = true;
       comp.closable = false;
@@ -68,6 +70,7 @@ describe('amexio-vertical-tab', () => {
   });
 
   it('onCloseAllTabs tab False  method check', () => {
+    comp.closeAllTabs()
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = false;
       comp.closable = true;
@@ -78,6 +81,7 @@ describe('amexio-vertical-tab', () => {
   });
 
   it('onCloseAllTabs both false method check', () => {
+    comp.closeAllTabs();
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = false;
       comp.closable = false;
