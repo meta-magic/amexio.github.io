@@ -8,6 +8,7 @@ import { AmexioButtonComponent } from './../../../forms/buttons/button.component
 import { CommonIconComponent } from './../../../base/components/common.icon.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Component, ComponentFactoryResolver, NO_ERRORS_SCHEMA } from '@angular/core';
+import { detectChanges } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'test-cmp',
@@ -51,10 +52,12 @@ describe('amexio-tab', () => {
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = true;
       comp.closable = true;
+      spyOn(comp, 'tabPillClose');
       comp.tabPillClose(tabs);
-      // let spy = spyOn(comp, 'tabPillClose');
-      // expect(spy).toHaveBeenCalledWith(tabs);   
+      expect(comp.tabPillClose).toHaveBeenCalled();  
      });
   });
+
+
 })
 
