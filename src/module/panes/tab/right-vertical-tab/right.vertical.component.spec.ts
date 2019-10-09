@@ -19,7 +19,7 @@ import { Component, ComponentFactoryResolver, NO_ERRORS_SCHEMA } from '@angular/
        `,
 })
 class TestTabComponent { }
-describe('amexio-tab', () => {
+fdescribe('amexio-tab', () => {
   let comp: AmexioRightVerticalTabComponent;
   let fixture: ComponentFixture<TestTabComponent>;
   let tabNode: any;
@@ -47,13 +47,16 @@ describe('amexio-tab', () => {
   });
 
 
-  // it('onCloseClick  method check', () => {
-  //   comp.tabCollection.forEach((tabs) => {
-  //     tabs.closable = true;
-  //     comp.closable = true;
-  //     let spy = spyOn(comp, 'tabPillClose');
-  //     expect(spy).toHaveBeenCalledWith(tabs);   
-  //    });
-  // });
+  it('onCloseClick  method check', () => {
+    comp.tabCollection.forEach((tabs) => {
+      console.log("TABSS***************", tabs);
+      tabs.closable = true;
+      comp.closable = true;
+      console.log("************66666",  tabs.closable)
+      comp.tabPillClose(tabs);
+      // let spy = spyOn(comp, 'tabPillClose');
+      // expect(spy).toHaveBeenCalledWith(tabs);   
+     });
+  });
 })
 
