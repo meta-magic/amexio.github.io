@@ -35,13 +35,17 @@ describe('amexio-availability', () => {
 
 });
 
-
 it('onSelection()', () => {
   let radioData = {label: 'Inbound', colorcode: 'blue'};
   comp.onSelection(radioData);
  const obj = { label: radioData.label, colorcode: radioData.colorcode };
   expect(obj).toEqual(comp.styleVar);
-  
 });
+
+
+it('clearColorFlag()', () => {
+ 
+});
+
 });
 
