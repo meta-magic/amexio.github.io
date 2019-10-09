@@ -36,8 +36,6 @@ import { AmexioThemeSwitcherService } from '../services/data/amexio.theme.servic
 import { AmexioLayoutModule } from '../layout/amexio.layout.module';
 import { AmexioNavModule } from '../navigation/amexio.nav.module';
 
-import { AmexioRichEditableTextareaComponent } from './formsInput/rich-editable-textarea/rich-editable-textarea.component';
-
 export * from './ee-carousel/ee.carousel.component';
 export * from './ee-content/ee.content';
 export * from '../services/data/common.data.service';
@@ -51,7 +49,6 @@ export * from './calendar/calendar.year.component';
 export * from '../services/data/amexio.theme.service';
 export * from './themeswitcher/amexio.themeswitcher.component';
 export * from './availability/availability.component';
-export * from './formsInput/rich-editable-textarea/rich-editable-textarea.component';
 
 const ENTERPRISE_COMPONENTS = [
   MultiMediaCarouselComponent,
@@ -67,7 +64,6 @@ const ENTERPRISE_COMPONENTS = [
   StepWizardItemComponent,
   TreeTabComponent,
   AvailabilityComponent,
-  AmexioRichEditableTextareaComponent,
 ];
 
 @NgModule({
