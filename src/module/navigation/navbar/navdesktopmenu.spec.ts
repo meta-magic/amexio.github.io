@@ -50,7 +50,7 @@ describe('navdesktopmenu', () => {
 
   it('ngAfterViewInit() check if menus not defined', () => {
     fixture1.detectChanges();
-    const menus = null;
+    const menus: ElementRef = null;
 
     comp1.ngAfterViewInit();
     jasmine.clock().tick(101);
@@ -86,7 +86,7 @@ describe('navdesktopmenu', () => {
     expect(menus).toBeDefined();
     menus.nativeElement.getBoundingClientRect = () => ({
       left: 100,
-      right:200
+      right: 200
     });
     comp1.ngAfterViewInit();
     // setTimeout(() => {
@@ -95,7 +95,7 @@ describe('navdesktopmenu', () => {
     const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
     fixture.detectChanges();
 
-    expect( window.innerWidth - menus.nativeElement.getBoundingClientRect().left)
+    expect(window.innerWidth - menus.nativeElement.getBoundingClientRect().left)
       .not.toBeLessThan(300);
     expect(comp1.position).not.toBe('right');
     // }, 100);

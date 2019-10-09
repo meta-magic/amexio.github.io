@@ -65,7 +65,7 @@ import { GoogleAuthComponent } from './socialmedia/googleauth/google.auth.compon
 import { LinkedInAuthComponent } from './socialmedia/linkedinauth/linkedin.auth.component';
 import { AmexioSocialComponent } from './socialmedia/social.component';
 
-import { AmexioMultiRangePickerComponent } from './multirangedatepicker/multirangepicker.component';
+import { AmexioMultiRangePickerComponent } from './multirangedatepicker/multirangedatepicker.component';
 
 import { AmexioInputPatternDirective } from '../directive/input-mask';
 

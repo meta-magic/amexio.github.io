@@ -16,10 +16,10 @@
 */
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AmexioMultipleDatePickerComponent } from '../multidatepicker/multidatepicker.component';
-import { MultiDateRangePicker } from './multirangepicker.component.model';
+import { MultiDateRangePicker } from './multirangedatepicker.component.model';
 @Component({
     selector: 'amexio-date-range-picker',
-    templateUrl: './multirangepicker.component.html',
+    templateUrl: './multirangedatepicker.component.html',
 })
 export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
 
@@ -31,8 +31,8 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
     toCardSelected = false;
     daysOptionToday: any;
     daysOptionYesterday: any;
-    todayIconFlag: boolean;
-    yesterdayIconFlag: boolean;
+    todayIconFlag = false;
+    yesterdayIconFlag = false;
     disabledChkedIndex = 0;
     multiDateRangePickerModel: MultiDateRangePicker;
     @Input('disabled-date') disabledDates: any = [];
@@ -42,12 +42,6 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
         this.multiDateRangePickerModel = new MultiDateRangePicker();
         this.customRange = ['Today', 'Yesterday', 'This week (sun - sat)', 'Last 14 days',
             'This month', 'Last 30 days', 'Last month', 'All time',
-        ];
-        this.disabledDates = [
-            {
-                from: '5-Sep-2019',
-                to: '7-Sep-2019',
-            },
         ];
 
     }
