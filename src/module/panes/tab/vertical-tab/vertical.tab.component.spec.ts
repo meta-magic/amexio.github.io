@@ -8,7 +8,6 @@ import { AmexioButtonComponent } from './../../../forms/buttons/button.component
 import { CommonIconComponent } from './../../../base/components/common.icon.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Component, ComponentFactoryResolver, NO_ERRORS_SCHEMA } from '@angular/core';
-import { detectChanges } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'test-cmp',
@@ -20,7 +19,7 @@ import { detectChanges } from '@angular/core/src/render3/instructions';
        `,
 })
 class TestTabComponent { }
-describe('amexio-tab', () => {
+describe('amexio-vertical-tab', () => {
   let comp: AmexioVerticalTabComponent;
   let fixture: ComponentFixture<TestTabComponent>;
   let tabNode: any;
@@ -48,13 +47,43 @@ describe('amexio-tab', () => {
   });
 
 
-  it('onCloseAllTabs  method check', () => {
+  it('onCloseAllTabs both true  method check', () => {
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = true;
       comp.closable = true;
       spyOn(comp, 'tabPillClose');
       comp.tabPillClose(tabs);
       expect(comp.tabPillClose).toHaveBeenCalled();  
+     });
+  });
+
+  it('onCloseAllTabs tab true  method check', () => {
+    comp.tabCollection.forEach((tabs) => {
+      tabs.closable = true;
+      comp.closable = false;
+      spyOn(comp, 'tabPillClose');
+      comp.tabPillClose(tabs);
+      expect(comp.tabPillClose).toHaveBeenCalled();  
+     });
+  });
+
+  it('onCloseAllTabs tab False  method check', () => {
+    comp.tabCollection.forEach((tabs) => {
+      tabs.closable = false;
+      comp.closable = true;
+      spyOn(comp, 'tabPillClose');
+      comp.tabPillClose(tabs);
+      expect(comp.tabPillClose).toHaveBeenCalled();  
+     });
+  });
+
+  it('onCloseAllTabs both false method check', () => {
+    comp.tabCollection.forEach((tabs) => {
+      tabs.closable = false;
+      comp.closable = false;
+      spyOn(comp, 'tabPillClose');
+      comp.tabPillClose(tabs);
+      expect(comp.tabPillClose).toHaveBeenCalledTimes(1);  
      });
   });
 

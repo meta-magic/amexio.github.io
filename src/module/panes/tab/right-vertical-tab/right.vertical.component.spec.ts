@@ -14,13 +14,13 @@ import { detectChanges } from '@angular/core/src/render3/instructions';
   selector: 'test-cmp',
   template: `
     <amexio-right-vertical-tab-view>
-    <amexio-tab [enable-confirm-box]="true" [closable]="true">
+    <amexio-tab [enable-confirm-box]="true">
     </amexio-tab>
     </amexio-right-vertical-tab-view>
        `,
 })
 class TestTabComponent { }
-describe('amexio-tab', () => {
+describe('amexio-right-vertical-tab', () => {
   let comp: AmexioRightVerticalTabComponent;
   let fixture: ComponentFixture<TestTabComponent>;
   let tabNode: any;
@@ -48,20 +48,48 @@ describe('amexio-tab', () => {
   });
 
 
-  it('onCloseClick  method check', () => {
+  it('onCloseClick both true  method check', () => {
     comp.closable = true;
     comp.tabCollection.forEach((tabs) => {
-      // tabs.closable = true;
-      // comp.closable = true;
-      // spyOn(comp, 'tabPillClose');
-      // comp.tabPillClose(tabs);
-      // expect(comp.tabPillClose).toHaveBeenCalledWith(tabs); 
-      // tabs.closable = true;
-      expect(tabs.closable).toBe(true);
-      expect(comp.closable).toBe(true);
+      tabs.closable = true;
+      comp.closable = true;
+      spyOn(comp, 'tabPillClose');
       comp.tabPillClose(tabs);
+      expect(comp.tabPillClose).toHaveBeenCalledWith(tabs); 
      });
   });
+
+
+  it('onCloseAllTabs tab true  method check', () => {
+    comp.tabCollection.forEach((tabs) => {
+      tabs.closable = true;
+      comp.closable = false;
+      spyOn(comp, 'tabPillClose');
+      comp.tabPillClose(tabs);
+      expect(comp.tabPillClose).toHaveBeenCalled();  
+     });
+  });
+
+  it('onCloseAllTabs tab False  method check', () => {
+    comp.tabCollection.forEach((tabs) => {
+      tabs.closable = false;
+      comp.closable = true;
+      spyOn(comp, 'tabPillClose');
+      comp.tabPillClose(tabs);
+      expect(comp.tabPillClose).toHaveBeenCalled();  
+     });
+  });
+
+  it('onCloseAllTabs both false method check', () => {
+    comp.tabCollection.forEach((tabs) => {
+      tabs.closable = false;
+      comp.closable = false;
+      let spy = spyOn(comp, 'tabPillClose');
+      comp.tabPillClose(tabs);
+      expect(spy).toHaveBeenCalledTimes(1);  
+     });
+  });
+
 
   it('ngAfterViewInit  method check', () => {
     comp.ngAfterViewInit();
