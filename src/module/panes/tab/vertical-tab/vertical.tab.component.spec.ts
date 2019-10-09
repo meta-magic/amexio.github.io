@@ -58,5 +58,13 @@ describe('amexio-tab', () => {
      });
   });
 
+  it('ngAfterContentInit If method', () => {
+    const testarray: any[] = [];
+    comp.tabCollection.forEach((element: any) => {
+      element.icon = 'fa-fa save'
+        testarray.push(element.icon); 
+    });
+  })
+
 })
 

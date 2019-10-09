@@ -447,16 +447,6 @@ description : sets background color for active tab
     });
   }
 
-  // selectTab(tab: AmexioTabPillComponent) {
-  //   // deactivate all tabs
-  //   this.tabCollection.forEach((tab1: any) => {
-  //     tab1.active = false;
-  //   });
-  //   tab.active = true;
-  //   this.tabCollection.forEach((tab1: any) => {
-  //     this.asignTabPillClass(tab1);
-  //   });
-  // }
   tabNodeProperties() {
 
     const tabWidth = this.tabCollection.length;
