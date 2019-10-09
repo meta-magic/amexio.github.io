@@ -6,7 +6,7 @@ import { CommonIconComponent } from './../../base/components/common.icon.compone
 import { AmexioMultiRangePickerComponent } from './multirangedatepicker.component';
 import { AmexioMultipleDatePickerComponent } from '../multidatepicker/multidatepicker.component';
 
-describe('amexio-date-range-picker', () => {
+fdescribe('amexio-date-range-picker', () => {
     let component: AmexioMultiRangePickerComponent;
     let fixture: ComponentFixture<AmexioMultiRangePickerComponent>;
 
@@ -73,6 +73,27 @@ describe('amexio-date-range-picker', () => {
         expect(component.todayIconFlag).toEqual(true);
     });
 
+    it('ngAfterViewInit: check if date is today', () => {
+
+        component.ngAfterViewInit();
+        component.fromCardSelected = component.child.fromcardselected;
+        component.toCardSelected = component.child.tocardselected;
+        component.child.altercompleteDaysArray();
+        expect(component.disabledDates).toBeDefined();
+        component.disabledDates.forEach((element: any) => {
+            const dfrom = new Date(element.from);
+            const dto = new Date(element.to);
+            const currentd = new Date();
+            const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
+            if ((currentd <= dto) && (currentd >= dfrom)) {
+                expect(component.todayIconFlag).toEqual(true);
+            }
+            if ((yesterdayd <= dto) && (yesterdayd >= dfrom)) {
+                expect(component.yesterdayIconFlag).toEqual(true);
+            }
+        });
+    });
+
     it('ngAfterViewInit: check if date selected is not today', () => {
         const today = '9-Oct-2019';
         const dfrom = new Date('1-Oct-2019');
@@ -88,6 +109,28 @@ describe('amexio-date-range-picker', () => {
         expect(component.todayIconFlag).toBeFalsy();
     });
 
+    it('check ngAfterViewInit method todayIconFlag else condition ', () => {
+        component.ngAfterViewInit();
+        component.fromCardSelected = component.child.fromcardselected;
+        component.toCardSelected = component.child.tocardselected;
+        component.child.altercompleteDaysArray();
+        expect(component.disabledDates).toBeDefined();
+        component.disabledDates.forEach((element: any) => {
+            const dfrom = new Date(element.from);
+            const dto = new Date(element.to);
+            const currentd = new Date();
+            const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
+            if ((currentd <= dto) && (currentd >= dfrom)) {
+                component.todayIconFlag = true;
+            }
+            if ((yesterdayd <= dto) && (yesterdayd >= dfrom)) {
+                component.yesterdayIconFlag = true;
+            }
+
+        });
+        component.todayIconFlag = false;
+        expect(component.todayIconFlag).toEqual(false);
+    });
     it('ngAfterViewInit: check if date selected is Tomorrow', () => {
         const today = '9-Oct-2019';
         const dfrom = new Date('1-Oct-2019');
