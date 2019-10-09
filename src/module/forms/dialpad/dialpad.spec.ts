@@ -408,14 +408,14 @@ describe('amexio-dialpad', () => {
 
     it('clearData() else condition', () => {
         comp.value = '';
-        comp.minlen = 0;
-        comp.maxlen = 0;
+        comp.minlen = 2;
+        comp.maxlen = undefined;
         comp.isValid = null;
         const object = { data: comp.value };
         comp.onClick.emit(object);
         comp.valueChange.emit(comp.value);
         comp.clearData();
-        expect(comp.cls).toEqual('nonecls');
+        expect(comp.cls).toEqual('redcls');
     });
 
     it('clearData() else condition', () => {
@@ -433,25 +433,13 @@ describe('amexio-dialpad', () => {
     it('clearData() else condition', () => {
         comp.value = '';
         comp.minlen = undefined;
-        comp.maxlen = 0;
+        comp.maxlen = 4;
         comp.isValid = null;
         const object = { data: comp.value };
         comp.onClick.emit(object);
         comp.valueChange.emit(comp.value);
         comp.clearData();
-        expect(comp.cls).toEqual('nonecls');
-    });
-
-    it('clearData() else condition', () => {
-        comp.value = '';
-        comp.minlen = 0;
-        comp.maxlen = undefined;
-        comp.isValid = null;
-        const object = { data: comp.value };
-        comp.onClick.emit(object);
-        comp.valueChange.emit(comp.value);
-        comp.clearData();
-        expect(comp.cls).toEqual('nonecls');
+        expect(comp.cls).toEqual('redcls');
     });
 
     it('onToggle If call ', () => {
