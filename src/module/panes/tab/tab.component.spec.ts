@@ -122,5 +122,9 @@ describe('amexio-tab', () => {
         TestBed.createComponent(AmexioTabComponent);
     })
 
+    it ('ngAfterContentInit Tab Method', ()=> {
+        
+    })
+
 });
 

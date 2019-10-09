@@ -54,8 +54,13 @@ describe('amexio-tab', () => {
       comp.closable = true;
       spyOn(comp, 'tabPillClose');
       comp.tabPillClose(tabs);
-      expect(comp.tabPillClose).toHaveBeenCalled();  
+      expect(comp.tabPillClose).toHaveBeenCalledWith(tabs);  
      });
+  });
+
+  it('ngAfterViewInit  method check', () => {
+    comp.ngAfterViewInit();
+ console.log("**************", comp.tabId);
   });
 
 
