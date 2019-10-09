@@ -51,9 +51,9 @@ describe('amexio-tab', () => {
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = true;
       comp.closable = true;
-      comp.tabPillClose(tabs);
-    });
-
-
+      let spy = spyOn(comp, 'tabPillClose');
+      expect(spy).toHaveBeenCalledWith(tabs);   
+     });
   });
+})
 

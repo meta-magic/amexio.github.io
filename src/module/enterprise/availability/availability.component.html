@@ -8,15 +8,15 @@
             </amexio-dropdown>
         </amexio-column>
         <amexio-column [size]="7" style="padding-top:15px">
-            <span style=" margin-left: 15px; padding: 6px 4px 4px 4px; "
+            <span style=" margin-left: 15px; padding: 5px 4px; "
                 [ngStyle]="{'background-color': radio.colorcode}" *ngFor="let radio of legendArr">
-                <span style="padding: 3px; ">
+                <span style="padding: 5px 3px 3px; ">
 
                     <input style="cursor:pointer" type="radio" [(ngModel)]="radioValue" name="{{labelData[0].label}}"
                         (change)="onSelection(radio)" value="{{radio.label}}">
                 </span>
 
-                <span style="margin-right: 2%" [style.color]="radio.textcolor"> {{radio.label}}</span>
+                <span style="font-size:medium; margin-right: 2%" [style.color]="radio.textcolor"> {{radio.label}}</span>
             </span>
         </amexio-column>
         <amexio-column [size]="2" style="padding-top:14px">
