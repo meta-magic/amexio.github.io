@@ -6,7 +6,7 @@ import { CommonIconComponent } from './../../base/components/common.icon.compone
 import { AmexioMultiRangePickerComponent } from './multirangedatepicker.component';
 import { AmexioMultipleDatePickerComponent } from '../multidatepicker/multidatepicker.component';
 
-describe('amexio-date-range-picker', () => {
+fdescribe('amexio-date-range-picker', () => {
     let component: AmexioMultiRangePickerComponent;
     let fixture: ComponentFixture<AmexioMultiRangePickerComponent>;
 
@@ -458,6 +458,56 @@ describe('amexio-date-range-picker', () => {
             expect(component.child.todate).toEqual(enddate);
 
             expect(option).toEqual('This week (sun - sat)');
+        });
+
+        it('Last 14 days',()=>{
+            const lastday = new Date();
+            component.child.todate = lastday;
+            const firstday = new Date();
+            firstday.setDate(firstday.getDate() - 14);
+            component.child.fromdate = firstday;
+        });
+
+        it('This month',()=>{
+            const d1 = new Date();
+            const firstmonthday = new Date(d1.getFullYear(), d1.getMonth(), 1);
+            component.child.fromdate = firstmonthday;
+            const lastmonthday = new Date(d1.getFullYear(), d1.getMonth() + 1, 0);
+            component.child.todate = lastmonthday;
+        });
+
+        it('Last 30 days',()=>{
+            const d2 = new Date();
+            const first30thdate = new Date();
+            const last30thdate = new Date();
+            component.child.todate = last30thdate;
+            first30thdate.setDate(d2.getDate() - 29);
+            component.child.fromdate = first30thdate;
+        });
+
+        it('Last month',()=>{
+            const d3 = new Date();
+            const fday = new Date(d3.getFullYear(), d3.getMonth() - 1, 1);
+            const lday = new Date(d3.getFullYear(), d3.getMonth(), 0);
+            component.child.fromdate = fday;
+            component.child.todate = lday;
+        });
+
+        it('All time',()=>{
+            const d4 = new Date();
+            d4.setFullYear(1970);
+            d4.setMonth(0);
+            d4.setDate(1);
+
+            component.child.fromdate = d4;
+            component.child.todate = new Date();
+        });
+
+        it('30 Days upto today',()=>{
+        });
+
+
+        it('30 Days upto yesterday',()=>{
         });
     });
 });
