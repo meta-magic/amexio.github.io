@@ -161,7 +161,7 @@ description : Position of notification window vertically:
       }
       if (this.messageData !== null) {
         setInterval(() => {
-          if (this.messageData.length > 0) {
+          if (this.messageData && this.messageData.length > 0) {
             this.messageData.shift();
             this.ref.markForCheck();
           }
