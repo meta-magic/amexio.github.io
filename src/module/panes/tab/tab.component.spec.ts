@@ -146,6 +146,22 @@ describe('amexio-tab', () => {
 
     })
 
+    it('onAdjust Height method tab data undefined', () => {
+        comp.bodyheight = 20;
+        // comp.tabs.nativeElement.offsetHeight = undefined;
+        // comp.tabs.nativeElement = undefined;
+        comp.tabs = undefined;
+        comp.onAdjustHeight();
+        expect(comp.bodyheight).toBeDefined();
+        let h = (window.innerHeight / 100) * comp.bodyheight;
+        expect(comp.tabs).toBeUndefined();
+        // expect(comp.tabs.nativeElement).toBeUndefined();
+        // expect(comp.tabs.nativeElement.offsetHeight).toBeUndefined();
+        comp.minHeight = h;
+        comp.height = h;
+
+    })
+
     it('onAdjust Height method bodyheight If Block', () => {
         comp.onAdjustHeight();
         comp.bodyheight = 100;
