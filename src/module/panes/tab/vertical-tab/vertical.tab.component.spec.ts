@@ -85,9 +85,9 @@ describe('amexio-vertical-tab', () => {
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = false;
       comp.closable = false;
-      spyOn(comp, 'tabPillClose');
-      // comp.tabPillClose(tabs);
-      expect(comp.tabPillClose).not.toHaveBeenCalled();  
+      expect(tabs.closable).toBe(false);
+      expect(comp.closable).toBe(false);
+      expect(comp.tabPillClose(tabs)).not.toHaveBeenCalled; 
      });
   });
 

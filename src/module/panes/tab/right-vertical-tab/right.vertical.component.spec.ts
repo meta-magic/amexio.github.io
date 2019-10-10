@@ -56,8 +56,8 @@ describe('amexio-right-vertical-tab', () => {
       comp.closable = true;
       spyOn(comp, 'tabPillClose');
       comp.tabPillClose(tabs);
-      expect(comp.tabPillClose).toHaveBeenCalledWith(tabs); 
-     });
+      expect(comp.tabPillClose).toHaveBeenCalledWith(tabs);
+    });
   });
 
 
@@ -68,8 +68,8 @@ describe('amexio-right-vertical-tab', () => {
       comp.closable = false;
       spyOn(comp, 'tabPillClose');
       comp.tabPillClose(tabs);
-      expect(comp.tabPillClose).toHaveBeenCalled();  
-     });
+      expect(comp.tabPillClose).toHaveBeenCalled();
+    });
   });
 
   it('onCloseAllTabs tab False  method check', () => {
@@ -79,8 +79,8 @@ describe('amexio-right-vertical-tab', () => {
       comp.closable = true;
       spyOn(comp, 'tabPillClose');
       comp.tabPillClose(tabs);
-      expect(comp.tabPillClose).toHaveBeenCalled();  
-     });
+      expect(comp.tabPillClose).toHaveBeenCalled();
+    });
   });
 
   it('onCloseAllTabs both false method check', () => {
@@ -89,36 +89,36 @@ describe('amexio-right-vertical-tab', () => {
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = false;
       comp.closable = false;
-      spyOn(comp, 'tabPillClose');
-      expect(comp.tabPillClose).not.toHaveBeenCalledWith(tabs);  
-     });
+      expect(tabs.closable).toBe(false);
+      expect(comp.closable).toBe(false);
+      expect(comp.tabPillClose(tabs)).not.toHaveBeenCalled;
+
+    });
   });
   it('OnVerticalTab Click If method', () => {
     let tab = {
-        active: true,
-        closable: false,
-        disabled: false,
-        icon: "fa fa-building",
-        tabId: 30314,
-        header: false,
-        tabPillClass: "activecolortab",
-        title: "Work"
+      active: true,
+      closable: false,
+      disabled: false,
+      icon: "fa fa-building",
+      tabId: 30314,
+      header: false,
+      tabPillClass: "activecolortab",
+      title: "Work"
     }
 
     comp.onVerticalTabClick(tab);
     tab.disabled = false;
     tab.header = false;
     for (let i of comp.tabCollection) {
-        // tab = i;
-        expect(i['active']).toBeFalsy();
-        spyOn(comp, 'asignTabPillClass');
-        comp.asignTabPillClass(tab);
-        expect(comp.asignTabPillClass).toHaveBeenCalled();
-        comp.onClick.emit(tab);
+      // tab = i;
+      expect(i['active']).toBeFalsy();
+      spyOn(comp, 'asignTabPillClass');
+      comp.asignTabPillClass(tab);
+      expect(comp.asignTabPillClass).toHaveBeenCalled();
+      comp.onClick.emit(tab);
 
     }
+  })
+
 })
-
-
-})
-
