@@ -27,6 +27,12 @@ describe('amexio-date-range-picker', () => {
             .toBe(true, 'should create AmexioMultiRangePickerComponent');
     });
 
+    it('ngAfterViewInit: check if disabledDates is not defined', () => {
+        component.fromCardSelected = component.child.fromcardselected;
+        component.toCardSelected = component.child.tocardselected;
+        component.disabledDates = null;
+        expect(component.disabledDates).toBeNull();
+    });
 
     it('ngAfterViewInit: check if date is today', () => {
 
@@ -35,20 +41,29 @@ describe('amexio-date-range-picker', () => {
         component.toCardSelected = component.child.tocardselected;
         component.child.altercompleteDaysArray();
         expect(component.disabledDates).toBeDefined();
+
         component.disabledDates.forEach((element: any) => {
             const dfrom = new Date(element.from);
             const dto = new Date(element.to);
             const currentd = new Date();
             const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
+
             expect(dfrom).not.toBeNull();
             expect(dto).not.toBeNull();
             expect(currentd).not.toBeNull();
             expect(yesterdayd).not.toBeNull();
+
             if ((currentd <= dto) && (currentd >= dfrom)) {
                 expect(component.todayIconFlag).toEqual(true);
             }
             if ((yesterdayd <= dto) && (yesterdayd >= dfrom)) {
                 expect(component.yesterdayIconFlag).toEqual(true);
+            }
+            component.todayIconFlag = true;
+            expect(component.todayIconFlag).toEqual(true);
+            if ( component.todayIconFlag = true ){
+                spyOn(component, 'updateFromTodate');
+                expect(component.updateFromTodate).toHaveBeenCalled();
             }
         });
     });
@@ -70,7 +85,6 @@ describe('amexio-date-range-picker', () => {
             expect(currentd).not.toBeNull();
             expect(yesterdayd).not.toBeNull();
 
-
             if ((currentd <= dto) && (currentd >= dfrom)) {
                 component.todayIconFlag = true;
             }
@@ -81,6 +95,8 @@ describe('amexio-date-range-picker', () => {
         });
         component.todayIconFlag = false;
         expect(component.todayIconFlag).toEqual(false);
+        spyOn(component, 'updateFromTodate');
+        expect(component.updateFromTodate).not.toHaveBeenCalled();
     });
 
     it('check variables  ', () => {
