@@ -203,7 +203,7 @@ description : Callback to invoke on activated tab event.
         }
 
         if (this.fullPageTabs === true) {
-            if (totalElWidth > tWidth && this.fullPageTabs) {
+            if (totalElWidth > tWidth) {
                 this.shownext = true;
             } else {
                 this.singleTabWidth = totalElWidth / this.totalTabs;

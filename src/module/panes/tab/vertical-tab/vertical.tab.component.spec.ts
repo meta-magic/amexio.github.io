@@ -51,10 +51,6 @@ it(' m1 onCloseAllTabs both true  method check', () => {
   comp.tabCollection.forEach((tabs) => {
     tabs.closable = true;
     comp.closable = true;
-    
-    // spyOn(comp, 'tabPillClose');
-    // comp.tabPillClose(tabs);
-    // expect(comp.tabPillClose).toHaveBeenCalled();  
    });
    comp.closeAllTabs();
    comp.tabCollection.forEach((tabs) => {
@@ -69,18 +65,11 @@ it('onCloseAllTabs tab true  method check', () => {
   comp.tabCollection.forEach((tabs) => {
     tabs.closable = true;
     comp.closable = false;
-    // spyOn(comp, 'tabPillClose');
-    // comp.tabPillClose(tabs);
-    // expect(comp.tabPillClose).toHaveBeenCalled();  
    });
    comp.closeAllTabs();
    comp.tabCollection.forEach((tabs) => {
-    // tabs.closable = true;
-    // comp.closable = false;
     expect(tabs.closable).toEqual(true);
     expect(comp.closable).toEqual(false);
-    // spyOn(comp, 'tabPillClose');
-    // comp.tabPillClose(tabs);
     expect(comp.tabPillClose(tabs)).toHaveBeenCalled;  
    });
    
@@ -90,18 +79,11 @@ it('onCloseAllTabs tab False  method check', () => {
   comp.tabCollection.forEach((tabs) => {
     tabs.closable = false;
     comp.closable = true;
-    // spyOn(comp, 'tabPillClose');
-    // comp.tabPillClose(tabs);
-    // expect(comp.tabPillClose).toHaveBeenCalled();  
    });
   comp.closeAllTabs()
   comp.tabCollection.forEach((tabs) => {
-    // tabs.closable = false;
-    // comp.closable = true;
     expect(tabs.closable).toEqual(false);
     expect(comp.closable).toEqual(true);
-    // spyOn(comp, 'tabPillClose');
-    // comp.tabPillClose(tabs);
     expect(comp.tabPillClose(tabs)).toHaveBeenCalled;  
    });
   
@@ -111,18 +93,11 @@ it('onCloseAllTabs both false method check', () => {
   comp.tabCollection.forEach((tabs) => {
     tabs.closable = false;
     comp.closable = false;
-    // spyOn(comp, 'tabPillClose');
-    // comp.tabPillClose(tabs);
-    // expect(comp.tabPillClose).not.toHaveBeenCalled();  
    });
   comp.closeAllTabs();
   comp.tabCollection.forEach((tabs) => {
-    // tabs.closable = false;
-    // comp.closable = false;
     expect(tabs.closable).toEqual(false);
     expect(comp.closable).toEqual(false);
-    // spyOn(comp, 'tabPillClose');
-    // comp.tabPillClose(tabs);
     expect(comp.tabPillClose(tabs)).not.toHaveBeenCalled;  
    });
 });

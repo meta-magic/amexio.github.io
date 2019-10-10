@@ -83,12 +83,15 @@ describe('amexio-tab', () => {
     });
     it('Close Tab method Call', () => {
         comp.openDialogue = true;
+        comp.enableConfirmBox = true;
         tabNode = AmexioTabPillComponent;
         comp.closeTab(tabNode)
-        comp.enableConfirmBox = true;
+        expect(comp.enableConfirmBox).toBe(true);
         expect(comp.openDialogue).toBeTruthy();
-        // expect(comp.tempTab).toEqual(tabNode);
-        comp.onCloseClick.emit(tabNode);
+        comp.tempTab = tabNode;
+        comp.onCloseClick.subscribe((g: any) => {
+            expect(tabNode).toEqual(g);
+        });
     });
 
     it('Close Tab Else method Call', () => {
@@ -124,13 +127,15 @@ describe('amexio-tab', () => {
     })
 
     it('onAdjust Height method If Block', () => {
+        comp.bodyheight = undefined;
         comp.onAdjustHeight();
         expect(comp.bodyheight).toBeUndefined();
     })
 
     it('onAdjust Height method If Block', () => {
-        comp.onAdjustHeight();
         comp.bodyheight = 20;
+        comp.onAdjustHeight();
+        expect(comp.bodyheight).toBeDefined();
         let h = (window.innerHeight / 100) * comp.bodyheight;
         expect(comp.tabs).toBeDefined();
         expect(comp.tabs.nativeElement).toBeDefined();
@@ -150,5 +155,60 @@ describe('amexio-tab', () => {
         comp.height = h;
         expect(h).toBe(h);
     })
+
+    it('On Adjust Width If Method', () => {
+        comp.adjustWidth();
+        const tWidth = comp.tabs.nativeElement.clientWidth;
+        const tlistWidth = comp.tabslist.nativeElement.scrollWidth;
+        const hWidth = 1;
+        const totalElWidth = tlistWidth + hWidth;
+        expect(totalElWidth).toBeGreaterThan(tWidth);
+        expect(comp.shownext).toBeFalsy();
+        spyOn(comp, 'onAdjustHeight').and.callThrough();
+    })
+
+    it('On Adjust Width Else Method', () => {
+        comp.adjustWidth();
+        const tWidth = comp.tabs.nativeElement.clientWidth;
+        const tlistWidth = comp.tabslist.nativeElement.scrollWidth;
+        const hWidth = 0;
+        const totalElWidth = tlistWidth + hWidth;
+        expect(totalElWidth).toBeLessThanOrEqual(tWidth);
+        expect(comp.shownext).toBeFalsy();
+        spyOn(comp, 'onAdjustHeight').and.callThrough();
+
+    })
+
+    it('On Adjust Width fullpage Else Method', () => {
+        comp.fullPageTabs = false;
+        comp.adjustWidth();
+        expect(comp.fullPageTabs).toBeFalsy();
+    })
+
+    it('On Adjust Width fullpage If Method', () => {
+        comp.fullPageTabs = true;
+        comp.adjustWidth();
+        const tWidth = comp.tabs.nativeElement.clientWidth;
+        const tlistWidth = comp.tabslist.nativeElement.scrollWidth;
+        const hWidth = 1;
+        const totalElWidth = tlistWidth + hWidth;
+        expect(totalElWidth).toBeGreaterThan(tWidth);
+        expect(comp.shownext).toBeFalsy();
+    })
+
+
+    it('On Adjust Width fullpage If 2nd condition Method', () => {
+        comp.totalTabs = 2;
+        comp.fullPageTabs = true;
+        comp.adjustWidth();
+        const tWidth = comp.tabs.nativeElement.clientWidth;
+        const tlistWidth = comp.tabslist.nativeElement.scrollWidth;
+        const hWidth = 0;
+        const totalElWidth = tlistWidth + hWidth;
+        expect(totalElWidth).toBeLessThanOrEqual(tWidth);
+        expect(comp.singleTabWidth).toEqual(totalElWidth / comp.totalTabs);
+    })
 });
+
+
 
