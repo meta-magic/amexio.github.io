@@ -125,6 +125,11 @@ describe('amexio-tab', () => {
 
     it('onAdjust Height method If Block', () => {
         comp.onAdjustHeight();
+        expect(comp.bodyheight).toBeUndefined();
+    })
+
+    it('onAdjust Height method If Block', () => {
+        comp.onAdjustHeight();
         comp.bodyheight = 20;
         let h = (window.innerHeight / 100) * comp.bodyheight;
         expect(comp.tabs).toBeDefined();
