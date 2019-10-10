@@ -6,7 +6,7 @@ import { CommonIconComponent } from './../../base/components/common.icon.compone
 import { AmexioMultiRangePickerComponent } from './multirangedatepicker.component';
 import { AmexioMultipleDatePickerComponent } from '../multidatepicker/multidatepicker.component';
 
-describe('amexio-date-range-picker', () => {
+fdescribe('amexio-date-range-picker', () => {
     let component: AmexioMultiRangePickerComponent;
     let fixture: ComponentFixture<AmexioMultiRangePickerComponent>;
 
@@ -67,6 +67,10 @@ describe('amexio-date-range-picker', () => {
         const dto = new Date('10-Oct-2019');
         const currentd = new Date('9-Oct-2019');
         component.todayIconFlag = true;
+        expect(dfrom).not.toBeNull();
+        expect(dto).not.toBeNull();
+        expect(currentd).not.toBeNull();
+        
         expect(component.disabledDates).toBeDefined();
 
         expect(currentd.getDate()).toBeLessThanOrEqual(dto.getDate());
@@ -87,6 +91,10 @@ describe('amexio-date-range-picker', () => {
             const dto = new Date(element.to);
             const currentd = new Date();
             const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
+            expect(dfrom).not.toBeNull();
+            expect(dto).not.toBeNull();
+            expect(currentd).not.toBeNull();
+            expect(yesterdayd).not.toBeNull();
             if ((currentd <= dto) && (currentd >= dfrom)) {
                 expect(component.todayIconFlag).toEqual(true);
             }
@@ -102,7 +110,11 @@ describe('amexio-date-range-picker', () => {
         const dto = new Date('10-Oct-2019');
         const currentd = new Date('19-Oct-2019');
         const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
-
+        
+        expect(dfrom).not.toBeNull();
+        expect(dto).not.toBeNull();
+        expect(currentd).not.toBeNull();
+        expect(yesterdayd).not.toBeNull();
         expect(component.disabledDates).toBeDefined();
 
         expect(currentd.getDate()).toBeGreaterThan(dto.getDate());
@@ -122,6 +134,13 @@ describe('amexio-date-range-picker', () => {
             const dto = new Date(element.to);
             const currentd = new Date();
             const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
+
+            expect(dfrom).not.toBeNull();
+            expect(dto).not.toBeNull();
+            expect(currentd).not.toBeNull();
+            expect(yesterdayd).not.toBeNull();
+
+
             if ((currentd <= dto) && (currentd >= dfrom)) {
                 component.todayIconFlag = true;
             }
@@ -141,7 +160,7 @@ describe('amexio-date-range-picker', () => {
         const currentd = new Date('9-Oct-2019');
         const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
         component.yesterdayIconFlag = true;
-        
+
         expect(dfrom).not.toBeNull();
         expect(dto).not.toBeNull();
         expect(currentd).not.toBeNull();
@@ -162,7 +181,11 @@ describe('amexio-date-range-picker', () => {
         const dto = new Date('10-Oct-2019');
         const currentd = new Date('19-Oct-2019');
         const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
-
+        
+        expect(dfrom).not.toBeNull();
+        expect(dto).not.toBeNull();
+        expect(currentd).not.toBeNull();
+        expect(yesterdayd).not.toBeNull();
         expect(component.disabledDates).toBeDefined();
 
         expect(yesterdayd.getDate()).toBeGreaterThanOrEqual(dto.getDate());
@@ -399,6 +422,46 @@ describe('amexio-date-range-picker', () => {
             }
             expect(option).toEqual('Today');
         });
+
+        it("For Yesterday", () => {
+            option = 'Yesterday';
+            const yesterdaydate = new Date();
+            yesterdaydate.setDate(yesterdaydate.getDate() - 1)
+            expect(yesterdaydate).not.toBeNull();
+            expect(yesterdaydate).toBeDefined();
+
+            if (component.child.fromcardselected) {
+                // set fromdate to currentdate
+                expect(component.child.fromdate).toEqual(yesterdaydate);
+
+            }
+            if (component.child.tocardselected) {
+                //  set todate to currentdate
+                expect(component.child.todate).toEqual(yesterdaydate);
+            }
+            expect(option).toEqual('Yesterday');
+        });
+
+        it("This week (sun - sat)", () => {
+            option = 'Yesterday';
+            const startdate = new Date();
+            const dayindex = startdate.getDay();
+            const enddate = new Date();
+            startdate.setDate(startdate.getDate() - dayindex)
+
+            expect(startdate).not.toBeNull();
+            expect(startdate).toBeDefined();
+            expect(enddate).not.toBeNull();
+            expect(enddate).toBeDefined();
+
+            expect(component.child.fromdate).toEqual(startdate);
+
+            enddate.setDate(enddate.getDate() - dayindex + 6);
+            expect(component.child.todate).toEqual(enddate);
+
+            expect(option).toEqual('This week (sun - sat)');
+        });
+
 
     });
 });
