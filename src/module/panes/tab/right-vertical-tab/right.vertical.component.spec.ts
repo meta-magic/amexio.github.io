@@ -89,7 +89,7 @@ describe('amexio-right-vertical-tab', () => {
       tabs.closable = false;
       comp.closable = false;
       spyOn(comp, 'tabPillClose');
-      expect(comp.tabPillClose).toHaveBeenCalledTimes(0);  
+      expect(comp.tabPillClose).not.toHaveBeenCalledWith(tabs);  
      });
   });
 
