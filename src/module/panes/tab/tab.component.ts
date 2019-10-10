@@ -342,24 +342,6 @@ description : sets background color for active tab
     });
   }
 
-  closeTabs(data: any) {
-    const tabList: any[] = [];
-    this.tabCollection.forEach((tabs) => {
-      tabs.active = false;
-      data.forEach((opt: any) => {
-        if (opt.toLowerCase() !== tabs.title.toLowerCase() && (tabs.closable || this.closable)) {
-          this.closeTab(tabs);
-        } else {
-          tabList.push(tabs);
-          this.asignTabPillClass(tabs);
-        }
-      });
-
-    });
-    tabList[tabList.length - 1].active = true;
-    this.asignTabPillClass(tabList[tabList.length - 1]);
-  }
-
   // Method to set active tab on the basis of tab sequence or tab title
   setActiveTab(input: any) {
     let flag = false;
@@ -465,16 +447,6 @@ description : sets background color for active tab
     });
   }
 
-  // selectTab(tab: AmexioTabPillComponent) {
-  //   // deactivate all tabs
-  //   this.tabCollection.forEach((tab1: any) => {
-  //     tab1.active = false;
-  //   });
-  //   tab.active = true;
-  //   this.tabCollection.forEach((tab1: any) => {
-  //     this.asignTabPillClass(tab1);
-  //   });
-  // }
   tabNodeProperties() {
 
     const tabWidth = this.tabCollection.length;

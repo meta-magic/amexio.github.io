@@ -13,7 +13,7 @@ import { Component, ComponentFactoryResolver, NO_ERRORS_SCHEMA } from '@angular/
     selector: 'test-cmp',
     template: `
     <amexio-tab-view>
-    <amexio-tab [enable-confirm-box]="true">
+    <amexio-tab>
     </amexio-tab>
     </amexio-tab-view>
        `,
@@ -83,10 +83,11 @@ describe('amexio-tab', () => {
     });
     it('Close Tab method Call', () => {
         comp.openDialogue = true;
+        tabNode = AmexioTabPillComponent;
         comp.closeTab(tabNode)
         comp.enableConfirmBox = true;
         expect(comp.openDialogue).toBeTruthy();
-        comp.tempTab = tabNode;
+        // expect(comp.tempTab).toEqual(tabNode);
         comp.onCloseClick.emit(tabNode);
     });
 
@@ -120,6 +121,10 @@ describe('amexio-tab', () => {
 
     it ('calls in constructor' , () => {
         TestBed.createComponent(AmexioTabComponent);
+    })
+
+    it ('ngAfterContentInit Tab Method', ()=> {
+        
     })
 
 });

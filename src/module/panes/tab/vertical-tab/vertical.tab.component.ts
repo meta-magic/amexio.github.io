@@ -121,24 +121,6 @@ export class AmexioVerticalTabComponent extends BaseTabComponent implements Afte
     });
   }
 
-  closeTabs(data: any) {
-    const tabList: any[] = [];
-    this.tabCollection.forEach((tabs) => {
-      tabs.active = false;
-      data.forEach((opt: any) => {
-        if (opt.toLowerCase() !== tabs.title.toLowerCase() && (tabs.closable === true || this.closable === true)) {
-          this.tabPillClose(tabs);
-        } else {
-          tabList.push(tabs);
-          this.asignTabPillClass(tabs);
-        }
-      });
-
-    });
-    tabList[tabList.length - 1].active = true;
-    this.asignTabPillClass(tabList[tabList.length - 1]);
-
-  }
   tabDomRemove(tab: any) {
     const removeNode = document.getElementById(tab.tabId).parentNode;
     const parentRefNode = removeNode.parentNode;

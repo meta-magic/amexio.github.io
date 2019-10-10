@@ -20,7 +20,7 @@ import { detectChanges } from '@angular/core/src/render3/instructions';
        `,
 })
 class TestTabComponent { }
-describe('amexio-tab', () => {
+describe('amexio-right-vertical-tab', () => {
   let comp: AmexioRightVerticalTabComponent;
   let fixture: ComponentFixture<TestTabComponent>;
   let tabNode: any;
@@ -48,14 +48,55 @@ describe('amexio-tab', () => {
   });
 
 
-  it('onCloseClick  method check', () => {
+  it('onCloseClick both true  method check', () => {
+    comp.closeAllTabs();
+    comp.closable = true;
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = true;
       comp.closable = true;
       spyOn(comp, 'tabPillClose');
       comp.tabPillClose(tabs);
+      expect(comp.tabPillClose).toHaveBeenCalledWith(tabs); 
+     });
+  });
+
+
+  it('onCloseAllTabs tab true  method check', () => {
+    comp.closeAllTabs();
+    comp.tabCollection.forEach((tabs) => {
+      tabs.closable = true;
+      comp.closable = false;
+      spyOn(comp, 'tabPillClose');
+      comp.tabPillClose(tabs);
       expect(comp.tabPillClose).toHaveBeenCalled();  
      });
+  });
+
+  it('onCloseAllTabs tab False  method check', () => {
+    comp.closeAllTabs();
+    comp.tabCollection.forEach((tabs) => {
+      tabs.closable = false;
+      comp.closable = true;
+      spyOn(comp, 'tabPillClose');
+      comp.tabPillClose(tabs);
+      expect(comp.tabPillClose).toHaveBeenCalled();  
+     });
+  });
+
+  it('onCloseAllTabs both false method check', () => {
+    comp.closeAllTabs();
+    comp.tabCollection.forEach((tabs) => {
+      tabs.closable = false;
+      comp.closable = false;
+      let spy = spyOn(comp, 'tabPillClose');
+      expect(spy).not.toHaveBeenCalled();  
+     });
+  });
+
+
+  it('ngAfterViewInit  method check', () => {
+    comp.ngAfterViewInit();
+ console.log("**************", comp.tabId);
   });
 
 

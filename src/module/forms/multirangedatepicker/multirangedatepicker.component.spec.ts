@@ -214,20 +214,20 @@ describe('amexio-date-range-picker', () => {
 
     });
 
-    it('updateFromTodate :check flag true', () => {
+    // it('updateFromTodate :check flag true', () => {
 
-        const flag = true;
-        const incdate = new Date();
+    //     const flag = true;
+    //     const incdate = new Date();
 
-        expect(flag).toEqual(true);
-        expect(component.child.fromdate).toEqual(incdate);
-        expect(component.child.todate).toEqual(incdate);
+    //     expect(flag).toEqual(true);
+    //     expect(component.child.fromdate).toEqual(incdate);
+    //     expect(component.child.todate).toEqual(incdate);
 
-        spyOn(component, 'alterCompleteDaysArray');
-        component.alterCompleteDaysArray(incdate);
-        expect(component.alterCompleteDaysArray).toHaveBeenCalled();
+    //     spyOn(component, 'alterCompleteDaysArray');
+    //     component.alterCompleteDaysArray(incdate);
+    //     expect(component.alterCompleteDaysArray).toHaveBeenCalled();
 
-    });
+    // });
 
     it('updateFromTodate :check flag false ', () => {
         const flag = false;
