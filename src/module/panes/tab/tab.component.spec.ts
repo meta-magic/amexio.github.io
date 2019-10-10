@@ -155,6 +155,17 @@ describe('amexio-tab', () => {
         comp.height = h;
         expect(h).toBe(h);
     })
+    it('onAdjust Height method bodyheight Else Block', () => {
+        comp.onAdjustHeight();
+
+        comp.bodyheight = 50;
+        let h = (window.innerHeight / 100) * comp.bodyheight;
+        expect(comp.bodyheight).not.toEqual(100);
+        expect(h).not.toBe(h-40);
+
+        comp.minHeight = h;
+        comp.height = h;
+    })
 
     it('On Adjust Width If Method', () => {
         comp.adjustWidth();
