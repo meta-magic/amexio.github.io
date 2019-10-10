@@ -161,7 +161,6 @@ describe('amexio-tab', () => {
         comp.bodyheight = 50;
         let h = (window.innerHeight / 100) * comp.bodyheight;
         expect(comp.bodyheight).not.toEqual(100);
-        expect(h).not.toBe(h-40);
 
         comp.minHeight = h;
         comp.height = h;
