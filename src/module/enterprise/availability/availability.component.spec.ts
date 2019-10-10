@@ -42,7 +42,7 @@ describe('amexio-availability', () => {
     expect(obj).toEqual(comp.styleVar);
   });
 
-  it('clearColorFlag()', () => {
+  it('clearColorFlag() for positive outcome', () => {
     comp.dateArr1 = [{
       date: new Date(), slots: [{ time: new Date(), colorflag: true, label: "Inbound", color: "red" },
       { time: new Date(), colorflag: true, label: "Inbound", color: "red" }
@@ -57,6 +57,18 @@ describe('amexio-availability', () => {
           expect(individualSlot.colorflag).toEqual(false);
         });
       }
+    });
+
+  });
+
+  it('clearColorFlag() for negative outcome', () => {
+    comp.dateArr1 = [{
+      date: new Date()
+    }];
+
+    comp.clearColorFlag();
+    comp.dateArr1.forEach((element: any) => {
+      expect(element.slots).toBeUndefined();
     });
 
   });
@@ -286,5 +298,55 @@ describe('amexio-availability', () => {
     expect(comp.legendArr).not.toBeNull();
   });
 
+  it('generateTimeArr()', () => {
+    comp.completeTimeArr = ['12am', '1am', '2am', '3am', '4am', 
+                            '5am', '6am', 
+                            '7am', '8am',
+                            '9am', '10am', '11am', '12pm', '1pm', '2pm',
+                             '3pm', '4pm',
+                            '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',
+  ];
+     let startindex = 4;
+    let endindex = 6;
+    comp.completeTimeArr = ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am',
+    '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm',
+    '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',
+  ];
+  comp.dateArr = [{ timearr: [] }]
+    comp.generateTimeArr();
+
+    comp.completeTimeArr.forEach((element: any, index: number) => {
+      if (element === this.startTime) {
+         expect(startindex).toEqual(index);
+      }
+      if (element === this.endTime) {
+         expect(endindex).toEqual(index);
+      }
+    });
+    expect(comp.setTimeArr(startindex, endindex)).toHaveBeenCalled;
+    // this.setTimeArr(startindex, endindex);
+  });
+
+  it('availableTimeTest()', () => {
+    let availableElement = {date: "01-Sep-2019", time: [{starttime: 5, endtime: 5.3},
+                                                        {starttime: 6.3, endtime: 7}
+                                                       ]};
+    let slotArray = [{time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false}]
+      let d = new Date();
+      let dt = new Date();
+      let minmaxarr: any = [];                                              
+    comp.availableTimeTest(availableElement, slotArray, dt , d , minmaxarr) 
+    
+    availableElement.time.forEach((timeElement: any) => {
+      // this.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+      expect(comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement)).toHaveBeenCalled;
+
+    });
+  });
 
 });
