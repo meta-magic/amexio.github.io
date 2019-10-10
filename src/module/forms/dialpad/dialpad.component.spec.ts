@@ -64,6 +64,7 @@ describe('amexio-dialpad', () => {
         comp.ngOnInit();
         spyOn(comp, 'generateRandomArray').and.callThrough();
         comp.randomArr = [1,2,3,4,5,6,7];
+        expect(comp.randomArr.length).toBeGreaterThanOrEqual(0);
         comp.btnArray1 = [];
         comp.btnArray2 = [];
         expect(comp.btnArray1.length).toEqual(0);
@@ -77,11 +78,12 @@ describe('amexio-dialpad', () => {
         comp.ngOnInit();
         spyOn(comp, 'generateRandomArray').and.callThrough();
         comp.randomArr = [];
+
         expect(comp.randomArr.length).toEqual(0);
         expect(comp.btnArray1.length).not.toEqual(0);
         expect(comp.btnArray2.length).not.toEqual(0);
-        let spy = spyOn(comp, 'generateTyp1Arr');
-        expect(spy).not.toHaveBeenCalled();
+        expect(comp.generateTyp1Arr()).not.toHaveBeenCalled;
+
     });
     
     it('ngOnInit() check type classic and random true and call generateType2Arr function', () => {
