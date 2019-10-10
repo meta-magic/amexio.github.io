@@ -6,7 +6,7 @@ import { CommonIconComponent } from './../../base/components/common.icon.compone
 import { AmexioMultiRangePickerComponent } from './multirangedatepicker.component';
 import { AmexioMultipleDatePickerComponent } from '../multidatepicker/multidatepicker.component';
 
-fdescribe('amexio-date-range-picker', () => {
+describe('amexio-date-range-picker', () => {
     let component: AmexioMultiRangePickerComponent;
     let fixture: ComponentFixture<AmexioMultiRangePickerComponent>;
 
@@ -70,7 +70,7 @@ fdescribe('amexio-date-range-picker', () => {
         expect(dfrom).not.toBeNull();
         expect(dto).not.toBeNull();
         expect(currentd).not.toBeNull();
-        
+
         expect(component.disabledDates).toBeDefined();
 
         expect(currentd.getDate()).toBeLessThanOrEqual(dto.getDate());
@@ -262,126 +262,124 @@ fdescribe('amexio-date-range-picker', () => {
 
     it('updateFromTodate :check flag false ', () => {
         const flag = false;
-
         expect(flag).toEqual(false);
     });
-
 
     xit('check clearSelectedFlag if method', () => {
         component.child.completeDaysArray = [
             {
-                "date": "Mon Sep 23 2019 11:04:46 GMT+0530 ",
-                "month": "September",
-                "montharray": [
+                'date': 'Mon Sep 23 2019 11:04:46 GMT+0530 ',
+                'month': 'September',
+                'montharray': [
                     [
                         {
-                            "date": "Mon Aug 26 2019 00:00:00 GMT+0530",
-                            "from": true,
-                            "fulldate": "26 August 2019 Monday",
-                            "id": "31313_id",
-                            "isCurrentMonth": false,
-                            "isDisabled": false,
-                            "range": false,
-                            "selected": true,
-                            "to": true
+                            'date': "Mon Aug 26 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "26 August 2019 Monday",
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
                         },
                         {
-                            "date": "Tue Aug 27 2019 00:00:00 GMT+0530",
-                            "from": true,
-                            "fulldate": "27 August 2019 Tuesday",
-                            "id": "86088_id",
-                            "isCurrentMonth": false,
-                            "isDisabled": false,
-                            "range": false,
-                            "selected": true,
-                            "to": true
+                            'date': "Tue Aug 27 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "27 August 2019 Tuesday",
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
                         }
                     ],
                     [
                         {
-                            "date": "Mon Aug 26 2019 00:00:00 GMT+0530",
-                            "from": true,
-                            "fulldate": "26 August 2019 Monday",
-                            "id": "31313_id",
-                            "isCurrentMonth": false,
-                            "isDisabled": false,
-                            "range": false,
-                            "selected": true,
-                            "to": true
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
                         },
                         {
-                            "date": "Tue Aug 27 2019 00:00:00 GMT+0530",
-                            "from": true,
-                            "fulldate": "27 August 2019 Tuesday",
-                            "id": "86088_id",
-                            "isCurrentMonth": false,
-                            "isDisabled": false,
-                            "range": false,
-                            "selected": true,
-                            "to": true
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
                         }
                     ]
                 ],
-                "nextarrow": false,
-                "prevarrow": true,
-                "year": 2019
+                'nextarrow': false,
+                'prevarrow': true,
+                'year': 2019
             },
             {
-                "date": "Wed Oct 23 2019 11:04:46 GMT+0530 ",
-                "month": "October",
-                "montharray": [
+                'date': 'Wed Oct 23 2019 11:04:46 GMT+0530 ',
+                'month': 'October',
+                'montharray': [
                     [
                         {
-                            "date": "Mon Aug 26 2019 00:00:00 GMT+0530",
-                            "from": true,
-                            "fulldate": "26 August 2019 Monday",
-                            "id": "31313_id",
-                            "isCurrentMonth": false,
-                            "isDisabled": false,
-                            "range": false,
-                            "selected": true,
-                            "to": true
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
                         },
                         {
-                            "date": "Tue Aug 27 2019 00:00:00 GMT+0530",
-                            "from": true,
-                            "fulldate": "27 August 2019 Tuesday",
-                            "id": "86088_id",
-                            "isCurrentMonth": false,
-                            "isDisabled": false,
-                            "range": false,
-                            "selected": true,
-                            "to": true
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
                         }
                     ],
                     [
                         {
-                            "date": "Mon Aug 26 2019 00:00:00 GMT+0530",
-                            "from": true,
-                            "fulldate": "26 August 2019 Monday",
-                            "id": "31313_id",
-                            "isCurrentMonth": false,
-                            "isDisabled": false,
-                            "range": false,
-                            "selected": true,
-                            "to": true
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
                         },
                         {
-                            "date": "Tue Aug 27 2019 00:00:00 GMT+0530",
-                            "from": true,
-                            "fulldate": "27 August 2019 Tuesday",
-                            "id": "86088_id",
-                            "isCurrentMonth": false,
-                            "isDisabled": false,
-                            "range": false,
-                            "selected": true,
-                            "to": true
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
                         }
                     ]
                 ],
-                "nextarrow": false,
-                "prevarrow": false,
-                "year": 2019
+                'nextarrow': false,
+                'prevarrow': false,
+                'year': 2019
             }
         ]
 
@@ -399,13 +397,13 @@ fdescribe('amexio-date-range-picker', () => {
 
     });
 
-    it("SelectRangeOption : ", () => {
+    it('SelectRangeOption : ', () => {
         var option: any;
         beforeEach(() => {
             var option: any;
         });
 
-        it("For Today", () => {
+        it('For Today', () => {
             option = 'Today';
             const currentdate = new Date();
             expect(currentdate).not.toBeNull();
@@ -423,7 +421,7 @@ fdescribe('amexio-date-range-picker', () => {
             expect(option).toEqual('Today');
         });
 
-        it("For Yesterday", () => {
+        it('For Yesterday', () => {
             option = 'Yesterday';
             const yesterdaydate = new Date();
             yesterdaydate.setDate(yesterdaydate.getDate() - 1)
@@ -442,7 +440,7 @@ fdescribe('amexio-date-range-picker', () => {
             expect(option).toEqual('Yesterday');
         });
 
-        it("This week (sun - sat)", () => {
+        it('This week (sun - sat)', () => {
             option = 'Yesterday';
             const startdate = new Date();
             const dayindex = startdate.getDay();
@@ -461,8 +459,6 @@ fdescribe('amexio-date-range-picker', () => {
 
             expect(option).toEqual('This week (sun - sat)');
         });
-
-
     });
 });
 
