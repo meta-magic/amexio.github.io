@@ -14,17 +14,19 @@
  
   }
   .rich-editor-buttons {
-    width: 100%;
+    border: 0;
+    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+    width: 97%;
+    margin: 10px ;
     text-align: start;
-    padding: 3px;
-    border-top: 2px solid rgb(196, 188, 188);
+    padding: 5px;
   }
   .rich-button {
     width: auto;
     cursor: pointer;
     line-height: 34px;
     text-align: center;
-    padding: 1px 3px;
+    padding: 0px !important;
     box-shadow: none;
   }
  
@@ -82,4 +84,9 @@
 .rich-text-editor::-webkit-scrollbar-thumb
 {
   //background-color: $themeBGColor;
+}
+
+.rich-vertical-seperator {
+ 
+  margin-right: 10px;
 }
