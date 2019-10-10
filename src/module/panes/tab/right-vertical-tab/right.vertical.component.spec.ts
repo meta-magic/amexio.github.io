@@ -88,8 +88,8 @@ describe('amexio-right-vertical-tab', () => {
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = false;
       comp.closable = false;
-      let spy = spyOn(comp, 'tabPillClose');
-      expect(spy).not.toHaveBeenCalled();  
+      spyOn(comp, 'tabPillClose');
+      expect(comp.tabPillClose).not.toHaveBeenCalledTimes(1);  
      });
   });
 
