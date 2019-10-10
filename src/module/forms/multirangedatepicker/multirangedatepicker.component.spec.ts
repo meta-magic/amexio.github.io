@@ -51,7 +51,7 @@ describe('amexio-date-range-picker', () => {
         expect(component.disabledDates).toBeDefined();
     });
 
-    it('ngAfterViewInit: check if disabledDates is defined', () => {
+    it('ngAfterViewInit: check if disabledDates is not defined', () => {
 
         component.fromCardSelected = true;
         component.toCardSelected = true;
@@ -203,7 +203,7 @@ describe('amexio-date-range-picker', () => {
 
     });
 
-    xit('check ResetDaysTillToday method  ', () => {
+    it('check ResetDaysTillToday method  ', () => {
         component.ResetDaysTillToday();
         const d = new Date();
         const newfrm = new Date(d.getFullYear(), d.getMonth(), (d.getDate() - component.daysOptionToday + 1));
@@ -214,20 +214,20 @@ describe('amexio-date-range-picker', () => {
 
     });
 
-    // it('updateFromTodate :check flag true', () => {
+    it('updateFromTodate :check flag true', () => {
 
-    //     const flag = true;
-    //     const incdate = new Date();
+        const flag = true;
+        const incdate = new Date();
 
-    //     expect(flag).toEqual(true);
-    //     expect(component.child.fromdate).toEqual(incdate);
-    //     expect(component.child.todate).toEqual(incdate);
+        expect(flag).toEqual(true);
+        expect(new Date(component.child.fromdate).getDate()).toEqual(incdate.getDate());
+        expect(new Date(component.child.todate).getDate()).toEqual(incdate.getDate());
 
-    //     spyOn(component, 'alterCompleteDaysArray');
-    //     component.alterCompleteDaysArray(incdate);
-    //     expect(component.alterCompleteDaysArray).toHaveBeenCalled();
+        spyOn(component, 'alterCompleteDaysArray');
+        component.alterCompleteDaysArray(incdate);
+        expect(component.alterCompleteDaysArray).toHaveBeenCalled();
 
-    // });
+    });
 
     it('updateFromTodate :check flag false ', () => {
         const flag = false;
