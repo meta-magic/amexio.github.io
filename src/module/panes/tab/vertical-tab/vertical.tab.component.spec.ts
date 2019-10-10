@@ -52,6 +52,8 @@ describe('amexio-vertical-tab', () => {
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = true;
       comp.closable = true;
+      expect(tabs.closable).toBe(true);
+      expect(comp.closable).toBe(true);
       spyOn(comp, 'tabPillClose');
       comp.tabPillClose(tabs);
       expect(comp.tabPillClose).toHaveBeenCalled();  
@@ -63,6 +65,8 @@ describe('amexio-vertical-tab', () => {
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = true;
       comp.closable = false;
+      expect(tabs.closable).toBe(true);
+      expect(comp.closable).toBe(false);
       spyOn(comp, 'tabPillClose');
       comp.tabPillClose(tabs);
       expect(comp.tabPillClose).toHaveBeenCalled();  
@@ -74,6 +78,8 @@ describe('amexio-vertical-tab', () => {
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = false;
       comp.closable = true;
+      expect(tabs.closable).toBe(false);
+      expect(comp.closable).toBe(true);
       spyOn(comp, 'tabPillClose');
       comp.tabPillClose(tabs);
       expect(comp.tabPillClose).toHaveBeenCalled();  
