@@ -48,6 +48,8 @@ describe('amexio-date-range-picker', () => {
                 to: '10-Oct-2019',
             }
         ];
+
+        expect(component.disabledDates).not.toBeNull();
         expect(component.disabledDates).toBeDefined();
     });
 
@@ -131,6 +133,7 @@ describe('amexio-date-range-picker', () => {
         component.todayIconFlag = false;
         expect(component.todayIconFlag).toEqual(false);
     });
+
     it('ngAfterViewInit: check if date selected is Tomorrow', () => {
         const today = '9-Oct-2019';
         const dfrom = new Date('1-Oct-2019');
@@ -138,6 +141,11 @@ describe('amexio-date-range-picker', () => {
         const currentd = new Date('9-Oct-2019');
         const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
         component.yesterdayIconFlag = true;
+        
+        expect(dfrom).not.toBeNull();
+        expect(dto).not.toBeNull();
+        expect(currentd).not.toBeNull();
+        expect(yesterdayd).not.toBeNull();
         expect(component.disabledDates).toBeDefined();
 
         expect(yesterdayd.getDate())
@@ -368,7 +376,31 @@ describe('amexio-date-range-picker', () => {
 
     });
 
+    it("SelectRangeOption : ", () => {
+        var option: any;
+        beforeEach(() => {
+            var option: any;
+        });
 
+        it("For Today", () => {
+            option = 'Today';
+            const currentdate = new Date();
+            expect(currentdate).not.toBeNull();
+            expect(currentdate).toBeDefined();
+
+            if (component.child.fromcardselected) {
+                // set fromdate to currentdate
+                expect(component.child.fromdate).toEqual(currentdate);
+
+            }
+            if (component.child.tocardselected) {
+                //  set todate to currentdate
+                expect(component.child.todate).toEqual(currentdate);
+            }
+            expect(option).toEqual('Today');
+        });
+
+    });
 });
 
 
