@@ -18,6 +18,8 @@ describe('amexio-notification', () => {
         });
         fixture = TestBed.createComponent(AmexioNotificationComponent);
         comp = fixture.componentInstance;
+        jasmine.clock().uninstall();
+        jasmine.clock().install();
     });
 
     // check private variables
@@ -27,4 +29,23 @@ describe('amexio-notification', () => {
         comp['notificationHorizontalCss'] = ' notification-horizontal-';
         expect(comp['notificationHorizontalCss']).toBe(' notification-horizontal-');
     });
+
+    it('ngOnInit of notification', () => {
+        comp.autodismissmsg = true;
+        comp.ngOnInit();
+        comp.componentID = Math.floor(Math.random() * 1000 + 999);
+        comp.messageData = [
+            'User',
+            'aaa'
+        ]
+        expect(comp.autodismissmsg).toEqual(true);
+        // comp.autodismissmsginterval = undefined;
+        expect(comp.autodismissmsginterval).toEqual(1500);
+        expect(comp.messageData).not.toEqual(null);
+        jasmine.clock().tick(comp.autodismissmsginterval);
+        expect(comp.messageData).toBeDefined();
+        expect(comp.messageData.length).toBeGreaterThan(0);
+        comp.messageData.shift();
+        // comp.ref.markForCheck();
+    })
 });
