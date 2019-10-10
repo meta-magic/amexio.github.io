@@ -119,13 +119,36 @@ describe('amexio-tab', () => {
         comp.openDialogue = false;
     });
 
-    it ('calls in constructor' , () => {
+    it('calls in constructor', () => {
         TestBed.createComponent(AmexioTabComponent);
     })
 
-    it ('ngAfterContentInit Tab Method', ()=> {
-        
+    it('onAdjust Height method If Block', () => {
+        comp.onAdjustHeight();
+        expect(comp.bodyheight).toBeUndefined();
     })
 
+    it('onAdjust Height method If Block', () => {
+        comp.onAdjustHeight();
+        comp.bodyheight = 20;
+        let h = (window.innerHeight / 100) * comp.bodyheight;
+        expect(comp.tabs).toBeDefined();
+        expect(comp.tabs.nativeElement).toBeDefined();
+        expect(comp.tabs.nativeElement.offsetHeight).toBeDefined();
+        expect(h).toBe(h - comp.tabs.nativeElement.offsetHeight);
+        comp.minHeight = h;
+        comp.height = h;
+
+    })
+
+    it('onAdjust Height method bodyheight If Block', () => {
+        comp.onAdjustHeight();
+        comp.bodyheight = 100;
+        let h = (window.innerHeight / 100) * comp.bodyheight;
+
+        comp.minHeight = h;
+        comp.height = h;
+        expect(h).toBe(h);
+    })
 });
 
