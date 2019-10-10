@@ -38,6 +38,7 @@ export class AmexioDialpadComponent implements OnInit {
     @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
     ngOnInit() {
+        console.log('maxlen', this.maxlen, this.minlen);
         if (this.password || this.showpassword) {
             this.textType = 'password';
         } else {
@@ -194,7 +195,7 @@ export class AmexioDialpadComponent implements OnInit {
         this.onClick.emit(object);
         this.valueChange.emit(this.value);
         // set black class
-        if (this.minlen || this.maxlen || (this.minlen && this.maxlen)) {
+        if (this.minlen || this.maxlen) {
             this.isValid = null;
             this.cls = 'redcls';
         } else {

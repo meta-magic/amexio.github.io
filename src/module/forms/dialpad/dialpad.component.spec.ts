@@ -63,7 +63,7 @@ describe('amexio-dialpad', () => {
         comp.random = true;
         comp.ngOnInit();
         spyOn(comp, 'generateRandomArray').and.callThrough();
-        comp.randomArr = [1,2,3,4,5,6,7];
+        comp.randomArr = [1, 2, 3, 4, 5, 6, 7];
         expect(comp.randomArr.length).toBeGreaterThanOrEqual(0);
         comp.btnArray1 = [];
         comp.btnArray2 = [];
@@ -85,7 +85,7 @@ describe('amexio-dialpad', () => {
         expect(comp.generateTyp1Arr()).not.toHaveBeenCalled;
 
     });
-    
+
     it('ngOnInit() check type classic and random true and call generateType2Arr function', () => {
         comp.type = 'classic';
         comp.random = true;
@@ -258,7 +258,7 @@ describe('amexio-dialpad', () => {
         comp.iconfeedback = true;
         comp.isValid = true;
         comp.validateMinMax();
-        expect(comp.isValid).toEqual(true);   
+        expect(comp.isValid).toEqual(true);
         comp.validateMin();
         comp.validateMax();
     });
@@ -270,7 +270,7 @@ describe('amexio-dialpad', () => {
         comp.value = '1';
         comp.iconfeedback = true;
         comp.validateMinMax();
-        expect(comp.isValid ).toEqual(false);
+        expect(comp.isValid).toEqual(false);
         comp.validateMin();
         comp.validateMax();
     });
@@ -429,13 +429,35 @@ describe('amexio-dialpad', () => {
         comp.show = true;
         comp.show = !comp.show;
         expect(comp.textType).toEqual('text');
-      })
-    
-      it('onToggle else call ', () => {
+    })
+
+    it('onToggle else call ', () => {
         comp.show = !comp.show;
         comp.toggleShow();
         comp.show = false;
         expect(comp.textType).toEqual('password');
-      })
+    })
 
+    // it('generateType2Arr method randomArr less than 1 Condition', () => {
+    //     comp.generateType2Arr();
+    //     comp.generateRandomArray();
+    //     comp.randomArr = [];
+    //     // expect(comp.randomArr).toBe([]);
+    //     expect(comp.generateTyp2Arry()).not.toHaveBeenCalled;
+
+    // })
+    // it('generateType2Arr method If Condition', () => {
+    //     comp.generateType2Arr();
+    //     comp.generateRandomArray();
+    //     comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+    //     expect(comp.randomArr.length).toBeGreaterThanOrEqual(1);
+    //     comp.type2Arr1 = [];
+    //     comp.type2Arr2 = [];
+    //     comp.type2Arr3 = [];
+    //     expect(comp.type2Arr1).toEqual([]);
+    //     expect(comp.type2Arr2).toEqual([]);
+    //     expect(comp.type2Arr3).toEqual([]);
+    //     expect(comp.generateTyp2Arry()).toHaveBeenCalled;
+
+    // })
 });
