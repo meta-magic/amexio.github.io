@@ -84,6 +84,7 @@ describe('amexio-right-vertical-tab', () => {
   });
 
   it('onCloseAllTabs both false method check', () => {
+    fixture.detectChanges()
     comp.closeAllTabs();
     comp.tabCollection.forEach((tabs) => {
       tabs.closable = false;
