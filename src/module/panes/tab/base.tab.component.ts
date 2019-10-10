@@ -2,14 +2,13 @@ import {
     Component, ComponentFactoryResolver, ContentChildren, ElementRef, EventEmitter,
     Input, Output, QueryList, ViewChild, ViewContainerRef,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { AmexioTabPillComponent } from './tab.pill.component';
 
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 
 // @Component({
-//     selector: 'list.base.datepicker',
-//     template: './list.base.datepicker.component.html',
+//     selector: 'base.tab',
+//     template: './base.tab.component.html',
 //   })
 
 export class BaseTabComponent extends LifeCycleBaseComponent {
@@ -225,16 +224,6 @@ description : Callback to invoke on activated tab event.
             }
             this.minHeight = h;
             this.height = h;
-        }
-    }
-
-    // Code to be done
-    findVerticalTabStyleClass() {
-        if (this.tabPosition === 'top') {
-            return 'tabposition-top';
-        }
-        if (this.tabPosition === 'bottom') {
-            return 'tabposition-bottom';
         }
     }
 }

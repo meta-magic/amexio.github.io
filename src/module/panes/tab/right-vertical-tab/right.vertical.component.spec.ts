@@ -93,12 +93,31 @@ describe('amexio-right-vertical-tab', () => {
       expect(comp.tabPillClose).not.toHaveBeenCalledWith(tabs);  
      });
   });
+  it('OnVerticalTab Click If method', () => {
+    let tab = {
+        active: true,
+        closable: false,
+        disabled: false,
+        icon: "fa fa-building",
+        tabId: 30314,
+        header: false,
+        tabPillClass: "activecolortab",
+        title: "Work"
+    }
 
+    comp.onVerticalTabClick(tab);
+    tab.disabled = false;
+    tab.header = false;
+    for (let i of comp.tabCollection) {
+        // tab = i;
+        expect(i['active']).toBeFalsy();
+        spyOn(comp, 'asignTabPillClass');
+        comp.asignTabPillClass(tab);
+        expect(comp.asignTabPillClass).toHaveBeenCalled();
+        comp.onClick.emit(tab);
 
-  it('ngAfterViewInit  method check', () => {
-    comp.ngAfterViewInit();
- console.log("**************", comp.tabId);
-  });
+    }
+})
 
 
 })
