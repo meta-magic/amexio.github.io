@@ -253,9 +253,48 @@ describe('amexio-multi-date-time-picker', () => {
     comp.setRange();
   });
 
+  it('resetDisabledaysBeforeFrom() condition Check', () => {
+    comp.drop = false;
+    comp.fromdate = new Date();
+    comp.rangepickerFlag = false
+    comp.resetDisabledaysBeforeFrom();
+
+    comp.completeDaysArray = [
+      {
+        prevarrow: true,
+        date: "Mon Feb 11 2019 17: 02: 58 GMT + 0530(India Standard Time)",
+        montharray: [
+          [
+            {
+              from: false,
+              date: "28 January 2019 Monday",
+              id: "70918_id",
+              isCurrentMonth: false,
+              isDisabled: true,
+              range: false,
+              selected: false,
+            }
+          ]],
+        month: "Febuary", year: 2019
+      }
+    ]
+    comp.completeDaysArray.forEach((daysarray: any) => {
+      daysarray.montharray.forEach((dayobject: any) => {
+        dayobject.forEach((singleday: any) => {
+          if (singleday.date < comp.fromdate) {
+            expect(singleday.isDisabled).toEqual(false);
+          }
+        });
+      });
+    });
+
+    comp.disableddays()
+  });
+
 
 
 });
+
 
 
 
@@ -1203,30 +1242,30 @@ describe('amexio-multi-date-time-picker', () => {
   //   expect(comp.inlineDatepicker).toEqual(true);
   //   comp.showToolTip = comp.inlineDatepicker;
   //   expect(comp.showToolTip).toEqual(comp.inlineDatepicker);
-  
+
   //   comp.inlineDatepicker = false;
   //   expect(comp.inlineDatepicker).toEqual(false);
   //   comp.showToolTip = true;
   //   expect(comp.showToolTip).toEqual(true);
-  
+
   //   comp.posixUp = comp.getListPosition(elem);
   //   comp['disableddays'](comp.diabledDate);
 
   //  });
-  
+
   //   it('navigateDropdown()', () => {
   //     // comp.navigateDropdown();
   //     comp.hostFlag = true;
   //     comp.yearNo = 4;
   //     comp.monthNo = 7;
-  
+
   //     expect(comp.hostFlag).toEqual(true);
   //     comp.selectedDate = new Date();
   //     expect(comp.yearNo).not.toBeNull;
   //     expect(comp.monthNo).not.toBeNull;
   //     comp.selectedDate.setFullYear(comp.yearNo);
   //     comp.selectedDate.setMonth(comp.monthNo);
-  
+
   //     expect(comp.yearNo).not.toBeNull;
   //     comp.monthNo = '';
   //     expect(comp.monthNo).toBeNull;
@@ -1236,7 +1275,7 @@ describe('amexio-multi-date-time-picker', () => {
   //     comp.monthNo = 5;
   //     expect(comp.monthNo).not.toBeNull;
   //     comp.selectedDate.setMonth(comp.monthNo);
-  
+
   //     comp.drop = false;
   //     expect(comp.drop).toEqual(false);
   //     comp.daysArray = [];
@@ -1247,35 +1286,35 @@ describe('amexio-multi-date-time-picker', () => {
   //     comp['cdf'].detectChanges();
 
   //   });
-  
+
   //   //validateDays
   //   it('validateDays()', () => {
   //     let days = new Date();
   //     comp.minDate = '';
   //     comp.maxDate = '';
   //     comp['validateDays'](days);
-  
+
   //     // expect(comp.maxDate.length).toBeLessThanOrEqual(0);
   //     // expect(comp.minDate.length).toBeLessThanOrEqual(0);
-  
-  
+
+
   //     comp.maxDate = '27-Mar-2016';
   //     comp.minDate = ''
-  
+
   //     expect(comp.maxDate.length).toBeGreaterThan(0);
   //     expect(comp.minDate.length).toBeLessThanOrEqual(0);
-  
+
   //     comp.minDate = '27-Mar-2016';
   //     comp.maxDate = '27-Mar-2019';
-  
+
   //     const max = new Date(comp.maxDate);
   //     const min = new Date(comp.minDate);
   //     comp['validateMaxDate'](days, max);
-  
+
   //     expect(comp.maxDate.length).toBeGreaterThan(0);
   //     expect(comp.minDate.length).toBeGreaterThan(0);
   //     comp['validateMaxDate'](days, max);
-  
+
   //     comp.maxDate = ''
   //     expect(comp.maxDate.length).toBeLessThanOrEqual(0);
   //     expect(comp.minDate.length).toBeGreaterThan(0)
@@ -1283,7 +1322,7 @@ describe('amexio-multi-date-time-picker', () => {
   //     comp.minDate = '24-Aug-2012';
   //     expect(comp.maxDate.length).toBeGreaterThan(0);
   //     expect(comp.minDate.length).toBeGreaterThan(0)
-  
+
   //     min.setDate(27);
   //     days.setDate(20);
   //     expect(days.getDate()).toBeLessThan(min.getDate());
@@ -1293,7 +1332,7 @@ describe('amexio-multi-date-time-picker', () => {
   //     days.setFullYear(2010);
   //     min.setFullYear(2010);
   //     expect(days.getFullYear()).toEqual(min.getFullYear())
-  
+
   //     days.setMonth(3);
   //     min.setMonth(8);
   //     expect(days.getMonth()).toBeLessThan(min.getMonth());
@@ -1335,12 +1374,12 @@ describe('amexio-multi-date-time-picker', () => {
   //     comp['disableddays'](comp.diabledDate);
 
   //   });
-  
+
   //   //
   //   it('plus()', () => {
   //    let type = 'min';
   //     comp.plus(type, event);
-  
+
   //     expect(type).toEqual('min');
   //     comp.min = 59;
   //     expect(comp.min).toEqual(59);
@@ -1351,13 +1390,13 @@ describe('amexio-multi-date-time-picker', () => {
   //     type = 'hrs';
   //     expect(type).toEqual('hrs')
   //     comp.hrs++;
-  
+
   //     comp.hrs = 24;
   //     expect(comp.hrs).toEqual(24);
   //     comp.hrs = 0;
 
   //     comp.selectedDate.setHours(comp.hrs);
-  
+
   //     comp.selectedDate.setMinutes(comp.min);
   //     comp.value = comp.selectedDate;
   //     expect(comp.value).toEqual(comp.selectedDate);
@@ -1366,7 +1405,7 @@ describe('amexio-multi-date-time-picker', () => {
   //     // event.stopPropagation();
 
   //   });
-  
+
   // //minus
   // it('onminus()', () => {
   //   let type = 'min';
@@ -1376,16 +1415,16 @@ describe('amexio-multi-date-time-picker', () => {
   //   expect(comp.min).toEqual(0);
   //   comp.min = 60;
   //   comp.hrs--;
-  
+
   //   type = 'hrs';
   //   comp.hrs = 20;
   //   expect(type).toEqual('hrs');
   //   comp.hrs--;
-  
+
   //   comp.hrs = 0;
   //   expect(comp.hrs).toEqual(0);
   //   comp.hrs = 23;
-  
+
   //   comp.selectedDate.setHours(comp.hrs);
   //   comp.selectedDate.setMinutes(comp.min);
   //   comp.value = comp.selectedDate;
@@ -1395,7 +1434,7 @@ describe('amexio-multi-date-time-picker', () => {
   //   // event.stopPropagation();
 
   // });
-  
+
   //getlistposition()
   // it('getListPosition()', () => {
   //   let elem: any;
