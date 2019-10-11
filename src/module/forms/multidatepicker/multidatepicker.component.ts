@@ -520,7 +520,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     });
   }
 
-  private disableddays() {
+   disableddays() {
     if (this.diabledDate) {
       this.diabledDate.forEach((element: any) => {
         const From = new Date(element.from);
@@ -546,7 +546,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     }
   }
 
-  private validateDaysForMinMax() {
+   validateDaysForMinMax() {
     this.completeDaysArray.forEach((dayarr: any) => {
       dayarr.montharray.forEach((weekarr: any) => {
         weekarr.forEach((day: any) => {

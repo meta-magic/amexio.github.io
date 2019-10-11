@@ -12,7 +12,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//  kedar 
 import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 import { AmexioButtonComponent } from './../buttons/button.component';
@@ -22,7 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('amexio-date-time-picker', () => {
+describe('amexio-multi-date-time-picker', () => {
   let comp: AmexioMultipleDatePickerComponent;
   let fixture: ComponentFixture<AmexioMultipleDatePickerComponent>;
 
@@ -189,6 +188,56 @@ describe('amexio-date-time-picker', () => {
     }
     event.stopPropagation();
   });
+
+
+  it('navigateDropdown() condition Check this.yearNo != null && this.monthNo != null', () => {
+    comp.okispressed = true;
+    comp.selectedDate = new Date();
+    comp.yearNo = 4;
+    comp.monthNo = 7;
+    comp.navigateDropdown();
+    expect(comp.selectedDate.setFullYear(comp.yearNo)).toHaveBeenCalled;
+    expect(comp.selectedDate.setMonth(comp.monthNo)).toHaveBeenCalled;
+    comp.drop = false;
+    expect(comp.drop).toEqual(false);
+    comp.validateMinMaxDate();
+    comp.disableddays();
+    comp.validateDaysForMinMax();
+    comp.resetRange();
+    comp.setRange();
+  });
+  it('navigateDropdown() condition Check this.yearNo != null && this.monthNo = null', () => {
+    comp.okispressed = true;
+    comp.selectedDate = new Date();
+    comp.yearNo = 4;
+    comp.monthNo = null;
+    comp.navigateDropdown();
+    expect(comp.selectedDate.setFullYear(comp.yearNo)).toHaveBeenCalled;
+    comp.drop = false;
+    expect(comp.drop).toEqual(false);
+    comp.validateMinMaxDate();
+    comp.disableddays();
+    comp.validateDaysForMinMax();
+    comp.resetRange();
+    comp.setRange();
+  });
+  it('navigateDropdown() condition Check this.yearNo != null && this.monthNo = null', () => {
+    comp.okispressed = true;
+    comp.selectedDate = new Date();
+    comp.yearNo = null;
+    comp.monthNo = 7;
+    comp.navigateDropdown();
+    expect(comp.selectedDate.setMonth(comp.monthNo)).toHaveBeenCalled;
+    comp.drop = false;
+    expect(comp.drop).toEqual(false);
+    comp.validateMinMaxDate();
+    comp.disableddays();
+    comp.validateDaysForMinMax();
+    comp.resetRange();
+    comp.setRange();
+  });
+
+
 });
 
 
