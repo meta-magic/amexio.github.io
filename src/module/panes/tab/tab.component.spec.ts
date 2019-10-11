@@ -265,25 +265,65 @@ describe('amexio-tab', () => {
     it('activateTab method if condition', () => {
         let tabId = 1;
         comp.activateTab(tabId);
-        this.tabCollection.forEach((tab: any) => {
+        comp.tabCollection.forEach((tab: any) => {
             tab.active = false;
             tab.tabId = 1;
             expect(tab.tabId).toEqual(tabId);
-            expect(tab.active).toBeTruthy();
+            expect(tab.active).toBeFalsy();
             expect(comp.asignTabPillClass(tab)).toHaveBeenCalled;
         })
     })
 
-    it('activateTab method if condition', () => {
+    it('activateTab method else condition', () => {
         let tabId = 2;
         comp.activateTab(tabId);
-        this.tabCollection.forEach((tab: any) => {
+        comp.tabCollection.forEach((tab: any) => {
             tab.active = false;
             tab.tabId = 1;
             expect(tab.tabId).not.toEqual(tabId);
             expect(comp.asignTabPillClass(tab)).not.toHaveBeenCalled;
         })
     })
+
+    // it('addDynamicTab method color blank condition', () => {
+    //     let title = 'tab1';
+    //     let amexiocolor = 'red';
+    //     let closable = true;
+    //     let component: any;
+    //     comp.addDynamicTab(title, amexiocolor, closable, component);
+    //     const tpCF = comp.componentFactoryResolver.resolveComponentFactory(
+    //         AmexioTabPillComponent,
+    //     );
+    //     const tp = comp.target.createComponent(tpCF);
+    //     const instance: AmexioTabPillComponent = tp.instance as AmexioTabPillComponent;
+    //     instance.title = title;
+    //     instance.active = true;
+    //     instance.closable = closable;
+    //     instance['tabpillinstance'] = comp.target;
+    //     instance.amexiocolor = ''
+    //     expect(instance.amexiocolor).toEqual('');
+    //     instance.amexiocolor = 'amexio-top-tab-black';
+    // })
+
+    // it('addDynamicTab method color not blank condition', () => {
+    //     let title = 'tab1';
+    //     let amexiocolor = 'red';
+    //     let closable = true;
+    //     let component: any;
+    //     comp.addDynamicTab(title, amexiocolor, closable, component);
+    //     const tpCF = comp.componentFactoryResolver.resolveComponentFactory(
+    //         AmexioTabPillComponent,
+    //     );
+    //     const tp = comp.target.createComponent(tpCF);
+    //     const instance: AmexioTabPillComponent = tp.instance as AmexioTabPillComponent;
+    //     instance.title = title;
+    //     instance.active = true;
+    //     instance.closable = closable;
+    //     instance['tabpillinstance'] = comp.target;
+    //     instance.amexiocolor = 'red';
+    //     expect(instance.amexiocolor).not.toEqual('');
+    //     instance.amexiocolor = 'amexio-top-tab-' + amexiocolor;
+    // })
 });
 
 

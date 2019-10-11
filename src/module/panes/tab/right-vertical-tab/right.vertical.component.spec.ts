@@ -141,18 +141,13 @@ describe('amexio-right-vertical-tab', () => {
     }
 
     comp.onVerticalTabClick(tab);
-    tab.disabled = false;
-    tab.header = false;
-    for (let i of comp.tabCollection) {
-      let tempTab = i;
-      expect(tempTab).toEqual(i);
-      expect(i['active']).toBeFalsy();
-      spyOn(comp, 'asignTabPillClass');
-      comp.asignTabPillClass(tempTab);
-      expect(comp.asignTabPillClass).toHaveBeenCalled();
-      comp.onClick.emit(tempTab);
-
-    }
+    tab.disabled = true;
+    tab.header = true;
+    expect(tab.header).toBeTruthy();
+    expect(tab.disabled).toBeTruthy();
+    comp.tabCollection.forEach((tab1: any) => {
+      comp.asignTabPillClass(tab1);
+    });
   })
 
 })
