@@ -30,7 +30,7 @@ describe('amexio-notification', () => {
         expect(comp['notificationHorizontalCss']).toBe(' notification-horizontal-');
     });
 
-    it('ngOnInit of notification', () => {
+    it('ngOnInit of If notification', () => {
         comp.autodismissmsg = true;
         comp.ngOnInit();
         comp.componentID = Math.floor(Math.random() * 1000 + 999);
@@ -46,6 +46,20 @@ describe('amexio-notification', () => {
         expect(comp.messageData).toBeDefined();
         expect(comp.messageData.length).toBeGreaterThan(0);
         comp.messageData.shift();
+        // comp.ref.markForCheck();
+    })
+
+    it('ngOnInit of Else notification', () => {
+        comp.autodismissmsg = true;
+        comp.ngOnInit();
+        comp.componentID = Math.floor(Math.random() * 1000 + 999);
+        comp.messageData = undefined;
+        // comp.autodismissmsginterval = undefined;
+        expect(comp.messageData).toEqual(undefined);
+        jasmine.clock().tick(comp.autodismissmsginterval);
+        expect(comp.messageData).toBeUndefined();
+        // expect(comp.messageData.length).toBeLessThanOrEqual(0);
+        // comp.messageData.shift();
         // comp.ref.markForCheck();
     })
 });
