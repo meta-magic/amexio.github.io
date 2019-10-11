@@ -129,10 +129,28 @@ describe('amexio-date-time-picker', () => {
 
   });
 
+  it('arrowClickForward() condition Check', () => {
+    comp.arrowClickForward(event);
+    comp.yearList1 = [{ year: 2000, flag: false, disabled: false },
+    { year: 1, flag: false, disabled: false }, { year: 3, flag: false, disabled: false },
+    { year: 4, flag: false, disabled: false }, { year: 5, flag: false, disabled: false }];
+    comp.yearList2 = [{ year: 2020, flag: false, disabled: false },
+    { year: 15, flag: false, disabled: false },
+    { year: 8, flag: false, disabled: false },
+    { year: 18, flag: false, disabled: false },
+    { year: 65, flag: false, disabled: false }];
+    comp.yearList1[0].year = comp.yearList1[0].year + 10;
+    for (let i = 0; i < 5; i++) {
+      expect(comp.yearList1[0].year + 10).toEqual(comp.yearList1[0].year + 10);
+      expect(comp.yearList2[0].year + 10).toEqual(comp.yearList2[0].year + 10);
+    }
+    event.stopPropagation();
+  });
+
   it('arrowClickBack() if condition ', () => {
     comp.minDate = '27-Mar-2016';
     comp.maxDate = '22-Feb-2019';
-   
+
     comp.arrowClickBack(event);
 
 
@@ -146,7 +164,7 @@ describe('amexio-date-time-picker', () => {
     comp.yearList1[0].year = comp.yearList1[0].year - 10;
     expect(comp.yearList1[0].year - 10).toBeLessThan(comp.yearList1[0].year);
     expect(comp.yearList2[0].year - 10).toBeLessThan(comp.yearList2[0].year);
-
+    event.stopPropagation();
   });
 
 
@@ -164,21 +182,12 @@ describe('amexio-date-time-picker', () => {
     { year: 65, flag: false, disabled: false }];
 
     comp.arrowClickBack(event);
-
-    console.log(comp.minDate.length);
-    
-
-    expect(comp.minDate.length).toBeGreaterThan(0);
-    expect(comp.maxDate.length).toBeGreaterThan(0);
-    // else
-    comp.minDate = '';
-    comp.maxDate = '';
-    expect(comp.minDate.length).toEqual(0);
-    expect(comp.maxDate.length).toEqual(0);
     comp.yearList1[0].year = comp.yearList1[0].year - 10;
-    expect(comp.yearList1[0].year - 10).toBeLessThan(comp.yearList1[0].year);
-    expect(comp.yearList2[0].year - 10).toBeLessThan(comp.yearList2[0].year);
-
+    for (let i = 0; i < 5; i++) {
+      expect(comp.yearList1[0].year - 10).toBeLessThan(comp.yearList1[0].year);
+      expect(comp.yearList2[0].year - 10).toBeLessThan(comp.yearList2[0].year);
+    }
+    event.stopPropagation();
   });
 });
 
