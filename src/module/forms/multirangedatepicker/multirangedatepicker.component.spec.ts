@@ -43,7 +43,7 @@ describe('amexio-date-range-picker', () => {
         component.child.altercompleteDaysArray();
 
 
-   component.diabledDate = [
+   component.disabledDates = [
             {
                 "from": "13-Jul-2018",
                 "to": "15-Jul-2018"
@@ -119,7 +119,7 @@ describe('amexio-date-range-picker', () => {
         component.toCardSelected = component.child.tocardselected;
         component.child.altercompleteDaysArray();
 
-        component.diabledDate = [
+        component.disabledDates = [
             {
                 "from": "13-Jul-2018",
                 "to": "15-Jul-2018"
