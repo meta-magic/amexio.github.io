@@ -51,7 +51,7 @@ describe('amexio-date-range-picker', () => {
         ];
         component.disabledDates.forEach((element: any) => {
             console.log(element);
-            
+
             const dfrom = new Date(element.from);
             const dto = new Date(element.to);
             const currentd = new Date();
@@ -84,7 +84,7 @@ describe('amexio-date-range-picker', () => {
             }
         });
     });
-    
+
     it('ngAfterViewInit: method todayIconFlag is false ', () => {
         component.ngAfterViewInit();
         component.fromCardSelected = component.child.fromcardselected;
@@ -108,8 +108,7 @@ describe('amexio-date-range-picker', () => {
         });
 
         expect(component.todayIconFlag).toEqual(false);
-        spyOn(component, 'updateFromTodate');
-        expect(component.updateFromTodate).not.toHaveBeenCalled();
+        expect(component.updateFromTodate).not.toHaveBeenCalled;
     });
 
     it('check variables  ', () => {
@@ -158,9 +157,8 @@ describe('amexio-date-range-picker', () => {
         expect(new Date(component.child.fromdate).getDate()).toEqual(incdate.getDate());
         expect(new Date(component.child.todate).getDate()).toEqual(incdate.getDate());
 
-        spyOn(component, 'alterCompleteDaysArray');
         component.alterCompleteDaysArray(incdate);
-        expect(component.alterCompleteDaysArray).toHaveBeenCalled();
+        expect(component.alterCompleteDaysArray).toHaveBeenCalled;
 
     });
 
@@ -294,18 +292,18 @@ describe('amexio-date-range-picker', () => {
                     individualday.selected = true;
                     individualday.from = false;
                     individualday.to = false;
-                    expect(individualday.selected).toBeTruthy();
-                    expect(individualday.from).toBeFalsy();
-                    expect(individualday.to).toBeFalsy();
+                    expect(individualday.selected).toEqual(true);;
+                    expect(individualday.from).toEqual(false);;
+                    expect(individualday.to).toEqual(false);;
 
                     if (individualday.selected || individualday.from || individualday.to) {
 
                         individualday.selected = false;
                         individualday.from = false;
                         individualday.to = false;
-                        expect(individualday.selected).toBeFalsy();
-                        expect(individualday.from).toBeFalsy();
-                        expect(individualday.to).toBeFalsy();
+                        expect(individualday.selected).toEqual(false);;
+                        expect(individualday.from).toEqual(false);;
+                        expect(individualday.to).toEqual(false);;
                     }
                 });
             });
@@ -438,18 +436,18 @@ describe('amexio-date-range-picker', () => {
                     individualday.from = true;
                     individualday.selected = false;
                     individualday.to = false;
-                    expect(individualday.from).toBeTruthy();
-                    expect(individualday.selected).toBeFalsy();
-                    expect(individualday.to).toBeFalsy();
+                    expect(individualday.from).toEqual(true);;
+                    expect(individualday.selected).toEqual(false);;
+                    expect(individualday.to).toEqual(false);;
                     if (individualday.selected || individualday.from || individualday.to) {
 
                         individualday.selected = false;
                         individualday.from = false;
                         individualday.to = false;
 
-                        expect(individualday.selected).toBeFalsy();
-                        expect(individualday.from).toBeFalsy();
-                        expect(individualday.to).toBeFalsy();
+                        expect(individualday.selected).toEqual(false);;
+                        expect(individualday.from).toEqual(false);;
+                        expect(individualday.to).toEqual(false);;
                     }
                 });
             });
@@ -584,16 +582,16 @@ describe('amexio-date-range-picker', () => {
                     individualday.to = true;
                     individualday.selected = false;
                     individualday.from = false;
-                    expect(individualday.to).toBeTruthy();
-                    expect(individualday.selected).toBeFalsy();
-                    expect(individualday.from).toBeFalsy();
+                    expect(individualday.to).toEqual(true);;
+                    expect(individualday.selected).toEqual(false);;
+                    expect(individualday.from).toEqual(false);;
                     if (individualday.selected || individualday.from || individualday.to) {
                         individualday.selected = false;
                         individualday.from = false;
                         individualday.to = false;
-                        expect(individualday.selected).toBeFalsy();
-                        expect(individualday.from).toBeFalsy();
-                        expect(individualday.to).toBeFalsy();
+                        expect(individualday.selected).toEqual(false);;
+                        expect(individualday.from).toEqual(false);;
+                        expect(individualday.to).toEqual(false);;
                     }
                 });
             });
@@ -727,16 +725,16 @@ describe('amexio-date-range-picker', () => {
                     individualday.to = true;
                     individualday.selected = true;
                     individualday.from = false;
-                    expect(individualday.to).toBeTruthy();
-                    expect(individualday.selected).toBeTruthy();
-                    expect(individualday.from).toBeFalsy();
+                    expect(individualday.to).toEqual(true);;
+                    expect(individualday.selected).toEqual(true);;
+                    expect(individualday.from).toEqual(false);;
                     if (individualday.selected || individualday.from || individualday.to) {
                         individualday.selected = false;
                         individualday.from = false;
                         individualday.to = false;
-                        expect(individualday.selected).toBeFalsy();
-                        expect(individualday.from).toBeFalsy();
-                        expect(individualday.to).toBeFalsy();
+                        expect(individualday.selected).toEqual(false);;
+                        expect(individualday.from).toEqual(false);;
+                        expect(individualday.to).toEqual(false);;
                     }
                 });
             });
@@ -870,9 +868,9 @@ describe('amexio-date-range-picker', () => {
                     individualday.to = false;
                     individualday.selected = false;
                     individualday.from = false;
-                    expect(individualday.to).toBeFalsy();
-                    expect(individualday.selected).toBeFalsy();
-                    expect(individualday.from).toBeFalsy();
+                    expect(individualday.to).toEqual(false);;
+                    expect(individualday.selected).toEqual(false);;
+                    expect(individualday.from).toEqual(false);;
                 });
             });
         });
@@ -888,14 +886,14 @@ describe('amexio-date-range-picker', () => {
         component.child.fromcardselected = true;
         if (component.child.fromcardselected) {
             // set fromdate to currentdate
-            expect(component.child.fromcardselected).toBeTruthy();
+            expect(component.child.fromcardselected).toEqual(true);;
             component.child.fromdate = currentdate;
             expect(component.child.fromdate).toEqual(currentdate);
         }
         component.child.tocardselected = false;
         if (component.child.tocardselected) {
             //  set todate to currentdate
-            expect(component.child.tocardselected).toBeTruthy();
+            expect(component.child.tocardselected).toEqual(true);;
             component.child.todate = currentdate;
             expect(component.child.todate).toEqual(currentdate);
         }
@@ -910,10 +908,10 @@ describe('amexio-date-range-picker', () => {
         expect(currentdate).not.toBeNull();
         expect(currentdate).toBeDefined();
         component.child.fromcardselected = false;
-        expect(component.child.fromcardselected).toBeFalsy();
+        expect(component.child.fromcardselected).toEqual(false);;
 
         component.child.tocardselected = false;
-        expect(component.child.tocardselected).toBeFalsy();
+        expect(component.child.tocardselected).toEqual(false);;
         expect(option).toEqual('Today');
     });
 
@@ -932,14 +930,14 @@ describe('amexio-date-range-picker', () => {
             // set fromdate to currentdate
             component.child.fromdate = yesterdaydate;
             expect(component.child.fromdate).toEqual(yesterdaydate);
-            expect(component.child.fromcardselected).toBeTruthy();
+            expect(component.child.fromcardselected).toEqual(true);
         }
         component.child.tocardselected = true;
 
         if (component.child.tocardselected) {
             //  set todate to currentdate
             component.child.todate = yesterdaydate;
-            expect(component.child.tocardselected).toBeTruthy();
+            expect(component.child.tocardselected).toEqual(true);
             expect(component.child.todate).toEqual(yesterdaydate);
         }
         expect(option).toEqual('Yesterday');
@@ -955,10 +953,10 @@ describe('amexio-date-range-picker', () => {
         expect(yesterdaydate).toBeDefined();
 
         component.child.fromcardselected = false;
-        expect(component.child.fromcardselected).toBeFalsy();
+        expect(component.child.fromcardselected).toEqual(false);
         expect(component.child.fromdate).not.toEqual(yesterdaydate);
         component.child.tocardselected = false;
-        expect(component.child.tocardselected).toBeFalsy();
+        expect(component.child.tocardselected).toEqual(false);
         expect(component.child.todate).not.toEqual(yesterdaydate);
 
         expect(option).toEqual('Yesterday');
@@ -1157,9 +1155,9 @@ describe('amexio-date-range-picker', () => {
                         individualday.from = true;
                         individualday.to = true;
 
-                        expect(individualday.selected).toBeTruthy();
-                        expect(individualday.from).toBeTruthy();
-                        expect(individualday.to).toBeTruthy();
+                        expect(individualday.selected).toEqual(true);;
+                        expect(individualday.from).toEqual(true);;
+                        expect(individualday.to).toEqual(true);;
                     }
                 });
 
@@ -1219,9 +1217,9 @@ describe('amexio-date-range-picker', () => {
                     individualday.to = false;
 
 
-                    expect(individualday.selected).toBeFalsy();
-                    expect(individualday.from).toBeFalsy();
-                    expect(individualday.to).toBeFalsy();
+                    expect(individualday.selected).toEqual(false);;
+                    expect(individualday.from).toEqual(false);;
+                    expect(individualday.to).toEqual(false);;
                 });
 
             });
@@ -1315,9 +1313,9 @@ describe('amexio-date-range-picker', () => {
                     individualday.to = false;
 
 
-                    expect(individualday.selected).toBeFalsy();
-                    expect(individualday.from).toBeFalsy();
-                    expect(individualday.to).toBeFalsy();
+                    expect(individualday.selected).toEqual(false);;
+                    expect(individualday.from).toEqual(false);;
+                    expect(individualday.to).toEqual(false);;
                 });
 
             });
@@ -1411,9 +1409,9 @@ describe('amexio-date-range-picker', () => {
                     individualday.to = false;
 
 
-                    expect(individualday.selected).toBeFalsy();
-                    expect(individualday.from).toBeFalsy();
-                    expect(individualday.to).toBeFalsy();
+                    expect(individualday.selected).toEqual(false);;
+                    expect(individualday.from).toEqual(false);;
+                    expect(individualday.to).toEqual(false);;
                 });
 
             });
@@ -1437,7 +1435,7 @@ describe('amexio-date-range-picker', () => {
         expect(currentd.getDate()).toBeGreaterThan(dto.getDate());
         expect(currentd.getDate()).toBeGreaterThanOrEqual(dfrom.getDate());
 
-        expect(component.todayIconFlag).toBeFalsy();
+        expect(component.todayIconFlag).toEqual(false);;
     });
 
     xit('ngAfterViewInit: check if altercompleteDaysArray method is callled', () => {
@@ -1488,7 +1486,7 @@ describe('amexio-date-range-picker', () => {
         expect(yesterdayd.getDate()).toBeGreaterThanOrEqual(dto.getDate());
         expect(yesterdayd.getDate()).toBeGreaterThanOrEqual(dfrom.getDate());
 
-        expect(component.yesterdayIconFlag).toBeFalsy();
+        expect(component.yesterdayIconFlag).toEqual(false);;
     });
 
     xit('ngAfterViewInit: check if date selected is today', () => {
