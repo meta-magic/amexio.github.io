@@ -1,8 +1,8 @@
-<table aria-describedby="table" role="none">
+<table aria-describedby="table" role="presentation">
     <thead>
         <tr>
             <td [attr.colspan]="headers.length">
-                <table aria-describedby="table" role="none">
+                <table aria-describedby="table" role="presentation">
                     <tr>
                         <td class="calendar-header-items" *ngFor="let header of headers">
                             <strong>{{header}}</strong>
@@ -19,7 +19,7 @@
                     <div style="width: 100%; position: relative;">
                         <div style="min-height: 150px; position: relative;" *ngFor="let calendarRow of calendaryData;index as rowIndex;">
                             <div class="calendar-bg">
-                                <table aria-describedby="table" role="none">
+                                <table aria-describedby="table" role="presentation">
                                     <tr>
                                         <!-- here down -->
                                         <td attr.aria-label="{{ariadatalabel}}" tabindex="1" (focus)="ondatefocus(day)" (keyup.arrowright)="nextrightday(day)" (keyup.arrowleft)="nextleftday(day)"
@@ -33,7 +33,7 @@
                                 </table>
                             </div>
                             <div class="calendar-user-content">
-                                <table aria-describedby="table" role="none">
+                                <table aria-describedby="table" role="presentation">
                                     <tr>
                                         <td [ngClass]="{'calendar-user-active': (day.eventDetails && day.eventDetails.isEvent)}" *ngFor="let day of calendarRow; last as isLast">
                                             <ng-container *ngIf="(day.eventDetails && day.eventDetails.events)">

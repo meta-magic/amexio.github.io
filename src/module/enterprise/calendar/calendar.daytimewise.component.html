@@ -1,9 +1,9 @@
-<table aria-describedby="table" role="none">
+<table aria-describedby="table" role="presentation">
 
     <thead>
         <tr>
             <td [attr.colspan]="headers.length">
-                <table aria-describedby="table1" role="none">
+                <table aria-describedby="table1" role="presentation">
 
                     <tr #headerRow>
                         <td class="calendar-header-items calendar-user-active-timeslot" style="width:50px;"> &nbsp;</td>
@@ -26,7 +26,7 @@
                 <div class="calendar-scroller">
                     <div style="width: 100%; position: relative;">
                         <div class="calendar-bg">
-                            <table aria-describedby="table2" role="none">
+                            <table aria-describedby="table2" role="presentation">
                                 <tr *ngFor="let calendarRow of calendaryData">
 
                                     <td class="calendar-header-items calendar-week-timeslot" style="width:50px;">
