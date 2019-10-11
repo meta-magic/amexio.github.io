@@ -1061,7 +1061,7 @@ describe('amexio-date-range-picker', () => {
     });
 
 
-    it('altercompleteDaysArray: for Same Dates', () => {
+    it('altercompleteDaysArray: for same dates', () => {
         const incdate = new Date();
         component.alterCompleteDaysArray(incdate);
         // spyOn(component,'clearSelectedFlag');
@@ -1143,7 +1143,7 @@ describe('amexio-date-range-picker', () => {
 
                         expect(inddate.getFullYear()).toEqual(incdate.getFullYear());
                         expect(inddate.getMonth()).toEqual(incdate.getMonth());
-                        expect(inddate.getDate()).toBeTruthy(incdate.getDate());
+                        expect(inddate.getDate()).toEqual(incdate.getDate());
 
                         individualday.selected = true;
                         individualday.from = true;
@@ -1161,6 +1161,67 @@ describe('amexio-date-range-picker', () => {
 
     it('altercompleteDaysArray: for different year', () => {
         const incdate = new Date('Mon Aug 26 2017 00:00:00 GMT+0530');
+        component.alterCompleteDaysArray(incdate);
+        // spyOn(component,'clearSelectedFlag');
+        // fixture.detectChanges();
+        // component.clearSelectedFlag();
+
+        //        expect(component.clearSelectedFlag()).toHaveBeenCalled();
+
+
+        component.child.completeDaysArray = [
+            {
+                'date': 'Mon Aug 26 2017 00:00:00 GMT+0530',
+                'month': 'August',
+                'montharray': [
+                    [
+                        {
+                            'date': "Mon Aug 26 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "26 August 2019 Monday",
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ]
+                ],
+                'nextarrow': false,
+                'prevarrow': true,
+                'year': 2019
+            }
+        ];
+
+
+        component.child.completeDaysArray.forEach((month: any) => {
+            month.montharray.forEach((monthrowarray: any) => {
+
+                monthrowarray.forEach((individualday: any) => {
+                    const inddate = new Date(individualday.date);
+
+                    expect(inddate.getFullYear()).not.toEqual(incdate.getFullYear());
+                    expect(inddate.getMonth()).toEqual(incdate.getMonth());
+                    expect(inddate.getDate()).toEqual(incdate.getDate());
+
+
+                    individualday.selected = false;
+                    individualday.from = false;
+                    individualday.to = false;
+
+
+                    expect(individualday.selected).toBeFalsy();
+                    expect(individualday.from).toBeFalsy();
+                    expect(individualday.to).toBeFalsy();
+                });
+
+            });
+        });
+    });
+
+    it('altercompleteDaysArray: for different year and day', () => {
+        const incdate = new Date('Mon Aug 2 2017 00:00:00 GMT+0530');
         component.alterCompleteDaysArray(incdate);
         // spyOn(component,'clearSelectedFlag');
         // fixture.detectChanges();
@@ -1238,7 +1299,7 @@ describe('amexio-date-range-picker', () => {
 
                     expect(inddate.getFullYear()).not.toEqual(incdate.getFullYear());
                     expect(inddate.getMonth()).toEqual(incdate.getMonth());
-                    expect(inddate.getDate()).toBeTruthy(incdate.getDate());
+                    expect(inddate.getDate()).not.toEqual(incdate.getDate());
 
 
                     individualday.selected = false;
@@ -1254,6 +1315,103 @@ describe('amexio-date-range-picker', () => {
             });
         });
     });
+
+    it('altercompleteDaysArray: for different year, month and day', () => {
+        const incdate = new Date('Mon Oct 2 2017 00:00:00 GMT+0530');
+        component.alterCompleteDaysArray(incdate);
+        // spyOn(component,'clearSelectedFlag');
+        // fixture.detectChanges();
+        // component.clearSelectedFlag();
+
+        // expect(component.clearSelectedFlag()).toHaveBeenCalled();
+
+
+        component.child.completeDaysArray = [
+            {
+                'date': 'Mon Aug 26 2017 00:00:00 GMT+0530',
+                'month': 'August',
+                'montharray': [
+                    [
+                        {
+                            'date': "Mon Aug 26 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "26 August 2019 Monday",
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': "Tue Aug 27 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "27 August 2019 Tuesday",
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ],
+                    [
+                        {
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ]
+                ],
+                'nextarrow': false,
+                'prevarrow': true,
+                'year': 2019
+            }
+        ];
+
+
+        component.child.completeDaysArray.forEach((month: any) => {
+            month.montharray.forEach((monthrowarray: any) => {
+
+                monthrowarray.forEach((individualday: any) => {
+                    const inddate = new Date(individualday.date);
+
+                    expect(inddate.getFullYear()).not.toEqual(incdate.getFullYear());
+                    expect(inddate.getMonth()).not.toEqual(incdate.getMonth());
+                    expect(inddate.getDate()).not.toEqual(incdate.getDate());
+
+
+                    individualday.selected = false;
+                    individualday.from = false;
+                    individualday.to = false;
+
+
+                    expect(individualday.selected).toBeFalsy();
+                    expect(individualday.from).toBeFalsy();
+                    expect(individualday.to).toBeFalsy();
+                });
+
+            });
+        });
+    });
+
     /*
     xit('ngAfterViewInit: check if date selected is not today', () => {
         const today = '9-Oct-2019';
