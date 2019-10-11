@@ -286,10 +286,10 @@ describe('amexio-availability', () => {
           }
         ]
       },
- 
+
     ];
-     comp.generateLegendArr();
-     comp.labelData.forEach((element: any) => {
+    comp.generateLegendArr();
+    comp.labelData.forEach((element: any) => {
       // this.legendObj[element.label] = false;
       expect(comp.legendObj[element.label]).toEqual(false);
     });
@@ -301,39 +301,39 @@ describe('amexio-availability', () => {
       // const obj = { label: element.label, 
       //   colorcode: element.colorcode, 
       //   textcolor: element.textcolor ? element.textcolor : 'black' };
-        if(element.textcolor) {
-          expect(element.textcolor).toBeDefined();
-        } else {
-          expect(element.textcolor).toBeUndefined();
-        }
+      if (element.textcolor) {
+        expect(element.textcolor).toBeDefined();
+      } else {
+        expect(element.textcolor).toBeUndefined();
+      }
     });
   });
 
   it('generateTimeArr()', () => {
-    comp.completeTimeArr = ['12am', '1am', '2am', '3am', '4am', 
-                            '5am', '6am', 
-                            '7am', '8am',
-                            '9am', '10am', '11am', '12pm', '1pm', '2pm',
-                             '3pm', '4pm',
-                            '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',
-              ];
-     let startindex = 4;
+    comp.completeTimeArr = ['12am', '1am', '2am', '3am', '4am',
+      '5am', '6am',
+      '7am', '8am',
+      '9am', '10am', '11am', '12pm', '1pm', '2pm',
+      '3pm', '4pm',
+      '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',
+    ];
+    let startindex = 4;
     let endindex = 6;
     comp.completeTimeArr = ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am',
-    '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm',
-    '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',
-  ];
+      '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm',
+      '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',
+    ];
     comp.dateArr = [{ timearr: [] }]
     comp.generateTimeArr();
 
     comp.completeTimeArr.forEach((element: any, index: number) => {
       if (element === this.startTime) {
-         expect(startindex).toEqual(index);
-         expect(endindex).not.toEqual(index);
+        expect(startindex).toEqual(index);
+        expect(endindex).not.toEqual(index);
       }
       if (element === this.endTime) {
-         expect(endindex).toEqual(index);
-         expect(startindex).not.toEqual(index);
+        expect(endindex).toEqual(index);
+        expect(startindex).not.toEqual(index);
       }
     });
     expect(comp.setTimeArr(startindex, endindex)).toHaveBeenCalled;
@@ -341,27 +341,29 @@ describe('amexio-availability', () => {
   });
 
   it('availableTimeTest() both false values', () => {
-    let availableElement = {date: "01-Sep-2019", time: [{starttime: 5, endtime: 5.3},
-                                                        {starttime: 6.3, endtime: 7}
-                                                       ]};
-    let slotArray = [{time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false}]
-      let d = new Date();
-      let dt = new Date();
-      let minmaxarr: any = [];    
-      // if (minflag && maxflag) {
-      let minflag = false;
-      let maxflag = false;                                       
-    comp.availableTimeTest(availableElement, slotArray, dt , d , minmaxarr) 
-    
+    let availableElement = {
+      date: "01-Sep-2019", time: [{ starttime: 5, endtime: 5.3 },
+      { starttime: 6.3, endtime: 7 }
+      ]
+    };
+    let slotArray = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }]
+    let d = new Date();
+    let dt = new Date();
+    let minmaxarr: any = [];
+    // if (minflag && maxflag) {
+  
+    comp.availableTimeTest(availableElement, slotArray, dt, d, minmaxarr)
+    let minflag = false;
+    let maxflag = false;
     availableElement.time.forEach((timeElement: any) => {
       // this.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
       expect(comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement)).toHaveBeenCalled;
-      
+
       expect(minflag).toBe(false);
       expect(maxflag).toBe(false);
 
@@ -370,27 +372,29 @@ describe('amexio-availability', () => {
 
 
   it('availableTimeTest() both true values', () => {
-    let availableElement = {date: "01-Sep-2019", time: [{starttime: 5, endtime: 5.3},
-                                                        {starttime: 6.3, endtime: 7}
-                                                       ]};
-    let slotArray = [{time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false}]
-      let d = new Date();
-      let dt = new Date();
-      let minmaxarr: any = [];    
-      // if (minflag && maxflag) {
-      let minflag = true;
-      let maxflag = true;                                       
-    comp.availableTimeTest(availableElement, slotArray, dt , d , minmaxarr) 
-    
+    let availableElement = {
+      date: "01-Sep-2019", time: [{ starttime: 5, endtime: 5.3 },
+      { starttime: 6.3, endtime: 7 }
+      ]
+    };
+    let slotArray = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }]
+    let d = new Date();
+    let dt = new Date();
+    let minmaxarr: any = [];
+    // if (minflag && maxflag) {
+
+    comp.availableTimeTest(availableElement, slotArray, dt, d, minmaxarr)
+    let minflag = true;
+    let maxflag = true;
     availableElement.time.forEach((timeElement: any) => {
       // this.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
       expect(comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement)).toHaveBeenCalled;
-      
+
       expect(minflag).toBe(true);
       expect(maxflag).toBe(true);
 
@@ -399,27 +403,29 @@ describe('amexio-availability', () => {
 
 
   it('availableTimeTest() false true combination', () => {
-    let availableElement = {date: "01-Sep-2019", time: [{starttime: 5, endtime: 5.3},
-                                                        {starttime: 6.3, endtime: 7}
-                                                       ]};
-    let slotArray = [{time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false}]
-      let d = new Date();
-      let dt = new Date();
-      let minmaxarr: any = [];    
-      // if (minflag && maxflag) {
-      let minflag = true;
-      let maxflag = false;                                       
-    comp.availableTimeTest(availableElement, slotArray, dt , d , minmaxarr) 
-    
+    let availableElement = {
+      date: "01-Sep-2019", time: [{ starttime: 5, endtime: 5.3 },
+      { starttime: 6.3, endtime: 7 }
+      ]
+    };
+    let slotArray = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }]
+    let d = new Date();
+    let dt = new Date();
+    let minmaxarr: any = [];
+    // if (minflag && maxflag) {
+   
+    comp.availableTimeTest(availableElement, slotArray, dt, d, minmaxarr)
+    let minflag = true;
+    let maxflag = false;
     availableElement.time.forEach((timeElement: any) => {
       // this.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
       expect(comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement)).toHaveBeenCalled;
-      
+
       expect(minflag).toBe(true);
       expect(maxflag).toBe(false);
 
@@ -428,27 +434,29 @@ describe('amexio-availability', () => {
 
 
   it('availableTimeTest() true false combination', () => {
-    let availableElement = {date: "01-Sep-2019", time: [{starttime: 5, endtime: 5.3},
-                                                        {starttime: 6.3, endtime: 7}
-                                                       ]};
-    let slotArray = [{time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false},
-      {time: new Date(), colorflag: false}]
-      let d = new Date();
-      let dt = new Date();
-      let minmaxarr: any = [];    
-      // if (minflag && maxflag) {
-      let minflag = true;
-      let maxflag = false;                                       
-    comp.availableTimeTest(availableElement, slotArray, dt , d , minmaxarr) 
-    
+    let availableElement = {
+      date: "01-Sep-2019", time: [{ starttime: 5, endtime: 5.3 },
+      { starttime: 6.3, endtime: 7 }
+      ]
+    };
+    let slotArray = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }]
+    let d = new Date();
+    let dt = new Date();
+    let minmaxarr: any = [];
+    // if (minflag && maxflag) {
+    let minflag = true;
+    let maxflag = false;
+    comp.availableTimeTest(availableElement, slotArray, dt, d, minmaxarr)
+
     availableElement.time.forEach((timeElement: any) => {
       // this.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
       expect(comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement)).toHaveBeenCalled;
-      
+
       expect(minflag).toBe(true);
       expect(maxflag).toBe(false);
 
@@ -459,8 +467,8 @@ describe('amexio-availability', () => {
     let myd = new Date();
     myd.setHours(5);
     myd.setMinutes(0);
-     let slotArray = [
-       { time: myd, colorflag: false },
+    let slotArray = [
+      { time: myd, colorflag: false },
       // { time: new Date(), colorflag: false },
       // { time: new Date(), colorflag: false },
       // { time: new Date(), colorflag: false },
@@ -469,7 +477,7 @@ describe('amexio-availability', () => {
     ];
     let dt = new Date();
     let d = new Date();
-    let timeElement = {starttime: 5, endtime: 6};
+    let timeElement = { starttime: 5, endtime: 6 };
     comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
     slotArray.forEach((slotElement: any, slotIndex: number) => {
       // (dt.getFullYear() === d.getFullYear()) &&
@@ -478,12 +486,12 @@ describe('amexio-availability', () => {
       expect(dt.getFullYear()).toEqual(d.getFullYear());
       expect(dt.getMonth()).toEqual(d.getMonth());
       expect(dt.getDate()).toEqual(d.getDate())
-    //  if (((obj.hours === slotElement.time.getHours()) 
-    //   && (obj.minutes === slotElement.time.getMinutes()))) {
+      //  if (((obj.hours === slotElement.time.getHours()) 
+      //   && (obj.minutes === slotElement.time.getMinutes()))) {
       const obj = comp.getHourMinuteFormat(timeElement.starttime); //5
       expect(obj.hours).toEqual(slotElement.time.getHours());
       expect(obj.minutes).toEqual(slotElement.time.getMinutes());
-    
+
     });
   });
 
@@ -493,338 +501,594 @@ describe('amexio-availability', () => {
     myd.setMinutes(new Date().getMinutes() + 20);
 
     let slotArray = [{ time: myd, colorflag: false },
-    //  { time: new Date(), colorflag: false },
-    //  { time: new Date(), colorflag: false },
-    //  { time: new Date(), colorflag: false },
-    //  { time: new Date(), colorflag: false },
-    //  { time: new Date(), colorflag: false }
+      //  { time: new Date(), colorflag: false },
+      //  { time: new Date(), colorflag: false },
+      //  { time: new Date(), colorflag: false },
+      //  { time: new Date(), colorflag: false },
+      //  { time: new Date(), colorflag: false }
     ];
-   let dt = new Date();
-   let d = new Date();
-   let timeElement = {starttime: 5, endtime: 6};
-   comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
-   slotArray.forEach((slotElement: any, slotIndex: number) => {
-     // (dt.getFullYear() === d.getFullYear()) &&
-     // (dt.getMonth() === d.getMonth()) && 
-     // (dt.getDate() === d.getDate()))
-     expect(dt.getFullYear()).toEqual(d.getFullYear());
-     expect(dt.getMonth()).toEqual(d.getMonth());
-     expect(dt.getDate()).toEqual(d.getDate())
-   //  if (((obj.hours === slotElement.time.getHours()) 
-   //   && (obj.minutes === slotElement.time.getMinutes()))) {
-     const obj = comp.getHourMinuteFormat(timeElement.starttime); //5
-     expect(obj.hours).not.toEqual(slotElement.time.getHours());
-     expect(obj.minutes).not.toEqual(slotElement.time.getMinutes());
-   
-   });
- });
+    let dt = new Date();
+    let d = new Date();
+    let timeElement = { starttime: 5, endtime: 6 };
+    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+    slotArray.forEach((slotElement: any, slotIndex: number) => {
+      // (dt.getFullYear() === d.getFullYear()) &&
+      // (dt.getMonth() === d.getMonth()) && 
+      // (dt.getDate() === d.getDate()))
+      expect(dt.getFullYear()).toEqual(d.getFullYear());
+      expect(dt.getMonth()).toEqual(d.getMonth());
+      expect(dt.getDate()).toEqual(d.getDate())
+      //  if (((obj.hours === slotElement.time.getHours()) 
+      //   && (obj.minutes === slotElement.time.getMinutes()))) {
+      const obj = comp.getHourMinuteFormat(timeElement.starttime); //5
+      expect(obj.hours).not.toEqual(slotElement.time.getHours());
+      expect(obj.minutes).not.toEqual(slotElement.time.getMinutes());
 
- it('chkMinMaxIndexTest() for TTT  inner TF case', () => {
-   let myd = new Date();
-   myd.setHours(5);
-   myd.setMinutes(new Date().getMinutes() + 20);
+    });
+  });
 
-   let slotArray = [{ time: myd, colorflag: false },
-   ];
-   let dt = new Date();
-   let d = new Date();
-   let timeElement = {starttime: 5, endtime: 6};
-   comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
-   slotArray.forEach((slotElement: any, slotIndex: number) => {
-   // (dt.getFullYear() === d.getFullYear()) &&
-   // (dt.getMonth() === d.getMonth()) && 
-   // (dt.getDate() === d.getDate()))
-   expect(dt.getFullYear()).toEqual(d.getFullYear());
-   expect(dt.getMonth()).toEqual(d.getMonth());
-   expect(dt.getDate()).toEqual(d.getDate())
-   //  if (((obj.hours === slotElement.time.getHours()) 
-   //   && (obj.minutes === slotElement.time.getMinutes()))) {
-   const obj = comp.getHourMinuteFormat(timeElement.starttime); //5
-  //  expect(obj.hours).toEqual(slotElement.time.getHours());
-   expect(obj.minutes).not.toEqual(slotElement.time.getMinutes());
- });
-});
+  it('chkMinMaxIndexTest() for TTT  inner TF case', () => {
+    let myd = new Date();
+    myd.setHours(5);
+    myd.setMinutes(new Date().getMinutes() + 20);
 
-it('chkMinMaxIndexTest() for TTT  inner FT case', () => {
-  let myd = new Date();
-  
-  myd.setHours(8);
-  myd.setMinutes(0);
-  let slotArray = [{ time: myd, colorflag: false},
-  
-  ];
- let dt = new Date();
- let d = new Date();
- let timeElement = {starttime: 5, endtime: 6};
- comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
- slotArray.forEach((slotElement: any, slotIndex: number) => {
-   // (dt.getFullYear() === d.getFullYear()) &&
-   // (dt.getMonth() === d.getMonth()) && 
-   // (dt.getDate() === d.getDate()))
-   expect(dt.getFullYear()).toEqual(d.getFullYear());
-   expect(dt.getMonth()).toEqual(d.getMonth());
-   expect(dt.getDate()).toEqual(d.getDate())
- //  if (((obj.hours === slotElement.time.getHours()) 
- //   && (obj.minutes === slotElement.time.getMinutes()))) {
-   const obj = comp.getHourMinuteFormat(timeElement.starttime); //5
-   expect(obj.hours).not.toEqual(slotElement.time.getHours());
-   expect(obj.minutes).toEqual(slotElement.time.getMinutes());
- 
- });
-});
+    let slotArray = [{ time: myd, colorflag: false },
+    ];
+    let dt = new Date();
+    let d = new Date();
+    let timeElement = { starttime: 5, endtime: 6 };
+    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+    slotArray.forEach((slotElement: any, slotIndex: number) => {
+      // (dt.getFullYear() === d.getFullYear()) &&
+      // (dt.getMonth() === d.getMonth()) && 
+      // (dt.getDate() === d.getDate()))
+      expect(dt.getFullYear()).toEqual(d.getFullYear());
+      expect(dt.getMonth()).toEqual(d.getMonth());
+      expect(dt.getDate()).toEqual(d.getDate())
+      //  if (((obj.hours === slotElement.time.getHours()) 
+      //   && (obj.minutes === slotElement.time.getMinutes()))) {
+      const obj = comp.getHourMinuteFormat(timeElement.starttime); //5
+      //  expect(obj.hours).toEqual(slotElement.time.getHours());
+      expect(obj.minutes).not.toEqual(slotElement.time.getMinutes());
+    });
+  });
+
+  it('chkMinMaxIndexTest() for TTT  inner FT case', () => {
+    let myd = new Date();
+
+    myd.setHours(8);
+    myd.setMinutes(0);
+    let slotArray = [{ time: myd, colorflag: false },
+
+    ];
+    let dt = new Date();
+    let d = new Date();
+    let timeElement = { starttime: 5, endtime: 6 };
+    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+    slotArray.forEach((slotElement: any, slotIndex: number) => {
+      // (dt.getFullYear() === d.getFullYear()) &&
+      // (dt.getMonth() === d.getMonth()) && 
+      // (dt.getDate() === d.getDate()))
+      expect(dt.getFullYear()).toEqual(d.getFullYear());
+      expect(dt.getMonth()).toEqual(d.getMonth());
+      expect(dt.getDate()).toEqual(d.getDate())
+      //  if (((obj.hours === slotElement.time.getHours()) 
+      //   && (obj.minutes === slotElement.time.getMinutes()))) {
+      const obj = comp.getHourMinuteFormat(timeElement.starttime); //5
+      expect(obj.hours).not.toEqual(slotElement.time.getHours());
+      expect(obj.minutes).toEqual(slotElement.time.getMinutes());
+
+    });
+  });
 
   it('chkMinMaxIndexTest() for TTF', () => {
     let slotArray = [{ time: new Date(), colorflag: false },
-     { time: new Date(), colorflag: false },
-     { time: new Date(), colorflag: false },
-     { time: new Date(), colorflag: false },
-     { time: new Date(), colorflag: false },
-     { time: new Date(), colorflag: false }];
-   let dt = new Date();
-   let d = new Date();
-   dt.setDate(10);
-   d.setDate(12);
-   let timeElement = {starttime: 5, endtime: 6};
-   comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
-   slotArray.forEach((slotElement: any, slotIndex: number) => {
-     // (dt.getFullYear() === d.getFullYear()) &&
-     // (dt.getMonth() === d.getMonth()) && 
-     // (dt.getDate() === d.getDate()))
-     expect(dt.getFullYear()).toEqual(d.getFullYear());
-     expect(dt.getMonth()).toEqual(d.getMonth());
-     expect(dt.getDate()).not.toEqual(d.getDate())
-   });
- });
-
- it('chkMinMaxIndexTest() for TFT', () => {
-  let slotArray = [{ time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false }];
-   let dt = new Date();
-   let d = new Date();
-   dt.setFullYear(2020);
-   d.setFullYear(2020);
-   dt.setMonth(10);
-   d.setMonth(12);
-   let timeElement = {starttime: 5, endtime: 6};
-   comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
-   slotArray.forEach((slotElement: any, slotIndex: number) => {
-   // (dt.getFullYear() === d.getFullYear()) &&
-   // (dt.getMonth() === d.getMonth()) && 
-   // (dt.getDate() === d.getDate()))
-   expect(dt.getFullYear()).toEqual(d.getFullYear() -1);
-   expect(dt.getMonth()).not.toEqual(d.getMonth());
-   expect(dt.getDate()).toEqual(d.getDate())
-    });
-});
-
-it('chkMinMaxIndexTest() for TFF', () => {
-  let slotArray = [{ time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false }];
-   let dt = new Date();
-   let d = new Date();
-   dt.setFullYear(2020);
-   d.setFullYear(2020);
-   dt.setMonth(10);
-   d.setMonth(12);
-   d.setDate(11);
-   dt.setDate(14);
-   let timeElement = {starttime: 5, endtime: 6};
-   comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
-   slotArray.forEach((slotElement: any, slotIndex: number) => {
-   // (dt.getFullYear() === d.getFullYear()) &&
-   // (dt.getMonth() === d.getMonth()) && 
-   // (dt.getDate() === d.getDate()))
-   expect(dt.getFullYear()).toEqual(d.getFullYear() -1);
-   expect(dt.getMonth()).not.toEqual(d.getMonth());
-   expect(dt.getDate()).not.toEqual(d.getDate())
-    });
-});
-
-
-it('chkMinMaxIndexTest() for FTT', () => {
-  let slotArray = [{ time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false }];
-   let dt = new Date();
-   let d = new Date();
-   dt.setFullYear(2019);
-   d.setFullYear(2020);
-   let timeElement = {starttime: 5, endtime: 6};
-   comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
-   slotArray.forEach((slotElement: any, slotIndex: number) => {
-   // (dt.getFullYear() === d.getFullYear()) &&
-   // (dt.getMonth() === d.getMonth()) && 
-   // (dt.getDate() === d.getDate()))
-   expect(dt.getFullYear()).not.toEqual(d.getFullYear());
-   expect(dt.getMonth()).toEqual(d.getMonth());
-   expect(dt.getDate()).toEqual(d.getDate())
-    });
-});
-
-
-it('chkMinMaxIndexTest() for FTF', () => {
-  let slotArray = [{ time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false }];
-   let dt = new Date();
-   let d = new Date();
-   dt.setFullYear(2005);
-   d.setFullYear(2019);
-   d.setDate(11);
-   dt.setDate(14);
-   let timeElement = {starttime: 5, endtime: 6};
-   comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
-   slotArray.forEach((slotElement: any, slotIndex: number) => {
-   // (dt.getFullYear() === d.getFullYear()) &&
-   // (dt.getMonth() === d.getMonth()) && 
-   // (dt.getDate() === d.getDate()))
-   expect(dt.getFullYear()).not.toEqual(d.getFullYear());
-   expect(dt.getMonth()).toEqual(d.getMonth());
-   expect(dt.getDate()).not.toEqual(d.getDate())
-    });
-});
-
-
-it('chkMinMaxIndexTest() for FFT', () => {
-  let slotArray = [{ time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false }];
-   let dt = new Date();
-   let d = new Date();
-   dt.setFullYear(2005);
-   d.setFullYear(2019);
-   dt.setMonth(10);
-   d.setMonth(12);
- 
-   let timeElement = {starttime: 5, endtime: 6};
-   comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
-   slotArray.forEach((slotElement: any, slotIndex: number) => {
-   // (dt.getFullYear() === d.getFullYear()) &&
-   // (dt.getMonth() === d.getMonth()) && 
-   // (dt.getDate() === d.getDate()))
-   expect(dt.getFullYear()).not.toEqual(d.getFullYear());
-   expect(dt.getMonth()).not.toEqual(d.getMonth());
-   expect(dt.getDate()).toEqual(d.getDate())
-    });
-});
-
-
-it('chkMinMaxIndexTest() for FFF', () => {
-  let slotArray = [{ time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false },
-   { time: new Date(), colorflag: false }];
-   let dt = new Date();
-   let d = new Date();
-   dt.setFullYear(2005);
-   d.setFullYear(2025);
-   dt.setMonth(10);
-   d.setMonth(12);
-   d.setDate(11);
-   dt.setDate(14);
-   let timeElement = {starttime: 5, endtime: 6};
-   comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
-   slotArray.forEach((slotElement: any, slotIndex: number) => {
-   // (dt.getFullYear() === d.getFullYear()) &&
-   // (dt.getMonth() === d.getMonth()) && 
-   // (dt.getDate() === d.getDate()))
-   expect(dt.getFullYear()).not.toEqual(d.getFullYear());
-   expect(dt.getMonth()).not.toEqual(d.getMonth());
-   expect(dt.getDate()).not.toEqual(d.getDate())
-    });
-});
-
-it('setSlots()', () => {
-  let d = new Date();
-  comp.startTime = 5;
-  comp.endTime = 6;
-  comp.labelData = [
-    {
-      "label": "Inbound",
-      "colorcode": "red",
-      "textcolor": "white",
-      "available": [
-        {
-          "date": "01-Sep-2019",
-          "time": [
-            {
-              "starttime": 5,
-              "endtime": 5.30
-            },
-            ,
-            {
-              "starttime": 6.30,
-              "endtime": 7
-            }
-          ]
-        },
-        {
-          "date": "02-Sep-2019",
-          "time": [
-            {
-              "starttime": 5,
-              "endtime": 5.30
-            },
-            ,
-          ]
-        },
-      ]
-    },
-    {
-      "label": "Outbound",
-      "colorcode": "blue",
-      // "textcolor": "white",
-      "available": [
-        {
-          "date": "02-Sep-2019",
-          "time": [
-            {
-              "starttime": 5.30,
-              "endtime": 6.30
-            },
-          ]
-        }
-      ]
-    },
-
-  ];
-  let slot = [{ time: new Date(), colorflag: false },
     { time: new Date(), colorflag: false },
     { time: new Date(), colorflag: false },
     { time: new Date(), colorflag: false },
     { time: new Date(), colorflag: false },
     { time: new Date(), colorflag: false }];
-   comp.setSlots(d);
-  //  let slot = [{ time: new Date(), colorflag: false },
-  //   { time: new Date(), colorflag: false },
-  //   { time: new Date(), colorflag: false },
-  //   { time: new Date(), colorflag: false },
-  //   { time: new Date(), colorflag: false },
-  //   { time: new Date(), colorflag: false }];
-expect(comp.startTime).toBeDefined();
-expect(comp.endTime).toBeDefined();
+    let dt = new Date();
+    let d = new Date();
+    dt.setDate(10);
+    d.setDate(12);
+    let timeElement = { starttime: 5, endtime: 6 };
+    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+    slotArray.forEach((slotElement: any, slotIndex: number) => {
+      // (dt.getFullYear() === d.getFullYear()) &&
+      // (dt.getMonth() === d.getMonth()) && 
+      // (dt.getDate() === d.getDate()))
+      expect(dt.getFullYear()).toEqual(d.getFullYear());
+      expect(dt.getMonth()).toEqual(d.getMonth());
+      expect(dt.getDate()).not.toEqual(d.getDate())
+    });
+  });
 
-expect(comp.chkLabels(d,slot)).toHaveBeenCalled
+  it('chkMinMaxIndexTest() for TFT', () => {
+    let slotArray = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }];
+    let dt = new Date();
+    let d = new Date();
+    dt.setFullYear(2020);
+    d.setFullYear(2020);
+    dt.setMonth(10);
+    d.setMonth(12);
+    let timeElement = { starttime: 5, endtime: 6 };
+    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+    slotArray.forEach((slotElement: any, slotIndex: number) => {
+      // (dt.getFullYear() === d.getFullYear()) &&
+      // (dt.getMonth() === d.getMonth()) && 
+      // (dt.getDate() === d.getDate()))
+      expect(dt.getFullYear()).toEqual(d.getFullYear() - 1);
+      expect(dt.getMonth()).not.toEqual(d.getMonth());
+      expect(dt.getDate()).toEqual(d.getDate())
+    });
+  });
 
-});
+  it('chkMinMaxIndexTest() for TFF', () => {
+    let slotArray = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }];
+    let dt = new Date();
+    let d = new Date();
+    dt.setFullYear(2020);
+    d.setFullYear(2020);
+    dt.setMonth(10);
+    d.setMonth(12);
+    d.setDate(11);
+    dt.setDate(14);
+    let timeElement = { starttime: 5, endtime: 6 };
+    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+    slotArray.forEach((slotElement: any, slotIndex: number) => {
+      // (dt.getFullYear() === d.getFullYear()) &&
+      // (dt.getMonth() === d.getMonth()) && 
+      // (dt.getDate() === d.getDate()))
+      expect(dt.getFullYear()).toEqual(d.getFullYear() - 1);
+      expect(dt.getMonth()).not.toEqual(d.getMonth());
+      expect(dt.getDate()).not.toEqual(d.getDate())
+    });
+  });
 
+
+  it('chkMinMaxIndexTest() for FTT', () => {
+    let slotArray = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }];
+    let dt = new Date();
+    let d = new Date();
+    dt.setFullYear(2019);
+    d.setFullYear(2020);
+    let timeElement = { starttime: 5, endtime: 6 };
+    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+    slotArray.forEach((slotElement: any, slotIndex: number) => {
+      // (dt.getFullYear() === d.getFullYear()) &&
+      // (dt.getMonth() === d.getMonth()) && 
+      // (dt.getDate() === d.getDate()))
+      expect(dt.getFullYear()).not.toEqual(d.getFullYear());
+      expect(dt.getMonth()).toEqual(d.getMonth());
+      expect(dt.getDate()).toEqual(d.getDate())
+    });
+  });
+
+
+  it('chkMinMaxIndexTest() for FTF', () => {
+    let slotArray = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }];
+    let dt = new Date();
+    let d = new Date();
+    dt.setFullYear(2005);
+    d.setFullYear(2019);
+    d.setDate(11);
+    dt.setDate(14);
+    let timeElement = { starttime: 5, endtime: 6 };
+    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+    slotArray.forEach((slotElement: any, slotIndex: number) => {
+      // (dt.getFullYear() === d.getFullYear()) &&
+      // (dt.getMonth() === d.getMonth()) && 
+      // (dt.getDate() === d.getDate()))
+      expect(dt.getFullYear()).not.toEqual(d.getFullYear());
+      expect(dt.getMonth()).toEqual(d.getMonth());
+      expect(dt.getDate()).not.toEqual(d.getDate())
+    });
+  });
+
+
+  it('chkMinMaxIndexTest() for FFT', () => {
+    let slotArray = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }];
+    let dt = new Date();
+    let d = new Date();
+    dt.setFullYear(2005);
+    d.setFullYear(2019);
+    dt.setMonth(10);
+    d.setMonth(12);
+
+    let timeElement = { starttime: 5, endtime: 6 };
+    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+    slotArray.forEach((slotElement: any, slotIndex: number) => {
+      // (dt.getFullYear() === d.getFullYear()) &&
+      // (dt.getMonth() === d.getMonth()) && 
+      // (dt.getDate() === d.getDate()))
+      expect(dt.getFullYear()).not.toEqual(d.getFullYear());
+      expect(dt.getMonth()).not.toEqual(d.getMonth());
+      expect(dt.getDate()).toEqual(d.getDate())
+    });
+  });
+
+
+  it('chkMinMaxIndexTest() for FFF', () => {
+    let slotArray = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }];
+    let dt = new Date();
+    let d = new Date();
+    dt.setFullYear(2005);
+    d.setFullYear(2025);
+    dt.setMonth(10);
+    d.setMonth(12);
+    d.setDate(11);
+    dt.setDate(14);
+    let timeElement = { starttime: 5, endtime: 6 };
+    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+    slotArray.forEach((slotElement: any, slotIndex: number) => {
+      // (dt.getFullYear() === d.getFullYear()) &&
+      // (dt.getMonth() === d.getMonth()) && 
+      // (dt.getDate() === d.getDate()))
+      expect(dt.getFullYear()).not.toEqual(d.getFullYear());
+      expect(dt.getMonth()).not.toEqual(d.getMonth());
+      expect(dt.getDate()).not.toEqual(d.getDate())
+    });
+  });
+
+  it('setSlots() difference less than 0', () => {
+    let d = new Date();
+    comp.startTime = 5;
+    comp.endTime = 6;
+    comp.labelData = [
+      {
+        "label": "Inbound",
+        "colorcode": "red",
+        "textcolor": "white",
+        "available": [
+          {
+            "date": "01-Sep-2019",
+            "time": [
+              {
+                "starttime": 5,
+                "endtime": 5.30
+              },
+              ,
+              {
+                "starttime": 6.30,
+                "endtime": 7
+              }
+            ]
+          },
+          {
+            "date": "02-Sep-2019",
+            "time": [
+              {
+                "starttime": 5,
+                "endtime": 5.30
+              },
+              ,
+            ]
+          },
+        ]
+      },
+      {
+        "label": "Outbound",
+        "colorcode": "blue",
+        // "textcolor": "white",
+        "available": [
+          {
+            "date": "02-Sep-2019",
+            "time": [
+              {
+                "starttime": 5.30,
+                "endtime": 6.30
+              },
+            ]
+          }
+        ]
+      },
+
+    ];
+    let slot = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }];
+    comp.setSlots(d);
+
+    let difference = comp.startTime - comp.endTime;
+    //  if (difference < 0)
+    expect(difference).toBeLessThan(0)
+    //  let slot = [{ time: new Date(), colorflag: false },
+    //   { time: new Date(), colorflag: false },
+    //   { time: new Date(), colorflag: false },
+    //   { time: new Date(), colorflag: false },
+    //   { time: new Date(), colorflag: false },
+    //   { time: new Date(), colorflag: false }];
+    expect(comp.startTime).toBeDefined();
+    expect(comp.endTime).toBeDefined();
+
+    expect(comp.chkLabels(d, slot)).toHaveBeenCalled
+
+  });
+
+
+  it('setSlots() difference greater than 0', () => {
+    let d = new Date();
+    comp.startTime = 7;
+    comp.endTime = 7;
+    comp.labelData = [
+      {
+        "label": "Inbound",
+        "colorcode": "red",
+        "textcolor": "white",
+        "available": [
+          {
+            "date": "01-Sep-2019",
+            "time": [
+              {
+                "starttime": 5,
+                "endtime": 5.30
+              },
+              ,
+              {
+                "starttime": 6.30,
+                "endtime": 7
+              }
+            ]
+          },
+          {
+            "date": "02-Sep-2019",
+            "time": [
+              {
+                "starttime": 5,
+                "endtime": 5.30
+              },
+              ,
+            ]
+          },
+        ]
+      },
+      {
+        "label": "Outbound",
+        "colorcode": "blue",
+        // "textcolor": "white",
+        "available": [
+          {
+            "date": "02-Sep-2019",
+            "time": [
+              {
+                "starttime": 5.30,
+                "endtime": 6.30
+              },
+            ]
+          }
+        ]
+      },
+
+    ];
+    let slot = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }];
+    comp.setSlots(d);
+
+    let difference = comp.startTime - comp.endTime;
+    //  if (difference < 0)
+    expect(difference).not.toBeLessThan(0)
+    //  let slot = [{ time: new Date(), colorflag: false },
+    //   { time: new Date(), colorflag: false },
+    //   { time: new Date(), colorflag: false },
+    //   { time: new Date(), colorflag: false },
+    //   { time: new Date(), colorflag: false },
+    //   { time: new Date(), colorflag: false }];
+    expect(comp.startTime).toBeDefined();
+    expect(comp.endTime).toBeDefined();
+
+    expect(comp.chkLabels(d, slot)).toHaveBeenCalled
+
+  });
+  it('chkLabels()', () => {
+    let d = new Date();
+
+    comp.labelData = [
+      {
+        "label": "Inbound",
+        "colorcode": "red",
+        "textcolor": "white",
+        "available": [
+          {
+            "date": "01-Sep-2019",
+            "time": [
+              {
+                "starttime": 5,
+                "endtime": 5.30
+              },
+              ,
+              {
+                "starttime": 6.30,
+                "endtime": 7
+              }
+            ]
+          },
+          {
+            "date": "02-Sep-2019",
+            "time": [
+              {
+                "starttime": 5,
+                "endtime": 5.30
+              },
+              ,
+            ]
+          },
+        ]
+      },
+      {
+        "label": "Outbound",
+        "colorcode": "blue",
+        // "textcolor": "white",
+        "available": [
+          {
+            "date": "02-Sep-2019",
+            "time": [
+              {
+                "starttime": 5.30,
+                "endtime": 6.30
+              },
+            ]
+          }
+        ]
+      },
+
+    ];
+    let slotArray = [{ time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false },
+    { time: new Date(), colorflag: false }];
+    let minflag = true;
+    let maxflag = true;
+    let minmaxarr: any = [];
+    let labelelement = {
+      label: "Inbound", colorcode: "red", textcolor: "white", available: [
+        { date: "01-Sep-2019", time: [{ starttime: 5, endtime: 6 }] },
+        { date: "02-Sep-2019", time: [{ starttime: 7, endtime: 9 }] }
+      ]
+    };
+    comp.chkLabels(d, slotArray);
+    comp.labelData.forEach((labelelement: any) => {
+      if (labelelement.available) {
+      expect(labelelement.available).toBeDefined();
+      labelelement.available.forEach((availableElement: any) => {
+        if (availableElement.date) {
+        expect(availableElement.date).toBeDefined();
+        if (availableElement.time) {
+        expect(availableElement.time).toBeDefined();
+        }
+        }
+      });
+      }
+    });
+    expect(comp.setRange(minflag, maxflag, slotArray, minmaxarr, labelelement)).toHaveBeenCalled
+
+  });
+
+
+  // it('onTimeBlockClick() radiovalueless than 0', () => {
+  //   comp.selectedIndexArr =[];
+  //   // comp.radioValue = 'Inbound'
+  //   let parentiterateitem ={date: new Date(), slots: [{time: new Date(), colorflag: true, label: "Inbound", color: "red"},
+  //   {time: new Date(), colorflag: true, label: "Inbound", color: "red"},
+  //   {time: new Date(), colorflag: false},
+  //   {time: new Date(), colorflag: true, label: "Inbound", color: "red"},
+  //   {time: new Date(), colorflag: true, label: "Inbound", color: "red"},
+  //   {time: new Date(), colorflag: false}]};
+  //   let parentindex =0;
+  //   let childiterateitem = {time: new Date(), colorflag: false};
+  //   let childindex =0;
+  //   comp.onTimeBlockClick(parentiterateitem, parentindex, childiterateitem, childindex);
+    
+  //   expect(comp.radioValue.length).toBeLessThan(0);
+
+  // });
+  it('onTimeBlockClick()', () => {
+    comp.radioValue = 'Inbound'
+    let parentiterateitem ={date: new Date(), slots: [{time: new Date(), colorflag: true, label: "Inbound", color: "red"},
+    {time: new Date(), colorflag: true, label: "Inbound", color: "red"},
+    {time: new Date(), colorflag: false},
+    {time: new Date(), colorflag: true, label: "Inbound", color: "red"},
+    {time: new Date(), colorflag: true, label: "Inbound", color: "red"},
+    {time: new Date(), colorflag: false}]};
+    let parentindex =0;
+    let childiterateitem = {time: new Date(), colorflag: false};
+    let childindex =0;
+    comp.styleVar = {colorcode: 'red', label: 'Inbound'}
+    comp.dateArr1 = [
+      {
+      date: new Date(), slots: [
+        { time: new Date(), colorflag: true, label: "Inbound", color: "red" },
+      { time: new Date(), colorflag: true, label: "Inbound", color: "red" }
+      ]
+    }];
+    comp.selectedIndexArr = [];
+    comp.onTimeBlockClick(parentiterateitem, parentindex, childiterateitem, childindex);
+    
+    expect(comp.radioValue.length).toBeGreaterThan(0);
+    
+    // if()
+    //  console.log("comp.dateArr1[parentindex] = ", comp.dateArr1[parentindex]);
+    //  console.log("comp.dateArr1[parentindex].slots[childindex] = ", comp.dateArr1[parentindex].slots[childindex])
+    if (comp.dateArr1[parentindex].slots[childindex].label) {
+
+    expect(comp.dateArr1[parentindex].slots[childindex].label).toBeDefined();
+    } 
+    else {
+      expect(comp.dateArr1[parentindex].slots[childindex].label).toBeUndefined();
+    } 
+
+
+    if (comp.dateArr1[parentindex].slots[childindex].label === comp.styleVar.label) {
+
+    expect(comp.dateArr1[parentindex].slots[childindex].label).toEqual(comp.styleVar.label)
+    } 
+    else {
+      expect(comp.dateArr1[parentindex].slots[childindex].label).not.toEqual(comp.styleVar.label)
+      
+    }
+
+ comp.selectedIndexArr =[];
+ expect(comp.selectedIndexArr).toBeDefined();
+  });
+
+
+  // it('onUndoClick()', () => {
+  //   comp.dateArr1 = [{
+  //     date: new Date(), slots: [{ time: new Date(), colorflag: true, label: "Inbound", color: "red" },
+  //     { time: new Date(), colorflag: true, label: "Inbound", color: "red" }
+  //     ]
+  //   }];
+  //    comp.selectedIndexArr = [{parentindex: 0, childindex: 0, initiallabel:'Inbound'},
+  //     {parentindex: 0, childindex: 0, initiallabel: 'Inbound'}
+  //   ]
+  //    comp.onUndoClick();
+  //   //  comp.selectedIndexArr.forEach((element: any) => {
+  //   //   if (element.initiallabel) {
+  //   //   //  expect(element.initiallabel).toBeDefined();
+  //   //   } else {
+  //   //     // expect(element.initiallabel).toBeUndefined();
+  //   //   }
+  //   //  });
+  //    expect(comp.selectedIndexArr).toBeDefined();
+
+  // });
 });
