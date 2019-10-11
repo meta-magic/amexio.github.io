@@ -253,7 +253,7 @@ describe('amexio-multi-date-time-picker', () => {
     comp.setRange();
   });
 
-  it('resetDisabledaysBeforeFrom() condition Check', () => {
+  it('resetDisabledaysBeforeFrom() if condition Check', () => {
     comp.drop = false;
     comp.fromdate = new Date();
     comp.rangepickerFlag = false
@@ -267,10 +267,10 @@ describe('amexio-multi-date-time-picker', () => {
           [
             {
               from: false,
-              date: "28 January 2019 Monday",
+              date: "Mon Feb 11 2019 17: 02: 58 GMT + 0530(India Standard Time)",
               id: "70918_id",
               isCurrentMonth: false,
-              isDisabled: true,
+              isDisabled: false,
               range: false,
               selected: false,
             }
@@ -291,7 +291,58 @@ describe('amexio-multi-date-time-picker', () => {
     comp.disableddays()
   });
 
+  it('resetDisabledaysBeforeFrom() else condition Check', () => {
+    comp.fromdate = new Date();
+    comp.rangepickerFlag = true;
+    comp.resetDisabledaysBeforeFrom();
+    comp.disableddays()
+  });
 
+
+  it('setDisableDaysBeforeFrom() if condition Check', () => {
+    comp.drop = false;
+    comp.fromdate = new Date();
+    comp.rangepickerFlag = true;
+    comp.setDisableDaysBeforeFrom();
+
+    comp.completeDaysArray = [
+      {
+        prevarrow: true,
+        date: "Mon Feb 11 2019 17: 02: 58 GMT + 0530(India Standard Time)",
+        montharray: [
+          [
+            {
+              from: false,
+              date: "Mon Feb 11 2019 17: 02: 58 GMT + 0530(India Standard Time)",
+              id: "70918_id",
+              isCurrentMonth: false,
+              isDisabled: true,
+              range: false,
+              selected: false,
+            }
+          ]],
+        month: "Febuary", year: 2019
+      }
+    ]
+    comp.completeDaysArray.forEach((daysarray: any) => {
+      daysarray.montharray.forEach((dayobject: any) => {
+        dayobject.forEach((singleday: any) => {
+          if (singleday.date < comp.fromdate) {
+            expect(singleday.isDisabled).toEqual(true);
+          }
+        });
+      });
+    });
+
+    comp.disableddays()
+  });
+
+  it('setDisableDaysBeforeFrom() else condition Check', () => {
+    comp.fromdate = new Date();
+    comp.rangepickerFlag = false;
+    comp.setDisableDaysBeforeFrom();
+   
+  });
 
 });
 
