@@ -35,144 +35,144 @@ describe('amexio-date-range-picker', () => {
         expect(component.disabledDates).toBeNull();
     });
 
-    it('ngAfterViewInit: check if date is today', () => {
+//     it('ngAfterViewInit: check if date is today', () => {
 
-        component.ngAfterViewInit();
-        component.fromCardSelected = component.child.fromcardselected;
-        component.toCardSelected = component.child.tocardselected;
-        component.child.altercompleteDaysArray();
+//         component.ngAfterViewInit();
+//         component.fromCardSelected = component.child.fromcardselected;
+//         component.toCardSelected = component.child.tocardselected;
+//         component.child.altercompleteDaysArray();
 
 
-   component.disabledDates = [
-            {
-                "from": "13-Jul-2018",
-                "to": "15-Jul-2018"
-            },
-            {
-                "from": "20-Jul-2018",
-                "to": "23-Jul-2018"
-            },
-            {
-                "from": "15-Jun-2018",
-                "to": "19-Jun-2018"
-            },
-            {
-                "from": "27-Jun-2018",
-                "to": "29-Jun-2018"
-            },
-            {
-                "from": "23-Aug-2018",
-                "to": "28-Aug-2018"
-            },
-            {
-                "from": "17-Aug-2018",
-                "to": "19-Aug-2018"
-            },
-            {
-                "from": "19-Sep-2018",
-                "to": "21-Sep-2018"
-            },
-            {
-                "from": "1-Nov-2018",
-                "to": "30-Nov-2018"
-            }
-        ];
-        expect(component.disabledDates).toBeDefined();
-        component.disabledDates.forEach((element: any) => {
+//    component.disabledDates = [
+//             {
+//                 "from": "13-Jul-2018",
+//                 "to": "15-Jul-2018"
+//             },
+//             {
+//                 "from": "20-Jul-2018",
+//                 "to": "23-Jul-2018"
+//             },
+//             {
+//                 "from": "15-Jun-2018",
+//                 "to": "19-Jun-2018"
+//             },
+//             {
+//                 "from": "27-Jun-2018",
+//                 "to": "29-Jun-2018"
+//             },
+//             {
+//                 "from": "23-Aug-2018",
+//                 "to": "28-Aug-2018"
+//             },
+//             {
+//                 "from": "17-Aug-2018",
+//                 "to": "19-Aug-2018"
+//             },
+//             {
+//                 "from": "19-Sep-2018",
+//                 "to": "21-Sep-2018"
+//             },
+//             {
+//                 "from": "1-Nov-2018",
+//                 "to": "30-Nov-2018"
+//             }
+//         ];
+//         expect(component.disabledDates).toBeDefined();
+//         component.disabledDates.forEach((element: any) => {
 
-            const dfrom = new Date(element.from);
-            const dto = new Date(element.to);
-            const currentd = new Date();
-            const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
+//             const dfrom = new Date(element.from);
+//             const dto = new Date(element.to);
+//             const currentd = new Date();
+//             const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
 
-            expect(dfrom).not.toBeNull();
-            expect(dto).not.toBeNull();
-            expect(currentd).not.toBeNull();
-            expect(yesterdayd).not.toBeNull();
+//             expect(dfrom).not.toBeNull();
+//             expect(dto).not.toBeNull();
+//             expect(currentd).not.toBeNull();
+//             expect(yesterdayd).not.toBeNull();
 
-            if ((currentd <= dto) && (currentd >= dfrom)) {
-                component.todayIconFlag = true;
-                expect(currentd.getDate()).toBeLessThanOrEqual(dto.getDate());
-                expect(currentd.getDate()).toBeGreaterThanOrEqual(dfrom.getDate());
+//             if ((currentd <= dto) && (currentd >= dfrom)) {
+//                 component.todayIconFlag = true;
+//                 expect(currentd.getDate()).toBeLessThanOrEqual(dto.getDate());
+//                 expect(currentd.getDate()).toBeGreaterThanOrEqual(dfrom.getDate());
 
-                expect(component.todayIconFlag).toEqual(true);
-            }
-            if ((yesterdayd <= dto) && (yesterdayd >= dfrom)) {
-                component.yesterdayIconFlag = true;
+//                 expect(component.todayIconFlag).toEqual(true);
+//             }
+//             if ((yesterdayd <= dto) && (yesterdayd >= dfrom)) {
+//                 component.yesterdayIconFlag = true;
 
-                expect(yesterdayd.getDate()).toBeLessThanOrEqual(dto.getDate());
-                expect(yesterdayd.getDate()).toBeGreaterThanOrEqual(dfrom.getDate());
-                expect(component.yesterdayIconFlag).toEqual(true);
-            }
-            component.todayIconFlag = true;
-            expect(component.todayIconFlag).toEqual(true);
-            if (component.todayIconFlag) {
-                // spyOn(component, 'updateFromTodate');
-                expect(component.updateFromTodate).toHaveBeenCalled;
-            }
-        });
-    });
+//                 expect(yesterdayd.getDate()).toBeLessThanOrEqual(dto.getDate());
+//                 expect(yesterdayd.getDate()).toBeGreaterThanOrEqual(dfrom.getDate());
+//                 expect(component.yesterdayIconFlag).toEqual(true);
+//             }
+//             component.todayIconFlag = true;
+//             expect(component.todayIconFlag).toEqual(true);
+//             if (component.todayIconFlag) {
+//                 // spyOn(component, 'updateFromTodate');
+//                 expect(component.updateFromTodate).toHaveBeenCalled;
+//             }
+//         });
+//     });
 
-    it('ngAfterViewInit: method todayIconFlag is false ', () => {
-        component.ngAfterViewInit();
-        component.fromCardSelected = component.child.fromcardselected;
-        component.toCardSelected = component.child.tocardselected;
-        component.child.altercompleteDaysArray();
+    // it('ngAfterViewInit: method todayIconFlag is false ', () => {
+    //     component.ngAfterViewInit();
+    //     component.fromCardSelected = component.child.fromcardselected;
+    //     component.toCardSelected = component.child.tocardselected;
+    //     component.child.altercompleteDaysArray();
 
-        component.disabledDates = [
-            {
-                "from": "13-Jul-2018",
-                "to": "15-Jul-2018"
-            },
-            {
-                "from": "20-Jul-2018",
-                "to": "23-Jul-2018"
-            },
-            {
-                "from": "15-Jun-2018",
-                "to": "19-Jun-2018"
-            },
-            {
-                "from": "27-Jun-2018",
-                "to": "29-Jun-2018"
-            },
-            {
-                "from": "23-Aug-2018",
-                "to": "28-Aug-2018"
-            },
-            {
-                "from": "17-Aug-2018",
-                "to": "19-Aug-2018"
-            },
-            {
-                "from": "19-Sep-2018",
-                "to": "21-Sep-2018"
-            },
-            {
-                "from": "1-Nov-2018",
-                "to": "30-Nov-2018"
-            }
-        ];
-        expect(component.disabledDates).toBeDefined();
-        component.disabledDates.forEach((element: any) => {
-            const dfrom = new Date(element.from);
-            const dto = new Date(element.to);
-            const currentd = new Date();
-            const today = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() + 1);
-            const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
+    //     component.disabledDates = [
+    //         {
+    //             "from": "13-Jul-2018",
+    //             "to": "15-Jul-2018"
+    //         },
+    //         {
+    //             "from": "20-Jul-2018",
+    //             "to": "23-Jul-2018"
+    //         },
+    //         {
+    //             "from": "15-Jun-2018",
+    //             "to": "19-Jun-2018"
+    //         },
+    //         {
+    //             "from": "27-Jun-2018",
+    //             "to": "29-Jun-2018"
+    //         },
+    //         {
+    //             "from": "23-Aug-2018",
+    //             "to": "28-Aug-2018"
+    //         },
+    //         {
+    //             "from": "17-Aug-2018",
+    //             "to": "19-Aug-2018"
+    //         },
+    //         {
+    //             "from": "19-Sep-2018",
+    //             "to": "21-Sep-2018"
+    //         },
+    //         {
+    //             "from": "1-Nov-2018",
+    //             "to": "30-Nov-2018"
+    //         }
+    //     ];
+    //     expect(component.disabledDates).toBeDefined();
+    //     component.disabledDates.forEach((element: any) => {
+    //         const dfrom = new Date(element.from);
+    //         const dto = new Date(element.to);
+    //         const currentd = new Date();
+    //         const today = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() + 1);
+    //         const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
 
-            expect(dfrom).not.toBeNull();
-            expect(dto).not.toBeNull();
-            expect(currentd).not.toBeNull();
-            expect(yesterdayd).not.toBeNull();
-            expect(today.getDate()).toBeGreaterThanOrEqual(dto.getDate());
-            expect(today.getDate()).toBeLessThanOrEqual(dfrom.getDate());
-            component.todayIconFlag = false;
-        });
+    //         expect(dfrom).not.toBeNull();
+    //         expect(dto).not.toBeNull();
+    //         expect(currentd).not.toBeNull();
+    //         expect(yesterdayd).not.toBeNull();
+    //         expect(today.getDate()).toBeGreaterThanOrEqual(dto.getDate());
+    //         expect(today.getDate()).toBeLessThanOrEqual(dfrom.getDate());
+    //         component.todayIconFlag = false;
+    //     });
 
-        expect(component.todayIconFlag).toEqual(false);
-        expect(component.updateFromTodate).not.toHaveBeenCalled;
-    });
+    //     expect(component.todayIconFlag).toEqual(false);
+    //     expect(component.updateFromTodate).not.toHaveBeenCalled;
+    // });
 
     it('check variables  ', () => {
         component.dateRangePickerFlag = true;
