@@ -41,16 +41,44 @@ describe('amexio-date-range-picker', () => {
         component.fromCardSelected = component.child.fromcardselected;
         component.toCardSelected = component.child.tocardselected;
         component.child.altercompleteDaysArray();
-        expect(component.disabledDates).toBeDefined();
 
-        component.disabledDates = [
+
+   component.diabledDate = [
             {
-                from: '1-Oct-2019',
-                to: '10-Oct-2019',
+                "from": "13-Jul-2018",
+                "to": "15-Jul-2018"
             },
+            {
+                "from": "20-Jul-2018",
+                "to": "23-Jul-2018"
+            },
+            {
+                "from": "15-Jun-2018",
+                "to": "19-Jun-2018"
+            },
+            {
+                "from": "27-Jun-2018",
+                "to": "29-Jun-2018"
+            },
+            {
+                "from": "23-Aug-2018",
+                "to": "28-Aug-2018"
+            },
+            {
+                "from": "17-Aug-2018",
+                "to": "19-Aug-2018"
+            },
+            {
+                "from": "19-Sep-2018",
+                "to": "21-Sep-2018"
+            },
+            {
+                "from": "1-Nov-2018",
+                "to": "30-Nov-2018"
+            }
         ];
+        expect(component.disabledDates).toBeDefined();
         component.disabledDates.forEach((element: any) => {
-            console.log(element);
 
             const dfrom = new Date(element.from);
             const dto = new Date(element.to);
@@ -90,6 +118,41 @@ describe('amexio-date-range-picker', () => {
         component.fromCardSelected = component.child.fromcardselected;
         component.toCardSelected = component.child.tocardselected;
         component.child.altercompleteDaysArray();
+
+        component.diabledDate = [
+            {
+                "from": "13-Jul-2018",
+                "to": "15-Jul-2018"
+            },
+            {
+                "from": "20-Jul-2018",
+                "to": "23-Jul-2018"
+            },
+            {
+                "from": "15-Jun-2018",
+                "to": "19-Jun-2018"
+            },
+            {
+                "from": "27-Jun-2018",
+                "to": "29-Jun-2018"
+            },
+            {
+                "from": "23-Aug-2018",
+                "to": "28-Aug-2018"
+            },
+            {
+                "from": "17-Aug-2018",
+                "to": "19-Aug-2018"
+            },
+            {
+                "from": "19-Sep-2018",
+                "to": "21-Sep-2018"
+            },
+            {
+                "from": "1-Nov-2018",
+                "to": "30-Nov-2018"
+            }
+        ];
         expect(component.disabledDates).toBeDefined();
         component.disabledDates.forEach((element: any) => {
             const dfrom = new Date(element.from);
