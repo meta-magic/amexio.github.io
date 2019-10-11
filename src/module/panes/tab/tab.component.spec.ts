@@ -260,8 +260,29 @@ describe('amexio-tab', () => {
         comp.tabCollection.forEach((tab1: any) => {
             expect(comp.asignTabPillClass(tab1)).toHaveBeenCalled;
         });
+    })
 
+    it('activateTab method if condition', () => {
+        let tabId = 1;
+        comp.activateTab(tabId);
+        this.tabCollection.forEach((tab: any) => {
+            tab.active = false;
+            tab.tabId = 1;
+            expect(tab.tabId).toEqual(tabId);
+            expect(tab.active).toBeTruthy();
+            expect(comp.asignTabPillClass(tab)).toHaveBeenCalled;
+        })
+    })
 
+    it('activateTab method if condition', () => {
+        let tabId = 2;
+        comp.activateTab(tabId);
+        this.tabCollection.forEach((tab: any) => {
+            tab.active = false;
+            tab.tabId = 1;
+            expect(tab.tabId).not.toEqual(tabId);
+            expect(comp.asignTabPillClass(tab)).not.toHaveBeenCalled;
+        })
     })
 });
 
