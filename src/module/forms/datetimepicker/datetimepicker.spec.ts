@@ -1200,5 +1200,32 @@ it('onminus()', () => {
 
 // });
 
+it('chkMonth If Block', () => {
+  let element = {
+    name: 'september',
+    flag: false
+  }
+  let month = {
+    name: 'september',
+  }
+  comp.chkMonth(element, month);
+  expect(element.name).toEqual(month.name);
+  expect(element.flag).toBeTruthy();
+})
+
+it('chkMonth Else Block', () => {
+  let element = {
+    name: 'september',
+    flag: false
+  }
+  let month = {
+    name: 'november',
+  }
+  comp.chkMonth(element, month);
+  expect(element.name).not.toEqual(month.name);
+  expect(element.flag).toBeFalsy();
+})
+
+
 });
 

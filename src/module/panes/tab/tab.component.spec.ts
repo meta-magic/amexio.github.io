@@ -110,7 +110,21 @@ describe('amexio-tab', () => {
             tabNode.tabId = tab.tabId;
             expect(tab.tabId).toEqual(tabNode.tabId);
             tabHighlightIndex = index;
+            expect(tab.hasOwnProperty('tabpillinstance').toBeDefined);
+            expect(tab.target.remove()).toHaveBeenCalled;
+        });
+    })
 
+    // tabPillClose Method with else if 
+    it('tabPillClose else if (not equal) method', () => {
+        comp.tabPillClose(tabNode);
+        const newTab: AmexioTabPillComponent[] = [];
+        let index = 0;
+        let tabHighlightIndex = 0;
+        comp.tabCollection.forEach((tab: any, i: number) => {
+            tab.active = false;
+            expect(tab.tabId).not.toEqual(tabNode.tabId);
+            newTab.push(tab);
         });
     })
     it('Ok method Call', () => {
@@ -143,28 +157,48 @@ describe('amexio-tab', () => {
         expect(h).toBe(h - comp.tabs.nativeElement.offsetHeight);
         comp.minHeight = h;
         comp.height = h;
-
     })
 
     it('onAdjust Height method tab data undefined', () => {
         comp.bodyheight = 20;
-        // comp.tabs.nativeElement.offsetHeight = undefined;
-        // comp.tabs.nativeElement = undefined;
         comp.tabs = undefined;
         comp.onAdjustHeight();
         expect(comp.bodyheight).toBeDefined();
         let h = (window.innerHeight / 100) * comp.bodyheight;
         expect(comp.tabs).toBeUndefined();
-        // expect(comp.tabs.nativeElement).toBeUndefined();
-        // expect(comp.tabs.nativeElement.offsetHeight).toBeUndefined();
         comp.minHeight = h;
         comp.height = h;
 
+
+        it('onAdjust Height method tab data undefined', () => {
+            comp.bodyheight = 20;
+            comp.tabs.nativeElement = undefined;
+            comp.onAdjustHeight();
+            expect(comp.bodyheight).toBeDefined();
+            let h = (window.innerHeight / 100) * comp.bodyheight;
+            expect(comp.tabs).toBeDefined();
+            expect(comp.tabs.nativeElement).toBeUndefined();
+            comp.minHeight = h;
+            comp.height = h;
+        })
+
+        it('onAdjust Height method tab data undefined', () => {
+            comp.bodyheight = 20;
+            comp.tabs.nativeElement.offsetHeight = undefined;
+            comp.onAdjustHeight();
+            expect(comp.bodyheight).toBeDefined();
+            let h = (window.innerHeight / 100) * comp.bodyheight;
+            expect(comp.tabs).toBeDefined();
+            expect(comp.tabs.nativeElement).toBeDefined();
+            expect(comp.tabs.nativeElement.offsetHeight).toBeUndefined();
+            comp.minHeight = h;
+            comp.height = h;
+        })
     })
 
     it('onAdjust Height method bodyheight If Block', () => {
-        comp.onAdjustHeight();
         comp.bodyheight = 100;
+        comp.onAdjustHeight();
         let h = (window.innerHeight / 100) * comp.bodyheight;
 
         comp.minHeight = h;
@@ -172,9 +206,8 @@ describe('amexio-tab', () => {
         expect(h).toBe(h);
     })
     it('onAdjust Height method bodyheight Else Block', () => {
-        comp.onAdjustHeight();
-
         comp.bodyheight = 50;
+        comp.onAdjustHeight();
         let h = (window.innerHeight / 100) * comp.bodyheight;
         expect(comp.bodyheight).not.toEqual(100);
 
@@ -291,11 +324,11 @@ describe('amexio-tab', () => {
     //     let closable = true;
     //     let component: any;
     //     comp.addDynamicTab(title, amexiocolor, closable, component);
-    //     const tpCF = comp.componentFactoryResolver.resolveComponentFactory(
-    //         AmexioTabPillComponent,
-    //     );
-    //     const tp = comp.target.createComponent(tpCF);
-    //     const instance: AmexioTabPillComponent = tp.instance as AmexioTabPillComponent;
+    //     // const tpCF = comp.componentFactoryResolver.resolveComponentFactory(
+    //     //     AmexioTabPillComponent,
+    //     // );
+    //     // const tp = comp.target.createComponent(tpCF);
+    //     let instance: AmexioTabPillComponent;
     //     instance.title = title;
     //     instance.active = true;
     //     instance.closable = closable;

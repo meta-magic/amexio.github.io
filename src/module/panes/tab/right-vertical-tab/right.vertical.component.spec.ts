@@ -102,7 +102,7 @@ describe('amexio-right-vertical-tab', () => {
     });
   });
 
-  it('OnVerticalTab Click If method', () => {
+  it('OnVerticalTab Click both false If method', () => {
     let tab = {
       active: true,
       closable: false,
@@ -120,15 +120,14 @@ describe('amexio-right-vertical-tab', () => {
     for (let i of comp.tabCollection) {
       // tab = i;
       expect(i['active']).toBeFalsy();
-      spyOn(comp, 'asignTabPillClass');
-      comp.asignTabPillClass(tab);
-      expect(comp.asignTabPillClass).toHaveBeenCalled();
+      expect(i['tabPillClass']).toEqual('');
+      expect(comp.asignTabPillClass).toHaveBeenCalled;
       comp.onClick.emit(tab);
 
     }
   })
 
-  it('OnVerticalTab Click Else method', () => {
+  it('OnVerticalTab Click Both False method', () => {
     let tab = {
       active: true,
       closable: false,
@@ -145,9 +144,43 @@ describe('amexio-right-vertical-tab', () => {
     tab.header = true;
     expect(tab.header).toBeTruthy();
     expect(tab.disabled).toBeTruthy();
-    comp.tabCollection.forEach((tab1: any) => {
-      comp.asignTabPillClass(tab1);
-    });
   })
 
+  it('OnVerticalTab Click one False one true method', () => {
+    let tab = {
+      active: true,
+      closable: false,
+      disabled: false,
+      icon: "fa fa-building",
+      tabId: 30314,
+      header: true,
+      tabPillClass: "activecolortab",
+      title: "Work"
+    }
+
+    comp.onVerticalTabClick(tab);
+    tab.disabled = false;
+    tab.header = true;
+    expect(tab.header).toBeTruthy();
+    expect(tab.disabled).toBeFalsy();
+  })
+
+  it('OnVerticalTab Click one true one false method', () => {
+    let tab = {
+      active: true,
+      closable: false,
+      disabled: true,
+      icon: "fa fa-building",
+      tabId: 30314,
+      header: false,
+      tabPillClass: "activecolortab",
+      title: "Work"
+    }
+
+    comp.onVerticalTabClick(tab);
+    tab.disabled = true;
+    tab.header = false;
+    expect(tab.header).toBeFalsy();
+    expect(tab.disabled).toBeTruthy();
+  })
 })
