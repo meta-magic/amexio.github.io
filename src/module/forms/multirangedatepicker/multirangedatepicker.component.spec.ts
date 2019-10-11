@@ -19,6 +19,7 @@ describe('amexio-date-range-picker', () => {
         });
         fixture = TestBed.createComponent(AmexioMultiRangePickerComponent);
         component = fixture.componentInstance;
+
     });
 
     it('should successfuly be able to create a AmexioMultiRangePickerComponent', () => {
@@ -68,7 +69,7 @@ describe('amexio-date-range-picker', () => {
         });
     });
 
-    it('check ngAfterViewInit method todayIconFlag else condition ', () => {
+    it('ngAfterViewInit: method todayIconFlag is false ', () => {
         component.ngAfterViewInit();
         component.fromCardSelected = component.child.fromcardselected;
         component.toCardSelected = component.child.tocardselected;
@@ -112,7 +113,7 @@ describe('amexio-date-range-picker', () => {
 
     });
 
-    it('check ResetDaysTillYesterday method  ', () => {
+    it('ResetDaysTillYesterday: till yesterday   ', () => {
 
         component.ResetDaysTillYesterday();
         const d = new Date();
@@ -125,7 +126,7 @@ describe('amexio-date-range-picker', () => {
 
     });
 
-    it('check ResetDaysTillToday method  ', () => {
+    it('ResetDaysTillToday: till today ', () => {
         component.ResetDaysTillToday();
         const d = new Date();
         const newfrm = new Date(d.getFullYear(), d.getMonth(), (d.getDate() - component.daysOptionToday + 1));
@@ -156,7 +157,7 @@ describe('amexio-date-range-picker', () => {
         expect(flag).toEqual(false);
     });
 
-    it('check clearSelectedFlag if individualday.selected is true', () => {
+    it('clearSelectedFlag :if individualday.selected is true', () => {
         component.child.completeDaysArray = [
             {
                 'date': 'Mon Sep 23 2019 11:04:46 GMT+0530 ',
@@ -273,7 +274,6 @@ describe('amexio-date-range-picker', () => {
                 'year': 2019
             }
         ]
-
         expect(component.child.completeDaysArray).toBeDefined();
         component.clearSelectedFlag();
         component.child.completeDaysArray.forEach((month: any) => {
@@ -301,7 +301,7 @@ describe('amexio-date-range-picker', () => {
         });
     });
 
-    it('check clearSelectedFlag if individualday.from is true', () => {
+    it('clearSelectedFlag :if individualday.from is true', () => {
         component.child.completeDaysArray = [
             {
                 'date': 'Mon Sep 23 2019 11:04:46 GMT+0530 ',
@@ -417,8 +417,7 @@ describe('amexio-date-range-picker', () => {
                 'prevarrow': false,
                 'year': 2019
             }
-        ]
-
+        ]        
         expect(component.child.completeDaysArray).toBeDefined();
         component.clearSelectedFlag();
         component.child.completeDaysArray.forEach((month: any) => {
@@ -446,7 +445,7 @@ describe('amexio-date-range-picker', () => {
 
     });
 
-    it('check clearSelectedFlag if individualday.to is true', () => {
+    it('clearSelectedFlag :if individualday.to is true', () => {
         component.child.completeDaysArray = [
             {
                 'date': 'Mon Sep 23 2019 11:04:46 GMT+0530 ',
@@ -563,7 +562,6 @@ describe('amexio-date-range-picker', () => {
                 'year': 2019
             }
         ]
-
         expect(component.child.completeDaysArray).toBeDefined();
         component.clearSelectedFlag();
         component.child.completeDaysArray.forEach((month: any) => {
@@ -588,12 +586,290 @@ describe('amexio-date-range-picker', () => {
                 });
             });
         });
+    });
 
+    it('clearSelectedFlag : if individualday.to and individualday.selected is true', () => {
+        component.child.completeDaysArray = [
+            {
+                'date': 'Mon Sep 23 2019 11:04:46 GMT+0530 ',
+                'month': 'September',
+                'montharray': [
+                    [
+                        {
+                            'date': "Mon Aug 26 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "26 August 2019 Monday",
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': "Tue Aug 27 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "27 August 2019 Tuesday",
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ],
+                    [
+                        {
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ]
+                ],
+                'nextarrow': false,
+                'prevarrow': true,
+                'year': 2019
+            },
+            {
+                'date': 'Wed Oct 23 2019 11:04:46 GMT+0530 ',
+                'month': 'October',
+                'montharray': [
+                    [
+                        {
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ],
+                    [
+                        {
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ]
+                ],
+                'nextarrow': false,
+                'prevarrow': false,
+                'year': 2019
+            }
+        ]
+        expect(component.child.completeDaysArray).toBeDefined();
+        component.clearSelectedFlag();
+        component.child.completeDaysArray.forEach((month: any) => {
+            month.montharray.forEach((monthrowarray: any) => {
+
+                monthrowarray.forEach((individualday: any) => {
+
+                    individualday.to = true;
+                    individualday.selected = true;
+                    individualday.from = false;
+                    expect(individualday.to).toBeTruthy();
+                    expect(individualday.selected).toBeTruthy();
+                    expect(individualday.from).toBeFalsy();
+                    if (individualday.selected || individualday.from || individualday.to) {
+                        individualday.selected = false;
+                        individualday.from = false;
+                        individualday.to = false;
+                        expect(individualday.selected).toBeFalsy();
+                        expect(individualday.from).toBeFalsy();
+                        expect(individualday.to).toBeFalsy();
+                    }
+                });
+            });
+        });
+    });
+
+    it('clearSelectedFlag :if all false', () => {
+        component.child.completeDaysArray = [
+            {
+                'date': 'Mon Sep 23 2019 11:04:46 GMT+0530 ',
+                'month': 'September',
+                'montharray': [
+                    [
+                        {
+                            'date': "Mon Aug 26 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "26 August 2019 Monday",
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': "Tue Aug 27 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "27 August 2019 Tuesday",
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ],
+                    [
+                        {
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ]
+                ],
+                'nextarrow': false,
+                'prevarrow': true,
+                'year': 2019
+            },
+            {
+                'date': 'Wed Oct 23 2019 11:04:46 GMT+0530 ',
+                'month': 'October',
+                'montharray': [
+                    [
+                        {
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ],
+                    [
+                        {
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ]
+                ],
+                'nextarrow': false,
+                'prevarrow': false,
+                'year': 2019
+            }
+        ]
+        expect(component.child.completeDaysArray).toBeDefined();
+        component.clearSelectedFlag();
+        component.child.completeDaysArray.forEach((month: any) => {
+            month.montharray.forEach((monthrowarray: any) => {
+
+                monthrowarray.forEach((individualday: any) => {
+
+                    individualday.to = false;
+                    individualday.selected = false;
+                    individualday.from = false;
+                    expect(individualday.to).toBeFalsy();
+                    expect(individualday.selected).toBeFalsy();
+                    expect(individualday.from).toBeFalsy();
+                });
+            });
+        });
     });
 
     it('For Today', () => {
         let option: any;
         option = 'Today';
+        component.selectRangeOption(option);
         const currentdate = new Date();
         expect(currentdate).not.toBeNull();
         expect(currentdate).toBeDefined();
@@ -613,6 +889,7 @@ describe('amexio-date-range-picker', () => {
     it('For Yesterday', () => {
         let option: any;
         option = 'Yesterday';
+        component.selectRangeOption(option);
         const yesterdaydate = new Date();
         yesterdaydate.setDate(yesterdaydate.getDate() - 1);
         expect(yesterdaydate).not.toBeNull();
@@ -633,6 +910,7 @@ describe('amexio-date-range-picker', () => {
     it('This week (sun - sat)', () => {
         let option: any;
         option = 'This week (sun - sat)';
+        component.selectRangeOption(option);
         const startdate = new Date();
         const dayindex = startdate.getDay();
         const enddate = new Date();
@@ -643,10 +921,7 @@ describe('amexio-date-range-picker', () => {
         expect(enddate).not.toBeNull();
         expect(enddate).toBeDefined();
 
-        //expect(component.child.fromdate).toEqual(startdate);
-
         enddate.setDate(enddate.getDate() - dayindex + 6);
-        //expect(component.child.todate).toEqual(enddate);
 
         expect(option).toEqual('This week (sun - sat)');
     });
@@ -654,6 +929,7 @@ describe('amexio-date-range-picker', () => {
     it('Last 14 days', () => {
         let option: any;
         option = 'Last 14 days';
+        component.selectRangeOption(option);
         const lastday = new Date();
         component.child.todate = lastday;
         const firstday = new Date();
@@ -665,6 +941,7 @@ describe('amexio-date-range-picker', () => {
     it('This month', () => {
         let option: any;
         option = 'This month';
+        component.selectRangeOption(option);
         const d1 = new Date();
         const firstmonthday = new Date(d1.getFullYear(), d1.getMonth(), 1);
         component.child.fromdate = firstmonthday;
@@ -677,6 +954,7 @@ describe('amexio-date-range-picker', () => {
     it('Last 30 days', () => {
         let option: any;
         option = 'Last 30 days';
+        component.selectRangeOption(option);
         const d2 = new Date();
         const first30thdate = new Date();
         const last30thdate = new Date();
@@ -689,6 +967,7 @@ describe('amexio-date-range-picker', () => {
     it('Last month', () => {
         let option: any;
         option = 'Last month';
+        component.selectRangeOption(option);
         const d3 = new Date();
         const fday = new Date(d3.getFullYear(), d3.getMonth() - 1, 1);
         const lday = new Date(d3.getFullYear(), d3.getMonth(), 0);
@@ -701,6 +980,7 @@ describe('amexio-date-range-picker', () => {
     it('All time', () => {
         let option: any;
         option = 'All time';
+        component.selectRangeOption(option);
         const d4 = new Date();
         d4.setFullYear(1970);
         d4.setMonth(0);
@@ -713,10 +993,16 @@ describe('amexio-date-range-picker', () => {
     });
 
     it('30 Days upto today', () => {
+        let option: any;
+        option = '30 Days upto today';
+        component.selectRangeOption(option);
     });
 
 
     it('30 Days upto yesterday', () => {
+        let option: any;
+        option = '30 Days upto yesterday';
+        component.selectRangeOption(option);
     });
 
     it('none', () => {
@@ -724,7 +1010,8 @@ describe('amexio-date-range-picker', () => {
         option = '';
         expect(option).toBe('');
     });
-    ///
+
+    /*
     xit('ngAfterViewInit: check if date selected is not today', () => {
         const today = '9-Oct-2019';
         const dfrom = new Date('1-Oct-2019');
@@ -849,6 +1136,6 @@ describe('amexio-date-range-picker', () => {
         spyOn(component, 'updateFromTodate');
         expect(component.updateFromTodate).not.toHaveBeenCalled();
     });
-
+*/
 });
 
