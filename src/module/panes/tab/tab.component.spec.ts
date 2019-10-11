@@ -126,7 +126,7 @@ describe('amexio-tab', () => {
             tabNode.tabId = tab.tabId;
             expect(tab.tabId).toEqual(tabNode.tabId);
             tabHighlightIndex = index;
-            expect(tab.hasOwnProperty('tabpillinstance').toBeUndefined);
+            expect(tab.hasOwnProperty('tabpillinstance').toBeFalsy);
             expect(comp.tabDomRemove(tab)).toHaveBeenCalled;
         });
     })
