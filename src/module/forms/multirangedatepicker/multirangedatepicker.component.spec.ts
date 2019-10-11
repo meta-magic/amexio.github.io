@@ -6,7 +6,7 @@ import { CommonIconComponent } from './../../base/components/common.icon.compone
 import { AmexioMultiRangePickerComponent } from './multirangedatepicker.component';
 import { AmexioMultipleDatePickerComponent } from '../multidatepicker/multidatepicker.component';
 
-describe('amexio-date-range-picker', () => {
+fdescribe('amexio-date-range-picker', () => {
     let component: AmexioMultiRangePickerComponent;
     let fixture: ComponentFixture<AmexioMultiRangePickerComponent>;
 
@@ -87,7 +87,7 @@ describe('amexio-date-range-picker', () => {
             const dfrom = new Date(element.from);
             const dto = new Date(element.to);
             const currentd = new Date();
-            const today = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() +1);
+            const today = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() + 1);
             const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
 
             expect(dfrom).not.toBeNull();
@@ -98,7 +98,7 @@ describe('amexio-date-range-picker', () => {
             expect(today.getDate()).toBeLessThanOrEqual(dfrom.getDate());
             component.todayIconFlag = false;
         });
-        
+
         expect(component.todayIconFlag).toEqual(false);
         spyOn(component, 'updateFromTodate');
         expect(component.updateFromTodate).not.toHaveBeenCalled();
@@ -1060,6 +1060,200 @@ describe('amexio-date-range-picker', () => {
         expect(option).toBe('');
     });
 
+
+    it('altercompleteDaysArray: for Same Dates', () => {
+        const incdate = new Date();
+        component.alterCompleteDaysArray(incdate);
+        // spyOn(component,'clearSelectedFlag');
+        // fixture.detectChanges();
+        // component.clearSelectedFlag();
+
+        //        expect(component.clearSelectedFlag()).toHaveBeenCalled();
+
+
+        component.child.completeDaysArray = [
+            {
+                'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                'month': 'August',
+                'montharray': [
+                    [
+                        {
+                            'date': "Mon Aug 26 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "26 August 2019 Monday",
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': "Tue Aug 27 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "27 August 2019 Tuesday",
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ],
+                    [
+                        {
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ]
+                ],
+                'nextarrow': false,
+                'prevarrow': true,
+                'year': 2019
+            }
+        ];
+
+
+        component.child.completeDaysArray.forEach((month: any) => {
+            month.montharray.forEach((monthrowarray: any) => {
+
+                monthrowarray.forEach((individualday: any) => {
+                    const inddate = new Date(individualday.date);
+                    if ((inddate.getFullYear() === incdate.getFullYear()) &&
+                        (inddate.getMonth() === incdate.getMonth()) &&
+                        (inddate.getDate() === incdate.getDate())) {
+
+                        expect(inddate.getFullYear()).toEqual(incdate.getFullYear());
+                        expect(inddate.getMonth()).toEqual(incdate.getMonth());
+                        expect(inddate.getDate()).toBeTruthy(incdate.getDate());
+
+                        individualday.selected = true;
+                        individualday.from = true;
+                        individualday.to = true;
+
+                        expect(individualday.selected).toBeTruthy();
+                        expect(individualday.from).toBeTruthy();
+                        expect(individualday.to).toBeTruthy();
+                    }
+                });
+
+            });
+        });
+    });
+
+    it('altercompleteDaysArray: for different year', () => {
+        const incdate = new Date('Mon Aug 26 2017 00:00:00 GMT+0530');
+        component.alterCompleteDaysArray(incdate);
+        // spyOn(component,'clearSelectedFlag');
+        // fixture.detectChanges();
+        // component.clearSelectedFlag();
+
+        //        expect(component.clearSelectedFlag()).toHaveBeenCalled();
+
+
+        component.child.completeDaysArray = [
+            {
+                'date': 'Mon Aug 26 2017 00:00:00 GMT+0530',
+                'month': 'August',
+                'montharray': [
+                    [
+                        {
+                            'date': "Mon Aug 26 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "26 August 2019 Monday",
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': "Tue Aug 27 2019 00:00:00 GMT+0530",
+                            'from': true,
+                            'fulldate': "27 August 2019 Tuesday",
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ],
+                    [
+                        {
+                            'date': 'Mon Aug 26 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '26 August 2019 Monday',
+                            'id': '31313_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        },
+                        {
+                            'date': 'Tue Aug 27 2019 00:00:00 GMT+0530',
+                            'from': true,
+                            'fulldate': '27 August 2019 Tuesday',
+                            'id': '86088_id',
+                            'isCurrentMonth': false,
+                            'isDisabled': false,
+                            'range': false,
+                            'selected': true,
+                            'to': true
+                        }
+                    ]
+                ],
+                'nextarrow': false,
+                'prevarrow': true,
+                'year': 2019
+            }
+        ];
+
+
+        component.child.completeDaysArray.forEach((month: any) => {
+            month.montharray.forEach((monthrowarray: any) => {
+
+                monthrowarray.forEach((individualday: any) => {
+                    const inddate = new Date(individualday.date);
+
+                    expect(inddate.getFullYear()).not.toEqual(incdate.getFullYear());
+                    expect(inddate.getMonth()).toEqual(incdate.getMonth());
+                    expect(inddate.getDate()).toBeTruthy(incdate.getDate());
+
+
+                    individualday.selected = false;
+                    individualday.from = false;
+                    individualday.to = false;
+
+
+                    expect(individualday.selected).toBeFalsy();
+                    expect(individualday.from).toBeFalsy();
+                    expect(individualday.to).toBeFalsy();
+                });
+
+            });
+        });
+    });
     /*
     xit('ngAfterViewInit: check if date selected is not today', () => {
         const today = '9-Oct-2019';
