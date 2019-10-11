@@ -13,7 +13,7 @@ import { CommonIconComponent } from '../../base/components/common.icon.component
 import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 
-fdescribe('amexio-availability', () => {
+describe('amexio-availability', () => {
   let comp: AvailabilityComponent;
   let fixture: ComponentFixture<AvailabilityComponent>;
 
