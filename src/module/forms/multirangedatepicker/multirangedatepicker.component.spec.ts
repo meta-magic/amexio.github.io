@@ -417,7 +417,7 @@ describe('amexio-date-range-picker', () => {
                 'prevarrow': false,
                 'year': 2019
             }
-        ]        
+        ]
         expect(component.child.completeDaysArray).toBeDefined();
         component.clearSelectedFlag();
         component.child.completeDaysArray.forEach((month: any) => {
@@ -866,27 +866,46 @@ describe('amexio-date-range-picker', () => {
         });
     });
 
-    it('For Today', () => {
+    it('Option: Today selecetd to-from-date true', () => {
         let option: any;
         option = 'Today';
         component.selectRangeOption(option);
         const currentdate = new Date();
         expect(currentdate).not.toBeNull();
         expect(currentdate).toBeDefined();
-
+        component.child.fromcardselected = true;
         if (component.child.fromcardselected) {
             // set fromdate to currentdate
+            expect(component.child.fromcardselected).toBeTruthy();
+            component.child.fromdate = currentdate;
             expect(component.child.fromdate).toEqual(currentdate);
-
         }
+        component.child.tocardselected = false;
         if (component.child.tocardselected) {
             //  set todate to currentdate
+            expect(component.child.tocardselected).toBeTruthy();
+            component.child.todate = currentdate;
             expect(component.child.todate).toEqual(currentdate);
         }
         expect(option).toEqual('Today');
     });
 
-    it('For Yesterday', () => {
+    it('Option: Today selecetd to-from-date false', () => {
+        let option: any;
+        option = 'Today';
+        component.selectRangeOption(option);
+        const currentdate = new Date();
+        expect(currentdate).not.toBeNull();
+        expect(currentdate).toBeDefined();
+        component.child.fromcardselected = false;
+        expect(component.child.fromcardselected).toBeFalsy();
+
+        component.child.tocardselected = false;
+        expect(component.child.tocardselected).toBeFalsy();
+        expect(option).toEqual('Today');
+    });
+
+    it('Option: Yesterday to-from-date true', () => {
         let option: any;
         option = 'Yesterday';
         component.selectRangeOption(option);
@@ -895,19 +914,45 @@ describe('amexio-date-range-picker', () => {
         expect(yesterdaydate).not.toBeNull();
         expect(yesterdaydate).toBeDefined();
 
+        component.child.fromcardselected = true;
+
         if (component.child.fromcardselected) {
             // set fromdate to currentdate
+            component.child.fromdate = yesterdaydate;
             expect(component.child.fromdate).toEqual(yesterdaydate);
-
+            expect(component.child.fromcardselected).toBeTruthy();
         }
+        component.child.tocardselected = true;
+
         if (component.child.tocardselected) {
             //  set todate to currentdate
+            component.child.todate = yesterdaydate;
+            expect(component.child.tocardselected).toBeTruthy();
             expect(component.child.todate).toEqual(yesterdaydate);
         }
         expect(option).toEqual('Yesterday');
     });
 
-    it('This week (sun - sat)', () => {
+    it('Option: Yesterday to-from-date false', () => {
+        let option: any;
+        option = 'Yesterday';
+        component.selectRangeOption(option);
+        const yesterdaydate = new Date();
+        yesterdaydate.setDate(yesterdaydate.getDate() - 1);
+        expect(yesterdaydate).not.toBeNull();
+        expect(yesterdaydate).toBeDefined();
+
+        component.child.fromcardselected = false;
+        expect(component.child.fromcardselected).toBeFalsy();
+        expect(component.child.fromdate).not.toEqual(yesterdaydate);
+        component.child.tocardselected = false;
+        expect(component.child.tocardselected).toBeFalsy();
+        expect(component.child.todate).not.toEqual(yesterdaydate);
+
+        expect(option).toEqual('Yesterday');
+    });
+
+    it('Option: This week (sun - sat)', () => {
         let option: any;
         option = 'This week (sun - sat)';
         component.selectRangeOption(option);
@@ -926,7 +971,7 @@ describe('amexio-date-range-picker', () => {
         expect(option).toEqual('This week (sun - sat)');
     });
 
-    it('Last 14 days', () => {
+    it('Option: Last 14 days', () => {
         let option: any;
         option = 'Last 14 days';
         component.selectRangeOption(option);
@@ -938,7 +983,7 @@ describe('amexio-date-range-picker', () => {
         expect(option).toEqual('Last 14 days');
     });
 
-    it('This month', () => {
+    it('Option: This month', () => {
         let option: any;
         option = 'This month';
         component.selectRangeOption(option);
@@ -951,7 +996,7 @@ describe('amexio-date-range-picker', () => {
 
     });
 
-    it('Last 30 days', () => {
+    it('Option: Last 30 days', () => {
         let option: any;
         option = 'Last 30 days';
         component.selectRangeOption(option);
@@ -964,7 +1009,7 @@ describe('amexio-date-range-picker', () => {
         expect(option).toEqual('Last 30 days');
     });
 
-    it('Last month', () => {
+    it('Option: Last month', () => {
         let option: any;
         option = 'Last month';
         component.selectRangeOption(option);
@@ -977,7 +1022,7 @@ describe('amexio-date-range-picker', () => {
 
     });
 
-    it('All time', () => {
+    it('Option: All time', () => {
         let option: any;
         option = 'All time';
         component.selectRangeOption(option);
@@ -992,20 +1037,20 @@ describe('amexio-date-range-picker', () => {
 
     });
 
-    it('30 Days upto today', () => {
+    it('Option: 30 Days upto today', () => {
         let option: any;
         option = '30 Days upto today';
         component.selectRangeOption(option);
     });
 
 
-    it('30 Days upto yesterday', () => {
+    it('Option: 30 Days upto yesterday', () => {
         let option: any;
         option = '30 Days upto yesterday';
         component.selectRangeOption(option);
     });
 
-    it('none', () => {
+    it('Option: default', () => {
         let option: any;
         option = '';
         expect(option).toBe('');
