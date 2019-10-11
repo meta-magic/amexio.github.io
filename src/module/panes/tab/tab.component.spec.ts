@@ -34,7 +34,8 @@ describe('amexio-tab', () => {
                 AmexioTabPillComponent,
                 AmexioButtonComponent,
             ],
-            providers: [ComponentFactoryResolver, IconLoaderService],
+            providers: [IconLoaderService, ComponentFactoryResolver],
+
         }).overrideModule(BrowserDynamicTestingModule, { set: { entryComponents: [AmexioTabPillComponent] } }).compileComponents();
     });
     beforeEach(() => {
@@ -232,7 +233,7 @@ describe('amexio-tab', () => {
         comp.minHeight = h;
         comp.height = h;
     })
-        // Adjust height method --ends
+    // Adjust height method --ends
 
 
     it('On Adjust Width If Method', () => {
@@ -267,6 +268,7 @@ describe('amexio-tab', () => {
     it('On Adjust Width fullpage If Method', () => {
         comp.fullPageTabs = true;
         comp.adjustWidth();
+        comp.fullPageTabs = true;
         const tWidth = comp.tabs.nativeElement.clientWidth;
         const tlistWidth = comp.tabslist.nativeElement.scrollWidth;
         const hWidth = 1;
@@ -280,6 +282,8 @@ describe('amexio-tab', () => {
         comp.totalTabs = 2;
         comp.fullPageTabs = true;
         comp.adjustWidth();
+        comp.totalTabs = 2;
+        comp.fullPageTabs = true;
         const tWidth = comp.tabs.nativeElement.clientWidth;
         const tlistWidth = comp.tabslist.nativeElement.scrollWidth;
         const hWidth = 0;
@@ -344,10 +348,10 @@ describe('amexio-tab', () => {
     //     let closable = true;
     //     let component: any;
     //     comp.addDynamicTab(title, amexiocolor, closable, component);
-    //     // const tpCF = comp.componentFactoryResolver.resolveComponentFactory(
-    //     //     AmexioTabPillComponent,
-    //     // );
-    //     // const tp = comp.target.createComponent(tpCF);
+    //     const tpCF = comp.componentFactoryResolver.resolveComponentFactory(
+    //         AmexioTabPillComponent,
+    //     );
+    //     const tp = comp.target.createComponent(tpCF);
     //     let instance: AmexioTabPillComponent;
     //     instance.title = title;
     //     instance.active = true;
@@ -377,7 +381,139 @@ describe('amexio-tab', () => {
     //     expect(instance.amexiocolor).not.toEqual('');
     //     instance.amexiocolor = 'amexio-top-tab-' + amexiocolor;
     // })
-});
 
+    it('asignTabPillClass 1st condition1', () => {
+        comp.tabPosition = 'top';
+        let tabData = {
+            amexiocolor: '',
+            active: true,
+            tabPillClass: 'activetab'
+        }
+        comp.asignTabPillClass(tabData);
+        expect(tabData.amexiocolor).toEqual('');
+        expect(tabData.active).toBeTruthy();
+        expect(comp.tabPosition).toEqual('top');
+        expect(tabData.tabPillClass).toEqual('activetab');
+    })
+
+    it('asignTabPillClass 1st condition3', () => {
+        comp.tabPosition = 'top';
+        let tabData = {
+            active: true,
+            tabPillClass: 'activetab',
+            amexiocolor: 'red'
+        }
+        comp.asignTabPillClass(tabData);
+        expect(tabData['amexiocolor']).not.toEqual('');
+        expect(tabData.active).toBeTruthy();
+        expect(comp.tabPosition).toEqual('top');
+    })
+
+    it('asignTabPillClass 1st condition4', () => {
+        comp.tabPosition = 'top';
+        let tabData = {
+            active: false,
+            tabPillClass: ''
+        }
+        comp.asignTabPillClass(tabData);
+        expect(tabData['amexiocolor']).toEqual(undefined);
+        expect(tabData.active).toBeFalsy();
+        expect(comp.tabPosition).toEqual('top');
+    })
+
+    //bottom check
+
+
+    it('asignTabPillClass 2 condition1', () => {
+        comp.tabPosition = 'bottom';
+        let tabData = {
+            amexiocolor: '',
+            active: true,
+            tabPillClass: 'bottomActivetab'
+        }
+        comp.asignTabPillClass(tabData);
+        expect(tabData.amexiocolor).toEqual('');
+        expect(tabData.active).toBeTruthy();
+        expect(comp.tabPosition).toEqual('bottom');
+        expect(tabData.tabPillClass).toEqual('bottomActivetab');
+    })
+
+    it('asignTabPillClass 2 condition3', () => {
+        comp.tabPosition = 'bottom';
+        let tabData = {
+            active: false,
+            tabPillClass: ''
+        }
+        comp.asignTabPillClass(tabData);
+        expect(tabData['amexiocolor']).toEqual(undefined);
+        expect(tabData.active).toBeFalsy();
+        expect(comp.tabPosition).toEqual('bottom');
+    })
+
+    // disable check
+    it('asignTabPillClass disable condition1', () => {
+        comp.tabPosition = 'bottom';
+        let tabData = {
+            disabled: true,
+            tabPillClass: 'disabled-tab'
+        }
+        comp.asignTabPillClass(tabData);
+        expect(tabData.disabled).toEqual(true);
+        expect(tabData.tabPillClass).toEqual('disabled-tab');
+    })
+
+    // disable check else
+    it('asignTabPillClass disable condition2', () => {
+        comp.tabPosition = 'bottom';
+        let tabData = {
+            disabled: false,
+            tabPillClass: ''
+        }
+        comp.asignTabPillClass(tabData);
+        expect(tabData.disabled).toEqual(false);
+        expect(tabData.tabPillClass).not.toEqual('disabled-tab');
+    })
+
+    //BG Color  TOP
+
+    it('asignTabPillClass BG color top', () => {
+        comp.tabPosition = 'top';
+        comp.activeBGColor = true;
+        let tabData = {
+            amexiocolor: 'red',
+            tabPillClass: 'activebgcolortab',
+            active: true,
+
+        }
+        comp.asignTabPillClass(tabData);
+        expect(tabData.amexiocolor).not.toEqual('');
+        expect(comp.tabPosition).toEqual('top');
+        expect(tabData.active).toEqual(true);
+        expect(comp.activeBGColor).toEqual(true);
+
+        expect(tabData.tabPillClass).toEqual('activebgcolortab');
+    })
+
+    //BG COLOR BOTTOM
+
+    it('asignTabPillClass BG color top', () => {
+        comp.tabPosition = 'bottom';
+        comp.activeBGColor = true;
+        let tabData = {
+            amexiocolor: 'red',
+            tabPillClass: 'activebottomcolortab',
+            active: true,
+
+        }
+        comp.asignTabPillClass(tabData);
+        expect(tabData.amexiocolor).not.toEqual('');
+        expect(comp.tabPosition).toEqual('bottom');
+        expect(tabData.active).toEqual(true);
+
+        expect(tabData.tabPillClass).toEqual('activebottomcolortab');
+    })
+
+
+});
 
 
