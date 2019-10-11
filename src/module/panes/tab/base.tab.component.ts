@@ -109,7 +109,7 @@ description : Callback to invoke on activated tab event.
                 } else {
                     this.tabDomRemove(tab);
                 }
-            } else if (tab.tabId !== tabNode.tabId) {
+            } else {
                 newTab.push(tab);
             }
             index++;

@@ -115,6 +115,22 @@ describe('amexio-tab', () => {
         });
     })
 
+
+    it('tabPillClose Else method', () => {
+        comp.tabPillClose(tabNode);
+        const newTab: AmexioTabPillComponent[] = [];
+        let index = 0;
+        let tabHighlightIndex = 0;
+        comp.tabCollection.forEach((tab: any, i: number) => {
+            tab.active = false;
+            tabNode.tabId = tab.tabId;
+            expect(tab.tabId).toEqual(tabNode.tabId);
+            tabHighlightIndex = index;
+            expect(tab.hasOwnProperty('tabpillinstance').toBeUndefined);
+            expect(comp.tabDomRemove(tab)).toHaveBeenCalled;
+        });
+    })
+
     // tabPillClose Method with else if 
     it('tabPillClose else if (not equal) method', () => {
         comp.tabPillClose(tabNode);
@@ -127,6 +143,7 @@ describe('amexio-tab', () => {
             newTab.push(tab);
         });
     })
+
     it('Ok method Call', () => {
         comp.tabCollection.forEach((tab: any, i: number) => {
             comp.tempTab = tab;
@@ -146,19 +163,7 @@ describe('amexio-tab', () => {
         expect(comp.bodyheight).toBeUndefined();
     })
 
-    it('onAdjust Height method If Block', () => {
-        comp.bodyheight = 20;
-        comp.onAdjustHeight();
-        expect(comp.bodyheight).toBeDefined();
-        let h = (window.innerHeight / 100) * comp.bodyheight;
-        expect(comp.tabs).toBeDefined();
-        expect(comp.tabs.nativeElement).toBeDefined();
-        expect(comp.tabs.nativeElement.offsetHeight).toBeDefined();
-        expect(h).toBe(h - comp.tabs.nativeElement.offsetHeight);
-        comp.minHeight = h;
-        comp.height = h;
-    })
-
+    // Adjust height method --starts
     it('onAdjust Height method tab data undefined', () => {
         comp.bodyheight = 20;
         comp.tabs = undefined;
@@ -170,7 +175,7 @@ describe('amexio-tab', () => {
         comp.height = h;
 
 
-        it('onAdjust Height method tab data undefined', () => {
+        it('onAdjust Height method tab nativeelement undefined', () => {
             comp.bodyheight = 20;
             comp.tabs.nativeElement = undefined;
             comp.onAdjustHeight();
@@ -182,7 +187,7 @@ describe('amexio-tab', () => {
             comp.height = h;
         })
 
-        it('onAdjust Height method tab data undefined', () => {
+        it('onAdjust Height method tab offset data undefined', () => {
             comp.bodyheight = 20;
             comp.tabs.nativeElement.offsetHeight = undefined;
             comp.onAdjustHeight();
@@ -194,6 +199,19 @@ describe('amexio-tab', () => {
             comp.minHeight = h;
             comp.height = h;
         })
+    })
+
+    it('onAdjust Height method All defined If Block', () => {
+        comp.bodyheight = 20;
+        comp.onAdjustHeight();
+        expect(comp.bodyheight).toBeDefined();
+        let h = (window.innerHeight / 100) * comp.bodyheight;
+        expect(comp.tabs).toBeDefined();
+        expect(comp.tabs.nativeElement).toBeDefined();
+        expect(comp.tabs.nativeElement.offsetHeight).toBeDefined();
+        expect(h).toEqual(h - comp.tabs.nativeElement.offsetHeight);
+        comp.minHeight = h;
+        comp.height = h;
     })
 
     it('onAdjust Height method bodyheight If Block', () => {
@@ -214,6 +232,8 @@ describe('amexio-tab', () => {
         comp.minHeight = h;
         comp.height = h;
     })
+        // Adjust height method --ends
+
 
     it('On Adjust Width If Method', () => {
         comp.adjustWidth();
