@@ -55,9 +55,17 @@ describe('amexio-date-range-picker', () => {
             expect(yesterdayd).not.toBeNull();
 
             if ((currentd <= dto) && (currentd >= dfrom)) {
+                component.todayIconFlag = true;
+                expect(currentd.getDate()).toBeLessThanOrEqual(dto.getDate());
+                expect(currentd.getDate()).toBeGreaterThanOrEqual(dfrom.getDate());
+
                 expect(component.todayIconFlag).toEqual(true);
             }
             if ((yesterdayd <= dto) && (yesterdayd >= dfrom)) {
+                component.yesterdayIconFlag = true;
+
+                expect(yesterdayd.getDate()).toBeLessThanOrEqual(dto.getDate());
+                expect(yesterdayd.getDate()).toBeGreaterThanOrEqual(dfrom.getDate());
                 expect(component.yesterdayIconFlag).toEqual(true);
             }
             component.todayIconFlag = true;
@@ -79,22 +87,18 @@ describe('amexio-date-range-picker', () => {
             const dfrom = new Date(element.from);
             const dto = new Date(element.to);
             const currentd = new Date();
+            const today = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() +1);
             const yesterdayd = new Date(currentd.getFullYear(), currentd.getMonth(), currentd.getDate() - 1);
 
             expect(dfrom).not.toBeNull();
             expect(dto).not.toBeNull();
             expect(currentd).not.toBeNull();
             expect(yesterdayd).not.toBeNull();
-
-            if ((currentd <= dto) && (currentd >= dfrom)) {
-                component.todayIconFlag = true;
-            }
-            if ((yesterdayd <= dto) && (yesterdayd >= dfrom)) {
-                component.yesterdayIconFlag = true;
-            }
-
+            expect(today.getDate()).toBeGreaterThanOrEqual(dto.getDate());
+            expect(today.getDate()).toBeLessThanOrEqual(dfrom.getDate());
+            component.todayIconFlag = false;
         });
-        component.todayIconFlag = false;
+        
         expect(component.todayIconFlag).toEqual(false);
         spyOn(component, 'updateFromTodate');
         expect(component.updateFromTodate).not.toHaveBeenCalled();
