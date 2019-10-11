@@ -104,15 +104,7 @@ describe('amexio-date-time-picker', () => {
     comp.numberofmonths = 1;
     expect(comp.totalwidth).toEqual(comp.numberofmonths * 290);
   });
-  it('calculateMonthBlocks() if and else condition Check', () => {
-    comp.rangepickerFlag = false;
-    comp.calculateMonthBlocks();
-    const screenwidth = window.screen.width;
-    const noofmonthblocks = parseInt(JSON.stringify(screenwidth / 290), 10);
-    comp.numberofmonths = 4;
-    comp.totalwidth = 1160;
-    expect(comp.totalwidth).toEqual(noofmonthblocks * 290);
-  });
+
   it('calculateMonthBlocks() else condition Check', () => {
     comp.rangepickerFlag = true;
     comp.calculateMonthBlocks();
@@ -123,7 +115,7 @@ describe('amexio-date-time-picker', () => {
     comp.dropdownDatePicker();
     expect(comp.drop).toBe(false);
 
-  }); 
+  });
   it('dropdownDatePicker() else condition Check', () => {
     comp.drop = false;
     comp.dropdownDatePicker();
@@ -137,21 +129,13 @@ describe('amexio-date-time-picker', () => {
 
   });
 
-    it('arrowClickBack() ', () => {
+  it('arrowClickBack() if condition ', () => {
     comp.minDate = '27-Mar-2016';
     comp.maxDate = '22-Feb-2019';
-    comp.yearList1 = [{ year: 2000, flag: false, disabled: false },
-    { year: 1, flag: false, disabled: false }, { year: 3, flag: false, disabled: false },
-    { year: 4, flag: false, disabled: false }, { year: 5, flag: false, disabled: false }];
-    comp.yearList2 = [{ year: 2020, flag: false, disabled: false },
-    { year: 15, flag: false, disabled: false },
-    { year: 8, flag: false, disabled: false },
-    { year: 18, flag: false, disabled: false },
-    { year: 65, flag: false, disabled: false }];
-
+   
     comp.arrowClickBack(event);
-    
-    
+
+
     expect(comp.minDate.length).toBeGreaterThan(0);
     expect(comp.maxDate.length).toBeGreaterThan(0);
     // else
@@ -162,10 +146,40 @@ describe('amexio-date-time-picker', () => {
     comp.yearList1[0].year = comp.yearList1[0].year - 10;
     expect(comp.yearList1[0].year - 10).toBeLessThan(comp.yearList1[0].year);
     expect(comp.yearList2[0].year - 10).toBeLessThan(comp.yearList2[0].year);
-    
-  });
-  
 
+  });
+
+
+
+  it('arrowClickBack() else condition ', () => {
+    comp.minDate = '';
+    comp.maxDate = '';
+    comp.yearList1 = [{ year: 2000, flag: false, disabled: false },
+    { year: 1, flag: false, disabled: false }, { year: 3, flag: false, disabled: false },
+    { year: 4, flag: false, disabled: false }, { year: 5, flag: false, disabled: false }];
+    comp.yearList2 = [{ year: 2020, flag: false, disabled: false },
+    { year: 15, flag: false, disabled: false },
+    { year: 8, flag: false, disabled: false },
+    { year: 18, flag: false, disabled: false },
+    { year: 65, flag: false, disabled: false }];
+
+    comp.arrowClickBack(event);
+
+    console.log(comp.minDate.length);
+    
+
+    expect(comp.minDate.length).toBeGreaterThan(0);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    // else
+    comp.minDate = '';
+    comp.maxDate = '';
+    expect(comp.minDate.length).toEqual(0);
+    expect(comp.maxDate.length).toEqual(0);
+    comp.yearList1[0].year = comp.yearList1[0].year - 10;
+    expect(comp.yearList1[0].year - 10).toBeLessThan(comp.yearList1[0].year);
+    expect(comp.yearList2[0].year - 10).toBeLessThan(comp.yearList2[0].year);
+
+  });
 });
 
 
