@@ -1226,6 +1226,108 @@ it('chkMonth Else Block', () => {
   expect(element.flag).toBeFalsy();
 })
 
+it('getDropdownMonth switch jan', () => {
+  let month = {
+    name: "Jan",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('Jan');
+  expect(comp.monthNo).toEqual(0);
+})
 
+it('getDropdownMonth switch feb', () => {
+  let month = {
+    name: "Feb",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('Feb');
+  expect(comp.monthNo).toEqual(1);
+})
+
+it('getDropdownMonth switch Mar', () => {
+  let month = {
+    name: "Mar",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('Mar');
+  expect(comp.monthNo).toEqual(2);
+})
+
+it('getDropdownMonth switch Apr', () => {
+  let month = {
+    name: "Apr",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('Apr');
+  expect(comp.monthNo).toEqual(3);
+})
+it('getDropdownMonth switch May', () => {
+  let month = {
+    name: "May",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('May');
+  expect(comp.monthNo).toEqual(4);
+})
+it('getDropdownMonth switch Jun', () => {
+  let month = {
+    name: "Jun",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('Jun');
+  expect(comp.monthNo).toEqual(5);
+})
+it('getDropdownMonth switch Jul', () => {
+  let month = {
+    name: "Jul",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('Jul');
+  expect(comp.monthNo).toEqual(6);
+})
+it('getDropdownMonth switch Aug', () => {
+  let month = {
+    name: "Aug",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('Aug');
+  expect(comp.monthNo).toEqual(7);
+})
+
+it('getDropdownMonth switch Sep', () => {
+  let month = {
+    name: "Sep",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('Sep');
+  expect(comp.monthNo).toEqual(8);
+})
+
+it('getDropdownMonth switch Oct', () => {
+  let month = {
+    name: "Oct",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('Oct');
+  expect(comp.monthNo).toEqual(9);
+})
+
+it('getDropdownMonth switch Nov', () => {
+  let month = {
+    name: "Nov",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('Nov');
+  expect(comp.monthNo).toEqual(10);
+})
+
+it('getDropdownMonth switch Dec', () => {
+  let month = {
+    name: "Dec",
+  }
+  comp.getDropdownMonth(month);
+  expect(month.name).toEqual('Dec');
+  expect(comp.monthNo).toEqual(11);
+})
 });
 
