@@ -213,6 +213,7 @@ describe('amexio-multi-date-time-picker', () => {
     comp.monthNo = null;
     comp.navigateDropdown();
     expect(comp.selectedDate.setFullYear(comp.yearNo)).toHaveBeenCalled;
+
     comp.drop = false;
     expect(comp.drop).toEqual(false);
     comp.validateMinMaxDate();
@@ -237,6 +238,22 @@ describe('amexio-multi-date-time-picker', () => {
     comp.setRange();
   });
 
+  it('navigateDropdown() condition Check this.yearNo = null && this.monthNo = null', () => {
+    comp.okispressed = true;
+    comp.selectedDate = new Date();
+    comp.yearNo = null;
+    comp.monthNo = null;
+    comp.navigateDropdown();
+    comp.drop = false;
+    expect(comp.drop).toEqual(false);
+    comp.validateMinMaxDate();
+    comp.disableddays();
+    comp.validateDaysForMinMax();
+    comp.resetRange();
+    comp.setRange();
+  });
+
+
 
 });
 
@@ -244,945 +261,939 @@ describe('amexio-multi-date-time-picker', () => {
 
 
 
-  
-  // it('Condition Check', () => {
-  //   comp.inlineDatepicker = true;
-  //   comp.dateformat = '';
-  //   fixture.detectChanges();
-  //   expect(true).toBe(comp.showToolTip);
-  //   expect(comp.dateformat).not.toBeUndefined();
-  //   // comp.setToday();
-  //   // expect(false).toBe(comp.showToolTip);
-  //   let element = { flag: true, name: 'Jan' };
-  //   comp.elementFlagMethod(element);
-  //   expect(false).toBe(element.flag);
-  //   comp.negateDrop();
-  //   expect(true).toBe(comp.hostFlag);
-  //   expect(false).toBe(comp.drop);
-  //   expect(true).toBe(comp.showToolTip);
-  //   expect(true).toBe(comp.tempFlag);
-  //   comp.monthList1 = [];
-  //   comp.monthList2 = [];
-  //   const Jan = { name: 'Jan' };
-  //   const Feb = { name: 'Feb' };
-  //   const Mar = { name: 'Mar' };
-  //   const Apr = { name: 'Apr' };
-  //   const May = { name: 'May' };
-  //   const Jun = { name: 'Jun' };
-  //   const Jul = { name: 'Jul' };
-  //   const Aug = { name: 'Aug' };
-  //   const Sep = { name: 'Sep' };
-  //   const Oct = { name: 'Oct' };
-  //   const Nov = { name: 'Nov' };
-  //   const Dec = { name: 'Dec' };
-  //   const month = { name: 'Jan' };
-  //   const monthnew = { name: 'Janone' };
+// comp.completeDaysArray = [
+//   {
+//     prevarrow: true,
+//     date: "Mon Feb 11 2019 17: 02: 58 GMT + 0530(India Standard Time)",
+//     montharray: [
+//       [
+//         {
+//           from: false,
+//           fulldate: "28 January 2019 Monday",
+//           id: "70918_id",
+//           isCurrentMonth: false,
+//           isDisabled: true,
+//           range: false,
+//           selected: false,
+//         }
+//       ]],
+//     month: "Febuary", year: 2019
+//   }
+// ]
+// comp.completeDaysArray.forEach((element: any, index: number) => {
+
+//   const alterDate = new Date(comp.selectedDate.getFullYear(), comp.selectedDate.getMonth() + index, comp.selectedDate.getDate());
+//   // expect(element.date).toBe(alterDate);
+//   expect(comp.createDaysForCurrentMonths(element.date)).toHaveBeenCalled;
+//   expect(element.montharray).toBe(comp.daysArray);
+//   expect(element.month).toBe(comp.getFullMonthName(element.date));
+//   expect(element.year ).toBe(element.date.getFullYear());
+// });
+
+// it('Condition Check', () => {
+//   comp.inlineDatepicker = true;
+//   comp.dateformat = '';
+//   fixture.detectChanges();
+//   expect(true).toBe(comp.showToolTip);
+//   expect(comp.dateformat).not.toBeUndefined();
+//   // comp.setToday();
+//   // expect(false).toBe(comp.showToolTip);
+//   let element = { flag: true, name: 'Jan' };
+//   comp.elementFlagMethod(element);
+//   expect(false).toBe(element.flag);
+//   comp.negateDrop();
+//   expect(true).toBe(comp.hostFlag);
+//   expect(false).toBe(comp.drop);
+//   expect(true).toBe(comp.showToolTip);
+//   expect(true).toBe(comp.tempFlag);
+//   comp.monthList1 = [];
+//   comp.monthList2 = [];
+//   const Jan = { name: 'Jan' };
+//   const Feb = { name: 'Feb' };
+//   const Mar = { name: 'Mar' };
+//   const Apr = { name: 'Apr' };
+//   const May = { name: 'May' };
+//   const Jun = { name: 'Jun' };
+//   const Jul = { name: 'Jul' };
+//   const Aug = { name: 'Aug' };
+//   const Sep = { name: 'Sep' };
+//   const Oct = { name: 'Oct' };
+//   const Nov = { name: 'Nov' };
+//   const Dec = { name: 'Dec' };
+//   const month = { name: 'Jan' };
+//   const monthnew = { name: 'Janone' };
   //   comp.getDropdownMonth(Jan);
-  //   expect(0).toEqual(comp.monthNo);
-  
+//   expect(0).toEqual(comp.monthNo);
+
   //   comp.getDropdownMonth(Feb);
-  //   expect(1).toEqual(comp.monthNo);
-  
+//   expect(1).toEqual(comp.monthNo);
+
   //   comp.getDropdownMonth(Mar);
-  //   expect(2).toEqual(comp.monthNo);
-  
+//   expect(2).toEqual(comp.monthNo);
+
   //   comp.getDropdownMonth(Apr);
-  //   expect(3).toEqual(comp.monthNo);
-  
+//   expect(3).toEqual(comp.monthNo);
+
   //   comp.getDropdownMonth(May);
-  //   expect(4).toEqual(comp.monthNo);
-  
+//   expect(4).toEqual(comp.monthNo);
+
   //   comp.getDropdownMonth(Jun);
-  //   expect(5).toEqual(comp.monthNo);
-  
+//   expect(5).toEqual(comp.monthNo);
+
   //   comp.getDropdownMonth(Jul);
-  //   expect(6).toEqual(comp.monthNo);
-  
+//   expect(6).toEqual(comp.monthNo);
+
   //   comp.getDropdownMonth(Aug);
-  //   expect(7).toEqual(comp.monthNo);
-  
+//   expect(7).toEqual(comp.monthNo);
+
   //   comp.getDropdownMonth(Sep);
-  //   expect(8).toEqual(comp.monthNo);
-  
+//   expect(8).toEqual(comp.monthNo);
+
   //   comp.getDropdownMonth(Oct);
-  //   expect(9).toEqual(comp.monthNo);
-  
+//   expect(9).toEqual(comp.monthNo);
+
   //   comp.getDropdownMonth(Nov);
-  //   expect(10).toEqual(comp.monthNo);
-  
+//   expect(10).toEqual(comp.monthNo);
+
   //   comp.getDropdownMonth(Dec);
-  //   expect(11).toEqual(comp.monthNo);
+//   expect(11).toEqual(comp.monthNo);
 
-  //   comp.getDropdownMonth(monthnew);
-  
-  //   // comp.yearFlag();
-  //   //--------------------------------------------------
-  //   const e1 = { year: 2011, flag: true };
-  //   const e2 = { year: 2011 };
+//   comp.getDropdownMonth(monthnew);
+
+//   // comp.yearFlag();
+//   //--------------------------------------------------
+//   const e1 = { year: 2011, flag: true };
+//   const e2 = { year: 2011 };
   //   comp.yearFlag(e1, e2);
-  //   expect(true).toBe(e1.flag);
-  
-  //   comp.checkValidity();
+//   expect(true).toBe(e1.flag);
+
+//   comp.checkValidity();
   //   comp.isValid = false;
-  //   expect(false).toBe(comp.isValid);
-  
-  //   comp.cancelDropdown();
-  //   expect(false).toBe(comp.drop);
-  //   expect(true).toBe(comp.showToolTip);
+//   expect(false).toBe(comp.isValid);
+
+//   comp.cancelDropdown();
+//   expect(false).toBe(comp.drop);
+//   expect(true).toBe(comp.showToolTip);
   //   comp.minDate = '22-Mar-2016';
-  //   comp.maxDate = '22-Feb-2019';
-  
-  //   comp.yearList1 = [{ year: 2018, flag: false, disabled: false }];
-  //   comp.yearList2 = [{ year: 2018, flag: false, disabled: false }];
-  //   comp.chkYearList1();
-  //   expect(false).toBe(comp.backArrowFlag);
-  //   expect(false).toBe(comp.forwardArrowFlag);
+//   comp.maxDate = '22-Feb-2019';
 
-  //   const el = { year: 2010, disabled: true };
-  
+//   comp.yearList1 = [{ year: 2018, flag: false, disabled: false }];
+//   comp.yearList2 = [{ year: 2018, flag: false, disabled: false }];
+//   comp.chkYearList1();
+  //   expect(false).toBe(comp.backArrowFlag);
+//   expect(false).toBe(comp.forwardArrowFlag);
+
+//   const el = { year: 2010, disabled: true };
+
   //   comp.disableMinMaxYear(el, new Date(), new Date());
-  //   expect(true).toBe(el.disabled);
-  
-  //   comp.yearFlagDisable(el);
-  //   expect(true).toBe(el.disabled);
-  
-  //   comp.rechkYearFlag();
-  //   expect(false).toBe(comp.backArrowFlag);
-  
-  //   const elt = { year: 2018, disabled: true };
-  //   comp.alterBackArrow(elt, new Date());
-  //   expect(true).toBe(comp.backArrowFlag);
-  
-  //   comp.yearList1 = [{ year: 0, flag: false, disabled: false },
-  //   { year: 1, flag: false, disabled: false }, { year: 3, flag: false, disabled: false },
-  //   { year: 4, flag: false, disabled: false }, { year: 5, flag: false, disabled: false }];
-  //   comp.yearList2 = [{ year: 20, flag: false, disabled: false },
-  //   { year: 15, flag: false, disabled: false },
-  //   { year: 8, flag: false, disabled: false },
-  //   { year: 18, flag: false, disabled: false },
-  //   { year: 65, flag: false, disabled: false }];
-  //   comp.backArrowFlag = false;
-  //   comp.resetYearFlag();
-  //   expect(false).toBe(comp.backArrowFlag);
-  
-  //   comp.daysArray = [{ date: new Date() }];
-  //   comp.resetSelection(new Date());
+//   expect(true).toBe(el.disabled);
 
-  //   comp.setMaxFullYear(new Date('22-Mar-2016'), new Date(), 1);
-  
+  //   comp.yearFlagDisable(el);
+//   expect(true).toBe(el.disabled);
+
+  //   comp.rechkYearFlag();
+//   expect(false).toBe(comp.backArrowFlag);
+
+//   const elt = { year: 2018, disabled: true };
+  //   comp.alterBackArrow(elt, new Date());
+//   expect(true).toBe(comp.backArrowFlag);
+
+//   comp.yearList1 = [{ year: 0, flag: false, disabled: false },
+//   { year: 1, flag: false, disabled: false }, { year: 3, flag: false, disabled: false },
+//   { year: 4, flag: false, disabled: false }, { year: 5, flag: false, disabled: false }];
+//   comp.yearList2 = [{ year: 20, flag: false, disabled: false },
+//   { year: 15, flag: false, disabled: false },
+//   { year: 8, flag: false, disabled: false },
+//   { year: 18, flag: false, disabled: false },
+//   { year: 65, flag: false, disabled: false }];
+//   comp.backArrowFlag = false;
+  //   comp.resetYearFlag();
+//   expect(false).toBe(comp.backArrowFlag);
+
+  //   comp.daysArray = [{ date: new Date() }];
+//   comp.resetSelection(new Date());
+
+//   comp.setMaxFullYear(new Date('22-Mar-2016'), new Date(), 1);
+
   //   comp.onDateClick(new Date());
   //   expect(true).toBe(comp.showToolTip);
-  
 
-  //   comp.setPlusData(new Date(), new Date(), 2);
-  
-  //   comp.setPlusData(new Date('22-Mar-2016'), new Date(), 2);
+
+//   comp.setPlusData(new Date(), new Date(), 2);
+
+//   comp.setPlusData(new Date('22-Mar-2016'), new Date(), 2);
   //   comp.setMinusData(new Date('22-Mar-2016'), new Date(), 2);
   //   comp.setMinFullYear(new Date('22-DEC-2019'), new Date(), 1);
-  
 
-  //   // comp.setDateData1('plus',2,new Event(0));
-  
-  //   comp.currrentDate = new Date();
+
+//   // comp.setDateData1('plus',2,new Event(0));
+
+//   comp.currrentDate = new Date();
   //   comp.initDate();
-  //   expect('').toEqual('');
-  
-  //   //*************chk this */
-  //   // comp.writeValue(11);
+//   expect('').toEqual('');
 
-  //   comp.disableYearFlag();
-  
+  //   //*************chk this */
+//   // comp.writeValue(11);
+
+//   comp.disableYearFlag();
+
   //   // comp.onFocusOut(new Date());
-  //   // expect(false).toBe(comp.isValid);
-  
+//   // expect(false).toBe(comp.isValid);
+
   //   comp.minMaxDateFound();
-  //   expect(false).toBe(comp.forwardArrowFlag);
-  
-  //   const eone = { name: 'Jan', flag: true };
-  //   const etwo = { name: 'Jan' };
+//   expect(false).toBe(comp.forwardArrowFlag);
+
+//   const eone = { name: 'Jan', flag: true };
+//   const etwo = { name: 'Jan' };
   //   comp.chkMonth(eone, etwo);
-  //   expect(true).toBe(eone.flag);
-  
-  //   comp.monthList1 = [{ name: 'Jan', flag: false, num: 4 }, { name: 'Feb', flag: false },
-  //   { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
-  //   { name: 'Jun', flag: false }];
+//   expect(true).toBe(eone.flag);
+
+//   comp.monthList1 = [{ name: 'Jan', flag: false, num: 4 }, { name: 'Feb', flag: false },
+//   { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
+//   { name: 'Jun', flag: false }];
   //   comp.monthList2 = [{ name: 'Jul', flag: false }, { name: 'Aug', flag: false }, { name: 'Sep', flag: false },
-  //   { name: 'Oct', flag: false }, { name: 'Nov', flag: false }, { name: 'Dec', flag: false }];
-  
-  //   comp.dropdownDatePicker();
-  //   expect(true).toBe(comp.hostFlag);
+//   { name: 'Oct', flag: false }, { name: 'Nov', flag: false }, { name: 'Dec', flag: false }];
+
+//   comp.dropdownDatePicker();
+//   expect(true).toBe(comp.hostFlag);
   //   expect(true).toBe(comp.drop);
   //   expect(false).toBe(comp.tempFlag);
 
 
-  
 
-  // });
-  
-  // it('initialize innervalue', () => {
-  //   comp.value = 'date';
+
+// });
+
+// it('initialize innervalue', () => {
+//   comp.value = 'date';
   //   expect(comp['innerValue']).toEqual(comp.value);
-  // });
-  
-  // it('setDateData()', () => {
+// });
+
+// it('setDateData()', () => {
   // let state: string, mon: number = 9, event1: any;
-  // //= 'MouseEvent {isTrusted: true, screenX: 280, screenY: 224, clientX: 236, clientY: 145, …}';
-  
-  // comp.setDateData(state, mon, event);
-  // expect(event.preventDefault).toBeTruthy();
-  // comp.currrentDate = new Date();
-  // comp.maxDate = "27-Feb-2019";
-  // comp.minDate = "22-Jan-2015";
-  // const d = new Date(comp.currrentDate.getFullYear(), comp.currrentDate.getMonth(), comp.currrentDate.getDate());
-  // const min = new Date(comp.minDate);
+// //= 'MouseEvent {isTrusted: true, screenX: 280, screenY: 224, clientX: 236, clientY: 145, …}';
+
+// comp.setDateData(state, mon, event);
+// expect(event.preventDefault).toBeTruthy();
+// comp.currrentDate = new Date();
+// comp.maxDate = "27-Feb-2019";
+// comp.minDate = "22-Jan-2015";
+// const d = new Date(comp.currrentDate.getFullYear(), comp.currrentDate.getMonth(), comp.currrentDate.getDate());
+// const min = new Date(comp.minDate);
   // const max = new Date(comp.maxDate);
-  // comp.currrentDate = d;
-  
-  // state = 'plus';
-  // expect(state).toEqual('plus');
-  // comp.setPlusData(d, max, mon);
-  // state = 'minus';
-  // expect(state).toEqual('minus');
-  // comp.setPlusData(d, min, mon);
-  // expect(comp.currrentDate).toEqual(d);
-  // comp.initDate();
+// comp.currrentDate = d;
+
+// state = 'plus';
+// expect(state).toEqual('plus');
+// comp.setPlusData(d, max, mon);
+// state = 'minus';
+// expect(state).toEqual('minus');
+// comp.setPlusData(d, min, mon);
+// expect(comp.currrentDate).toEqual(d);
+// comp.initDate();
   // event.stopPropagation();
   // });
 
 
 
-  
-  
-  // it('setDateData1()', () => {
+
+
+// it('setDateData1()', () => {
   //   let state: string, mon: number = 9, event1: any;
-  //   //= 'MouseEvent {isTrusted: true, screenX: 280, screenY: 224, clientX: 236, clientY: 145, …}';
-  
-  //   comp.setDateData1(state, mon, event);
-  //   expect(event.preventDefault).toBeTruthy();
-  //   comp.currrentDate = new Date();
-  //   comp.maxDate = "27-Feb-2019";
-  //   comp.minDate = "22-Jan-2015";
-  //   const d = new Date(comp.currrentDate.getFullYear(), comp.currrentDate.getMonth(), comp.currrentDate.getDate());
-  //   const min = new Date(comp.minDate);
+//   //= 'MouseEvent {isTrusted: true, screenX: 280, screenY: 224, clientX: 236, clientY: 145, …}';
+
+//   comp.setDateData1(state, mon, event);
+//   expect(event.preventDefault).toBeTruthy();
+//   comp.currrentDate = new Date();
+//   comp.maxDate = "27-Feb-2019";
+//   comp.minDate = "22-Jan-2015";
+//   const d = new Date(comp.currrentDate.getFullYear(), comp.currrentDate.getMonth(), comp.currrentDate.getDate());
+//   const min = new Date(comp.minDate);
   //   const max = new Date(comp.maxDate);
-  //   comp.currrentDate = d;
-  
-  //   state = 'plus';
-  //   expect(state).toEqual('plus');
-  //   expect(comp.maxDate.length).toBeGreaterThan(0);
-  //   expect(d.getFullYear()).toBeLessThanOrEqual(max.getFullYear() - 1);
-  //   d.setMonth(d.getMonth() + mon);
-  //   //d.setFullYear(2021);
-  //   comp.maxDate = "";
+//   comp.currrentDate = d;
+
+//   state = 'plus';
+//   expect(state).toEqual('plus');
+//   expect(comp.maxDate.length).toBeGreaterThan(0);
+//   expect(d.getFullYear()).toBeLessThanOrEqual(max.getFullYear() - 1);
+//   d.setMonth(d.getMonth() + mon);
+//   //d.setFullYear(2021);
+//   comp.maxDate = "";
   //   expect(comp.maxDate.length).toEqual(0);
-  //   d.setMonth(d.getMonth() + mon);
-  
-  //   state = 'minus';
+//   d.setMonth(d.getMonth() + mon);
+
+//   state = 'minus';
   //   expect(state).toEqual('minus');
-  //   expect(comp.minDate.length).toBeGreaterThan(0);
-  
-  //   expect(d.getFullYear()).toBeGreaterThanOrEqual(min.getFullYear() + 1);
-  //   d.setMonth(d.getMonth() - mon);
-  //   comp.minDate = "";
+//   expect(comp.minDate.length).toBeGreaterThan(0);
+
+//   expect(d.getFullYear()).toBeGreaterThanOrEqual(min.getFullYear() + 1);
+//   d.setMonth(d.getMonth() - mon);
+//   comp.minDate = "";
   //   expect(comp.minDate.length).toEqual(0);
-  //   d.setMonth(d.getMonth() - mon);
-  
+//   d.setMonth(d.getMonth() - mon);
+
   //   comp.currrentDate = d;
-  //   expect(comp.currrentDate).toEqual(d);
-  
-  //   comp.initDate();
+//   expect(comp.currrentDate).toEqual(d);
+
+//   comp.initDate();
   //   event.stopPropagation();
-  // });
-  
-  // it('nextYear()', () => {
-  //   comp['nextYear'](event);
-  //  //  comp.setDateData1('plus', 12, event);
-  // });
-  // it('prevYear()', () => {
-  //   comp['prevYear'](event);
+// });
+
+// it('nextYear()', () => {
+//   comp['nextYear'](event);
+//  //  comp.setDateData1('plus', 12, event);
+// });
+// it('prevYear()', () => {
+//   comp['prevYear'](event);
   // //  comp.setDateData1('minus', 12, event);
   // });
 
 
 
 
-  
-  
-  // it('nextmonth', () => {
-  //   let date = [
-  //     {
-  //       "from": "13-Jul-2018",
-  //       "to": "15-Jul-2018"
-  //     },
-  //     {
-  //       "from": "20-Jul-2018",
-  //       "to": "23-Jul-2018"
-  //     },
-  //     {
-  //       "from": "15-Jun-2018",
-  //       "to": "19-Jun-2018"
-  //     },
-  //     {
-  //       "from": "27-Jun-2018",
-  //       "to": "29-Jun-2018"
-  //     },
-  //     {
-  //       "from": "23-Aug-2018",
-  //       "to": "28-Aug-2018"
-  //     },
-  //     {
-  //       "from": "17-Aug-2018",
-  //       "to": "19-Aug-2018"
-  //     },
-  //     {
-  //       "from": "19-Sep-2018",
-  //       "to": "21-Sep-2018"
-  //     },
-  //     {
-  //       "from": "1-Nov-2018",
-  //       "to": "30-Nov-2018"
-  //     }
-  //   ];
-  //   comp['nextMonth'](event);
 
-  //   // event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-  
-  //   comp.setDateData('plus', 1, event);
-  //   // expect(event.preventDefault).toBeTruthy();
-  
-  //   comp['disableddays'](date);
-  // });
-  
-  
-  // it('prevMonth', () => {
-  //   let date = [
-  //     {
-  //       "from": "13-Jul-2018",
-  //       "to": "15-Jul-2018"
-  //     },
-  //     {
-  //       "from": "20-Jul-2018",
-  //       "to": "23-Jul-2018"
-  //     },
-  //     {
-  //       "from": "15-Jun-2018",
-  //       "to": "19-Jun-2018"
-  //     },
-  //     {
-  //       "from": "27-Jun-2018",
-  //       "to": "29-Jun-2018"
-  //     },
-  //     {
-  //       "from": "23-Aug-2018",
-  //       "to": "28-Aug-2018"
-  //     },
-  //     {
-  //       "from": "17-Aug-2018",
-  //       "to": "19-Aug-2018"
-  //     },
-  //     {
-  //       "from": "19-Sep-2018",
-  //       "to": "21-Sep-2018"
-  //     },
-  //     {
-  //       "from": "1-Nov-2018",
-  //       "to": "30-Nov-2018"
-  //     }
+
+// it('nextmonth', () => {
+//   let date = [
+//     {
+//       "from": "13-Jul-2018",
+//       "to": "15-Jul-2018"
+//     },
+//     {
+//       "from": "20-Jul-2018",
+//       "to": "23-Jul-2018"
+//     },
+//     {
+//       "from": "15-Jun-2018",
+//       "to": "19-Jun-2018"
+//     },
+//     {
+//       "from": "27-Jun-2018",
+//       "to": "29-Jun-2018"
+//     },
+//     {
+//       "from": "23-Aug-2018",
+//       "to": "28-Aug-2018"
+//     },
+//     {
+//       "from": "17-Aug-2018",
+//       "to": "19-Aug-2018"
+//     },
+//     {
+//       "from": "19-Sep-2018",
+//       "to": "21-Sep-2018"
+//     },
+//     {
+//       "from": "1-Nov-2018",
+//       "to": "30-Nov-2018"
+//     }
   //   ];
-  //   comp['prevMonth'](event);
-  
+//   comp['nextMonth'](event);
+
+//   // event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+
   //   comp.setDateData('plus', 1, event);
-  //   // expect(event.preventDefault).toBeTruthy();
-  
+//   // expect(event.preventDefault).toBeTruthy();
+
   //   comp['disableddays'](date);
   // });
-  
-  // it('resetselection()', () => {
-  //   let dateObj = new Date("Thu Jul 25 2017 00:00:00 GMT+0530 (IST)");
-  //   let daysArray: any = [];
-  //   let rowDays: any;
-  //   const day: any = {
-  //     date: null, selected: false, isCurrentMonth: null, isDisabled: false,
-  //   };
-  //   day.date = new Date(dateObj.getTime());
-  //   comp.resetSelection(dateObj);
-  //   day.selected = true;
-  //   expect(day.date.getTime()).toEqual(dateObj.getTime());
-  //   expect(day.selected).toEqual(true);
-  //   day.date.setTime(1332403882588);
-  //   day.selected = false;
+
+
+// it('prevMonth', () => {
+//   let date = [
+//     {
+//       "from": "13-Jul-2018",
+//       "to": "15-Jul-2018"
+//     },
+//     {
+//       "from": "20-Jul-2018",
+//       "to": "23-Jul-2018"
+//     },
+//     {
+//       "from": "15-Jun-2018",
+//       "to": "19-Jun-2018"
+//     },
+//     {
+//       "from": "27-Jun-2018",
+//       "to": "29-Jun-2018"
+//     },
+//     {
+//       "from": "23-Aug-2018",
+//       "to": "28-Aug-2018"
+//     },
+//     {
+//       "from": "17-Aug-2018",
+//       "to": "19-Aug-2018"
+//     },
+//     {
+//       "from": "19-Sep-2018",
+//       "to": "21-Sep-2018"
+//     },
+//     {
+//       "from": "1-Nov-2018",
+//       "to": "30-Nov-2018"
+//     }
+  //   ];
+//   comp['prevMonth'](event);
+
+  //   comp.setDateData('plus', 1, event);
+//   // expect(event.preventDefault).toBeTruthy();
+
+  //   comp['disableddays'](date);
+// });
+
+// it('resetselection()', () => {
+//   let dateObj = new Date("Thu Jul 25 2017 00:00:00 GMT+0530 (IST)");
+//   let daysArray: any = [];
+//   let rowDays: any;
+//   const day: any = {
+//     date: null, selected: false, isCurrentMonth: null, isDisabled: false,
+//   };
+//   day.date = new Date(dateObj.getTime());
+//   comp.resetSelection(dateObj);
+//   day.selected = true;
+//   expect(day.date.getTime()).toEqual(dateObj.getTime());
+//   expect(day.selected).toEqual(true);
+//   day.date.setTime(1332403882588);
+//   day.selected = false;
   //   expect(day.selected).toEqual(false);
   // });
-  
-  
+
+
   // it('ngOnInit', () => {
-  //   comp.ngOnInit();
-  
+//   comp.ngOnInit();
+
   //   comp.maxDate = "22-Feb-2019"
-  //   comp.minDate = "22-Feb-2015"
-  
-  //   expect(comp.minDate.length).toBeGreaterThan(0);
-  //   comp.minMaxDateFound();
+//   comp.minDate = "22-Feb-2015"
+
+//   expect(comp.minDate.length).toBeGreaterThan(0);
+//   comp.minMaxDateFound();
   //   expect(comp.maxDate.length).toBeGreaterThan(0);
-  //   comp.minMaxDateFound();
-  
-  //   expect(comp.minDate.length).toBeGreaterThan(0);
-  //   expect(comp.maxDate.length).toBeGreaterThan(0);
+//   comp.minMaxDateFound();
+
+//   expect(comp.minDate.length).toBeGreaterThan(0);
+//   expect(comp.maxDate.length).toBeGreaterThan(0);
   //   const min = new Date(comp.minDate);
-  //   const max = new Date(comp.maxDate);
+//   const max = new Date(comp.maxDate);
 
-  //   // comp.disableMinMaxYear(comp.yearList1[0], min, max);
+//   // comp.disableMinMaxYear(comp.yearList1[0], min, max);
 
-  //   // comp.disableMinMaxYear(comp.yearList2[0], min, max);
+//   // comp.disableMinMaxYear(comp.yearList2[0], min, max);
 
   // });
-  
-  
-  // it('setToday()', () => {
-  //   comp['setToday']();
-  //   // comp.currrentDate = new Date();
-  //   comp.initDate();
-  //   comp.showToolTip = true;
-  //   comp.showToolTip = !comp.showToolTip;
+
+
+// it('setToday()', () => {
+//   comp['setToday']();
+//   // comp.currrentDate = new Date();
+//   comp.initDate();
+//   comp.showToolTip = true;
+//   comp.showToolTip = !comp.showToolTip;
   //   expect(comp.showToolTip).toEqual(false);
-  // });
-  
-  // it('onBlur()', () => {
-  //   comp.onBlur();
+// });
+
+// it('onBlur()', () => {
+//   comp.onBlur();
   //   comp['onTouchedCallback']();
-  // });
-  
-  // it('registerOnChange()', () => {
-  //   let fn;
-  //   comp.registerOnChange(fn);
-  //   comp['onChangeCallback'] = fn;
+// });
+
+// it('registerOnChange()', () => {
+//   let fn;
+//   comp.registerOnChange(fn);
+//   comp['onChangeCallback'] = fn;
   //   expect(comp['onChangeCallback']).toEqual(fn);
-  // });
-  
-  // it('registerOnTouched()', () => {
-  //   let fn;
-  //   comp.registerOnTouched(fn);
-  //   comp['onTouchedCallback'] = fn;
+// });
+
+// it('registerOnTouched()', () => {
+//   let fn;
+//   comp.registerOnTouched(fn);
+//   comp['onTouchedCallback'] = fn;
   //   expect(comp['onTouchedCallback']).toEqual(fn);
   // });
-  
 
-  // it('writeValue()', () => {
-  
+
+// it('writeValue()', () => {
+
   //   let value = 11;
-  //   comp.writeValue(value);
-  
-  //   expect(value).not.toEqual(comp['innerValue']);
+//   comp.writeValue(value);
+
+//   expect(value).not.toEqual(comp['innerValue']);
   //   comp['innerValue'] = value;
-  //   expect(comp['innerValue']).toEqual(value);
+//   expect(comp['innerValue']).toEqual(value);
 
-  //   expect(comp.required).toEqual(true);
-  
+//   expect(comp.required).toEqual(true);
+
   //   let bool = comp['innerValue'] instanceof Date;
-  //   expect(bool).toEqual(true);
+//   expect(bool).toEqual(true);
 
-  // });
-  
-  // it('createDaysForCurrentMonths()', () => {
-  //   event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-  //   expect(event.preventDefault).toBeTruthy();
-  //   let selectedperiod = new Date();
-  //   comp['createDaysForCurrentMonths'](selectedperiod);
-  //   comp.daysArray = [];
-  //   const extras = (selectedperiod.getDay() + 6) % 7;
-  //   let rowDays = [];
-  //   const day: any = {
-  //     date: null, selected: false, isCurrentMonth: null, isDisabled: false,
-  //   };
+// });
+
+// it('createDaysForCurrentMonths()', () => {
+//   event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+//   expect(event.preventDefault).toBeTruthy();
+//   let selectedperiod = new Date();
+//   comp['createDaysForCurrentMonths'](selectedperiod);
+//   comp.daysArray = [];
+//   const extras = (selectedperiod.getDay() + 6) % 7;
+//   let rowDays = [];
+//   const day: any = {
+//     date: null, selected: false, isCurrentMonth: null, isDisabled: false,
+//   };
   //   day.date = new Date(selectedperiod.getTime());
-  //   day.isCurrentMonth = true;
-  
-  //   comp.dateModel = new Date();
-  //   expect(comp.dateModel).not.toBeNull;
-  //   expect(selectedperiod.getMonth()).toEqual(comp.dateModel.getMonth());
-  //   expect(selectedperiod.getDate()).toEqual(comp.dateModel.getDate());
+//   day.isCurrentMonth = true;
+
+//   comp.dateModel = new Date();
+//   expect(comp.dateModel).not.toBeNull;
+//   expect(selectedperiod.getMonth()).toEqual(comp.dateModel.getMonth());
+//   expect(selectedperiod.getDate()).toEqual(comp.dateModel.getDate());
   //   day.selected = true;
+//   expect(day.selected).toEqual(true);
+
+//   comp.currrentDate = new Date();
+//   expect(selectedperiod.getMonth()).toEqual(comp.currrentDate.getMonth());
+//   expect(selectedperiod.getDate()).toEqual(comp.currrentDate.getDate());
+//   expect(comp.dateModel).not.toBeNull;
+//   day.selected = false;
+//   expect(day.selected).toEqual(false);
+//   comp.dateModel = '';
+//   expect(comp.dateModel.length).toEqual(0);
+//   day.selected = true;
   //   expect(day.selected).toEqual(true);
-  
-  //   comp.currrentDate = new Date();
-  //   expect(selectedperiod.getMonth()).toEqual(comp.currrentDate.getMonth());
-  //   expect(selectedperiod.getDate()).toEqual(comp.currrentDate.getDate());
-  //   expect(comp.dateModel).not.toBeNull;
-  //   day.selected = false;
-  //   expect(day.selected).toEqual(false);
-  //   comp.dateModel = '';
-  //   expect(comp.dateModel.length).toEqual(0);
-  //   day.selected = true;
-  //   expect(day.selected).toEqual(true);
-  // });
-  
-  // it('onSelect()', () => {
-  //   comp.onSelect();
-  //   comp.showToolTip = false;
+// });
+
+// it('onSelect()', () => {
+//   comp.onSelect();
+//   comp.showToolTip = false;
   //   expect(comp.showToolTip).toEqual(false);
   // });
-  
-  
-  // it('validateMaxDate()', () => {
-  //   let days = new Date("27-May-2017");
-  //   let max = new Date("22-Feb-2015");;
-  //   comp['validateMaxDate'](days, max);
-  //   //if
-  //   let test = expect(days.getDate()).toBeGreaterThan(max.getDate());
+
+
+// it('validateMaxDate()', () => {
+//   let days = new Date("27-May-2017");
+//   let max = new Date("22-Feb-2015");;
+//   comp['validateMaxDate'](days, max);
+//   //if
+//   let test = expect(days.getDate()).toBeGreaterThan(max.getDate());
   //   let test1 = expect(days.getMonth()).toBeGreaterThanOrEqual(max.getMonth());
-  //   expect(days.getFullYear()).toBeGreaterThanOrEqual(max.getFullYear());
-  
-  //   //else if
-  //   max.setFullYear(2017);
+//   expect(days.getFullYear()).toBeGreaterThanOrEqual(max.getFullYear());
+
+//   //else if
+//   max.setFullYear(2017);
   //   expect(days.getMonth()).toBeGreaterThan(max.getMonth());
   //   expect(days.getFullYear()).toEqual(max.getFullYear());
-  
 
-  // });
-  
-  // it('getDropdownMonth()', () => {
-  //   let month = 2;
-  //   // comp.getDropdownMonth(month);
-  //   comp.monthList1 = [{ name: 'Jan', flag: false, num: 4 }, { name: 'Feb', flag: false },
-  //   { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
-  //   { name: 'Jun', flag: false }];
+
+// });
+
+// it('getDropdownMonth()', () => {
+//   let month = 2;
+//   // comp.getDropdownMonth(month);
+//   comp.monthList1 = [{ name: 'Jan', flag: false, num: 4 }, { name: 'Feb', flag: false },
+//   { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
+//   { name: 'Jun', flag: false }];
   //   comp.elementFlagMethod(comp.monthList1[1]);
-  // });
-  
-  // it('disableddays()', () => {
-  //   let date = [
-  //     {
-  //       "from": "13-Jul-2018",
-  //       "to": "15-Jul-2018"
-  //     },
-  //     {
-  //       "from": "20-Jul-2018",
-  //       "to": "23-Jul-2018"
-  //     },
-  //     {
-  //       "from": "15-Jun-2018",
-  //       "to": "19-Jun-2018"
-  //     },
-  //     {
-  //       "from": "27-Jun-2018",
-  //       "to": "29-Jun-2018"
-  //     },
-  //     {
-  //       "from": "23-Aug-2018",
-  //       "to": "28-Aug-2018"
-  //     },
-  //     {
-  //       "from": "17-Aug-2018",
-  //       "to": "19-Aug-2018"
-  //     },
-  //     {
-  //       "from": "19-Sep-2018",
-  //       "to": "21-Sep-2018"
-  //     },
-  //     {
-  //       "from": "1-Nov-2018",
-  //       "to": "30-Nov-2018"
-  //     }
-  //   ];
-  //   comp.daysArray = [[{
-  //     date: new Date('21-Jul-2018'),
-  //     isCurrentMonth: false, isDisabled: false,
-  //     selected: false
-  //   }]]
-  //   comp['disableddays'](date);
-  //   expect(date).not.toBeNull; //validates if
-  //   expect(date.length).toBeGreaterThan(0);
-  //   const From = new Date(date[1].from);
-  //   const To = new Date(date[1].to);
-  
-  //   expect(comp.daysArray[0][0].date.getFullYear()).toBeLessThanOrEqual(To.getFullYear());
-  //   expect(comp.daysArray[0][0].date.getMonth()).toBeLessThanOrEqual(To.getMonth());
-  //   expect(comp.daysArray[0][0].date.getDate()).toBeLessThanOrEqual(To.getDate());
-  
-  //   expect(comp.daysArray[0][0].date.getFullYear()).toBeGreaterThanOrEqual(From.getFullYear());
-  //   expect(comp.daysArray[0][0].date.getMonth()).toBeGreaterThanOrEqual(From.getMonth());
-  //   expect(comp.daysArray[0][0].date.getDate()).toBeGreaterThanOrEqual(From.getDate());
-  //   comp.daysArray[0][0].isDisabled = true;
-  //   expect(comp.daysArray[0][0].isDisabled).toEqual(true);
-  // });
-  
-  // it('arrowClickForward()', () => {
-  //   // comp.arrowClickForward("");
-  //   comp.disableYearFlag();
-  //   comp.minDate = '22-Mar-2016';
-  //   comp.maxDate = '27-Oct-2018';
-  //   comp.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-  //   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-  //   { year: 0, flag: false, disabled: false }];
-  //   comp.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-  //   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-  //   { year: 0, flag: false, disabled: false }];
-  
-  //   expect(comp.minDate.length).toBeGreaterThan(0);
-  //   comp['forwardArrow']();
-  //   comp.minDate = '';
-  //   expect(comp.minDate.length).toEqual(0);
-  
-  //   comp.yearList1[0].year = comp.yearList1[0].year + 10;
-  //   comp.yearList2[0].year = comp.yearList2[0].year + 10;
-  
-  //   comp.disableYearFlag();
-  //   comp.rechkYearFlag();
-  // });
+// });
 
-  // it('onFocusOut()', () => {
-  
-  //   let value = { value: 'Mar' };
-  //   comp.onFocusOut(value);
-  //   expect(Date.parse(value.value)).toBeNaN;
-  //   comp.isValid = false;
-  //   expect(comp.isValid).toEqual(false);
-  //   value.value = '';
-  //   value.value = '22-Mar-2016';
-  //   expect(Date.parse(value.value)).not.toBeNaN;
-  //   comp.value = Date.parse(value.value);
+// it('disableddays()', () => {
+//   let date = [
+//     {
+//       "from": "13-Jul-2018",
+//       "to": "15-Jul-2018"
+//     },
+//     {
+//       "from": "20-Jul-2018",
+//       "to": "23-Jul-2018"
+//     },
+//     {
+//       "from": "15-Jun-2018",
+//       "to": "19-Jun-2018"
+//     },
+//     {
+//       "from": "27-Jun-2018",
+//       "to": "29-Jun-2018"
+//     },
+//     {
+//       "from": "23-Aug-2018",
+//       "to": "28-Aug-2018"
+//     },
+//     {
+//       "from": "17-Aug-2018",
+//       "to": "19-Aug-2018"
+//     },
+//     {
+//       "from": "19-Sep-2018",
+//       "to": "21-Sep-2018"
+//     },
+//     {
+//       "from": "1-Nov-2018",
+//       "to": "30-Nov-2018"
+//     }
+//   ];
+//   comp.daysArray = [[{
+//     date: new Date('21-Jul-2018'),
+//     isCurrentMonth: false, isDisabled: false,
+//     selected: false
+//   }]]
+//   comp['disableddays'](date);
+//   expect(date).not.toBeNull; //validates if
+//   expect(date.length).toBeGreaterThan(0);
+  //   const From = new Date(date[1].from);
+//   const To = new Date(date[1].to);
+
+//   expect(comp.daysArray[0][0].date.getFullYear()).toBeLessThanOrEqual(To.getFullYear());
+  //   expect(comp.daysArray[0][0].date.getMonth()).toBeLessThanOrEqual(To.getMonth());
+//   expect(comp.daysArray[0][0].date.getDate()).toBeLessThanOrEqual(To.getDate());
+
+//   expect(comp.daysArray[0][0].date.getFullYear()).toBeGreaterThanOrEqual(From.getFullYear());
+//   expect(comp.daysArray[0][0].date.getMonth()).toBeGreaterThanOrEqual(From.getMonth());
+//   expect(comp.daysArray[0][0].date.getDate()).toBeGreaterThanOrEqual(From.getDate());
+//   comp.daysArray[0][0].isDisabled = true;
+  //   expect(comp.daysArray[0][0].isDisabled).toEqual(true);
+// });
+
+// it('arrowClickForward()', () => {
+//   // comp.arrowClickForward("");
+//   comp.disableYearFlag();
+//   comp.minDate = '22-Mar-2016';
+//   comp.maxDate = '27-Oct-2018';
+//   comp.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+//   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+//   { year: 0, flag: false, disabled: false }];
+//   comp.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+  //   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+//   { year: 0, flag: false, disabled: false }];
+
+//   expect(comp.minDate.length).toBeGreaterThan(0);
+//   comp['forwardArrow']();
+  //   comp.minDate = '';
+//   expect(comp.minDate.length).toEqual(0);
+
+  //   comp.yearList1[0].year = comp.yearList1[0].year + 10;
+//   comp.yearList2[0].year = comp.yearList2[0].year + 10;
+
+//   comp.disableYearFlag();
+  //   comp.rechkYearFlag();
+// });
+
+// it('onFocusOut()', () => {
+
+//   let value = { value: 'Mar' };
+//   comp.onFocusOut(value);
+//   expect(Date.parse(value.value)).toBeNaN;
+//   comp.isValid = false;
+//   expect(comp.isValid).toEqual(false);
+//   value.value = '';
+//   value.value = '22-Mar-2016';
+//   expect(Date.parse(value.value)).not.toBeNaN;
+//   comp.value = Date.parse(value.value);
   //   comp.isValid = true;
-  // });
-  
-  // it('yearFlagNegate()', () => {
-  //   let element = { year: 0, flag: true, disabled: false };
+// });
+
+// it('yearFlagNegate()', () => {
+//   let element = { year: 0, flag: true, disabled: false };
   //   comp['yearFlagNegate'](element);
-  // });
-  
+// });
+
   // it('elementFlagMethod()', () => {
-  //   let element = { year: 0, flag: false, disabled: false };
-  
-  //   comp.elementFlagMethod(element);
+//   let element = { year: 0, flag: false, disabled: false };
+
+//   comp.elementFlagMethod(element);
   //   expect(element.flag).toEqual(false);
-  // });
-  
-  // it('yearFlag()', () => {
-  //   let element = { year: 2010, flag: false, disabled: false };
-  //   let year = { year: 2010 };
-  //   comp.yearFlag(element, year);
+// });
+
+// it('yearFlag()', () => {
+//   let element = { year: 2010, flag: false, disabled: false };
+//   let year = { year: 2010 };
+//   comp.yearFlag(element, year);
   //   expect(element.year).toEqual(year.year);
   // });
-  
-  
-  // it('getDropdownYear()', () => {
+
+
+// it('getDropdownYear()', () => {
   //   let year = { year: 2012 };
-  //   // comp.getDropdownYear(year);
-  
-  //   comp['yearFlagNegate'](comp.yearList1[0]);
-  //   comp['yearFlagNegate'](comp.yearList2[0]);
-  //   comp.yearFlag(comp.yearList1[0], year);
-  //   comp.yearFlag(comp.yearList2[0], year);
-  //   comp.yearNo = 2012;
+//   // comp.getDropdownYear(year);
+
+//   comp['yearFlagNegate'](comp.yearList1[0]);
+//   comp['yearFlagNegate'](comp.yearList2[0]);
+//   comp.yearFlag(comp.yearList1[0], year);
+//   comp.yearFlag(comp.yearList2[0], year);
+//   comp.yearNo = 2012;
   //   expect(comp.yearNo).toEqual(year.year);
-  // });
-  
-  // //yearflagdisable
-  // it('yearFlagDisable()', () => {
-  //   let element = { year: 2010, flag: false, disabled: false };
-  //   let year = { year: 2010 };
-  //   comp.minDate = '27-Mar-2016';
-  //   comp.maxDate = '22-Feb-2019';
-  //   comp.yearFlagDisable(element);
+// });
+
+// //yearflagdisable
+// it('yearFlagDisable()', () => {
+//   let element = { year: 2010, flag: false, disabled: false };
+//   let year = { year: 2010 };
+//   comp.minDate = '27-Mar-2016';
+//   comp.maxDate = '22-Feb-2019';
+//   comp.yearFlagDisable(element);
   //   const min = new Date(comp.minDate);
-  //   const max = new Date(comp.maxDate);
-  
+//   const max = new Date(comp.maxDate);
+
   //   //case 1
-  //   expect(element.year).toBeLessThan(min.getFullYear());
-  
-  //   //case 2
+//   expect(element.year).toBeLessThan(min.getFullYear());
+
+//   //case 2
   //   element.year = 2020;
-  //   expect(element.year).toBeGreaterThan(max.getFullYear());
+//   expect(element.year).toBeGreaterThan(max.getFullYear());
 
   // });
-  
-  
-  // //resetyearflag
-  // it('resetYearFlag()', () => {
-  //   comp.backArrowFlag = false;
-  //   comp.resetYearFlag();
-  //   expect(comp.backArrowFlag).toEqual(false);
-  //   comp.yearList1[0].year = comp.yearList1[0].year - 10;
-  //   comp.yearList2[0].year = comp.yearList2[0].year - 10;
-  //   comp.yearList1[0].disabled = false;
+
+
+// //resetyearflag
+// it('resetYearFlag()', () => {
+//   comp.backArrowFlag = false;
+//   comp.resetYearFlag();
+//   expect(comp.backArrowFlag).toEqual(false);
+//   comp.yearList1[0].year = comp.yearList1[0].year - 10;
+//   comp.yearList2[0].year = comp.yearList2[0].year - 10;
+//   comp.yearList1[0].disabled = false;
   //   comp.yearList2[0].disabled = false;
-  // });
-  
-  //backarrow
-  // it('backArrow()', () => {
+// });
+
+//backarrow
+// it('backArrow()', () => {
   //   let min = new Date('27-Mar-2016');
-  //   let max = new Date('22-Feb-2012');
+//   let max = new Date('22-Feb-2012');
 
-  //   comp.yearList1 = [{ year: 2018, flag: false, disabled: false }];
-  
-  //   comp['backArrow']();
-  //   //case 1
-  //   comp.yearList1[0].year = 2012;
-  //   expect(comp.yearList1[0].year).toEqual(min.getFullYear());
+//   comp.yearList1 = [{ year: 2018, flag: false, disabled: false }];
+
+//   comp['backArrow']();
+//   //case 1
+//   comp.yearList1[0].year = 2012;
+//   expect(comp.yearList1[0].year).toEqual(min.getFullYear());
   //   comp.backArrowFlag = true;
-  //   expect(comp.backArrowFlag).toEqual(true);
-  
-  //   //case 2
-  //   comp.yearList1[0].year = 2016;
-  //   expect(comp.yearList1[0].year).toEqual(max.getFullYear());
-  //   expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
-  //   comp.forwardArrowFlag = true;
-  //   expect(comp.forwardArrowFlag).toEqual(true);
+//   expect(comp.backArrowFlag).toEqual(true);
+
+//   //case 2
+//   comp.yearList1[0].year = 2016;
+//   expect(comp.yearList1[0].year).toEqual(max.getFullYear());
+//   expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
+//   comp.forwardArrowFlag = true;
+//   expect(comp.forwardArrowFlag).toEqual(true);
   //   comp.backArrowFlag = false;
-  //   expect(comp.backArrowFlag).toEqual(false);
-  
-  //   //case 3
-  //   comp.yearList1[0].year = 2015;
-  //   expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
-  //   expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
-  //   comp.backArrowFlag = false;
-  //   expect(comp.backArrowFlag).toEqual(false);
+//   expect(comp.backArrowFlag).toEqual(false);
+
+//   //case 3
+//   comp.yearList1[0].year = 2015;
+//   expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
+//   expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
+//   comp.backArrowFlag = false;
+//   expect(comp.backArrowFlag).toEqual(false);
   //   comp.forwardArrowFlag = false;
-  //   expect(comp.forwardArrowFlag).toEqual(false);
-  
-  //   comp.minDate = '27-Mar-2016';
-  //   comp.maxDate = '22-Feb-2019';
-  //   comp.yearList2 = [{ year: 2019, flag: false, disabled: false },
-  //   { year: 15, flag: false, disabled: false },
-  //   { year: 8, flag: false, disabled: false },
+//   expect(comp.forwardArrowFlag).toEqual(false);
+
+//   comp.minDate = '27-Mar-2016';
+//   comp.maxDate = '22-Feb-2019';
+//   comp.yearList2 = [{ year: 2019, flag: false, disabled: false },
+//   { year: 15, flag: false, disabled: false },
+//   { year: 8, flag: false, disabled: false },
   //   { year: 18, flag: false, disabled: false },
-  //   { year: 65, flag: false, disabled: false }];
-  
-  //   comp.backArrowFlag = false;
-  //   comp.yearList1 = [{ year: 2000, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-  //     { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+//   { year: 65, flag: false, disabled: false }];
+
+//   comp.backArrowFlag = false;
+//   comp.yearList1 = [{ year: 2000, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+//     { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+//     { year: 0, flag: false, disabled: false }];
+//   comp.yearList2 = [{ year: 2020, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+//     { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
   //     { year: 0, flag: false, disabled: false }];
-  //   comp.yearList2 = [{ year: 2020, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-  //     { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-  //     { year: 0, flag: false, disabled: false }];
-  //  comp.resetYearFlag();
+//  comp.resetYearFlag();
 
-  // });
-  
-  // it('alterBackForwardArrow()', () => {
-  //   let element = { year: 2016, flag: false, disabled: false };
+// });
+
+// it('alterBackForwardArrow()', () => {
+//   let element = { year: 2016, flag: false, disabled: false };
   //   comp.minDate = '27-Mar-2016';
-  //   comp.maxDate = '22-Feb-2019';
-  
-  //   comp['alterBackForwardArrow'](element);
+//   comp.maxDate = '22-Feb-2019';
+
+//   comp['alterBackForwardArrow'](element);
   //   const min = new Date(comp.minDate);
-  //   const max = new Date(comp.maxDate);
-  
-  //   expect(element.year).toEqual(min.getFullYear());
-  //   comp.backArrowFlag = true;
-  //   expect(comp.backArrowFlag).toEqual(true);
-  //   element.year = 2019;
-  //   expect(element.year).toEqual(max.getFullYear());
-  //   comp.forwardArrowFlag = true;
-  //   expect(comp.forwardArrowFlag).toEqual(true);
+//   const max = new Date(comp.maxDate);
+
+//   expect(element.year).toEqual(min.getFullYear());
+//   comp.backArrowFlag = true;
+//   expect(comp.backArrowFlag).toEqual(true);
+//   element.year = 2019;
+//   expect(element.year).toEqual(max.getFullYear());
+//   comp.forwardArrowFlag = true;
+//   expect(comp.forwardArrowFlag).toEqual(true);
   // });
-  // //recchkyearflag
-  
-  // it('rechkYearFlag()', () => {
-  //   comp.yearList1 = [{ year: 2000, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-  //   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-  //   { year: 0, flag: false, disabled: false }];
-  //   comp.yearList2 = [{ year: 2010, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-  //   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-  //   { year: 0, flag: false, disabled: false }];
-  //   comp.minDate = '27-Mar-2016';
+// //recchkyearflag
+
+// it('rechkYearFlag()', () => {
+//   comp.yearList1 = [{ year: 2000, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+//   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+//   { year: 0, flag: false, disabled: false }];
+//   comp.yearList2 = [{ year: 2010, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+//   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+//   { year: 0, flag: false, disabled: false }];
+//   comp.minDate = '27-Mar-2016';
   //   comp.maxDate = '22-Feb-2019';
-  //   comp.rechkYearFlag();
-  
+//   comp.rechkYearFlag();
+
   //   const min = new Date(comp.minDate);
-  //   const max = new Date(comp.maxDate);
-  
-  //   comp.yearList1[0].year = 2016;
-  //   expect(comp.yearList1[0].year).toEqual(min.getFullYear());
+//   const max = new Date(comp.maxDate);
+
+//   comp.yearList1[0].year = 2016;
+//   expect(comp.yearList1[0].year).toEqual(min.getFullYear());
   //   comp.backArrowFlag = true;
-  //   expect(comp.backArrowFlag).toEqual(true);
-  
-  //   comp.yearList1[0].year = 2019;
-  //   expect(comp.yearList1[0].year).toEqual(max.getFullYear());
+//   expect(comp.backArrowFlag).toEqual(true);
+
+//   comp.yearList1[0].year = 2019;
+//   expect(comp.yearList1[0].year).toEqual(max.getFullYear());
   //   comp.forwardArrowFlag = true;
-  //   expect(comp.forwardArrowFlag).toEqual(true);
-  
-  //   comp.yearList1[0].year = 201;
-  //   expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
-  //   expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
-  //   comp.forwardArrowFlag = false;
-  //   comp.backArrowFlag = false;
+//   expect(comp.forwardArrowFlag).toEqual(true);
+
+//   comp.yearList1[0].year = 201;
+//   expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
+//   expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
+//   comp.forwardArrowFlag = false;
+//   comp.backArrowFlag = false;
   //   expect(comp.forwardArrowFlag).toEqual(false);
-  //   expect(comp.backArrowFlag).toEqual(false);
+//   expect(comp.backArrowFlag).toEqual(false);
 
-  //   comp['alterBackForwardArrow'](comp.yearList2[0]);
+//   comp['alterBackForwardArrow'](comp.yearList2[0]);
 
-  // });
-  
-  // // arrowclickback()
-  // it('arrowClickBack()', () => {
-  //   comp.minDate = '27-Mar-2016';
-  //   comp.maxDate = '22-Feb-2019';
-  //   comp.yearList1 = [{ year: 2000, flag: false, disabled: false },
-  //   { year: 1, flag: false, disabled: false }, { year: 3, flag: false, disabled: false },
-  //   { year: 4, flag: false, disabled: false }, { year: 5, flag: false, disabled: false }];
-  //   comp.yearList2 = [{ year: 2020, flag: false, disabled: false },
-  //   { year: 15, flag: false, disabled: false },
-  //   { year: 8, flag: false, disabled: false },
+// });
+
+// // arrowclickback()
+// it('arrowClickBack()', () => {
+//   comp.minDate = '27-Mar-2016';
+//   comp.maxDate = '22-Feb-2019';
+//   comp.yearList1 = [{ year: 2000, flag: false, disabled: false },
+//   { year: 1, flag: false, disabled: false }, { year: 3, flag: false, disabled: false },
+//   { year: 4, flag: false, disabled: false }, { year: 5, flag: false, disabled: false }];
+//   comp.yearList2 = [{ year: 2020, flag: false, disabled: false },
+//   { year: 15, flag: false, disabled: false },
+//   { year: 8, flag: false, disabled: false },
   //   { year: 18, flag: false, disabled: false },
-  //   { year: 65, flag: false, disabled: false }];
+//   { year: 65, flag: false, disabled: false }];
 
-  //   // comp.arrowClickBack("");
-  
-  //   comp.disableYearFlag();
-  //   // if
-  //   expect(comp.minDate.length).toBeGreaterThan(0);
-  //   expect(comp.maxDate.length).toBeGreaterThan(0);
-  //   comp['backArrow']();
-  //   // else
-  //   comp.minDate = '';
-  //   comp.maxDate = '';
-  //   expect(comp.minDate.length).toEqual(0);
-  //   expect(comp.maxDate.length).toEqual(0);
-  //   comp.yearList1[0].year = comp.yearList1[0].year - 10;
-  //   expect(comp.yearList1[0].year - 10).toBeLessThan(comp.yearList1[0].year);
-  //   expect(comp.yearList2[0].year - 10).toBeLessThan(comp.yearList2[0].year);
-  //   comp.disableYearFlag();
+//   // comp.arrowClickBack("");
+
+//   comp.disableYearFlag();
+//   // if
+//   expect(comp.minDate.length).toBeGreaterThan(0);
+//   expect(comp.maxDate.length).toBeGreaterThan(0);
+//   comp['backArrow']();
+//   // else
+//   comp.minDate = '';
+//   comp.maxDate = '';
+//   expect(comp.minDate.length).toEqual(0);
+//   expect(comp.maxDate.length).toEqual(0);
+//   comp.yearList1[0].year = comp.yearList1[0].year - 10;
+//   expect(comp.yearList1[0].year - 10).toBeLessThan(comp.yearList1[0].year);
+//   expect(comp.yearList2[0].year - 10).toBeLessThan(comp.yearList2[0].year);
+//   comp.disableYearFlag();
   //   comp.rechkYearFlag();
-  // });
-  
-  // it('alterBackArrow()', () => {
-  //   let element = { year: 2016, flag: true, disabled: false };
-  //   comp.minDate = '27-Mar-2016';
-  //   const min = new Date(comp.minDate);
-  //   comp.alterBackArrow(element, min);
-  //   expect(element.year).toEqual(min.getFullYear());
-  //   comp.backArrowFlag = true;
+// });
+
+// it('alterBackArrow()', () => {
+//   let element = { year: 2016, flag: true, disabled: false };
+//   comp.minDate = '27-Mar-2016';
+//   const min = new Date(comp.minDate);
+//   comp.alterBackArrow(element, min);
+//   expect(element.year).toEqual(min.getFullYear());
+//   comp.backArrowFlag = true;
   //   expect(comp.backArrowFlag).toEqual(true);
-  // });
-  
-  // it('resetArrowFlag()', () => {
-  //   comp.minDate = '27-Mar-2016';
-  //   comp.maxDate = '22-Feb-2019';
-  //   comp.yearList2 = [{ year: 2019, flag: false, disabled: false },
-  //   { year: 15, flag: false, disabled: false },
-  //   { year: 8, flag: false, disabled: false },
-  //   { year: 18, flag: false, disabled: false },
-  //   { year: 65, flag: false, disabled: false }];
-  //   comp['resetArrowFlag']();
-  //   const min = new Date(comp.minDate);
-  //   const max = new Date(comp.maxDate);
-  //   comp.alterBackArrow(comp.yearList2[0], min);
-  //   expect(comp.yearList2[0].year).toEqual(max.getFullYear());
-  //   comp.forwardArrowFlag = true;
+// });
+
+// it('resetArrowFlag()', () => {
+//   comp.minDate = '27-Mar-2016';
+//   comp.maxDate = '22-Feb-2019';
+//   comp.yearList2 = [{ year: 2019, flag: false, disabled: false },
+//   { year: 15, flag: false, disabled: false },
+//   { year: 8, flag: false, disabled: false },
+//   { year: 18, flag: false, disabled: false },
+//   { year: 65, flag: false, disabled: false }];
+//   comp['resetArrowFlag']();
+//   const min = new Date(comp.minDate);
+//   const max = new Date(comp.maxDate);
+//   comp.alterBackArrow(comp.yearList2[0], min);
+//   expect(comp.yearList2[0].year).toEqual(max.getFullYear());
+//   comp.forwardArrowFlag = true;
   //   expect(comp.forwardArrowFlag).toEqual(true);
-  // });
-  
+// });
+
   // it('forwardArrow()', () => {
-  //   comp.forwardArrowFlag = false;
-  
+//   comp.forwardArrowFlag = false;
+
   //   comp['forwardArrow']();
-  //   expect(comp.forwardArrowFlag).toEqual(false);
+//   expect(comp.forwardArrowFlag).toEqual(false);
 
-  // });
-  
-  // it('chkYearList1()', () => {
-  //   comp.minDate = '27-Mar-2016';
+// });
+
+// it('chkYearList1()', () => {
+//   comp.minDate = '27-Mar-2016';
   //   comp.maxDate = '22-Feb-2019';
-  //   comp.yearList1[0].year = 2016;
-  
-  //   comp.chkYearList1();
-  //   const min = new Date(comp.minDate);
+//   comp.yearList1[0].year = 2016;
+
+//   comp.chkYearList1();
+//   const min = new Date(comp.minDate);
   //   const max = new Date(comp.maxDate);
-  //   expect(comp.yearList1[0].year).toEqual(min.getFullYear());
-  
-  //   comp.yearList1[0].year = 2019;
-  //   expect(comp.yearList1[0].year).toEqual(max.getFullYear());
-  //   comp.backArrowFlag = true;
-  //   expect(comp.backArrowFlag).toEqual(true);
-  
-  //   comp.yearList1[0].year = 2016;
-  //   expect(comp.yearList1[0].year).toEqual(min.getFullYear());
-  //   expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
-  //   comp.forwardArrowFlag = false;
-  //   expect(comp.forwardArrowFlag).toEqual(false);
-  //   comp.backArrowFlag = true;
-  //   expect(comp.backArrowFlag).toEqual(true);
-  
-  //   comp.yearList1[0].year = 2025;
-  //   expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
-  //   expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
-  //   comp.forwardArrowFlag = false;
-  //   expect(comp.forwardArrowFlag).toEqual(false);
-  //   comp.backArrowFlag = false;
-  //   expect(comp.backArrowFlag).toEqual(false);
-  
-  //   comp.yearList1[0].year = 2019;
-  //   expect(comp.yearList1[0].year).toEqual(max.getFullYear());
-  //   comp.forwardArrowFlag = true;
-  //   expect(comp.forwardArrowFlag).toEqual(true);
+//   expect(comp.yearList1[0].year).toEqual(min.getFullYear());
 
-  // });
-  
-  // it('minMaxDateFound()', () => {
-  //   comp.minDate = '27-Mar-2016';
-  //   comp.maxDate = '22-Feb-2019';
+//   comp.yearList1[0].year = 2019;
+//   expect(comp.yearList1[0].year).toEqual(max.getFullYear());
+  //   comp.backArrowFlag = true;
+//   expect(comp.backArrowFlag).toEqual(true);
+
+//   comp.yearList1[0].year = 2016;
+//   expect(comp.yearList1[0].year).toEqual(min.getFullYear());
+//   expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
+//   comp.forwardArrowFlag = false;
+//   expect(comp.forwardArrowFlag).toEqual(false);
+  //   comp.backArrowFlag = true;
+//   expect(comp.backArrowFlag).toEqual(true);
+
+//   comp.yearList1[0].year = 2025;
+//   expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
+//   expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
+//   comp.forwardArrowFlag = false;
+//   expect(comp.forwardArrowFlag).toEqual(false);
+  //   comp.backArrowFlag = false;
+//   expect(comp.backArrowFlag).toEqual(false);
+
+//   comp.yearList1[0].year = 2019;
+//   expect(comp.yearList1[0].year).toEqual(max.getFullYear());
+  //   comp.forwardArrowFlag = true;
+//   expect(comp.forwardArrowFlag).toEqual(true);
+
+// });
+
+// it('minMaxDateFound()', () => {
+//   comp.minDate = '27-Mar-2016';
+//   comp.maxDate = '22-Feb-2019';
   //   comp.yearList1[0].year = 2016;
   //   comp.yearList2[0].year = 2016;
-  
-  
-  //   comp.minMaxDateFound();
+
+
+//   comp.minMaxDateFound();
   //   const min = new Date(comp.minDate);
-  //   const max = new Date(comp.maxDate);
-  
-  //   expect(comp.yearList1[0].year).toEqual(min.getFullYear());
-  //   comp.backArrowFlag = true;
-  //   expect(comp.backArrowFlag).toEqual(true);
-  //   comp.yearList1[0].year = 2019;
-  //   expect(comp.yearList1[0].year).toEqual(max.getFullYear());
+//   const max = new Date(comp.maxDate);
+
+//   expect(comp.yearList1[0].year).toEqual(min.getFullYear());
+//   comp.backArrowFlag = true;
+//   expect(comp.backArrowFlag).toEqual(true);
+//   comp.yearList1[0].year = 2019;
+//   expect(comp.yearList1[0].year).toEqual(max.getFullYear());
   //   comp.forwardArrowFlag = true;
+//   expect(comp.forwardArrowFlag).toEqual(true);
+
+//   expect(comp.yearList2[0].year).toEqual(min.getFullYear());
+//   comp.backArrowFlag = true;
+//   expect(comp.backArrowFlag).toEqual(true);
+//   comp.yearList2[0].year = 2019;
+//   expect(comp.yearList2[0].year).toEqual(max.getFullYear());
+//   comp.forwardArrowFlag = true;
   //   expect(comp.forwardArrowFlag).toEqual(true);
-  
-  //   expect(comp.yearList2[0].year).toEqual(min.getFullYear());
-  //   comp.backArrowFlag = true;
-  //   expect(comp.backArrowFlag).toEqual(true);
-  //   comp.yearList2[0].year = 2019;
-  //   expect(comp.yearList2[0].year).toEqual(max.getFullYear());
-  //   comp.forwardArrowFlag = true;
-  //   expect(comp.forwardArrowFlag).toEqual(true);
-  // });
-  
-  //openPicker()
-  // it('openPicker()', () => {
-  //   comp.diabledDate = [
-  //     {
-  //       "from": "13-Jul-2018",
-  //       "to": "15-Jul-2018"
-  //     },
-  //     {
-  //       "from": "20-Jul-2018",
-  //       "to": "23-Jul-2018"
-  //     },
-  //     {
-  //       "from": "15-Jun-2018",
-  //       "to": "19-Jun-2018"
-  //     },
-  //     {
-  //       "from": "27-Jun-2018",
-  //       "to": "29-Jun-2018"
-  //     },
-  //     {
-  //       "from": "23-Aug-2018",
-  //       "to": "28-Aug-2018"
-  //     },
-  //     {
-  //       "from": "17-Aug-2018",
-  //       "to": "19-Aug-2018"
-  //     },
-  //     {
-  //       "from": "19-Sep-2018",
-  //       "to": "21-Sep-2018"
-  //     },
-  //     {
-  //       "from": "1-Nov-2018",
-  //       "to": "30-Nov-2018"
-  //     }
-  //   ];
-  //   let elem: any;
+// });
+
+//openPicker()
+// it('openPicker()', () => {
+    // let elem: any;
   //   comp.inlineDatepicker = true;
   //   comp.openPicker(elem);
   //   comp.hostFlag = false;

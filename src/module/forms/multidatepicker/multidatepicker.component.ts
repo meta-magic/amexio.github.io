@@ -267,7 +267,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     }
   }
 
-  private createDaysForCurrentMonths(selectedPeriod: any) {
+   createDaysForCurrentMonths(selectedPeriod: any) {
     this.daysArray = [];
     const date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
     const extras = (date.getDay() + 6) % 7; // How many days of the last month do we need to include?
@@ -349,6 +349,8 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
   }
 
   setDisableDaysBeforeFrom() {
+    console.log('setDisableDaysBeforeFrom()', this.completeDaysArray);
+
     if (this.fromdate && !this.rangepickerFlag) {
       this.completeDaysArray.forEach((daysarray: any) => {
         daysarray.montharray.forEach((dayobject: any) => {
@@ -364,6 +366,8 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
 
   resetDisabledaysBeforeFrom() {
 
+    console.log('resetDisabledaysBeforeFrom()', this.completeDaysArray);
+    
     if (this.fromdate && !this.rangepickerFlag) {
       this.completeDaysArray.forEach((daysarray: any) => {
         daysarray.montharray.forEach((dayobject: any) => {
@@ -735,6 +739,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
   }
 
   navigateDropdown() {
+    debugger;
     this.okispressed = true;
     this.selectedDate = new Date();
     if (this.yearNo != null && this.monthNo != null) {
@@ -746,6 +751,8 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
       this.selectedDate.setMonth(this.monthNo);
     }
     // chk if yr exist
+    console.log('navigateDropdown()',this.completeDaysArray);
+    
     this.completeDaysArray.forEach((element: any, index: number) => {
       const alterDate = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() + index, this.selectedDate.getDate());
       element.date = alterDate;
