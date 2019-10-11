@@ -1,21 +1,21 @@
 <div class="rich-first-div" [style.height.%]="areaHeight" [style.width.%]="areaWidth">
-  <ng-container *ngIf="displayDiv">
+  <ng-container *ngIf="!displayDiv">
     <div class="rich-editor-buttons">
       <span *ngFor="let item of editableTextArray">
         <amexio-button [type]="'theme-backgroundcolor'" [ngClass]="{'rich-vertical-seperator': item.seperator }"
-        class="rich-button" [tooltip]="item.title" [icon]="item.icon"
-          [size]="'small'" (onClick)="onIconClick(item.event)">
+          class="rich-button" [tooltip]="item.title" [icon]="item.icon" [size]="'small'"
+          (onClick)="onIconClick(item.event)">
         </amexio-button>
       </span>
-      <amexio-button style="margin-right: 10px;" [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'HTML Code'" [icon]="'fa fa-code'"
-        [size]="'small'" (onClick)="onHtmlCodeClick()">
+      <amexio-button style="margin-right: 10px;" [type]="'theme-backgroundcolor'" class="rich-button"
+        [tooltip]="'HTML Code'" [icon]="'fa fa-code'" [size]="'small'" (onClick)="onHtmlCodeClick()">
       </amexio-button>
 
       <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [color]="'burlywood'" [tooltip]="'Fore Color'"
         [icon]="'fa fa-font'" [size]="'small'" (onClick)="onColorBtnClick()">
       </amexio-button>
 
-      <amexio-button style="margin-right: 10px;" [type]="'theme-color'" class="rich-button" 
+      <amexio-button style="margin-right: 10px;" [type]="'theme-color'" class="rich-button"
         [tooltip]="'Background Color'" [icon]="'fa fa-font'" [size]="'small'" (onClick)="onBgColorClick()">
       </amexio-button>
 
@@ -49,24 +49,24 @@
 
 
   </div>
-  <ng-container *ngIf="!displayDiv">
+  <ng-container *ngIf="displayDiv">
 
     <div class="rich-editor-buttons">
       <span *ngFor="let item of editableTextArray">
         <amexio-button [type]="'theme-backgroundcolor'" [ngClass]="{'rich-vertical-seperator': item.seperator }"
-        class="rich-button" [tooltip]="item.title" [icon]="item.icon"
-          [size]="'small'" (onClick)="onIconClick(item.event)">
+          class="rich-button" [tooltip]="item.title" [icon]="item.icon" [size]="'small'"
+          (onClick)="onIconClick(item.event)">
         </amexio-button>
       </span>
-      <amexio-button style="margin-right: 10px;" [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'HTML Code'" [icon]="'fa fa-code'"
-        [size]="'small'" (onClick)="onHtmlCodeClick()">
+      <amexio-button style="margin-right: 10px;" [type]="'theme-backgroundcolor'" class="rich-button"
+        [tooltip]="'HTML Code'" [icon]="'fa fa-code'" [size]="'small'" (onClick)="onHtmlCodeClick()">
       </amexio-button>
 
       <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [color]="'burlywood'" [tooltip]="'Fore Color'"
         [icon]="'fa fa-font'" [size]="'small'" (onClick)="onColorBtnClick()">
       </amexio-button>
 
-      <amexio-button style="margin-right: 10px;" [type]="'theme-color'" class="rich-button" 
+      <amexio-button style="margin-right: 10px;" [type]="'theme-color'" class="rich-button"
         [tooltip]="'Background Color'" [icon]="'fa fa-font'" [size]="'small'" (onClick)="onBgColorClick()">
       </amexio-button>
 
