@@ -273,7 +273,7 @@ describe('amexio-availability', () => {
       {
         "label": "Outbound",
         "colorcode": "blue",
-        "textcolor": "white",
+        // "textcolor": "white",
         "available": [
           {
             "date": "02-Sep-2019",
@@ -296,6 +296,17 @@ describe('amexio-availability', () => {
 
     expect(comp.legendArr).toBeDefined();
     expect(comp.legendArr).not.toBeNull();
+
+    comp.labelData.forEach((element: any) => {
+      // const obj = { label: element.label, 
+      //   colorcode: element.colorcode, 
+      //   textcolor: element.textcolor ? element.textcolor : 'black' };
+        if(element.textcolor) {
+          expect(element.textcolor).toBeDefined();
+        } else {
+          expect(element.textcolor).toBeUndefined();
+        }
+    });
   });
 
   it('generateTimeArr()', () => {
@@ -305,29 +316,31 @@ describe('amexio-availability', () => {
                             '9am', '10am', '11am', '12pm', '1pm', '2pm',
                              '3pm', '4pm',
                             '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',
-  ];
+              ];
      let startindex = 4;
     let endindex = 6;
     comp.completeTimeArr = ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am',
     '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm',
     '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',
   ];
-  comp.dateArr = [{ timearr: [] }]
+    comp.dateArr = [{ timearr: [] }]
     comp.generateTimeArr();
 
     comp.completeTimeArr.forEach((element: any, index: number) => {
       if (element === this.startTime) {
          expect(startindex).toEqual(index);
+         expect(endindex).not.toEqual(index);
       }
       if (element === this.endTime) {
          expect(endindex).toEqual(index);
+         expect(startindex).not.toEqual(index);
       }
     });
     expect(comp.setTimeArr(startindex, endindex)).toHaveBeenCalled;
     // this.setTimeArr(startindex, endindex);
   });
 
-  it('availableTimeTest()', () => {
+  it('availableTimeTest() both false values', () => {
     let availableElement = {date: "01-Sep-2019", time: [{starttime: 5, endtime: 5.3},
                                                         {starttime: 6.3, endtime: 7}
                                                        ]};
@@ -339,14 +352,108 @@ describe('amexio-availability', () => {
       {time: new Date(), colorflag: false}]
       let d = new Date();
       let dt = new Date();
-      let minmaxarr: any = [];                                              
+      let minmaxarr: any = [];    
+      // if (minflag && maxflag) {
+      let minflag = false;
+      let maxflag = false;                                       
     comp.availableTimeTest(availableElement, slotArray, dt , d , minmaxarr) 
     
     availableElement.time.forEach((timeElement: any) => {
       // this.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
       expect(comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement)).toHaveBeenCalled;
+      
+      expect(minflag).toBe(false);
+      expect(maxflag).toBe(false);
 
     });
   });
+
+
+  it('availableTimeTest() both true values', () => {
+    let availableElement = {date: "01-Sep-2019", time: [{starttime: 5, endtime: 5.3},
+                                                        {starttime: 6.3, endtime: 7}
+                                                       ]};
+    let slotArray = [{time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false}]
+      let d = new Date();
+      let dt = new Date();
+      let minmaxarr: any = [];    
+      // if (minflag && maxflag) {
+      let minflag = true;
+      let maxflag = true;                                       
+    comp.availableTimeTest(availableElement, slotArray, dt , d , minmaxarr) 
+    
+    availableElement.time.forEach((timeElement: any) => {
+      // this.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+      expect(comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement)).toHaveBeenCalled;
+      
+      expect(minflag).toBe(true);
+      expect(maxflag).toBe(true);
+
+    });
+  });
+
+
+  it('availableTimeTest() false true combination', () => {
+    let availableElement = {date: "01-Sep-2019", time: [{starttime: 5, endtime: 5.3},
+                                                        {starttime: 6.3, endtime: 7}
+                                                       ]};
+    let slotArray = [{time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false}]
+      let d = new Date();
+      let dt = new Date();
+      let minmaxarr: any = [];    
+      // if (minflag && maxflag) {
+      let minflag = true;
+      let maxflag = false;                                       
+    comp.availableTimeTest(availableElement, slotArray, dt , d , minmaxarr) 
+    
+    availableElement.time.forEach((timeElement: any) => {
+      // this.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+      expect(comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement)).toHaveBeenCalled;
+      
+      expect(minflag).toBe(true);
+      expect(maxflag).toBe(false);
+
+    });
+  });
+
+
+  it('availableTimeTest() true false combination', () => {
+    let availableElement = {date: "01-Sep-2019", time: [{starttime: 5, endtime: 5.3},
+                                                        {starttime: 6.3, endtime: 7}
+                                                       ]};
+    let slotArray = [{time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false},
+      {time: new Date(), colorflag: false}]
+      let d = new Date();
+      let dt = new Date();
+      let minmaxarr: any = [];    
+      // if (minflag && maxflag) {
+      let minflag = true;
+      let maxflag = false;                                       
+    comp.availableTimeTest(availableElement, slotArray, dt , d , minmaxarr) 
+    
+    availableElement.time.forEach((timeElement: any) => {
+      // this.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+      expect(comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement)).toHaveBeenCalled;
+      
+      expect(minflag).toBe(true);
+      expect(maxflag).toBe(false);
+
+    });
+  });
+
 
 });
