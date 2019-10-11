@@ -13,7 +13,7 @@ import { CommonIconComponent } from '../../base/components/common.icon.component
 import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 
-describe('amexio-availability', () => {
+fdescribe('amexio-availability', () => {
   let comp: AvailabilityComponent;
   let fixture: ComponentFixture<AvailabilityComponent>;
 
@@ -356,7 +356,7 @@ describe('amexio-availability', () => {
     let dt = new Date();
     let minmaxarr: any = [];
     // if (minflag && maxflag) {
-  
+
     comp.availableTimeTest(availableElement, slotArray, dt, d, minmaxarr)
     let minflag = false;
     let maxflag = false;
@@ -418,7 +418,7 @@ describe('amexio-availability', () => {
     let dt = new Date();
     let minmaxarr: any = [];
     // if (minflag && maxflag) {
-   
+
     comp.availableTimeTest(availableElement, slotArray, dt, d, minmaxarr)
     let minflag = true;
     let maxflag = false;
@@ -988,15 +988,15 @@ describe('amexio-availability', () => {
     comp.chkLabels(d, slotArray);
     comp.labelData.forEach((labelelement: any) => {
       if (labelelement.available) {
-      expect(labelelement.available).toBeDefined();
-      labelelement.available.forEach((availableElement: any) => {
-        if (availableElement.date) {
-        expect(availableElement.date).toBeDefined();
-        if (availableElement.time) {
-        expect(availableElement.time).toBeDefined();
-        }
-        }
-      });
+        expect(labelelement.available).toBeDefined();
+        labelelement.available.forEach((availableElement: any) => {
+          if (availableElement.date) {
+            expect(availableElement.date).toBeDefined();
+            if (availableElement.time) {
+              expect(availableElement.time).toBeDefined();
+            }
+          }
+        });
       }
     });
     expect(comp.setRange(minflag, maxflag, slotArray, minmaxarr, labelelement)).toHaveBeenCalled
@@ -1017,57 +1017,59 @@ describe('amexio-availability', () => {
   //   let childiterateitem = {time: new Date(), colorflag: false};
   //   let childindex =0;
   //   comp.onTimeBlockClick(parentiterateitem, parentindex, childiterateitem, childindex);
-    
+
   //   expect(comp.radioValue.length).toBeLessThan(0);
 
   // });
   it('onTimeBlockClick()', () => {
     comp.radioValue = 'Inbound'
-    let parentiterateitem ={date: new Date(), slots: [{time: new Date(), colorflag: true, label: "Inbound", color: "red"},
-    {time: new Date(), colorflag: true, label: "Inbound", color: "red"},
-    {time: new Date(), colorflag: false},
-    {time: new Date(), colorflag: true, label: "Inbound", color: "red"},
-    {time: new Date(), colorflag: true, label: "Inbound", color: "red"},
-    {time: new Date(), colorflag: false}]};
-    let parentindex =0;
-    let childiterateitem = {time: new Date(), colorflag: false};
-    let childindex =0;
-    comp.styleVar = {colorcode: 'red', label: 'Inbound'}
+    let parentiterateitem = {
+      date: new Date(), slots: [{ time: new Date(), colorflag: true, label: "Inbound", color: "red" },
+      { time: new Date(), colorflag: true, label: "Inbound", color: "red" },
+      { time: new Date(), colorflag: false },
+      { time: new Date(), colorflag: true, label: "Inbound", color: "red" },
+      { time: new Date(), colorflag: true, label: "Inbound", color: "red" },
+      { time: new Date(), colorflag: false }]
+    };
+    let parentindex = 0;
+    let childiterateitem = { time: new Date(), colorflag: false };
+    let childindex = 0;
+    comp.styleVar = { colorcode: 'red', label: 'Inbound' }
     comp.dateArr1 = [
       {
-      date: new Date(), slots: [
-        { time: new Date(), colorflag: true, label: "Inbound", color: "red" },
-      { time: new Date(), colorflag: true, label: "Inbound", color: "red" }
-      ]
-    }];
+        date: new Date(), slots: [
+          { time: new Date(), colorflag: true, label: "Inbound", color: "red" },
+          { time: new Date(), colorflag: true, label: "Inbound", color: "red" }
+        ]
+      }];
     comp.selectedIndexArr = [];
     comp.onTimeBlockClick(parentiterateitem, parentindex, childiterateitem, childindex);
-    
+
     expect(comp.radioValue.length).toBeGreaterThan(0);
-    
+
     // if()
     //  console.log("comp.dateArr1[parentindex] = ", comp.dateArr1[parentindex]);
     //  console.log("comp.dateArr1[parentindex].slots[childindex] = ", comp.dateArr1[parentindex].slots[childindex])
     if (comp.dateArr1[parentindex].slots[childindex].label) {
 
-    expect(comp.dateArr1[parentindex].slots[childindex].label).toBeDefined();
-    } 
+      expect(comp.dateArr1[parentindex].slots[childindex].label).toBeDefined();
+    }
     else {
       expect(comp.dateArr1[parentindex].slots[childindex].label).toBeUndefined();
-    } 
+    }
 
 
     if (comp.dateArr1[parentindex].slots[childindex].label === comp.styleVar.label) {
 
-    expect(comp.dateArr1[parentindex].slots[childindex].label).toEqual(comp.styleVar.label)
-    } 
+      expect(comp.dateArr1[parentindex].slots[childindex].label).toEqual(comp.styleVar.label)
+    }
     else {
       expect(comp.dateArr1[parentindex].slots[childindex].label).not.toEqual(comp.styleVar.label)
-      
+
     }
 
- comp.selectedIndexArr =[];
- expect(comp.selectedIndexArr).toBeDefined();
+    comp.selectedIndexArr = [];
+    expect(comp.selectedIndexArr).toBeDefined();
   });
 
 
@@ -1077,10 +1079,10 @@ describe('amexio-availability', () => {
   //     { time: new Date(), colorflag: true, label: "Inbound", color: "red" }
   //     ]
   //   }];
-  //    comp.selectedIndexArr = [{parentindex: 0, childindex: 0, initiallabel:'Inbound'},
-  //     {parentindex: 0, childindex: 0, initiallabel: 'Inbound'}
+  //   comp.selectedIndexArr = [{ parentindex: 0, childindex: 0, initiallabel: 'Inbound' },
+  //   { parentindex: 0, childindex: 0, initiallabel: 'Inbound' }
   //   ]
-  //    comp.onUndoClick();
+  //   comp.onUndoClick();
   //   //  comp.selectedIndexArr.forEach((element: any) => {
   //   //   if (element.initiallabel) {
   //   //   //  expect(element.initiallabel).toBeDefined();
@@ -1088,7 +1090,102 @@ describe('amexio-availability', () => {
   //   //     // expect(element.initiallabel).toBeUndefined();
   //   //   }
   //   //  });
-  //    expect(comp.selectedIndexArr).toBeDefined();
+  //   expect(comp.selectedIndexArr).toBeDefined();
 
   // });
+
+
+  it('ngOnInit()', () => {
+    comp.legendArr = [];
+    comp.labelData = [
+      {
+        "label": "Inbound",
+        "colorcode": "red",
+        "textcolor": "white",
+        "available": [
+          {
+            "date": "01-Sep-2019",
+            "time": [
+              {
+                "starttime": 5,
+                "endtime": 5.30
+              },
+              ,
+              {
+                "starttime": 6.30,
+                "endtime": 7
+              }
+            ]
+          },
+          {
+            "date": "02-Sep-2019",
+            "time": [
+              {
+                "starttime": 5,
+                "endtime": 5.30
+              },
+              ,
+            ]
+          },
+        ]
+      },
+      {
+        "label": "Outbound",
+        "colorcode": "blue",
+        // "textcolor": "white",
+        "available": [
+          {
+            "date": "02-Sep-2019",
+            "time": [
+              {
+                "starttime": 5.30,
+                "endtime": 6.30
+              },
+            ]
+          }
+        ]
+      },
+
+    ];
+    comp.sDate = new Date();
+    comp.sDate.setDate(12);
+    comp.sDate.setMonth(1);
+    comp.sDate.setFullYear(2019);
+    comp.eDate = new Date();
+    comp.eDate.setDate(15);
+    comp.eDate.setMonth(5);
+    comp.eDate.setFullYear(2025);
+    comp.dateSpanlist = [];
+    comp.ngOnInit();
+
+    expect(comp.selectedIndexArr).toBeDefined();
+    expect(comp.completeNewArr).toBeDefined();
+    expect(comp.slotTimeArr).toBeDefined();
+    expect(comp.slotTimeArr).toBeDefined();
+    expect(comp.dateArr).toBeDefined();
+    expect(comp.dateArr1).toBeDefined();
+    expect(comp.completeTimeArr).toBeDefined();
+    expect(comp.dateSpanlist).toBeDefined();
+    expect(comp.legendArr).toBeDefined();
+    expect(comp.newTimeArr).toBeDefined();
+    expect(comp.sDate).toBeDefined();
+    expect(comp.eDate).toBeDefined();
+    expect(comp.dateArr).toBeDefined();
+    expect(comp.dateArr1).toBeDefined();
+
+    // if (this.sDate < this.eDate) {
+    // expect(comp.sDate.getDate()).toBeLessThan(comp.eDate.getDate());
+    // expect(comp.sDate.getMonth()).toBeLessThan(comp.eDate.getMonth());
+    // expect(comp.sDate.getFullYear()).toBeLessThan(comp.eDate.getFullYear());
+
+    expect(comp.dateSpanlist).toBeDefined();
+
+    expect(comp.initializeTimeArr()).toHaveBeenCalled;
+    expect(comp.generateTimeArr()).toHaveBeenCalled;
+    expect(comp.generateLegendArr()).toHaveBeenCalled;
+    expect(comp.generateSlotTimeArr()).toHaveBeenCalled;
+
+    // this.dateSpanlist.push(j);
+
+  });
 });
