@@ -48,7 +48,6 @@
         type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
     </span>
     <span class="btn">
-      <!-- style="margin-top:8px" -->
       <button type="button" tabindex="0" (keyup.enter)="clearData()" aria-label="clear data" [ngClass]="{'rounded': (btnType == 'round')}"
         style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
 
@@ -70,10 +69,6 @@
       <button style="margin-top:8px" tabindex="0" (keyup.enter)="getBtnData(item)" [ngClass]="{'rounded': (btnType == 'round')}"
         type="button" class="pointer btncolor" (click)="getBtnData(item)">{{item}}</button>
     </span>
-    <!-- <span class="btn">
-           <button type="button" style="margin-top:8px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
-          </button>
-        </span> -->
   </span>
 
   <span class="btnspan">

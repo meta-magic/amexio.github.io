@@ -4,7 +4,6 @@ import { StackableItemComponent } from '../StackablePanel-Item/stackablePanel-it
 @Component({
   selector: 'amexio-stackable-panel',
   templateUrl: './stackablePanel.component.html',
-  styleUrls: ['./stackablePanel.component.css'],
 })
 export class StackablePanelComponent implements AfterContentInit {
 
