@@ -128,4 +128,31 @@ describe('amexio-right-vertical-tab', () => {
     }
   })
 
+  it('OnVerticalTab Click Else method', () => {
+    let tab = {
+      active: true,
+      closable: false,
+      disabled: false,
+      icon: "fa fa-building",
+      tabId: 30314,
+      header: false,
+      tabPillClass: "activecolortab",
+      title: "Work"
+    }
+
+    comp.onVerticalTabClick(tab);
+    tab.disabled = false;
+    tab.header = false;
+    for (let i of comp.tabCollection) {
+      let tempTab = i;
+      expect(tempTab).toEqual(i);
+      expect(i['active']).toBeFalsy();
+      spyOn(comp, 'asignTabPillClass');
+      comp.asignTabPillClass(tempTab);
+      expect(comp.asignTabPillClass).toHaveBeenCalled();
+      comp.onClick.emit(tempTab);
+
+    }
+  })
+
 })

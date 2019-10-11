@@ -7,7 +7,7 @@ import { AmexioTabPillComponent } from './tab.pill.component';
 import { AmexioButtonComponent } from './../../forms/buttons/button.component';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { Component, ComponentFactoryResolver, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, ComponentFactoryResolver, NO_ERRORS_SCHEMA, ViewContainerRef } from '@angular/core';
 
 @Component({
     selector: 'test-cmp',
@@ -233,6 +233,35 @@ describe('amexio-tab', () => {
         const totalElWidth = tlistWidth + hWidth;
         expect(totalElWidth).toBeLessThanOrEqual(tWidth);
         expect(comp.singleTabWidth).toEqual(totalElWidth / comp.totalTabs);
+    })
+
+
+    it('select tab method', () => {
+        let tab = {
+            active: true,
+            amexiocolor: "amexio-top-tab-red",
+            closable: true,
+            disabled: false,
+            tabId: 33537,
+            icon: 'fa fa-save',
+            height: 20,
+            tablk: '',
+            tabPillClass: "activecolortab",
+            tabpillinstance: ViewContainerRef,
+            target: ViewContainerRef,
+            title: "Tab 5"
+        }
+        comp.selectTab(tabNode);
+        comp.tabCollection.forEach((tab1: any) => {
+            tab1.active = false;
+            expect(tab1.active).toBeFalsy();
+        })
+        tab.active = true;
+        comp.tabCollection.forEach((tab1: any) => {
+            expect(comp.asignTabPillClass(tab1)).toHaveBeenCalled;
+        });
+
+
     })
 });
 
