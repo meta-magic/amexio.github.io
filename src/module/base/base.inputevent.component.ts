@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { InputValidator } from './input.validator';
+import { IInputValidator } from './input.validator';
 import { ValueAccessorBaseComponent } from './value-accessor';
 // @Component({
 //     selector: 'list.base.datepicker',
