@@ -21,6 +21,7 @@ import { IconLoaderService } from './services/icon/icon.service';
 import { RouterService } from './services/routing/routing.service';
 
 import { AmexioCommonModule } from './base/amexio.common.module';
+import { DynamicTextDirective } from './directive/dynamic-text.directive';
 import { AmexioFullScreenDirective } from './directive/full-screen.directive';
 import { RoundEdgesDirective } from './directive/round-edge.directive';
 import { RoutedirDirective } from './directive/router-animation.directive';
@@ -70,8 +71,9 @@ export * from './services/routing/routing.service';
     RoundEdgesDirective,
     AmexioFullScreenDirective,
     RoutedirDirective,
+    DynamicTextDirective,
   ],
-  declarations: [RoutedirDirective, RoundEdgesDirective, AmexioFullScreenDirective,
+  declarations: [RoutedirDirective, DynamicTextDirective, RoundEdgesDirective, AmexioFullScreenDirective,
     ],
   providers: [CommonDataService, DeviceQueryService, IconLoaderService, RouterService],
 })
