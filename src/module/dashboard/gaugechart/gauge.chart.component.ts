@@ -176,7 +176,7 @@ description :  Height of chart
   showChart: boolean;
   _data: any;
 
-  get data(): any{
+  get data(): any {
     return this._data;
   }
 
@@ -189,7 +189,7 @@ default : none
 description : Local data for gauge chart
 */
   @Input('data')
-  set data(data: any){
+  set data(data: any) {
     if (data) {
     this._data = data;
     this.showChart = true;

@@ -255,10 +255,10 @@ description : Set enable / disable popover.
     this.onBlur.emit(this.value);
   }
 
-  onFocusEvent(event: any) {
+  onFocusEvent(inputEvent: any) {
     this.eventPropagation(event);
     this.showToolTip = true;
-    this.focus.emit(this.value);
+    this.focus.emit({value: this.value, event: inputEvent});
   }
 
   onInputEvent(inputEvent: any) {
@@ -267,9 +267,9 @@ description : Set enable / disable popover.
     this.input.emit({value: this.value, event: inputEvent});
   }
 
-  onChangeEv(event: any) {
+  onChangeEv(inputEvent: any) {
     this.eventPropagation(event);
-    this.change.emit(this.value);
+    this.change.emit({value: this.value, event: inputEvent});
   }
 
   eventPropagation(event: any) {

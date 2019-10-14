@@ -139,7 +139,7 @@ description : Fire when button-dropdown item button/link click
     super(renderer, element, _cd);
   }
   ngOnInit() {
-    this.componentId =  this.label + Math.floor(Math.random() * 1000 + 999);
+    this.componentId = this.label + Math.floor(Math.random() * 1000 + 999);
   }
   updateComponent() {
     if (JSON.stringify(this.buttonGroupPreviewData) !== JSON.stringify(this.buttonGroupLocalData)) {
@@ -220,8 +220,8 @@ description : Fire when button-dropdown item button/link click
       this.buttonindex1 = this.findbuttonindex();
       if (this.buttonindex1 < (this.dropdownItemData.length - 1)) {
         this.onHomeClickSelected();
-      }else if (this.buttonindex1 === this.dropdownItemData.length - 1) {
-       this.onHomeClickSelected();
+      } else if (this.buttonindex1 === this.dropdownItemData.length - 1) {
+        this.onHomeClickSelected();
       }
     }
   }
@@ -236,7 +236,7 @@ description : Fire when button-dropdown item button/link click
       this.buttonindex1 = this.findbuttonindex();
       if (this.buttonindex1 < (this.dropdownItemData.length - 1)) {
         this.onEndClickSelected();
-      }else if (this.buttonindex1 === this.dropdownItemData.length - 1) {
+      } else if (this.buttonindex1 === this.dropdownItemData.length - 1) {
         this.onEndClickSelected();
       }
     }
@@ -255,13 +255,13 @@ description : Fire when button-dropdown item button/link click
         this.dropdownItemData[this.buttonindex1 + 1].selected = true;
         const divid = document.getElementById(this.componentId);
         divid.setAttribute(this.activedescendant, this.dropdownItemData[this.buttonindex1 + 1].index);
-      }else if (this.buttonindex1 === this.dropdownItemData.length - 1) {
+      } else if (this.buttonindex1 === this.dropdownItemData.length - 1) {
         this.dropdownItemData[this.buttonindex1].selected = false;
         this.dropdownItemData[0].selected = true;
         const divid = document.getElementById(this.componentId);
         divid.setAttribute(this.activedescendant, this.dropdownItemData[0].index);
       }
-    }else {
+    } else {
       this.dropdownstyle = { visibility: 'visible' };
       this.dropdownItemData[0].selected = true;
       const divid = document.getElementById(this.componentId);
@@ -274,15 +274,15 @@ description : Fire when button-dropdown item button/link click
       this.buttonindex1 = this.findbuttonindex();
       if ((this.buttonindex1 < (this.dropdownItemData.length - 1)) && this.buttonindex1 !== 0) {
         this.onClickUpSelected();
-      }else if (this.buttonindex1 === (this.dropdownItemData.length - 1)) {
+      } else if (this.buttonindex1 === (this.dropdownItemData.length - 1)) {
         this.onClickUpSelected();
-      }else if (this.buttonindex1 === 0) {
+      } else if (this.buttonindex1 === 0) {
         this.dropdownItemData[this.dropdownItemData.length - 1].selected = true;
         this.dropdownItemData[this.buttonindex1].selected = false;
         const divid = document.getElementById(this.componentId);
         divid.setAttribute(this.activedescendant, this.dropdownItemData[this.dropdownItemData.length - 1].index);
       }
-    }else {
+    } else {
       this.dropdownstyle = { visibility: 'visible' };
       this.dropdownItemData[this.dropdownItemData.length - 1].selected = true;
       const divid = document.getElementById(this.componentId);

@@ -18,7 +18,7 @@
 */
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/index';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class CommonDataService {
@@ -32,7 +32,7 @@ export class CommonDataService {
     const headers = new HttpHeaders().append('Content-Type', 'application/json;charset=UTF-8');
     if (methodType === 'post') {
       return this._http.post(serviceUrl, requestJson, {headers});
-    }else if (methodType === 'get') {
+    } else if (methodType === 'get') {
       return this._http.get(serviceUrl, {headers});
     }
   }

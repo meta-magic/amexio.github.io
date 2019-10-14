@@ -49,7 +49,7 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
     ngOnInit() {
         if (this.buttonType === 'floatingbutton') {
           this.isFloatingButton = true;
-        }else if (this.buttonType === 'button') {
+        } else if (this.buttonType === 'button') {
             this.isSimpleButton = true;
         }
         if (this.relative && !this.closeable) {

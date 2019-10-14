@@ -35,7 +35,7 @@ description : The name is for determining the name of item.
   @HostBinding('class') hostname: any;
   private _name: string;
 
-  get name(): string{
+  get name(): string {
     return this._name;
   }
 

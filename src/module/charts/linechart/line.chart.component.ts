@@ -173,7 +173,7 @@ description : height of chart
   showChart: boolean;
   _data: any;
 
-  get data(): any{
+  get data(): any {
     return this._data;
   }
 

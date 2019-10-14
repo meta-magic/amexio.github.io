@@ -63,7 +63,7 @@ export class LinkedInAuthComponent extends SocialBaseComponent implements OnInit
     if (IN && IN.User.authorize()) {
       console.log('User already loggedin...');
       return;
-    }else {
+    } else {
       this.signIn();
     }
   }

@@ -33,7 +33,7 @@ default :
 description : Layout the contents to North , East , West , Center & South positions
 */
   @Input() position: string;
-  positionClass= 'borderlayout-';
+  positionClass = 'borderlayout-';
   @HostBinding('attr.class') role = this.positionClass;
 
   constructor() {

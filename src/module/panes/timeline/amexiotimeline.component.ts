@@ -32,7 +32,7 @@ export class AmexiotimelineComponent extends LifeCycleBaseComponent implements O
 
   @Input('content-alignment') contentalignment: string;
 
-  alignment= 'center';
+  alignment = 'center';
 
   timelineevents: AmexiotimelineeventComponent[];
 
