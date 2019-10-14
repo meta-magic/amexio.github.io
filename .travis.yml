@@ -29,7 +29,6 @@ script:
   - cd ../../ && pwd && gulp build --max_old_space_size=4096
   - cd dist && npm pack
   - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
-  - ng --version
   
 after_success: 
   - cd ../
