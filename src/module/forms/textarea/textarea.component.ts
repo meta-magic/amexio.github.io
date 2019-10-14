@@ -261,10 +261,10 @@ description : Set enable / disable popover.
     this.focus.emit(this.value);
   }
 
-  onInputEvent(event: any) {
+  onInputEvent(inputEvent: any) {
     this.eventPropagation(event);
     this.isValid = this.isFieldValid();
-    this.input.emit(this.value);
+    this.input.emit({value: this.value, event: inputEvent});
   }
 
   onChangeEv(event: any) {
