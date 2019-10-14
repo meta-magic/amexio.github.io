@@ -36,7 +36,6 @@ describe('amexio-dropdown', () => {
     data = [{
       index: '12345'
     }];
-    it('true is true', () => expect(true).toBe(true));
   });
 
   //   it('set data method', () => {

@@ -19,12 +19,6 @@ describe('TAG INPUT', () => {
         });
         fixture = TestBed.createComponent(AmexioTagsInputComponent);
         comp = fixture.componentInstance;
-
-        it('true is true', () => expect(true).toBe(true));
     });
-    // it('is valid', () => expect(comp.isValid).toBe(false));
-    // it('get innervalue', () => {
-    //     comp.value = 'sagfaf';
-    //     expect(comp['innerValue']).toEqual(comp.value);
-    // });
+
 });

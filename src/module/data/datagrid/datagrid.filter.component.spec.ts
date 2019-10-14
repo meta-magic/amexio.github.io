@@ -39,61 +39,59 @@ describe('amexio-datagrid-filter', () => {
                 }],
             }
         }
-
-        it('setSelectedOption If Method', () => {
-            let col = {
-                columnIndex: 0,
-                contextmenu: "undefined",
-                dataindex: "preferredFullName",
-                datatype: "string",
-                filterIcon: true,
-                hidden: false,
-                lastColumn: 3,
-                sort: true,
-                text: "Full Name",
-                width: "undefined",
-            }
-
-            let event = {
-                filterOption: "AND",
-                selected: true
-            }
-
-            comp.setSelectedOption(col, event);
-            expect(event.filterOption).toEqual('AND');
-            comp.option = 'AND';
-            comp.keyUpSearch(col);
-
-        })
-
-
-        it('setSelectedOption Else Method', () => {
-            let col = {
-                columnIndex: 0,
-                contextmenu: "undefined",
-                dataindex: "preferredFullName",
-                datatype: "string",
-                filterIcon: true,
-                hidden: false,
-                lastColumn: 3,
-                sort: true,
-                text: "Full Name",
-                width: "undefined",
-            }
-
-            let event = {
-                filterOption: "OR",
-                selected: true
-            }
-
-            comp.setSelectedOption(col, event);
-            expect(event.filterOption).not.toEqual('AND');
-            comp.option = 'OR';
-            comp.keyUpSearch(col);
-
-        })
     });
 
+    it('setSelectedOption If Method', () => {
+        let col = {
+            columnIndex: 0,
+            contextmenu: "undefined",
+            dataindex: "preferredFullName",
+            datatype: "string",
+            filterIcon: true,
+            hidden: false,
+            lastColumn: 3,
+            sort: true,
+            text: "Full Name",
+            width: "undefined",
+        }
 
+        let event = {
+            filterOption: "AND",
+            selected: true
+        }
+
+        comp.setSelectedOption(col, event);
+        expect(event.filterOption).toEqual('AND');
+        comp.option = 'AND';
+        comp.keyUpSearch(col);
+
+    })
+
+
+    it('setSelectedOption Else Method', () => {
+        let col = {
+            columnIndex: 0,
+            contextmenu: "undefined",
+            dataindex: "preferredFullName",
+            datatype: "string",
+            filterIcon: true,
+            hidden: false,
+            lastColumn: 3,
+            sort: true,
+            text: "Full Name",
+            width: "undefined",
+        }
+
+        let event = {
+            filterOption: "OR",
+            selected: true
+        }
+
+        comp.setSelectedOption(col, event);
+        expect(event.filterOption).not.toEqual('AND');
+        comp.option = 'OR';
+        comp.keyUpSearch(col);
+
+    })
 
 });

@@ -20,7 +20,6 @@ describe('TextArea ', () => {
     fixture = TestBed.createComponent(AmexioTextAreaComponent);
     comp = fixture.componentInstance;
   });
-  it('true is true', () => expect(true).toBe(true));
 
   it('get helpinfomsg', () => {
     comp.helpInfoMsg = "test";
@@ -62,9 +61,11 @@ describe('TextArea ', () => {
   });
 
   it('writeValue()', () => {
-    comp.writeValue(fixture);
-    expect(comp.value).toEqual(fixture);
-  });
+    let value = 'abc';
+    comp.innerValue = 'xyz';
+    expect(value).not.toEqual(comp.innerValue);
+    comp.innerValue = value;
+  })
   it('set Pattern', () => {
     comp.pattern = comp.pattern;
     comp.regEx = new RegExp(comp.pattern);

@@ -40,8 +40,6 @@ describe('amexio-calendar', () => {
     fixture = TestBed.createComponent(AmexioCalendarComponent);
     comp = fixture.componentInstance;
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-
-    it('true is true', () => expect(true).toBe(true));
   });
 
   //check variables 
@@ -64,14 +62,7 @@ describe('amexio-calendar', () => {
 
     expect(comp.monthPressed).toEqual(false);
     expect(comp.yearPressed).toEqual(false);
-  });
-
-
-  it('should call get function and return true', () => {
-
-
-  });
-
+  })
 
   // onDayTimeWiseEvent method
   it('onDayTimeWiseEvent() method check', () => {
@@ -93,17 +84,6 @@ describe('amexio-calendar', () => {
   });
 
 
-  // onYearEvent method
-  // it('onYearEvent() method check', () => {
-  //   let fn = Date;
-
-    
-  //   comp.onYearEvent(fn);
-  //   comp.onEventClicked.subscribe((g: any) => {
-  //     expect(comp.onEventClicked).toEqual(g);
-  //   });
-  // });
-
   // onMonthEvent method
   it('onMoreCloseClick() method check', () => {
     let fn = event;
@@ -121,25 +101,5 @@ describe('amexio-calendar', () => {
       expect(comp.onMoreEventClick).toEqual(g);
     });
   });
-
-  // validateEventData method
-  // it('validateEventData() method check', () => {
-
-  //   comp.events = event;
-  //   comp['validateEventData()']
-   
- 
-  // });
-
-  // initCalendar method
-  // it('initCalendar() method check', () => {
-
-   
-  //   comp.initCalendar();
-  //   expect(comp['validateEventData()']).toHaveBeenCalled;
- 
-  // });
-
-
 
 });

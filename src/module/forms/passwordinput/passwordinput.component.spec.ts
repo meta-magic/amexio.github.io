@@ -21,8 +21,6 @@ describe('Password INPUT', () => {
     }).compileComponents();
     fixture = TestBed.createComponent(AmexioPasswordComponent);
     comp = fixture.componentInstance;
-
-    it('true is true', () => expect(true).toBe(true));
   });
 
 

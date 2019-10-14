@@ -20,7 +20,6 @@
 //     fixture = TestBed.createComponent(AmexioTypeAheadComponent);
 //     comp = fixture.componentInstance;
 
-//     it('true is true', () => expect(true).toBe(true));
 //   });
 
 

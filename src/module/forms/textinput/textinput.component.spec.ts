@@ -1,7 +1,4 @@
 
-// describe('TextInput ', () => {
-//   it('true is true', () => expect(true).toBe(true));
-// });
 /**
  * Created by pratik on 1/12/17.
  */
@@ -10,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AmexioInputHelperComponent } from '../../base/input.helper.component';
+import { validateConfig } from '@angular/router/src/config';
 
 describe('Text INPUT', () => {
 
@@ -23,31 +21,17 @@ describe('Text INPUT', () => {
     });
     fixture = TestBed.createComponent(AmexioTextInputComponent);
     comp = fixture.componentInstance;
-
-    it('true is true', () => expect(true).toBe(true));
   });
 
 
   it('initialize innervalue', () => {
     comp.value = 'sagfaf';
     expect(comp['innerValue']).toEqual(comp.value);
-  });
+  })
 
-
-
-
-  //get pattern
   it('get pattern', () => {
     expect(comp.pattern).toEqual(comp._pattern);
   })
-
-  //set pattern
-  // it('set pattern', () => {
-
-  //   let obj = new RegExp(comp.pattern);
-  //   expect(comp.value).not.toEqual(null);
-  //   expect(comp.regEx).toEqual(obj);
-  //  })
 
   it('register on change', () => {
     let fn: any;
@@ -62,49 +46,23 @@ describe('Text INPUT', () => {
     expect(comp['onTouchedCallback']).toEqual(fn);
   })
   it('writeValue()', () => {
-    comp.writeValue(fixture);
-    expect(comp.value).toEqual(fixture);
-  });
+    let value = 'abc';
+    comp.innerValue = 'xyz';
+    expect(value).not.toEqual(comp.innerValue);
+    comp.innerValue = value;
+  })
 
   it('ngOninit Method', () => {
     comp.ngOnInit();
     comp.name = comp.generateName(comp.name, comp.fieldlabel, 'textinput');
     comp.componentId = comp.createCompId('textinput', comp.name);
-  });
-
-  it('getCssClass()', () => {
-  });
-
+  })
 
   it('check for isValid', () => {
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);
-  });
-  it('noInnerValue()', () => {
-  });
-  it('otherValidation()', () => {
-  });
+  })
 
-  // //on focus()
-  // it('on focus()', () => {
-  //   //comp.showToolTip=true;
-  //   let flag = true;
-  //   comp.onFocusEventText(event);
-  //   event.stopPropagation();
-  //   expect(comp.showToolTip).toEqual(flag);
-  // })
-
-  // // On Change()
-  // it('on change()', () => {
-  //   comp.onChangeEvText(event);
-  //   event.stopPropagation();
-  // })
-
-  // // On Input()
-  // it('on input()', () => {
-  //   comp.onInputText(event);
-  //   event.stopPropagation();
-  // })
   it('onInputTextEvent call ', () => {
     comp.onInputTextEvent(event);
     comp.onInputEvent(event);

@@ -19,8 +19,6 @@ describe('NUMBER INPUT', () => {
     });
     fixture = TestBed.createComponent(AmexioNumberInputComponent);
     comp = fixture.componentInstance;
-
-    it('true is true', () => expect(true).toBe(true));
   });
 
 

@@ -174,32 +174,31 @@ describe('amexio-tab', () => {
         expect(comp.tabs).toBeUndefined();
         comp.minHeight = h;
         comp.height = h;
+    })
 
+    it('onAdjust Height method tab nativeelement undefined', () => {
+        comp.bodyheight = 20;
+        comp.tabs.nativeElement = undefined;
+        comp.onAdjustHeight();
+        expect(comp.bodyheight).toBeDefined();
+        let h = (window.innerHeight / 100) * comp.bodyheight;
+        expect(comp.tabs).toBeDefined();
+        expect(comp.tabs.nativeElement).toBeUndefined();
+        comp.minHeight = h;
+        comp.height = h;
+    })
 
-        it('onAdjust Height method tab nativeelement undefined', () => {
-            comp.bodyheight = 20;
-            comp.tabs.nativeElement = undefined;
-            comp.onAdjustHeight();
-            expect(comp.bodyheight).toBeDefined();
-            let h = (window.innerHeight / 100) * comp.bodyheight;
-            expect(comp.tabs).toBeDefined();
-            expect(comp.tabs.nativeElement).toBeUndefined();
-            comp.minHeight = h;
-            comp.height = h;
-        })
-
-        it('onAdjust Height method tab offset data undefined', () => {
-            comp.bodyheight = 20;
-            comp.tabs.nativeElement.offsetHeight = undefined;
-            comp.onAdjustHeight();
-            expect(comp.bodyheight).toBeDefined();
-            let h = (window.innerHeight / 100) * comp.bodyheight;
-            expect(comp.tabs).toBeDefined();
-            expect(comp.tabs.nativeElement).toBeDefined();
-            expect(comp.tabs.nativeElement.offsetHeight).toBeUndefined();
-            comp.minHeight = h;
-            comp.height = h;
-        })
+    it('onAdjust Height method tab offset data undefined', () => {
+        comp.bodyheight = 20;
+        // comp.tabs.nativeElement.offsetHeight = undefined;
+        comp.onAdjustHeight();
+        expect(comp.bodyheight).toBeDefined();
+        let h = (window.innerHeight / 100) * comp.bodyheight;
+        expect(comp.tabs).toBeDefined();
+        expect(comp.tabs.nativeElement).toBeDefined();
+        expect(comp.tabs.nativeElement.offsetHeight).toBe(0);
+        comp.minHeight = h;
+        comp.height = h;
     })
 
     it('onAdjust Height method All defined If Block', () => {

@@ -38,8 +38,6 @@ describe('amexio-checkbox-group', () => {
     DataService = TestBed.get(CommonDataService);
     httpMock = TestBed.get(HttpTestingController);
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-
-    it('true is true', () => expect(true).toBe(true));
     comp.required = false;
   });
 

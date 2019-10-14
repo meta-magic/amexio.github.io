@@ -36,8 +36,6 @@ describe('checkbox', () => {
 
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
     comp.checked = true;
-
-    it('true is true', () => expect(true).toBe(true));
   });
 
   //check variables 
