@@ -16,7 +16,7 @@ class DynamicTextTestComponent {
     placeholdervalue = {greeting: "Hi"};
 }
 
-fdescribe('Directive: amexio-dynamic-text', () => {
+describe('Directive: amexio-dynamic-text', () => {
     let comp: DynamicTextDirective;
 
     let fixture: ComponentFixture<DynamicTextDirective>;
