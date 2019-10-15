@@ -254,4 +254,8 @@ export class ListBaseDatepickerComponent<T> extends AmexioFormValidator {
             element.flag = true;
         }
     }
+
+    getCryptoId() {
+       return Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_id';
+    }
 }

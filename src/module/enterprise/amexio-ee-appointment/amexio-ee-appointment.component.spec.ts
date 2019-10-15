@@ -19,4 +19,11 @@ describe('DropDownMenu', () => {
     expect(comp1.setRoundEdge).toBeTruthy();
   });
 
+  it('initComponent', () => {
+    comp1.initComponent();
+    comp1.currentDate = new Date();
+    comp1.viewData = [];
+    comp1.randomid = window.crypto.getRandomValues(new Uint32Array(1))[0];
+  })
+
 });

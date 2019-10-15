@@ -164,7 +164,7 @@ export class AmexioWeekDayAvailiblityComponent extends LifeCycleBaseComponent {
     gettime() {
 
     }
-    private initComponent() {
+    initComponent() {
         if (this.currentDate) {
             this.viewData = [];
             this.randomid = window.crypto.getRandomValues(new Uint32Array(1))[0];
