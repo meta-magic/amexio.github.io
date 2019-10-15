@@ -281,7 +281,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
         };
         day.date = new Date(date.getTime());
         day.isCurrentMonth = (date.getMonth() === selectedPeriod.getMonth());
-        day['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+        day['id'] = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_id';
         day['fulldate'] = (day.date).getDate() + ' ' +
           this.getFullMonthName(day.date) + ' ' + (day.date).getFullYear() +
           ' ' + this.getFullDayName(day.date);

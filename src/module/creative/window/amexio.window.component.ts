@@ -112,7 +112,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   componentRef: any;
 
-  amexioComponentId = 'ce-amexio-window' + Math.floor(Math.random() * 1000 + 999);
+  amexioComponentId = 'ce-amexio-window' + window.crypto.getRandomValues(new Uint32Array(1))[0];
   x = 0;
 
   y = 0;

@@ -286,6 +286,6 @@ description : Provides Tooltip for button.
   }
 
   createCompId(inputType: any) {
-    return inputType + '_' + Math.floor(Math.random() * 1000 + 999);
+    return inputType + '_' + window.crypto.getRandomValues(new Uint32Array(1))[0];
   }
 }

@@ -162,7 +162,7 @@ description : Type of HTTP call, POST,GET etc.
       nodeArray.forEach((node: any) => {
         if (node[this.childarraykey]) {
           node[this.childarraykey].forEach((element: any, index: any) => {
-            element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+            element['id'] = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_id';
             if (node[this.childarraykey]) {
               this.iconAddedMethod(node[this.childarraykey]);
             }

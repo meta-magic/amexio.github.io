@@ -123,7 +123,7 @@ description : Height of dockbar item
   }
 
   constructor() {
-    this.elementId = 'dockbar-item-id' + Math.floor(Math.random() * 90000) + 10000;
+    this.elementId = 'dockbar-item-id' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
   }
 
   ngOnInit() {

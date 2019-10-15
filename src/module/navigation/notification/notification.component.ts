@@ -154,7 +154,7 @@ description : Position of notification window vertically:
     super();
   }
   ngOnInit() {
-    this.componentID = Math.floor(Math.random() * 1000 + 999);
+    this.componentID = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
     if (this.autodismissmsg) {
       if (!this.autodismissmsginterval) {
         this.autodismissmsginterval = 1500;

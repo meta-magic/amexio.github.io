@@ -110,7 +110,7 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
   componentId = '';
   offsetWidth = 0;
   constructor(public elementref: ElementRef) {
-    this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_navctyt';
+    this.componentId = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_navctyt';
     this.offsetWidth = this.elementref.nativeElement.offsetWidth;
 
   }

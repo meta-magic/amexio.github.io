@@ -38,7 +38,7 @@ export class RecaptchaComponent implements OnInit {
   }
   ngOnInit() {
     this.componentId =
-      +Math.floor(Math.random() * 90000) + 10000 + 'google';
+      + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + 'google';
 
     const script = this._loadRecaptchaService.loadScript();
     const body = document.body as HTMLDivElement;

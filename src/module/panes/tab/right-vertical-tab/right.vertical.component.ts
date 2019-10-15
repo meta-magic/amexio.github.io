@@ -89,7 +89,7 @@ export class AmexioRightVerticalTabComponent extends BaseTabComponent implements
   }
 
   ngOnInit() {
-    this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_tabc';
+    this.componentId = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_tabc';
   }
 
   ngAfterViewInit() {

@@ -92,7 +92,7 @@ description : Font color of label
   @ViewChild('target', { read: ViewContainerRef }) public target: any;
 
   constructor() {
-    this.tabId = Math.floor(Math.random() * 90000) + 10000;
+    this.tabId = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
   }
 
   ngOnInit() {

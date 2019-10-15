@@ -72,6 +72,6 @@ export class CheckboxComponent implements OnInit {
   }
 
   createCompId(inputType: any, name: any) {
-    return inputType + '_' + name + '_' + Math.floor(Math.random() * 1000 + 999);
+    return inputType + '_' + name + '_' + window.crypto.getRandomValues(new Uint32Array(1))[0];
   }
 }

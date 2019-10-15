@@ -202,7 +202,7 @@ description : Fires the on accordion pane click event.
   }
   ngOnInit() {
     super.ngOnInit();
-    this.componentId = Math.random() * 1000 + 'panel';
+    this.componentId = window.crypto.getRandomValues(new Uint32Array(1))[0] + 'panel';
     if (!this.collapsible) {
       this.expanded = true;
     }

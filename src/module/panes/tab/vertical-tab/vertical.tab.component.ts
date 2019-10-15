@@ -91,7 +91,7 @@ export class AmexioVerticalTabComponent extends BaseTabComponent implements Afte
     this.tabPosition = 'top';
   }
   ngOnInit() {
-    this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_tabc';
+    this.componentId = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_tabc';
   }
   ngAfterViewInit() {
     if (this.tabId && this.tabId.nativeElement && this.tabId.nativeElement.offsetWidth) {

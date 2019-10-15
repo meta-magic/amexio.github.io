@@ -192,7 +192,7 @@ description : Triggers when slider reaches the end
 
   constructor(public el: ElementRef, public domHandler: DomHandler, public renderer: Renderer2, private ngZone: NgZone) {
     super();
-    this.componentId = 'slider' + '_' + Math.floor(Math.random() * 1000 + 999);
+    this.componentId = 'slider' + '_' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
   }
 
   ngOnInit() {

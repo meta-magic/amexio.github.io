@@ -115,7 +115,7 @@ export class AmexioAccordionTabComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
-    this.componentId = '' + Math.floor(Math.random() * 1000 + 999);
+    this.componentId = '' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
     this.emittedEvent.emit({ keydown: true, current: this });
   }
 

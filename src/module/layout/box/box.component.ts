@@ -116,7 +116,7 @@ export class AmexioBoxComponent implements OnInit {
   roundedgeclass: string;
 
   ngOnInit() {
-    this.componentId = +Math.floor(Math.random() * 90000) + 10000 + 'box';
+    this.componentId = +Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + 'box';
     if (this.borderColor == null) {
       this.borderColor = 'box-default';
     }

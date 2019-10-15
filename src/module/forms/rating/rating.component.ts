@@ -203,7 +203,7 @@ export class AmexioRatingComponent extends AmexioFormValidator implements OnInit
   // -------------------------------------------------------------------------
   ngOnInit() {
     this.componentId = this.createCompId('rating', this.fieldlabel);
-    this.starId = 'star' + Math.floor(Math.random() * 1000 + 999);
+    this.starId = 'star' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
     for (let i = 0; i < this.ratingRange.length; i++) {
       const obj = {};
       obj['number'] = i + 1;
