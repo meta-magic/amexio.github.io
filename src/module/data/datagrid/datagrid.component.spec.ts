@@ -1131,6 +1131,8 @@ describe('amexio-datagrid', () => {
         fixture.detectChanges();
         comp.httpmethod = 'get';
         comp.httpurl = 'datagrid/datagrid.json';
+         let random = 'gridcolumn' + window.crypto.getRandomValues(new Uint32Array(1))[0];
+        comp.componentId = random;
         comp.ngOnInit();
         expect(comp.httpmethod).toBeDefined();
         expect(comp.httpurl.length).toBeDefined();
@@ -1145,6 +1147,9 @@ describe('amexio-datagrid', () => {
                 comp.setData(comp.responseData);
             }
         );
+        comp.componentId = random;
+        expect(comp.componentId).toEqual(random);
+        // this.gridId = 'grid' + window.crypto.getRandomValues(new Uint32Array(1))[0];
     });
 
     // it('ngOnInit  method testing else', () => {
