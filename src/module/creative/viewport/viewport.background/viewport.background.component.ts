@@ -26,7 +26,7 @@ export class ViewportBackgroundComponent implements AfterContentInit, OnInit {
     // IMAGE
     if (this.imageTemplate) {
       this.imagePath = this.imageTemplate.path;
-      this.bgCss = 'bgCss' + Math.floor(Math.random() * 1000) + 'background';
+      this.bgCss = 'bgCss' + window.crypto.getRandomValues(new Uint32Array(1))[0] + 'background';
     }
 
     // VIDEO

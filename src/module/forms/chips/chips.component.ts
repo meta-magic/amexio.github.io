@@ -64,7 +64,7 @@ export class AmexioChipsComponent implements AfterContentInit {
   documentClickListener: any;
   obj: any = {};
   constructor(public renderer: Renderer2) {
-    this.componentId = 'chips' + Math.floor(Math.random() * 1000 + 999);
+    this.componentId = 'chips' + window.crypto.getRandomValues(new Uint32Array(1))[0];
   }
 
   ngAfterContentInit() {

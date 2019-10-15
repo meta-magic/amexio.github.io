@@ -226,7 +226,7 @@ export class AmexioItemSelectorComponent implements OnInit {
   generateIndex(getAvailableData: any) {
     if (getAvailableData) {
       getAvailableData.forEach((element: any, index: any) => {
-        element['id'] = 'itemselector' + Math.floor(Math.random() * 10000 + 99999);
+        element['id'] = 'itemselector' + window.crypto.getRandomValues(new Uint32Array(1))[0];
       });
     }
   }

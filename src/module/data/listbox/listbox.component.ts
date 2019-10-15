@@ -266,7 +266,7 @@ description : Context Menu provides the list of menus on right click.
       this.setData(this.data);
     }
     this.componentLoaded = true;
-    this.componentId = 'listbox' + Math.floor(Math.random() * 1000 + 999);
+    this.componentId = 'listbox' + window.crypto.getRandomValues(new Uint32Array(1))[0];
 
     this.listenListboxOutClick();
   }
@@ -368,7 +368,7 @@ description : Context Menu provides the list of menus on right click.
       if (!row.hasOwnProperty('isSelected')) {
         row['isSelected'] = false;
       }
-      row['index'] = 'listbox' + Math.floor(Math.random() * 1000 + 999) + index;
+      row['index'] = 'listbox' + window.crypto.getRandomValues(new Uint32Array(1))[0] + index;
     });
     this.maskloader = false;
   }

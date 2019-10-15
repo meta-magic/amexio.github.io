@@ -73,7 +73,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   themeCss: any;
   headerinst: any;
 
-  amexioComponentId = 'amexio-window' + Math.floor(Math.random() * 1000 + 999);
+  amexioComponentId = 'amexio-window' + window.crypto.getRandomValues(new Uint32Array(1))[0];
   /*
    Properties
    name : vertical-position

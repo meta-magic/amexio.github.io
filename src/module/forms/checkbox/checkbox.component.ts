@@ -176,7 +176,7 @@ export class AmexioCheckBoxComponent extends AmexioFormValidator implements Cont
     const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     let randomString = '';
     for (let i = 0; i < 6; i++) {
-      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+      randomString += possibleCharacters.charAt(window.crypto.getRandomValues(new Uint32Array(1))[0] * possibleCharacters.length);
     }
     return randomString;
   }

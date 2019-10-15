@@ -167,7 +167,7 @@ export class AmexioWeekDayAvailiblityComponent extends LifeCycleBaseComponent {
     private initComponent() {
         if (this.currentDate) {
             this.viewData = [];
-            this.randomid = Math.floor(Math.random() * 90000) + 10000;
+            this.randomid = window.crypto.getRandomValues(new Uint32Array(1))[0];
             const clonedDate = new Date(this.currentDate.getTime());
             let startDate = clonedDate;
             const d1 = new DayModel(new Date(startDate.getTime()), true, this.availableslots);

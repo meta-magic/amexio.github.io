@@ -116,7 +116,7 @@ description : It will gives you clicked node data.
     }
     this.data = responsedata;
     this.mask = false;
-    this.generateIndex(this.data, 1, Math.floor(Math.random() * 1000 + 999 + 1));
+    this.generateIndex(this.data, 1, window.crypto.getRandomValues(new Uint32Array(1))[0]);
   }
 
   nodeclick(node: any) {

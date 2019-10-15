@@ -43,14 +43,14 @@ export class ViewportContentComponent implements OnInit, AfterContentInit, After
     }
     // IMAGE
     if (this.bgImageTemplate.imagePath) {
-      this.backgroundCss = 'bgCss' + Math.floor(Math.random() * 1000) + 'backgound';
+      this.backgroundCss = 'bgCss' + window.crypto.getRandomValues(new Uint32Array(1))[0] + 'backgound';
       this.insertStyleSheetRule('.' + this.backgroundCss + '{ background-image: url(' + this.bgImageTemplate.imagePath + ')}');
     }
 
     // VIDEO
     if (this.bgImageTemplate.videoPath) {
       this.bgImageTemplate.videoTemplate.rederVideo = false;
-      this.bgvid = 'videoId' + Math.floor(Math.random() * 1000);
+      this.bgvid = 'videoId' + window.crypto.getRandomValues(new Uint32Array(1))[0];
       this.tempUrl = this.bgImageTemplate.videoPath;
       this.playVideo();
     }

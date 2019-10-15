@@ -90,12 +90,12 @@ export class AmexioCalendarComponent implements OnInit {
     initCalendar() {
         this.validateEventData();
         this.createData(this.currrentDate);
-        this.prevbtnid = Math.floor(Math.random() * 90000) + 10000 + '_previd';
-        this.nextbtnid = Math.floor(Math.random() * 90000) + 10000 + '_nextid';
-        this.daybtnid = Math.floor(Math.random() * 90000) + 10000 + '_dayid';
-        this.weekbtnid = Math.floor(Math.random() * 90000) + 10000 + '_weekid';
-        this.monthbtnid = Math.floor(Math.random() * 90000) + 10000 + '_monthid';
-        this.yearbtnid = Math.floor(Math.random() * 90000) + 10000 + '_yearid';
+        this.prevbtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_previd';
+        this.nextbtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_nextid';
+        this.daybtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_dayid';
+        this.weekbtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_weekid';
+        this.monthbtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_monthid';
+        this.yearbtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_yearid';
     }
 
     private validateEventData() {

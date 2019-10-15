@@ -279,7 +279,7 @@ description : It will gives whole tree data with checked flag status.
     if (this.isexpandAll) {
       this.expandAll(this.treeData);
     }
-    this.generatefilterIndex(this.treeData, 1, Math.floor(Math.random() * 1000 + 999 + 1));
+    this.generatefilterIndex(this.treeData, 1, window.crypto.getRandomValues(new Uint32Array(1))[0]);
 
   }
   searchTree(data: any[], matchingTitle: string) {

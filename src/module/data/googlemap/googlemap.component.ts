@@ -83,7 +83,7 @@ export class AmexioGoogleMapComponent implements OnInit {
     this.differ = differs.find([]).create(null);
   }
   ngOnInit() {
-    this.componentId = +Math.floor(Math.random() * 90000) + 10000 + 'google';
+    this.componentId = +window.crypto.getRandomValues(new Uint32Array(1))[0] + 'google';
     if (this.googlemapkey) {
       const fullScriptTag =
         GOOGLEMAP_CONSTANT.GOOGLE_MAP_URL + this.googlemapkey;

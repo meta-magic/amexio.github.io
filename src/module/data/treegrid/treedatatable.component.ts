@@ -241,7 +241,7 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
     } else {
       this.viewRows = [];
     }
-    this.generateIndex(this.viewRows, 1, Math.floor(Math.random() * 1000 + 999 + 1));
+    this.generateIndex(this.viewRows, 1, window.crypto.getRandomValues(new Uint32Array(1))[0]);
   }
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;

@@ -422,7 +422,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         this.parentRef = this.data;
         if (this.globalTreeData.length === 0 && !this.filtertreeflag) {
             this.globalTreeData = this.data;
-            this.generateIndex(this.globalTreeData, 1, Math.floor(Math.random() * 1000 + 999 + 1));
+            this.generateIndex(this.globalTreeData, 1, window.crypto.getRandomValues(new Uint32Array(1))[0]);
         }
         this.setSelectedFlag();
         this.activateNode(this.data, null);

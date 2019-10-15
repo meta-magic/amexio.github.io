@@ -75,14 +75,14 @@ export class ValueAccessorBaseComponent<T> implements ControlValueAccessor {
     const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     let randomString = '';
     for (let i = 0; i < 6; i++) {
-      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+      randomString += possibleCharacters.charAt(window.crypto.getRandomValues(new Uint32Array(1))[0] * possibleCharacters.length);
     }
     return randomString;
   }
 
   createCompId(inputType: any, name: any) {
     if (name === '' || name === null) {
-      return inputType + '_' + Math.floor(Math.random() * 1000 + 999);
+      return inputType + '_' + window.crypto.getRandomValues(new Uint32Array(1))[0];
     } else {
       return inputType + '_' + name;
     }

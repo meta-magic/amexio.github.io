@@ -139,7 +139,7 @@ description : Fire when button-dropdown item button/link click
     super(renderer, element, _cd);
   }
   ngOnInit() {
-    this.componentId = this.label + Math.floor(Math.random() * 1000 + 999);
+    this.componentId = this.label + window.crypto.getRandomValues(new Uint32Array(1))[0];
   }
   updateComponent() {
     if (JSON.stringify(this.buttonGroupPreviewData) !== JSON.stringify(this.buttonGroupLocalData)) {

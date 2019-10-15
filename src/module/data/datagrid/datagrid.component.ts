@@ -504,9 +504,9 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
       this.previousData = JSON.parse(JSON.stringify(this.data));
     }
     this.componentLoaded = true;
-    this.componentId = 'gridcolumn' + Math.floor(Math.random() * 1000 + 999);
+    this.componentId = 'gridcolumn' + window.crypto.getRandomValues(new Uint32Array(1))[0];
 
-    this.gridId = 'grid' + Math.floor(Math.random() * 1000 + 999);
+    this.gridId = 'grid' + window.crypto.getRandomValues(new Uint32Array(1))[0];
   }
 
   ngAfterViewInit(): void {
@@ -1225,7 +1225,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   addRows(row: any, index: number) {
-    row.level = Math.floor(Math.random() * 900) + 100;
+    row.level = window.crypto.getRandomValues(new Uint32Array(1))[0];
     row.groupData.forEach((node: any, index1: any) => {
       node.level = row.level;
       this.viewRows.splice(index + (index1 + 1), 0, node);

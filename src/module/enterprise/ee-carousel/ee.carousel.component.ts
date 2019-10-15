@@ -97,7 +97,7 @@ description :
   displayDetail: boolean;
 
   constructor() {
-    this.elementId = 'multi-media-ee-carousel-' + Math.floor(Math.random() * 90000) + 10000;
+    this.elementId = 'multi-media-ee-carousel-' + window.crypto.getRandomValues(new Uint32Array(1))[0];
   }
 
   ngOnInit() {

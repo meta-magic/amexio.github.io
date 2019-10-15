@@ -199,7 +199,7 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
 
   ngOnInit() {
 
-    this.componentId = this.displayfield + Math.floor(Math.random() * 1000 + 999);
+    this.componentId = this.displayfield + window.crypto.getRandomValues(new Uint32Array(1))[0];
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;

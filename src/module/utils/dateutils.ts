@@ -36,7 +36,7 @@ export class AmexioDateUtils {
                     date: null, selected: false, isActivePeriod: null, isDisabled: false,
                     isActive: false, isEvent: false, eventDetails: null,
                 };
-                day['id'] = Math.floor(Math.random() * 90000) + 10000 + '_monthid';
+                day['id'] = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_monthid';
                 day.date = new Date(date.getTime());
                 day.isActivePeriod = (date.getMonth() === selectedPeriod.getMonth());
                 day.isActive = this.isDateEqual(day.date, new Date());
