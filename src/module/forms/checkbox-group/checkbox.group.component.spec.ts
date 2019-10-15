@@ -352,7 +352,7 @@ describe('amexio-checkbox-group', () => {
   });
 
   //
-  it('check validate else condition', () => {
+  it('check validate else condition', (): any => {
     comp['_model'] = [{
       "language": "Angular 2",
       "checked": false

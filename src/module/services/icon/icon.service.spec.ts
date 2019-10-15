@@ -89,11 +89,7 @@ describe('IconLoaderService', () => {
     });
   });
 
-
-
-
-
-  it('getIconObject 1st if condition', () => {
+  it('getIconObject 1st if condition', (): any => {
     service._iconToUse = 'fa';
     let obj = null;
     let componentKey = 'datepicker_previous';

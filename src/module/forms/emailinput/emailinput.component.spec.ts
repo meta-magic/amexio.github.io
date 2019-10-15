@@ -144,7 +144,7 @@ describe('amexio-email-input', () => {
   //   expect(comp.allowblank).toEqual(true);
 
   // });
-  it('validate method call null', () => {
+  it('validate method call null', (): any => {
     let c:FormControl;
     comp.validate(c);
     expect(comp.isEmailFieldValid()).toBeTruthy;

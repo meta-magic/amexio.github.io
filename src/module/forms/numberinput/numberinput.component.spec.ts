@@ -63,7 +63,7 @@ describe('NUMBER INPUT', () => {
     comp.registerOnTouched(fn);
     expect(comp['onTouchedCallback']).toEqual(fn);
   })
-  it('validate method call allowblank true', () => {
+  it('validate method call allowblank true', (): any=> {
     comp.allowblank = true;
     let c: FormControl;
     comp.validate(c);
@@ -87,7 +87,7 @@ describe('NUMBER INPUT', () => {
     };;
   });
 
-  it('validate method call isvalid true', () => {
+  it('validate method call isvalid true', (): any => {
 
     let c: FormControl;
     comp.validate(c);
