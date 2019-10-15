@@ -103,7 +103,7 @@ export class AmexioDropDownMenuComponent extends LifeCycleBaseComponent implemen
     super();
     this.iconalign = 'left';
     this.padding = '5px 10px';
-    this.componentId = 'dropdownmenu' + Math.floor(Math.random() * 1000 + 999);
+    this.componentId = 'dropdownmenu' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
   }
   ngOnInit() {
     if (this.data) {
