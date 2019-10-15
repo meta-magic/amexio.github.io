@@ -300,7 +300,7 @@ describe('amexio-floating-panel', () => {
                 'opacity': '1'
             }
         }
-        window.event = jasmine.createSpyObj('e', ['preventDefault']);
+        // window.event = jasmine.createSpyObj('e', ['preventDefault']);
         window.event ['clientX'] = 1200;
         window.event ['clientY'] = 1400;
         let e ;

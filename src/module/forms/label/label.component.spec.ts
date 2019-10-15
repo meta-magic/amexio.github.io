@@ -47,7 +47,7 @@ describe('amexio-label' , () => {
 
   it('click enable check ',() => {
     comp.onLabel(event);
-    expect(comp.enableclick).not.toEqual('null');
+    expect(comp.enableclick).not.toEqual(null);
   });
 
   it('should emit on click', () => {

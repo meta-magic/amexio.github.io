@@ -102,4 +102,11 @@ describe('amexio-card-ce', () => {
       comp.instance = this;
 
     });
+
+    it('exitHandler', () => {
+        comp.exitHandler();
+        comp.fullscreenMax = false;
+        expect(document['webkitIsFullScreen']).toBeDefined();
+        expect(comp.fullscreenMax).toBeFalsy();
+    })
 });
