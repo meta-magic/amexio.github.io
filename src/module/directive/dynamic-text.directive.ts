@@ -20,7 +20,6 @@ export class DynamicTextDirective implements OnInit, AfterContentChecked {
     }
 
     iterateHTMLDOM(element: any) {
-        console.log(element);
         if (element.nodeType === 3) {
             for (const [key, value] of Object.entries(this.jsonData)) {
                 element.textContent = element.textContent.replace(key, value as string);
