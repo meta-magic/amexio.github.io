@@ -23,7 +23,7 @@ before_script:
 
             
 script: 
-  - gulp test
+  - gulp test --max_old_space_size=8192
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
   - cd src/styles/ && sh sasstocss.sh
   - cd ../../ && pwd && gulp build --max_old_space_size=8192
