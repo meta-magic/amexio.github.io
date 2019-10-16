@@ -35,6 +35,14 @@ describe('searchboxtool ', () => {
     comp.advanceSearchFlag = false;
   });
 
+
+  it('ngOnInit()', () => {
+    comp.ngOnInit();
+    comp.componentId = comp.displayfield + window.crypto.getRandomValues(new Uint32Array(1))[0];
+
+   });
+
+
   // it('set data', () => {
   //   let value = '';
   //   comp._data = value;
