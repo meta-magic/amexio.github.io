@@ -4,7 +4,7 @@ import { GoogleMapOverlays } from '../../../models/googlemap.model';
 import { GoogleMapScriptService } from '../../services/script/script.data.service';
 import { GOOGLEMAP_CONSTANT } from './googlemap.constant';
 
-fdescribe('AmexioGoogleMapComponent', () => {
+describe('AmexioGoogleMapComponent', () => {
   let comp1: AmexioGoogleMapComponent;
   let fixture1: ComponentFixture<AmexioGoogleMapComponent>;
   beforeEach(() => {
