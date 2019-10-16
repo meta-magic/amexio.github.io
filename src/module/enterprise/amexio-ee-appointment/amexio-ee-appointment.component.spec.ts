@@ -20,10 +20,25 @@ describe('DropDownMenu', () => {
   });
 
   it('initComponent', () => {
+    comp1.currentDate = new Date();
+
     comp1.initComponent();
     comp1.currentDate = new Date();
+    expect(comp1.currentDate).toBeDefined();
     comp1.viewData = [];
     comp1.randomid = window.crypto.getRandomValues(new Uint32Array(1))[0];
-  })
+    expect(comp1.randomid).toBeDefined();
+  });
 
+  it('initComponent undefined case', () => {
+    comp1.currentDate = undefined;
+    comp1.initComponent();
+    expect(comp1.currentDate).toBeDefined();
+  });
+
+  it('initComponent null case', () => {
+    comp1.currentDate = null;
+    comp1.initComponent();
+    expect(comp1.currentDate).toBeNull();
+  });
 });

@@ -59,6 +59,15 @@ describe('amexio-tab', () => {
         comp.openDialogue = false;
     });
 
+    it('ngAfterViewInit()', () => {
+        comp.tabCollection = [];
+         comp.ngAfterViewInit();
+         comp.tabCollection.forEach((element, index) => {
+            element['tablk'] = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_tablk';
+             expect(comp.ngAfterViewInit()).toHaveBeenCalled;
+          });
+    });
+
     it('ngOnInit()', () => {
     comp.ngOnInit();
     comp.componentId = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_tabc';
