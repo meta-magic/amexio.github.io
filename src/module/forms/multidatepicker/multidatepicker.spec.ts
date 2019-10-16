@@ -21,7 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('amexio-multi-date-time-picker', () => {
+fdescribe('amexio-multi-date-time-picker', () => {
   let comp: AmexioMultipleDatePickerComponent;
   let fixture: ComponentFixture<AmexioMultipleDatePickerComponent>;
 
@@ -343,6 +343,80 @@ describe('amexio-multi-date-time-picker', () => {
     comp.setDisableDaysBeforeFrom();
    
   });
+
+  it('createDaysForCurrentMonths()', () => {
+  event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+  expect(event.preventDefault).toBeTruthy();
+  let selectedperiod = new Date();
+  comp['createDaysForCurrentMonths'](selectedperiod);
+  comp.daysArray = [];
+  const extras = (selectedperiod.getDay() + 6) % 7;
+  let rowDays = [];
+  const day: any = {
+    date: null, selected: false, isCurrentMonth: null, isDisabled: false,
+  };
+    day.date = new Date(selectedperiod.getTime());
+  day.isCurrentMonth = true;
+
+  comp.dateModel = new Date();
+  expect(comp.dateModel).not.toBeNull;
+  expect(selectedperiod.getMonth()).toEqual(comp.dateModel.getMonth());
+  expect(selectedperiod.getDate()).toEqual(comp.dateModel.getDate());
+    day.selected = true;
+  expect(day.selected).toEqual(true);
+
+  comp.currrentDate = new Date();
+  expect(selectedperiod.getMonth()).toEqual(comp.currrentDate.getMonth());
+  expect(selectedperiod.getDate()).toEqual(comp.currrentDate.getDate());
+  expect(comp.dateModel).not.toBeNull;
+  day.selected = false;
+  expect(day.selected).toEqual(false);
+  comp.dateModel = '';
+  expect(comp.dateModel.length).toEqual(0);
+  day.selected = true;
+    expect(day.selected).toEqual(true);
+});
+
+it('createDaysForCurrentMonths()', () => {
+  let selectedPeriod = new Date();
+  const date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
+
+   comp.createDaysForCurrentMonths(selectedPeriod);
+   while (comp.daysArray.length < 6) { // while starts
+    const rowDays = [];
+    for (let i = 0; i < 7; i++) { // for starts
+      const day: any = {
+        date: null, selected: false, isCurrentMonth: null, isDisabled: false,
+        from: false, to: false, range: false,
+      };
+      day.date = new Date(date.getTime());
+      day.isCurrentMonth = (date.getMonth() === selectedPeriod.getMonth());
+      day['id'] = comp.getCryptoId();
+      expect(comp.getCryptoId()).toHaveBeenCalled();
+
+      day['fulldate'] = (day.date).getDate() + ' ' +
+        this.getFullMonthName(day.date) + ' ' + (day.date).getFullYear() +
+        ' ' + this.getFullDayName(day.date);
+      if (this.dateModel && (date.getMonth() === this.dateModel.getMonth()) &&
+        (date.getDate() === this.dateModel.getDate())) {
+        day.selected = true;
+      } else if ((date.getMonth() === this.currrentDate.getMonth()) &&
+        (date.getDate() === this.currrentDate.getDate())) {
+        if (this.dateModel) {
+          day.selected = false;
+          day['tabindex'] = -1;
+        } else {
+          day.selected = true;
+          day['tabindex'] = 1;
+        }
+      }
+      rowDays.push(day);
+      date.setDate(date.getDate() + 1);
+    } // for ends
+    this.daysArray.push(rowDays);
+  } // while ends
+});
+
 
 });
 

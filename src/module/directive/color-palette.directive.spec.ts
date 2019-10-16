@@ -470,16 +470,16 @@ describe('Directive: Color', () => {
     const arr = (new Array(length).fill(0).map(() => dirIn.randomInt(min, max)));
     return arr[0];
     });
-    it('randomThemeCall method else call', () => {
-    dirIn.randomThemeCall();
-    dirIn.gradient = false;
-    expect(dirIn.gradient).toEqual(false);
-    const randomIndex = dirIn.getRandomNumber(1, 0, dirIn.themejson.length);
-    });
-    it('randomThemeCall method call', () => {
-    dirIn.randomThemeCall();
-    dirIn.gradient = true;
-    expect(dirIn.gradient).toEqual(true);
-    const randomIndex = dirIn.getRandomNumber(1, 0, dirIn.gradientThemeJson.length);
-    });
+    // it('randomThemeCall method else call', () => {
+    // dirIn.randomThemeCall();
+    // dirIn.gradient = false;
+    // expect(dirIn.gradient).toEqual(false);
+    // const randomIndex = dirIn.getRandomNumber(1, 0, dirIn.themejson.length);
+    // });
+    // it('randomThemeCall method call', () => {
+    // dirIn.randomThemeCall();
+    // dirIn.gradient = true;
+    // expect(dirIn.gradient).toEqual(true);
+    // const randomIndex = dirIn.getRandomNumber(1, 0, dirIn.gradientThemeJson.length);
+    // });
 });
