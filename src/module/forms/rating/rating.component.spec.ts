@@ -1,5 +1,5 @@
-import { AmexioRatingComponent } from "./rating.component";
-import { TestBed, ComponentFixture } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AmexioRatingComponent } from './rating.component';
 
 /**
  * Created by pratik on 7/12/17.
@@ -8,6 +8,7 @@ describe('Button tests', () => {
 
   let component: AmexioRatingComponent;
   let fixture: ComponentFixture<AmexioRatingComponent>;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AmexioRatingComponent],
@@ -29,7 +30,7 @@ describe('Button tests', () => {
 
   it('ngOnInit: check onInit call', () => {
     component.componentId = component.createCompId('rating', component.fieldlabel);
-    let starId = 'star' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
+    const starId = 'star' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
 
     expect(component.ratingRange).toBeDefined();
     expect(starId).toBeDefined();
@@ -48,7 +49,7 @@ describe('Button tests', () => {
     let temp: any;
     temp = new AmexioRatingComponent();
     temp.buildRanges();
-    var spy = spyOn<any>(temp, 'buildRanges');
+    const spy = spyOn<any>(temp, 'buildRanges');
     temp.buildRanges();
     expect(spy.calls.any()).toBeTruthy();
   });
