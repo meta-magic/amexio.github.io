@@ -33,7 +33,7 @@ describe('DropDownMenu', () => {
   it('initComponent undefined case', () => {
     comp1.currentDate = undefined;
     comp1.initComponent();
-    expect(comp1.currentDate).toBeDefined();
+    expect(comp1.currentDate).toBeUndefined();
   });
 
   it('initComponent null case', () => {
