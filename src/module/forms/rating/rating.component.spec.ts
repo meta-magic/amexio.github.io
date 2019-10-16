@@ -4,7 +4,7 @@ import { TestBed, ComponentFixture } from "@angular/core/testing";
 /**
  * Created by pratik on 7/12/17.
  */
-fdescribe('Button tests', () => {
+describe('Button tests', () => {
 
   let component: AmexioRatingComponent;
   let fixture: ComponentFixture<AmexioRatingComponent>;
