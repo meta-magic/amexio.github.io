@@ -15,11 +15,10 @@
 *
 */
 
-import { AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
-import { Renderer2 } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, ElementRef,
+EventEmitter, Input, OnInit, Output, QueryList, Renderer2, ViewChild } from '@angular/core';
 
 import { AmexioChipComponent } from '../chip/chip.component';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'amexio-chips',
