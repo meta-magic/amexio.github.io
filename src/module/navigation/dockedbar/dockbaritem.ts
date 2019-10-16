@@ -16,7 +16,7 @@
 * Created by sagar on 6/9/17.
 */
 
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'amexio-dockbar-item', template: `
@@ -123,9 +123,9 @@ description : Height of dockbar item
   }
 
   constructor() {
-    this.elementId = 'dockbar-item-id' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
   }
 
   ngOnInit() {
+    this.elementId = 'dockbar-item-id' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
   }
 }

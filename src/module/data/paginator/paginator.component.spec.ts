@@ -9,8 +9,6 @@ import { AmexioPaginatorComponent } from './paginator.component';
 import { stringify } from 'querystring';
 
 describe('amexio-paginator', () => {
-  it('true is true', () => expect(true).toBe(true));
-
   let comp: AmexioPaginatorComponent;
   let fixture: ComponentFixture<AmexioPaginatorComponent>;
 
@@ -80,28 +78,28 @@ describe('amexio-paginator', () => {
     });
   });
 
- /* it('check previous 11111111method ', () => {
-    comp.activePageIndex = 0;
-    comp.fullPageSet = [1, 2, 3];
-    comp.activePage = 2;
-    let rowNumber = 4;
-    comp.rows = 10;
-    comp.pages = 2;
-    comp.currentRowIndex = 2;
-    comp.pageIndex = [1, 2, 3];
-    comp.onPrevious();
-    expect(comp.activePage).toEqual(1);
-    expect(comp.activePageIndex).toEqual(8);
-    comp.activePage = 20;
-    comp.onPrevious();
-    expect(comp.activePage).toBeUndefined;
-    expect(comp.activePageIndex).toBeUndefined;
-
-    comp.onPageChange.subscribe((g: any) => {
-      expect(comp.activePage).toEqual(g);
-    });
-
-  });*/
+  /* it('check previous 11111111method ', () => {
+     comp.activePageIndex = 0;
+     comp.fullPageSet = [1, 2, 3];
+     comp.activePage = 2;
+     let rowNumber = 4;
+     comp.rows = 10;
+     comp.pages = 2;
+     comp.currentRowIndex = 2;
+     comp.pageIndex = [1, 2, 3];
+     comp.onPrevious();
+     expect(comp.activePage).toEqual(1);
+     expect(comp.activePageIndex).toEqual(8);
+     comp.activePage = 20;
+     comp.onPrevious();
+     expect(comp.activePage).toBeUndefined;
+     expect(comp.activePageIndex).toBeUndefined;
+ 
+     comp.onPageChange.subscribe((g: any) => {
+       expect(comp.activePage).toEqual(g);
+     });
+ 
+   });*/
   it('check changeRows method is not null ', () => {
     let rowNumber = 2;
     let inDx = 2;
@@ -187,5 +185,12 @@ describe('amexio-paginator', () => {
     comp.showColumnOptions();
     expect(comp.show).toEqual(true);
   });
+
+  it('createCompId', () => {
+    let inputType = 'paginator';
+    let name = 'page'
+    comp.createCompId(inputType, name)
+    return inputType + '_' + name + '_' + window.crypto.getRandomValues(new Uint32Array(1))[0];
+  })
 
 });

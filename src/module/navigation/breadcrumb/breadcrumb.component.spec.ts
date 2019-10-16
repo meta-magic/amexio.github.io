@@ -27,4 +27,10 @@ describe('AmexioBreadcrumbComponent', () => {
     expect(comp1.setRoundEdge).toBeTruthy();
   });
 
+  it('', () => {
+    let nodeArray = [{text: "Media", icon: "fa fa-keyboard-o fa-fw", children: [{text: "Image", icon: "fa fa-picture-o fa-fw", link: "image-demo", id: "1673816541_id", tabindex: 1}], id: "378237256_id", tabindex: -1}]
+    comp1.iconAddedMethod(nodeArray);
+    expect(nodeArray.length)
+  })
+
 });

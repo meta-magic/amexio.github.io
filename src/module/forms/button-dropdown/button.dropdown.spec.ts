@@ -21,7 +21,9 @@ describe('amexio-spilt-button', () => {
   });
 
   it('Init buttonDropdown', () => {
+    comp.ngOnInit();
     comp.label = 'button-dropdown';
+
     comp.componentId = comp.label + window.crypto.getRandomValues(new Uint32Array(1))[0];
   });
 

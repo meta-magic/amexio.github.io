@@ -15,16 +15,17 @@
 *
 */
 
-import { AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, Input, Output, QueryList, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
 import { Renderer2 } from '@angular/core';
 
 import { AmexioChipComponent } from '../chip/chip.component';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'amexio-chips',
   templateUrl: './chips.component.html',
 })
-export class AmexioChipsComponent implements AfterContentInit {
+export class AmexioChipsComponent implements AfterContentInit, OnInit {
 
   @ContentChildren(AmexioChipComponent) queryChips: QueryList<AmexioChipComponent>;
   chipCollection: AmexioChipComponent[];
@@ -64,7 +65,6 @@ export class AmexioChipsComponent implements AfterContentInit {
   documentClickListener: any;
   obj: any = {};
   constructor(public renderer: Renderer2) {
-    this.componentId = 'chips' + window.crypto.getRandomValues(new Uint32Array(1))[0];
   }
 
   ngAfterContentInit() {
@@ -74,6 +74,10 @@ export class AmexioChipsComponent implements AfterContentInit {
     }
     this.generateIndex();
     this.listenChipOutClick();
+  }
+
+  ngOnInit() {
+    this.componentId = 'chips' + window.crypto.getRandomValues(new Uint32Array(1))[0];
   }
 
   listenChipOutClick() {
