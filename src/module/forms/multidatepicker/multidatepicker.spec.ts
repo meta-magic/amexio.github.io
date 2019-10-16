@@ -21,7 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-fdescribe('amexio-multi-date-time-picker', () => {
+describe('amexio-multi-date-time-picker', () => {
   let comp: AmexioMultipleDatePickerComponent;
   let fixture: ComponentFixture<AmexioMultipleDatePickerComponent>;
 
