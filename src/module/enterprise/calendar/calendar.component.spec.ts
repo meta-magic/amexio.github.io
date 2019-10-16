@@ -19,7 +19,7 @@ import { AmexioFloatingPanelComponent } from '../../panes/floatingpanel/floating
 import { AmexioLabelComponent } from '../../forms/label/label.component';
 
 
-fdescribe('amexio-calendar', () => {
+describe('amexio-calendar', () => {
   let comp: AmexioCalendarComponent;
   let fixture: ComponentFixture<AmexioCalendarComponent>;
 
