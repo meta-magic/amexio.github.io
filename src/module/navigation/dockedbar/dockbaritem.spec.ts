@@ -25,6 +25,6 @@ describe('DockbarComponent', () => {
 
     it('ngOninit  super call ()', () => {
         comp1.ngOnInit();
-        this.elementId = 'dockbar-item-id' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
+        comp1.elementId = 'dockbar-item-id' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
     });
 });
