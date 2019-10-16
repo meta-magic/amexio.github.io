@@ -37,9 +37,10 @@ describe('searchboxtool ', () => {
 
 
   it('ngOnInit()', () => {
+    comp.displayfield = 'searchbox'
     comp.ngOnInit();
     comp.componentId = comp.displayfield + window.crypto.getRandomValues(new Uint32Array(1))[0];
-
+    expect(comp.componentId).toBeDefined();
    });
 
 

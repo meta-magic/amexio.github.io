@@ -57,7 +57,14 @@ describe('amexio-tab', () => {
     it('onCancelClick method', () => {
         comp.onCancelClick();
         comp.openDialogue = false;
-    })
+    });
+
+    it('ngOnInit()', () => {
+    comp.ngOnInit();
+    comp.componentId = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_tabc';
+    expect(comp.ngOnInit()).toHaveBeenCalled;
+    expect(comp.componentId).toBeDefined();
+    });
 
 
     it('closeTab method if condition', () => {
