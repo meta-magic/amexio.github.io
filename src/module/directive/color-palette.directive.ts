@@ -191,13 +191,26 @@ export class ColorPaletteDirective implements OnInit {
       }
     }
   }
+  randomFloat() {
+    const int = window.crypto.getRandomValues(new Uint32Array(1))[0];
+    return int / 2 ** 32;
+  }
+  randomInt(min: any, max: any) {
+    const range = max - min;
+    return Math.floor(this.randomFloat() * range + min);
+  }
+
+  getRandomNumber(length: any, min: any, max: any) {
+    const arr = (new Array(length).fill(0).map(() => this.randomInt(min, max)));
+    return arr[0];
+  }
 
   randomThemeCall() {
     if (!this.gradient) {
-      const randomIndex = Math.round(Math.random() * (this.themejson.length - 1));
+      const randomIndex = this.getRandomNumber(1, 0, this.themejson.length);
       this.hostComponent.setColorPalette(this.themejson[randomIndex].themeName);
     } else {
-      const randomIndex = Math.round(Math.random() * (this.themejson.length - 1));
+      const randomIndex = this.getRandomNumber(1, 0, this.gradientThemeJson.length);
       this.hostComponent.setColorPalette(this.gradientThemeJson[randomIndex].themeName);
     }
   }

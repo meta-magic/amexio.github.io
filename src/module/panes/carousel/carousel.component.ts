@@ -125,7 +125,7 @@ description : Time interval for shuffling images
     if (this.shuffleinterval != null) {
       this.timeInterval = setInterval(() => {
         const carouselItemPosix = this.tabs.nativeElement;
-        if (((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft) >= 0)) {
+        if (((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft) > 0)) {
           // go next
           carouselItemPosix.scrollLeft = carouselItemPosix.scrollLeft + 200;
         } else if (carouselItemPosix.scrollLeft > 0) {
