@@ -1131,7 +1131,7 @@ describe('amexio-datagrid', () => {
         fixture.detectChanges();
         comp.httpmethod = 'get';
         comp.httpurl = 'datagrid/datagrid.json';
-         let random = 'gridcolumn' + window.crypto.getRandomValues(new Uint32Array(1))[0];
+        let random = 'gridcolumn' + window.crypto.getRandomValues(new Uint32Array(1))[0];
         comp.componentId = random;
         comp.ngOnInit();
         expect(comp.httpmethod).toBeDefined();
@@ -1152,21 +1152,17 @@ describe('amexio-datagrid', () => {
         // this.gridId = 'grid' + window.crypto.getRandomValues(new Uint32Array(1))[0];
     });
 
-    // it('ngOnInit  method testing else', () => {
-    //     fixture.detectChanges();
-    //     comp.httpmethod = 'ok';
-    //     comp.httpurl = 'https/gh';
-    //     comp.ngOnInit();
+    it('addrows method call', () => {
+        let index = 1;
+        let row =
+            {
+                "countryName": "Myanmar",
+                "countryCode1": "MM",
+                'level': '1',
+                'groupData': [{ 'level': 1 }]
+            }
+        comp.addRows(row, index);
+        row.level = 'itemselector' + window.crypto.getRandomValues(new Uint32Array(1))[0];
+    });
 
-    //     comp.data = [
-    //         {
-    //             selected: true,
-    //             tabindex: '0'
-    //         }
-    //     ];
-    //     expect(comp.httpmethod).not.toEqual('get');
-    //     expect(comp.httpurl).not.toEqual('https/rgh');
-    //     expect(comp.data).toBeDefined();
-
-    // });
 });

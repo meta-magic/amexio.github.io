@@ -17,7 +17,7 @@ import { stringify } from 'querystring';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
-
+import {AmexioContextMenuComponent} from '../../base/base.contextmenu.component';
 
 describe('amexio-item-selector', () => {
 
@@ -27,55 +27,37 @@ describe('amexio-item-selector', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexioItemSelectorComponent, CommonIconComponent, AmexioRowComponent, AmexioBodyComponent, AmexioHeaderComponent, AmexioCardComponent, AmexioColumnComponent],
+            declarations: [AmexioItemSelectorComponent,AmexioContextMenuComponent, CommonIconComponent, AmexioRowComponent, AmexioBodyComponent, AmexioHeaderComponent, AmexioCardComponent, AmexioColumnComponent],
             providers: [IconLoaderService, CommonDataService, HttpClient, HttpHandler,],
         });
         fixture = TestBed.createComponent(AmexioItemSelectorComponent);
         comp = fixture.componentInstance;
     });
 
-    // it(' variable check ', () => {
-
-    //     (<any>comp).mask = true;
-    //     expect((<any>comp).mask).toEqual(true);
-
-    //     comp.leftactive = true;
-    //     expect(comp.leftactive).toEqual(true);
-
-    //     comp.rightactive = true;
-    //     expect(comp.rightactive).toEqual(true);
-
-    //     (<any>comp).selectedData = [];
-    //     expect((<any>comp).selectedData).toEqual([]);
-    // });
 
 
-    // it('check dataEmitter method for availableRecord', () => {
-    //     comp.dataEmitter();
-    //     comp.availableRecords.subscribe((g: any) => {
-    //         expect(comp.availableData).toEqual(g);
-    //     });
-    // });
 
-    // it('check dataEmitter method for selectedRecords', () => {
-    //     comp.dataEmitter();
-    //     comp.selectedRecords.subscribe((g: any) => {
-    //         expect(comp.selectedData).toEqual(g);
-    //     });
-    // });
+    it('generate index methos call', () => {
+        let getAvailableData = [
+            {
+                "countryName": "Myanmar",
+                "countryCode1": "MM",
+            },
+            {
+                "countryName": "U.S. Virgin Island",
+                "countryCode1": "VI",
 
-    // it('get data method', () => {
-    //     comp.data;
-    //     expect(comp.data).toBe(comp._data);
-    // });
+            },
+            {
+                "countryName": "Latvia",
+                "countryCode1": "LV",
 
-
-    // it('get data method', () => {
-    //     comp.data;
-    //     let value: any[];
-    //     expect(value).toBe(comp._data);
-    //     (<any>comp).componentLoaded = true;
-    //     expect((<any>comp).componentLoaded).toEqual(true);
-    // });
+            }]
+        comp.generateIndex(getAvailableData);
+        expect(getAvailableData).toBeDefined();
+        getAvailableData.forEach((element: any, index: any) => {
+            element['id'] = 'itemselector' + window.crypto.getRandomValues(new Uint32Array(1))[0];
+        });
+    });
 });
-
+ 

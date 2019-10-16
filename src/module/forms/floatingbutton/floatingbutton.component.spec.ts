@@ -66,6 +66,13 @@ describe('amexio-floating-button' , () => {
     expect((<any>comp).relative).toEqual(true);
     expect((<any>comp).absoluteposition).toEqual(true);
   });
+  
+  it('createCompId', () => {
+    let inputType = 'a';
+    comp.createCompId(inputType);
+    return inputType + '_' + window.crypto.getRandomValues(new Uint32Array(1))[0];
+
+  })
 
 
 

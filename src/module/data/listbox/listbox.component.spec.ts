@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AmexioListBoxComponent } from './listbox.component';
 import { CommonDataService } from '../../services/data/common.data.service';
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+// import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import {AmexioContextMenuComponent} from '../../base/base.contextmenu.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -16,7 +16,7 @@ describe('AmexioListBoxComponent', () => {
         FormsModule,
         HttpClientModule
       ],
-      declarations: [AmexioListBoxComponent,AmexioContextMenuComponent,LifeCycleBaseComponent],
+      declarations: [AmexioListBoxComponent,AmexioContextMenuComponent],
       providers: [CommonDataService,HttpClient],
 
     });
