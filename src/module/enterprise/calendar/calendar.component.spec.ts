@@ -19,7 +19,7 @@ import { AmexioFloatingPanelComponent } from '../../panes/floatingpanel/floating
 import { AmexioLabelComponent } from '../../forms/label/label.component';
 
 
-describe('amexio-calendar', () => {
+fdescribe('amexio-calendar', () => {
   let comp: AmexioCalendarComponent;
   let fixture: ComponentFixture<AmexioCalendarComponent>;
 
@@ -72,6 +72,25 @@ describe('amexio-calendar', () => {
       expect(comp.onEventClicked).toEqual(g);
     });
   });
+
+
+// InitCalendar
+  it('onDayTimeWiseEvent() method check', () => {
+    comp.initCalendar();
+    comp.prevbtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_previd';
+    expect(comp.prevbtnid).toBeDefined();
+    comp.nextbtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_nextid';
+    expect(comp.nextbtnid).toBeDefined();
+    comp.daybtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_dayid';
+    expect(comp.daybtnid).toBeDefined();
+    comp.weekbtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_weekid';
+    expect(comp.weekbtnid).toBeDefined();
+    comp.monthbtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_monthid';
+    expect(comp.monthbtnid).toBeDefined();
+    comp.yearbtnid = window.crypto.getRandomValues(new Uint32Array(1))[0] + '_yearid';
+    expect(comp.yearbtnid).toBeDefined();
+  });
+
 
 
   // onMonthEvent method
