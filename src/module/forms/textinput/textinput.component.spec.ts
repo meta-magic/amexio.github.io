@@ -67,4 +67,13 @@ describe('Text INPUT', () => {
     comp.onInputTextEvent(event);
     comp.onInputEvent(event);
   })
+
+  it('createComponentId textfield call ', () => {
+    let inputType = 'textfield';
+    let name = '';
+    comp.createCompId(inputType, name);
+    // name === '' || name === null
+    expect(name).toEqual('');
+    return inputType + '_' + window.crypto.getRandomValues(new Uint32Array(1))[0];
+    })
 });
