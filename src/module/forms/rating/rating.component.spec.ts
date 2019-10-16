@@ -4,7 +4,7 @@ import { AmexioRatingComponent } from './rating.component';
 /**
  * Created by pratik on 7/12/17.
  */
-describe('Button tests', () => {
+describe('Rating Component Test', () => {
 
   let component: AmexioRatingComponent;
   let fixture: ComponentFixture<AmexioRatingComponent>;
@@ -29,6 +29,7 @@ describe('Button tests', () => {
   });
 
   it('ngOnInit: check onInit call', () => {
+    component.ngOnInit();
     component.componentId = component.createCompId('rating', component.fieldlabel);
     component.starId = 'star' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
 
@@ -56,6 +57,7 @@ describe('Button tests', () => {
   });
 
   it('ngOnInit: check onInit call', () => {
+    component.ngOnInit();
     component.componentId = component.createCompId('rating', component.fieldlabel);
     component.starId = null;
 
