@@ -345,11 +345,11 @@ describe('amexio-floating-panel', () => {
         comp.documentMouseMoveListener = null;
         expect(comp.documentMouseUPListener).toBeNull();
         comp.documentMouseUPListener = rendererMock.listen('document', 'mouseup',
-            (event: any) => comp.closeDragElement(floatingPanel));
+            () => comp.closeDragElement(floatingPanel));
 
         expect(comp.documentMouseMoveListener).toBeNull();
         comp.documentMouseMoveListener = rendererMock.listen('document', 'mousemove',
-            (event: any) => comp.elementDrag(event, floatingPanel));
+            () => comp.elementDrag(event, floatingPanel));
     });
 
 

@@ -55,4 +55,10 @@ describe('AmexioListBoxComponent', () => {
       row['index'] = 'listbox' + window.crypto.getRandomValues(new Uint32Array(1))[0] + index;
     });
   });
+
+  it('Oninit', () => {
+    comp1.ngOnInit();
+    comp1.componentId = 'listbox' + window.crypto.getRandomValues(new Uint32Array(1))[0];
+  })
+
 });

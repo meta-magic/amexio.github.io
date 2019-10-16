@@ -10,6 +10,10 @@ import { AmexioNavActionComponent } from './navaction.component';
 import { AmexioNavMenuComponent } from './navmenu.component';
 import { AmexioNavTextFieldComponent } from './navtextfield.component';
 import {DarkmodeComponent} from '../../forms/darkmode/darkmode.component';
+import {AmexioToggleComponent} from '../../forms/toggle/toggle.component';
+import {AmexioSliderComponent} from '../../forms/slider/slider.component';
+import {AmexioNavDesktopMenuComponent} from './navdesktopmenu';
+import {AmexioNavMobileMenuComponent} from './navmobilemenu';
 import { stringify } from 'querystring';
 
 describe('amexio-nav-item', () => {
@@ -19,7 +23,7 @@ describe('amexio-nav-item', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexioNavItemComponent, DarkmodeComponent, AmexioNavActionComponent, AmexioNavMenuComponent, AmexioNavTextFieldComponent],
+            declarations: [AmexioNavItemComponent, AmexioNavMobileMenuComponent, AmexioNavDesktopMenuComponent, AmexioSliderComponent,AmexioToggleComponent, DarkmodeComponent, AmexioNavActionComponent, AmexioNavMenuComponent, AmexioNavTextFieldComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(AmexioNavItemComponent);
