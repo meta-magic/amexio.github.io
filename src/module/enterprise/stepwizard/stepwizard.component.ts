@@ -77,7 +77,7 @@ export class StepWizardComponent implements AfterContentInit {
 
     this.stepItemList.forEach((stepItem: any, index: any) => {
       const ind = index + 1;
-      if (!(ind > activeIndex)) {
+      if (ind <= activeIndex) {
         this.stepItemList[ind - 1].activeClass = 'completed';
         this.stepItemList[ind - 1].active = false;
       }

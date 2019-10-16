@@ -218,9 +218,8 @@ description : Fire when button-dropdown item button/link click
   onHomeClick(elem: any) {
     if (this.flag) {
       this.buttonindex1 = this.findbuttonindex();
-      if (this.buttonindex1 < (this.dropdownItemData.length - 1)) {
-        this.onHomeClickSelected();
-      } else if (this.buttonindex1 === this.dropdownItemData.length - 1) {
+      if ((this.buttonindex1 < (this.dropdownItemData.length - 1)) ||
+        (this.buttonindex1 === this.dropdownItemData.length - 1)) {
         this.onHomeClickSelected();
       }
     }
@@ -234,9 +233,8 @@ description : Fire when button-dropdown item button/link click
   onEndClick(elem: any) {
     if (this.flag) {
       this.buttonindex1 = this.findbuttonindex();
-      if (this.buttonindex1 < (this.dropdownItemData.length - 1)) {
-        this.onEndClickSelected();
-      } else if (this.buttonindex1 === this.dropdownItemData.length - 1) {
+      if ((this.buttonindex1 < (this.dropdownItemData.length - 1)) ||
+        (this.buttonindex1 === this.dropdownItemData.length - 1)) {
         this.onEndClickSelected();
       }
     }

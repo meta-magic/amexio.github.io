@@ -123,13 +123,13 @@ export class AmexioFloatingPanelComponent extends LifeCycleBaseComponent impleme
             if (!this.documentMouseUPListener) {
                 this.documentMouseUPListener = this.renderer.listen('document', 'mouseup',
                     // tslint:disable-next-line:no-shadowed-variable
-                    (event: any) => this.closeDragElement(floatingPanel));
+                    () => this.closeDragElement(floatingPanel));
             }
 
             if (!this.documentMouseMoveListener) {
                 this.documentMouseMoveListener = this.renderer.listen('document', 'mousemove',
                     // tslint:disable-next-line:no-shadowed-variable
-                    (event: any) => this.elementDrag(event, floatingPanel));
+                    () => this.elementDrag(event, floatingPanel));
             }
         }
     }

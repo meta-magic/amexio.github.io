@@ -1,33 +1,19 @@
+<div *ngIf="showPanel" [ngStyle]="style" [ngClass]="{floatarrow:arrow}" class="{{roundedgeclass}}" #floatingPanel (mousedown)="onMouseDown($event, floatingPanel)"
+  [style.background]="'#ffffff'" [style.padding]="resizable  ? '5px':'0px'" [style.resize]="resizable  ? 'both':''" [style.overflow]="resizable ?'auto':''">
 
-
-
-  <div  *ngIf="showPanel"
-  [ngStyle]="style" 
-  [ngClass]="{floatarrow:arrow}"
-  class="{{roundedgeclass}}"
-  #floatingPanel  (mousedown)="onMouseDown($event, floatingPanel)"
-  [style.background]="'#ffffff'"
- [style.padding]="resizable  ? '5px':'0px'"
- [style.resize]="resizable  ? 'both':''"
- [style.overflow]="resizable ?'auto':''"
-  >
-  
-     <div   class='floatingpanel-header'  name="floatingheader"
-      [ngStyle]="{'cursor': (draggable) ? 'move':null}"
-     
-     [style.margin]="resizable  ? '-5px -5px 0px -5px': ''"
-       [ngClass]="themeCss" >        
-           <div class="flex-spacebetween">
-               <amexio-label [word-wrap]="false" style="width:90%" [size]="'medium-bold'">
-                  {{title}}
-               </amexio-label>
-                 <span *ngIf="closeable" [ngStyle]="{'color': gradientFlag ? 'black':'white'}" class="creative-header-icon-div" style="padding-top: 1px">
-                     <span  class="fa fa-times ng-star-inserted" style="cursor: pointer;" (click)="togglePanel()"></span>                   
-               </span>
-             </div>
-             <br/>                      
-       </div>
-     <div class= "card-container-body card-container-ce-color" style="display: block;overflow: auto;" [ngStyle]="{'height':height + 'px'}">
-      <ng-content></ng-content>              
-     </div>
-   </div>
+  <div class='floatingpanel-header' name="floatingheader" [ngStyle]="{'cursor': (draggable) ? 'move':null}" [style.margin]="resizable  ? '-5px -5px 0px -5px': ''"
+    [ngClass]="themeCss">
+    <div class="flex-spacebetween">
+      <amexio-label [word-wrap]="false" style="width:90%" [size]="'medium-bold'">
+        {{title}}
+      </amexio-label>
+      <span *ngIf="closeable" [ngStyle]="{'color': gradientFlag ? 'black':'white'}" class="creative-header-icon-div" style="padding-top: 1px">
+        <span class="fa fa-times ng-star-inserted" style="cursor: pointer;" (click)="togglePanel()"></span>
+      </span>
+    </div>
+    <br/>
+  </div>
+  <div class="card-container-body card-container-ce-color" style="display: block;overflow: auto;" [ngStyle]="{'height':height + 'px'}">
+    <ng-content></ng-content>
+  </div>
+</div>

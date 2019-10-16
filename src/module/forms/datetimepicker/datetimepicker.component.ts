@@ -690,12 +690,11 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
     if ((this.maxDate.length <= 0 && this.minDate.length > 0) || (this.maxDate.length > 0 && this.minDate.length > 0)) {
       // 3
-      if (days.getDate() < min.getDate() &&
-        days.getMonth() === min.getMonth() && days.getFullYear() === min.getFullYear()) {
+      if ((days.getDate() < min.getDate() &&
+        days.getMonth() === min.getMonth() && days.getFullYear() === min.getFullYear()) ||
+        days.getMonth() < min.getMonth() && days.getFullYear() === min.getFullYear()) {
         return true;
         // 4
-      } else if (days.getMonth() < min.getMonth() && days.getFullYear() === min.getFullYear()) {
-        return true;
       }
     }
     this.disableddays(this.diabledDate);
@@ -704,12 +703,11 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   private validateMaxDate(days: any, max: any) {
     // check if days greater than max return
     // 1
-    if (days.getDate() > max.getDate() &&
-      days.getMonth() >= max.getMonth() && days.getFullYear() >= max.getFullYear()) {
+    if ((days.getDate() > max.getDate() &&
+      days.getMonth() >= max.getMonth() && days.getFullYear() >= max.getFullYear()) ||
+      days.getMonth() > max.getMonth() && days.getFullYear() === max.getFullYear()) {
       return true;
       // 2
-    } else if (days.getMonth() > max.getMonth() && days.getFullYear() === max.getFullYear()) {
-      return true;
     }
   }
   private disableddays(dates: any) {
