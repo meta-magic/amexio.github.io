@@ -215,11 +215,10 @@ description : Fire when button-dropdown item button/link click
   onSpaceClick(elem: any) {
     this.onEnterClick(elem);
   }
-  onHomeClick(elem: any) {
+  onHomeClick() {
     if (this.flag) {
       this.buttonindex1 = this.findbuttonindex();
-      if ((this.buttonindex1 < (this.dropdownItemData.length - 1)) ||
-        (this.buttonindex1 === this.dropdownItemData.length - 1)) {
+      if ((this.buttonindex1 <= (this.dropdownItemData.length - 1)) {
         this.onHomeClickSelected();
       }
     }
@@ -230,11 +229,10 @@ description : Fire when button-dropdown item button/link click
     const divid = document.getElementById(this.componentId);
     divid.setAttribute(this.activedescendant, this.dropdownItemData[0].index);
   }
-  onEndClick(elem: any) {
+  onEndClick() {
     if (this.flag) {
       this.buttonindex1 = this.findbuttonindex();
-      if ((this.buttonindex1 < (this.dropdownItemData.length - 1)) ||
-        (this.buttonindex1 === this.dropdownItemData.length - 1)) {
+      if (this.buttonindex1 <= (this.dropdownItemData.length - 1)) {
         this.onEndClickSelected();
       }
     }

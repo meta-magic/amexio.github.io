@@ -1,7 +1,7 @@
 <div class="button-group" #rootDiv>
     <button id={{componentId}} role="button" aria-haspopup="true" aria-label="" [attr.aria-expanded]="openContent" tabindex="1"
         aria-controls="menulist" class="button-dropdown-main" (blur)="onblur($event)" (click)="onClick(rootDiv)" (keyup.enter)="onEnterClick(rootDiv)"
-        (keyup.esc)="onClickEscape(rootDiv)" (keyup.end)="onEndClick(rootDiv)" (keyup.home)="onHomeClick(rootDiv)" (keyup.space)="onSpaceClick(rootDiv)"
+        (keyup.esc)="onClickEscape(rootDiv)" (keyup.end)="onEndClick()" (keyup.home)="onHomeClick()" (keyup.space)="onSpaceClick(rootDiv)"
         (keyup.arrowdown)="onclickDown(rootDiv)" (keyup.arrowup)="onclickUp(rootDiv)" #btnRef [ngClass]="{'button-default': size=='default' || size ==null,
             'button-small': size=='small',
             'button-large' : size=='large',

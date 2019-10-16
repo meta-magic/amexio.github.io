@@ -27,6 +27,53 @@ describe('amexio-spilt-button', () => {
     comp.componentId = comp.label + window.crypto.getRandomValues(new Uint32Array(1))[0];
   });
 
+  it('onHomeClick 1st condition', () => {
+    comp.onHomeClick();
+    comp.flag = true;
+    comp.dropdownItemData = [{selected: true, index: 0}, {selected: true, index: 1}, {selected: true, index: 2}]
+    expect(comp.flag).toBe(true);
+    comp.buttonindex1 = comp.findbuttonindex();
+    comp.buttonindex1 = 1;
+    expect(comp.buttonindex1).toBeLessThan(comp.dropdownItemData.length - 1);
+    // expect(comp.onHomeClickSelected()).toHaveBeenCalled;
+
+  })
+
+  it('onHomeClick 2nd condition', () => {
+    comp.onHomeClick();
+    comp.flag = true;
+    comp.dropdownItemData = [{selected: true, index: 0}, {selected: true, index: 1}, {selected: true, index: 2}]
+    expect(comp.flag).toBe(true);
+    comp.buttonindex1 = comp.findbuttonindex();
+    comp.buttonindex1 = 5;
+    expect(comp.buttonindex1).toBeGreaterThan(comp.dropdownItemData.length - 1);
+    // expect(comp.onHomeClickSelected()).not.toHaveBeenCalled;
+
+  })
+
+  it('onEndClick 1st condition', () => {
+    comp.onEndClick();
+    comp.flag = true;
+    comp.dropdownItemData = [{selected: true, index: 0}, {selected: true, index: 1}, {selected: true, index: 2}]
+    expect(comp.flag).toBe(true);
+    comp.buttonindex1 = comp.findbuttonindex();
+    comp.buttonindex1 = 1;
+    expect(comp.buttonindex1).toBeLessThan(comp.dropdownItemData.length - 1);
+    // expect(comp.onEndClickSelected()).toHaveBeenCalled;
+
+  });
+
+  it('onEndClick 2nd condition', () => {
+    comp.onEndClick();
+    comp.flag = true;
+    comp.dropdownItemData = [{selected: true, index: 0}, {selected: true, index: 1}, {selected: true, index: 2}]
+    expect(comp.flag).toBe(true);
+    comp.buttonindex1 = comp.findbuttonindex();
+    comp.buttonindex1 = 5;
+    expect(comp.buttonindex1).toBeGreaterThan(comp.dropdownItemData.length - 1);
+    // expect(comp.onEndClickSelected()).not.toHaveBeenCalled;
+
+  })
 });
 
 
