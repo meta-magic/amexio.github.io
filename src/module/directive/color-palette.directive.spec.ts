@@ -14,7 +14,7 @@ import { By } from '@angular/platform-browser';
 class colorTestComponent {
 }
 
-fdescribe('Directive: Color', () => {
+describe('Directive: Color', () => {
   let comp: colorTestComponent;
   let fixture: ComponentFixture<colorTestComponent>;
   let inputEl: DebugElement;
