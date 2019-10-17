@@ -2,12 +2,12 @@
 
     <thead>
         <tr>
-            <th [attr.colspan]="headers.length">
+            <th id="id1" [attr.colspan]="headers.length">
                 <table aria-describedby="table1">
 
                     <tr #headerRow>
-                        <th class="calendar-header-items calendar-user-active-timeslot" style="width:50px;"> &nbsp;</th>
-                        <th class="calendar-header-items" style="cursor: pointer;" (click)="onHeaderClick(header)" *ngFor="let header of headers">
+                        <th id="id21" class="calendar-header-items calendar-user-active-timeslot" style="width:50px;"> &nbsp;</th>
+                        <th id="id22" class="calendar-header-items" style="cursor: pointer;" (click)="onHeaderClick(header)" *ngFor="let header of headers">
                             <span tabindex="1" attr.aria-label="{{header | date : 'EEEE, MMMM d, y'}}">
                                 <span>{{header | date : 'EE'}}</span>
                                 <br />
@@ -29,14 +29,14 @@
                             <table aria-describedby="table2" role="none">
                                 <tr *ngFor="let calendarRow of calendaryData">
 
-                                    <td class="calendar-header-items calendar-week-timeslot" style="width:50px;">
+                                    <th id="id3" class="calendar-header-items calendar-week-timeslot" style="width:50px;">
                                         <div style="min-height: 50px;" *ngIf="(calendarRow.time==null)">
                                             {{calendarRow.title}}
                                         </div>
                                         <div class="calendar-week-timeslotseries-div" *ngIf="(calendarRow.time && calendarRow.time!=null)">
                                             {{ calendarRow.time | date:'hh:mm a' }}
                                         </div>
-                                    </td>
+                                    </th>
 
                                     <td style="padding-bottom: 0px;" [ngStyle]="{'padding-top': (day.isEvent && day.eventDetails && day.eventDetails.diffwithslot) ? day.eventDetails.diffwithslot+'px' : '0px'}"
                                         class="calendar-box-items" *ngFor="let day of calendarRow.daywiseevent">
