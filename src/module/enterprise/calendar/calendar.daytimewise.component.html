@@ -3,9 +3,9 @@
     <th id="id">
         <tr>
             <td [attr.colspan]="headers.length">
-                <table aria-describedby="table1" role="none">
+                <table aria-describedby="table1">
 
-                    <tr #headerRow>
+                    <th id="id" #headerRow>
                         <td class="calendar-header-items calendar-user-active-timeslot" style="width:50px;"> &nbsp;</td>
                         <td class="calendar-header-items" style="cursor: pointer;" (click)="onHeaderClick(header)" *ngFor="let header of headers">
                             <span tabindex="1" attr.aria-label="{{header | date : 'EEEE, MMMM d, y'}}">
@@ -14,7 +14,7 @@
                                 <strong style="font-size:20px;">{{header | date : 'd'}}</strong>
                             </span>
                         </td>
-                    </tr>
+                    </th>
                 </table>
             </td>
         </tr>
