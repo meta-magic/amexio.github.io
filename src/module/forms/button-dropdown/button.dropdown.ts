@@ -218,7 +218,7 @@ description : Fire when button-dropdown item button/link click
   onHomeClick() {
     if (this.flag) {
       this.buttonindex1 = this.findbuttonindex();
-      if ((this.buttonindex1 <= (this.dropdownItemData.length - 1)) {
+      if ((this.buttonindex1 <= (this.dropdownItemData.length - 1))) {
         this.onHomeClickSelected();
       }
     }

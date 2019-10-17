@@ -204,24 +204,34 @@ export class AmexioDialpadComponent implements OnInit {
     }
 
     getRandomNumber(): number {
-        const myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-        const num = myArray[Math.floor(Math.random() * myArray.length)];
-        let isDuplicate = false;
-
+        const min = 0;
+        const max = 10;
+        const num = this.randomInt(min, max);
+        let duplicate = false;
         if (this.randomArr.length > 0) {
             this.randomArr.forEach((element: any) => {
                 if (num === element) {
-                    isDuplicate = true;
+                    duplicate = true;
                 }
             });
-            if (isDuplicate) {
+            if (duplicate) {
                 return this.getRandomNumber();
             } else {
                 return num;
             }
-        } else {
+         } else {
             return num;
+
         }
+    }
+
+    randomFloat() {
+        const int = window.crypto.getRandomValues(new Uint32Array(1))[0];
+        return int / 2 ** 32;
+    }
+    randomInt(min: number, max: number) {
+        const range = max - min;
+        return Math.floor(this.randomFloat() * range + min);
     }
 
     toggleShow() {
