@@ -1,15 +1,15 @@
 <table aria-describedby="table" role="none">
     <thead>
         <tr>
-            <th id="id1" [attr.colspan]="headers.length">
+            <td [attr.colspan]="headers.length">
                 <table aria-describedby="table" role="none">
                     <tr>
-                        <th id="id2" class="calendar-header-items" *ngFor="let header of headers">
+                        <td class="calendar-header-items" *ngFor="let header of headers">
                             <strong>{{header}}</strong>
-                        </th>
+                        </td>
                     </tr>
                 </table>
-            </th>
+            </td>
         </tr>
     </thead>
     <tbody>
