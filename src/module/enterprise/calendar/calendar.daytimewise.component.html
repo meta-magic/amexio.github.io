@@ -1,24 +1,24 @@
 <table aria-describedby="table">
 
-    <th id="id">
+    <thead>
         <tr>
-            <td [attr.colspan]="headers.length">
+            <th [attr.colspan]="headers.length">
                 <table aria-describedby="table1">
 
-                    <th #headerRow>
-                        <td class="calendar-header-items calendar-user-active-timeslot" style="width:50px;"> &nbsp;</td>
-                        <td class="calendar-header-items" style="cursor: pointer;" (click)="onHeaderClick(header)" *ngFor="let header of headers">
+                    <tr #headerRow>
+                        <th class="calendar-header-items calendar-user-active-timeslot" style="width:50px;"> &nbsp;</th>
+                        <th class="calendar-header-items" style="cursor: pointer;" (click)="onHeaderClick(header)" *ngFor="let header of headers">
                             <span tabindex="1" attr.aria-label="{{header | date : 'EEEE, MMMM d, y'}}">
                                 <span>{{header | date : 'EE'}}</span>
                                 <br />
                                 <strong style="font-size:20px;">{{header | date : 'd'}}</strong>
                             </span>
-                        </td>
-                    </th>
+                        </th>
+                    </tr>
                 </table>
-            </td>
+            </th>
         </tr>
-    </th>
+    </thead>
 
     <tbody>
         <tr>
