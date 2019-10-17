@@ -7,9 +7,18 @@
 (keyup.enter) ="showDropDownContent($event)"
 (click)="showDropDownContent($event)" class="dropdown-menu {{roundedgeclass}}" 
 [style.padding]="padding"
-[ngStyle]="{'background-color':(transparent)?'unset':'null'}">
-<span >
-<em *ngIf="icon" style="padding-right: 5px;" [ngClass]="icon">&nbsp;</em>{{title}}&nbsp;</span>
+
+[ngStyle]="{'background-color':(transparent)?'white':'null','color':(transparent)?'black':'null' }"
+    
+>
+<span *ngIf="title">
+    <em *ngIf="icon" style="padding-right: 5px;" [ngClass]="icon">&nbsp;</em>{{title}}&nbsp;
+</span>
+<span *ngIf="!title">
+    <em *ngIf="icon" style="padding-right: 5px;" [ngClass]="icon">&nbsp;</em>Title&nbsp;
+</span>
+
+
 <ng-container *ngIf="downArrowIcon">
 <em *ngIf="!toggle"  class="fa fa-angle-down "></em>
 <em *ngIf="toggle"  class="fa fa-angle-up "></em>

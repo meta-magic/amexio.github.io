@@ -1,0 +1,322 @@
+<div class="rich-first-div" [style.height.%]="areaHeight" [style.width.%]="areaWidth">
+  <ng-container *ngIf="!displayDiv">
+    <div class="rich-editor-buttons">
+      <amexio-layout-columns [orientation]="'vertical'" [border]="false" [alignment]="'left'">
+        <amexio-layout-item [fit]="true">
+          <amexio-layout-columns [border]="false" [fit]="true" [orientation]="'horizontal'" [alignment]="'left'">
+            <!-- 1 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'undo'"
+                [icon]="'fa fa-undo'" [size]="'small'" (onClick)="onIconClick('undo')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'redo'"
+                [icon]="'fa fa-repeat'" [size]="'small'" (onClick)="onIconClick('redo')">
+              </amexio-button>
+
+            </amexio-layout-item>
+            <!-- 2 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'bold'"
+                [icon]="'fa fa-bold'" [size]="'small'" (onClick)="onIconClick('bold')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'italic'"
+                [icon]="'fa fa-italic'" [size]="'small'" (onClick)="onIconClick('italic')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'strikethrough'"
+                [icon]="'fa fa-strikethrough'" [size]="'small'" (onClick)="onIconClick('strikethrough')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'underline'"
+                [icon]="'fa fa-underline'" [size]="'small'" (onClick)="onIconClick('underline')">
+              </amexio-button>
+
+
+            </amexio-layout-item>
+            <!-- 3 -->
+
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'insert Unordered List'"
+                [icon]="'fa fa-list-ul'" [size]="'small'" (onClick)="onIconClick('insertUnorderedList')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'insert Ordered List'"
+                [icon]="'fa fa-list-ol'" [size]="'small'" (onClick)="onIconClick('insertOrderedList')">
+              </amexio-button>
+            </amexio-layout-item>
+
+            <!-- 4 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'indent'"
+                [icon]="'fa fa-indent'" [size]="'small'" (onClick)="onIconClick('indent')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'outdent'"
+                [icon]="'fa fa-dedent'" [size]="'small'" (onClick)="onIconClick('outdent')">
+              </amexio-button>
+            </amexio-layout-item>
+            <!-- 5 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'justify left'"
+                [icon]="'fa fa-align-left'" [size]="'small'" (onClick)="onIconClick('justifyLeft')">
+              </amexio-button>
+
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'justify center'"
+                [icon]="'fa fa-align-center'" [size]="'small'" (onClick)="onIconClick('justifyCenter')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'justify right'"
+                [icon]="'fa fa-align-right'" [size]="'small'" (onClick)="onIconClick('justifyRight')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'justify Full'"
+                [icon]="'fa fa-align-justify'" [size]="'small'" (onClick)="onIconClick('justifyFull')">
+              </amexio-button>
+            </amexio-layout-item>
+
+
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'subscript'"
+                [icon]="'fa fa-subscript'" [size]="'small'" (onClick)="onIconClick('subscript')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'super script'"
+                [icon]="'fa fa-superscript'" [size]="'small'" (onClick)="onIconClick('superscript')">
+              </amexio-button>
+            </amexio-layout-item>
+            <!-- 7 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'Create Link'"
+                [icon]="'fa fa-link'" [size]="'small'" (onClick)="onIconClick('CreateLink')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'unlink'"
+                [icon]="'fa fa-unlink'" [size]="'small'" (onClick)="onIconClick('unlink')">
+              </amexio-button>
+            </amexio-layout-item>
+          </amexio-layout-columns>
+        </amexio-layout-item>
+      </amexio-layout-columns>
+
+      <amexio-layout-columns [orientation]="'vertical'" [border]="false" [alignment]="'left'">
+        <amexio-layout-item [fit]="true">
+          <amexio-layout-columns [border]="false" [fit]="true" [orientation]="'horizontal'" [alignment]="'left'">
+            <amexio-layout-item>
+              <select #headerId (change)="selectHeaderClick()" class="heading-dropdown" required>
+                <option value="" disabled selected>Header</option>
+                <option [(value)]="item.headerName" *ngFor="let item of headingData">
+                  {{item.headerName}}
+                </option>
+              </select>
+            </amexio-layout-item>
+            <amexio-layout-item>
+              <select #fontFamily style="padding-right: 9px;" (change)="fontFamilySelectionClick()"
+                class="heading-dropdown" required>
+                <option value="" disabled selected>Font Family</option>
+                <option [(value)]="item.familyType" *ngFor="let item of fontFamilyData">
+                  {{item.familyType}}
+                </option>
+              </select>
+            </amexio-layout-item>
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [color]="'burlywood'"
+                [tooltip]="'Fore Color'" [icon]="'fa fa-font'" [size]="'small'" (onClick)="onColorBtnClick()">
+              </amexio-button>
+
+              <amexio-button [type]="'theme-color'" class="rich-button" [tooltip]="'Background Color'"
+                [icon]="'fa fa-font'" [size]="'small'" (onClick)="onBgColorClick()">
+              </amexio-button>
+            </amexio-layout-item>
+            <!-- 4 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'HTML Code'"
+                [icon]="'fa fa-code'" [size]="'small'" (onClick)="onHtmlCodeClick()">
+              </amexio-button>
+
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'Insert Image'"
+                [icon]="'fa fa-image'" [size]="'small'" (onClick)="onIconClick('InsertImage')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'cut'" [icon]="'fa fa-cut'"
+                [size]="'small'" (onClick)="onIconClick('cut')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'copy'"
+                [icon]="'fa fa-copy'" [size]="'small'" (onClick)="onIconClick('copy')">
+              </amexio-button>
+            </amexio-layout-item>
+            <!-- b -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'delete'"
+                [icon]="'fa fa-trash'" [size]="'small'" (onClick)="onIconClick('delete')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'remove Format'"
+                [icon]="'fa fa-remove'" [size]="'small'" (onClick)="onIconClick('removeFormat')">
+              </amexio-button>
+            </amexio-layout-item>
+
+
+
+          </amexio-layout-columns>
+        </amexio-layout-item>
+      </amexio-layout-columns>
+
+      <input class="hidden-input" type="color" #favColorId (change)="foreColorClick()">
+      <input class="hidden-input" type="color" #backColorId (change)="backgroundColorClick()">
+
+    </div>
+  </ng-container>
+
+  <div #richEditableId class="rich-text-editor" contenteditable="true" [style.height.%]="textAreaHeight">
+
+
+  </div>
+  <ng-container *ngIf="displayDiv">
+    <div class="rich-editor-buttons">
+      <amexio-layout-columns [orientation]="'vertical'" [border]="false" [alignment]="'left'">
+        <amexio-layout-item [fit]="true">
+          <amexio-layout-columns [border]="false" [fit]="true" [orientation]="'horizontal'" [alignment]="'left'">
+            <!-- 1 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'undo'"
+                [icon]="'fa fa-undo'" [size]="'small'" (onClick)="onIconClick('undo')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'redo'"
+                [icon]="'fa fa-repeat'" [size]="'small'" (onClick)="onIconClick('redo')">
+              </amexio-button>
+
+            </amexio-layout-item>
+            <!-- 2 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'bold'"
+                [icon]="'fa fa-bold'" [size]="'small'" (onClick)="onIconClick('bold')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'italic'"
+                [icon]="'fa fa-italic'" [size]="'small'" (onClick)="onIconClick('italic')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'strikethrough'"
+                [icon]="'fa fa-strikethrough'" [size]="'small'" (onClick)="onIconClick('strikethrough')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'underline'"
+                [icon]="'fa fa-underline'" [size]="'small'" (onClick)="onIconClick('underline')">
+              </amexio-button>
+
+
+            </amexio-layout-item>
+            <!-- 3 -->
+
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'insert Unordered List'"
+                [icon]="'fa fa-list-ul'" [size]="'small'" (onClick)="onIconClick('insertUnorderedList')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'insert Ordered List'"
+                [icon]="'fa fa-list-ol'" [size]="'small'" (onClick)="onIconClick('insertOrderedList')">
+              </amexio-button>
+            </amexio-layout-item>
+
+            <!-- 4 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'indent'"
+                [icon]="'fa fa-indent'" [size]="'small'" (onClick)="onIconClick('indent')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'outdent'"
+                [icon]="'fa fa-dedent'" [size]="'small'" (onClick)="onIconClick('outdent')">
+              </amexio-button>
+            </amexio-layout-item>
+            <!-- 5 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'justify left'"
+                [icon]="'fa fa-align-left'" [size]="'small'" (onClick)="onIconClick('justifyLeft')">
+              </amexio-button>
+
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'justify center'"
+                [icon]="'fa fa-align-center'" [size]="'small'" (onClick)="onIconClick('justifyCenter')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'justify right'"
+                [icon]="'fa fa-align-right'" [size]="'small'" (onClick)="onIconClick('justifyRight')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'justify Full'"
+                [icon]="'fa fa-align-justify'" [size]="'small'" (onClick)="onIconClick('justifyFull')">
+              </amexio-button>
+            </amexio-layout-item>
+
+
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'subscript'"
+                [icon]="'fa fa-subscript'" [size]="'small'" (onClick)="onIconClick('subscript')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'super script'"
+                [icon]="'fa fa-superscript'" [size]="'small'" (onClick)="onIconClick('superscript')">
+              </amexio-button>
+            </amexio-layout-item>
+            <!-- 7 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'Create Link'"
+                [icon]="'fa fa-link'" [size]="'small'" (onClick)="onIconClick('CreateLink')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'unlink'"
+                [icon]="'fa fa-unlink'" [size]="'small'" (onClick)="onIconClick('unlink')">
+              </amexio-button>
+            </amexio-layout-item>
+          </amexio-layout-columns>
+        </amexio-layout-item>
+      </amexio-layout-columns>
+
+      <amexio-layout-columns [orientation]="'vertical'" [border]="false" [alignment]="'left'">
+        <amexio-layout-item [fit]="true">
+          <amexio-layout-columns [border]="false" [fit]="true" [orientation]="'horizontal'" [alignment]="'left'">
+            <amexio-layout-item>
+              <select #headerId (change)="selectHeaderClick()" class="heading-dropdown" required>
+                <option value="" disabled selected>Header</option>
+                <option [(value)]="item.headerName" *ngFor="let item of headingData">
+                  {{item.headerName}}
+                </option>
+              </select>
+            </amexio-layout-item>
+            <amexio-layout-item>
+              <select #fontFamily style="padding-right: 9px;" (change)="fontFamilySelectionClick()"
+                class="heading-dropdown" required>
+                <option value="" disabled selected>Font Family</option>
+                <option [(value)]="item.familyType" *ngFor="let item of fontFamilyData">
+                  {{item.familyType}}
+                </option>
+              </select>
+            </amexio-layout-item>
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [color]="'burlywood'"
+                [tooltip]="'Fore Color'" [icon]="'fa fa-font'" [size]="'small'" (onClick)="onColorBtnClick()">
+              </amexio-button>
+
+              <amexio-button [type]="'theme-color'" class="rich-button" [tooltip]="'Background Color'"
+                [icon]="'fa fa-font'" [size]="'small'" (onClick)="onBgColorClick()">
+              </amexio-button>
+            </amexio-layout-item>
+            <!-- 4 -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'HTML Code'"
+                [icon]="'fa fa-code'" [size]="'small'" (onClick)="onHtmlCodeClick()">
+              </amexio-button>
+
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'Insert Image'"
+                [icon]="'fa fa-image'" [size]="'small'" (onClick)="onIconClick('InsertImage')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'cut'" [icon]="'fa fa-cut'"
+                [size]="'small'" (onClick)="onIconClick('cut')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'copy'"
+                [icon]="'fa fa-copy'" [size]="'small'" (onClick)="onIconClick('copy')">
+              </amexio-button>
+            </amexio-layout-item>
+            <!-- b -->
+            <amexio-layout-item>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'delete'"
+                [icon]="'fa fa-trash'" [size]="'small'" (onClick)="onIconClick('delete')">
+              </amexio-button>
+              <amexio-button [type]="'theme-backgroundcolor'" class="rich-button" [tooltip]="'remove Format'"
+                [icon]="'fa fa-remove'" [size]="'small'" (onClick)="onIconClick('removeFormat')">
+              </amexio-button>
+            </amexio-layout-item>
+
+
+
+          </amexio-layout-columns>
+        </amexio-layout-item>
+      </amexio-layout-columns>
+
+
+      <input class="hidden-input" type="color" #favColorId (change)="foreColorClick()">
+      <input class="hidden-input" type="color" #backColorId (change)="backgroundColorClick()">
+
+    </div>
+  </ng-container>
+</div>
