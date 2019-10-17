@@ -32,7 +32,7 @@ describe('amexio-spilt-button', () => {
     comp.flag = true;
     comp.dropdownItemData = [{selected: true, index: 0}, {selected: true, index: 1}, {selected: true, index: 2}]
     expect(comp.flag).toBe(true);
-    comp.buttonindex1 = comp.findbuttonindex();
+    // comp.buttonindex1 = comp.findbuttonindex();
     comp.buttonindex1 = 1;
     expect(comp.buttonindex1).toBeLessThan(comp.dropdownItemData.length - 1);
     // expect(comp.onHomeClickSelected()).toHaveBeenCalled;
@@ -44,7 +44,7 @@ describe('amexio-spilt-button', () => {
     comp.flag = true;
     comp.dropdownItemData = [{selected: true, index: 0}, {selected: true, index: 1}, {selected: true, index: 2}]
     expect(comp.flag).toBe(true);
-    comp.buttonindex1 = comp.findbuttonindex();
+    // comp.buttonindex1 = comp.findbuttonindex();
     comp.buttonindex1 = 5;
     expect(comp.buttonindex1).toBeGreaterThan(comp.dropdownItemData.length - 1);
     // expect(comp.onHomeClickSelected()).not.toHaveBeenCalled;
@@ -56,7 +56,7 @@ describe('amexio-spilt-button', () => {
     comp.flag = true;
     comp.dropdownItemData = [{selected: true, index: 0}, {selected: true, index: 1}, {selected: true, index: 2}]
     expect(comp.flag).toBe(true);
-    comp.buttonindex1 = comp.findbuttonindex();
+    // comp.buttonindex1 = comp.findbuttonindex();
     comp.buttonindex1 = 1;
     expect(comp.buttonindex1).toBeLessThan(comp.dropdownItemData.length - 1);
     // expect(comp.onEndClickSelected()).toHaveBeenCalled;
