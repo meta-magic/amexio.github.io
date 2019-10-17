@@ -110,7 +110,7 @@ describe('IconLoaderService', () => {
   });
 
 
-  it('getIconObject 1st else condition', () => {
+  it('getIconObject 1st else condition', (): any => {
     service._iconToUse = 'fa';
     let obj = null;
     let componentKey = 'datepicker_previous';
@@ -121,7 +121,7 @@ describe('IconLoaderService', () => {
 
   });
 
-  it('getIconObject with nested if-chi-else condition', () => {
+  it('getIconObject with nested if-chi-else condition', (): any => {
     service._iconToUse = 'fa';
     let obj = null;
     let componentKey = 'datepicker_previouss';
