@@ -5,7 +5,7 @@
             <td [attr.colspan]="headers.length">
                 <table aria-describedby="table1">
 
-                    <th id="id" #headerRow>
+                    <th #headerRow>
                         <td class="calendar-header-items calendar-user-active-timeslot" style="width:50px;"> &nbsp;</td>
                         <td class="calendar-header-items" style="cursor: pointer;" (click)="onHeaderClick(header)" *ngFor="let header of headers">
                             <span tabindex="1" attr.aria-label="{{header | date : 'EEEE, MMMM d, y'}}">
