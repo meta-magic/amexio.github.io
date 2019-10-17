@@ -30,8 +30,8 @@ describe('amexio-date-time-picker', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, NoopAnimationsModule],
-      declarations: [AmexioDateTimePickerComponent, AmexioButtonComponent ,CommonIconComponent],
-      providers: [IconLoaderService ]
+      declarations: [AmexioDateTimePickerComponent, AmexioButtonComponent, CommonIconComponent],
+      providers: [IconLoaderService]
     });
     fixture = TestBed.createComponent(AmexioDateTimePickerComponent);
     comp = fixture.componentInstance;
@@ -304,11 +304,11 @@ describe('amexio-date-time-picker', () => {
 
   it('nextYear()', () => {
     comp['nextYear'](event);
-   //  comp.setDateData1('plus', 12, event);
+    //  comp.setDateData1('plus', 12, event);
   });
   it('prevYear()', () => {
     comp['prevYear'](event);
-  //  comp.setDateData1('minus', 12, event);
+    //  comp.setDateData1('minus', 12, event);
   });
 
 
@@ -1133,9 +1133,463 @@ describe('amexio-date-time-picker', () => {
 
   });
 
+  it('validateDays() checks first or condition', () => {
+    let days = new Date();
+    comp.minDate = '';
+    comp.maxDate = '27-Mar-2019';
+    comp['validateDays'](days);
+    expect(comp.minDate.length).toBeLessThanOrEqual(0);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+
+
+  });
+
+  it('validateDays() checks second or condition', () => {
+    let days = new Date();
+    comp.minDate = '27-Mar-2016';
+    comp.maxDate = '27-Mar-2019';
+    comp['validateDays'](days);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+
+
+  });
   //
+
+
+  it('validateDays() checks first or condition 1.1 TTT', () => {
+    let days = new Date();
+    days.setDate(3);
+    days.setMonth(4);
+    days.setFullYear(2019);
+    comp.minDate = '04-May-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate);
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).toBeLessThan(min.getDate());
+    expect(days.getMonth()).toEqual(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear());
+
+  });
+
+
+  it('validateDays() checks first or condition 1.2 TFT', () => {
+    let days = new Date();
+    days.setDate(3);
+    days.setMonth(5);
+    days.setFullYear(2019);
+    comp.minDate = '04-06-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).toBeLessThan(min.getDate());
+    expect(days.getMonth()).not.toEqual(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear());
+
+  });
+
+
+  it('validateDays() checks first or condition 1.3 TTF', () => {
+    let days = new Date();
+    days.setDate(2);
+    days.setMonth(4);
+    days.setFullYear(2018);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).toBeLessThan(min.getDate());
+    expect(days.getMonth()).toEqual(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear());
+
+  });
+
+
+  it('validateDays() checks first or condition 1.4 FTT', () => {
+    let days = new Date();
+    days.setDate(5);
+    days.setMonth(4);
+    days.setFullYear(2019);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).not.toBeLessThan(min.getDate());
+    expect(days.getMonth()).toEqual(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear());
+
+  });
+
+
+  it('validateDays() checks first or condition 1.5 TFF', () => {
+    let days = new Date();
+    days.setDate(2);
+    days.setMonth(6);
+    days.setFullYear(2018);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).toBeLessThan(min.getDate());
+    expect(days.getMonth()).not.toEqual(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear());
+
+  });
+
+  it('validateDays() checks first or condition 1.6 FFT', () => {
+    let days = new Date();
+    days.setDate(5);
+    days.setMonth(7);
+    days.setFullYear(2019);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).not.toBeLessThan(min.getDate());
+    expect(days.getMonth()).not.toEqual(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear());
+
+  });
+
+
+  it('validateDays() checks first or condition 1.7 FFF', () => {
+    let days = new Date();
+    days.setDate(5);
+    days.setMonth(7);
+    days.setFullYear(2018);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).not.toBeLessThan(min.getDate());
+    expect(days.getMonth()).not.toEqual(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear());
+
+  });
+
+
+  it('validateDays() checks first or condition 1.8 FTF', () => {
+    let days = new Date();
+    days.setDate(5);
+    days.setMonth(4);
+    days.setFullYear(2018);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).not.toBeLessThan(min.getDate());
+    expect(days.getMonth()).toEqual(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear());
+
+  });
+
+  it('validateDays() checks first or and second inner or condition 2.1 TT', () => {
+    let days = new Date();
+    days.setDate(4);
+    days.setMonth(3);
+    days.setFullYear(2019);
+    comp.minDate = '05-May-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate);
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getMonth()).toBeLessThan(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear())
+  });
+
+
+  it('validateDays() checks first or and second inner or condition 2.2 TF', () => {
+    let days = new Date();
+    days.setDate(4);
+    days.setMonth(3);
+    days.setFullYear(2018);
+
+    comp.minDate = '04-May-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate);
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getMonth()).toBeLessThan(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear())
+  });
+
+
+  it('validateDays() checks first or and second inner or condition 2.3 FT', () => {
+    let days = new Date();
+    days.setDate(4);
+    days.setMonth(5);
+    days.setFullYear(2019);
+    comp.minDate = '04-Apr-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate);
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getMonth()).not.toBeLessThan(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear())
+  });
+
+
+  it('validateDays() checks first or and second inner or condition 2.4 FF', () => {
+    let days = new Date();
+    days.setDate(4);
+    days.setMonth(5);
+    days.setFullYear(2018);
+    comp.minDate = '04-Apr-2019';
+    comp.maxDate = '';
+    let min = new Date(comp.minDate);
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getMonth()).not.toBeLessThan(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear())
+  });
+
+  // second Or case and its all subcases
+
+  it('validateDays() checks second or condition 1.1 TTT', () => {
+    let days = new Date();
+    days.setDate(3);
+    days.setMonth(4);
+    days.setFullYear(2019);
+    comp.minDate = '04-May-2019';
+    comp.maxDate = '04-May-2019';
+    let min = new Date(comp.minDate);
+    comp['validateDays'](days);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).toBeLessThan(min.getDate());
+    expect(days.getMonth()).toEqual(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear());
+
+  });
+
+  it('validateDays() checks second or condition 1.2 TFT', () => {
+    let days = new Date();
+    days.setDate(3);
+    days.setMonth(5);
+    days.setFullYear(2019);
+    comp.minDate = '04-06-2019';
+    comp.maxDate = '04-06-2019';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).toBeLessThan(min.getDate());
+    expect(days.getMonth()).not.toEqual(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear());
+
+  });
+
+  it('validateDays() checks second or condition 1.3 TTF', () => {
+    let days = new Date();
+    days.setDate(2);
+    days.setMonth(4);
+    days.setFullYear(2018);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '03-May-2019';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).toBeLessThan(min.getDate());
+    expect(days.getMonth()).toEqual(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear());
+
+  });
+
+  it('validateDays() checks second or condition 1.4 FTT', () => {
+    let days = new Date();
+    days.setDate(5);
+    days.setMonth(4);
+    days.setFullYear(2019);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '03-May-2019';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).not.toBeLessThan(min.getDate());
+    expect(days.getMonth()).toEqual(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear());
+
+  });
+
+  it('validateDays() checks second or condition 1.5 TFF', () => {
+    let days = new Date();
+    days.setDate(2);
+    days.setMonth(6);
+    days.setFullYear(2018);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '03-May-2019';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).toBeLessThan(min.getDate());
+    expect(days.getMonth()).not.toEqual(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear());
+
+  });
+
+  it('validateDays() checks second or condition 1.6 FFT', () => {
+    let days = new Date();
+    days.setDate(5);
+    days.setMonth(7);
+    days.setFullYear(2019);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '03-May-2019';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).not.toBeLessThan(min.getDate());
+    expect(days.getMonth()).not.toEqual(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear());
+
+  });
+
+  it('validateDays() checks second or condition 1.7 FFF', () => {
+    let days = new Date();
+    days.setDate(5);
+    days.setMonth(7);
+    days.setFullYear(2018);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '03-May-2019';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).not.toBeLessThan(min.getDate());
+    expect(days.getMonth()).not.toEqual(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear());
+
+  });
+
+  it('validateDays() checks second or condition 1.8 FTF', () => {
+    let days = new Date();
+    days.setDate(5);
+    days.setMonth(4);
+    days.setFullYear(2018);
+    comp.minDate = '03-May-2019';
+    comp.maxDate = '03-May-2019';
+    let min = new Date(comp.minDate)
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getDate()).not.toBeLessThan(min.getDate());
+    expect(days.getMonth()).toEqual(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear());
+
+  });
+
+  it('validateDays() checks second or and second inner or condition 2.1 TT', () => {
+    let days = new Date();
+    days.setDate(4);
+    days.setMonth(3);
+    days.setFullYear(2019);
+    comp.minDate = '05-May-2019';
+    comp.maxDate = '05-May-2019';
+    let min = new Date(comp.minDate);
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getMonth()).toBeLessThan(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear())
+  });
+
+  it('validateDays() checks second or and second inner or condition 2.2 TF', () => {
+    let days = new Date();
+    days.setDate(4);
+    days.setMonth(3);
+    days.setFullYear(2018);
+
+    comp.minDate = '04-May-2019';
+    comp.maxDate = '04-May-2019';
+    let min = new Date(comp.minDate);
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getMonth()).toBeLessThan(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear())
+  });
+
+  it('validateDays() checks second or and second inner or condition 2.3 FT', () => {
+    let days = new Date();
+    days.setDate(4);
+    days.setMonth(5);
+    days.setFullYear(2019);
+    comp.minDate = '04-Apr-2019';
+    comp.maxDate = '04-Apr-2019';
+    let min = new Date(comp.minDate);
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getMonth()).not.toBeLessThan(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear())
+  });
+
+  it('validateDays() checks second or and second inner or condition 2.4 FF', () => {
+    let days = new Date();
+    days.setDate(4);
+    days.setMonth(5);
+    days.setFullYear(2018);
+    comp.minDate = '04-Apr-2019';
+    comp.maxDate = '04-Apr-2019';
+    let min = new Date(comp.minDate);
+    comp['validateDays'](days);
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(days.getMonth()).not.toBeLessThan(min.getMonth());
+    expect(days.getFullYear()).not.toEqual(min.getFullYear())
+  });
+
+  // second or case ends 
+
   it('plus()', () => {
-   let type = 'min';
+    let type = 'min';
     comp.plus(type, event);
 
     expect(type).toEqual('min');
@@ -1164,170 +1618,170 @@ describe('amexio-date-time-picker', () => {
 
   });
 
-//minus
-it('onminus()', () => {
-  let type = 'min';
-  comp.minus(type, event);
-  expect(type).toEqual('min');
-  comp.min = 0;
-  expect(comp.min).toEqual(0);
-  comp.min = 60;
-  comp.hrs--;
+  //minus
+  it('onminus()', () => {
+    let type = 'min';
+    comp.minus(type, event);
+    expect(type).toEqual('min');
+    comp.min = 0;
+    expect(comp.min).toEqual(0);
+    comp.min = 60;
+    comp.hrs--;
 
-  type = 'hrs';
-  comp.hrs = 20;
-  expect(type).toEqual('hrs');
-  comp.hrs--;
+    type = 'hrs';
+    comp.hrs = 20;
+    expect(type).toEqual('hrs');
+    comp.hrs--;
 
-  comp.hrs = 0;
-  expect(comp.hrs).toEqual(0);
-  comp.hrs = 23;
+    comp.hrs = 0;
+    expect(comp.hrs).toEqual(0);
+    comp.hrs = 23;
 
-  comp.selectedDate.setHours(comp.hrs);
-  comp.selectedDate.setMinutes(comp.min);
-  comp.value = comp.selectedDate;
-  comp.isValid = true;
-  expect(comp.isValid).toEqual(true);
+    comp.selectedDate.setHours(comp.hrs);
+    comp.selectedDate.setMinutes(comp.min);
+    comp.value = comp.selectedDate;
+    comp.isValid = true;
+    expect(comp.isValid).toEqual(true);
 
-  // event.stopPropagation();
+    // event.stopPropagation();
 
-});
+  });
 
-//getlistposition()
-// it('getListPosition()', () => {
-//   let elem: any;
-//   comp.getListPosition(elem);
+  //getlistposition()
+  // it('getListPosition()', () => {
+  //   let elem: any;
+  //   comp.getListPosition(elem);
 
-// });
+  // });
 
-it('chkMonth If Block', () => {
-  let element = {
-    name: 'september',
-    flag: false
-  }
-  let month = {
-    name: 'september',
-  }
-  comp.chkMonth(element, month);
-  expect(element.name).toEqual(month.name);
-  expect(element.flag).toBeTruthy();
-})
+  it('chkMonth If Block', () => {
+    let element = {
+      name: 'september',
+      flag: false
+    }
+    let month = {
+      name: 'september',
+    }
+    comp.chkMonth(element, month);
+    expect(element.name).toEqual(month.name);
+    expect(element.flag).toBeTruthy();
+  })
 
-it('chkMonth Else Block', () => {
-  let element = {
-    name: 'september',
-    flag: false
-  }
-  let month = {
-    name: 'november',
-  }
-  comp.chkMonth(element, month);
-  expect(element.name).not.toEqual(month.name);
-  expect(element.flag).toBeFalsy();
-})
+  it('chkMonth Else Block', () => {
+    let element = {
+      name: 'september',
+      flag: false
+    }
+    let month = {
+      name: 'november',
+    }
+    comp.chkMonth(element, month);
+    expect(element.name).not.toEqual(month.name);
+    expect(element.flag).toBeFalsy();
+  })
 
-it('getDropdownMonth switch jan', () => {
-  let month = {
-    name: "Jan",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('Jan');
-  expect(comp.monthNo).toEqual(0);
-})
+  it('getDropdownMonth switch jan', () => {
+    let month = {
+      name: "Jan",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('Jan');
+    expect(comp.monthNo).toEqual(0);
+  })
 
-it('getDropdownMonth switch feb', () => {
-  let month = {
-    name: "Feb",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('Feb');
-  expect(comp.monthNo).toEqual(1);
-})
+  it('getDropdownMonth switch feb', () => {
+    let month = {
+      name: "Feb",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('Feb');
+    expect(comp.monthNo).toEqual(1);
+  })
 
-it('getDropdownMonth switch Mar', () => {
-  let month = {
-    name: "Mar",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('Mar');
-  expect(comp.monthNo).toEqual(2);
-})
+  it('getDropdownMonth switch Mar', () => {
+    let month = {
+      name: "Mar",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('Mar');
+    expect(comp.monthNo).toEqual(2);
+  })
 
-it('getDropdownMonth switch Apr', () => {
-  let month = {
-    name: "Apr",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('Apr');
-  expect(comp.monthNo).toEqual(3);
-})
-it('getDropdownMonth switch May', () => {
-  let month = {
-    name: "May",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('May');
-  expect(comp.monthNo).toEqual(4);
-})
-it('getDropdownMonth switch Jun', () => {
-  let month = {
-    name: "Jun",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('Jun');
-  expect(comp.monthNo).toEqual(5);
-})
-it('getDropdownMonth switch Jul', () => {
-  let month = {
-    name: "Jul",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('Jul');
-  expect(comp.monthNo).toEqual(6);
-})
-it('getDropdownMonth switch Aug', () => {
-  let month = {
-    name: "Aug",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('Aug');
-  expect(comp.monthNo).toEqual(7);
-})
+  it('getDropdownMonth switch Apr', () => {
+    let month = {
+      name: "Apr",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('Apr');
+    expect(comp.monthNo).toEqual(3);
+  })
+  it('getDropdownMonth switch May', () => {
+    let month = {
+      name: "May",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('May');
+    expect(comp.monthNo).toEqual(4);
+  })
+  it('getDropdownMonth switch Jun', () => {
+    let month = {
+      name: "Jun",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('Jun');
+    expect(comp.monthNo).toEqual(5);
+  })
+  it('getDropdownMonth switch Jul', () => {
+    let month = {
+      name: "Jul",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('Jul');
+    expect(comp.monthNo).toEqual(6);
+  })
+  it('getDropdownMonth switch Aug', () => {
+    let month = {
+      name: "Aug",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('Aug');
+    expect(comp.monthNo).toEqual(7);
+  })
 
-it('getDropdownMonth switch Sep', () => {
-  let month = {
-    name: "Sep",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('Sep');
-  expect(comp.monthNo).toEqual(8);
-})
+  it('getDropdownMonth switch Sep', () => {
+    let month = {
+      name: "Sep",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('Sep');
+    expect(comp.monthNo).toEqual(8);
+  })
 
-it('getDropdownMonth switch Oct', () => {
-  let month = {
-    name: "Oct",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('Oct');
-  expect(comp.monthNo).toEqual(9);
-})
+  it('getDropdownMonth switch Oct', () => {
+    let month = {
+      name: "Oct",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('Oct');
+    expect(comp.monthNo).toEqual(9);
+  })
 
-it('getDropdownMonth switch Nov', () => {
-  let month = {
-    name: "Nov",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('Nov');
-  expect(comp.monthNo).toEqual(10);
-})
+  it('getDropdownMonth switch Nov', () => {
+    let month = {
+      name: "Nov",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('Nov');
+    expect(comp.monthNo).toEqual(10);
+  })
 
-it('getDropdownMonth switch Dec', () => {
-  let month = {
-    name: "Dec",
-  }
-  comp.getDropdownMonth(month);
-  expect(month.name).toEqual('Dec');
-  expect(comp.monthNo).toEqual(11);
-})
+  it('getDropdownMonth switch Dec', () => {
+    let month = {
+      name: "Dec",
+    }
+    comp.getDropdownMonth(month);
+    expect(month.name).toEqual('Dec');
+    expect(comp.monthNo).toEqual(11);
+  })
 });
 
