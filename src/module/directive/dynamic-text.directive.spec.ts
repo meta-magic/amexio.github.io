@@ -52,15 +52,19 @@ describe('Directive: amexio-dynamic-text', () => {
         let element = {nodeType: 3, textContent: 'greeting', hasChildNodes: () => {
             return true
         }};
+        let str = element.textContent;
+        const strarr = element.textContent.split(' ');
+
         dirIn.iterateHTMLDOM(element);
-           // const hostelement = this.viewContainerRef.element.nativeElement;
-          // this.iterateHTMLDOM(hostelement);
 
-
-          //  if (element.nodeType === 3) {
             expect(element.nodeType).toEqual(3);
             for(let [key, value] of Object.entries(dirIn.jsonData)) {
-            expect(element.textContent).toEqual(value);
+                  strarr.forEach((strelement: any) => {
+                    if (key === strelement) {
+                        str = str.replace(key, value as string);
+                        expect(key).toEqual(strelement);
+                    }
+                });         
             }
        });
 

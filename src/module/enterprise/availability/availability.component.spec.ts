@@ -42,6 +42,73 @@ describe('amexio-availability', () => {
     expect(obj).toEqual(comp.styleVar);
   });
 
+  it('ngOnInit()', () => {
+    comp.legendArr = [];
+    comp.labelData = [
+      {
+        "label": "Inbound",
+        "colorcode": "red",
+        "textcolor": "white",
+        "available": [
+          {
+            "date": "01-Sep-2019",
+            "time": [
+              {
+                "starttime": 5,
+                "endtime": 5.30
+              },
+              ,
+              {
+                "starttime": 6.30,
+                "endtime": 7
+              }
+            ]
+          },
+          {
+            "date": "02-Sep-2019",
+            "time": [
+              {
+                "starttime": 5,
+                "endtime": 5.30
+              },
+              ,
+            ]
+          },
+        ]
+      },
+      {
+        "label": "Outbound",
+        "colorcode": "blue",
+        // "textcolor": "white",
+        "available": [
+          {
+            "date": "02-Sep-2019",
+            "time": [
+              {
+                "starttime": 5.30,
+                "endtime": 6.30
+              },
+            ]
+          }
+        ]
+      },
+
+    ];
+    comp.sDate = new Date();
+    comp.sDate.setDate(12);
+    comp.sDate.setMonth(1);
+    comp.sDate.setFullYear(2019);
+    comp.eDate = new Date();
+    comp.eDate.setDate(15);
+    comp.eDate.setMonth(5);
+    comp.eDate.setFullYear(2025);
+    comp.dateSpanlist = [];
+   comp.ngOnInit();
+   expect(comp.generateData()).toHaveBeenCalled;
+   spyOn(comp, 'generateData').and.callThrough();
+// spy on
+   });
+
   it('clearColorFlag() for positive outcome', () => {
     comp.dateArr1 = [{
       date: new Date(), slots: [{ time: new Date(), colorflag: true, label: "Inbound", color: "red" },
@@ -1095,7 +1162,7 @@ describe('amexio-availability', () => {
   // });
 
 
-  it('ngOnInit()', () => {
+  it('generateData()', () => {
     comp.legendArr = [];
     comp.labelData = [
       {
@@ -1156,7 +1223,7 @@ describe('amexio-availability', () => {
     comp.eDate.setMonth(5);
     comp.eDate.setFullYear(2025);
     comp.dateSpanlist = [];
-    comp.ngOnInit();
+    comp.generateData();
 
     expect(comp.selectedIndexArr).toBeDefined();
     expect(comp.completeNewArr).toBeDefined();

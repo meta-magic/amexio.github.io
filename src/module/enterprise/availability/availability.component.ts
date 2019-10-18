@@ -38,6 +38,10 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.generateData();
+  }
+// generate data structure
+  generateData() {
     this.selectedIndexArr = [];
     this.completeNewArr = [];
     this.slotTimeArr = [];
@@ -325,22 +329,15 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   }
 
   onTimeBlockClick(parentiterateitem: any, parentindex: any, childiterateitem: any, childindex: any) {
-    const indexobj = { parentsindex: parentindex, childsindex: childindex };
     if (this.radioValue.length > 0) {
       if (this.dateArr1[parentindex].slots[childindex].label) {
         if (this.dateArr1[parentindex].slots[childindex].label === this.styleVar.label) {
-          // index obj
-          indexobj['initiallabel'] = this.dateArr1[parentindex].slots[childindex].label;
-          indexobj['initialcolor'] = this.dateArr1[parentindex].slots[childindex].color;
           //  unselect logic
           const newobj = {
             time: this.dateArr1[parentindex].slots[childindex].time, colorflag: false,
           };
           this.dateArr1[parentindex].slots[childindex] = newobj;
         } else {
-
-          indexobj['initiallabel'] = this.dateArr1[parentindex].slots[childindex].label;
-          indexobj['initialcolor'] = this.dateArr1[parentindex].slots[childindex].color;
           this.dateArr1[parentindex].slots[childindex].label = this.styleVar.label;
           this.dateArr1[parentindex].slots[childindex].color = this.styleVar.colorcode;
           this.dateArr1[parentindex].slots[childindex].colorflag = true;
@@ -353,8 +350,6 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
         this.dateArr1[parentindex].slots[childindex] = newobj;
       }
     }
-    this.selectedIndexArr.push(indexobj);
-
     this.onClick.emit({
       time: this.dateArr1[parentindex].slots[childindex].time,
       label: this.dateArr1[parentindex].slots[childindex].label,
@@ -362,25 +357,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   }
 
   onUndoClick() {
-    this.selectedIndexArr.forEach((element: any) => {
-      let newobj = {};
-      if (element.initiallabel) {
-        newobj = {
-          time: this.dateArr1[element.parentsindex].slots[element.childsindex],
-          colorflag: true,
-          label: element.initiallabel,
-          color: element.initialcolor,
-        };
-      } else {
-        newobj = {
-          time: this.dateArr1[element.parentsindex].slots[element.childsindex],
-          colorflag: false,
-        };
-      }
-      this.dateArr1[element.parentsindex].slots[element.childsindex] = newobj;
-    });
-
-    this.selectedIndexArr = [];
+    this.generateData();
   }
 
 }

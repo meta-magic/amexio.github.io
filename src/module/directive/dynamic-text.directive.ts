@@ -21,8 +21,15 @@ export class DynamicTextDirective implements OnInit, AfterContentChecked {
 
     iterateHTMLDOM(element: any) {
         if (element.nodeType === 3) {
+            let str = element.textContent;
+            const strarr = element.textContent.split(' ');
             for (const [key, value] of Object.entries(this.jsonData)) {
-                element.textContent = element.textContent.replace(key, value as string);
+                strarr.forEach((strelement: any) => {
+                    if (key === strelement) {
+                        str = str.replace(key, value as string);
+                    }
+                });
+                element.textContent = str;
             }
         } else {
             if (element.hasChildNodes()) {
