@@ -80,19 +80,19 @@
   </span>
 
   <span class="btnspan">
-    <span class="btn">
+    <span class="clear-btn">
       <button tabindex="0" (keyup.enter)="clearData()" aria-label="clear data" [ngClass]="{'rounded': (btnType == 'round')}" type="button"
-        style="margin-top:8px; width: 42px; height: 35px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
+        style="margin-top:10px; width: 42px; height: 35px; left:-1px;" class="fa fa-eraser pointer btncolor" (click)="clearData()">
       </button>
     </span>
-    <span class="btn ">
+    <span class="btn">
       <button style="margin-top:8px" tabindex="0" [ngClass]="{'rounded': (btnType == 'round')}" type="button" class="pointer btncolor"
         (click)="getBtnData(item)">{{lastDigit}}</button>
     </span>
 
-    <span class="btn">
+    <span class="clear-btn">
       <button type="button" tabindex="0" (keyup.enter)="eraseData()" aria-label="backspace" [ngClass]="{'rounded': (btnType == 'round')}"
-        style="margin-top:8px; width: 42px; height: 35px" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
+        style="margin-top:10px; width: 42px; height: 35px; left:3px;" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
       </button>
     </span>
   </span>
@@ -124,19 +124,19 @@
 
   <span class="btnspan">
 
-    <span class="btn">
+    <span class="clear-btn">
       <button tabindex="0" (keyup.enter)="clearData()" aria-label="clear data" [ngClass]="{'rounded': (btnType == 'round')}" type="button"
-        style="margin-top:8px; width: 42px; height: 35px" class="fa fa-eraser pointer btncolor" (click)="clearData()">
+        style="margin-top:10px; width: 42px; height: 35px; left:-1px;" class="fa fa-eraser pointer btncolor" (click)="clearData()">
       </button>
     </span>
-    <span class="btn ">
+    <span class="btn">
       <button tabindex="0" (keyup.enter)="getBtnData(item)" style="margin-top:8px" [ngClass]="{'rounded': (btnType == 'round')}"
         type="button" class="pointer btncolor" (click)="getBtnData(item)">{{lastDigit}}</button>
     </span>
 
-    <span class="btn">
+    <span class="clear-btn">
       <button tabindex="0" (keyup.enter)="eraseData()" aria-label="backspace" type="button" [ngClass]="{'rounded': (btnType == 'round')}"
-        style="margin-top:8px; width: 42px; height: 35px" class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
+        style="margin-top:10px; width: 42px; height: 35px;left: 3px; " class="fa fa-arrow-left pointer btncolor" (click)="eraseData()">
       </button>
     </span>
   </span>

@@ -4,6 +4,10 @@
     justify-content: center;
 }
 
+.clear-btn button::before{
+    margin-left: -3px;
+}
+
 .btn {
    margin: 3px;
 }
