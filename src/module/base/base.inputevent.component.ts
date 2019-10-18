@@ -9,7 +9,8 @@ import { ValueAccessorBaseComponent } from './value-accessor';
 export class BaseInputEventComponent extends ValueAccessorBaseComponent<string>  {
     showToolTip: boolean;
     isValid = false;
-    emailpattern: any = /\S+@\S+\.\S+/;
+    //emailpattern: any = /\S+@\S+\.\S+/;
+    emailpattern: any =  /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
     @Input('allow-blank') allowblank: boolean;
     @Input('min-length') minlength: number;
     @Input('min-value') minvalue: any;
