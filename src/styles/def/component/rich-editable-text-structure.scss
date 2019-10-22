@@ -6,6 +6,18 @@
     padding: 1px;
    }
 
+   .rich-first-div-reverse {
+     flex-direction: column-reverse;
+     resize: both;
+     border-radius: 5px;
+     overflow-x: hidden;
+     position: relative;
+     display: flex;
+     
+     border: 0px;
+     box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 5px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px;
+    
+   }
  
   .rich-first-div { 
     resize: both;
