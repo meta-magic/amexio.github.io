@@ -1,4 +1,4 @@
-<div [ngClass]="{'datagrid-full-screen': yesFullScreen && fullscreenMax}">
+<div [style.height]="height" [ngClass]="{'datagrid-full-screen': yesFullScreen && fullscreenMax}">
   <div class="datagrid">
     <div class="datatabletitle">
       <span *ngIf="title" id="{{gridId}}"> {{title}} </span>
@@ -174,7 +174,7 @@
 
   <!--Group BY datagrid start-->
   <ng-container *ngIf="!groupby">
-    <div class="datatable-height {{roundedgeclass}}" [style.height.px]="height">
+    <div class="datatable-height {{roundedgeclass}}" [style.height]="height">
       <div class="datatable" role="grid">
         <div style="height: 300px;" *ngIf="mask">
           <div class="spinner"></div>
@@ -256,7 +256,7 @@
 
   <!--Group BY and Filter Data datagrid start-->
   <ng-container *ngIf="groupby && !enabledatafilter">
-    <div class="datatable-height {{roundedgeclass}}" [style.height.px]="height">
+    <div class="datatable-height {{roundedgeclass}}" [style.height]="height">
       <div class="datatable" role="grid" style="table-layout: inherit !important;">
         <div style="height: 300px;" *ngIf="mask">
           <div class="spinner"></div>
