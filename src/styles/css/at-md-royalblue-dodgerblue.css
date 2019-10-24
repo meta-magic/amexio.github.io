@@ -154,7 +154,7 @@ html {
   width: 100%; }
 
 body {
-  font-family: Roboto, Trebuchet MS, Arial, Helvetica, sans-serif;
+  font-family: Roboto,Verdana,sans-serif, Helvetica,Arial,Trebuchet MS;
   background-image: var(--appBackgroundImage); }
 
 .helperHidden {
@@ -1143,7 +1143,7 @@ button {
   display: block;
   position: absolute;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  z-index: 700;
+  z-index: 300;
   width: 290px; }
   .datetimepicker .datetimepickertopbar {
     padding: 10px 25px;
@@ -1342,6 +1342,45 @@ button {
 .notclickable {
   pointer-events: none; }
 
+.customrangepanel {
+  cursor: pointer;
+  /* border-bottom: 1px solid black; */
+  /* border-top: 1px solid black; */
+  padding: 15px;
+  background-color: white; }
+
+.custom {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-bottom: 3px solid var(--themePrimaryColor); }
+
+.tooltip {
+  position: relative;
+  display: inline-block; }
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1000;
+  top: -5px;
+  left: 110%; }
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  border-color: #ced4da; }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible; }
+
 /****************************************************************************
     Component Name : Dropdown
     Version : Amexio v4.0 onwards
@@ -1364,6 +1403,15 @@ button {
 .list-items-selected {
   background-color: var(--componentHoverBGColor);
   color: var(--componentHoverFontColor); }
+
+.dropdown-list::-webkit-scrollbar-track {
+  background-color: var(--componentDisabledBGColor); }
+
+.dropdown-list::-webkit-scrollbar {
+  background-color: var(--componentDisabledBGColor); }
+
+.dropdown-list::-webkit-scrollbar-thumb {
+  background-color: var(--componentHeaderBGColor); }
 
 /** dropdown - Structure CSS **/
 .dropdown {
@@ -1497,6 +1545,16 @@ button {
   line-height: 38px;
   text-align: center;
   pointer-events: none; }
+
+.input-control-eye {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  display: block;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center; }
 
 .inputgroup .tooltiptext {
   border: 1px solid #ced4da;
@@ -3358,6 +3416,7 @@ input:checked + .largeType2ToggleSlider:before {
   display: inline-block;
   font-size: 16px !important;
   padding: 16px;
+  box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 4px;
   cursor: pointer; }
 
 .dropdown-menu-content {
@@ -3370,6 +3429,9 @@ input:checked + .largeType2ToggleSlider:before {
   padding: 10px 0px;
   overflow-y: auto; }
 
+.dropdown-menu:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px !important; }
+
 .dropdown-menu-content a {
   text-decoration: none;
   display: inline-block;
@@ -3379,6 +3441,9 @@ input:checked + .largeType2ToggleSlider:before {
 
 .menu-right {
   right: 10px; }
+
+.dropdown-list::-webkit-scrollbar {
+  width: 6px; }
 
 /*****************************************************************************
  Component Name : Toolbar
@@ -4698,6 +4763,136 @@ fsw .widgetSprite.icCalendar {
 .datetabs .datetimepicker {
   box-shadow: unset; }
 
+.dropdivMulti {
+  width: 100%; }
+
+.dropspanMulti {
+  float: left;
+  width: 25%; }
+
+.dropulMulti {
+  list-style-type: none;
+  -webkit-padding-start: 5px; }
+
+.dropspanMulti2 {
+  width: 25%;
+  float: left;
+  border-right: 1px solid var(--componentDisabledFontColor); }
+
+.dropulMulti2 {
+  list-style-type: none;
+  -webkit-padding-start: 15px; }
+
+.dropspanMulti4 {
+  width: 25%;
+  display: table-row-group; }
+
+.btndivMulti1 {
+  position: relative;
+  bottom: 0; }
+
+.dropbtnspanMulti {
+  display: inline-flex;
+  padding-left: 105px; }
+
+.dropiconpaddingMulti {
+  cursor: pointer;
+  -webkit-padding-start: 20px; }
+
+/****************************************************************************
+    Component Name : Dialpad
+    Version : Amexio v5.19 onwards
+*****************************************************************************/
+/** dialpad - Visual CSS **/
+.btncolor {
+  background-color: var(--componentActiveBGColor);
+  color: var(--componentActiveFontColor); }
+
+.labcolor {
+  color: var(--componentFontColor); }
+
+.btncolor:hover {
+  background-color: var(--componentHoverBGColor);
+  color: var(--componentHoverFontColor); }
+
+.nonecls {
+  border-color: var(--componentFontColor) !important; }
+
+.redcls {
+  border-color: red !important; }
+
+.greencls {
+  border-color: green !important; }
+
+/** dialpad - Structure CSS **/
+.btnspan {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+
+.clear-btn button::before {
+  margin-left: -3px; }
+
+.btn {
+  margin: 3px; }
+
+.pointer {
+  cursor: pointer; }
+
+.rounded {
+  border-radius: 50%; }
+
+/****************************************************************************
+    Component Name : Multi Date Range Time
+    Version : Amexio v5.19 onwards
+*****************************************************************************/
+/** multidaterangepicker - Visual CSS **/
+.customRangePanel {
+  background-color: white; }
+
+.customRangePanel:hover {
+  color: black;
+  background: var(--componentHoverBGColor); }
+
+.customRange {
+  border-bottom: 3px solid var(--componentHoverBGColor); }
+
+/** multidaterangepicker - Structure CSS **/
+.customRangePanel {
+  cursor: pointer;
+  padding: 14px; }
+
+.customRange {
+  padding-bottom: 10px;
+  padding-top: 21px; }
+
+.tooltipRange {
+  position: relative;
+  display: inline-block; }
+
+.tooltipRange .tooltiptextRange {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1000;
+  top: -5px;
+  left: 110%; }
+
+.tooltipRange .tooltiptextRange::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  border-color: black; }
+
+.tooltipRange:hover .tooltiptextRange {
+  visibility: visible; }
+
 /****************************************************************************
     Component Name : Enterprise Content
     Version : Amexio v4.0 onwards
@@ -5686,11 +5881,9 @@ amexio-homepage-centerpanel .homepage-centerpanel {
     Version : Amexio v5.13 onwards
 *****************************************************************************/
 .fpClass amexio-floating-panel div {
-  bottom: 0px;
   z-index: 300 !important; }
 
 .fpRightClass amexio-floating-panel div {
-  bottom: 0px;
   right: 0px;
   z-index: 300 !important; }
 
@@ -5699,6 +5892,180 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 
 .fpRightClass amexio-floating-panel div .card-container-body {
   height: 100% !important; }
+
+/****************************************************************************
+    Component Name : Rich Editable Text
+    Version : Amexio v5.20 onwards
+*****************************************************************************/
+.rich-first-div {
+  border: 1px solid #ced4da; }
+
+.rich-editor-buttons {
+  background: white; }
+
+.rich-text-editor {
+  background-color: var(--componentBGColor); }
+
+.rich-text-editor::-webkit-scrollbar-track {
+  background-color: var(--componentDisabledBGColor); }
+
+.rich-text-editor::-webkit-scrollbar {
+  background-color: var(--componentDisabledBGColor); }
+
+.rich-text-editor::-webkit-scrollbar-thumb {
+  background-color: var(--componentHeaderBGColor); }
+
+.rich-text-editor {
+  border-radius: 5px;
+  margin: 2px;
+  overflow-x: hidden;
+  padding: 1px; }
+
+.rich-first-div {
+  resize: both;
+  border-radius: 5px;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 0px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 5px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px; }
+
+.rich-editor-buttons {
+  border: 0;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin: 9px 0px;
+  text-align: start;
+  padding: 5px 0px; }
+
+.rich-button {
+  width: auto;
+  cursor: pointer;
+  line-height: 34px;
+  text-align: center;
+  padding: 0px !important;
+  box-shadow: none; }
+
+.rich-button .button-small {
+  padding: 3px !important; }
+
+.rich-button .button-small span {
+  padding: 0px !important; }
+
+.hidden-input {
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  top: auto;
+  height: 1px;
+  overflow: hidden; }
+
+.heading-dropdown {
+  width: auto;
+  padding: .375rem 0;
+  background: white;
+  line-height: 2;
+  border-radius: 0px;
+  border: none;
+  border-bottom: 1px solid var(--componentFontColor);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
+
+.heading-dropdown:required:invalid {
+  color: gray; }
+
+option[value=""][disabled] {
+  display: none; }
+
+option {
+  cursor: pointer;
+  color: black; }
+
+.rich-text-editor::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+.rich-text-editor::-webkit-scrollbar {
+  width: 6px; }
+
+.rich-seperator {
+  margin-right: 16px; }
+
+.rich-right-space {
+  margin-right: 5px; }
+
+.rich-editor-buttons amexio-layout-columns amexio-layout-item {
+  padding: 0px 5px !important; }
+
+/****************************************************************************
+    Component Name : Availability
+    Version : Amexio v5.19 onwards
+*****************************************************************************/
+.datespan {
+  background-color: #DCDCDC;
+  height: 5px;
+  line-height: 20px; }
+
+.maindiv {
+  border: 1px solid black; }
+
+.availability-row {
+  margin-bottom: 3px;
+  text-align: left;
+  padding-left: 5px;
+  background-color: #DCDCDC; }
+
+.mainAvailabilityDiv {
+  width: 100%;
+  height: 100%; }
+
+.availability-right-row {
+  text-align: center;
+  display: inline-block;
+  width: 46px;
+  line-height: 20px;
+  margin-bottom: 3px;
+  background-color: #DCDCDC;
+  border-left: 3px solid #F6F6F6; }
+
+.availability-right-row-ul {
+  padding: 0px 0px 0px 0px !important;
+  margin: 0;
+  display: flex;
+  list-style: none; }
+
+.datespan {
+  background-color: #DCDCDC;
+  height: 5px;
+  line-height: 20px; }
+
+.maindiv {
+  border: 1px solid black; }
+
+.undoicon {
+  margin-right: 1px; }
+
+.timezonedrop {
+  margin-left: 5px;
+  /* margin-right:12px; */
+  color: black;
+  background-color: white;
+  padding: 6px 4px 4px;
+  border: 1px solid black; }
+
+/*  */
+.datespan1 {
+  width: 100%;
+  float: left;
+  background-color: #DCDCDC;
+  margin-top: 5px; }
+
+.datespan2 {
+  padding: 5px 0 !important;
+  text-align: center;
+  display: inline-block; }
+
+.firstdiv {
+  margin-top: 10px; }
 
 /****************************************************************************
     Component Name : Datapoints
@@ -5791,6 +6158,11 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   color: var(--componentHoverFontColor);
   outline: none; }
 
+.datatable-filter-icon1:focus {
+  background-color: var(--componentHoverBGColor);
+  color: var(--componentHoverFontColor);
+  outline: none; }
+
 .float-right-datagridlist {
   float: right; }
 
@@ -5872,8 +6244,26 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   line-height: 38px;
   text-align: center; }
 
+.datatable-filter-icon1 {
+  position: absolute;
+  top: 1px;
+  display: block;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center; }
+
 .iconPaddingStyle {
   padding-right: 5px; }
+
+.datagrid-full-screen {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2000;
+  background: white; }
 
 /****************************************************************************
     Component Name : Horizontaltreeview
@@ -6243,6 +6633,15 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   padding: 5px;
   display: block; }
 
+.tree-node-label-no-wrap {
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 /****************************************************************************
     Component Name : PropertyGrid
     Version : Amexio v5.8.2 onwards
@@ -6568,8 +6967,21 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   background-color: var(--componentBGColor);
   color: var(--componentFontColor); }
 
+.nav-dropdown:hover .dropdownData {
+  background-color: white; }
+
 .nav-dropdown:hover .nav-dropdown-content .nav-menu-container a {
   color: var(--componentFontColor); }
+
+.navbar-scroll::-webkit-scrollbar-track {
+  background-color: var(--componentDisabledBGColor); }
+
+.navbar-scroll::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--componentDisabledBGColor); }
+
+.navbar-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--componentHeaderBGColor); }
 
 /** navbar - Structure CSS **/
 .amexio-nav-submenus {
@@ -6578,7 +6990,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
   background-color: var(--appHeaderBGColor);
   color: var(--appHeaderFontColor);
-  padding: 10px; }
+  padding: 0px; }
 
 .amexio-nav-desktop-submenus {
   width: 250px;
@@ -6593,6 +7005,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   color: var(--appHeaderHoverFontColor); }
 
 .nav-desktop-link {
+  cursor: pointer;
   color: var(--appHeaderFontColor);
   text-decoration: none;
   display: inline-block;
@@ -6786,6 +7199,16 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 .nav-dropdown:hover .nav-dropdown-content {
   display: block; }
 
+.nav-dropdown:hover .dropdownData {
+  display: block;
+  position: absolute;
+  min-width: auto;
+  z-index: 3;
+  padding: 10px 0px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  transform-origin: 0 0; }
+
 .nav-dropdown-content-subnode {
   display: inline-flex;
   justify-content: space-between;
@@ -6922,6 +7345,9 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   width: 100%;
   color: var(--appHeaderFontColor);
   font-weight: 600; }
+
+.navbar-scroll {
+  overflow-y: auto; }
 
 /****************************************************************************
     Component Name : Paginator
@@ -7357,7 +7783,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   margin-top: 0px !important;
   height: 120%;
   padding-left: 8px;
-  padding-top: 12px;
+  padding-top: 8px;
   padding-bottom: 8px;
   border-left: 1px solid #797575; }
 
@@ -7367,7 +7793,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   margin-top: 0px;
   padding-left: 8px;
   height: 120%;
-  padding-top: 12px;
+  padding-top: 8px;
   padding-bottom: 8px;
   border-left: 1px solid #f7f3f3; }
 
@@ -7393,12 +7819,47 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   outline: none; }
 
 .arrow-group-css:focus {
-  background: var(--componentHoverBGColor);
   outline: none; }
 
 .label-icon-css:focus {
   background: var(--componentHoverBGColor);
   outline: none; }
+
+/****************************************************************************
+    Component Name : Taskbar
+    Version : Amexio v5.18 onwards
+*****************************************************************************/
+/** dockbar - Visual CSS **/
+.taskbar {
+  background: var(--componentHoverBGColor); }
+
+/** dockbar - Structure CSS **/
+.taskbar {
+  display: flex;
+  position: fixed;
+  z-index: 999;
+  bottom: 0px;
+  left: 0px;
+  padding: 10px  0px 10px 4px;
+  width: 100%; }
+
+.taskbar-item-display-fixed {
+  background: rgba(128, 127, 127, 0.6);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 700;
+  padding-top: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  top: 0;
+  left: 0; }
+
+.taskbar-item-display-relative {
+  display: block;
+  position: fixed;
+  bottom: 60px; }
 
 /** Initialze Panels and Layouts variables ------------ */
 /****************************************************************************
@@ -7566,8 +8027,7 @@ amexio-accordion > amexio-accordion-tab {
   text-align: left; }
 
 .card-header {
-  display: flex;
-  padding: 10px 24px;
+  padding: 10px 12px 10px 24px;
   font-size: 20px;
   font-weight: 300;
   text-transform: capitalize; }
@@ -7590,6 +8050,14 @@ amexio-accordion > amexio-accordion-tab {
 .card-footer {
   display: flex;
   border-top: 1px solid #ced4da; }
+
+.full-screen-card {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  left: 0;
+  z-index: 1000;
+  width: 100%; }
 
 /****************************************************************************
     Component Name : Form
@@ -8100,7 +8568,6 @@ fieldset {
 .tabcontent {
   width: inherit;
   position: relative;
-  padding: 10px 5px;
   color: var(--componentFontColor); }
 
 .tabcontent::-webkit-scrollbar-track {
@@ -8147,11 +8614,11 @@ fieldset {
 
 .verticalnavtab-left {
   font-weight: bold;
-  width: auto; }
+  width: max-content; }
 
 .verticalnavtab-right {
   font-weight: bold;
-  width: auto; }
+  width: max-content; }
 
 .verticalalign-tableft {
   border-right: 1px solid #ced4da !important; }
@@ -8339,6 +8806,9 @@ fieldset {
   background: var(--componentBGColor);
   color: var(--componentFontColor); }
 
+.minimize-window-bg {
+  background: var(--componentHoverBGColor); }
+
 /** window - Structure CSS **/
 /* WINDOW */
 .amexio-root-window {
@@ -8419,6 +8889,51 @@ amexio-window-header > amexio-toolbar {
 
 amexio-window-header > amexio-toolbar > .toolbar {
   padding: 0px; }
+
+.modal-card-header {
+  display: flex; }
+
+.amexio-root-window-windowModel {
+  width: 100%;
+  position: fixed;
+  z-index: 700;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  pointer-events: none; }
+
+.amexio-root-window-content-windowModel {
+  position: relative; }
+
+.amexio-root-window-content-windowModel {
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 96%;
+  width: 400px;
+  top: 0px;
+  left: 0px;
+  justify-content: flex-start;
+  transform: none;
+  opacity: 1;
+  padding: 5px;
+  pointer-events: all; }
+
+.amexio-root-window-content-windowModel .window-middle::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+.amexio-root-window-content-windowModel .window-middle::-webkit-scrollbar {
+  width: 6px;
+  height: 6px; }
+
+@media only screen and (max-width: 600px) {
+  .amexio-root-window-content-windowModel {
+    width: 100%; } }
+.amexio-root-window-content-windowModel > * {
+  padding: 10px 16px; }
 
 /****************************************************************************
     Component Name : Dialogue
@@ -8674,6 +9189,17 @@ amexio-window-header > amexio-toolbar > .toolbar {
 .panel-accordion amexio-toolbar-item {
   margin: auto; }
 
+.panel-full-screen {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 2000; }
+
+.panel-full-screen .panel-panel {
+  height: 100% !important; }
+
 /****************************************************************************
     Component Name : Timeline
     Version : Amexio v5.2 onwards
@@ -8920,6 +9446,15 @@ amexio-layout amexio-layout-item {
 .amexio-root-window-ce {
   background: rgba(128, 127, 127, 0.6); }
 
+.card-container-body::-webkit-scrollbar-track {
+  background-color: var(--componentDisabledBGColor); }
+
+.card-container-body::-webkit-scrollbar {
+  background-color: var(--componentDisabledBGColor); }
+
+.card-container-body::-webkit-scrollbar-thumb {
+  background-color: var(--componentHeaderBGColor); }
+
 /** windowce - Structure CSS **/
 .amexio-root-window-ce {
   background: rgba(128, 127, 127, 0.6);
@@ -8945,6 +9480,48 @@ amexio-layout amexio-layout-item {
 
 .amexio-root-window-content-ce > * {
   padding: 0px; }
+
+.minimize-btn-css {
+  display: block;
+  position: fixed;
+  z-index: 999;
+  bottom: 0px;
+  width: 100%; }
+
+.amexio-root-window-ce-windowModel {
+  width: 100%;
+  position: fixed;
+  z-index: 700;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  pointer-events: none; }
+
+.amexio-root-window-content-ce-windowModel {
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.4) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 96%;
+  width: 400px;
+  top: 0px;
+  left: 0px;
+  justify-content: flex-start;
+  transform: none;
+  opacity: 1;
+  padding: 5px;
+  pointer-events: all; }
+
+.amexio-root-window-content-ce-windowModel {
+  position: relative; }
+
+.amexio-root-window-content-ce-windowModel > * {
+  padding: 0px; }
+
+.card-container-body::-webkit-scrollbar {
+  width: 6px; }
 
 /* .amexio-root-window-content-ce .window-middle::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -8974,6 +9551,12 @@ amexio-layout amexio-layout-item {
   position: absolute;
   right: 0%;
   padding: 5px 10px; }
+
+.creative-header-icon-div-full-screen {
+  position: absolute;
+  right: 0;
+  padding-right: 5px !important;
+  top: 0; }
 
 .header-ce {
   padding: 10px;
@@ -9104,6 +9687,51 @@ amexio-layout amexio-layout-item {
   position: absolute;
   right: 0%;
   padding: 5px 10px; }
+
+.floatingPanelIndex amexio-floating-panel div {
+  z-index: 2 !important; }
+
+.floatingPanelIndex {
+  margin-top: 15px; }
+
+.leftPositionPanel {
+  display: block;
+  position: absolute;
+  left: 50px;
+  right: 0px;
+  margin-top: 70px; }
+
+.rightPositionPanel {
+  display: block;
+  position: absolute;
+  right: 50px;
+  margin-top: 70px; }
+
+/*****************************************************************************
+ Component Name : Amexio Stackable panel container 
+  Version : Amexio v5.19 onwards
+****************************************************************************/
+/** Amexio StackablePanel Vars CSS **/
+/** Amexio StackablePanel Visual CSS **/
+/** Amexio StackablePanel Structure CSS **/
+.stackablepanel {
+  background-color: var(--componentBGColor);
+  size: 10px;
+  color: var(--componentFontColor); }
+
+.stackablepanel .title {
+  /* background-color: #ccc; */
+  width: 100%;
+  padding: 3.5px;
+  cursor: pointer;
+  border-bottom: 1.5px solid #e2d5d5;
+  /* border-bottom: 0.4px solid #666; */ }
+
+.stackablepanel .body {
+  padding: 0px 10px 10px 10px; }
+
+.stackablepanel .body.hidden {
+  display: none; }
 
 /****************************************************************************
     Component Name : Border Layout
@@ -9656,6 +10284,520 @@ amexio-layout-columns amexio-layout-item {
   -webkit-transform: scale(1);
   transform: scale(1); }
 
+/****************************************************************************
+    Component Name : Directive Round Edge
+    Version : Amexio v5.12 onwards
+*****************************************************************************/
+/** Round Edge - var CSS **/
+/** Round Edge card - Visual CSS **/
+/* You can add global styles to this file, and also import other style files */
+.roundEdgeCommonCss {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container-ce {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container-ce amexio-header-ce .creative-header-div {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container-ce button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-header-ce {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-header-ce button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-header-ce div .creative-header {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss amexio-action-ce div .creative-footer {
+  border-radius: 0px 0px 10px 10px; }
+
+.roundEdgeCommonCss amexio-action-ce div .creative-footer button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .box-content {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .box-content button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .panel-panel {
+  border-radius: 0px 0px 10px 10px; }
+
+.roundEdgeCommonCss .panel-accordion {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .panel-without-header {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-header {
+  border-radius: 10px 10px 0px 0px; }
+
+.cardBorderClass {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-footer button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-accordion-tab button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .activebgcolortab {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .dialogue-content {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .dialogue-content header {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .dialogue-content footer {
+  border-radius: 0px 0px 10px 10px; }
+
+.roundEdgeCommonCss .floatingpanel-header {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .card-container-body {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .modal-window-header {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .modal-window-footer {
+  border-radius: 0px 0px 10px 10px; }
+
+.roundEdgeCommonCss .modal-window-footer button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .amexio-badge {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .datetimepickertopbar {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .datetimepickertopbar div .days {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .datetimepicker1 {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .notification {
+  border-radius: 10px; }
+
+/* Class: progress */
+.roundEdgeCommonCss .progress .success {
+  border-radius: 10px 0px 0px 10px; }
+
+.roundEdgeCommonCss .progress {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .progress .warning {
+  border-radius: 10px 0px 0px 10px; }
+
+.roundEdgeCommonCss .progress .danger {
+  border-radius: 10px 0px 0px 10px; }
+
+.roundEdgeCommonCss .progress .stripped {
+  border-radius: 10px; }
+
+/* class: pageginator-pages */
+.roundEdgeCommonCss .paginator-pages .paginator-page {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .timeline-item .timeline-panel-float-right {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .timeline-item .timeline-panel-float-left {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .listbox {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .header {
+  border-radius: 10px; }
+
+/* listbox */
+.roundEdgeCommonCss .listbox .header {
+  border-radius: 10px 10ox 0px 0px; }
+
+/* breadcrum-rightshift-css */
+.roundEdgeCommonCss .breadcrumb-group:hover {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-dockbar-item .dockbar-active-content {
+  border-radius: 0px 10px 10px 0px; }
+
+.roundEdgeCommonCss .dropdown-menu {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .menu-content {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .datapoints {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .datePickerContainer {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .weekdaycomponent {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .weekdaycomponent .datetimepicker1 {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .amexio-root-window-content-ce div {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss color-palette .color-palette {
+  border-radius: 10px 0px 0px 10px; }
+
+.roundEdgeCommonCss color-slider .color-slider {
+  border-radius: 0px 10px 10px 0px; }
+
+.roundEdgeCommonCss .main-content {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container-ce-color {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container-ce-main {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-action-ce div {
+  border-radius: 10px; }
+
+.classicCommonCss {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container-ce {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container-ce amexio-header-ce .creative-header-div {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container-ce button {
+  border-radius: 0px !important; }
+
+.classicCommonCss amexio-header-ce {
+  border-radius: 0px !important; }
+
+.classicCommonCss amexio-header-ce button {
+  border-radius: 0px !important; }
+
+.classicCommonCss amexio-header-ce div .creative-header {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss amexio-action-ce div .creative-footer {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss amexio-action-ce div .creative-footer button {
+  border-radius: 0px !important; }
+
+.classicCommonCss .box-content {
+  border-radius: 0px !important; }
+
+.classicCommonCss .box-content button {
+  border-radius: 0px !important; }
+
+.classicCommonCss .panel-panel {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .panel-accordion {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .panel-without-header {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-header {
+  border-radius: 0px 10px 0px 0px !important; }
+
+.cardBorderClass {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-footer button {
+  border-radius: 0px !important; }
+
+.classicCommonCss amexio-accordion-tab button {
+  border-radius: 0px !important; }
+
+.classicCommonCss .activebgcolortab {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .dialogue-content {
+  border-radius: 0px !important; }
+
+.classicCommonCss .dialogue-content header {
+  border-radius: 0px !important; }
+
+.classicCommonCss .floatingpanel-header {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .card-container-body {
+  border-radius: 0px !important; }
+
+.classicCommonCss .modal-window-header {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .modal-window-footer {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .modal-window-footer button {
+  border-radius: 0px !important; }
+
+.classicCommonCss .amexio-badge {
+  border-radius: 0px !important; }
+
+.classicCommonCss .datetimepickertopbar {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .datetimepickertopbar div .days {
+  border-radius: 0px !important; }
+
+.classicCommonCss .datetimepicker1 {
+  border-radius: 0px !important; }
+
+.classicCommonCss .notification {
+  border-radius: 0px !important; }
+
+/* Class: progress */
+.classicCommonCss .progress .success {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .progress {
+  border-radius: 0px !important; }
+
+.classicCommonCss .progress .warning {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .progress .danger {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .progress .stripped {
+  border-radius: 0px !important; }
+
+/* class: pageginator-pages */
+.classicCommonCss .paginator-pages .paginator-page {
+  border-radius: 0px !important; }
+
+.classicCommonCss .timeline-item .timeline-panel-float-right {
+  border-radius: 0px !important; }
+
+.classicCommonCss .timeline-item .timeline-panel-float-left {
+  border-radius: 0px !important; }
+
+.classicCommonCss .listbox {
+  border-radius: 0px !important; }
+
+.classicCommonCss .header {
+  border-radius: 0px !important; }
+
+/* listbox */
+.classicCommonCss .listbox .header {
+  border-radius: 0px 0px 0px 0px !important; }
+
+/* breadcrum-rightshift-css */
+.classicCommonCss .breadcrumb-group:hover {
+  border-radius: 0px !important; }
+
+.classicCommonCss amexio-dockbar-item .dockbar-active-content {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .dropdown-menu {
+  border-radius: 0px !important; }
+
+.classicCommonCss .menu-content {
+  border-radius: 0px !important; }
+
+.classicCommonCss .datapoints {
+  border-radius: 0px !important; }
+
+.classicCommonCss .datePickerContainer {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .weekdaycomponent {
+  border-radius: 0px !important; }
+
+.classicCommonCss .weekdaycomponent .datetimepicker1 {
+  border-radius: 0px !important; }
+
+.classicCommonCss .amexio-root-window-content-ce div {
+  border-radius: 0px !important; }
+
+.classicCommonCss color-palette .color-palette {
+  border-radius: 10px 0px 0px 10px; }
+
+.classicCommonCss color-slider .color-slider {
+  border-radius: 0px 10px 10px 0px; }
+
+.classicCommonCss .main-content {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container-ce-color {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container-ce-main {
+  border-radius: 10px; }
+
+.classicCommonCss amexio-action-ce div {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .datatable-header .datatable-col:nth-child(1) {
+  border-radius: 10px 0px 0px 0px !important; }
+
+.roundEdgeCommonCss .datatable-header .datatable-col:last-child {
+  border-radius: 0px 10px 0px 0px !important; }
+
+.roundEdgeCommonCss .datatable {
+  border-radius: 10px !important; }
+
+.classicCommonCss .datatable-header .datatable-col:nth-child(1) {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .datatable-header .datatable-col:last-child {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .datatable {
+  border-radius: 0px !important; }
+
+/** Round Edge card - Structure CSS **/
+/****************************************************************************
+    Component Name : Directive Router animation
+    Version : Amexio v5.19 onwards
+*****************************************************************************/
+/** Router animation card - Structure CSS **/
+.myanislideleft {
+  position: relative;
+  display: block;
+  animation-name: slideleft;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+
+@keyframes slideleft {
+  0% {
+    left: -1000px; }
+  100% {
+    left: 0; } }
+.myanislideright {
+  position: relative;
+  display: block;
+  animation-name: slideright;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+
+@keyframes slideright {
+  0% {
+    right: -1000px; }
+  100% {
+    right: 0; } }
+.myanifadingeffect {
+  position: relative;
+  display: block;
+  animation-name: fadeeffect;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  opacity: 0; }
+
+@keyframes fadeeffect {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+.myanislidetop {
+  position: relative;
+  display: block;
+  animation-name: slidetop;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+
+@keyframes slidetop {
+  0% {
+    top: -1000px; }
+  100% {
+    top: 0; } }
+.myanislidebottom {
+  position: relative;
+  display: block;
+  animation-name: slidebottom;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+
+@keyframes slidebottom {
+  0% {
+    bottom: -1000px; }
+  100% {
+    bottom: 0; } }
+.myanislidetopleft {
+  position: relative;
+  display: block;
+  animation-name: lefttop;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+
+@keyframes lefttop {
+  0% {
+    left: -1000px;
+    top: -1000px; }
+  100% {
+    left: 0;
+    top: 0; } }
+.myanislidebottomleft {
+  position: relative;
+  display: block;
+  animation-name: leftbottom;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+
+@keyframes leftbottom {
+  0% {
+    left: -1000px;
+    bottom: -1000px; }
+  100% {
+    left: 0;
+    bottom: 0; } }
+.myanislidetopright {
+  position: relative;
+  display: block;
+  animation-name: topright;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+
+@keyframes topright {
+  0% {
+    top: -1000px;
+    right: -1000px; }
+  100% {
+    top: 0;
+    right: 0; } }
+.myanislidebottomright {
+  position: relative;
+  display: block;
+  animation-name: bottomright;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-fill-mode: forwards; }
+
+@keyframes bottomright {
+  0%, 20%, 50%, 80% {
+    bottom: -1000px;
+    right: -1000px;
+    transform: translateY(0); }
+  40% {
+    transform: translateY(-30px); }
+  60% {
+    transform: translateY(-15px); }
+  100% {
+    bottom: 0;
+    right: 0;
+    transform: translateY(0); } }
 /** Initialze Animation variables ------------ */
 /****************************************************************************
                 Animation CSS for Checkbox 
