@@ -834,6 +834,16 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   renderData() {   // calculate page no for pagination
+    this.commonRender();
+    if (this.pagesize >= 1) {
+      this.getPageSize();
+    } else {
+      this.viewRows = this.data;
+    }
+    this.selectedRowNo = -1;
+  }
+
+  commonRender() {
     if (this.data) {
       this.maxPage = 0;
       this.pageNumbers = [];
@@ -848,12 +858,6 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
       }
       this.totalPages = this.pageNumbers.length;
     }
-    if (this.pagesize >= 1) {
-      this.getPageSize();
-    } else {
-      this.viewRows = this.data;
-    }
-    this.selectedRowNo = -1;
   }
 
   // Method Calls when page size is more than 1
@@ -1681,20 +1685,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   renderData2() {   // calculate page no for pagination
-    if (this.data) {
-      this.maxPage = 0;
-      this.pageNumbers = [];
-      if (this.data.length > (1 * this.pagesize)) {
-        this.maxPage = Math.floor((this.data.length / this.pagesize));
-        if ((this.data.length % this.pagesize) > 0) {
-          this.maxPage++;
-        }
-      }
-      for (let pageNo = 1; pageNo <= this.maxPage; pageNo++) {
-        this.pageNumbers.push(pageNo);
-      }
-      this.totalPages = this.pageNumbers.length;
-    }
+    this.commonRender();
     if (this.pagesize >= 1) {
       this.getPageSize();
     } else {
