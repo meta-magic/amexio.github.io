@@ -380,6 +380,9 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   filterResultData: any;
 
   filterCloneData1: any;
+
+  otherFilterData: any;
+
   /*global filter column attribute*/
 
   filterValue: any;
@@ -447,6 +450,8 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   fliterFlag = false;
 
   cloneResponseData: any;
+
+  tempFilterObj: any;
 
   @ViewChildren(DataGridFilterComponent) filterRef: QueryList<DataGridFilterComponent>;
 
@@ -629,13 +634,11 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
       this.commonMethod(this.cloneData, groups);
     }
     if (this.enabledatafilter) {
-      this.filterCloneData1 = JSON.parse(JSON.stringify(this.data));
+      this.filterCloneData = JSON.parse(JSON.stringify(this.data));
+      this.getFilteredData(this.tempFilterObj);
     }
     if (this.globalfilter) {
       this.filterCloneData = JSON.parse(JSON.stringify(this.data));
-    }
-    if (!this.groupby) {
-      this.renderData();
     }
     this.setPaginatorData();
     this.mask = false;
@@ -955,15 +958,16 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   getFilteredData(filteredObj: any) {
+    this.tempFilterObj = filteredObj;
     this.fliterFlag = true;
-    if (filteredObj.length === 1) {
+    if (filteredObj && filteredObj.length === 1) {
       this.filterOperation(filteredObj, this.filterCloneData);
-    } else if (filteredObj.length > 1) {
+    } else if (filteredObj && filteredObj.length > 1) {
       this.multipleColumnFilter(filteredObj);
     } else {
-      this.data = this.filterCloneData;
+      this.otherFilterData = this.filterCloneData;
     }
-    this.renderData();
+    this.renderData2();
   }
 
   filterOpertion(data: any, filteredObj: any) {
@@ -1633,7 +1637,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
       this.currentPage = 1;
       this.maxPage = 1;
     }
-    this.data = resultData;
+    this.otherFilterData = resultData;
     this.filterResultData = resultData;
     dataForFilter = resultData;
     return dataForFilter;
@@ -1674,5 +1678,28 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
       this.filterOperation(filteredObj, ANDData);
 
     }
+  }
+
+  renderData2() {   // calculate page no for pagination
+    if (this.data) {
+      this.maxPage = 0;
+      this.pageNumbers = [];
+      if (this.data.length > (1 * this.pagesize)) {
+        this.maxPage = Math.floor((this.data.length / this.pagesize));
+        if ((this.data.length % this.pagesize) > 0) {
+          this.maxPage++;
+        }
+      }
+      for (let pageNo = 1; pageNo <= this.maxPage; pageNo++) {
+        this.pageNumbers.push(pageNo);
+      }
+      this.totalPages = this.pageNumbers.length;
+    }
+    if (this.pagesize >= 1) {
+      this.getPageSize();
+    } else {
+      this.viewRows = this.otherFilterData;
+    }
+    this.selectedRowNo = -1;
   }
 }
