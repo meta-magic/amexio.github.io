@@ -116,6 +116,16 @@ description : Show place-holder inside dropdown component
  description : True to disable the field.
  */
   @Input() disabled: boolean;
+
+    /*
+ Properties
+ name : readonly
+ datatype : boolean
+ version : 5.21 onwards
+ default : false
+ description : True to readonly the field.
+ */
+@Input() readonly: boolean;
   /*
 Properties
 name : icon-feedback

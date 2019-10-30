@@ -29,6 +29,7 @@
         [maxlength]="maxlength" 
         [minlength]="minlength" 
         [attr.disabled]="disabled ? true: null"
+        [attr.readonly]="readonly ? true: null"
         [required]="!allowblank" />
 
     <ng-container *ngIf="iconfeedback">
