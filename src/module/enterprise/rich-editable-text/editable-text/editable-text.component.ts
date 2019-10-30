@@ -1,5 +1,5 @@
 
-import { AfterViewInit, Component, EventEmitter, Inject, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 @Component({
   selector: 'editable-text',
   templateUrl: './editable-text.component.html',
@@ -77,13 +77,12 @@ export class EditableTextComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-
-    if (this.toolbarPosition === 'top') {
-      this.displayDiv = false;
-    } else if (this.toolbarPosition === 'bottom') {
-      this.displayDiv = true;
-    }
     setTimeout(() => {
+      if (this.toolbarPosition === 'top') {
+        this.displayDiv = false;
+      } else if (this.toolbarPosition === 'bottom') {
+        this.displayDiv = true;
+      }
       if (this.areaHeight) {
         this.textAreaHeight = 80;
       }

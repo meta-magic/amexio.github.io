@@ -309,3 +309,22 @@
         flex-grow: 0.2;
     }
 }
+
+/************************************************************************/
+
+
+/*        amexio-rich-textarea Media-Q COMPONENT         */
+
+
+/************************************************************************/
+
+@media only screen and (max-width:568px) {
+    .rich-first-div {
+        width: auto !important;
+        height: auto !important;
+  }
+  .rich-first-div-reverse {
+    width: auto !important;
+    height: auto !important;
+ }
+}
