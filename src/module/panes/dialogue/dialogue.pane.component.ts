@@ -220,7 +220,7 @@ export class AmexiodialoguePaneComponent extends LifeCycleBaseComponent implemen
    default : none
    description : Fire when click on yes or no button
    */
-  @Output() onCancel: EventEmitter<any> = new EventEmitter<any>();
+  @Output('onFailure') onCancel: EventEmitter<any> = new EventEmitter<any>();
 
   /*
    Events
