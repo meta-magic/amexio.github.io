@@ -314,7 +314,6 @@ export class AmexiodialoguePaneComponent extends LifeCycleBaseComponent implemen
     }
   }
   getStatus(v: any) {
-    this.onCloseClick();
     this.actionStatus.emit(v);
     if (v === 'ok') {
       this.onSuccess.emit(v);
