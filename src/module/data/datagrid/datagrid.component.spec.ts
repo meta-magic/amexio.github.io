@@ -1155,12 +1155,12 @@ describe('amexio-datagrid', () => {
     it('addrows method call', () => {
         let index = 1;
         let row =
-            {
-                "countryName": "Myanmar",
-                "countryCode1": "MM",
-                'level': '1',
-                'groupData': [{ 'level': 1 }]
-            }
+        {
+            "countryName": "Myanmar",
+            "countryCode1": "MM",
+            'level': '1',
+            'groupData': [{ 'level': 1 }]
+        }
         comp.addRows(row, index);
         row.level = 'itemselector' + window.crypto.getRandomValues(new Uint32Array(1))[0];
     });
