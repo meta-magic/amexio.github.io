@@ -103,11 +103,11 @@ describe('amexio-availability', () => {
     comp.eDate.setMonth(5);
     comp.eDate.setFullYear(2025);
     comp.dateSpanlist = [];
-   comp.ngOnInit();
-   expect(comp.generateData()).toHaveBeenCalled;
-   spyOn(comp, 'generateData').and.callThrough();
-// spy on
-   });
+    comp.ngOnInit();
+    expect(comp.generateData()).toHaveBeenCalled;
+    spyOn(comp, 'generateData').and.callThrough();
+    // spy on
+  });
 
   it('clearColorFlag() for positive outcome', () => {
     comp.dateArr1 = [{
