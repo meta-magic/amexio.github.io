@@ -16,6 +16,13 @@
   </ng-container>
   <ng-content></ng-content>
   <div class="time" *ngIf="enabletime" [ngClass]="{timeclass:(position =='top-right'||position =='bottom-right'||position=='right'),timeleft:(position=='bottom-left'),timeright:(position=='bottom-right')}">
-    {{todaydate | date: 'MMM d, y, h:mm:ss a'}}
+    <ng-container *ngIf="dateTime">
+      {{dateTime}}
+    </ng-container>
+    
+    <ng-container *ngIf="!dateTime">
+      {{todaydate | date: 'MMM d, y, h:mm:ss a'}}
+    </ng-container>
+   
   </div>
 </div>

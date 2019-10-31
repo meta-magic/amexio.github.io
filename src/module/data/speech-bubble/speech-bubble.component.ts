@@ -11,6 +11,7 @@ export class SpeechBubbleComponent extends EventBaseComponent<any> implements On
   bubblestyle: {};
   today = new Date();
   jstoday = '';
+  @Input('date-time') dateTime: any;
   globalspeechListenFunc: () => void;
   @Input('width') width = '50%';
 
