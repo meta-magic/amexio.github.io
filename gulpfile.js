@@ -508,6 +508,15 @@ gulp.task('test:demo', () => {
     return execDemoCmd('test --preserve-symlinks', { cwd: `${config.demoDir}` });
 });
 
+gulp.task('tests', function(done) {
+    Server.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, function() {
+        done();
+    });
+});
+
 gulp.task('serve:demo', () => {
     return execDemoCmd('serve --preserve-symlinks --aot --proxy-config proxy.conf.json', { cwd: `${config.demoDir}` });
 });
