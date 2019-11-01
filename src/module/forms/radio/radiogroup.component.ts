@@ -149,6 +149,15 @@ export class AmexioRadioGroupComponent extends ValueAccessorBaseComponent<string
    */
   @Input() disabled: boolean;
   /*
+   Properties
+   name : has-label
+   datatype : boolean
+   version : 5.21 onwards
+   default : false
+   description : Flag to set label
+   */
+  @Input('has-label') hasLabel = true;
+  /*
    Events
    name : onSelection
    datatype : any

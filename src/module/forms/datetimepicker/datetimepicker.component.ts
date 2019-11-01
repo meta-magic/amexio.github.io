@@ -191,6 +191,15 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
    name : focus
    description : On field focus event
    */
+  /*
+   Properties
+   name : has-label
+   datatype : boolean
+   version : 5.21 onwards
+   default : false
+   description : Flag to set label
+   */
+  @Input('has-label') hasLabel = true;
   // @Output() focus: EventEmitter<any> = new EventEmitter<any>();
   inputtabindex = 0;
   daystabindex = -1;

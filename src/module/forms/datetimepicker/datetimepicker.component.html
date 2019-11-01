@@ -2,7 +2,8 @@
     <div tabindex="{{inputtabindex}}" (keyup.enter)="openPicker(rootDiv)" aria-label="datetimepicker push button" class="inputgroup"
         *ngIf="!inlineDatepicker" #rootDiv>
 
-        <label>
+
+        <label  *ngIf="hasLabel">
             {{fieldlabel}}
         </label>
 
