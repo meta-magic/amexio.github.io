@@ -379,7 +379,6 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
 
   filterResultData: any;
 
-  filterCloneData1: any;
   /*global filter column attribute*/
 
   filterValue: any;
@@ -447,6 +446,10 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   fliterFlag = false;
 
   cloneResponseData: any;
+
+  filteredObject: any = [];
+
+  resultData: any = [];
 
   @ViewChildren(DataGridFilterComponent) filterRef: QueryList<DataGridFilterComponent>;
 
@@ -629,7 +632,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
       this.commonMethod(this.cloneData, groups);
     }
     if (this.enabledatafilter) {
-      this.filterCloneData1 = JSON.parse(JSON.stringify(this.data));
+      this.filterCloneData = JSON.parse(JSON.stringify(this.data));
     }
     if (this.globalfilter) {
       this.filterCloneData = JSON.parse(JSON.stringify(this.data));
@@ -639,6 +642,9 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     }
     this.setPaginatorData();
     this.mask = false;
+    if (this.filteredObject.length > 0) {
+      this.getFilteredData(this.filteredObject);
+    }
   }
 
   setData(httpResponse: any) {
@@ -955,30 +961,55 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   getFilteredData(filteredObj: any) {
+    this.resultData = [];
+    this.filteredObject = filteredObj;
     this.fliterFlag = true;
-    if (filteredObj.length === 1) {
-      this.filterOperation(filteredObj, this.filterCloneData);
-    } else if (filteredObj.length > 1) {
-      this.multipleColumnFilter(filteredObj);
+    if (filteredObj.length > 0) {
+      filteredObj.sort((a: any, b: any) => {
+        return a.index - b.index;
+      });
+      filteredObj.forEach((element: any) => {
+        if (element.option === 'OR') {
+          const orData = JSON.parse(JSON.stringify(this.filterCloneData));
+          this.callFilterOperation(orData, element);
+        } else {
+          const andData = JSON.parse(JSON.stringify(this.resultData));
+          this.resultData = [];
+          this.callFilterOperation(andData, element);
+
+        }
+      });
+      if (this.resultData.length < (1 * this.pagesize)) {
+        this.currentPage = 1;
+        this.maxPage = 1;
+      }
+      this.data = this.resultData;
     } else {
       this.data = this.filterCloneData;
     }
+
     this.renderData();
   }
 
-  filterOpertion(data: any, filteredObj: any) {
-    const statusCollection: any = [];
-    let condition = false;
-    filteredObj.forEach((filterOpt: any) => {
-      if (filterOpt.type === 'string') {
-        if (filterOpt.value && data[filterOpt.key] && typeof data[filterOpt.key] === 'string') {
-          statusCollection.push(this.checkStringFilter(filterOpt.filter, data[filterOpt.key].toLowerCase(), filterOpt.value.toLowerCase()));
-        }
-
-      } else if (filterOpt.type === 'number') {
-        statusCollection.push(this.checkNumberFilter(filterOpt.filter, data[filterOpt.key], filterOpt.value));
+  callFilterOperation(dataforfilter: any, element: any) {
+    dataforfilter.forEach((option: any) => {
+      if (this.filterOpertion(option, element)) {
+        this.resultData.push(option);
       }
     });
+  }
+
+  filterOpertion(data: any, filterOpt: any) {
+    const statusCollection: any = [];
+    let condition = false;
+    if (filterOpt.type === 'string') {
+      if (filterOpt.value && data[filterOpt.key] && typeof data[filterOpt.key] === 'string') {
+        statusCollection.push(this.checkStringFilter(filterOpt.filter, data[filterOpt.key].toLowerCase(), filterOpt.value.toLowerCase()));
+      }
+
+    } else if (filterOpt.type === 'number') {
+      statusCollection.push(this.checkNumberFilter(filterOpt.filter, data[filterOpt.key], filterOpt.value));
+    }
 
     if (statusCollection.filter((status: any) => status === true).length > 0) {
       condition = true;
@@ -1638,41 +1669,5 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     dataForFilter = resultData;
     return dataForFilter;
 
-  }
-
-  multipleColumnFilter(filteredObj: any) {
-    const checkData = JSON.parse(JSON.stringify(this.filterCloneData));
-    let ANDData = JSON.parse(JSON.stringify(checkData));
-    let ORData = JSON.parse(JSON.stringify(checkData));
-    filteredObj.sort((a: any, b: any) => {
-      return a.index - b.index;
-    });
-    for (let i = 0; i < filteredObj.length; i++) {
-      if (filteredObj[0].index === 0 && filteredObj[1].option === 'OR') {
-        ORData = this.filterOperation(filteredObj, this.filterCloneData);
-      } else if (filteredObj[0].index === 0 && filteredObj[1].option === 'AND') {
-        const filterObj1 = [];
-        filterObj1.push(filteredObj[0]);
-        ANDData = this.filterOperation(filterObj1, this.filterResultData);
-      }
-      if (filteredObj[i].index > 0 && filteredObj[i].option === 'OR') {
-        this.assignAndOrData(filteredObj, i, ORData, ANDData);
-      } else if (filteredObj[i].index > 0 && filteredObj[i].option === 'AND') {
-        const filterObj1 = [];
-        filterObj1.push(filteredObj[i]);
-        this.filterOperation(filterObj1, ANDData);
-      }
-    }
-  }
-
-  assignAndOrData(filteredObj: any, i: any, ORData: any, ANDData: any) {
-    if (filteredObj[i - 1].option === 'OR') {
-      this.filterOperation(filteredObj, ORData);
-
-    }
-    if (filteredObj[i - 1].option === 'AND') {
-      this.filterOperation(filteredObj, ANDData);
-
-    }
   }
 }
