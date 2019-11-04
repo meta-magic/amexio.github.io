@@ -29,12 +29,16 @@ import { AmexioLayoutModule } from '../layout/amexio.layout.module';
 import { AmexioPaneModule } from '../panes/amexio.pane.module';
 
 import { CommonDataService } from '../services/data/common.data.service';
-import { DisplayFieldService } from '../services/data/display.field.service';
 
-import { IconLoaderService } from '../services/icon/icon.service';
 import { GoogleMapScriptService } from '../services/script/script.data.service';
 
 import { AmexioRadioGroupComponent } from '../forms/radio/radiogroup.component';
+
+import { BrowserPanelComponent } from './browser-panel/browser-panel.component';
+
+import { AmexioCreativeModule } from '../creative/amexio.creative.module';
+
+import { AmexioFormsModule } from '../forms/amexio.forms.module';
 
 export * from '../services/data/common.data.service';
 export * from '../services/script/script.data.service';
@@ -44,6 +48,7 @@ export * from './paginator/paginator.component';
 export * from '../services/icon/icon.service';
 export * from './treegrid/treedatatable.component';
 export * from './googlemap/googlemap.component';
+export * from './browser-panel/browser-panel.component';
 
 const DATA_COMPONENTS = [
   AmexioTreeViewComponent,
@@ -65,6 +70,8 @@ const DATA_COMPONENTS = [
   AmexioItemSelectorComponent,
   AmexioVirtualScrollerComponent,
   AmexioRadioGroupComponent,
+  BrowserPanelComponent
+  ,
 ];
 
 @NgModule({
@@ -73,6 +80,8 @@ const DATA_COMPONENTS = [
     FormsModule,
     AmexioPaneModule,
     AmexioLayoutModule,
+    AmexioCreativeModule,
+    AmexioFormsModule,
     HttpClientModule,
     AmexioBaseContextMenuModule,
     AmexioCommonModule.forRoot(),

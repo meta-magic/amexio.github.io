@@ -1,0 +1,29 @@
+
+.browser-iframe{
+  border: 1px solid $browserPanelBorderColor;
+}
+
+.browserpanel-header-url{
+  background-color: $browserPanelHoverBGColor;
+}
+
+
+.close {
+  background: $browerCloseBGColor;
+  border: 1px solid $browerCloseBorder;
+}
+
+
+
+.minimize {
+  background: $browerMinimizeBGColor;
+  border: 1px solid $browerMinimizeBorder;
+  
+}
+
+.zoom {
+  background: $browerZoomBGColor;
+  border: 1px solid $browerZoomBorder;
+}
+
+
