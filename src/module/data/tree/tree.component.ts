@@ -571,7 +571,6 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
             dropData.event.target.style.border = '';
             dropData.event.preventDefault();
             if (this.acrosstree === false) {
-                this.setDropAcrosstree(dropData);
                 if (this.isNode === true) {
                     this.setDropNodeTree(dropData);
                 }
@@ -583,6 +582,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                 }
             }
         }
+        dropData.event.stopPropagation();
     }
     // drop method split into 2 other method setDropAcrosstree, setDropNodeTree
     // first method of drop
@@ -598,13 +598,12 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         if (dropData.data.hasOwnProperty(this.childarraykey)) {
             this.removeNode(dropData);
             dropData.data[this.childarraykey].push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
-            this.onDrop.emit(dropData);
         }
     }
 
     checkNode(dragData: any, dropData: any) {
         this.dragData.data[this.childarraykey].forEach((child: any) => {
-            if (JSON.stringify(child) === JSON.stringify(dropData.data)) {
+            if (child.elementId === dropData.data.elementId) {
                 this.isNode = false;
             } else if (child.hasOwnProperty(this.childarraykey)) {
                 this.checkNode(child, dropData);

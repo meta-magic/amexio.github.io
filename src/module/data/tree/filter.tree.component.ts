@@ -17,52 +17,52 @@ import {
 import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-tree-filter-view', template: `
-    <div>
-      <div>
-        <div class="inputgroup">
-          <input type="text" class="input-control text-input-width" aria-label="Text input with dropdown button" [(ngModel)]="filterText"
-                 placeholder="Search" (keyup)="filterData()">
-          <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
-          <span class="datatable-filter-icon">
-          <amexio-c-icon key="tree_filter" (click)="showToolTip = !showToolTip"></amexio-c-icon>
-          </span>
-          <!--  <div class="input-group-btn">-->
-          <!-- <button type="button"
-          class="btn" data-toggle="dropdown"
-          (click)="showToolTip = !showToolTip"
-          aria-haspopup="true" aria-expanded="false">
-           </button>-->
-          <span *ngIf="showToolTip" class="dropdown">
-              <ul class="dropdown-list">
-                <li class="list-items" *ngFor="let opt of filterOptionData" (click)="filterOption(opt)">{{opt.key}}&nbsp;
-                  <!--<i [class]="opt.checkedStatus" aria-hidden="true"></i>-->
-                  <amexio-c-icon key="opt.checkedStatus"></amexio-c-icon>
-                </li>
-              </ul>
-            </span>
-          <!-- </div>-->
-        </div>
-        <ng-container *ngIf="isDataFound">
-          <amexio-treeview
-            [filter-tree-flag]="true"
-            [data]="treeData"
-            [parentRef] ="treeData"
-            [word-wrap]="wordwrap"
-            [child-array-key]="childarraykey"
-            [display-key]="displaykey"
-            [enable-checkbox]="enablecheckbox"
-            (onTreeNodeChecked)="onCheckSelect($event)"
-            (rightClick)="OnRightClickMenu($event)"
-            (nodeRightClick)="loadContextMenu($event)"
-            (nodeClick)="onRowSelect($event)" [templates]="templates">
-          </amexio-treeview>
-        </ng-container>
-        <ng-container *ngIf="!isDataFound">
-          <p>No Data Found.</p>
-        </ng-container>
-
-      </div>
+  <div>
+  <div>
+    <div class="inputgroup">
+      <input type="text" class="input-control text-input-width" aria-label="Text input with dropdown button" [(ngModel)]="filterText"
+             placeholder="Search" (keyup)="filterData()">
+      <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
+      <span class="datatable-filter-icon">
+      <amexio-c-icon key="tree_filter" (click)="showToolTip = !showToolTip"></amexio-c-icon>
+      </span>
+      <!--  <div class="input-group-btn">-->
+      <!-- <button type="button"
+      class="btn" data-toggle="dropdown"
+      (click)="showToolTip = !showToolTip"
+      aria-haspopup="true" aria-expanded="false">
+       </button>-->
+      <span *ngIf="showToolTip" class="dropdown">
+          <ul class="dropdown-list">
+            <li class="list-items" *ngFor="let opt of filterOptionData" (click)="filterOption(opt)">{{opt.key}}&nbsp;
+              <!--<i [class]="opt.checkedStatus" aria-hidden="true"></i>-->
+              <amexio-c-icon key="opt.checkedStatus"></amexio-c-icon>
+            </li>
+          </ul>
+        </span>
+      <!-- </div>-->
     </div>
+    <ng-container *ngIf="isDataFound">
+      <amexio-treeview
+        [filter-tree-flag]="true"
+        [data]="treeData"
+        [parentRef] ="treeData"
+        [word-wrap]="wordwrap"
+        [child-array-key]="childarraykey"
+        [display-key]="displaykey"
+        [enable-checkbox]="enablecheckbox"
+        (onTreeNodeChecked)="onCheckSelect($event)"
+        (rightClick)="OnRightClickMenu($event)"
+        (nodeRightClick)="loadContextMenu($event)"
+        (nodeClick)="onRowSelect($event)" [templates]="templates">
+      </amexio-treeview>
+    </ng-container>
+    <ng-container *ngIf="!isDataFound">
+      <p>No Data Found.</p>
+    </ng-container>
+
+  </div>
+</div>
 
 
   `,
