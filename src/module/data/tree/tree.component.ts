@@ -598,6 +598,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         if (dropData.data.hasOwnProperty(this.childarraykey)) {
             this.removeNode(dropData);
             dropData.data[this.childarraykey].push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
+            this.onDrop.emit(dropData);
         }
     }
 
