@@ -17,7 +17,7 @@
                             </div>
                         </ng-container>
                         <ng-container *ngIf="!showBrowserWithWindow">
-                            <div class="close">
+                            <div style="cursor: not-allowed" class="close">
                                 <a class="closebutton"><span>x</span></a>
                             </div>
                         </ng-container>
@@ -29,7 +29,7 @@
                         </ng-container>
 
                         <ng-container *ngIf="!showBrowserWithWindow">
-                            <div class="minimize">
+                            <div style="cursor: not-allowed" class="minimize">
                                 <a class="minimizebutton"><span>–</span></a>
                             </div>
                         </ng-container>
@@ -49,7 +49,7 @@
                     </span>
                     <!-- Reload icon display -->
                     <ng-container *ngIf="reloadBtn || urlFieldEditable">
-                        <em style="float: right;margin: 8px 8px; cursor: pointer;" class="fa fa-repeat"
+                        <em style="float: right;margin: 8px 10px; cursor: pointer;" class="fa fa-repeat"
                             aria-hidden="true" (click)="onReloadPage()"></em>
                     </ng-container>
                     <!-- Lock icon display -->
@@ -59,12 +59,12 @@
                     <!-- URL check if http or https -->
 
                     <ng-container *ngIf="urlFieldEditable">
-                        <span #newURL contenteditable="true" style="margin: 0px 5px;">
+                        <span #newURL contenteditable="true" class="url-with-dots" style="margin: 0px 5px;">
                             {{url}}
                         </span>
                     </ng-container>
                     <ng-container *ngIf="!urlFieldEditable">
-                        <span style="margin: 0px 5px;"> {{url}} </span>
+                        <span style="margin: 0px 5px;" class="url-with-dots"> {{url}} </span>
                     </ng-container>
 
                 </div>
