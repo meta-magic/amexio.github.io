@@ -18,6 +18,7 @@ export class BrowserPanelComponent implements OnInit {
 
     iframeurl: SafeResourceUrl;
 
+    // Html reference with view child.
     @ViewChild('fullscreen') fullscreen: any;
     @ViewChild('loadSite') loadSite: any;
     @ViewChild('newURL') newURL: any;
