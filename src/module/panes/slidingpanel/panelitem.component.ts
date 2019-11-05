@@ -43,6 +43,12 @@ export class PanelItemComponent implements OnInit, AfterContentInit, AfterViewIn
    */
     @Input() title: string;
 
+    // @Input() image: string;
+    @Input('image-height') imgheight: any;
+    @Input('image-width') imgwidth: any;
+    @Input('image-class') imgcclass: any;
+    @Input('image-path') imgpath: any;
+
     @ViewChild('tref', { read: ElementRef }) tref: ElementRef;
 
     @Output() childPanelClicked: EventEmitter<any> = new EventEmitter<any>();
@@ -57,7 +63,7 @@ export class PanelItemComponent implements OnInit, AfterContentInit, AfterViewIn
     }
 
     ngOnInit() {
-     }
+    }
 
     ngAfterViewInit() {
 
@@ -70,8 +76,20 @@ export class PanelItemComponent implements OnInit, AfterContentInit, AfterViewIn
         if (this.hasContent) {
             this.isSwipeTriggered = true;
             this.clicked = true;
-            this.childPanelClicked.emit(this.title);
+            const obj = {};
+            if (this.icon) {
+                obj['icon'] = this.icon;
+            }
+            if (this.imgpath) {
+                obj['image'] = this.imgpath;
+                obj['imgprop'] = {
+                    imagepath: this.imgpath, imageht: this.imgheight,
+                    imagewt: this.imgwidth, imageclass: this.imgcclass,
+                };
+            }
+            obj['title'] = this.title;
+            this.childPanelClicked.emit(obj);
+
         }
     }
-
 }

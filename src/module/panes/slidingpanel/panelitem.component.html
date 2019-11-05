@@ -1,32 +1,39 @@
 <div [@slide]="!showrow ? 'right' : ''">
 
-    <ng-container *ngIf="showrow">
-      <div style="cursor: pointer" (click)=" onPanelClick($event)">
-        <div class="panelitemrow" >
-          <span style="padding-right: 5px;" *ngIf="icon">
-            <amexio-c-icon [customclass]="icon" [label]="title">
-            </amexio-c-icon>
+  <ng-container *ngIf="showrow">
+    <div style="cursor: pointer" (click)=" onPanelClick($event)">
+      <div class="panelitemrow" >
+        <span style="padding-right: 5px;" *ngIf="icon">
+          <amexio-c-icon style="vertical-align: sub" [customclass]="icon" [label]="title">
+          </amexio-c-icon>
+        </span>
+        <!-- {{imgpath}} -->
+        <span style="padding-right: 5px; vertical-align: sub" *ngIf="imgpath">
+            <amexio-image style="vertical-align: sub" [c-class]="imgcclass" 
+            [height]="imgheight" [width]="imgwidth" 
+             [path]="imgpath"></amexio-image>
+
           </span>
-          <span *ngIf="!icon">
-            {{title}}
-          </span>
-          <span *ngIf="hasContent" style="float:right;padding-right:2%">
-            <amexio-c-icon [customclass]="'fa fa-arrow-right'">
-            </amexio-c-icon>
-          </span>
-        </div>
-  
+        <span *ngIf="!icon" style="vertical-align: sub">
+          {{title}}
+        </span>
+        <span *ngIf="hasContent" style="float:right;padding-right:2%">
+          <amexio-c-icon style="vertical-align: sub" [customclass]="'fa fa-arrow-right'">
+          </amexio-c-icon>
+        </span>
       </div>
-    </ng-container>
-  
-  </div>
-     <div  [@slide]="!showngcontent ? 'left' : ''" #tref style="width: 100%;
-     padding: 1%;" class="panelborder"
-     [ngStyle]="{'display':showngcontent ? 'block': 'none'}">
-  
-      <ng-content>
-  
-      </ng-content>
+
     </div>
-  
-   
+  </ng-container>
+
+</div>
+   <div  [@slide]="!showngcontent ? 'left' : ''" #tref style="width: 100%;vertical-align: sub;
+   padding: 1%;" class="panelborder"
+   [ngStyle]="{'display':showngcontent ? 'block': 'none'}">
+
+    <ng-content>
+
+    </ng-content>
+  </div>
+
+ 

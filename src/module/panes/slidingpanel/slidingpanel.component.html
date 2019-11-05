@@ -4,14 +4,24 @@
     </div>
     <div *ngIf="showbackarrow" class="panelitemrow">
         <span style="cursor:pointer" (click)="restorePanelState()">
-            <amexio-c-icon [customclass]="'fa fa-arrow-left'">
+            <amexio-c-icon style="vertical-align: sub" [customclass]="'fa fa-arrow-left'">
             </amexio-c-icon>
         </span>
-        <span style="font-weight: bold;" >
+        <span style="cursor:pointer; padding-left: 9px;" (click)="restorePanelState()" *ngIf="panelItemIcon">
+            <amexio-c-icon style="vertical-align: sub" [customclass]="panelItemIcon">
+            </amexio-c-icon>
+        </span>
+        <span style="cursor:pointer; padding-left: 9px; vertical-align: sub" (click)="restorePanelState()" *ngIf="panelItemImage">
+            <amexio-image style="vertical-align: sub" [c-class]="panelItemImgProp.imageclass" [height]="panelItemImgProp.imageht" [width]="panelItemImgProp.imagewt"
+                [path]="panelItemImgProp.imagepath"></amexio-image>
+
+        </span>
+
+        <span style="font-weight: bold; vertical-align: sub">
             {{panelItemName}}
         </span>
     </div>
-    <ng-content select="amexio-panel-item ">
+    <ng-content select="amexio-panel-item">
 
     </ng-content>
 </div>

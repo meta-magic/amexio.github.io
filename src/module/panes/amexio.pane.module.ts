@@ -52,6 +52,8 @@ import { StackableItemComponent } from './stackablePanel/StackablePanel-Item/sta
 import { StackablePanelComponent } from './stackablePanel/stackablePanel/stackablePanel.component';
 import { StepBlockComponent } from './steps/step-block';
 
+import { AmexioMediaModule } from '../media/amexio.media.module';
+
 export * from './action/pane.action.footer';
 export * from './body/pane.action.body';
 export * from './carousel/carousel.component';
@@ -128,6 +130,7 @@ const PANE_COMPONENTS = [
     HttpClientModule,
     AmexioBaseContextMenuModule,
     AmexioCommonModule,
+    AmexioMediaModule,
   ],
   entryComponents: [AmexioTabPillComponent, MinimizeWindowComponent],
   exports: PANE_COMPONENTS,

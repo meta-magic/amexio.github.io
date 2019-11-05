@@ -15,6 +15,9 @@ export class SlidingPanelComponent implements OnInit, AfterContentInit {
     ChildPanelSlidersCollection: PanelItemComponent[];
     title: string;
     panelItemName: string;
+    panelItemIcon: string;
+    panelItemImage: string;
+    panelItemImgProp: any;
     showbackarrow = false;
 
     ngOnInit() {
@@ -23,7 +26,7 @@ export class SlidingPanelComponent implements OnInit, AfterContentInit {
     ngAfterContentInit() {
         this.ChildPanelSlidersCollection = this.queryTabs.toArray();
         this.ChildPanelSlidersCollection.forEach((node) =>
-            node.childPanelClicked.subscribe((title: any) => this.onPaneClick(title)));
+            node.childPanelClicked.subscribe((titleobj: any) => this.onPaneClick(titleobj)));
     }
 
     restorePanelState() {
@@ -32,14 +35,29 @@ export class SlidingPanelComponent implements OnInit, AfterContentInit {
             node.showngcontent = false;
         });
         this.showbackarrow = false;
+        this.panelItemName = undefined;
+        this.panelItemIcon = undefined;
+        this.panelItemImage = undefined;
+        this.panelItemImgProp = undefined;
+        this.panelItemImgProp = undefined;
     }
 
-    onPaneClick(title: any) {
-        this.panelItemName = title;
-        this.onPanelItemClick.emit(title);
+    onPaneClick(titleobj: any) {
+        this.panelItemName = titleobj.title;
+        if (titleobj.icon) {
+            this.panelItemIcon = titleobj.icon;
+        }
+        if (titleobj.image) {
+            this.panelItemImage = titleobj.image;
+        }
+        if (titleobj.imgprop) {
+            this.panelItemImgProp = titleobj.imgprop;
+        }
+        this.panelItemImgProp = titleobj.imgprop;
+        this.onPanelItemClick.emit(titleobj.title);
         this.showbackarrow = true;
         this.ChildPanelSlidersCollection.forEach((node: any) => {
-            if (node.title === title) {
+            if (node.title === titleobj.title) {
                 node.showrow = false;
                 node.showngcontent = true;
             } else {
