@@ -3,78 +3,77 @@
     </amexio-button>
 </ng-container>
 
-<ng-container *ngIf="showBrowser">
-    <div #fullscreen [ngClass]="[showBrowserWithWindow ? 'browserpanel-url-window' : 'browserpanel-url']">
-        <amexio-card-ce class="card-ce-window">
-            <div class="creative-header-div card-header-border browserpanel-header">
-                <div class="browserpanel-header-url">
-                    <!-- Apple buttons -->
-                    <span style="line-height: 30px">
+<div *ngIf="showBrowser" #fullscreen
+    [ngClass]="[showBrowserWithWindow ? 'browserpanel-url-window' : 'browserpanel-url']">
+    <amexio-card-ce class="card-ce-window">
+        <div class="creative-header-div card-header-border browserpanel-header">
+            <div class="browserpanel-header-url">
+                <!-- Apple buttons -->
+                <span style="line-height: 30px">
 
-                        <ng-container *ngIf="showBrowserWithWindow">
-                            <div class="close">
-                                <a class="closebutton"><span (click)="onCloseClick()">x</span></a>
-                            </div>
-                        </ng-container>
-                        <ng-container *ngIf="!showBrowserWithWindow">
-                            <div style="cursor: not-allowed" class="close">
-                                <a class="closebutton"><span>x</span></a>
-                            </div>
-                        </ng-container>
+                    <ng-container *ngIf="showBrowserWithWindow">
+                        <div class="close">
+                            <a class="closebutton"><span (click)="onCloseClick()">x</span></a>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="!showBrowserWithWindow">
+                        <div style="cursor: not-allowed" class="close">
+                            <a class="closebutton"><span>x</span></a>
+                        </div>
+                    </ng-container>
 
-                        <ng-container *ngIf="showBrowserWithWindow">
-                            <div class="minimize" *ngIf="showBrowserWithWindow">
-                                <a class="minimizebutton"><span (click)="onMinimizeClick()">–</span></a>
-                            </div>
-                        </ng-container>
+                    <ng-container *ngIf="showBrowserWithWindow">
+                        <div class="minimize" *ngIf="showBrowserWithWindow">
+                            <a class="minimizebutton"><span (click)="onMinimizeClick()">–</span></a>
+                        </div>
+                    </ng-container>
 
-                        <ng-container *ngIf="!showBrowserWithWindow">
-                            <div style="cursor: not-allowed" class="minimize">
-                                <a class="minimizebutton"><span>–</span></a>
-                            </div>
-                        </ng-container>
+                    <ng-container *ngIf="!showBrowserWithWindow">
+                        <div style="cursor: not-allowed" class="minimize">
+                            <a class="minimizebutton"><span>–</span></a>
+                        </div>
+                    </ng-container>
 
-                        <ng-container *ngIf="showBrowserWithWindow">
-                            <div class="zoom">
-                                <a class="zoombutton"><span (click)="maxScreenChange()">+</span></a>
-                            </div>
-                        </ng-container>
+                    <ng-container *ngIf="showBrowserWithWindow">
+                        <div class="zoom">
+                            <a class="zoombutton"><span (click)="maxScreenChange()">+</span></a>
+                        </div>
+                    </ng-container>
 
-                        <ng-container *ngIf="!showBrowserWithWindow">
-                            <div class="zoom">
-                                <a class="zoombutton"><span (click)="maxScreenChange()">+</span></a>
-                            </div>
-                        </ng-container>
+                    <ng-container *ngIf="!showBrowserWithWindow">
+                        <div class="zoom">
+                            <a class="zoombutton"><span (click)="maxScreenChange()">+</span></a>
+                        </div>
+                    </ng-container>
+                </span>
+                <!-- Reload icon display -->
+                <ng-container *ngIf="reloadBtn || urlFieldEditable">
+                    <em style="float: right;margin: 8px 10px; cursor: pointer;" class="fa fa-repeat" aria-hidden="true"
+                        (click)="onReloadPage()"></em>
+                </ng-container>
+                <!-- Lock icon display -->
+                <ng-container *ngIf="lockIconShow">
+                    <em class="fa fa-lock" aria-hidden="true"></em>
+                </ng-container>
+                <!-- URL check if http or https -->
+
+                <ng-container *ngIf="urlFieldEditable">
+                    <span #newURL contenteditable="true" class="url-with-dots" style="margin: 0px 5px;">
+                        {{url}}
                     </span>
-                    <!-- Reload icon display -->
-                    <ng-container *ngIf="reloadBtn || urlFieldEditable">
-                        <em style="float: right;margin: 8px 10px; cursor: pointer;" class="fa fa-repeat"
-                            aria-hidden="true" (click)="onReloadPage()"></em>
-                    </ng-container>
-                    <!-- Lock icon display -->
-                    <ng-container *ngIf="lockIconShow">
-                        <em class="fa fa-lock" aria-hidden="true"></em>
-                    </ng-container>
-                    <!-- URL check if http or https -->
+                </ng-container>
+                <ng-container *ngIf="!urlFieldEditable">
+                    <span #newURL style="margin: 0px 5px;" class="url-with-dots"> {{url}} </span>
+                </ng-container>
 
-                    <ng-container *ngIf="urlFieldEditable">
-                        <span #newURL contenteditable="true" class="url-with-dots" style="margin: 0px 5px;">
-                            {{url}}
-                        </span>
-                    </ng-container>
-                    <ng-container *ngIf="!urlFieldEditable">
-                        <span style="margin: 0px 5px;" class="url-with-dots"> {{url}} </span>
-                    </ng-container>
-
-                </div>
             </div>
+        </div>
 
-            <!-- Site How here -->
-            <amexio-body-ce>
-                <iframe title="Browser Window" #loadSite class="browserpanel-iframe" aria-hidden="true" [src]="iframeurl">
+        <!-- Site How here -->
+        <amexio-body-ce>
+            <iframe title="Browser Window" #loadSite class="browserpanel-iframe" aria-hidden="true" [src]="iframeurl">
 
-                </iframe>
-            </amexio-body-ce>
-        </amexio-card-ce>
-    </div>
-</ng-container>
+            </iframe>
+        </amexio-body-ce>
+    </amexio-card-ce>
+</div>

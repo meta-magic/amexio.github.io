@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -16,6 +16,9 @@ export class BrowserPanelComponent implements OnInit {
 
     @Input('reload-button') reloadBtn = false;
 
+    @Input('show') showBrowser = false;
+
+    @Output() showChange: any = new EventEmitter<any>();
     iframeurl: SafeResourceUrl;
 
     // Html reference with view child.
@@ -23,7 +26,6 @@ export class BrowserPanelComponent implements OnInit {
     @ViewChild('loadSite') loadSite: any;
     @ViewChild('newURL') newURL: any;
     hideBtn = false;
-    showBrowser = true;
     lockIconShow = false;
     globalListenFunc: () => void;
     constructor(private sanitizer: DomSanitizer, private renderer: Renderer2) {
@@ -35,7 +37,10 @@ export class BrowserPanelComponent implements OnInit {
         }
 
         this.globalListenFunc = this.renderer.listen('document', 'keyup.esc', (e: any) => {
-            this.showBrowserWithWindow = false;
+            if (this.showBrowserWithWindow) {
+                this.showBrowser = false;
+                this.showChange.emit(this.showBrowser);
+            }
         });
 
         this.iframeurl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
@@ -43,14 +48,20 @@ export class BrowserPanelComponent implements OnInit {
     }
     onCloseClick() {
         this.showBrowser = false;
+        this.showChange.emit(this.showBrowser);
+
     }
     browserShowOnBtn() {
         this.showBrowser = true;
         this.hideBtn = false;
+        this.showChange.emit(this.showBrowser);
+
     }
     onMinimizeClick() {
         this.showBrowser = false;
         this.hideBtn = true;
+        this.showChange.emit(this.showBrowser);
+
     }
 
     onReloadPage() {
