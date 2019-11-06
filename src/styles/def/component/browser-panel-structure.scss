@@ -103,6 +103,7 @@
 .url-with-dots {
   display: inline-block;
   max-width: 87%;
+  vertical-align: sub;
   white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;
