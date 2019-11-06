@@ -3,22 +3,16 @@
   border: 1px solid $browserPanelBorderColor;
 }
 
-.browser-close {
+.btn-green {
+  background: $browerZoomBGColor;
+  border: 1px solid $browerZoomBorder;
+}
+.btn-red {
   background: $browerCloseBGColor;
   border: 1px solid $browerCloseBorder;
 }
 
-
-
-.browser-minimize {
+.btn-yellow {
   background: $browerMinimizeBGColor;
   border: 1px solid $browerMinimizeBorder;
-  
 }
-
-.browser-zoom {
-  background: $browerZoomBGColor;
-  border: 1px solid $browerZoomBorder;
-}
-
-

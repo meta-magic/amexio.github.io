@@ -33,13 +33,13 @@
 }
 
 .browserpanel-header-url{
-  flex-grow: 1;
-    border: none;
-    border-radius: 5px;
-    width: 100%;
-    padding-bottom: 5px;
-    line-height: 15px;
-    padding-left: 7px;
+  border: none;
+  border-radius: 5px;
+  justify-content: space-between;
+  display: inline-flex;
+  overflow: hidden;
+  height: 24px;
+  
 }
 .browserpanel-url-window {
   background: rgba(128, 127, 127, 0.6);
@@ -58,74 +58,42 @@
   left: 0;
   padding-bottom: 4px;
   padding-left: 6px;
-
-}
-
-.browser-close {
-  font-size: 12pt;
-  cursor: pointer;
-  text-align: center;
-  width: 15px;
-   line-height: 15px;
-  height: 15px;
-  border-radius: 50%;
-  display: inline-block;
 }
 
 
 
-.browser-minimize {
- 
-  font-size: 12pt;
-  cursor: pointer;
-  line-height: 15px;
-  margin: 5px 5px;
-  width: 15px;
-  height: 15px;
-  text-align: center;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-
-
-.browser-zoom {
-  
+.browser-button {
   font-size: 12pt;
   width: 15px;
   cursor: pointer;
   height: 15px;
   line-height: 15px;
-  margin-right: 9px;
   border-radius: 50%;
   text-align: center;
   display: inline-block;
+}
+
+.card-body-scroll {
+  overflow: hidden !important;
 }
 
 
 .url-with-dots {
-  display: inline-block;
-  width: 87%;
   background: lightgrey;
+  flex-grow: 1;
+  border-radius: 0px 5px 5px 0px;
   white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;
-  height: 12px;
-  padding: 7px 7px 7px 0px;
+  
 }
 
 .span-with-button {
-  vertical-align: super;
-}
-.reload-button {
-  vertical-align: super;
-  padding: 0px 8px 0px 0px;    
+  padding: 0px 5px;
 }
 
+
 .lock-button {
-  vertical-align: super;
   background: lightgray;
-  padding: 10px;
-  padding-bottom: 3px;
-  padding-top: 6px;
+  border-radius: 5px 0px 0px 5px;
 }

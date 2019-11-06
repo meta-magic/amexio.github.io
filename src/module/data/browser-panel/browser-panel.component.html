@@ -12,50 +12,53 @@
                 <span class="span-with-button">
 
                     <ng-container *ngIf="showBrowserWithWindow">
-                        <div class="browser-close">
+                        <div class="browser-button btn-red">
                             <a class="closebutton"><span (click)="onCloseClick()">x</span></a>
                         </div>
                     </ng-container>
                     <ng-container *ngIf="!showBrowserWithWindow">
-                        <div style="cursor: not-allowed" class="browser-close">
+                        <div style="cursor: not-allowed" class="browser-button btn-red">
                             <a class="closebutton"><span>x</span></a>
                         </div>
                     </ng-container>
-
+                </span>
+                <span class="span-with-button">
                     <ng-container *ngIf="showBrowserWithWindow">
-                        <div class="browser-minimize" *ngIf="showBrowserWithWindow">
+                        <div class="browser-button btn-yellow" *ngIf="showBrowserWithWindow">
                             <a class="minimizebutton"><span (click)="onMinimizeClick()">–</span></a>
                         </div>
                     </ng-container>
 
                     <ng-container *ngIf="!showBrowserWithWindow">
-                        <div style="cursor: not-allowed" class="browser-minimize">
+                        <div style="cursor: not-allowed" class="browser-button btn-yellow">
                             <a class="minimizebutton"><span>–</span></a>
                         </div>
                     </ng-container>
+                </span>
 
+                <span class="span-with-button">
                     <ng-container *ngIf="showBrowserWithWindow">
-                        <div class="browser-zoom">
+                        <div class="browser-button btn-green ">
                             <a class="zoombutton"><span (click)="maxScreenChange()">+</span></a>
                         </div>
                     </ng-container>
 
                     <ng-container *ngIf="!showBrowserWithWindow">
-                        <div class="browser-zoom">
+                        <div class="browser-button btn-green">
                             <a class="zoombutton"><span (click)="maxScreenChange()">+</span></a>
                         </div>
                     </ng-container>
                 </span>
                 <!-- Reload icon display -->
                 <ng-container *ngIf="reloadBtn || urlFieldEditable">
-                    <span class="reload-button">
+                    <span class="span-with-button">
                         <em class="fa fa-repeat" aria-hidden="true" (click)="onReloadPage()"></em>
                     </span>
 
                 </ng-container>
                 <!-- Lock icon display -->
                 <ng-container *ngIf="lockIconShow">
-                    <span class="lock-button">
+                    <span class="span-with-button lock-button">
                         <em class="fa fa-lock" aria-hidden="true"></em>
                     </span>
                 </ng-container>
@@ -74,7 +77,7 @@
         </div>
 
         <!-- Site How here -->
-        <amexio-body-ce>
+        <amexio-body-ce style="overflow: hidden !important;">
             <iframe title="Browser Window" #loadSite class="browserpanel-iframe" aria-hidden="true" [src]="iframeurl">
 
             </iframe>
