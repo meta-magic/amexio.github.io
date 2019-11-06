@@ -66,7 +66,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
    default : false
    description : Enable/Disable Date Picker
    */
-  @Input('date-picker') datepicker: boolean;
+  @Input('date-picker') datepicker = true;
   /*
    Properties
    name : time-picker
