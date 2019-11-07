@@ -3,45 +3,45 @@
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 
-@import "component/enterprise-content-vars.scss";
+@import "component/enterprise/enterprise-content-vars.scss";
 
 /** enterprise-content - Visual CSS **/
 
-@import "component/enterprise-content-visual.scss";
+@import "component/enterprise/enterprise-content-visual.scss";
 
 /** enterprise-content - Structure CSS **/
 
-@import "component/enterprise-content-structure.scss";
+@import "component/enterprise/enterprise-content-structure.scss";
 
 /****************************************************************************
     Component Name : Enterprise Youtube
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 
-@import "component/enterprise-youtube-vars.scss";
+@import "component/enterprise/enterprise-youtube-vars.scss";
 
 /** enterprise-youtube - Visual CSS **/
 
-@import "component/enterprise-youtube-visual.scss";
+@import "component/enterprise/enterprise-youtube-visual.scss";
 
 /** enterprise-youtube - Structure CSS **/
 
-@import "component/enterprise-youtube-structure.scss";
+@import "component/enterprise/enterprise-youtube-structure.scss";
 
 /****************************************************************************
     Component Name : Enterprise Carousel
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 
-@import "component/enterprise-carousel-vars.scss";
+@import "component/enterprise/enterprise-carousel-vars.scss";
 
 /** enterprise-carousel - Visual CSS **/
 
-@import "component/enterprise-carousel-visual.scss";
+@import "component/enterprise/enterprise-carousel-visual.scss";
 
 /** enterprise-carousel - Structure CSS **/
 
-@import "component/enterprise-carousel-structure.scss";
+@import "component/enterprise/enterprise-carousel-structure.scss";
 
 /****************************************************************************
     Component Name : Enterprise Appointment
@@ -51,51 +51,51 @@
 
 /** enterprise - Visual CSS **/
 
-@import "component/ee-appointment-visual.scss";
+@import "component/enterprise/ee-appointment-visual.scss";
 
 /****************************************************************************
     Component Name : Enterprise Calendar
     Version : Amexio v5.7 onwards
 *****************************************************************************/
 
-@import "component/ee-calendar-vars.scss";
-@import "component/ee-calendar-visual.scss";
-@import "component/ee-calendar-structure.scss";
+@import "component/enterprise/ee-calendar-vars.scss";
+@import "component/enterprise/ee-calendar-visual.scss";
+@import "component/enterprise/ee-calendar-structure.scss";
 
 /****************************************************************************
     Component Name : Enterprise Calendar
     Version : Amexio v5.12.1 onwards
 *****************************************************************************/
 
-@import "component/themeswitcher-structure.scss";
+@import "component/enterprise/themeswitcher-structure.scss";
 
 /****************************************************************************
     Component Name : Enterprise Step Wizard
     Version : Amexio v5.5.2 onwards
 *****************************************************************************/
 
-@import "component/step-wizard-vars.scss";
-@import "component/step-wizard-visual.scss";
-@import "component/step-wizard-structure.scss";
-@import "component/homepage-structure.scss";
-@import "component/homepage-vars.scss";
-@import "component/homepage-visual.scss";
+@import "component/enterprise/step-wizard-vars.scss";
+@import "component/enterprise/step-wizard-visual.scss";
+@import "component/enterprise/step-wizard-structure.scss";
+@import "component/enterprise/homepage-structure.scss";
+@import "component/enterprise/homepage-vars.scss";
+@import "component/enterprise/homepage-visual.scss";
 
 /****************************************************************************
     Component Name : Tree Tab Calendar
     Version : Amexio v5.13 onwards
 *****************************************************************************/
 
-@import "component/tree-tab-vars.scss";
-@import "component/tree-tab-visual.scss";
-@import "component/tree-tab-structure.scss";
+@import "component/enterprise/tree-tab-vars.scss";
+@import "component/enterprise/tree-tab-visual.scss";
+@import "component/enterprise/tree-tab-structure.scss";
 
 /****************************************************************************
     Component Name : Calendar
     Version : Amexio v5.13 onwards
 *****************************************************************************/
 
-@import "component/enterprise-calendar-structure.scss";
+@import "component/enterprise/enterprise-calendar-structure.scss";
 
 
 
@@ -104,9 +104,9 @@
     Version : Amexio v5.20 onwards
 *****************************************************************************/
 
-@import "component/rich-editable-text-vars.scss";
-@import "component/rich-editable-text-visual.scss";
-@import "component/rich-editable-text-structure.scss";
+@import "component/enterprise/rich-editable-text-vars.scss";
+@import "component/enterprise/rich-editable-text-visual.scss";
+@import "component/enterprise/rich-editable-text-structure.scss";
 
 
 /****************************************************************************
@@ -114,6 +114,6 @@
     Version : Amexio v5.19 onwards
 *****************************************************************************/
 
-@import "component/availability-vars.scss";
-@import "component/availability-structure.scss";
+@import "component/enterprise/availability-vars.scss";
+@import "component/enterprise/availability-structure.scss";
 

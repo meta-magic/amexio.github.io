@@ -2,101 +2,101 @@
     Component Name : Accordion
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/accordion-vars.scss";
+@import "component/standard/accordion-vars.scss";
 /** accordion - Visual CSS **/
-@import "component/accordion-visual.scss";
+@import "component/standard/accordion-visual.scss";
 /** accordion - Structure CSS **/
-@import "component/accordion-structure.scss";
+@import "component/standard/accordion-structure.scss";
 /****************************************************************************
     Component Name : Cards
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/cards-vars.scss";
+@import "component/standard/cards-vars.scss";
 /** cards - Visual CSS **/
-@import "component/cards-visual.scss";
+@import "component/standard/cards-visual.scss";
 /** cards - Structure CSS **/
-@import "component/cards-structure.scss";
+@import "component/standard/cards-structure.scss";
 /****************************************************************************
     Component Name : Form
     Version : Amexio v4.1.6 onwards
 *****************************************************************************/
-@import "component/form-vars.scss";
+@import "component/standard/form-vars.scss";
 /** cards - Visual CSS **/
-@import "component/form-visual.scss";
+@import "component/standard/form-visual.scss";
 /** cards - Structure CSS **/
-@import "component/form-structure.scss";
+@import "component/standard/form-structure.scss";
 /****************************************************************************
     Component Name : Carousel
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/carousel-vars.scss";
+@import "component/standard/carousel-vars.scss";
 /** carousel - Visual CSS **/
-@import "component/carousel-visual.scss";
+@import "component/standard/carousel-visual.scss";
 /** carousel - Structure CSS **/
-@import "component/carousel-structure.scss";
+@import "component/standard/carousel-structure.scss";
 /****************************************************************************
     Component Name : Fieldset
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/fieldset-vars.scss";
+@import "component/standard/fieldset-vars.scss";
 /** fieldset - Visual CSS **/
-@import "component/fieldset-visual.scss";
+@import "component/standard/fieldset-visual.scss";
 /** fieldset - Structure CSS **/
-@import "component/fieldset-structure.scss";
+@import "component/standard/fieldset-structure.scss";
 /****************************************************************************
     Component Name : steps
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/steps-vars.scss";
+@import "component/standard/steps-vars.scss";
 /** steps - Visual CSS **/
-@import "component/steps-visual.scss";
+@import "component/standard/steps-visual.scss";
 /** steps - Structure CSS **/
-@import "component/steps-structure.scss";
+@import "component/standard/steps-structure.scss";
 /****************************************************************************
     Component Name : Tab
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/tab-vars.scss";
+@import "component/standard/tab-vars.scss";
 /** tab - Visual CSS **/
-@import "component/tab-visual.scss";
+@import "component/standard/tab-visual.scss";
 /** tab - Structure CSS **/
-@import "component/tab-structure.scss";
+@import "component/standard/tab-structure.scss";
 /****************************************************************************
     Component Name : Window
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/window-vars.scss";
+@import "component/standard/window-vars.scss";
 /** window - Visual CSS **/
-@import "component/window-visual.scss";
+@import "component/standard/window-visual.scss";
 /** window - Structure CSS **/
-@import "component/window-structure.scss";
+@import "component/standard/window-structure.scss";
 /****************************************************************************
     Component Name : Dialogue
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/dialogue-vars.scss";
+@import "component/standard/dialogue-vars.scss";
 /** dialogue - Visual CSS **/
-@import "component/dialogue-visual.scss";
+@import "component/standard/dialogue-visual.scss";
 /** dialogue - Structure CSS **/
-@import "component/dialogue-structure.scss";
+@import "component/standard/dialogue-structure.scss";
 /****************************************************************************
     Component Name : Panel
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/panel-vars.scss";
+@import "component/standard/panel-vars.scss";
 /** panel - Visual CSS **/
-@import "component/panel-visual.scss";
+@import "component/standard/panel-visual.scss";
 /** panel - Structure CSS **/
-@import "component/panel-structure.scss";
+@import "component/standard/panel-structure.scss";
 /****************************************************************************
     Component Name : Timeline
     Version : Amexio v5.2 onwards
 *****************************************************************************/
-@import "component/timeline-vars.scss";
+@import "component/standard/timeline-vars.scss";
 /** panel - Visual CSS **/
-@import "component/timeline-visual.scss";
+@import "component/standard/timeline-visual.scss";
 /** panel - Structure CSS **/
-@import "component/timeline-structure.scss";
+@import "component/standard/timeline-structure.scss";
 
 /*****************************************************************************
  Component Name : Amexio overlay container 
@@ -105,43 +105,30 @@
 
 
 /** Amexio overlay Vars CSS **/
-@import "component/overlay-vars.scss";
+@import "component/standard/overlay-vars.scss";
 
 /** Amexio overlay Visual CSS **/
 
-@import "component/overlay-visual.scss";
+@import "component/standard/overlay-visual.scss";
 
 /** Amexio overlay Structure CSS **/
-@import "component/overlay-structure.scss";
+@import "component/standard/overlay-structure.scss";
 
-/****************************************************************************
-    Component Name : Window CE
-    Version : Amexio v5.8 onwards
-*****************************************************************************/
-/** windowce - Vars CSS **/
-@import "component/windowce-vars.scss";
-/** windowce - Visual CSS **/
-@import "component/windowce-visual.scss";
-/** windowce - Structure CSS **/
-@import "component/windowce-structure.scss";
-/** creative header - Structure CSS **/
-@import "component/headerce-structure.scss";
-/** creative form - Structure CSS **/
-@import "component/formce-structure.scss";
+
 
 /*****************************************************************************
  Component Name : Amexio slidingpanel container 
   Version : Amexio v5.12 onwards
 ****************************************************************************/
 /** Amexio slidingpanel Vars CSS **/
-@import "component/slidingpanel-vars.scss";
+@import "component/standard/slidingpanel-vars.scss";
 
 /** Amexio slidingpanel Visual CSS **/
 
-@import "component/slidingpanel-visual.scss";
+@import "component/standard/slidingpanel-visual.scss";
 
 /** Amexio slidingpanel Structure CSS **/
-@import "component/slidingpanel-structure.scss";
+@import "component/standard/slidingpanel-structure.scss";
 
 
 /*****************************************************************************
@@ -149,19 +136,19 @@
   Version : Amexio v5.14 onwards
 ****************************************************************************/
 /** Amexio slidingpanel Vars CSS **/
-@import "component/floatingpanel-vars.scss";
+@import "component/standard/floatingpanel-vars.scss";
 /** Amexio slidingpanel Visual CSS **/
-@import "component/floatingpanel-visual.scss";
+@import "component/standard/floatingpanel-visual.scss";
 /** Amexio slidingpanel Structure CSS **/
-@import "component/floatingpanel-structure.scss";
+@import "component/standard/floatingpanel-structure.scss";
 
 /*****************************************************************************
  Component Name : Amexio Stackable panel container 
   Version : Amexio v5.19 onwards
 ****************************************************************************/
 /** Amexio StackablePanel Vars CSS **/
-@import "component/stackablepanel-vars.scss";
+@import "component/standard/stackablepanel-vars.scss";
 /** Amexio StackablePanel Visual CSS **/
-@import "component/stackablepanel-visual.scss";
+@import "component/standard/stackablepanel-visual.scss";
 /** Amexio StackablePanel Structure CSS **/
-@import "component/stackablepanel-structure.scss";
+@import "component/standard/stackablepanel-structure.scss";

@@ -3,30 +3,30 @@
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 
-@import "component/borderlayout-vars.scss";
+@import "component/standard/borderlayout-vars.scss";
 
 /** borderlayout - Visual CSS **/
 
-@import "component/borderlayout-visual.scss";
+@import "component/standard/borderlayout-visual.scss";
 
 /** borderlayout - Structure CSS **/
 
-@import "component/borderlayout-structure.scss";
+@import "component/standard/borderlayout-structure.scss";
 
 /****************************************************************************
     Component Name : Row Column
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 
-@import "component/rowcol-vars.scss";
+@import "component/standard/rowcol-vars.scss";
 
 /** rowcol - Visual CSS **/
 
-@import "component/rowcol-visual.scss";
+@import "component/standard/rowcol-visual.scss";
 
 /** rowcol - Structure CSS **/
 
-@import "component/rowcol-structure.scss";
+@import "component/standard/rowcol-structure.scss";
 
 /****************************************************************************
     Component Name : Layout
@@ -36,7 +36,7 @@
 
 /** rowcol - Structure CSS **/
 
-@import "component/layout-structure.scss";
+@import "component/standard/layout-structure.scss";
 
 /****************************************************************************
     Component Name : Creative
@@ -44,17 +44,6 @@
 *****************************************************************************/
 
 
-/** creative card - var CSS **/
-
-@import "component/cardce-vars.scss";
-
-/** creative card - Visual CSS **/
-
-@import "component/cardce-visual.scss";
-
-/** creative card - Structure CSS **/
-
-@import "component/cardce-structure.scss";
 
 /****************************************************************************
     Component Name : Creative Menus
@@ -64,15 +53,15 @@
 
 /** creative card - var CSS **/
 
-@import "component/menuce-vars.scss";
+@import "component/standard/menuce-vars.scss";
 
 /** creative card - Visual CSS **/
 
-@import "component/menuce-visual.scss";
+@import "component/standard/menuce-visual.scss";
 
 /** creative card - Structure CSS **/
 
-@import "component/menuce-structure.scss";
+@import "component/standard/menuce-structure.scss";
 
 
 /****************************************************************************
@@ -83,15 +72,15 @@
 
 /** Round Edge - var CSS **/
 
-@import "component/roundedge-vars.scss";
+@import "component/standard/roundedge-vars.scss";
 
 /** Round Edge card - Visual CSS **/
 
-@import "component/roundedge-visual.scss";
+@import "component/standard/roundedge-visual.scss";
 
 /** Round Edge card - Structure CSS **/
 
-@import "component/roundedge-structure.scss";
+@import "component/standard/roundedge-structure.scss";
 
 
 /****************************************************************************
@@ -102,5 +91,5 @@
  
 /** Router animation card - Structure CSS **/
 
-@import "component/routeranimation-structure.scss";
+@import "component/standard/routeranimation-structure.scss";
 

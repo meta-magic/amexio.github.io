@@ -7,7 +7,7 @@
 /************************************************************************/
 
 @media only screen and (max-width: 767px) {
-    @import '../component/borderlayout-areas.scss';
+    @import '../component/standard/borderlayout-areas.scss';
     .borderlayout-container-N-E-C-W-S {
         grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south';
     }

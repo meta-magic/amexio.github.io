@@ -2,58 +2,58 @@
     Component Name : Menubar
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/menubar-vars.scss";
+@import "component/standard/menubar-vars.scss";
 /** menubar - Visual CSS **/
-@import "component/menubar-visual.scss";
+@import "component/standard/menubar-visual.scss";
 /** menubar - Structure CSS **/
-@import "component/menubar-structure.scss";
+@import "component/standard/menubar-structure.scss";
 /****************************************************************************
     Component Name : Navbar
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/navbar-vars.scss";
+@import "component/standard/navbar-vars.scss";
 /** navbar - Visual CSS **/
-@import "component/navbar-visual.scss";
+@import "component/standard/navbar-visual.scss";
 /** navbar - Structure CSS **/
-@import "component/navbar-structure.scss";
+@import "component/standard/navbar-structure.scss";
 /****************************************************************************
     Component Name : Paginator
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/paginator-vars.scss";
+@import "component/standard/paginator-vars.scss";
 /** paginator - Visual CSS **/
-@import "component/paginator-visual.scss";
+@import "component/standard/paginator-visual.scss";
 /** paginator - Structure CSS **/
-@import "component/paginator-structure.scss";
+@import "component/standard/paginator-structure.scss";
 /****************************************************************************
     Component Name : Sidenav
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/sidenav-vars.scss";
+@import "component/standard/sidenav-vars.scss";
 /** sidenav - Visual CSS **/
-@import "component/sidenav-visual.scss";
+@import "component/standard/sidenav-visual.scss";
 /** sidenav - Structure CSS **/
-@import "component/sidenav-structure.scss";
+@import "component/standard/sidenav-structure.scss";
 /****************************************************************************
     Component Name : Dockbar
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/dockbar-vars.scss";
+@import "component/standard/dockbar-vars.scss";
 /** dockbar - Visual CSS **/
-@import "component/dockbar-visual.scss";
+@import "component/standard/dockbar-visual.scss";
 /** dockbar - Structure CSS **/
-@import "component/dockbar-structure.scss";
+@import "component/standard/dockbar-structure.scss";
 
 
 /****************************************************************************
     Component Name : Breadcrumb
     Version : Amexio v5.2 onwards
 *****************************************************************************/
-@import "component/breadcrumb-vars.scss";
+@import "component/standard/breadcrumb-vars.scss";
 /** dockbar - Visual CSS **/
-@import "component/breadcrumb-visual.scss";
+@import "component/standard/breadcrumb-visual.scss";
 /** dockbar - Structure CSS **/
-@import "component/breadcrumb-structure.scss";
+@import "component/standard/breadcrumb-structure.scss";
 
 
 
@@ -61,8 +61,8 @@
     Component Name : Taskbar
     Version : Amexio v5.18 onwards
 *****************************************************************************/
-@import "component/taskbar-vars.scss";
+@import "component/standard/taskbar-vars.scss";
 /** dockbar - Visual CSS **/
-@import "component/taskbar-visual.scss";
+@import "component/standard/taskbar-visual.scss";
 /** dockbar - Structure CSS **/
-@import "component/taskbar-structure.scss";
+@import "component/standard/taskbar-structure.scss";
