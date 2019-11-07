@@ -1365,6 +1365,15 @@ button {
   background-color: var(--componentHoverBGColor);
   color: var(--componentHoverFontColor); }
 
+.dropdown-list::-webkit-scrollbar-track {
+  background-color: var(--componentDisabledBGColor); }
+
+.dropdown-list::-webkit-scrollbar {
+  background-color: var(--componentDisabledBGColor); }
+
+.dropdown-list::-webkit-scrollbar-thumb {
+  background-color: var(--componentHeaderBGColor); }
+
 /** dropdown - Structure CSS **/
 .dropdown {
   display: block;
@@ -3379,6 +3388,9 @@ input:checked + .largeType2ToggleSlider:before {
 
 .menu-right {
   right: 10px; }
+
+.dropdown-list::-webkit-scrollbar {
+  width: 6px; }
 
 /*****************************************************************************
  Component Name : Toolbar
@@ -5686,11 +5698,9 @@ amexio-homepage-centerpanel .homepage-centerpanel {
     Version : Amexio v5.13 onwards
 *****************************************************************************/
 .fpClass amexio-floating-panel div {
-  bottom: 0px;
   z-index: 300 !important; }
 
 .fpRightClass amexio-floating-panel div {
-  bottom: 0px;
   right: 0px;
   z-index: 300 !important; }
 
@@ -6243,6 +6253,15 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   padding: 5px;
   display: block; }
 
+.tree-node-label-no-wrap {
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 /****************************************************************************
     Component Name : PropertyGrid
     Version : Amexio v5.8.2 onwards
@@ -6571,6 +6590,16 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 .nav-dropdown:hover .nav-dropdown-content .nav-menu-container a {
   color: var(--componentFontColor); }
 
+.navbar-scroll::-webkit-scrollbar-track {
+  background-color: var(--componentDisabledBGColor); }
+
+.navbar-scroll::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--componentDisabledBGColor); }
+
+.navbar-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--componentHeaderBGColor); }
+
 /** navbar - Structure CSS **/
 .amexio-nav-submenus {
   display: block;
@@ -6578,7 +6607,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
   background-color: var(--appHeaderBGColor);
   color: var(--appHeaderFontColor);
-  padding: 10px; }
+  padding: 0px; }
 
 .amexio-nav-desktop-submenus {
   width: 250px;
@@ -6593,6 +6622,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   color: var(--appHeaderHoverFontColor); }
 
 .nav-desktop-link {
+  cursor: pointer;
   color: var(--appHeaderFontColor);
   text-decoration: none;
   display: inline-block;
@@ -6922,6 +6952,9 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   width: 100%;
   color: var(--appHeaderFontColor);
   font-weight: 600; }
+
+.navbar-scroll {
+  overflow-y: auto; }
 
 /****************************************************************************
     Component Name : Paginator
@@ -7357,7 +7390,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   margin-top: 0px !important;
   height: 120%;
   padding-left: 8px;
-  padding-top: 12px;
+  padding-top: 8px;
   padding-bottom: 8px;
   border-left: 1px solid #797575; }
 
@@ -7367,7 +7400,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   margin-top: 0px;
   padding-left: 8px;
   height: 120%;
-  padding-top: 12px;
+  padding-top: 8px;
   padding-bottom: 8px;
   border-left: 1px solid #f7f3f3; }
 
@@ -7393,7 +7426,6 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   outline: none; }
 
 .arrow-group-css:focus {
-  background: var(--componentHoverBGColor);
   outline: none; }
 
 .label-icon-css:focus {
@@ -8100,7 +8132,6 @@ fieldset {
 .tabcontent {
   width: inherit;
   position: relative;
-  padding: 10px 5px;
   color: var(--componentFontColor); }
 
 .tabcontent::-webkit-scrollbar-track {
@@ -8147,11 +8178,11 @@ fieldset {
 
 .verticalnavtab-left {
   font-weight: bold;
-  width: auto; }
+  width: max-content; }
 
 .verticalnavtab-right {
   font-weight: bold;
-  width: auto; }
+  width: max-content; }
 
 .verticalalign-tableft {
   border-right: 1px solid #ced4da !important; }
@@ -8338,6 +8369,9 @@ fieldset {
 .modal-window-footer {
   background: var(--componentBGColor);
   color: var(--componentFontColor); }
+
+.minimize-window-bg {
+  background: var(--componentHoverBGColor); }
 
 /** window - Structure CSS **/
 /* WINDOW */
@@ -8920,6 +8954,15 @@ amexio-layout amexio-layout-item {
 .amexio-root-window-ce {
   background: rgba(128, 127, 127, 0.6); }
 
+.card-container-body::-webkit-scrollbar-track {
+  background-color: var(--componentDisabledBGColor); }
+
+.card-container-body::-webkit-scrollbar {
+  background-color: var(--componentDisabledBGColor); }
+
+.card-container-body::-webkit-scrollbar-thumb {
+  background-color: var(--componentHeaderBGColor); }
+
 /** windowce - Structure CSS **/
 .amexio-root-window-ce {
   background: rgba(128, 127, 127, 0.6);
@@ -8945,6 +8988,9 @@ amexio-layout amexio-layout-item {
 
 .amexio-root-window-content-ce > * {
   padding: 0px; }
+
+.card-container-body::-webkit-scrollbar {
+  width: 6px; }
 
 /* .amexio-root-window-content-ce .window-middle::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -9104,6 +9150,25 @@ amexio-layout amexio-layout-item {
   position: absolute;
   right: 0%;
   padding: 5px 10px; }
+
+.floatingPanelIndex amexio-floating-panel div {
+  z-index: 2 !important; }
+
+.floatingPanelIndex {
+  margin-top: 15px; }
+
+.leftPositionPanel {
+  display: block;
+  position: absolute;
+  left: 50px;
+  right: 0px;
+  margin-top: 70px; }
+
+.rightPositionPanel {
+  display: block;
+  position: absolute;
+  right: 50px;
+  margin-top: 70px; }
 
 /****************************************************************************
     Component Name : Border Layout
@@ -9656,6 +9721,373 @@ amexio-layout-columns amexio-layout-item {
   -webkit-transform: scale(1);
   transform: scale(1); }
 
+/****************************************************************************
+    Component Name : Directive Round Edge
+    Version : Amexio v5.12 onwards
+*****************************************************************************/
+/** Round Edge - var CSS **/
+/** Round Edge card - Visual CSS **/
+/* You can add global styles to this file, and also import other style files */
+.roundEdgeCommonCss {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container-ce {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container-ce amexio-header-ce .creative-header-div {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container-ce button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-header-ce {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-header-ce button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-header-ce div .creative-header {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss amexio-action-ce div .creative-footer {
+  border-radius: 0px 0px 10px 10px; }
+
+.roundEdgeCommonCss amexio-action-ce div .creative-footer button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .box-content {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .box-content button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .panel-panel {
+  border-radius: 0px 0px 10px 10px; }
+
+.roundEdgeCommonCss .panel-accordion {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .panel-without-header {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-header {
+  border-radius: 10px 10px 0px 0px; }
+
+.cardBorderClass {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-footer button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-accordion-tab button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .activebgcolortab {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .dialogue-content {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .dialogue-content header {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .dialogue-content footer {
+  border-radius: 0px 0px 10px 10px; }
+
+.roundEdgeCommonCss .floatingpanel-header {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .card-container-body {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .modal-window-header {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .modal-window-footer {
+  border-radius: 0px 0px 10px 10px; }
+
+.roundEdgeCommonCss .modal-window-footer button {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .amexio-badge {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .datetimepickertopbar {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .datetimepickertopbar div .days {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .datetimepicker1 {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .notification {
+  border-radius: 10px; }
+
+/* Class: progress */
+.roundEdgeCommonCss .progress .success {
+  border-radius: 10px 0px 0px 10px; }
+
+.roundEdgeCommonCss .progress {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .progress .warning {
+  border-radius: 10px 0px 0px 10px; }
+
+.roundEdgeCommonCss .progress .danger {
+  border-radius: 10px 0px 0px 10px; }
+
+.roundEdgeCommonCss .progress .stripped {
+  border-radius: 10px; }
+
+/* class: pageginator-pages */
+.roundEdgeCommonCss .paginator-pages .paginator-page {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .timeline-item .timeline-panel-float-right {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .timeline-item .timeline-panel-float-left {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .listbox {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .header {
+  border-radius: 10px; }
+
+/* listbox */
+.roundEdgeCommonCss .listbox .header {
+  border-radius: 10px 10ox 0px 0px; }
+
+/* breadcrum-rightshift-css */
+.roundEdgeCommonCss .breadcrumb-group:hover {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-dockbar-item .dockbar-active-content {
+  border-radius: 0px 10px 10px 0px; }
+
+.roundEdgeCommonCss .dropdown-menu {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .menu-content {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .datapoints {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .datePickerContainer {
+  border-radius: 10px 10px 0px 0px; }
+
+.roundEdgeCommonCss .weekdaycomponent {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .weekdaycomponent .datetimepicker1 {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .amexio-root-window-content-ce div {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss color-palette .color-palette {
+  border-radius: 10px 0px 0px 10px; }
+
+.roundEdgeCommonCss color-slider .color-slider {
+  border-radius: 0px 10px 10px 0px; }
+
+.roundEdgeCommonCss .main-content {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container-ce-color {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss .card-container-ce-main {
+  border-radius: 10px; }
+
+.roundEdgeCommonCss amexio-action-ce div {
+  border-radius: 10px; }
+
+.classicCommonCss {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container-ce {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container-ce amexio-header-ce .creative-header-div {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container-ce button {
+  border-radius: 0px !important; }
+
+.classicCommonCss amexio-header-ce {
+  border-radius: 0px !important; }
+
+.classicCommonCss amexio-header-ce button {
+  border-radius: 0px !important; }
+
+.classicCommonCss amexio-header-ce div .creative-header {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss amexio-action-ce div .creative-footer {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss amexio-action-ce div .creative-footer button {
+  border-radius: 0px !important; }
+
+.classicCommonCss .box-content {
+  border-radius: 0px !important; }
+
+.classicCommonCss .box-content button {
+  border-radius: 0px !important; }
+
+.classicCommonCss .panel-panel {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .panel-accordion {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .panel-without-header {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-header {
+  border-radius: 0px 10px 0px 0px !important; }
+
+.cardBorderClass {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-footer button {
+  border-radius: 0px !important; }
+
+.classicCommonCss amexio-accordion-tab button {
+  border-radius: 0px !important; }
+
+.classicCommonCss .activebgcolortab {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .dialogue-content {
+  border-radius: 0px !important; }
+
+.classicCommonCss .dialogue-content header {
+  border-radius: 0px !important; }
+
+.classicCommonCss .floatingpanel-header {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .card-container-body {
+  border-radius: 0px !important; }
+
+.classicCommonCss .modal-window-header {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .modal-window-footer {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .modal-window-footer button {
+  border-radius: 0px !important; }
+
+.classicCommonCss .amexio-badge {
+  border-radius: 0px !important; }
+
+.classicCommonCss .datetimepickertopbar {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .datetimepickertopbar div .days {
+  border-radius: 0px !important; }
+
+.classicCommonCss .datetimepicker1 {
+  border-radius: 0px !important; }
+
+.classicCommonCss .notification {
+  border-radius: 0px !important; }
+
+/* Class: progress */
+.classicCommonCss .progress .success {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .progress {
+  border-radius: 0px !important; }
+
+.classicCommonCss .progress .warning {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .progress .danger {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .progress .stripped {
+  border-radius: 0px !important; }
+
+/* class: pageginator-pages */
+.classicCommonCss .paginator-pages .paginator-page {
+  border-radius: 0px !important; }
+
+.classicCommonCss .timeline-item .timeline-panel-float-right {
+  border-radius: 0px !important; }
+
+.classicCommonCss .timeline-item .timeline-panel-float-left {
+  border-radius: 0px !important; }
+
+.classicCommonCss .listbox {
+  border-radius: 0px !important; }
+
+.classicCommonCss .header {
+  border-radius: 0px !important; }
+
+/* listbox */
+.classicCommonCss .listbox .header {
+  border-radius: 0px 0px 0px 0px !important; }
+
+/* breadcrum-rightshift-css */
+.classicCommonCss .breadcrumb-group:hover {
+  border-radius: 0px !important; }
+
+.classicCommonCss amexio-dockbar-item .dockbar-active-content {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .dropdown-menu {
+  border-radius: 0px !important; }
+
+.classicCommonCss .menu-content {
+  border-radius: 0px !important; }
+
+.classicCommonCss .datapoints {
+  border-radius: 0px !important; }
+
+.classicCommonCss .datePickerContainer {
+  border-radius: 0px 0px 0px 0px !important; }
+
+.classicCommonCss .weekdaycomponent {
+  border-radius: 0px !important; }
+
+.classicCommonCss .weekdaycomponent .datetimepicker1 {
+  border-radius: 0px !important; }
+
+.classicCommonCss .amexio-root-window-content-ce div {
+  border-radius: 0px !important; }
+
+.classicCommonCss color-palette .color-palette {
+  border-radius: 10px 0px 0px 10px; }
+
+.classicCommonCss color-slider .color-slider {
+  border-radius: 0px 10px 10px 0px; }
+
+.classicCommonCss .main-content {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container-ce-color {
+  border-radius: 0px !important; }
+
+.classicCommonCss .card-container-ce-main {
+  border-radius: 10px; }
+
+.classicCommonCss amexio-action-ce div {
+  border-radius: 10px; }
+
+/** Round Edge card - Structure CSS **/
 /** Initialze Animation variables ------------ */
 /****************************************************************************
                 Animation CSS for Checkbox 
