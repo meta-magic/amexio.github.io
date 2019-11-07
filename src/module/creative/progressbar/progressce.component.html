@@ -3,7 +3,7 @@
     <div class="circularProgress" [style.width]="outerWidth" [style.height]="outerHeight" [ngStyle]="pStyle">
         <div [style.background-color]="background" [style.width]="width+'px'" [style.height]="height+'px'" class="innerCircle"
             [ngClass]="type">
-            <label tabindex="0" attr.aria-label="{{progressvalue}} {{unit}} {{tooltip}}" [style.font-size]="size"
+            <label attr.aria-label="{{progressvalue}} {{unit}} {{tooltip}}" [style.font-size]="size"
                 [style.color]="labelcolor">
                 <ng-container *ngIf="showlabel">{{progressvalue }}</ng-container>
                 <ng-container *ngIf="showunit"> {{unit}}</ng-container>
@@ -15,7 +15,7 @@
 <ng-container *ngIf="type =='ring'">
     <div class="circularProgress" [style.width]="outerWidth" [style.height]="outerHeight" [ngStyle]="pStyle">
         <div [style.width]="width+'px'" [style.height]="height+'px'" class="innerCircle" [ngClass]="type">
-            <label tabindex="0" attr.aria-label="{{progressvalue}} {{unit}} {{tooltip}}" [style.color]="labelcolor"
+            <label attr.aria-label="{{progressvalue}} {{unit}} {{tooltip}}" [style.color]="labelcolor"
                 [style.font-size]="size">
                 <ng-container *ngIf="showlabel">{{progressvalue }}</ng-container>
                 <ng-container *ngIf="showunit"> {{unit}}</ng-container>
@@ -28,7 +28,7 @@
 <ng-container *ngIf="type =='pie'">
     <div class="circularProgress" [style.width]="outerWidth" [style.height]="outerHeight" [ngStyle]="pStyle">
         <div [style.width]="width+'px'" [style.height]="height+'px'" [ngClass]="type" class="innerCircle">
-            <label tabindex="0" attr.aria-label="{{progressvalue}} {{unit}} {{tooltip}}" [style.color]="labelcolor"
+            <label attr.aria-label="{{progressvalue}} {{unit}} {{tooltip}}" [style.color]="labelcolor"
                 [style.font-size]="size">
                 <ng-container *ngIf="showlabel">{{progressvalue }}</ng-container>
                 <ng-container *ngIf="showunit"> {{unit}}</ng-container>
