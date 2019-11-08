@@ -2,10 +2,19 @@
     [ngStyle]="{ 'padding': minimizeButton ? '10px  0px 10px 0px': '0px'}">
 
     <ng-container *ngIf="minimizeButton">
-        <span *ngFor="let item of localData">
-            <amexio-button [icon]=item.amexioHeader.first.minimizeIcon [label]="item.textName" [type]="'theme-color'"
-                [tooltip]="item.textName" (onClick)="minimizeBtnClick(item)">
-            </amexio-button>
+        <span *ngFor="let data of localData">
+
+            <ng-container *ngIf="data.icon && data.textName">
+                <amexio-button [icon]=data.amexioHeader.first.minimizeIcon [label]="data.textName"
+                    [type]="'theme-color'" [tooltip]="data.textName" (onClick)="minimizeBtnClick(data)">
+                </amexio-button>
+            </ng-container>
+            <ng-container *ngIf="!data.icon && data.textName">
+                <amexio-button [label]="data.textName" [type]="'theme-color'" [tooltip]="data.textName"
+                    (onClick)="minimizeBtnClick(data)">
+                </amexio-button>
+            </ng-container>
+
         </span>
     </ng-container>
 </div>

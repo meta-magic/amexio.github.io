@@ -3,9 +3,18 @@
 
     <ng-container *ngIf="ceMiniButton">
         <span *ngFor="let data of arrayData">
-            <amexio-button [icon]=data.amexioHeader.first.minimizeIcon [label]="data.textName" [type]="'theme-color'"
-                [tooltip]="data.textName" (onClick)="ceMiniBtnClick(data)">
-            </amexio-button>
+
+            <ng-container *ngIf="data.icon && data.textName">
+                <amexio-button [icon]=data.amexioHeader.first.minimizeIcon [label]="data.textName"
+                    [type]="'theme-color'" [tooltip]="data.textName" (onClick)="ceMiniBtnClick(data)">
+                </amexio-button>
+            </ng-container>
+            <ng-container *ngIf="!data.icon && data.textName">
+                <amexio-button [label]="data.textName" [type]="'theme-color'" [tooltip]="data.textName"
+                    (onClick)="ceMiniBtnClick(data)">
+                </amexio-button>
+            </ng-container>
+
         </span>
     </ng-container>
 </div>

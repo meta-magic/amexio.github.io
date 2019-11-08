@@ -1,9 +1,5 @@
-<ng-container *ngIf="hideBtn">
-    <amexio-button [label]="'show Browser'" [type]="'theme-color'" [size]="'small'" (onClick)="browserShowOnBtn()">
-    </amexio-button>
-</ng-container>
 
-<div *ngIf="showBrowser" #fullscreen
+<div *ngIf="show" #fullscreen
     [ngClass]="[showBrowserWithWindow ? 'browserpanel-url-window' : 'browserpanel-url']">
     <amexio-card-ce class="card-ce-window">
         <div class="creative-header-div card-header-border browserpanel-header">
