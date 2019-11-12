@@ -109,17 +109,19 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
     this.setIconPosition();
   }
   ngAfterViewInit() {
-    this.textName = this.content.nativeElement.innerText;
-    if (this.textName && this.minimizeIcon) {
-      return this.textName;
-    }
-    if (this.textName && !this.minimizeIcon) {
-      return this.textName;
-    } else if (!this.textName && this.minimizeIcon) {
-      return this.minimizeIcon;
-    } else if (!this.minimizeIcon && !this.textName) {
-      this.textName = [];
-      this.minimizeIcon = 'fa fa-file';
+    if (this.windowFlag) {
+      this.textName = this.content.nativeElement.innerText;
+      if (this.textName && this.minimizeIcon) {
+        return this.textName;
+      }
+      if (this.textName && !this.minimizeIcon) {
+        return this.textName;
+      } else if (!this.textName && this.minimizeIcon) {
+        return this.minimizeIcon;
+      } else if (!this.minimizeIcon && !this.textName) {
+        this.textName = [];
+        this.minimizeIcon = 'fa fa-file';
+      }
     }
   }
 
