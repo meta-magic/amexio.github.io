@@ -44,8 +44,8 @@ export class PanelItemComponent implements OnInit, AfterContentInit, AfterViewIn
     @Input() title: string;
 
     // @Input() image: string;
-    @Input('image-height') imgheight: any;
-    @Input('image-width') imgwidth: any;
+    @Input('image-height') imgheight = '50px';
+    @Input('image-width') imgwidth = '50px';
     @Input('image-class') imgcclass: any;
     @Input('image-path') imgpath: any;
 

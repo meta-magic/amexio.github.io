@@ -4,9 +4,13 @@
      'color': color,'background':background,'height': height}"
         [ngClass]="{'card-container-ce-theme-color': applyThemeColor}">
 
-        <span #contentWrapper>
+        <span *ngIf="windowFlag ; else falsyTemplate" #contentWrapper>
             <ng-content ></ng-content>
         </span>
+
+        <ng-template #falsyTemplate>
+            <ng-content ></ng-content>
+          </ng-template>
         
         
         <span *ngIf="windowFlag" class="creative-header-icon-div" [ngStyle]="iconPosition">
