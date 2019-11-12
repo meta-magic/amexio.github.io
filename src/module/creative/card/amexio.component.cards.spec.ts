@@ -55,53 +55,53 @@ describe('amexio-card-ce', () => {
     });
 
 
-    it('variable check', () => {
-        comp.maximizeflagchanged = false;
-        comp.amexioComponentId = 'amexio-card-ce';
+    // it('variable check', () => {
+    //     comp.maximizeflagchanged = false;
+    //     comp.amexioComponentId = 'amexio-card-ce';
 
-        comp.slidereffecton = false;
-        comp.ishover = false;
+    //     comp.slidereffecton = false;
+    //     comp.ishover = false;
 
-    });
-
-
-    it('ngAfterContentInit  method check', () => {
-        fixture.detectChanges();
-        comp.ngAfterContentInit();
+    // });
 
 
-        expect(comp.AmexioCardCEHeaderQueryList).toBeDefined();
-        comp.amexioCardHeaderList = comp.AmexioCardCEHeaderQueryList.toArray();
-        expect(comp.amexioCardHeaderList).toBeDefined()
-        expect(comp.amexioCardHeaderList.length).toBeGreaterThan(0)
-        comp.amexioCardHeaderList.forEach((element: any) => {
-            element.ribbonType = false;
-            element.amexioComponentId = comp.amexioComponentId;
-            element.fullScreenFlag = comp.yesFullScreen;
-            element.desktopFlag = comp.desktopFlag;
-            element.fullscreenMax = true;
-        });
-
-        expect(comp.yesFullScreen).toEqual(true);
-        fixture.detectChanges();
-        comp.amexioCardHeaderList[0].maximizeWindow1.subscribe((obj: any) => {
-            fixture.detectChanges();
-            comp.maximizeflagchanged = comp.maxScreenChange(obj.tempEvent);
-            obj.tempThis.fullscreenMaxCard = !comp.maximizeflagchanged;
-        });
-        comp.AmexioCardCEHeaderQueryList.toArray()[0].minimizeWindow1.subscribe((obj: any) => {
-            comp.headerinst = obj.tempThis;
-            comp.maximizeflagchanged = comp.minScreenChange(obj.tempEvent);
-            obj.tempThis.fullscreenMaxCard = !comp.maximizeflagchanged;
-        });
-    });
+    // it('ngAfterContentInit  method check', () => {
+    //     fixture.detectChanges();
+    //     comp.ngAfterContentInit();
 
 
-    it('variable check', () => {
-      comp.ngOnInit();
-      comp.instance = this;
+    //     expect(comp.AmexioCardCEHeaderQueryList).toBeDefined();
+    //     comp.amexioCardHeaderList = comp.AmexioCardCEHeaderQueryList.toArray();
+    //     expect(comp.amexioCardHeaderList).toBeDefined()
+    //     expect(comp.amexioCardHeaderList.length).toBeGreaterThan(0)
+    //     comp.amexioCardHeaderList.forEach((element: any) => {
+    //         element.ribbonType = false;
+    //         element.amexioComponentId = comp.amexioComponentId;
+    //         element.fullScreenFlag = comp.yesFullScreen;
+    //         element.desktopFlag = comp.desktopFlag;
+    //         element.fullscreenMax = true;
+    //     });
 
-    });
+    //     expect(comp.yesFullScreen).toEqual(true);
+    //     fixture.detectChanges();
+    //     comp.amexioCardHeaderList[0].maximizeWindow1.subscribe((obj: any) => {
+    //         fixture.detectChanges();
+    //         comp.maximizeflagchanged = comp.maxScreenChange(obj.tempEvent);
+    //         obj.tempThis.fullscreenMaxCard = !comp.maximizeflagchanged;
+    //     });
+    //     comp.AmexioCardCEHeaderQueryList.toArray()[0].minimizeWindow1.subscribe((obj: any) => {
+    //         comp.headerinst = obj.tempThis;
+    //         comp.maximizeflagchanged = comp.minScreenChange(obj.tempEvent);
+    //         obj.tempThis.fullscreenMaxCard = !comp.maximizeflagchanged;
+    //     });
+    // });
+
+
+    // it('variable check', () => {
+    //   comp.ngOnInit();
+    //   comp.instance = this;
+
+    // });
 
     // it('exitHandler', () => {
     //     comp.exitHandler();

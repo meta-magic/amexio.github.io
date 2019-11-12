@@ -49,73 +49,73 @@ describe('amexio-window-ce', () => {
     });
 
 
-    it('variable check', () => {
-        comp.x = 0;
-        comp.y = 0;
-        comp.px = 0;
-        comp.py = 0;
-        comp.minArea = 20000;
-        comp.draggingWindow = false;
-        expect(comp.x).toEqual(0);
-        expect(comp.y).toEqual(0);
-        expect(comp.px).toEqual(0);
-        expect(comp.py).toEqual(0);
-        expect(comp.minArea).toEqual(20000);
-        expect(comp.draggingWindow).toEqual(false);
+    // it('variable check', () => {
+    //     comp.x = 0;
+    //     comp.y = 0;
+    //     comp.px = 0;
+    //     comp.py = 0;
+    //     comp.minArea = 20000;
+    //     comp.draggingWindow = false;
+    //     expect(comp.x).toEqual(0);
+    //     expect(comp.y).toEqual(0);
+    //     expect(comp.px).toEqual(0);
+    //     expect(comp.py).toEqual(0);
+    //     expect(comp.minArea).toEqual(20000);
+    //     expect(comp.draggingWindow).toEqual(false);
 
-    });
-    it('onCloseClick  method check', () => {
-        comp.onCloseClick();
-        miniservice.minimizeFlag = false;
-    });
+    // });
+    // it('onCloseClick  method check', () => {
+    //     comp.onCloseClick();
+    //     miniservice.minimizeFlag = false;
+    // });
 
 
-    it('ngAfterContentInit  method check minimize  true condition', () => {
+    // it('ngAfterContentInit  method check minimize  true condition', () => {
 
-        fixture.detectChanges();
-        comp.minimize = true;
-        comp.ngAfterContentInit();
-        expect(comp.amexioHeader).toBeDefined();
-        expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
-        expect(comp.minimize).toEqual(true);
-        comp.amexioHeader.toArray()[0].minimize = comp.minimize;
-        comp.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
-            comp.textName = event.textName;
-            miniservice.onMinimizeClick(this);
-        });
-    });
-    it('ngAfterContentInit  method check minimize false condition', () => {
+    //     fixture.detectChanges();
+    //     comp.minimize = true;
+    //     comp.ngAfterContentInit();
+    //     expect(comp.amexioHeader).toBeDefined();
+    //     expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
+    //     expect(comp.minimize).toEqual(true);
+    //     comp.amexioHeader.toArray()[0].minimize = comp.minimize;
+    //     comp.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
+    //         comp.textName = event.textName;
+    //         miniservice.onMinimizeClick(this);
+    //     });
+    // });
+    // it('ngAfterContentInit  method check minimize false condition', () => {
 
-        fixture.detectChanges();
-        comp.minimize = false;
-        comp.ngAfterContentInit();
-        expect(comp.amexioHeader).toBeDefined();
-        expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
-        expect(comp.minimize).toEqual(false);
-        comp.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
-            miniservice.onCloseClick(this);
-        });
-    });
-    it('ngAfterContentInit  method check maximize check if', () => {
+    //     fixture.detectChanges();
+    //     comp.minimize = false;
+    //     comp.ngAfterContentInit();
+    //     expect(comp.amexioHeader).toBeDefined();
+    //     expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
+    //     expect(comp.minimize).toEqual(false);
+    //     comp.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
+    //         miniservice.onCloseClick(this);
+    //     });
+    // });
+    // it('ngAfterContentInit  method check maximize check if', () => {
 
-        fixture.detectChanges();
-        comp.maximize = true;
-        comp.ngAfterContentInit();
-        expect(comp.amexioHeader).toBeDefined();
-        expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
-        expect(comp.maximize).toEqual(true);
-        comp.amexioHeader.toArray()[0].setMaximizeDataCE(comp.maximize, comp.isFullWindow);
-        comp.amexioHeader.toArray()[0].maximizeBehaiourCe.subscribe((max: any) => {
-            comp.maximumWindowStyle = comp.setMaximizeClass(max);
-        });
-    });
+    //     fixture.detectChanges();
+    //     comp.maximize = true;
+    //     comp.ngAfterContentInit();
+    //     expect(comp.amexioHeader).toBeDefined();
+    //     expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
+    //     expect(comp.maximize).toEqual(true);
+    //     comp.amexioHeader.toArray()[0].setMaximizeDataCE(comp.maximize, comp.isFullWindow);
+    //     comp.amexioHeader.toArray()[0].maximizeBehaiourCe.subscribe((max: any) => {
+    //         comp.maximumWindowStyle = comp.setMaximizeClass(max);
+    //     });
+    // });
 
-    it('ngAfterContentInit  method check maximize check else', () => {
-        fixture.detectChanges();
-        comp.maximize = false;
-        comp.ngAfterContentInit();
-        expect(comp.amexioHeader).toBeDefined();
-        expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
-        expect(comp.maximize).toEqual(false);
-    });
+    // it('ngAfterContentInit  method check maximize check else', () => {
+    //     fixture.detectChanges();
+    //     comp.maximize = false;
+    //     comp.ngAfterContentInit();
+    //     expect(comp.amexioHeader).toBeDefined();
+    //     expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
+    //     expect(comp.maximize).toEqual(false);
+    // });
 });

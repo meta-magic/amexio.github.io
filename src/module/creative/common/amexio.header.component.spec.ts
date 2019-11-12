@@ -27,157 +27,157 @@ describe('amexio-header-ce', () => {
 
     });
 
-    it('variable check', () => {
+    // it('variable check', () => {
 
-        comp.cclass = '';
-        comp.closeable = false;
-        comp.maximizeCe = false;
-        comp.minimize = false;
-        comp.isFullWindowCe = false;
-        expect(comp.minimize).toBe(false);
-        expect(comp.cclass).toBe('');
-        expect(comp.maximizeCe).toBe(false);
-    });
+    //     comp.cclass = '';
+    //     comp.closeable = false;
+    //     comp.maximizeCe = false;
+    //     comp.minimize = false;
+    //     comp.isFullWindowCe = false;
+    //     expect(comp.minimize).toBe(false);
+    //     expect(comp.cclass).toBe('');
+    //     expect(comp.maximizeCe).toBe(false);
+    // });
 
-    it('onMinimizeClick  method check', () => {
-        comp.onMinimizeClick();
-        comp.closeableBehaiour.next(false);
-        comp.minimizeWindow.subscribe((g: any) => {
-            expect(event).toEqual(this, g);
-        });
-    });
+    // it('onMinimizeClick  method check', () => {
+    //     comp.onMinimizeClick();
+    //     comp.closeableBehaiour.next(false);
+    //     comp.minimizeWindow.subscribe((g: any) => {
+    //         expect(event).toEqual(this, g);
+    //     });
+    // });
 
 
-    it('onCloseClick() method check', () => {
-        comp.onCloseClick();
-        comp.closeableBehaiour.next(false);
-        comp.closeDataEmit.subscribe((g: any) => {
-            expect(event).toEqual(this, g);
-        });
-    });
+    // it('onCloseClick() method check', () => {
+    //     comp.onCloseClick();
+    //     comp.closeableBehaiour.next(false);
+    //     comp.closeDataEmit.subscribe((g: any) => {
+    //         expect(event).toEqual(this, g);
+    //     });
+    // });
 
-    it('sizeChange method check true toggle', () => {
+    // it('sizeChange method check true toggle', () => {
 
-        comp.sizeChange();
-        comp.isFullWindowCe = false;
-        expect(comp.isFullWindowCe).toEqual(false);
-        comp.isFullWindowCe = true;
-        comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
-    });
-    it('sizeChange method check false toggle', () => {
-        comp.sizeChange();
-        comp.isFullWindowCe = true;
-        expect(comp.isFullWindowCe).toEqual(true);
-        comp.isFullWindowCe = false;
-        comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
-    });
-    it('setMaximizeDataCE call', () => {
-        const maximize = true;
-        const isFullWindow = true;
-        comp.setMaximizeDataCE(maximize, isFullWindow);
-        comp.maximizeCe = maximize;
-        comp.isFullWindowCe = isFullWindow;
-        comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
-    });
+    //     comp.sizeChange();
+    //     comp.isFullWindowCe = false;
+    //     expect(comp.isFullWindowCe).toEqual(false);
+    //     comp.isFullWindowCe = true;
+    //     comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
+    // });
+    // it('sizeChange method check false toggle', () => {
+    //     comp.sizeChange();
+    //     comp.isFullWindowCe = true;
+    //     expect(comp.isFullWindowCe).toEqual(true);
+    //     comp.isFullWindowCe = false;
+    //     comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
+    // });
+    // it('setMaximizeDataCE call', () => {
+    //     const maximize = true;
+    //     const isFullWindow = true;
+    //     comp.setMaximizeDataCE(maximize, isFullWindow);
+    //     comp.maximizeCe = maximize;
+    //     comp.isFullWindowCe = isFullWindow;
+    //     comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
+    // });
 
-    it('ngAfterViewInit  method check 1st if', () => {
-        comp.textName = comp.content.nativeElement.innerText;
-        comp.ngAfterViewInit();
-        comp.textName = 'kedar';
-        comp.minimizeIcon = 'fa fa-home';
-        expect(comp.textName).toEqual('kedar');
-        expect(comp.minimizeIcon).toEqual('fa fa-home');
-        return comp.textName;
-    });
-    it('ngAfterViewInit  method check 1st els', () => {
-        comp.textName = comp.content.nativeElement.innerText;
-        comp.ngAfterViewInit();
-        comp.textName = '';
-        comp.minimizeIcon = '';
-        expect(comp.textName).toEqual('');
-        expect(comp.minimizeIcon).toEqual('');
-    });
-    it('ngAfterViewInit  method check 2nd if', () => {
-        comp.textName = comp.content.nativeElement.innerText;
-        comp.ngAfterViewInit();
-        comp.textName = 'kedar';
-        comp.minimizeIcon = 'fa fa-home';
-        expect(comp.textName).toEqual('kedar');
-        expect(comp.minimizeIcon).toEqual('fa fa-home');
-        comp.ngAfterViewInit();
-        comp.textName = 'kedar';
-        comp.minimizeIcon = '';
-        expect(comp.textName).toEqual('kedar');
-        expect(comp.minimizeIcon).toEqual('');
-        return comp.textName;
-    });
-    it('ngAfterViewInit  method check 2nd else', () => {
-        comp.textName = comp.content.nativeElement.innerText;
-        comp.ngAfterViewInit();
-        comp.textName = 'kedar';
-        comp.minimizeIcon = 'fa fa-home';
-        expect(comp.textName).toEqual('kedar');
-        expect(comp.minimizeIcon).toEqual('fa fa-home');
-        comp.textName = '';
-        comp.minimizeIcon = 'fa fa-home'
-        expect(comp.textName).toEqual('');
-        expect(comp.minimizeIcon).toEqual('fa fa-home');
-        return comp.minimizeIcon;
-    });
-    it('ngAfterViewInit  method check !this.minimizeIcon && !this.textName', () => {
-        comp.textName = comp.content.nativeElement.innerText;
-        comp.ngAfterViewInit();
-        comp.textName = '';
-        comp.minimizeIcon = ''
-        expect(comp.textName).toEqual('');
-        expect(comp.minimizeIcon).toEqual('');
-        return comp.minimizeIcon = 'fa fa-file';
-    });
-    it('ngAfterViewInit  method check this.minimizeIcon && this.textName', () => {
-        comp.textName = comp.content.nativeElement.innerText;
-        comp.ngAfterViewInit();
-        comp.textName = 'kedar';
-        comp.minimizeIcon = 'fa fa-home';
-        expect(comp.textName).toEqual('kedar');
-        expect(comp.minimizeIcon).toEqual('fa fa-home');
-        return comp.textName = 'kedar';
-    });
-      it('sizeChange if call', () => {
-        comp.fullScreenFlag = true; 
-        comp.sizeChange();
-        comp.isFullWindowCe = !comp.isFullWindowCe;
-        comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
-        comp.maximizeWindow.emit(comp,  comp.isFullWindowCe);
-        expect(comp.fullScreenFlag).toEqual(true);
-        //   comp.fullscreenMax = !comp.fullscreenMax;
-        //   comp.maximizeBehaiourCe.next(comp.fullscreenMax);
-        //   comp.maximizeWindow.emit(this, comp.fullscreenMax);
-    });
+    // it('ngAfterViewInit  method check 1st if', () => {
+    //     comp.textName = comp.content.nativeElement.innerText;
+    //     comp.ngAfterViewInit();
+    //     comp.textName = 'kedar';
+    //     comp.minimizeIcon = 'fa fa-home';
+    //     expect(comp.textName).toEqual('kedar');
+    //     expect(comp.minimizeIcon).toEqual('fa fa-home');
+    //     return comp.textName;
+    // });
+    // it('ngAfterViewInit  method check 1st els', () => {
+    //     comp.textName = comp.content.nativeElement.innerText;
+    //     comp.ngAfterViewInit();
+    //     comp.textName = '';
+    //     comp.minimizeIcon = '';
+    //     expect(comp.textName).toEqual('');
+    //     expect(comp.minimizeIcon).toEqual('');
+    // });
+    // it('ngAfterViewInit  method check 2nd if', () => {
+    //     comp.textName = comp.content.nativeElement.innerText;
+    //     comp.ngAfterViewInit();
+    //     comp.textName = 'kedar';
+    //     comp.minimizeIcon = 'fa fa-home';
+    //     expect(comp.textName).toEqual('kedar');
+    //     expect(comp.minimizeIcon).toEqual('fa fa-home');
+    //     comp.ngAfterViewInit();
+    //     comp.textName = 'kedar';
+    //     comp.minimizeIcon = '';
+    //     expect(comp.textName).toEqual('kedar');
+    //     expect(comp.minimizeIcon).toEqual('');
+    //     return comp.textName;
+    // });
+    // it('ngAfterViewInit  method check 2nd else', () => {
+    //     comp.textName = comp.content.nativeElement.innerText;
+    //     comp.ngAfterViewInit();
+    //     comp.textName = 'kedar';
+    //     comp.minimizeIcon = 'fa fa-home';
+    //     expect(comp.textName).toEqual('kedar');
+    //     expect(comp.minimizeIcon).toEqual('fa fa-home');
+    //     comp.textName = '';
+    //     comp.minimizeIcon = 'fa fa-home'
+    //     expect(comp.textName).toEqual('');
+    //     expect(comp.minimizeIcon).toEqual('fa fa-home');
+    //     return comp.minimizeIcon;
+    // });
+    // it('ngAfterViewInit  method check !this.minimizeIcon && !this.textName', () => {
+    //     comp.textName = comp.content.nativeElement.innerText;
+    //     comp.ngAfterViewInit();
+    //     comp.textName = '';
+    //     comp.minimizeIcon = ''
+    //     expect(comp.textName).toEqual('');
+    //     expect(comp.minimizeIcon).toEqual('');
+    //     return comp.minimizeIcon = 'fa fa-file';
+    // });
+    // it('ngAfterViewInit  method check this.minimizeIcon && this.textName', () => {
+    //     comp.textName = comp.content.nativeElement.innerText;
+    //     comp.ngAfterViewInit();
+    //     comp.textName = 'kedar';
+    //     comp.minimizeIcon = 'fa fa-home';
+    //     expect(comp.textName).toEqual('kedar');
+    //     expect(comp.minimizeIcon).toEqual('fa fa-home');
+    //     return comp.textName = 'kedar';
+    // });
+    //   it('sizeChange if call', () => {
+    //     comp.fullScreenFlag = true; 
+    //     comp.sizeChange();
+    //     comp.isFullWindowCe = !comp.isFullWindowCe;
+    //     comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
+    //     comp.maximizeWindow.emit(comp,  comp.isFullWindowCe);
+    //     expect(comp.fullScreenFlag).toEqual(true);
+    //     //   comp.fullscreenMax = !comp.fullscreenMax;
+    //     //   comp.maximizeBehaiourCe.next(comp.fullscreenMax);
+    //     //   comp.maximizeWindow.emit(this, comp.fullscreenMax);
+    // });
 
-    it('sizeChange else call', () => {
-        comp.fullScreenFlag = false; 
-        comp.sizeChange();
-        comp.isFullWindowCe = !comp.isFullWindowCe;
-        comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
-        comp.maximizeWindow.emit(this,  comp.isFullWindowCe);
-        expect(comp.fullScreenFlag).toEqual(false);
-    });
+    // it('sizeChange else call', () => {
+    //     comp.fullScreenFlag = false; 
+    //     comp.sizeChange();
+    //     comp.isFullWindowCe = !comp.isFullWindowCe;
+    //     comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
+    //     comp.maximizeWindow.emit(this,  comp.isFullWindowCe);
+    //     expect(comp.fullScreenFlag).toEqual(false);
+    // });
 
-    it('maxScreenChange1  method check', () => {
-        let event  = {
-        }
-        comp.maxScreenChange1(event);
-        comp.maximizeWindow1.subscribe((g: any) => {
-            expect(event).toEqual({ tempEvent: event, tempThis: this }, g);
-        });
-    });
-    it('minScreenChange1  method check', () => {
-        let event  = {
-        }
-        comp.minScreenChange1(event);
-        comp.minimizeWindow1.subscribe((g: any) => {
-            expect(event).toEqual({ tempEvent: event, tempThis: this }, g);
-        });
-    });
+    // it('maxScreenChange1  method check', () => {
+    //     let event  = {
+    //     }
+    //     comp.maxScreenChange1(event);
+    //     comp.maximizeWindow1.subscribe((g: any) => {
+    //         expect(event).toEqual({ tempEvent: event, tempThis: this }, g);
+    //     });
+    // });
+    // it('minScreenChange1  method check', () => {
+    //     let event  = {
+    //     }
+    //     comp.minScreenChange1(event);
+    //     comp.minimizeWindow1.subscribe((g: any) => {
+    //         expect(event).toEqual({ tempEvent: event, tempThis: this }, g);
+    //     });
+    // });
 });
 
