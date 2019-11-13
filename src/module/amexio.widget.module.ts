@@ -5,15 +5,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AmexioTabPillComponent } from '../index';
 
-import { AmexioRuntimeModule } from './arc/amexio.arc.module';
 import { AmexioBaseContextMenuModule } from './base/base.contextmenu.component.module';
 import { AmexioCreativeModule } from './creative/amexio.creative.module';
+import { AmexioRuntimeModule } from './creative/arc/amexio.arc.module';
 import { AmexioDataModule } from './data/amexio.data.module';
-import { AmexioFormsModule } from './forms/amexio.forms.module';
 import { AmexioLayoutModule } from './layout/amexio.layout.module';
 import { AmexioMediaModule } from './media/amexio.media.module';
 import { AmexioNavModule } from './navigation/amexio.nav.module';
 import { AmexioPaneModule } from './panes/amexio.pane.module';
+import { AmexioFormsModule } from './standard/forms/amexio.forms.module';
 
 import { CommonDataService } from './services/data/common.data.service';
 import { DeviceQueryService } from './services/device/device.query.service';
@@ -36,7 +36,7 @@ export * from './models/googlemap.model';
 export * from './models/availableslots.model';
 export * from './models/day.model';
 export * from './models/time.model';
-export * from './models/time.util';
+export * from './utils/time.util';
 export * from './models/propertygrid.model';
 export * from './directive/router-animation.directive';
 export * from './services/routing/routing.service';

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { AmexioBorderLayoutItemComponent } from './borderlayoutitem.component';
-import { AmexioButtonComponent } from '../../forms/buttons/button.component';
+import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 
 import { CommonIconComponent } from './../../base/components/common.icon.component';
 

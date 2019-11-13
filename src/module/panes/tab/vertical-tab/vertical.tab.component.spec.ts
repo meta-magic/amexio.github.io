@@ -4,7 +4,7 @@ import { IconLoaderService } from '../../../../index';
 import { AmexiodialoguePaneComponent } from './../../dialogue/dialogue.pane.component';
 import { AmexioVerticalTabComponent } from './vertical.tab.component';
 import { AmexioTabPillComponent } from './../tab.pill.component';
-import { AmexioButtonComponent } from './../../../forms/buttons/button.component';
+import { AmexioButtonComponent } from '../../../standard/forms/buttons/button.component';
 import { CommonIconComponent } from './../../../base/components/common.icon.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Component, ComponentFactoryResolver, NO_ERRORS_SCHEMA } from '@angular/core';

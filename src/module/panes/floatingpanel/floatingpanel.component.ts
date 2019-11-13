@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Renderer2 } from '@angular/core';
 import { OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 import {CommonDataService} from '../../services/data/common.data.service';
+import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 
 import { LifeCycleBaseComponent } from '../../../module/base/lifecycle.base.component';
 

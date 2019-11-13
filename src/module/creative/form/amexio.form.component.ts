@@ -6,7 +6,7 @@ import {
 import { FormGroup, NgForm, NgModel } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
-import { AmexioButtonComponent } from '../../forms/buttons/button.component';
+import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { AmexioCardCEActionComponent } from '../common/amexio.action.component';
 import { AmexioCardCEBodyComponent } from '../common/amexio.body.component';
 import { AmexioCardCEHeaderComponent } from '../common/amexio.header.component';

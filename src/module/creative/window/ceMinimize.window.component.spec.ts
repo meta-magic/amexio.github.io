@@ -1,4 +1,4 @@
-import { AmexioButtonComponent } from '../../forms/buttons/button.component';
+import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 

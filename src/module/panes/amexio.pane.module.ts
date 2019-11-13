@@ -39,7 +39,7 @@ import { DeviceQueryService } from '../services/device/device.query.service';
 import { IconLoaderService } from '../services/icon/icon.service';
 import { AmexioFormGroupDirective } from './form/form.group.directive';
 
-import { AmexioFormsModule } from '../forms/amexio.forms.module';
+import { AmexioFormsModule } from '../standard/forms/amexio.forms.module';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
 import { OverlayContainerComponent } from './overlay/overlay.component';

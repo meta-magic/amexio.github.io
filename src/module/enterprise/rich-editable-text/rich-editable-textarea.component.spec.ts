@@ -7,7 +7,7 @@ import { AmexioRowComponent } from '../../layout/rows/row.component';
 
 import { AmexioColumnComponent } from '../../layout/columns/column.component';
 
-import { AmexioButtonComponent } from '../../forms/buttons/button.component';
+import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { AmexioTabComponent } from '../../panes/tab/tab.component';
 import { AmexioTabPillComponent } from '../../panes/tab/tab.pill.component';
 import { EditableTextComponent } from './editable-text/editable-text.component';

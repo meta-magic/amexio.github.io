@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ElementRef, Renderer2, SimpleChange, Type } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
+import { AmexioFormsModule } from '../../standard/forms/amexio.forms.module';
 import { AmexioFloatingPanelComponent } from './floatingpanel.component';
-import { AmexioFormsModule } from '../../forms/amexio.forms.module';
-import { SimpleChange, ElementRef, Type, Renderer2 } from '@angular/core';
-
 
 describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
     let fixture: ComponentFixture<AmexioFloatingPanelComponent>;
     let event1: any;
-    let changes :any
+    let changes: any;
     const rendererMock = jasmine.createSpyObj('rendererMock', ['listen']);
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -22,7 +21,7 @@ describe('amexio-floating-panel', () => {
         comp = fixture.componentInstance;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
         comp.showPanel = true;
-        changes =  new SimpleChange(null, comp.showPanel, false)
+        changes =  new SimpleChange(null, comp.showPanel, false);
 
     });
     // it('should create the app', async(() => {
@@ -34,21 +33,21 @@ describe('amexio-floating-panel', () => {
 
     it('ngOnchanges method call if condition', () => {
         let element = fixture.nativeElement;
-        let showPanel = true;
+        const showPanel = true;
         comp.absolute = true;
         comp.showPanel = showPanel;
         changes['showPanel'] = true;
-        comp.ngOnChanges(changes);       
+        comp.ngOnChanges(changes);
         fixture.detectChanges();
         expect(changes['showPanel']).toEqual(true);
         comp.getZindex(comp.showPanel);
         expect(comp.absolute).toBe(true);
         comp.setPanelAbsolutePostion();
     });
- 
+
     it('ngOnchanges method call else condition', () => {
         let element = fixture.nativeElement;
-        let showPanel = true;
+        const showPanel = true;
         comp.absolute = false;
         comp.showPanel = showPanel;
         changes['showPanel'] = true;
@@ -62,7 +61,7 @@ describe('amexio-floating-panel', () => {
 
     it('ngOnchanges method first else condition', () => {
         let element = fixture.nativeElement;
-        let showPanel = true;
+        const showPanel = true;
         comp.absolute = false;
         comp.showPanel = showPanel;
         changes['showPanel'] = false;
@@ -71,14 +70,14 @@ describe('amexio-floating-panel', () => {
         expect(changes['showPanel']).toEqual(false);
     });
     it('getZindex If Method', () => {
-        let showPanel = true;
+        const showPanel = true;
         comp.commanservice.zindex = 600;
         comp.getZindex(showPanel);
         expect(showPanel).toBe(true);
         comp.commanservice.zindex = comp.commanservice.zindex + 100;
     });
     it('getZindex Else Method', () => {
-        let showPanel = false;
+        const showPanel = false;
         comp.commanservice.zindex = 600;
         comp.getZindex(showPanel);
         expect(showPanel).toBe(false);
@@ -161,7 +160,7 @@ describe('amexio-floating-panel', () => {
         expect(comp.width).not.toEqual('');
         comp.style['width'] = comp.width + 'px';
         comp.arrowPadding();
-    })
+    });
 
     it('panel style method else condition ', () => {
         comp.relative = false;
@@ -180,7 +179,7 @@ describe('amexio-floating-panel', () => {
         expect(comp.relative).toEqual(false);
         comp.setPanelStylePostion();
         comp.arrowPadding();
-    })
+    });
     it('arrowPadding method', () => {
         comp.arrow = true;
         comp.arrowPadding();
@@ -219,11 +218,11 @@ describe('amexio-floating-panel', () => {
         comp.style['z-index'] = comp.commanservice.zindex;
         comp.style['opacity'] = '1';
         comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
-        expect(comp.width).not.toEqual('')
+        expect(comp.width).not.toEqual('');
         comp.style['width'] = comp.width + 'px';
         comp.setPanelStylePostion();
         comp.arrowPadding();
-    })
+    });
     it('setpanelAbsolutePosition else  method', () => {
         comp.width = '';
         comp.commanservice.zindex = 600;
@@ -238,7 +237,7 @@ describe('amexio-floating-panel', () => {
         comp.width = '400px';
         comp.setPanelStylePostion();
         comp.arrowPadding();
-    })
+    });
     it('checking togglePanel method', () => {
         comp.showPanel = false;
         comp.togglePanel();
@@ -257,16 +256,16 @@ describe('amexio-floating-panel', () => {
         comp.pos3 = 0;
         comp.pos4 = 0;
         comp.bottomPosition = '20px';
-        comp.style = { 'bottom': '10px' };
-        let floatingPanel = {
-            'offsetTop': 1200,
-            'offsetLeft': 145,
-            'style': {
-                'top': '20px',
-                'left': '10px',
-                'opacity': '1'
-            }
-        }
+        comp.style = { bottom: '10px' };
+        const floatingPanel = {
+            offsetTop: 1200,
+            offsetLeft: 145,
+            style: {
+                top: '20px',
+                left: '10px',
+                opacity: '1',
+            },
+        };
         let e = jasmine.createSpyObj('e', ['preventDefault']);
         e['clientX'] = 1200;
         e['clientY'] = 1400;
@@ -290,16 +289,16 @@ describe('amexio-floating-panel', () => {
         comp.pos2 = 0;
         comp.pos3 = 0;
         comp.pos4 = 0;
-        comp.style = { 'bottom': '10px' };
-        let floatingPanel = {
-            'offsetTop': 1200,
-            'offsetLeft': 145,
-            'style': {
-                'top': '20px',
-                'left': '10px',
-                'opacity': '1'
-            }
-        }
+        comp.style = { bottom: '10px' };
+        const floatingPanel = {
+            offsetTop: 1200,
+            offsetLeft: 145,
+            style: {
+                top: '20px',
+                left: '10px',
+                opacity: '1',
+            },
+        };
         // window.event = jasmine.createSpyObj('e', ['preventDefault']);
         window.event ['clientX'] = 1200;
         window.event ['clientY'] = 1400;
@@ -313,19 +312,19 @@ describe('amexio-floating-panel', () => {
         comp.pos4 = e['clientY'];
         expect(comp.bottomPosition).toBeUndefined();
     });
-   
+
     it('onMouseDown method if  call', () => {
         comp.draggable = true;
-        let floatingPanel = {
-            'offsetTop': 1200,
-            'offsetLeft': 145,
-            'style': {
-                'top': '20px',
-                'left': '10px',
-                'opacity': '1'
-            }
-        }
-        let div = document.createElement('div');
+        const floatingPanel = {
+            offsetTop: 1200,
+            offsetLeft: 145,
+            style: {
+                top: '20px',
+                left: '10px',
+                opacity: '1',
+            },
+        };
+        const div = document.createElement('div');
         div.setAttribute('name', 'floatingheader');
         let event = jasmine.createSpyObj('e', ['preventDefault']);
         event['clientX'] = 1200;
@@ -352,21 +351,19 @@ describe('amexio-floating-panel', () => {
             () => comp.elementDrag(event, floatingPanel));
     });
 
-
-
     it('onMouseDown method else ', () => {
-       
-        let floatingPanel = {
-            'offsetTop': 1200,
-            'offsetLeft': 145,
-            'style': {
-                'top': '20px',
-                'left': '10px',
-                'opacity': '1'
-            }
-        }
-        let div = document.createElement('div');
-        let event = jasmine.createSpyObj('e', ['preventDefault']);
+
+        const floatingPanel = {
+            offsetTop: 1200,
+            offsetLeft: 145,
+            style: {
+                top: '20px',
+                left: '10px',
+                opacity: '1',
+            },
+        };
+        const div = document.createElement('div');
+        const event = jasmine.createSpyObj('e', ['preventDefault']);
         event['clientX'] = 1200;
         event['clientY'] = 1400;
         event['target'] = div;
@@ -377,19 +374,18 @@ describe('amexio-floating-panel', () => {
         expect(event.target.getAttribute('name')).not.toEqual('floatingheader');
     });
 
-
     it('onMouseDown method if nested call --checking else condition', () => {
         comp.draggable = true;
-        let floatingPanel = {
-            'offsetTop': 1200,
-            'offsetLeft': 145,
-            'style': {
-                'top': '20px',
-                'left': '10px',
-                'opacity': '1'
-            }
-        }
-        let div = document.createElement('div');
+        const floatingPanel = {
+            offsetTop: 1200,
+            offsetLeft: 145,
+            style: {
+                top: '20px',
+                left: '10px',
+                opacity: '1',
+            },
+        };
+        const div = document.createElement('div');
         div.setAttribute('name', 'floatingheader');
         let event = jasmine.createSpyObj('e', ['preventDefault']);
         event['clientX'] = 1200;
@@ -400,7 +396,7 @@ describe('amexio-floating-panel', () => {
         expect(event.target.getAttribute('name')).toBeDefined();
         expect(event.target.getAttribute('name')).toEqual('floatingheader');
         event = window.event;
-        expect(event).toBe(window.event)
+        expect(event).toBe(window.event);
         comp.pos3 = event.clientX;
         comp.pos4 = event.clientY;
         comp.documentMouseUPListener = 'kijjj';

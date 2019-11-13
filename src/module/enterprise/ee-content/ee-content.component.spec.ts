@@ -5,7 +5,7 @@ import { AmexioImageComponent } from '../../media/image/image.component';
 
 import { ContentComponent } from './ee.content';
 
-import { AmexioRatingComponent } from './../../forms/rating/rating.component';
+import { AmexioRatingComponent } from '../../standard/forms/rating/rating.component';
 
 describe('amexio-ee-content', () => {
     let comp: ContentComponent;

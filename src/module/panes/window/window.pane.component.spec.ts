@@ -1,19 +1,19 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 
-import { AmexioButtonComponent } from '../../forms/buttons/button.component';
+import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { MinimizeWindowComponent } from './minimize.window.component';
 
 import { AmexioFooterComponent } from '../action/pane.action.footer';
 import { AmexioBodyComponent } from '../body/pane.action.body';
 import { AmexioHeaderComponent } from '../header/pane.action.header';
 
-import { MinimizeService } from './minimize-service.service';
-import { CommonIconComponent } from './../../base/components/common.icon.component';
-import { AmexioWindowPaneComponent } from './window.pane.component';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
+import { MinimizeService } from './minimize-service.service';
+import { AmexioWindowPaneComponent } from './window.pane.component';
 
 @Component({
     selector: 'test-cmp',
@@ -38,7 +38,7 @@ describe('amexio-window', () => {
                 TestWindowComponent,
                 AmexioFooterComponent,
                 AmexioBodyComponent,
-                MinimizeWindowComponent
+                MinimizeWindowComponent,
             ],
             providers: [IconLoaderService, MinimizeService],
         }).overrideModule(BrowserDynamicTestingModule, { set: { entryComponents: [MinimizeWindowComponent] } }).compileComponents();
@@ -51,7 +51,6 @@ describe('amexio-window', () => {
         fixture.detectChanges();
         miniservice = TestBed.get(MinimizeService);
     });
-
 
     it('variable check', () => {
         comp.x = 0;
@@ -70,7 +69,6 @@ describe('amexio-window', () => {
         comp.onCloseClick();
         miniservice.minimizeFlag = false;
     });
-
 
     it('ngAfterContentInit  method check minimize  true condition', () => {
 
@@ -123,24 +121,24 @@ describe('amexio-window', () => {
     });
 
     it('setMaximizeClass If method', () => {
-        comp.setMaximizeClass(false)
+        comp.setMaximizeClass(false);
         comp.isFullWindow = false;
         expect(comp.width).toBe('100%');
         return {
             'margin-top': '0', 'height': '100%',
-        }
+        };
 
-    })
+    });
 
     it('setMaximizeClass Else method', () => {
-        comp.setMaximizeClass(true)
+        comp.setMaximizeClass(true);
         comp.isFullWindow = true;
-        this.width = this.dummyWidth;
+        comp.width = comp.dummyWidth;
         expect(comp.width).toBe(comp.dummyWidth);
         return {
             'margin-top': '1%', 'height': '96%',
-        }
+        };
 
-    })
+    });
 });
 

@@ -17,7 +17,7 @@
  * INFO: THIS SERVICE USED FOR SCRIPT LOADING
  */
 import { Injectable } from '@angular/core';
-import { LoginProvider } from '../../forms/socialmedia/login.provider';
+import { LoginProvider } from '../../standard/forms/socialmedia/login.provider';
 
 @Injectable()
 export class ScriptLoadService {

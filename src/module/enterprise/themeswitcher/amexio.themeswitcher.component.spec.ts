@@ -14,19 +14,19 @@ import { AmexioCardCEActionComponent } from '../../creative/common/amexio.action
 import { AmexioFormActionCEComponent } from '../../creative/form/form.action.component'
 import { AmexioFormCEComponent } from '../../creative/form/amexio.form.component';
 import { AmexiodialoguePaneComponent } from '../../panes/dialogue/dialogue.pane.component';
-import { AmexioLabelComponent } from '../../forms/label/label.component';
+import { AmexioLabelComponent } from '../../standard/forms/label/label.component';
 import { AmexioCardComponent } from '../../layout/card/card.component';
 import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
 import { AmexioBodyComponent } from '../../panes/body/pane.action.body';
 import { AmexioFooterComponent } from '../../panes/action/pane.action.footer';
-import { AmexioButtonComponent } from '../../forms/buttons/button.component';
+import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { AmexioContextMenuComponent } from '../../base/base.contextmenu.component';
 import { DeviceQueryService } from '../../services/device/device.query.service';
 import { SpeechBubbleComponent } from '../../data/speech-bubble/speech-bubble.component';
 import { AmexioNavDesktopMenuComponent } from '../../navigation/navbar/navdesktopmenu';
 import { AmexioThemeSwitcherComponent } from './amexio.themeswitcher.component';
-import { AmexioFloatingButtonComponent } from '../../forms/floatingbutton/floatingbutton.component';
-import { AmexioToggleComponent } from '../../forms/toggle/toggle.component';
+import { AmexioFloatingButtonComponent } from '../../standard/forms/floatingbutton/floatingbutton.component';
+import { AmexioToggleComponent } from '../../standard/forms/toggle/toggle.component';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { SimpleChange } from '@angular/core';
 

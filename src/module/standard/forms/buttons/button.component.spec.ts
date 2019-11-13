@@ -1,0 +1,144 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { IconLoaderService } from '../../../../index';
+import { CommonIconComponent } from '../../../base/components/common.icon.component';
+import { AmexioButtonComponent } from './button.component';
+
+describe('amexio-button', () => {
+  let comp: AmexioButtonComponent;
+  let fixture: ComponentFixture<AmexioButtonComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [FormsModule],
+      declarations: [AmexioButtonComponent, CommonIconComponent],
+      providers: [IconLoaderService],
+    });
+    fixture = TestBed.createComponent(AmexioButtonComponent);
+    comp = fixture.componentInstance;
+    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+
+  });
+
+
+  // it('check disable property ',() => {
+
+  //   expect(comp.disabled).toEqual(jasmine.any(false));
+  //   //comp.setDisabled();
+  // });
+
+
+  it('check method  getBackgroundColor', () => {
+
+    comp.badgeClass();
+    comp.type = 'primary';
+    expect(comp.type).toEqual('primary');
+    comp.type = 'theme-color';
+    expect(comp.type).toEqual('theme-color');
+    let colorCode = 'btn-primary-badge';
+    expect(colorCode).toBe('btn-primary-badge');
+
+
+
+
+    comp.badgeClass();
+    comp.type = 'secondary';
+    expect(comp.type).toEqual('secondary');
+    comp.type = 'theme-backgroundcolor';
+    expect(comp.type).toEqual('theme-backgroundcolor');
+    colorCode = 'btn-secondary-badge';
+    expect(colorCode).toBe('btn-secondary-badge');
+
+    comp.badgeClass();
+    comp.type = 'success';
+    expect(comp.type).toEqual('success');
+    comp.type = 'green';
+    expect(comp.type).toEqual('green');
+    colorCode = 'btn-success-badge';
+    expect(colorCode).toBe('btn-success-badge');
+
+
+
+    comp.badgeClass();
+    comp.type = 'danger';
+    expect(comp.type).toEqual('danger');
+    comp.type = 'red';
+    expect(comp.type).toEqual('red');
+    colorCode = 'btn-danger-badge';
+    expect(colorCode).toBe('btn-danger-badge');
+
+
+
+    comp.badgeClass();
+    comp.type = 'warning';
+    expect(comp.type).toEqual('warning');
+    comp.type = 'yellow';
+    expect(comp.type).toEqual('yellow');
+    colorCode = 'btn-warning-badge';
+    expect(colorCode).toBe('btn-warning-badge');
+
+    comp.badgeClass();
+    comp.type = 'transparent';
+    expect(comp.type).toEqual('transparent');
+    colorCode = 'btn-transparent-badge';
+    expect(colorCode).toBe('btn-transparent-badge');
+
+
+  });
+
+  it('check setDisabled method', () => {
+    let dis: boolean;
+    comp.setDisabled(dis);
+    comp.disabled = true;
+    expect(comp.disabled).toEqual(comp.disabled);
+  });
+
+  it('setRoundEdge If round-edge()', () => {
+    let type = 'round-edge';
+    comp.setRoundEdge('round-edge');
+    expect(type).toEqual('round-edge');
+    comp.roundedgeclass = 'roundEdgeCommonCss';
+  });
+
+  it('setRoundEdge If classic', () => {
+    let type = 'classic';
+    comp.setRoundEdge('classic');
+    expect(type).toEqual('classic')
+    comp.roundedgeclass = 'classicCommonCss';
+  });
+
+  it('IconClick If condition', () => {
+    comp.disabled = false;
+
+    comp.IconClick(event);
+    expect(comp.disabled).toEqual(false);
+    event.stopPropagation();
+    comp.onIconClick.subscribe((g: any) => {
+      expect(event).toEqual(g);
+    });
+  });
+  it('IconClick else condition', () => {
+    comp.disabled = true;
+    expect(comp.disabled).toEqual(true);
+    comp.IconClick(event);
+    expect(comp.disabled).toEqual(true);
+  });
+
+  it('check method  buttonClick() if ', () => {
+    comp.buttonClick(event);
+    comp.ispressed = !comp.ispressed;
+    comp.disabled = true;
+    expect(comp.disabled).toEqual(true);
+    event.stopPropagation();
+    comp.onClick.subscribe((g: any) => {
+      expect(event).toEqual(g);
+    });
+  });
+  it('check method  buttonClick() else', () => {
+    comp.buttonClick(event);
+    comp.ispressed = !comp.ispressed;
+    comp.disabled = false;
+    expect(comp.disabled).toEqual(false);
+  });
+});

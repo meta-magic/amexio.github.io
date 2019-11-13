@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { DataGridFilterComponent } from './datagrid.filter.component';
 import { CommonDataService } from '../../services/data/common.data.service';
-import { AmexioRadioGroupComponent } from './../../forms/radio/radiogroup.component';
+import { AmexioRadioGroupComponent } from '../../standard/forms/radio/radiogroup.component';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';

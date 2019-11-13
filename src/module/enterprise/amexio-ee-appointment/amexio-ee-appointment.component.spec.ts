@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AmexioWeekDayAvailiblityComponent } from './amexio-ee-appointment.component';
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+import { AmexioWeekDayAvailiblityComponent } from './amexio-ee-appointment.component';
 describe('DropDownMenu', () => {
   let comp1: AmexioWeekDayAvailiblityComponent;
   let fixture1: ComponentFixture<AmexioWeekDayAvailiblityComponent>;
@@ -12,7 +12,7 @@ describe('DropDownMenu', () => {
 
     });
     fixture1 = TestBed.createComponent(AmexioWeekDayAvailiblityComponent);
-    comp1 = fixture1.componentInstance;    
+    comp1 = fixture1.componentInstance;
   });
 
   it('constructor call ()', () => {

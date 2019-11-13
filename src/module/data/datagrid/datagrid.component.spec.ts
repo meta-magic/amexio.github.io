@@ -10,7 +10,7 @@ import { CommonIconComponent } from './../../base/components/common.icon.compone
 import { DisplayFieldComponent } from './../../base/display-field/display-field.component';
 import { AmexioContextMenuComponent } from './../../base/base.contextmenu.component';
 import { AmexioPaginatorComponent } from './../paginator/paginator.component';
-import { AmexioRadioGroupComponent } from './../../forms/radio/radiogroup.component';
+import { AmexioRadioGroupComponent } from '../../standard/forms/radio/radiogroup.component';
 import { Component } from '@angular/core';
 
 @Component({

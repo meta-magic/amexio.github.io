@@ -1,16 +1,16 @@
 
 import { Component, ContentChildren, OnInit, QueryList} from '@angular/core';
-import { AmexioButtonComponent } from '../../forms/buttons/button.component';
-import { AmexioCheckBoxGroupComponent } from '../../forms/checkbox-group/checkbox.group.component';
-import { AmexioCheckBoxComponent } from '../../forms/checkbox/checkbox.component';
-import { AmexioDropDownComponent } from '../../forms/dropdown/dropdown.component';
-import { AmexioLabelComponent } from '../../forms/label/label.component';
-import { AmexioNumberInputComponent } from '../../forms/numberinput/numberinput.component';
-import { AmexioRadioGroupComponent} from '../../forms/radio/radiogroup.component';
-import { AmexioRatingComponent } from '../../forms/rating/rating.component';
-import { AmexioTextInputComponent } from '../../forms/textinput/textinput.component';
-import { AmexioToggleComponent } from '../../forms/toggle/toggle.component';
 import { AmexioImageComponent } from '../../media/image/image.component';
+import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
+import { AmexioCheckBoxGroupComponent } from '../../standard/forms/checkbox-group/checkbox.group.component';
+import { AmexioCheckBoxComponent } from '../../standard/forms/checkbox/checkbox.component';
+import { AmexioDropDownComponent } from '../../standard/forms/dropdown/dropdown.component';
+import { AmexioLabelComponent } from '../../standard/forms/label/label.component';
+import { AmexioNumberInputComponent } from '../../standard/forms/numberinput/numberinput.component';
+import { AmexioRadioGroupComponent} from '../../standard/forms/radio/radiogroup.component';
+import { AmexioRatingComponent } from '../../standard/forms/rating/rating.component';
+import { AmexioTextInputComponent } from '../../standard/forms/textinput/textinput.component';
+import { AmexioToggleComponent } from '../../standard/forms/toggle/toggle.component';
 
 @Component({
   selector: 'amexio-tab-action',

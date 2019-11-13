@@ -15,7 +15,7 @@ import { AmexioCalendarYearComponent } from './calendar.year.component';
 import { AmexioLayoutComponent } from '../../layout/basiclayout/layout.component';
 import { AmexioLayoutItemComponent } from '../../layout/basiclayout/layoutitem.component';
 import { AmexioFloatingPanelComponent } from '../../panes/floatingpanel/floatingpanel.component';
-import { AmexioLabelComponent } from '../../forms/label/label.component';
+import { AmexioLabelComponent } from '../../standard/forms/label/label.component';
 import { By } from '@angular/platform-browser';
 import { Renderer2 } from '@angular/core';
 // import { DummyComponent } from '../../../../tmp/module/enterprise/calendar/calendar.month.spec';

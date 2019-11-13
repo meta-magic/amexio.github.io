@@ -17,8 +17,8 @@
 */
 import { AfterViewInit, Component, ContentChildren, Input, OnInit, QueryList, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm } from '@angular/forms';
-import { AmexioButtonGroupComponent } from '../../forms/buttongroup/button.group.component';
-import { AmexioButtonComponent } from '../../forms/buttons/button.component';
+import { AmexioButtonGroupComponent } from '../../standard/forms/buttongroup/button.group.component';
+import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 
 import { AmexioFormActionCEComponent } from '../form/form.action.component';
 @Component({

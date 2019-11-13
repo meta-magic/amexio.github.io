@@ -1,8 +1,8 @@
 
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TimeUtil } from '../../utils/time.util';
 import { AvailableSlotsModel } from './../../models/availableslots.model';
 import { DayModel } from './../../models/day.model';
-import { TimeUtil } from './../../models/time.util';
 
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 

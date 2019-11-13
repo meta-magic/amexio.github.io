@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { AmexioFormsModule } from '../forms/amexio.forms.module';
+import { AmexioFormsModule } from '../standard/forms/amexio.forms.module';
 import { MultiMediaCarouselComponent } from './ee-carousel/ee.carousel.component';
 import { ContentComponent } from './ee-content/ee.content';
 

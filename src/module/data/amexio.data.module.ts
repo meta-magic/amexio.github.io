@@ -32,13 +32,13 @@ import { CommonDataService } from '../services/data/common.data.service';
 
 import { GoogleMapScriptService } from '../services/script/script.data.service';
 
-import { AmexioRadioGroupComponent } from '../forms/radio/radiogroup.component';
+import { AmexioRadioGroupComponent } from '../standard/forms/radio/radiogroup.component';
 
 import { BrowserPanelComponent } from './browser-panel/browser-panel.component';
 
 import { AmexioCreativeModule } from '../creative/amexio.creative.module';
 
-import { AmexioFormsModule } from '../forms/amexio.forms.module';
+import { AmexioFormsModule } from '../standard/forms/amexio.forms.module';
 
 export * from '../services/data/common.data.service';
 export * from '../services/script/script.data.service';

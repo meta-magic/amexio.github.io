@@ -45,11 +45,11 @@ import { AmexioHomePageEastPanelComponent } from './../creative/homepage/homepag
 import { AmexioHomePageNorthPanelComponent } from './../creative/homepage/homepage.northpanel.component';
 import { AmexioHomePageWestPanelComponent } from './../creative/homepage/homepage.westpanel.component';
 
+import { AmexioFormsModule } from '../standard/forms/amexio.forms.module';
 import { ViewportBackgroundComponent } from './../creative/viewport/viewport.background/viewport.background.component';
 import { ViewportContentBodyComponent } from './../creative/viewport/viewport.content.body/viewport.content.body.component';
 import { ViewportContentComponent } from './../creative/viewport/viewport.content/viewport.content.component';
 import { ViewportComponent } from './../creative/viewport/viewport/viewport.component';
-import { AmexioFormsModule } from './../forms/amexio.forms.module';
 import { AmexioLayoutModule } from './../layout/amexio.layout.module';
 import { AmexioNavModule } from './../navigation/amexio.nav.module';
 import { AmexioPaneModule } from './../panes/amexio.pane.module';
@@ -57,6 +57,7 @@ import { AmexioPaneModule } from './../panes/amexio.pane.module';
 import { AmexioWindowCEComponent } from './../creative/window/amexio.window.component';
 
 import { IconLoaderService } from '../services/icon/icon.service';
+import { AmexioRuntimeComponent } from './arc/amexioruntime.component';
 
 export * from './../creative/common/amexio.action.component';
 export * from './../creative/common/amexio.body.component';
@@ -95,6 +96,7 @@ const CREATIVE_COMPONENTS = [
   ViewportContentBodyComponent,
   AmexioCarouselCEComponent,
   AmexioMenuCEComponent,
+  AmexioRuntimeComponent,
 ];
 
 @NgModule({

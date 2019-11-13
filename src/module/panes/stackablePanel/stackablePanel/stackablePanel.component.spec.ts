@@ -5,7 +5,7 @@ import { StackablePanelComponent } from './stackablePanel.component';
 
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
 
-import { AmexioButtonComponent } from '../../../forms/buttons/button.component';
+import { AmexioButtonComponent } from '../../../standard/forms/buttons/button.component';
 
 @Component({
   selector: 'test-cmp',

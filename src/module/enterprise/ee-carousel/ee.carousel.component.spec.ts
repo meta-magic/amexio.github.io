@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { AmexioImageComponent } from '../../media/image/image.component';
 import { MultiMediaCarouselComponent } from './ee.carousel.component';
-import { AmexioRatingComponent } from './../../forms/rating/rating.component';
+import { AmexioRatingComponent } from '../../standard/forms/rating/rating.component';
 import { ContentComponent } from '../ee-content/ee.content';
 
 describe('amexio-ee-content', () => {

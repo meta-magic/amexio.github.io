@@ -1,7 +1,7 @@
 import { RoundEdgesDirective } from './round-edge.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ViewContainerRef, Component, DebugElement } from '@angular/core';
-import { AmexioFormsModule } from '../../module/forms/amexio.forms.module';
+import { AmexioFormsModule } from '../standard/forms/amexio.forms.module';
 import { By } from '@angular/platform-browser';
 import { notDeepEqual } from 'assert';
 

@@ -1,14 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
-import { MinimizeWindowComponent } from './minimize.window.component';
-import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 import { MinimizeService } from './minimize-service.service';
+import { MinimizeWindowComponent } from './minimize.window.component';
 describe('amexio-minimize-window', () => {
 
     let comp: MinimizeWindowComponent;
-    let fixture: ComponentFixture<MinimizeWindowComponent>
+    let fixture: ComponentFixture<MinimizeWindowComponent>;
     let service: MinimizeService;
-
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -22,7 +21,7 @@ describe('amexio-minimize-window', () => {
     });
 
     it('should create', () => {
-        let comp = fixture.componentInstance;
+        const comp = fixture.componentInstance;
         expect(comp).toBeTruthy();
     });
 
@@ -32,7 +31,6 @@ describe('amexio-minimize-window', () => {
         expect(comp.localData).toEqual([]);
         expect(comp.minimizeButton).toEqual(false);
     });
-
 
     it('check ceMiniBtnClick method ', () => {
         const data = {
@@ -46,18 +44,18 @@ describe('amexio-minimize-window', () => {
 
     it('should trigger ngOnInit with detectChanges if condition', () => {
         comp.ngOnInit();
-         fixture.detectChanges();
+        fixture.detectChanges();
         comp.minimizeButton = true;
         service.currentMessage.subscribe((shareData: any) => {
             shareData = [
                  {
-                    textName: " KEDAR ",
-                    top: "100px",
-                    transitionOptions: "400ms cubic-bezier(0.86, 0, 0.07, 1)",
-                    verticalposition: "flex-start",
-                    width: "400px",
-                 }
-             ]
+                    textName: ' KEDAR ',
+                    top: '100px',
+                    transitionOptions: '400ms cubic-bezier(0.86, 0, 0.07, 1)',
+                    verticalposition: 'flex-start',
+                    width: '400px',
+                 },
+             ];
             fixture.detectChanges();
             expect(shareData).toBeDefined();
             expect(shareData.length).toBeGreaterThan(0);
@@ -65,7 +63,7 @@ describe('amexio-minimize-window', () => {
             expect(comp.minimizeButton).toEqual(true);
         });
     }); it('should trigger ngOnInit with detectChanges else condition undefined check', () => {
-        
+
         comp.ngOnInit();
         fixture.detectChanges();
         comp.minimizeButton = false;
@@ -76,7 +74,7 @@ describe('amexio-minimize-window', () => {
 
     });
     it('should trigger ngOnInit with detectChanges else condition', () => {
-        
+
         comp.ngOnInit();
         fixture.detectChanges();
         comp.minimizeButton = false;

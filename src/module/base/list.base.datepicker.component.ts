@@ -15,7 +15,7 @@
 */
 
 import { ChangeDetectorRef, Component, ElementRef, Renderer2 } from '@angular/core';
-import { AmexioFormValidator } from '../forms/form-validator/amexio.form.validator.component';
+import { AmexioFormValidator } from '../standard/forms/form-validator/amexio.form.validator.component';
 import { BaseInput } from './base.input.component';
 // @Component({
 //     selector: 'list.base.datepicker',
