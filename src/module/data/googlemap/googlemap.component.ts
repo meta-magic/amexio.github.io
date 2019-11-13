@@ -1,6 +1,6 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, IterableDiffers, OnInit, Output,
 } from '@angular/core';
-import { GoogleMapOverlays } from '../../../models/googlemap.model';
+import { GoogleMapOverlays } from '../../models/googlemap.model';
 import { GoogleMapScriptService } from '../../services/script/script.data.service';
 import { GOOGLEMAP_CONSTANT } from './googlemap.constant';
 declare var google: any;

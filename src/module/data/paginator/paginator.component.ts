@@ -8,7 +8,7 @@
  Component Description : Paginator is a generic widget to display content in paged format.
 */
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { PageInfo } from '../../../models/paginator.model';
+import { PageInfo } from '../../models/paginator.model';
 
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 

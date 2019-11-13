@@ -21,6 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
+import {AmexioGridModel} from '../models/gridmodel.component';
 import {AmexioAccordionComponent} from './accordion/accordion.component';
 import {AmexioAccordionHeaderComponent} from './accordion/accordion.header.component';
 import {AmexioAccordionTabComponent} from './accordion/accordion.pane';
@@ -33,7 +34,6 @@ import {AmexioCardComponent} from './card/card.component';
 import {AmexioColumnComponent} from './columns/column.component';
 import {AmexioGridComponent} from './gridlayout/grid.component';
 import {AmexioGridItemComponent} from './gridlayout/griditem.component';
-import {AmexioGridModel} from './gridlayout/gridmodel.component';
 import {AmexioRowComponent} from './rows/row.component';
 
 import { AmexioBaseContextMenuModule } from '../base/base.contextmenu.component.module';

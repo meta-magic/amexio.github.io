@@ -18,7 +18,7 @@
 
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AmexioCreditCardModel } from '../../../models/creditcardmodel.component';
+import { AmexioCreditCardModel } from '../../models/creditcard.model';
 const noop = () => {
 };
 @Component({

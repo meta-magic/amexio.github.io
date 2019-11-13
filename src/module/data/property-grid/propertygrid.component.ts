@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { PropertyGridModel } from '../../../models/propertyGridModel';
+import { PropertyGridModel } from '../../models/propertygrid.model';
 
 @Component({
     selector: 'amexio-property-grid',
