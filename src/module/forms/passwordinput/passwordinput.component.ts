@@ -73,6 +73,7 @@ description : Sets if field is required
   isValid = false;
   regEx: RegExp;
   showToolTip: boolean;
+  showandfeedback: boolean;
   /*
  Properties
  name : min-error-msg
@@ -232,6 +233,7 @@ description : Set enable / disable popover.
   }
 
   onInputPasswordEvent(event: any) {
+    this.showandfeedback = true;
     super.onInputEvent(event);
   }
 
