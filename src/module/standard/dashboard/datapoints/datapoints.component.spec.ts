@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../index';
+import { IconLoaderService } from '../../../../index';
 import { DataPointsComponent } from './datapoints.component';
 
 describe('amexio-dataPoint', () => {

@@ -25,7 +25,7 @@ import {
   Component, Input, OnInit,
 } from '@angular/core';
 
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
 
 @Component({
   selector: 'amexio-datapoints', template: `

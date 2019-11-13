@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../index';
-import { DataPointEastComponent } from './east.component';
+import { IconLoaderService } from '../../../../index';
+import { DataPointSouthComponent } from './south.component';
 
-describe('amexio-east-dataPoint', () => {
-    let comp: DataPointEastComponent;
-    let fixture: ComponentFixture<DataPointEastComponent>;
+describe('amexio-south-dataPoint', () => {
+    let comp: DataPointSouthComponent;
+    let fixture: ComponentFixture<DataPointSouthComponent>;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [DataPointEastComponent],
+            declarations: [DataPointSouthComponent],
             providers: [IconLoaderService],
         });
-        fixture = TestBed.createComponent(DataPointEastComponent);
+        fixture = TestBed.createComponent(DataPointSouthComponent);
         comp = fixture.componentInstance;
 
     });
@@ -22,11 +22,11 @@ describe('amexio-east-dataPoint', () => {
 
         comp.ngOnInit();
         comp.cclass = null;
-
         expect(comp.cclass).toEqual(null);
-        comp.cclass = 'datapoint-east';
+
+        comp.cclass = 'datapoint-south';
         comp.ngOnInit();
-        expect(comp.cclass).toEqual('datapoint-east');
+        expect(comp.cclass).toEqual('datapoint-south');
 
     });
 });

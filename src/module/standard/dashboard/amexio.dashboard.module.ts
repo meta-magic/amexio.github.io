@@ -12,10 +12,10 @@ import {DataPointSouthComponent} from './datapoints/south.component';
 import {DataPointWestComponent} from './datapoints/west.component';
 import {GaugeChartComponent} from './gaugechart/gauge.chart.component';
 
-import {CommonDataService} from '../services/data/common.data.service';
+import {CommonDataService} from '../../services/data/common.data.service';
 import {DashboardLoaderService} from './chart.loader.service';
 
-import { AmexioCommonModule } from '../base/amexio.common.module';
+import { AmexioCommonModule } from '../../base/amexio.common.module';
 
 export * from './chart.loader.service';
 export * from './dashboardtitle/dashboard.title.component';
@@ -26,7 +26,7 @@ export * from './datapoints/north.component';
 export * from './datapoints/south.component';
 export * from './datapoints/west.component';
 export * from './gaugechart/gauge.chart.component';
-export * from '../services/data/common.data.service';
+export * from '../../services/data/common.data.service';
 
 const DASHBOARD = [
   DashBoardTitleComponent,

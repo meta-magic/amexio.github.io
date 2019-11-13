@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../index';
+import { IconLoaderService } from '../../../../index';
 import { DataPointWestComponent } from './west.component';
 
 describe('amexio-west-dataPoint', () => {

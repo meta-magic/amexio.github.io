@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../index';
-import { GaugeChartComponent } from './gauge.chart.component';
+import { IconLoaderService } from '../../../../index';
 import { DashboardLoaderService } from '../chart.loader.service';
+import { GaugeChartComponent } from './gauge.chart.component';
 
 describe('amexio-gauge-chart-dataPoint', () => {
     let comp: GaugeChartComponent;
@@ -32,9 +32,9 @@ describe('amexio-gauge-chart-dataPoint', () => {
     it('show chart', () => {
 
         comp.showChart = false;
-        //comp.title = '';
+        // comp.title = '';
         expect(false).toBe(comp.showChart);
-        let newdata = [{ 'name': 'linechart' }];
+        const newdata = [{ name: 'linechart' }];
         comp.data = newdata;
     });
     it('onResize()', () => {
@@ -44,10 +44,8 @@ describe('amexio-gauge-chart-dataPoint', () => {
     it('ngOnInit()', () => {
         comp.ngOnInit();
         expect(false).toBe(comp.hasLoaded);
-    comp.drawChart();
+        comp.drawChart();
     });
 
-
 });
-
 

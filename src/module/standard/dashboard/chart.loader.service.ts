@@ -1,11 +1,26 @@
-/**
- * Created by pratik on 17/8/17.
- */
-import {EventEmitter, Injectable} from '@angular/core';
-import {Observable} from 'rxjs/index';
+/*
+* Copyright [2019] [Metamagic]
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* Created by Pratik on 07/08/17.
+*/
+
+import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 declare var google: any;
 @Injectable()
-export class ChartLoaderService {
+export class DashboardLoaderService {
     private chartPackage: { [id: string]: string; } = {
         AreaChart: 'corechart',
         Bar: 'bar',
@@ -31,13 +46,12 @@ export class ChartLoaderService {
         this.googleScriptLoadingNotifier = new EventEmitter();
         this.isScriptLoading = false;
     }
-
     loadCharts(chartName: string): Observable<any> {
         return new Observable(
             (observer) => {
                 this.loadScript().subscribe(
                     (val) => console.log(),
-                    (error) => console.error(error),
+                    (error: any) => console.error(error),
                     () => {
                         this.loadRequiredChart(observer, chartName);
                     },
@@ -45,11 +59,9 @@ export class ChartLoaderService {
             },
         );
     }
-
     loadScript(): Observable<any> {
         return new Observable(
             (observer) => {
-
                 if (!this.isScriptLoading) {
                     // check if previously its loaded
                     if (typeof google !== 'undefined' && google.charts) {
@@ -82,18 +94,16 @@ export class ChartLoaderService {
             },
         );
     }
-
     /**
      * Load Base Chart
      * @param observer
      */
     loadBaseChart(observer: any) {
-        google.charts.load('current', { packages : ['corechart']});
+        google.charts.load('current', {packages: ['corechart']});
         google.charts.setOnLoadCallback(() => {
             observer.complete();
         });
     }
-
     /**
      * Load the required charts
      * @param chartName
@@ -102,7 +112,7 @@ export class ChartLoaderService {
         if (google.visualization.hasOwnProperty(chartName)) {
             observer.complete();
         } else {
-            google.charts.load('current', {packages : [this.chartPackage[chartName]]});
+            google.charts.load('current', {packages: [this.chartPackage[chartName]]});
             google.charts.setOnLoadCallback(() => {
                 observer.complete();
             });

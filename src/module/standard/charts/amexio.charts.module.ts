@@ -23,10 +23,10 @@ import { ScatterChartComponent } from './scatterchart/scatter.chart.component';
 import { TimeLineChartComponent } from './timelinechart/timeline.chart.component';
 import { VerticalAxisComponent } from './verticalaxis/chart.verticalaxis.component';
 
-import { CommonDataService } from '../services/data/common.data.service';
+import { CommonDataService } from '../../services/data/common.data.service';
 import { ChartLoaderService } from './chart.loader.service';
 
-import { AmexioCommonModule } from '../base/amexio.common.module';
+import { AmexioCommonModule } from '../../base/amexio.common.module';
 
 export * from './areachart/area.chart.component';
 export * from './barchart/bar.chart.component';
@@ -48,7 +48,7 @@ export * from './scatterchart/scatter.chart.component';
 export * from './timelinechart/timeline.chart.component';
 export * from './verticalaxis/chart.verticalaxis.component';
 
-export * from '../services/data/common.data.service';
+export * from '../../services/data/common.data.service';
 export * from './chart.loader.service';
 
 const CHART_COMPONENTS = [
