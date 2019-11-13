@@ -1,5 +1,5 @@
+import { Component, DebugElement, element, Renderer2, ViewContainerRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, DebugElement, Renderer2, ViewContainerRef, element } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { DynamicTextDirective } from './dynamic-text.directive';
  /**
@@ -10,10 +10,10 @@ import { DynamicTextDirective } from './dynamic-text.directive';
     selector: 'amexio-route-animation',
     template: `
  <div amexio-dynamic-text [placeholder]="placeholdervalue">greeting </div>
-  `
+  `,
 })
 class DynamicTextTestComponent {
-    placeholdervalue = {greeting: "Hi"};
+    placeholdervalue = {greeting: 'Hi'};
 }
 
 describe('Directive: amexio-dynamic-text', () => {
@@ -22,7 +22,7 @@ describe('Directive: amexio-dynamic-text', () => {
     let fixture: ComponentFixture<DynamicTextDirective>;
     let inputEl: DebugElement;
     let dirIn: any;
-     beforeEach(() => {
+    beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [DynamicTextDirective, DynamicTextTestComponent],
             providers: [Renderer2, ViewContainerRef],
@@ -33,59 +33,57 @@ describe('Directive: amexio-dynamic-text', () => {
         comp = fixture.componentInstance;
         const directiveEl = fixture.debugElement.query(By.directive(DynamicTextDirective));
         expect(directiveEl).not.toBeNull();
-         dirIn = directiveEl.injector.get(DynamicTextDirective);
+        dirIn = directiveEl.injector.get(DynamicTextDirective);
         inputEl = fixture.debugElement.query(By.css('input'));
         // dirIn.themeStyle = 'round-edge';
 
     });
 
     it('ngAfterContentChecked()', () => {
-     dirIn.jsonData = {greeting: "Hi"}
+     dirIn.jsonData = {greeting: 'Hi'};
      let element = {nodeType: 3, textContent: 'greeting'};
-       dirIn.ngAfterContentChecked();
+     dirIn.ngAfterContentChecked();
 
        expect(dirIn.ngAfterContentChecked()).toHaveBeenCalled;
     });
 
     it('iterateHTMLDOM() positive condition', () => {
-        dirIn.jsonData = {greeting: "Hi"}
-        let element = {nodeType: 3, textContent: 'greeting', hasChildNodes: () => {
-            return true
+        dirIn.jsonData = {greeting: 'Hi'};
+        const element = {nodeType: 3, textContent: 'greeting', hasChildNodes: () => {
+            return true;
         }};
         let str = element.textContent;
         const strarr = element.textContent.split(' ');
 
         dirIn.iterateHTMLDOM(element);
 
-            expect(element.nodeType).toEqual(3);
-            for(let [key, value] of Object.entries(dirIn.jsonData)) {
+        expect(element.nodeType).toEqual(3);
+        for (const [key, value] of Object.entries(dirIn.jsonData)) {
                   strarr.forEach((strelement: any) => {
                     if (key === strelement) {
                         str = str.replace(key, value as string);
                         expect(key).toEqual(strelement);
                     }
-                });         
+                });
             }
        });
 
-       it('iterateHTMLDOM() negative condition1', () => {
-        dirIn.jsonData = {greeting: "Hi"}
-        let element = {nodeType: 5, childNodes: [],textContent: 'greeting', hasChildNodes: () => {
-            return true
+    it('iterateHTMLDOM() negative condition1', () => {
+        dirIn.jsonData = {greeting: 'Hi'};
+        const element = {nodeType: 5, childNodes: [], textContent: 'greeting', hasChildNodes: () => {
+            return true;
         }};
         dirIn.iterateHTMLDOM(element);
            // const hostelement = this.viewContainerRef.element.nativeElement;
           // this.iterateHTMLDOM(hostelement);
 
-
           //  if (element.nodeType === 3) {
-            expect(element.hasChildNodes()).toHaveBeenCalled
-            expect(element.hasChildNodes()).toEqual(true);
-            expect(element.nodeType).not.toEqual(3);
- 
-            }
-       });
+            expect(element.hasChildNodes()).toHaveBeenCalled;
+        expect(element.hasChildNodes()).toEqual(true);
+        expect(element.nodeType).not.toEqual(3);
 
+            };
+       });
 
     //    it('iterateHTMLDOM() negative condition1.2', () => {
     //     dirIn.jsonData = {greeting: "Hi"}
@@ -96,11 +94,10 @@ describe('Directive: amexio-dynamic-text', () => {
     //        // const hostelement = this.viewContainerRef.element.nativeElement;
     //       // this.iterateHTMLDOM(hostelement);
 
-
     //       //  if (element.nodeType === 3) {
     //         expect(element.hasChildNodes()).toHaveBeenCalled
     //         expect(element.hasChildNodes()).toEqual(false);
- 
+
     //         }
     //    });
 });
