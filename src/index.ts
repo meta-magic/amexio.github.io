@@ -2,7 +2,7 @@ export * from './module/amexio.widget.module';
 export * from './module/standard/forms/amexio.forms.module';
 export * from './module/navigation/amexio.nav.module';
 export * from './module/layout/amexio.layout.module';
-export * from './module/data/amexio.data.module';
+export * from './module/standard/data/amexio.data.module';
 export * from './module/standard/dashboard/amexio.dashboard.module';
 export * from './module/standard/charts/amexio.charts.module';
 export * from './module/map/amexio.map.module';

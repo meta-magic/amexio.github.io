@@ -22,7 +22,7 @@ import { AmexioFooterComponent } from '../../panes/action/pane.action.footer';
 import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { AmexioContextMenuComponent } from '../../base/base.contextmenu.component';
 import { DeviceQueryService } from '../../services/device/device.query.service';
-import { SpeechBubbleComponent } from '../../data/speech-bubble/speech-bubble.component';
+import { SpeechBubbleComponent } from '../../standard/data/speech-bubble/speech-bubble.component';
 import { AmexioNavDesktopMenuComponent } from '../../navigation/navbar/navdesktopmenu';
 import { AmexioThemeSwitcherComponent } from './amexio.themeswitcher.component';
 import { AmexioFloatingButtonComponent } from '../../standard/forms/floatingbutton/floatingbutton.component';

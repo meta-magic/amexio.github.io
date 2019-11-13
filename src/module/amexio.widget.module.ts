@@ -8,11 +8,11 @@ import { AmexioTabPillComponent } from '../index';
 import { AmexioBaseContextMenuModule } from './base/base.contextmenu.component.module';
 import { AmexioCreativeModule } from './creative/amexio.creative.module';
 import { AmexioRuntimeModule } from './creative/arc/amexio.arc.module';
-import { AmexioDataModule } from './data/amexio.data.module';
 import { AmexioLayoutModule } from './layout/amexio.layout.module';
 import { AmexioMediaModule } from './media/amexio.media.module';
 import { AmexioNavModule } from './navigation/amexio.nav.module';
 import { AmexioPaneModule } from './panes/amexio.pane.module';
+import { AmexioDataModule } from './standard/data/amexio.data.module';
 import { AmexioFormsModule } from './standard/forms/amexio.forms.module';
 
 import { CommonDataService } from './services/data/common.data.service';
