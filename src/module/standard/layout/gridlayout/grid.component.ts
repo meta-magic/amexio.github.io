@@ -16,7 +16,7 @@
 */
 
 import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList, ViewChild } from '@angular/core';
-import { GridConstants } from '../../models/gridconstants';
+import { GridConstants } from '../../../models/gridconstants';
 import { AmexioGridLayoutService } from './amexiogridlayoutservice.service';
 import { AmexioGridItemComponent } from './griditem.component';
 

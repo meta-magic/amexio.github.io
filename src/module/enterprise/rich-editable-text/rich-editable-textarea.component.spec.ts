@@ -3,24 +3,24 @@ import { IconLoaderService } from '../../../index';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
 import { AmexioRichEditorComponent } from './rich-editable-textarea.component';
 
-import { AmexioRowComponent } from '../../layout/rows/row.component';
+import { AmexioRowComponent } from '../../standard/layout/rows/row.component';
 
-import { AmexioColumnComponent } from '../../layout/columns/column.component';
+import { AmexioColumnComponent } from '../../standard/layout/columns/column.component';
 
-import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { AmexioTabComponent } from '../../panes/tab/tab.component';
 import { AmexioTabPillComponent } from '../../panes/tab/tab.pill.component';
+import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { EditableTextComponent } from './editable-text/editable-text.component';
 
-import { AmexioCardComponent } from '../../layout/card/card.component';
 import { AmexioBodyComponent } from '../../panes/body/pane.action.body';
 import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
+import { AmexioCardComponent } from '../../standard/layout/card/card.component';
 
 import { AmexioContextMenuComponent } from '../../base/base.contextmenu.component';
 import { AmexiodialoguePaneComponent } from '../../panes/dialogue/dialogue.pane.component';
 
-import { AmexioLayoutComponent } from '../../layout/basiclayout/layout.component';
-import { AmexioLayoutItemComponent } from '../../layout/basiclayout/layoutitem.component';
+import { AmexioLayoutComponent } from '../../standard/layout/basiclayout/layout.component';
+import { AmexioLayoutItemComponent } from '../../standard/layout/basiclayout/layoutitem.component';
 describe('amexio-rich-textarea', () => {
     let comp: AmexioRichEditorComponent;
     let fixture: ComponentFixture<AmexioRichEditorComponent>;

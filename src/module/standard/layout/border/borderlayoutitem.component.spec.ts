@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../index';
+import { IconLoaderService } from '../../../../index';
+import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 import { AmexioBorderLayoutItemComponent } from './borderlayoutitem.component';
-import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 
-import { CommonIconComponent } from './../../base/components/common.icon.component';
+import { CommonIconComponent } from '../../../base/components/common.icon.component';
 
 describe('amexio-borderlayout-item', () => {
     let comp: AmexioBorderLayoutItemComponent;

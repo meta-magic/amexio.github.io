@@ -2,21 +2,21 @@
  * Created by kedar on 26/6/19.
  */
 
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
-import { AmexioCalendarComponent } from './calendar.component';
-import { CommonDataService } from '../../services/data/common.data.service';
-import { HttpClientModule } from '@angular/common/http';
-import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
+import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
+import { AmexioFloatingPanelComponent } from '../../panes/floatingpanel/floatingpanel.component';
+import { CommonDataService } from '../../services/data/common.data.service';
+import { AmexioLabelComponent } from '../../standard/forms/label/label.component';
+import { AmexioLayoutComponent } from '../../standard/layout/basiclayout/layout.component';
+import { AmexioLayoutItemComponent } from '../../standard/layout/basiclayout/layoutitem.component';
+import { AmexioCalendarComponent } from './calendar.component';
 import { AmexioCalendarDayTimeWiseComponent } from './calendar.daytimewise.component';
 import { AmexioCalendarMonthComponent } from './calendar.month';
 import { AmexioCalendarYearComponent } from './calendar.year.component';
-import { AmexioLayoutComponent } from '../../layout/basiclayout/layout.component';
-import { AmexioLayoutItemComponent } from '../../layout/basiclayout/layoutitem.component';
-import { AmexioFloatingPanelComponent } from '../../panes/floatingpanel/floatingpanel.component';
-import { AmexioLabelComponent } from '../../standard/forms/label/label.component';
 
 
 describe('amexio-calendar', () => {

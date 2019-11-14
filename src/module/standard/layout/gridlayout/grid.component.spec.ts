@@ -3,11 +3,11 @@
  */
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../index';
+import { IconLoaderService } from '../../../../index';
 import { AmexioGridItemComponent } from './griditem.component';
 
-import { AmexioGridComponent } from './grid.component';
 import { AmexioGridLayoutService } from './amexiogridlayoutservice.service';
+import { AmexioGridComponent } from './grid.component';
 
 describe('amexio-layout-grid', () => {
     let comp: AmexioGridComponent;

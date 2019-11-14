@@ -16,7 +16,7 @@
 */
 
 import { Component, HostBinding, Input,  OnInit } from '@angular/core';
-import { DeviceQueryService } from './../../services/device/device.query.service';
+import { DeviceQueryService } from '../../../services/device/device.query.service';
 import { LayoutConstant } from './layout.constant';
 @Component({
     selector: 'amexio-layout-columns',

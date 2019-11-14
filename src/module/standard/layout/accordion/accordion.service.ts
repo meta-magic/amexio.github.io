@@ -17,8 +17,8 @@
 */
 
 import { Injectable } from '@angular/core';
-import {Subject} from 'rxjs/index';
-import {Observable} from 'rxjs/index';
+import {Subject} from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class AccordionService {

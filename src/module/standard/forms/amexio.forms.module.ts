@@ -51,7 +51,7 @@ import { AmexioTypeAheadComponent } from './typeahead/typeahead.component';
 import { AmexioCommonModule } from '../../base/amexio.common.module';
 
 import { AmexioInputHelperComponent } from '../../base/input.helper.component';
-import { AmexioLayoutModule } from '../../layout/amexio.layout.module';
+import { AmexioLayoutModule } from '../layout/amexio.layout.module';
 
 import { CommonDataService } from '../../services/data/common.data.service';
 import { IconLoaderService } from '../../services/icon/icon.service';

@@ -33,8 +33,8 @@ import { TreeTabComponent } from './tree-tab/tree-tab.component';
 
 import { AmexioThemeSwitcherService } from '../services/data/amexio.theme.service';
 
-import { AmexioLayoutModule } from '../layout/amexio.layout.module';
 import { AmexioNavModule } from '../navigation/amexio.nav.module';
+import { AmexioLayoutModule } from '../standard/layout/amexio.layout.module';
 import { AmexioRichEditorComponent } from './rich-editable-text/rich-editable-textarea.component';
 
 import { EditableTextComponent } from './rich-editable-text/editable-text/editable-text.component';

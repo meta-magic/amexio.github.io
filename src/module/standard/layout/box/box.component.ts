@@ -16,7 +16,7 @@
 * Created by anaghak07 on 6/3/18.
 */
 import { Component, Input, OnInit } from '@angular/core';
-import { IconLoaderService } from '../../services/icon/icon.service';
+import { IconLoaderService } from '../../../services/icon/icon.service';
 
 @Component({
   selector: 'amexio-box',

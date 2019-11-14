@@ -21,7 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
-import {AmexioGridModel} from '../models/gridmodel.component';
+import {AmexioGridModel} from '../../models/gridmodel.component';
 import {AmexioAccordionComponent} from './accordion/accordion.component';
 import {AmexioAccordionHeaderComponent} from './accordion/accordion.header.component';
 import {AmexioAccordionTabComponent} from './accordion/accordion.pane';
@@ -36,15 +36,15 @@ import {AmexioGridComponent} from './gridlayout/grid.component';
 import {AmexioGridItemComponent} from './gridlayout/griditem.component';
 import {AmexioRowComponent} from './rows/row.component';
 
-import { AmexioBaseContextMenuModule } from '../base/base.contextmenu.component.module';
+import { AmexioBaseContextMenuModule } from '../../base/base.contextmenu.component.module';
 
-import {CommonDataService} from '../services/data/common.data.service';
-import {DeviceQueryService} from '../services/device/device.query.service';
-import {IconLoaderService} from '../services/icon/icon.service';
+import {CommonDataService} from '../../services/data/common.data.service';
+import {DeviceQueryService} from '../../services/device/device.query.service';
+import {IconLoaderService} from '../../services/icon/icon.service';
 
 import {AmexioGridLayoutService} from './gridlayout/amexiogridlayoutservice.service';
 
-import { AmexioCommonModule } from '../base/amexio.common.module';
+import { AmexioCommonModule } from '../../base/amexio.common.module';
 
 export * from './accordion/accordion.header.component';
 export * from './accordion/accordion.pane';
@@ -58,9 +58,9 @@ export * from './columns/column.component';
 export * from './gridlayout/grid.component';
 export * from './gridlayout/griditem.component';
 export * from './rows/row.component';
-export * from '../services/data/common.data.service';
-export * from '../services/device/device.query.service';
-export * from '../services/icon/icon.service';
+export * from '../../services/data/common.data.service';
+export * from '../../services/device/device.query.service';
+export * from '../../services/icon/icon.service';
 export * from './gridlayout/amexiogridlayoutservice.service';
 const LAYOUT_COMPONENTS = [
   AmexioRowComponent,

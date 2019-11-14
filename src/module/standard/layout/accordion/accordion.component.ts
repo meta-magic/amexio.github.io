@@ -16,7 +16,7 @@
 */
 
 import { AfterContentInit, AfterViewInit, Component, ContentChildren, Input, OnDestroy, OnInit, QueryList } from '@angular/core';
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
 import { AmexioAccordionTabComponent } from './accordion.pane';
 
 @Component({ selector: 'amexio-accordion', templateUrl: './accordion.component.html' })

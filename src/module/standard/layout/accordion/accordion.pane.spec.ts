@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IconLoaderService } from '../../../index';
-import { CommonIconComponent } from './../../base/components/common.icon.component';
+import { IconLoaderService } from '../../../../index';
+import { CommonIconComponent } from '../../../base/components/common.icon.component';
 import { AmexioAccordionTabComponent } from './accordion.pane';
 
 describe('amexio-accordion-pane', () => {

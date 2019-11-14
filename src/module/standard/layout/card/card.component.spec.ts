@@ -1,11 +1,11 @@
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
-import { IconLoaderService } from '../../../index';
-import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
-import { AmexioCardComponent } from './card.component';
-import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { IconLoaderService } from '../../../../index';
+import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
+import { AmexioHeaderComponent } from '../../../panes/header/pane.action.header';
+import { AmexioCardComponent } from './card.component';
 
 @Component({
     selector: 'test-cmp',

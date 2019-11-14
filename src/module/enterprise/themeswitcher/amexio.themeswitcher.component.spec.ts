@@ -15,7 +15,7 @@ import { AmexioFormActionCEComponent } from '../../creative/form/form.action.com
 import { AmexioFormCEComponent } from '../../creative/form/amexio.form.component';
 import { AmexiodialoguePaneComponent } from '../../panes/dialogue/dialogue.pane.component';
 import { AmexioLabelComponent } from '../../standard/forms/label/label.component';
-import { AmexioCardComponent } from '../../layout/card/card.component';
+import { AmexioCardComponent } from '../../standard/layout/card/card.component';
 import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
 import { AmexioBodyComponent } from '../../panes/body/pane.action.body';
 import { AmexioFooterComponent } from '../../panes/action/pane.action.footer';

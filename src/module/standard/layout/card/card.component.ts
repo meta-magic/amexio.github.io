@@ -23,10 +23,10 @@ import {
   Renderer2, ViewChild,
 } from '@angular/core';
 import { ContentChildren, QueryList } from '@angular/core';
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
-import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
-import { AmexioFooterComponent } from './../../panes/action/pane.action.footer';
-import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
+import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
+import { AmexioFooterComponent } from '../../../panes/action/pane.action.footer';
+import { AmexioBodyComponent } from '../../../panes/body/pane.action.body';
+import { AmexioHeaderComponent } from '../../../panes/header/pane.action.header';
 
 @Component({
   selector: 'amexio-card',

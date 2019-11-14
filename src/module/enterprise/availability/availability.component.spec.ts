@@ -7,11 +7,11 @@ import { AvailabilityComponent } from './availability.component';
 import { FormsModule } from '@angular/forms';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
 import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
-import { AmexioColumnComponent } from '../../layout/columns/column.component';
-import { AmexioRowComponent } from '../../layout/rows/row.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { AmexioDropDownComponent } from '../../standard/forms/dropdown/dropdown.component';
+import { AmexioColumnComponent } from '../../standard/layout/columns/column.component';
+import { AmexioRowComponent } from '../../standard/layout/rows/row.component';
 
 describe('amexio-availability', () => {
   let comp: AvailabilityComponent;
@@ -46,30 +46,30 @@ describe('amexio-availability', () => {
     comp.legendArr = [];
     comp.labelData = [
       {
-        'label': 'Inbound',
-        'colorcode': 'red',
-        'textcolor': 'white',
-        'available': [
+        label: 'Inbound',
+        colorcode: 'red',
+        textcolor: 'white',
+        available: [
           {
-            'date': "01-Sep-2019",
-            'time': [
+            date: "01-Sep-2019",
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
               {
-                'starttime': 6.30,
-                'endtime': 7,
+                starttime: 6.30,
+                endtime: 7,
               },
             ],
           },
           {
-            'date': "02-Sep-2019",
-            'time': [
+            date: "02-Sep-2019",
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
             ],
@@ -77,16 +77,16 @@ describe('amexio-availability', () => {
         ],
       },
       {
-        'label': 'Outbound',
-        'colorcode': 'blue',
+        label: 'Outbound',
+        colorcode: 'blue',
         // "textcolor": "white",
-        'available': [
+        available: [
           {
-            'date': '02-Sep-2019',
-            'time': [
+            date: '02-Sep-2019',
+            time: [
               {
-                'starttime': 5.30,
-                'endtime': 6.30,
+                starttime: 5.30,
+                endtime: 6.30,
               },
             ],
           },
@@ -307,30 +307,30 @@ describe('amexio-availability', () => {
     comp.legendArr = [];
     comp.labelData = [
       {
-        'label': 'Inbound',
-        'colorcode': 'red',
-        'textcolor': 'white',
-        'available': [
+        label: 'Inbound',
+        colorcode: 'red',
+        textcolor: 'white',
+        available: [
           {
-            'date': '01-Sep-2019',
-            'time': [
+            date: '01-Sep-2019',
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
               {
-                'starttime': 6.30,
-                'endtime': 7,
+                starttime: 6.30,
+                endtime: 7,
               },
             ],
           },
           {
-            'date': '02-Sep-2019',
-            'time': [
+            date: '02-Sep-2019',
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
             ],
@@ -338,16 +338,16 @@ describe('amexio-availability', () => {
         ],
       },
       {
-        'label': 'Outbound',
-        'colorcode': 'blue',
+        label: 'Outbound',
+        colorcode: 'blue',
         // "textcolor": "white",
-        'available': [
+        available: [
           {
-            'date': '02-Sep-2019',
-            'time': [
+            date: '02-Sep-2019',
+            time: [
               {
-                'starttime': 5.30,
-                'endtime': 6.30,
+                starttime: 5.30,
+                endtime: 6.30,
               },
             ],
           },
@@ -827,30 +827,30 @@ describe('amexio-availability', () => {
     comp.endTime = 6;
     comp.labelData = [
       {
-        'label': 'Inbound',
-        'colorcode': 'red',
-        'textcolor': 'white',
-        'available': [
+        label: 'Inbound',
+        colorcode: 'red',
+        textcolor: 'white',
+        available: [
           {
-            'date': '01-Sep-2019',
-            'time': [
+            date: '01-Sep-2019',
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
               {
-                'starttime': 6.30,
-                'endtime': 7,
+                starttime: 6.30,
+                endtime: 7,
               },
             ],
           },
           {
-            'date': '02-Sep-2019',
-            'time': [
+            date: '02-Sep-2019',
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
             ],
@@ -858,16 +858,16 @@ describe('amexio-availability', () => {
         ],
       },
       {
-        'label': 'Outbound',
-        'colorcode': 'blue',
+        label: 'Outbound',
+        colorcode: 'blue',
         // "textcolor": "white",
-        'available': [
+        available: [
           {
-            'date': '02-Sep-2019',
-            'time': [
+            date: '02-Sep-2019',
+            time: [
               {
-                'starttime': 5.30,
-                'endtime': 6.30,
+                starttime: 5.30,
+                endtime: 6.30,
               },
             ],
           },
@@ -905,30 +905,30 @@ describe('amexio-availability', () => {
     comp.endTime = 7;
     comp.labelData = [
       {
-        'label': 'Inbound',
-        'colorcode': 'red',
-        'textcolor': 'white',
-        'available': [
+        label: 'Inbound',
+        colorcode: 'red',
+        textcolor: 'white',
+        available: [
           {
-            'date': '01-Sep-2019',
-            'time': [
+            date: '01-Sep-2019',
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
               {
-                'starttime': 6.30,
-                'endtime': 7,
+                starttime: 6.30,
+                endtime: 7,
               },
             ],
           },
           {
-            'date': '02-Sep-2019',
-            'time': [
+            date: '02-Sep-2019',
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
             ],
@@ -936,16 +936,16 @@ describe('amexio-availability', () => {
         ],
       },
       {
-        'label': 'Outbound',
-        'colorcode': 'blue',
+        label: 'Outbound',
+        colorcode: 'blue',
         // "textcolor": "white",
-        'available': [
+        available: [
           {
-            'date': '02-Sep-2019',
-            'time': [
+            date: '02-Sep-2019',
+            time: [
               {
-                'starttime': 5.30,
-                'endtime': 6.30,
+                starttime: 5.30,
+                endtime: 6.30,
               },
             ],
           },
@@ -981,30 +981,30 @@ describe('amexio-availability', () => {
 
     comp.labelData = [
       {
-        'label': 'Inbound',
-        'colorcode': 'red',
-        'textcolor': 'white',
-        'available': [
+        label: 'Inbound',
+        colorcode: 'red',
+        textcolor: 'white',
+        available: [
           {
-            'date': '01-Sep-2019',
-            'time': [
+            date: '01-Sep-2019',
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
               {
-                'starttime': 6.30,
-                'endtime': 7,
+                starttime: 6.30,
+                endtime: 7,
               },
             ],
           },
           {
-            'date': '02-Sep-2019',
-            'time': [
+            date: '02-Sep-2019',
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
             ],
@@ -1012,16 +1012,16 @@ describe('amexio-availability', () => {
         ],
       },
       {
-        'label': 'Outbound',
-        'colorcode': 'blue',
+        label: 'Outbound',
+        colorcode: 'blue',
         // "textcolor": "white",
-        'available': [
+        available: [
           {
-            'date': '02-Sep-2019',
-            'time': [
+            date: '02-Sep-2019',
+            time: [
               {
-                'starttime': 5.30,
-                'endtime': 6.30,
+                starttime: 5.30,
+                endtime: 6.30,
               },
             ],
           },
@@ -1152,30 +1152,30 @@ describe('amexio-availability', () => {
     comp.legendArr = [];
     comp.labelData = [
       {
-        'label': 'Inbound',
-        'colorcode': 'red',
-        'textcolor': 'white',
-        'available': [
+        label: 'Inbound',
+        colorcode: 'red',
+        textcolor: 'white',
+        available: [
           {
-            'date': '01-Sep-2019',
-            'time': [
+            date: '01-Sep-2019',
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
               {
-                'starttime': 6.30,
-                'endtime': 7,
+                starttime: 6.30,
+                endtime: 7,
               },
             ],
           },
           {
-            'date': '02-Sep-2019',
-            'time': [
+            date: '02-Sep-2019',
+            time: [
               {
-                'starttime': 5,
-                'endtime': 5.30,
+                starttime: 5,
+                endtime: 5.30,
               },
               ,
             ],
@@ -1183,16 +1183,16 @@ describe('amexio-availability', () => {
         ],
       },
       {
-        'label': 'Outbound',
-        'colorcode': 'blue',
+        label: 'Outbound',
+        colorcode: 'blue',
         // "textcolor": "white",
-        'available': [
+        available: [
           {
-            'date': '02-Sep-2019',
-            'time': [
+            date: '02-Sep-2019',
+            time: [
               {
-                'starttime': 5.30,
-                'endtime': 6.30,
+                starttime: 5.30,
+                endtime: 6.30,
               },
             ],
           },

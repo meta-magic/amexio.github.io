@@ -2,24 +2,23 @@
  * Created by kedar on 26/6/19.
  */
 
+import { HttpClientModule } from '@angular/common/http';
+import { Renderer2 } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
-import { CommonDataService } from '../../services/data/common.data.service';
-import { HttpClientModule } from '@angular/common/http';
-import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
+import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
+import { AmexioFloatingPanelComponent } from '../../panes/floatingpanel/floatingpanel.component';
+import { CommonDataService } from '../../services/data/common.data.service';
+import { AmexioLabelComponent } from '../../standard/forms/label/label.component';
+import { AmexioLayoutComponent } from '../../standard/layout/basiclayout/layout.component';
+import { AmexioLayoutItemComponent } from '../../standard/layout/basiclayout/layoutitem.component';
 import { AmexioCalendarDayTimeWiseComponent } from './calendar.daytimewise.component';
 import { AmexioCalendarMonthComponent } from './calendar.month';
 import { AmexioCalendarYearComponent } from './calendar.year.component';
-import { AmexioLayoutComponent } from '../../layout/basiclayout/layout.component';
-import { AmexioLayoutItemComponent } from '../../layout/basiclayout/layoutitem.component';
-import { AmexioFloatingPanelComponent } from '../../panes/floatingpanel/floatingpanel.component';
-import { AmexioLabelComponent } from '../../standard/forms/label/label.component';
-import { By } from '@angular/platform-browser';
-import { Renderer2 } from '@angular/core';
 // import { DummyComponent } from '../../../../tmp/module/enterprise/calendar/calendar.month.spec';
-
 
 class DummyComponent {
 
@@ -39,7 +38,7 @@ describe('amexio-calendar-month', () => {
         AmexioLayoutItemComponent, AmexioFloatingPanelComponent,
         AmexioCalendarDayTimeWiseComponent,
         AmexioCalendarYearComponent,
-        AmexioLabelComponent
+        AmexioLabelComponent,
       ],
       providers: [IconLoaderService, CommonDataService, { provide: Renderer2, useValue: rendererMock }],
     });
@@ -58,15 +57,15 @@ describe('amexio-calendar-month', () => {
                 end: new Date(),
                 eventclass: "calendar-active-3",
                 hasTimeSlot: true,
-                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
+                people: [{ personName: "Priyanka Gokhale" }, { personName: 'Seema Rai' }],
                 phone: "020-23456789",
                 start: new Date(),
-                url: "meet.google.com/izm-pooa-gns"
-              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+                url: "meet.google.com/izm-pooa-gns",
+              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false,
             }],
 
-          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
-        }
+          }, id: '59460_monthid', isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false,
+        },
       ],
       [
         {
@@ -75,18 +74,18 @@ describe('amexio-calendar-month', () => {
             events: [{
               isEvent: true,
               details: {
-                title: "Java Conference",
+                title: 'Java Conference',
                 end: new Date(),
-                eventclass: "calendar-active-3",
+                eventclass: 'calendar-active-3',
                 hasTimeSlot: true,
-                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
-                phone: "020-23456789",
+                people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }],
+                phone: '020-23456789',
                 start: new Date(),
-                url: "meet.google.com/izm-pooa-gns"
-              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+                url: 'meet.google.com/izm-pooa-gns'
+              }, title: 'Java Workshop', hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false,
             }],
 
-          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+          }, id: '59460_monthid', isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false,
         },
         {
           date: new Date(), eventDetails: {
@@ -94,18 +93,18 @@ describe('amexio-calendar-month', () => {
             events: [{
               isEvent: true,
               details: {
-                title: "Java Conference",
+                title: 'Java Conference',
                 end: new Date(),
-                eventclass: "calendar-active-3",
+                eventclass: 'calendar-active-3',
                 hasTimeSlot: true,
-                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
-                phone: "020-23456789",
+                people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }],
+                phone: '020-23456789',
                 start: new Date(),
-                url: "meet.google.com/izm-pooa-gns"
-              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+                url: 'meet.google.com/izm-pooa-gns'
+              }, title: 'Java Workshop', hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false,
             }],
 
-          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+          }, id: '59460_monthid', isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false,
         },
         {
           date: new Date(), eventDetails: {
@@ -113,19 +112,19 @@ describe('amexio-calendar-month', () => {
             events: [{
               isEvent: true,
               details: {
-                title: "Java Conference",
+                title: 'Java Conference',
                 end: new Date(),
-                eventclass: "calendar-active-3",
+                eventclass: 'calendar-active-3',
                 hasTimeSlot: true,
-                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
-                phone: "020-23456789",
+                people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }],
+                phone: '020-23456789',
                 start: new Date(),
-                url: "meet.google.com/izm-pooa-gns"
-              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+                url: 'meet.google.com/izm-pooa-gns'
+              }, title: 'Java Workshop', hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false,
             }],
 
-          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
-        }
+          }, id: '59460_monthid', isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false,
+        },
       ],
       [
         {
@@ -134,18 +133,18 @@ describe('amexio-calendar-month', () => {
             events: [{
               isEvent: true,
               details: {
-                title: "Java Conference",
+                title: 'Java Conference',
                 end: new Date(),
-                eventclass: "calendar-active-3",
+                eventclass: 'calendar-active-3',
                 hasTimeSlot: true,
-                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
-                phone: "020-23456789",
+                people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }],
+                phone: '020-23456789',
                 start: new Date(),
-                url: "meet.google.com/izm-pooa-gns"
-              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+                url: 'meet.google.com/izm-pooa-gns'
+              }, title: 'Java Workshop', hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false,
             }],
 
-          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+          }, id: '59460_monthid', isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false,
         },
         {
           date: new Date(), eventDetails: {
@@ -153,18 +152,18 @@ describe('amexio-calendar-month', () => {
             events: [{
               isEvent: true,
               details: {
-                title: "Java Conference",
+                title: 'Java Conference',
                 end: new Date(),
-                eventclass: "calendar-active-3",
+                eventclass: 'calendar-active-3',
                 hasTimeSlot: true,
-                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
-                phone: "020-23456789",
+                people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }],
+                phone: '020-23456789',
                 start: new Date(),
-                url: "meet.google.com/izm-pooa-gns"
-              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+                url: 'meet.google.com/izm-pooa-gns'
+              }, title: 'Java Workshop', hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false,
             }],
 
-          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+          }, id: '59460_monthid', isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false,
         },
         {
           date: new Date(), eventDetails: {
@@ -172,26 +171,26 @@ describe('amexio-calendar-month', () => {
             events: [{
               isEvent: true,
               details: {
-                title: "Java Conference",
+                title: 'Java Conference',
                 end: new Date(),
-                eventclass: "calendar-active-3",
+                eventclass: 'calendar-active-3',
                 hasTimeSlot: true,
-                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
-                phone: "020-23456789",
+                people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }],
+                phone: '020-23456789',
                 start: new Date(),
-                url: "meet.google.com/izm-pooa-gns"
-              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+                url: 'meet.google.com/izm-pooa-gns'
+              }, title: 'Java Workshop', hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false,
             }],
 
-          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
-        }
-      ]
+          }, id: '59460_monthid', isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false,
+        },
+      ],
 
     ];
 
   });
 
-  //check variables 
+  // check variables
   it('check variables in dropdown component ', () => {
 
     comp.leftPositionPanel = 'leftPositionPanel';
@@ -220,7 +219,6 @@ describe('amexio-calendar-month', () => {
     let rowindex: any;
     let calendarrow: any;
 
-
     rowindex = 0;
     innerindex = 2;
     comp.refactoredleftday(rowindex, innerindex, calendarrow);
@@ -230,7 +228,7 @@ describe('amexio-calendar-month', () => {
     expect(comp.focusiindex).toEqual(innerindex - 1);
 
     innerindex = -1;
-    comp.focusiindex = -1
+    comp.focusiindex = -1;
     comp.refactoredleftday(rowindex, innerindex, calendarrow);
     expect(innerindex).toBeLessThan(0);
     expect(comp.focusrindex).toEqual(rowindex);
@@ -253,9 +251,8 @@ describe('amexio-calendar-month', () => {
     expect(comp.focusiindex).toEqual(innerindex - 1);
   });
 
-
   it('getFullDayName()', () => {
-    let receiveddate = new Date('16-Jul-2019');
+    const receiveddate = new Date('16-Jul-2019');
     comp.getFullDayName(receiveddate);
     const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
       'Thursday', 'Friday', 'Saturday'];
@@ -272,7 +269,7 @@ describe('amexio-calendar-month', () => {
   });
 
   it('getFullMonthName()', () => {
-    let receiveddate = new Date('16-Jul-2019');
+    const receiveddate = new Date('16-Jul-2019');
     comp.getFullMonthName(receiveddate);
     const months = ['January', 'Febuary', 'March', 'April', 'May', 'June',
       'July', 'August', 'September', 'October', 'November', 'December'];
@@ -288,7 +285,7 @@ describe('amexio-calendar-month', () => {
   });
 
   it('receiveDateFormat()', () => {
-    let day = new Date();
+    const day = new Date();
     comp.receiveDateFormat(day);
     let datestring = '';
     datestring = (day).getDate() + comp.getFullMonthName(new Date(day)) +
@@ -297,7 +294,7 @@ describe('amexio-calendar-month', () => {
   });
 
   it('formatAMPM()', () => {
-    let date = new Date();
+    const date = new Date();
     comp.formatAMPM(date);
     let hours = date.getHours();
     const minutes = date.getMinutes();
@@ -310,8 +307,8 @@ describe('amexio-calendar-month', () => {
   });
 
   it('eventClicked()', () => {
-    let eventData: any = 'a';
-    let runTimeDiv: any = 'b';
+    const eventData: any = 'a';
+    const runTimeDiv: any = 'b';
     comp.eventClicked(event, eventData, runTimeDiv);
     const eventObject = {};
     eventObject['event'] = event;
@@ -322,16 +319,16 @@ describe('amexio-calendar-month', () => {
   });
 
   it('onCloseClick()', () => {
-    let event1 = { data: { fpFlag: false } }
+    const event1 = { data: { fpFlag: false } };
     comp.onCloseClick(event1);
     event1.data.fpFlag = false;
     comp.onCloseClicked.emit(event);
   });
 
   it('onChipClick()', () => {
-    let item: any = 'a';
-    let runtimeDiv: any = 'b';
-    let event1 = { pageX: 'page' }
+    const item: any = 'a';
+    const runtimeDiv: any = 'b';
+    const event1 = { pageX: 'page' };
     const emitEvent = {};
     emitEvent['event'] = event;
     emitEvent['item'] = item;
@@ -348,39 +345,39 @@ describe('amexio-calendar-month', () => {
     // comp.onMoreEventClicked.emit(emitEvent);
   });
   it('onMoreClicked() else block', () => {
-    let data = [
+    const data = [
       {
-        detais: { title: "Java Conference", end: new Date(), eventclass: "calendar-active-3", hasTimeSlot: true, people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }], phone: "020-23456789", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: 'Java Conference', end: new Date(), eventclass: 'calendar-active-3', hasTimeSlot: true, people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }], phone: '020-23456789', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
         eventDateTime: new Date(),
         events: '',
         hasTimeSlot: true,
         isEvent: true,
-        title: "Java Conference"
+        title: 'Java Conference'
       },
       {
-        detais: { title: "Angular Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: "Angular Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: 'Arun jain' }, { personName: 'Raj Rai' }], phone: "020-23456788", start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
         eventDateTime: new Date(),
         events: null,
         hasTimeSlot: true,
         isEvent: true,
-        title: "Angular Conference"
+        title: 'Angular Conference'
       },
       {
-        detais: { title: "Android Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: "Android Conference", end: new Date(), eventclass: 'calendar-active-4', hasTimeSlot: true, people: [{ personName: 'Arun jain' }, { personName: 'Raj Rai' }], phone: '020-23456788', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
         eventDateTime: new Date(),
         events: null,
         hasTimeSlot: true,
         isEvent: true,
-        title: "Android Conference"
+        title: 'Android Conference'
       },
       {
-        detais: { title: "IOS Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: "IOS Conference", end: new Date(), eventclass: 'calendar-active-4', hasTimeSlot: true, people: [{ personName: 'Arun jain' }, { personName: 'Raj Rai' }], phone: '020-23456788', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
         eventDateTime: new Date(),
         events: null,
         hasTimeSlot: true,
         isEvent: true,
-        title: "IOS Conference"
-      }
+        title: 'IOS Conference'
+      },
     ];
     comp.onMoreClicked(event, data);
 
@@ -390,43 +387,43 @@ describe('amexio-calendar-month', () => {
     comp.openFloatingPanel = true;
   });
   it('onMoreClicked() if condition for calendaryData', () => {
-    let data = [
+    const data = [
       {
-        detais: { title: "Java Conference", end: new Date(), eventclass: "calendar-active-3", hasTimeSlot: true, people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }], phone: "020-23456789", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: 'Java Conference', end: new Date(), eventclass: 'calendar-active-3', hasTimeSlot: true, people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }], phone: '020-23456789', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
 
         eventDateTime: new Date(),
         events: '',
         hasTimeSlot: true,
         isEvent: true,
-        title: "Java Conference"
+        title: 'Java Conference'
       },
       {
-        detais: { title: "Angular Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: 'Angular Conference', end: new Date(), eventclass: 'calendar-active-4', hasTimeSlot: true, people: [{ personName: 'Arun jain' }, { personName: 'Raj Rai' }], phone: '020-23456788', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
 
         eventDateTime: new Date(),
         events: null,
         hasTimeSlot: true,
         isEvent: true,
-        title: "Angular Conference"
+        title: 'Angular Conference'
       },
       {
-        detais: { title: "Android Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: 'Android Conference', end: new Date(), eventclass: 'calendar-active-4', hasTimeSlot: true, people: [{ personName: 'Arun jain' }, { personName: 'Raj Rai' }], phone: '020-23456788', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
 
         eventDateTime: new Date(),
         events: null,
         hasTimeSlot: true,
         isEvent: true,
-        title: "Android Conference"
+        title: 'Android Conference'
       },
       {
-        detais: { title: "IOS Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: 'IOS Conference', end: new Date(), eventclass: 'calendar-active-4', hasTimeSlot: true, people: [{ personName: 'Arun jain' }, { personName: 'Raj Rai' }], phone: '020-23456788', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
 
         eventDateTime: new Date(),
         events: null,
         hasTimeSlot: true,
         isEvent: true,
-        title: "IOS Conference"
-      }
+        title: 'IOS Conference'
+      },
     ];
     comp.calendaryData = [
       [
@@ -436,20 +433,20 @@ describe('amexio-calendar-month', () => {
             events: [{
               isEvent: true,
               details: {
-                title: "Java Conference",
+                title: 'Java Conference',
                 end: new Date(),
-                eventclass: "calendar-active-3",
+                eventclass: 'calendar-active-3',
                 hasTimeSlot: true,
-                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
-                phone: "020-23456789",
+                people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }],
+                phone: '020-23456789',
                 start: new Date(),
-                url: "meet.google.com/izm-pooa-gns"
-              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+                url: 'meet.google.com/izm-pooa-gns'
+              }, title: 'Java Workshop', hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false,
             }],
 
-          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
-        }
-      ]
+          }, id: '59460_monthid', isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false,
+        },
+      ],
     ];
 
     comp.onMoreClicked(event, data);
@@ -467,51 +464,51 @@ describe('amexio-calendar-month', () => {
   });
 
   it('onMoreClicked() if condition for day.eventDetails', () => {
-    let data = [
+    const data = [
       {
-        detais: { title: "Java Conference", end: new Date(), eventclass: "calendar-active-3", hasTimeSlot: true, people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }], phone: "020-23456789", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: 'Java Conference', end: new Date(), eventclass: 'calendar-active-3', hasTimeSlot: true, people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }], phone: '020-23456789', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
 
         eventDateTime: new Date(),
         events: '',
         hasTimeSlot: true,
         isEvent: true,
-        title: "Java Conference"
+        title: 'Java Conference'
       },
       {
-        detais: { title: "Angular Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: 'Angular Conference', end: new Date(), eventclass: 'calendar-active-4', hasTimeSlot: true, people: [{ personName: 'Arun jain' }, { personName: 'Raj Rai' }], phone: '020-23456788', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
 
         eventDateTime: new Date(),
         events: null,
         hasTimeSlot: true,
         isEvent: true,
-        title: "Angular Conference"
+        title: 'Angular Conference'
       },
       {
-        detais: { title: "Android Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: 'Android Conference', end: new Date(), eventclass: 'calendar-active-4', hasTimeSlot: true, people: [{ personName: 'Arun jain' }, { personName: 'Raj Rai' }], phone: '020-23456788', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
 
         eventDateTime: new Date(),
         events: null,
         hasTimeSlot: true,
         isEvent: true,
-        title: "Android Conference"
+        title: 'Android Conference'
       },
       {
-        detais: { title: "IOS Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        detais: { title: 'IOS Conference', end: new Date(), eventclass: 'calendar-active-4', hasTimeSlot: true, people: [{ personName: 'Arun jain' }, { personName: 'Raj Rai' }], phone: '020-23456788', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
 
         eventDateTime: new Date(),
         events: null,
         hasTimeSlot: true,
         isEvent: true,
-        title: "IOS Conference"
-      }
+        title: 'IOS Conference'
+      },
     ];
     comp.calendaryData = [
       [
         {
           date: new Date(),
-          id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
-        }
-      ]
+          id: '59460_monthid', isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false,
+        },
+      ],
     ];
 
     comp.onMoreClicked(event, data);
@@ -526,34 +523,33 @@ describe('amexio-calendar-month', () => {
     comp.openFloatingPanel = true;
   });
 
-
   it('ondatefocus()', () => {
-    let day = {
+    const day = {
       eventDetails: {
         isEvent: true,
         events: [{
           isEvent: true,
           details: {
-            title: "Java Conference",
+            title: 'Java Conference',
             end: new Date(),
-            eventclass: "calendar-active-3",
+            eventclass: 'calendar-active-3',
             hasTimeSlot: true,
-            people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
-            phone: "020-23456789",
+            people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }],
+            phone: '020-23456789',
             start: new Date(),
-            url: "meet.google.com/izm-pooa-gns"
-          }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(),
-          events: [{}], fpFlag: false
+            url: 'meet.google.com/izm-pooa-gns'
+          }, title: 'Java Workshop', hasTimeSlot: true, eventDateTime: new Date(),
+          events: [{}], fpFlag: false,
         }],
 
-      }, date: new Date()
-    }
+      }, date: new Date(),
+    };
     comp.ondatefocus(day);
 
     expect(day.eventDetails).toBeDefined();
     expect(day.eventDetails).not.toBeNull();
     day.eventDetails.events.forEach((scheduledevent: any, index: number) => {
-      expect(index).toEqual(0)
+      expect(index).toEqual(0);
       comp.ariadatalabel = comp.receiveDateFormat(day.date);
       comp.ariadatalabel = comp.ariadatalabel + scheduledevent.details.title +
         ' event scheduled ' +
@@ -566,24 +562,22 @@ describe('amexio-calendar-month', () => {
 
   });
 
-
   it('addDynamicClass()', () => {
-    let calculatedWidth = 140;
-    let cssClass = 'rightPositionPanel';
-    let nextSiblingElement = document.createElement('app-events-panel');
+    const calculatedWidth = 140;
+    const cssClass = 'rightPositionPanel';
+    const nextSiblingElement = document.createElement('app-events-panel');
     comp.nativeRuntimeDiv = {};
     comp.nativeRuntimeDiv['element'] = {};
-    comp.nativeRuntimeDiv.element =
-      {
-        'nativeElement': {
-          'nextElementSibling': nextSiblingElement
-        }
-      }
+    comp.nativeRuntimeDiv.element = {
+        nativeElement: {
+          nextElementSibling: nextSiblingElement,
+        },
+      };
     comp.nativeRuntimeDiv['element'] = {
-      'nativeElement': {
-        'nextElementSibling': nextSiblingElement
-      }
-    }
+      nativeElement: {
+        nextElementSibling: nextSiblingElement,
+      },
+    };
     comp.addDynamicClass(calculatedWidth, nextSiblingElement, cssClass);
     comp.widthPosition = calculatedWidth + 'px';
     rendererMock.addClass(nextSiblingElement, cssClass);
@@ -592,8 +586,6 @@ describe('amexio-calendar-month', () => {
 
   });
 
-
-
   // it('nextrightday()', () => {
   //   let day = { id: "59460_monthid" };
   //   comp.nextrightday(day);
@@ -601,7 +593,7 @@ describe('amexio-calendar-month', () => {
   //   let focusinnerindex: number;
   //   comp.calendaryData.forEach((calendarrow: any, rowindex: number) => {
   //     calendarrow.forEach((calendardata: any, innerindex: number) => {
-  //       // if (day.id === calendardata.id) { 
+  //       // if (day.id === calendardata.id) {
   //         if(rowindex == 0 && innerindex == 0) {
   //       expect(day.id).toEqual(calendardata.id)
   //       //  if ((calendarrow.length - 1) === innerindex) {
@@ -633,7 +625,6 @@ describe('amexio-calendar-month', () => {
 
   // });
 
-     
   // it('addEventDetails() method check', () => {
   //   comp.nativeRuntimeDiv = [{
   //     element: { nativeElement: { id: 12 } },
@@ -643,7 +634,7 @@ describe('amexio-calendar-month', () => {
   //   }];
   //   let event1 = {
   //     runtimeDiv: { innerHTML: 'asd', id: 12, event: { clientX: 12, clientY: 34, pageX: '', screenX: '', layerX:'' } }
-  //   };     
+  //   };
   //   comp. addEventDetails(DummyComponent, event1);
   //   comp.runTimeInstance = { destroy: function () { } };
   //   // if (this.runTimeInstance) {
