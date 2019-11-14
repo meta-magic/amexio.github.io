@@ -11,7 +11,6 @@ import { AmexioCardCEBodyComponent } from '../../../creative/common/amexio.body.
 import { AmexioCardCEHeaderComponent } from '../../../creative/common/amexio.header.component';
 import { AmexioFormCEComponent } from '../../../creative/form/amexio.form.component';
 import { AmexioFormActionCEComponent } from '../../../creative/form/form.action.component'
-import { AmexioImageComponent } from '../../../media/image/image.component';
 import { AmexioFooterComponent} from '../../../panes/action/pane.action.footer';
 import { AmexioBodyComponent} from '../../../panes/body/pane.action.body';
 import { AmexiodialoguePaneComponent } from '../../../panes/dialogue/dialogue.pane.component';
@@ -20,6 +19,7 @@ import {DeviceQueryService} from '../../../services/device/device.query.service'
 import { AmexioButtonComponent} from '../../forms/buttons/button.component';
 import { AmexioLabelComponent} from '../../forms/label/label.component';
 import {AmexioCardComponent} from '../../layout/card/card.component';
+import { AmexioImageComponent } from '../../media/image/image.component';
 import {SpeechBubbleComponent} from './speech-bubble.component';
 // import { CommonIconComponent} from '../../base/components/common.icon.component';
 // import {  }

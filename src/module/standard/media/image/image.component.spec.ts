@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../index';
+import { IconLoaderService } from '../../../../index';
 import { AmexioImageComponent } from './image.component';
 
 describe('amexio-image', () => {
@@ -17,34 +17,31 @@ describe('amexio-image', () => {
         comp = fixture.componentInstance;
     });
 
-
     it('check disable property ', () => {
-        (<any>comp).overlay = false;
+        (comp as any).overlay = false;
         expect(comp.overlay).toEqual(false);
-        (<any>comp).imageCss = ' image-';
-        expect((<any>comp).imageCss).toEqual(' image-');
+        (comp as any).imageCss = ' image-';
+        expect((comp as any).imageCss).toEqual(' image-');
 
-        (<any>comp).overlayTextCss = 'overlay-text overlay-';
-        expect((<any>comp).overlayTextCss).toEqual('overlay-text overlay-');
+        (comp as any).overlayTextCss = 'overlay-text overlay-';
+        expect((comp as any).overlayTextCss).toEqual('overlay-text overlay-');
 
-        
     });
 
-    it('check onImageClick method',() => {
+    it('check onImageClick method', () => {
         comp.onImageClick('data');
         comp.onClick.subscribe((g: any) => {
             expect(event).toEqual(g);
           });
     });
 
-
     it('ngoninit method', () => {
         comp.ngOnInit();
         comp.width = '100px';
-        comp.height ='50px';
+        comp.height = '50px';
         comp.overlayEffect = '';
         comp.filter = '';
-     
+
         expect(comp.width).toEqual('100px');
         expect(comp.height).toEqual('50px');
         expect(comp.filter).toEqual('');

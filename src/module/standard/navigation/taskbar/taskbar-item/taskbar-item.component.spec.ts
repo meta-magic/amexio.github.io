@@ -15,8 +15,8 @@ import { ToolbarComponent } from '../../../forms/toolbar/toolbar.component';
 import { ToolbaroneComponent } from '../../../forms/toolbar/toolbarone.component';
 
 import { AmexioContextMenuComponent } from '../../../../base/base.contextmenu.component';
-import { AmexioImageComponent } from '../../../../media/image/image.component';
 import { AmexioPanelHeaderComponent } from '../../../../panes/panel/panel.header.component';
+import { AmexioImageComponent } from '../../../media/image/image.component';
 
 describe('TaskbarItemComponent', () => {
     let comp: AmexioTaskbarItemComponent;
@@ -46,15 +46,15 @@ describe('TaskbarItemComponent', () => {
 
     it('should check iconClick() if condition', () => {
         expect(comp).toBeTruthy();
-        let event = {};
+        const event = {};
         comp.close = true;
         comp.iconClick(event);
         comp.close = true;
         expect(comp.close).toEqual(true);
         comp.iconClose = true;
-        comp.displayFlag = false;     
+        comp.displayFlag = false;
         expect(event).toBeDefined();
-        comp.taskbarItemId.nativeElement.parentNode.remove();   
+        comp.taskbarItemId.nativeElement.parentNode.remove();
 
         comp.onCloseEvent.subscribe((g: any) => {
             expect(comp.taskbarItemId).toEqual(g);
@@ -67,7 +67,7 @@ describe('TaskbarItemComponent', () => {
         comp.close = true;
         expect(comp.close).toEqual(true);
         comp.iconClose = true;
-        comp.displayFlag = false;     
+        comp.displayFlag = false;
         expect(event).not.toBeDefined();
         comp.onCloseEvent.subscribe((g: any) => {
             expect(comp.taskbarItemId).toEqual(g);

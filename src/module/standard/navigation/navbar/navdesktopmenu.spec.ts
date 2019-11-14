@@ -4,10 +4,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../../index';
-import { AmexioImageComponent } from '../../../media/image/image.component';
-import { AmexioNavDesktopMenuComponent } from './navdesktopmenu';
-import { DeviceQueryService } from '../../../services/device/device.query.service';
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
+import { DeviceQueryService } from '../../../services/device/device.query.service';
+import { AmexioImageComponent } from '../../media/image/image.component';
+import { AmexioNavDesktopMenuComponent } from './navdesktopmenu';
 
 describe('navdesktopmenu', () => {
 
@@ -86,7 +86,7 @@ describe('navdesktopmenu', () => {
     expect(menus).toBeDefined();
     menus.nativeElement.getBoundingClientRect = () => ({
       left: 100,
-      right: 200
+      right: 200,
     });
     comp1.ngAfterViewInit();
     // setTimeout(() => {

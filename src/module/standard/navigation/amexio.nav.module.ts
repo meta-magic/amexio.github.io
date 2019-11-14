@@ -10,9 +10,9 @@ import { CommonDataService } from '../../services/data/common.data.service';
 import { DeviceQueryService } from '../../services/device/device.query.service';
 import { IconLoaderService } from '../../services/icon/icon.service';
 
-import { AmexioMediaModule } from '../../media/amexio.media.module';
 import { AmexioFormsModule } from '../forms/amexio.forms.module';
 import { AmexioLayoutModule } from '../layout/amexio.layout.module';
+import { AmexioMediaModule } from '../media/amexio.media.module';
 
 import { AmexioBreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { DockbarComponent } from './dockedbar/dockbaritem';

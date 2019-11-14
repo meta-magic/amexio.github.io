@@ -1,6 +1,5 @@
 
 import { Component, ContentChildren, OnInit, QueryList} from '@angular/core';
-import { AmexioImageComponent } from '../../media/image/image.component';
 import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { AmexioCheckBoxGroupComponent } from '../../standard/forms/checkbox-group/checkbox.group.component';
 import { AmexioCheckBoxComponent } from '../../standard/forms/checkbox/checkbox.component';
@@ -11,6 +10,7 @@ import { AmexioRadioGroupComponent} from '../../standard/forms/radio/radiogroup.
 import { AmexioRatingComponent } from '../../standard/forms/rating/rating.component';
 import { AmexioTextInputComponent } from '../../standard/forms/textinput/textinput.component';
 import { AmexioToggleComponent } from '../../standard/forms/toggle/toggle.component';
+import { AmexioImageComponent } from '../../standard/media/image/image.component';
 
 @Component({
   selector: 'amexio-tab-action',

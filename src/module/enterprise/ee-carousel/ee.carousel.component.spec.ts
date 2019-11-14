@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
-import { AmexioImageComponent } from '../../media/image/image.component';
-import { MultiMediaCarouselComponent } from './ee.carousel.component';
 import { AmexioRatingComponent } from '../../standard/forms/rating/rating.component';
+import { AmexioImageComponent } from '../../standard/media/image/image.component';
 import { ContentComponent } from '../ee-content/ee.content';
+import { MultiMediaCarouselComponent } from './ee.carousel.component';
 
 describe('amexio-ee-content', () => {
     let comp: MultiMediaCarouselComponent;

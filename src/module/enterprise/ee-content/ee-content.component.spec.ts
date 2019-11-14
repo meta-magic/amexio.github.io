@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
-import { AmexioImageComponent } from '../../media/image/image.component';
+import { AmexioImageComponent } from '../../standard/media/image/image.component';
 
 import { ContentComponent } from './ee.content';
 

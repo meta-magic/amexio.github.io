@@ -13,7 +13,7 @@ describe('AmexioBreadcrumbComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientModule
+        HttpClientModule,
       ],
       declarations: [AmexioBreadcrumbComponent, CommonIconComponent],
       providers: [HttpClient, CommonDataService],

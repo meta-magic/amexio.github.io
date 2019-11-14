@@ -1,9 +1,9 @@
+import { ChangeDetectorRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../../index';
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
 import { AmexioNotificationComponent } from './notification.component';
-import { ChangeDetectorRef } from '@angular/core';
 
 describe('amexio-notification', () => {
     let comp: AmexioNotificationComponent;
@@ -36,8 +36,8 @@ describe('amexio-notification', () => {
         comp.componentID = Math.floor(Math.random() * 1000 + 999);
         comp.messageData = [
             'User',
-            'aaa'
-        ]
+            'aaa',
+        ];
         expect(comp.autodismissmsg).toEqual(true);
         // comp.autodismissmsginterval = undefined;
         expect(comp.autodismissmsginterval).toEqual(1500);
@@ -47,7 +47,7 @@ describe('amexio-notification', () => {
         expect(comp.messageData.length).toBeGreaterThan(0);
         comp.messageData.shift();
         // comp.ref.markForCheck();
-    })
+    });
 
     it('ngOnInit of Else notification', () => {
         comp.autodismissmsg = true;
@@ -61,5 +61,5 @@ describe('amexio-notification', () => {
         // expect(comp.messageData.length).toBeLessThanOrEqual(0);
         // comp.messageData.shift();
         // comp.ref.markForCheck();
-    })
+    });
 });

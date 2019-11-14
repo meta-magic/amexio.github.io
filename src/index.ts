@@ -8,7 +8,7 @@ export * from './module/standard/charts/amexio.charts.module';
 export * from './module/standard/map/amexio.map.module';
 export * from './module/panes/amexio.pane.module';
 export * from './module/enterprise/amexio.enterprise.module';
-export * from './module/media/amexio.media.module';
+export * from './module/standard/media/amexio.media.module';
 export * from './module/services/icon/icon.service';
 export * from './module/standard/charts/chart.loader.service';
 export * from './module/standard/dashboard/chart.loader.service';

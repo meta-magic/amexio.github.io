@@ -8,7 +8,7 @@ import { CommonIconComponent } from './../../base/components/common.icon.compone
 // import { StepWizardComponent } from './stepwizard.component';
 import { AmexioCardCEComponent } from '../../creative/card/amexio.cards.component';
 import { AmexioCardCEHeaderComponent } from '../../creative/common/amexio.header.component';
-import { AmexioImageComponent } from '../../media/image/image.component';
+import { AmexioImageComponent } from '../../standard/media/image/image.component';
 import { AmexioCardCEBodyComponent } from '../../creative/common/amexio.body.component';
 import { AmexioCardCEActionComponent } from '../../creative/common/amexio.action.component';
 import { AmexioFormActionCEComponent } from '../../creative/form/form.action.component'

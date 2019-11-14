@@ -29,7 +29,7 @@ import { AmexioMenuCEComponent } from './menu/menu.component';
 import { AmexioProgressCEComponent } from './progressbar/progressce.component';
 import { CeMinimizeWindowComponent } from './window/ceMinimize.window.component';
 
-import { AmexioMediaModule } from '../media/amexio.media.module';
+import { AmexioMediaModule } from '../standard/media/amexio.media.module';
 
 import { AmexioCardCEComponent } from './../creative/card/amexio.cards.component';
 import { AmexioCardCEActionComponent } from './../creative/common/amexio.action.component';

@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, ContentChild, Input, OnInit } from '@angular/core';
-import { AmexioImageComponent } from '../../../media/image/image.component';
-import { AmexioVideoPlayerComponent } from '../../../media/video-player/video.player.component';
+import { AmexioImageComponent } from '../../../standard/media/image/image.component';
+import { AmexioVideoPlayerComponent } from '../../../standard/media/video-player/video.player.component';
 
 @Component({
   selector: 'amexio-viewport-background',
