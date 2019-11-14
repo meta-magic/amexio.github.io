@@ -10,10 +10,10 @@ import { DynamicTextDirective } from './dynamic-text.directive';
     selector: 'amexio-route-animation',
     template: `
  <div amexio-dynamic-text [placeholder]="placeholdervalue">greeting </div>
-  `,
+  `
 })
 class DynamicTextTestComponent {
-    placeholdervalue = {greeting: 'Hi'};
+    placeholdervalue = {greeting: "Hi"};
 }
 
 describe('Directive: amexio-dynamic-text', () => {
@@ -40,7 +40,7 @@ describe('Directive: amexio-dynamic-text', () => {
     });
 
     it('ngAfterContentChecked()', () => {
-     dirIn.jsonData = {greeting: 'Hi'};
+     dirIn.jsonData = {greeting: "Hi"}
      let element = {nodeType: 3, textContent: 'greeting'};
      dirIn.ngAfterContentChecked();
 
@@ -48,9 +48,9 @@ describe('Directive: amexio-dynamic-text', () => {
     });
 
     it('iterateHTMLDOM() positive condition', () => {
-        dirIn.jsonData = {greeting: 'Hi'};
-        const element = {nodeType: 3, textContent: 'greeting', hasChildNodes: () => {
-            return true;
+        dirIn.jsonData = {greeting: "Hi"}
+        let element = {nodeType: 3, textContent: 'greeting', hasChildNodes: () => {
+            return true
         }};
         let str = element.textContent;
         const strarr = element.textContent.split(' ');
@@ -58,32 +58,34 @@ describe('Directive: amexio-dynamic-text', () => {
         dirIn.iterateHTMLDOM(element);
 
         expect(element.nodeType).toEqual(3);
-        for (const [key, value] of Object.entries(dirIn.jsonData)) {
+        for(let [key, value] of Object.entries(dirIn.jsonData)) {
                   strarr.forEach((strelement: any) => {
                     if (key === strelement) {
                         str = str.replace(key, value as string);
                         expect(key).toEqual(strelement);
                     }
-                });
+                });         
             }
        });
 
     it('iterateHTMLDOM() negative condition1', () => {
-        dirIn.jsonData = {greeting: 'Hi'};
-        const element = {nodeType: 5, childNodes: [], textContent: 'greeting', hasChildNodes: () => {
-            return true;
+        dirIn.jsonData = {greeting: "Hi"}
+        let element = {nodeType: 5, childNodes: [],textContent: 'greeting', hasChildNodes: () => {
+            return true
         }};
         dirIn.iterateHTMLDOM(element);
            // const hostelement = this.viewContainerRef.element.nativeElement;
           // this.iterateHTMLDOM(hostelement);
 
+
           //  if (element.nodeType === 3) {
-            expect(element.hasChildNodes()).toHaveBeenCalled;
+            expect(element.hasChildNodes()).toHaveBeenCalled
         expect(element.hasChildNodes()).toEqual(true);
         expect(element.nodeType).not.toEqual(3);
-
-            };
+ 
+            }
        });
+
 
     //    it('iterateHTMLDOM() negative condition1.2', () => {
     //     dirIn.jsonData = {greeting: "Hi"}
@@ -94,10 +96,11 @@ describe('Directive: amexio-dynamic-text', () => {
     //        // const hostelement = this.viewContainerRef.element.nativeElement;
     //       // this.iterateHTMLDOM(hostelement);
 
+
     //       //  if (element.nodeType === 3) {
     //         expect(element.hasChildNodes()).toHaveBeenCalled
     //         expect(element.hasChildNodes()).toEqual(false);
-
+ 
     //         }
     //    });
 });
