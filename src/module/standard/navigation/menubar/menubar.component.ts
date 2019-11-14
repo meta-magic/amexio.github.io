@@ -17,10 +17,10 @@
 */
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CommonDataService } from '../../services/data/common.data.service';
-import { DeviceQueryService } from '../../services/device/device.query.service';
+import { CommonDataService } from '../../../services/data/common.data.service';
+import { DeviceQueryService } from '../../../services/device/device.query.service';
 
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
 
 @Component({
   selector: 'amexio-menu',

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../index';
-import { CommonIconComponent } from './../../base/components/common.icon.component';
+import { IconLoaderService } from '../../../../index';
+import { CommonIconComponent } from '../../../base/components/common.icon.component';
 import { AmexioNotificationComponent } from './notification.component';
 import { ChangeDetectorRef } from '@angular/core';
 

@@ -1,11 +1,11 @@
 
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AmexioBreadcrumbComponent } from './breadcrumb.component';
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
-import { CommonIconComponent } from '../../base/components/common.icon.component';
-import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonIconComponent } from '../../../base/components/common.icon.component';
+import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
+import { CommonDataService } from '../../../services/data/common.data.service';
+import { AmexioBreadcrumbComponent } from './breadcrumb.component';
 describe('AmexioBreadcrumbComponent', () => {
   let comp1: AmexioBreadcrumbComponent;
   let fixture1: ComponentFixture<AmexioBreadcrumbComponent>;
@@ -36,8 +36,8 @@ describe('AmexioBreadcrumbComponent', () => {
       expect(node[comp1.childarraykey]).toBeDefined();
       node[comp1.childarraykey].forEach((element: any, index: any) => {
         element['id'] = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_id';
-        expect(node[comp1.childarraykey]).toBeDefined()
-        comp1.iconAddedMethod(node[this.childarraykey]);
+        expect(node[comp1.childarraykey]).toBeDefined();
+        comp1.iconAddedMethod(node[comp1.childarraykey]);
       })
     })
   })

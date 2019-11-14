@@ -9,11 +9,11 @@ import { AmexioBaseContextMenuModule } from './base/base.contextmenu.component.m
 import { AmexioCreativeModule } from './creative/amexio.creative.module';
 import { AmexioRuntimeModule } from './creative/arc/amexio.arc.module';
 import { AmexioMediaModule } from './media/amexio.media.module';
-import { AmexioNavModule } from './navigation/amexio.nav.module';
 import { AmexioPaneModule } from './panes/amexio.pane.module';
 import { AmexioDataModule } from './standard/data/amexio.data.module';
 import { AmexioFormsModule } from './standard/forms/amexio.forms.module';
 import { AmexioLayoutModule } from './standard/layout/amexio.layout.module';
+import { AmexioNavModule } from './standard/navigation/amexio.nav.module';
 
 import { CommonDataService } from './services/data/common.data.service';
 import { DeviceQueryService } from './services/device/device.query.service';

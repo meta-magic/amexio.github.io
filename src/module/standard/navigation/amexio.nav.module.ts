@@ -6,13 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { CommonDataService } from '../services/data/common.data.service';
-import { DeviceQueryService } from '../services/device/device.query.service';
-import { IconLoaderService } from '../services/icon/icon.service';
+import { CommonDataService } from '../../services/data/common.data.service';
+import { DeviceQueryService } from '../../services/device/device.query.service';
+import { IconLoaderService } from '../../services/icon/icon.service';
 
-import { AmexioMediaModule } from '../media/amexio.media.module';
-import { AmexioFormsModule } from '../standard/forms/amexio.forms.module';
-import { AmexioLayoutModule } from '../standard/layout/amexio.layout.module';
+import { AmexioMediaModule } from '../../media/amexio.media.module';
+import { AmexioFormsModule } from '../forms/amexio.forms.module';
+import { AmexioLayoutModule } from '../layout/amexio.layout.module';
 
 import { AmexioBreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { DockbarComponent } from './dockedbar/dockbaritem';
@@ -34,11 +34,11 @@ import { AmexioTaskbarComponent } from './taskbar/taskbar.component';
 
 import { AmexioBannerComponent } from './navbar/banner/banner.component';
 
-import { AmexioCommonModule } from '../base/amexio.common.module';
-import { AmexioPaneModule } from '../panes/amexio.pane.module';
+import { AmexioCommonModule } from '../../base/amexio.common.module';
+import { AmexioPaneModule } from '../../panes/amexio.pane.module';
 
-export * from '../services/data/common.data.service';
-export * from '../services/device/device.query.service';
+export * from '../../services/data/common.data.service';
+export * from '../../services/device/device.query.service';
 export * from './sidenav/sidenav.component';
 export * from './sidenav/sidenavnode.component';
 export * from './navbar/navbar.component';

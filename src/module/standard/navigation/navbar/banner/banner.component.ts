@@ -11,7 +11,7 @@ import {
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { DeviceQueryService } from '../../../services/device/device.query.service';
+import { DeviceQueryService } from '../../../../services/device/device.query.service';
 
 @Component({
   selector: 'amexio-banner',

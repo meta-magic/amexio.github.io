@@ -1,9 +1,9 @@
 import { ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AmexioNavDesktopMenuComponent } from '../../navigation/navbar/navdesktopmenu';
-import { AmexioNavMenuComponent } from '../../navigation/navbar/navmenu.component';
-import { AmexioNavMobileMenuComponent } from '../../navigation/navbar/navmobilemenu';
+import { AmexioNavDesktopMenuComponent } from './navdesktopmenu';
+import { AmexioNavMenuComponent } from './navmenu.component';
+import { AmexioNavMobileMenuComponent } from './navmobilemenu';
 describe('navmenu', () => {
   let comp: AmexioNavMenuComponent;
   let fixture: ComponentFixture<AmexioNavMenuComponent>;

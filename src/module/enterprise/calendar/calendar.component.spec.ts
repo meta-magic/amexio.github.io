@@ -18,7 +18,6 @@ import { AmexioCalendarDayTimeWiseComponent } from './calendar.daytimewise.compo
 import { AmexioCalendarMonthComponent } from './calendar.month';
 import { AmexioCalendarYearComponent } from './calendar.year.component';
 
-
 describe('amexio-calendar', () => {
   let comp: AmexioCalendarComponent;
   let fixture: ComponentFixture<AmexioCalendarComponent>;
@@ -33,7 +32,7 @@ describe('amexio-calendar', () => {
         AmexioCalendarDayTimeWiseComponent,
         AmexioCalendarMonthComponent,
         AmexioCalendarYearComponent,
-        AmexioLabelComponent
+        AmexioLabelComponent,
       ],
       providers: [IconLoaderService, CommonDataService],
     });
@@ -42,7 +41,7 @@ describe('amexio-calendar', () => {
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
   });
 
-  //check variables 
+  // check variables
   it('check variables in dropdown component ', () => {
 
     comp.displayHeaders = [];
@@ -54,7 +53,6 @@ describe('amexio-calendar', () => {
 
     expect(comp.calendarWeekData).toEqual([]);
 
-
     expect(comp.prevMonthPressed).toEqual(false);
     expect(comp.nextMonthPressed).toEqual(false);
     expect(comp.dayPressed).toEqual(false);
@@ -62,17 +60,16 @@ describe('amexio-calendar', () => {
 
     expect(comp.monthPressed).toEqual(false);
     expect(comp.yearPressed).toEqual(false);
-  })
+  });
 
   // onDayTimeWiseEvent method
   it('onDayTimeWiseEvent() method check', () => {
-    let fn = event;
+    const fn = event;
     comp.onDayTimeWiseEvent(fn);
     comp.onEventClicked.subscribe((g: any) => {
       expect(comp.onEventClicked).toEqual(g);
     });
   });
-
 
 // InitCalendar
   it('onDayTimeWiseEvent() method check', () => {
@@ -91,21 +88,18 @@ describe('amexio-calendar', () => {
     expect(comp.yearbtnid).toBeDefined();
   });
 
-
-
   // onMonthEvent method
   it('onMonthEvent() method check', () => {
-    let fn = event;
+    const fn = event;
     comp.onMonthEvent(fn);
     comp.onEventClicked.subscribe((g: any) => {
       expect(comp.onEventClicked).toEqual(g);
     });
   });
 
-
   // onMonthEvent method
   it('onMoreCloseClick() method check', () => {
-    let fn = event;
+    const fn = event;
     comp.onMoreCloseClick(fn);
     comp.onCloseClick.subscribe((g: any) => {
       expect(comp.onCloseClick).toEqual(g);
@@ -113,8 +107,8 @@ describe('amexio-calendar', () => {
   });
 
    // onMoreEventClicked method
-   it('onMoreEventClicked() method check', () => {
-    let fn = event;
+  it('onMoreEventClicked() method check', () => {
+    const fn = event;
     comp.onMoreEventClicked(fn);
     comp.onMoreEventClick.subscribe((g: any) => {
       expect(comp.onMoreEventClick).toEqual(g);

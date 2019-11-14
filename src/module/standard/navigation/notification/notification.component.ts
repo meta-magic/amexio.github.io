@@ -21,7 +21,7 @@ import {
   TemplateRef,
 } from '@angular/core';
 
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
 
 export enum KEY_CODE_notify {
   esc = 27,

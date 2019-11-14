@@ -1,6 +1,6 @@
 export * from './module/amexio.widget.module';
 export * from './module/standard/forms/amexio.forms.module';
-export * from './module/navigation/amexio.nav.module';
+export * from './module/standard/navigation/amexio.nav.module';
 export * from './module/standard/layout/amexio.layout.module';
 export * from './module/standard/data/amexio.data.module';
 export * from './module/standard/dashboard/amexio.dashboard.module';

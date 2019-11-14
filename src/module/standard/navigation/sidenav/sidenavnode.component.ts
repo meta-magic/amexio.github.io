@@ -17,8 +17,8 @@
 */
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DeviceQueryService } from '../../services/device/device.query.service';
-import { IconLoaderService } from './../../services/icon/icon.service';
+import { DeviceQueryService } from '../../../services/device/device.query.service';
+import { IconLoaderService } from '../../../services/icon/icon.service';
 @Component({
   selector: 'amexio-sidenav-node', templateUrl: './sidenavnode.component.html',
 })

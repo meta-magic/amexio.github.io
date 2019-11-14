@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AmexioNavMobileMenuComponent } from '../../navigation/navbar/navmobilemenu';
+import { AmexioNavMobileMenuComponent } from './navmobilemenu';
 
 describe('AmexioNavMobileMenuComponent', () => {
     let comp1: AmexioNavMobileMenuComponent;

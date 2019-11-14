@@ -23,7 +23,7 @@ import {
 import { AmexioBannerComponent } from './banner/banner.component';
 import { AmexioNavItemComponent } from './navitem.component';
 
-import { DeviceQueryService } from '../../services/device/device.query.service';
+import { DeviceQueryService } from '../../../services/device/device.query.service';
 
 @Component({
   selector: 'amexio-nav', templateUrl: 'navbar.component.html',

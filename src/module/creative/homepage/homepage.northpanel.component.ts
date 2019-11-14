@@ -1,6 +1,6 @@
 import { AfterViewInit, Input, Output } from '@angular/core';
 import { Component , ContentChild, EventEmitter, OnInit} from '@angular/core';
-import { AmexioNavBarComponent } from './../../navigation/navbar/navbar.component';
+import { AmexioNavBarComponent } from '../../standard/navigation/navbar/navbar.component';
 import { DeviceQueryService } from './../../services/device/device.query.service';
 @Component({
   selector: 'amexio-homepage-northpanel',

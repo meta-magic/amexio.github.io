@@ -18,9 +18,9 @@
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { CommonDataService } from '../../services/data/common.data.service';
+import { CommonDataService } from '../../../services/data/common.data.service';
 
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
 
 @Component({
   selector: 'amexio-breadcrumb',

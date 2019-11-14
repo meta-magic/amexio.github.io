@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DockedBarToolComponent } from './dockettoolbar.component';
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
-import { AmexioImageComponent } from '../../media/image/image.component';
-import {CommonIconComponent} from '../../base/components/common.icon.component';
+import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
+import { AmexioImageComponent } from '../../../media/image/image.component';
+import {CommonIconComponent} from '../../../base/components/common.icon.component';
 import { DockbarComponent } from './dockbaritem';
 import { HttpClient } from '@angular/common/http';
 import {HttpClientModule} from '@angular/common/http';

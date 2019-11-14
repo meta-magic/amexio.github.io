@@ -20,9 +20,9 @@ import {
   AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
   OnInit, Output, QueryList,
 } from '@angular/core';
-import { CommonDataService } from '../../services/data/common.data.service';
-import { DeviceQueryService } from '../../services/device/device.query.service';
-import { SideNavNodeComponent } from '../sidenav/sidenavnode.component';
+import { CommonDataService } from '../../../services/data/common.data.service';
+import { DeviceQueryService } from '../../../services/device/device.query.service';
+import { SideNavNodeComponent } from './sidenavnode.component';
 @Component({
   selector: 'amexio-side-nav', templateUrl: './sidenav.component.html',
 })

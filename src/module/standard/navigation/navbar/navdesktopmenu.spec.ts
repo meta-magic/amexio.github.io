@@ -3,11 +3,11 @@ import { ElementRef, SystemJsNgModuleLoader } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { IconLoaderService } from '../../../index';
-import { AmexioImageComponent } from '../../media/image/image.component';
-import { AmexioNavDesktopMenuComponent } from '../../navigation/navbar/navdesktopmenu';
-import { DeviceQueryService } from '../../services/device/device.query.service';
-import { CommonIconComponent } from './../../base/components/common.icon.component';
+import { IconLoaderService } from '../../../../index';
+import { AmexioImageComponent } from '../../../media/image/image.component';
+import { AmexioNavDesktopMenuComponent } from './navdesktopmenu';
+import { DeviceQueryService } from '../../../services/device/device.query.service';
+import { CommonIconComponent } from '../../../base/components/common.icon.component';
 
 describe('navdesktopmenu', () => {
 

@@ -3,20 +3,20 @@ import { FormsModule } from '@angular/forms';
 
 import { AmexioTaskbarItemComponent } from './taskbar-item.component';
 
-import { CommonIconComponent } from '../../../base/components/common.icon.component';
-import { AmexioPanelComponent } from '../../../panes/panel/panel.component';
+import { CommonIconComponent } from '../../../../base/components/common.icon.component';
+import { AmexioPanelComponent } from '../../../../panes/panel/panel.component';
 
-import { AmexioButtonComponent } from '../../../standard/forms/buttons/button.component';
+import { AmexioButtonComponent } from '../../../forms/buttons/button.component';
 
-import { ColorPaletteDirective } from '../../../directive/color-palette.directive';
-import { AmexioLabelComponent } from '../../../standard/forms/label/label.component';
+import { ColorPaletteDirective } from '../../../../directive/color-palette.directive';
+import { AmexioLabelComponent } from '../../../forms/label/label.component';
 
-import { ToolbarComponent } from '../../../standard/forms/toolbar/toolbar.component';
-import { ToolbaroneComponent } from '../../../standard/forms/toolbar/toolbarone.component';
+import { ToolbarComponent } from '../../../forms/toolbar/toolbar.component';
+import { ToolbaroneComponent } from '../../../forms/toolbar/toolbarone.component';
 
-import { AmexioContextMenuComponent } from '../../../base/base.contextmenu.component';
-import { AmexioImageComponent } from '../../../media/image/image.component';
-import { AmexioPanelHeaderComponent } from '../../../panes/panel/panel.header.component';
+import { AmexioContextMenuComponent } from '../../../../base/base.contextmenu.component';
+import { AmexioImageComponent } from '../../../../media/image/image.component';
+import { AmexioPanelHeaderComponent } from '../../../../panes/panel/panel.header.component';
 
 describe('TaskbarItemComponent', () => {
     let comp: AmexioTaskbarItemComponent;

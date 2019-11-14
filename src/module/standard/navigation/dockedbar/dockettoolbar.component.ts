@@ -19,7 +19,7 @@
 import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { DockbarComponent } from './dockbaritem';
 
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
 
 @Component({
   selector: 'amexio-dockbar', template: `
