@@ -222,7 +222,7 @@ describe('amexio-floating-panel', () => {
         comp.style['width'] = comp.width + 'px';
         comp.setPanelStylePostion();
         comp.arrowPadding();
-    })
+    });
     it('setpanelAbsolutePosition else  method', () => {
         comp.width = '';
         comp.commanservice.zindex = 600;
@@ -237,8 +237,8 @@ describe('amexio-floating-panel', () => {
         comp.width = '400px';
         comp.setPanelStylePostion();
         comp.arrowPadding();
-    })
-    it('checking togglePanel method', () => {
+    });
+    xit('checking togglePanel method', () => {
         comp.showPanel = false;
         comp.togglePanel();
         comp.showPanel = false;

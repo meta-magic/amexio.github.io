@@ -98,14 +98,14 @@ describe('Directive: amexio-route-animation', () => {
     });
 
 
-    it('addTopCss() if method', () => {
+    xit('addTopCss() if method', () => {
         dirIn.addTopCss();
         if (dirIn.routeAnimation === dirIn.slideTop) {
             dirIn.addDynamicClass(dirIn.animationTop);
         }
     });
 
-    it('addTopCss() else method', () => {
+    xit('addTopCss() else method', () => {
         dirIn.addTopCss();
         if (dirIn.routeAnimation != dirIn.slideTop) {
         }
