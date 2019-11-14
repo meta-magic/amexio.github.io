@@ -1,14 +1,14 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
-import { IconLoaderService } from '../../../index';
-import { MinimizeService } from '../../panes/window/minimize-service.service';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
-import { AmexioCardCEComponent } from './amexio.cards.component';
-import { AmexioCardCEHeaderComponent } from '../common/amexio.header.component';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { IconLoaderService } from '../../../index';
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+import { MinimizeService } from '../../standard/panes/window/minimize-service.service';
 import { AmexioCardCEActionComponent } from '../common/amexio.action.component';
 import { AmexioCardCEBodyComponent } from '../common/amexio.body.component';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { AmexioCardCEHeaderComponent } from '../common/amexio.header.component';
+import { AmexioCardCEComponent } from './amexio.cards.component';
 @Component({
     selector: 'test-cmp',
     template: `
@@ -48,12 +48,11 @@ describe('amexio-card-ce', () => {
         miniservice = TestBed.get(MinimizeService);
         obj = {
             tempEvent: { isTrusted: true, screenX: 1301, screenY: 224, clientX: 1371, clientY: 138 },
-            tempThis: { document: document, jstyfy: "space-between", background: "", color: "", fullscreenMaxCard: true }
-        }
+            tempThis: { document, jstyfy: 'space-between', background: '', color: '', fullscreenMaxCard: true },
+        };
 
         comp.amexioCardHeaderList[0].maximizeWindow1.next(obj);
     });
-
 
     // it('variable check', () => {
     //     comp.maximizeflagchanged = false;
@@ -64,11 +63,9 @@ describe('amexio-card-ce', () => {
 
     // });
 
-
     // it('ngAfterContentInit  method check', () => {
     //     fixture.detectChanges();
     //     comp.ngAfterContentInit();
-
 
     //     expect(comp.AmexioCardCEHeaderQueryList).toBeDefined();
     //     comp.amexioCardHeaderList = comp.AmexioCardCEHeaderQueryList.toArray();
@@ -95,7 +92,6 @@ describe('amexio-card-ce', () => {
     //         obj.tempThis.fullscreenMaxCard = !comp.maximizeflagchanged;
     //     });
     // });
-
 
     // it('variable check', () => {
     //   comp.ngOnInit();

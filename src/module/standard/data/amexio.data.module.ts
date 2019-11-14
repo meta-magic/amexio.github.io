@@ -25,8 +25,8 @@ import { TreeDataTableComponent } from './treegrid/treedatatable.component';
 import { AmexioCommonModule } from '../../base/amexio.common.module';
 import { AmexioBaseContextMenuModule } from '../../base/base.contextmenu.component.module';
 
-import { AmexioPaneModule } from '../../panes/amexio.pane.module';
 import { AmexioLayoutModule } from '../layout/amexio.layout.module';
+import { AmexioPaneModule } from '../panes/amexio.pane.module';
 
 import { CommonDataService } from '../../services/data/common.data.service';
 

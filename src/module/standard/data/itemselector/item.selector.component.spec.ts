@@ -14,8 +14,8 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { stringify } from 'querystring';
 import {AmexioContextMenuComponent} from '../../../base/base.contextmenu.component';
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
-import { AmexioBodyComponent } from '../../../panes/body/pane.action.body';
-import { AmexioHeaderComponent } from '../../../panes/header/pane.action.header';
+import { AmexioBodyComponent } from '../../panes/body/pane.action.body';
+import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
 import { CommonDataService } from '../../../services/data/common.data.service';
 import { AmexioCardComponent } from '../../layout/card/card.component';
 

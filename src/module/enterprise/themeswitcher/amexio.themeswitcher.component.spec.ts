@@ -13,12 +13,12 @@ import { AmexioCardCEBodyComponent } from '../../creative/common/amexio.body.com
 import { AmexioCardCEActionComponent } from '../../creative/common/amexio.action.component';
 import { AmexioFormActionCEComponent } from '../../creative/form/form.action.component'
 import { AmexioFormCEComponent } from '../../creative/form/amexio.form.component';
-import { AmexiodialoguePaneComponent } from '../../panes/dialogue/dialogue.pane.component';
+import { AmexiodialoguePaneComponent } from '../../standard/panes/dialogue/dialogue.pane.component';
 import { AmexioLabelComponent } from '../../standard/forms/label/label.component';
 import { AmexioCardComponent } from '../../standard/layout/card/card.component';
-import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
-import { AmexioBodyComponent } from '../../panes/body/pane.action.body';
-import { AmexioFooterComponent } from '../../panes/action/pane.action.footer';
+import { AmexioHeaderComponent } from '../../standard/panes/header/pane.action.header';
+import { AmexioBodyComponent } from '../../standard/panes/body/pane.action.body';
+import { AmexioFooterComponent } from '../../standard/panes/action/pane.action.footer';
 import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { AmexioContextMenuComponent } from '../../base/base.contextmenu.component';
 import { DeviceQueryService } from '../../services/device/device.query.service';

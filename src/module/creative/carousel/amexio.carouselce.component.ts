@@ -20,8 +20,8 @@ import { HttpClient } from '@angular/common/http';
 import {
   AfterContentInit, Component, ContentChild, ContentChildren, ElementRef, Input, OnDestroy, OnInit, QueryList, TemplateRef, ViewChild,
 } from '@angular/core';
-import { AmexioTemplateDirective } from '../../panes/amexio.pane.module';
 import { CommonDataService } from '../../services/data/common.data.service';
+import { AmexioTemplateDirective } from '../../standard/panes/amexio.pane.module';
 import { TitleModel } from '../carousel/amexio.carouselce.model';
 @Component({
   selector: 'amexio-carousel-ce',

@@ -1,15 +1,15 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
-import { IconLoaderService } from '../../../index';
-import { MinimizeService } from '../../panes/window/minimize-service.service';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
-import { AmexioWindowCEComponent } from './amexio.window.component';
-import { AmexioCardCEHeaderComponent } from '../common/amexio.header.component';
-import { CeMinimizeWindowComponent } from './ceMinimize.window.component';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { IconLoaderService } from '../../../index';
+import { MinimizeService } from '../../standard/panes/window/minimize-service.service';
 // import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { AmexioCardCEActionComponent } from '../common/amexio.action.component';
 import { AmexioCardCEBodyComponent } from '../common/amexio.body.component';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { AmexioCardCEHeaderComponent } from '../common/amexio.header.component';
+import { AmexioWindowCEComponent } from './amexio.window.component';
+import { CeMinimizeWindowComponent } from './ceMinimize.window.component';
 @Component({
     selector: 'test-cmp',
     template: `
@@ -17,7 +17,7 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
        <amexio-header-ce>
        </amexio-header-ce>
        </amexio-window-ce>
-       
+
        `,
 })
 class TestCeWindowComponent { }
@@ -48,7 +48,6 @@ describe('amexio-window-ce', () => {
         miniservice = TestBed.get(MinimizeService);
     });
 
-
     // it('variable check', () => {
     //     comp.x = 0;
     //     comp.y = 0;
@@ -68,7 +67,6 @@ describe('amexio-window-ce', () => {
     //     comp.onCloseClick();
     //     miniservice.minimizeFlag = false;
     // });
-
 
     // it('ngAfterContentInit  method check minimize  true condition', () => {
 

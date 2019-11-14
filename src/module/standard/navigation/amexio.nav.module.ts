@@ -35,7 +35,7 @@ import { AmexioTaskbarComponent } from './taskbar/taskbar.component';
 import { AmexioBannerComponent } from './navbar/banner/banner.component';
 
 import { AmexioCommonModule } from '../../base/amexio.common.module';
-import { AmexioPaneModule } from '../../panes/amexio.pane.module';
+import { AmexioPaneModule } from '../panes/amexio.pane.module';
 
 export * from '../../services/data/common.data.service';
 export * from '../../services/device/device.query.service';

@@ -17,9 +17,9 @@
 
 import { AfterContentInit, Component, ContentChildren, ElementRef,
 EventEmitter, HostBinding, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
-import { AmexioFormHeaderComponent } from '../../../panes/form/form.header.component';
-import { AmexioPanelHeaderComponent} from '../../../panes/panel/panel.header.component';
-import { AmexioWindowHeaderComponent } from '../../../panes/window/window.pane.header.component';
+import { AmexioFormHeaderComponent } from '../../panes/form/form.header.component';
+import { AmexioPanelHeaderComponent} from '../../panes/panel/panel.header.component';
+import { AmexioWindowHeaderComponent } from '../../panes/window/window.pane.header.component';
 import { ToolBarActionComponent } from './toolbaraction.component';
 import { ToolbaroneComponent } from './toolbarone.component';
 

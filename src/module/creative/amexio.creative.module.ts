@@ -48,11 +48,11 @@ import { AmexioHomePageWestPanelComponent } from './../creative/homepage/homepag
 import { AmexioFormsModule } from '../standard/forms/amexio.forms.module';
 import { AmexioLayoutModule } from '../standard/layout/amexio.layout.module';
 import { AmexioNavModule } from '../standard/navigation/amexio.nav.module';
+import { AmexioPaneModule } from '../standard/panes/amexio.pane.module';
 import { ViewportBackgroundComponent } from './../creative/viewport/viewport.background/viewport.background.component';
 import { ViewportContentBodyComponent } from './../creative/viewport/viewport.content.body/viewport.content.body.component';
 import { ViewportContentComponent } from './../creative/viewport/viewport.content/viewport.content.component';
 import { ViewportComponent } from './../creative/viewport/viewport/viewport.component';
-import { AmexioPaneModule } from './../panes/amexio.pane.module';
 
 import { AmexioWindowCEComponent } from './../creative/window/amexio.window.component';
 

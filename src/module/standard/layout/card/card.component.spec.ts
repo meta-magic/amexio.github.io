@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { IconLoaderService } from '../../../../index';
 import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
-import { AmexioHeaderComponent } from '../../../panes/header/pane.action.header';
+import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
 import { AmexioCardComponent } from './card.component';
 
 @Component({

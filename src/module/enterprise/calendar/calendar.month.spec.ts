@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
 import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
-import { AmexioFloatingPanelComponent } from '../../panes/floatingpanel/floatingpanel.component';
+import { AmexioFloatingPanelComponent } from '../../standard/panes/floatingpanel/floatingpanel.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { AmexioLabelComponent } from '../../standard/forms/label/label.component';
 import { AmexioLayoutComponent } from '../../standard/layout/basiclayout/layout.component';

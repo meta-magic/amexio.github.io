@@ -7,17 +7,17 @@ import { AmexioRowComponent } from '../../standard/layout/rows/row.component';
 
 import { AmexioColumnComponent } from '../../standard/layout/columns/column.component';
 
-import { AmexioTabComponent } from '../../panes/tab/tab.component';
-import { AmexioTabPillComponent } from '../../panes/tab/tab.pill.component';
+import { AmexioTabComponent } from '../../standard/panes/tab/tab.component';
+import { AmexioTabPillComponent } from '../../standard/panes/tab/tab.pill.component';
 import { AmexioButtonComponent } from '../../standard/forms/buttons/button.component';
 import { EditableTextComponent } from './editable-text/editable-text.component';
 
-import { AmexioBodyComponent } from '../../panes/body/pane.action.body';
-import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
+import { AmexioBodyComponent } from '../../standard/panes/body/pane.action.body';
+import { AmexioHeaderComponent } from '../../standard/panes/header/pane.action.header';
 import { AmexioCardComponent } from '../../standard/layout/card/card.component';
 
 import { AmexioContextMenuComponent } from '../../base/base.contextmenu.component';
-import { AmexiodialoguePaneComponent } from '../../panes/dialogue/dialogue.pane.component';
+import { AmexiodialoguePaneComponent } from '../../standard/panes/dialogue/dialogue.pane.component';
 
 import { AmexioLayoutComponent } from '../../standard/layout/basiclayout/layout.component';
 import { AmexioLayoutItemComponent } from '../../standard/layout/basiclayout/layoutitem.component';
