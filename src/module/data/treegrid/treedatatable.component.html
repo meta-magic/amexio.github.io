@@ -46,10 +46,10 @@
                                 (keyup.control.home)="keyControlHome(ref)" [attr.data-label]="cols.text" [style.width.%]="cols.width">
                                 <ng-container *ngIf="colIndex == 0">
                                     <span [style.padding-left.px]="(!row.level || row.level <= 1? 10 : (10+(10*row.level)) )">
-                                        <ng-container *ngIf="!row.expanded && row.children">
+                                        <ng-container *ngIf="!row.expanded && row[childarraykey]">
                                             <amexio-c-icon class="iconPaddingStyle" key="tree_collapse"></amexio-c-icon>
                                         </ng-container>
-                                        <ng-container *ngIf="row.expanded && row.children">
+                                        <ng-container *ngIf="row.expanded && row[childarraykey]">
                                             <amexio-c-icon class="iconPaddingStyle" key="tree_expand"></amexio-c-icon>
                                         </ng-container>
                                         <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
@@ -79,10 +79,10 @@
                                 [attr.data-label]="cols.text" [style.width.%]="cols.width">
                                 <ng-container *ngIf="colIndex == 0">
                                     <span [style.padding-left.px]="(!row.level || row.level <= 1? 10 : (10+(10*row.level)) )">
-                                        <ng-container *ngIf="!row.expanded && row.children">
+                                        <ng-container *ngIf="!row.expanded && row[childarraykey]">
                                             <amexio-c-icon class="iconPaddingStyle" key="tree_collapse"></amexio-c-icon>
                                         </ng-container>
-                                        <ng-container *ngIf="row.expanded && row.children">
+                                        <ng-container *ngIf="row.expanded && row[childarraykey]">
                                             <amexio-c-icon class="iconPaddingStyle" key="tree_expand"></amexio-c-icon>
                                         </ng-container>
                                         <span class="float-right">
@@ -119,10 +119,10 @@
                                 [attr.data-label]="cols.text" [style.width.%]="cols.width">
                                 <ng-container *ngIf="colIndex == 0">
                                     <span [style.padding-left.px]="(!row.level || row.level <= 1? 10 : (10+(10*row.level)) )">
-                                        <ng-container *ngIf="!row.expanded && row.children">
+                                        <ng-container *ngIf="!row.expanded && row[childarraykey]">
                                             <amexio-c-icon class="iconPaddingStyle" key="tree_collapse"></amexio-c-icon>
                                         </ng-container>
-                                        <ng-container *ngIf="row.expanded && row.children">
+                                        <ng-container *ngIf="row.expanded && row[childarraykey]">
                                             <amexio-c-icon class="iconPaddingStyle" key="tree_expand"></amexio-c-icon>
                                         </ng-container>
                                         <ng-template [ngTemplateOutlet]="cols.bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>

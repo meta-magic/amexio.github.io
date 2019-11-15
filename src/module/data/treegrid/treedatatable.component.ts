@@ -126,7 +126,7 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
    description : height of grid
    */
   @Input() height: any;
-
+  @Input('child-array-key') childarraykey = '';
   /*
    Events
    name : rowSelect
@@ -155,8 +155,11 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
   fullscreenMax: boolean;
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
-  constructor(public treeDataTableService: CommonDataService,  @Inject(DOCUMENT) public document: any) {
-  super(document);
+  constructor(public treeDataTableService: CommonDataService, @Inject(DOCUMENT) public document: any) {
+    super(document);
+    if (this.childarraykey.length < 1) {
+      this.childarraykey = 'children';
+    }
   }
   ngOnInit() {
     super.ngOnInit();
@@ -276,13 +279,13 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
     }
   }
   addRows(row: any, index: number) {
-    if (row.children) {
-      for (let i = 0; i < row.children.length; i++) {
-        const node = row.children[i];
+    if (row.hasOwnProperty(this.childarraykey)) {
+      for (let i = 0; i < row[this.childarraykey].length; i++) {
+        const node = row[this.childarraykey][i];
         if (!row.level) {
           row.level = 1;
         }
-        if (node.children) {
+        if (node.hasOwnProperty(this.childarraykey)) {
           node.expanded = false;
         }
         node.level = (row.level + 1);
@@ -291,8 +294,8 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
     }
   }
   removeRows(node: any) {
-    if (node.children) {
-      for (const nc of node.children) {
+    if (node.hasOwnProperty(this.childarraykey)) {
+      for (const nc of node[this.childarraykey]) {
         if (this.viewRows) {
           this.setRemovedRows(nc);
         }
@@ -302,7 +305,7 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
   setRemovedRows(nc: any) {
     for (const vr of this.viewRows) {
       if (vr === nc) {
-        if (nc.children) {
+        if (nc.hasOwnProperty(this.childarraykey)) {
           this.removeRows(nc);
         }
         this.viewRows.splice(this.viewRows.indexOf(nc), 1);
@@ -331,8 +334,8 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
   generateIndex(data: any, parentId: number, rannumber: any) {
     data.forEach((element: any, index: number) => {
       element['id'] = '' + rannumber + '-';
-      if (element['children']) {
-        this.generateIndex(element['children'], element.id.split('-')[1], rannumber);
+      if (element.hasOwnProperty(this.childarraykey)) {
+        this.generateIndex(element[this.childarraykey], element.id.split('-')[1], rannumber);
       }
     });
   }
