@@ -4,15 +4,10 @@
      'color': color,'background':background,'height': height}"
         [ngClass]="{'card-container-ce-theme-color': applyThemeColor}">
 
-        <span *ngIf="windowFlag ; else falsyTemplate" #contentWrapper>
+        <span  #contentWrapper >
             <ng-content ></ng-content>
         </span>
 
-        <ng-template #falsyTemplate>
-            <ng-content ></ng-content>
-          </ng-template>
-        
-        
         <span *ngIf="windowFlag" class="creative-header-icon-div" [ngStyle]="iconPosition">
             <amexio-c-icon class="cursor-style" *ngIf="((isFullWindowCe && maximize))" [key]="'window_restore'" (onClick)="sizeChange()"></amexio-c-icon>
             <amexio-c-icon class="cursor-style" *ngIf="((!isFullWindowCe && maximize))" [key]="'window_maximize'" (click)="sizeChange()"></amexio-c-icon>
