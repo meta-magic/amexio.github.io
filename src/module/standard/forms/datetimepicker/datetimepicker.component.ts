@@ -699,6 +699,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
     if ((this.maxDate.length <= 0 && this.minDate.length > 0) || (this.maxDate.length > 0 && this.minDate.length > 0)) {
       // 3
+      // tslint:disable-next-line: no-collapsible-if
       if ((days.getDate() < min.getDate() &&
         days.getMonth() === min.getMonth() && days.getFullYear() === min.getFullYear()) ||
         days.getMonth() < min.getMonth() && days.getFullYear() === min.getFullYear()) {
