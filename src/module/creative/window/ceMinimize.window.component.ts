@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MinimizeService } from '../../standard/panes/window/minimize-service.service';
+import { MinimizeService } from '../../services/minimize/minimize-service.service';
 
 @Component({
     selector: 'ce-minimize-window',

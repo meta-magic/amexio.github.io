@@ -29,7 +29,7 @@ import { AmexioFooterComponent } from '../action/pane.action.footer';
 import { AmexioBodyComponent } from '../body/pane.action.body';
 import { AmexioHeaderComponent } from '../header/pane.action.header';
 
-import { MinimizeService } from './minimize-service.service';
+import { MinimizeService } from '../../../services/minimize/minimize-service.service';
 
 import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
 @Component({

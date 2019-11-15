@@ -1,9 +1,9 @@
 import { AfterContentInit, Component, ContentChildren, Input, QueryList } from '@angular/core';
-import { StackableItemComponent } from '../StackablePanel-Item/stackablePanel-item.component';
+import { StackableItemComponent } from '../stackablepanel-item/stackablepanel-item.component';
 
 @Component({
   selector: 'amexio-stackable-panel',
-  templateUrl: './stackablePanel.component.html',
+  templateUrl: './stackablepanel.component.html',
 })
 export class StackablePanelComponent implements AfterContentInit {
 

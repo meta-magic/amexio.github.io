@@ -1,8 +1,8 @@
-import { MapLoaderService } from '../map.loader.service';
-import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GeoChartComponent } from './geo.chart.component'
+import { FormsModule } from '@angular/forms';
+import { MapLoaderService } from '../../../services/map/map.loader.service';
 import { MapPropertiesComponent } from '../mapproperties/map.properties';
+import { GeoChartComponent } from './geo.chart.component';
 declare var google: any;
 describe('Geo Chart', () => {
     let geochartcomp: GeoChartComponent;
@@ -13,7 +13,7 @@ describe('Geo Chart', () => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
             declarations: [GeoChartComponent, MapPropertiesComponent],
-            providers: [MapLoaderService]
+            providers: [MapLoaderService],
         }).compileComponents();
         linefixture = TestBed.createComponent(GeoChartComponent);
 
@@ -35,7 +35,7 @@ describe('Geo Chart', () => {
     it('show chart', () => {
         geochartcomp.showChart = false;
         expect(geochartcomp.showChart).toBe(false);
-        let newdata = [{ 'name': 'geochart' }];
+        const newdata = [{ name: 'geochart' }];
         geochartcomp.data = newdata;
     });
 
@@ -74,7 +74,6 @@ describe('Geo Chart', () => {
         geochartcomp.backgroundcolor = '';
         geochartcomp.unusedregioncolor = '';
         geochartcomp.showChartExist();
-        
 
     });
     it('chartAreaComponent', () => {
@@ -83,9 +82,8 @@ describe('Geo Chart', () => {
         chartAreaComp.chartwidth = 6;
         chartAreaComp.leftposition = 5;
         chartAreaComp.topposition = 5;
-        
-    })
 
+    });
 
     it('drawChart()', () => {
         const script = document.createElement('script');
@@ -95,14 +93,14 @@ describe('Geo Chart', () => {
         script.defer = true;
         script.onload = () => {
             geochartcomp.showChart = true;
-            let newdata = [{ name: 'linechart' }];
+            const newdata = [{ name: 'linechart' }];
             geochartcomp.data = newdata;
             geochartcomp.drawChart();
             expect(false).toBe(geochartcomp.hasLoaded);
-        }
+        };
         // geochartcomp.showChart = true;
         // expect(geochartcomp.showChart).toEqual(true);
         // this.geomapData = google.visualization.arrayToDataTable(this._data)
-    })
+    });
 
 });

@@ -18,7 +18,7 @@ Component Description : A timeline is a chart that depicts how a set of resource
 */
 
 import {Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
-import {ChartLoaderService} from '../chart.loader.service';
+import {ChartLoaderService} from '../../../services/chart/chart.loader.service';
 declare var google: any;
 @Component({
   selector: 'amexio-chart-gantt', template: `

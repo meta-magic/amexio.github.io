@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { IconLoaderService } from '../../../index';
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
-import { MinimizeService } from '../../standard/panes/window/minimize-service.service';
+import { MinimizeService } from '../../services/minimize/minimize-service.service';
 import { AmexioCardCEActionComponent } from '../common/amexio.action.component';
 import { AmexioCardCEBodyComponent } from '../common/amexio.body.component';
 import { AmexioCardCEHeaderComponent } from '../common/amexio.header.component';

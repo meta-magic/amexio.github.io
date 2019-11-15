@@ -17,7 +17,7 @@
 */
 
 import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
-import { DockbarComponent } from './dockbaritem';
+import { DockbarComponent } from './dockbaritem.component';
 
 import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
 

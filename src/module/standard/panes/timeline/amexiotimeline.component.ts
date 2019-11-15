@@ -16,9 +16,9 @@
 */
 
 import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList, ViewChild} from '@angular/core';
+import { AmexioTimeLineModel } from '../../../models/amexiotimelinevent.model';
 import { DeviceQueryService } from '../../../services/device/device.query.service';
 import { AmexiotimelineeventComponent } from './amexiotimelineevent.component';
-import { AmexioTimeLineModel } from './amexiotimelinevent.model';
 
 import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
 

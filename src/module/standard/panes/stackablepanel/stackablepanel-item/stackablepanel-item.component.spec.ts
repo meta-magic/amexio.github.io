@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StackableItemComponent } from './stackablePanel-item.component';
+import { StackableItemComponent } from './stackablepanel-item.component';
 
 describe('StackableItemComponent', () => {
   let component: StackableItemComponent;

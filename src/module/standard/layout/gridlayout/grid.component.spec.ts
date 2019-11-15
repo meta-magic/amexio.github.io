@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../../index';
 import { AmexioGridItemComponent } from './griditem.component';
 
-import { AmexioGridLayoutService } from './amexiogridlayoutservice.service';
+import { AmexioGridLayoutService } from '../../../services/grid/gridlayout.service';
 import { AmexioGridComponent } from './grid.component';
 
 describe('amexio-layout-grid', () => {

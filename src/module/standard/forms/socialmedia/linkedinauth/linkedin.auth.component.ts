@@ -20,12 +20,12 @@
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
+import { LinkedInResponse } from '../../../../models/linkedin.response.model';
+import { LoginProvider } from '../../../../models/login.provider';
+import { SocialUserInfo } from '../../../../models/social.user.info.model';
 import { ScriptLoadService } from '../../../../services/script/script.load.service';
-import { LoginProvider } from '../login.provider';
-import { LinkedInResponse } from '../models/linkedin.response.model';
 import { SocialBaseComponent } from '../social.base.component';
 import { SOCIAL_CONSTANT } from '../social.constant';
-import { SocialUserInfo } from '../social.user.info.model';
 declare let IN: any;
 @Component({
   // tslint:disable-next-line:component-selector

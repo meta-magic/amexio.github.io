@@ -23,7 +23,7 @@
  Gauges are available under AmexioDashboardModule from amexio-ng-extensions/dashboard
 */
 import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
-import {DashboardLoaderService} from '../chart.loader.service';
+import {DashboardLoaderService} from '../../../services/dashboard/dashboard.loader.service';
 import {DashBoardTitleComponent} from '../dashboardtitle/dashboard.title.component';
 declare var google: any;
 @Component({

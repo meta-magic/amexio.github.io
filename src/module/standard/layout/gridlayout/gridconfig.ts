@@ -1,6 +1,6 @@
 import { GridConstants } from './gridconstants';
 
-import { AmexioGridModel } from './gridmodel.component';
+import { AmexioGridModel } from '../../../models/grid.model';
 
 export class GridConfig {
      amexiogridmodel: AmexioGridModel;

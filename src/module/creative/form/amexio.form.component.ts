@@ -11,7 +11,7 @@ import { AmexioCardCEActionComponent } from '../common/amexio.action.component';
 import { AmexioCardCEBodyComponent } from '../common/amexio.body.component';
 import { AmexioCardCEHeaderComponent } from '../common/amexio.header.component';
 
-import { AmexioFormGroupDirective } from '../../standard/panes/form/form.group.directive';
+import { AmexioFormGroupDirective } from '../../directive/form.group.directive';
 @Component({
     selector: 'amexio-form-ce',
     templateUrl: './amexio.form.component.html',

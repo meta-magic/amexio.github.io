@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { StackableItemComponent } from '../StackablePanel-Item/stackablePanel-item.component';
-import { StackablePanelComponent } from './stackablePanel.component';
+import { StackableItemComponent } from '../stackablepanel-item/stackablepanel-item.component';
+import { StackablePanelComponent } from './stackablepanel.component';
 
 import { CommonIconComponent } from '../../../../base/components/common.icon.component';
 

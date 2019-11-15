@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
+import { MinimizeService } from '../../../services/minimize/minimize-service.service';
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
-import { MinimizeService } from './minimize-service.service';
 import { MinimizeWindowComponent } from './minimize.window.component';
 describe('amexio-minimize-window', () => {
 

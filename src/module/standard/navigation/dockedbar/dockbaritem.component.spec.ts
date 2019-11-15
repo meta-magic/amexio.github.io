@@ -1,6 +1,6 @@
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DockbarComponent } from './dockbaritem';
+import { DockbarComponent } from './dockbaritem.component';
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
 import { CommonDataService } from '../../../services/data/common.data.service';
 import { HttpClient } from '@angular/common/http';

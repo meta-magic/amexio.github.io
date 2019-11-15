@@ -22,7 +22,7 @@ import { ChartAreaComponent } from '../chartarea/chart.area.component';
 import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
 import { ChartTitleComponent } from '../charttitle/chart.title.component';
 
-import { ChartLoaderService } from '../chart.loader.service';
+import { ChartLoaderService } from '../../../services/chart/chart.loader.service';
 
 declare var google: any;
 @Component({

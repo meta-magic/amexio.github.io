@@ -17,7 +17,7 @@
   INFO: THIS COMPONENT USE FOR THIRD PARTY AUTH
 */
 import {Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { SocialUserInfo } from './social.user.info.model';
+import { SocialUserInfo } from '../../../models/social.user.info.model';
 
 @Component({
   selector : 'amexio-login-social',

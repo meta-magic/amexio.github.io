@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Component, DebugElement, Renderer2 } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { RoutedirDirective } from './router-animation.directive';
+import { RouterTestingModule } from '@angular/router/testing';
 import { RouterService } from '../services/routing/routing.service';
+import { RoutedirDirective } from './router-animation.directive';
 /**
  * Created by kedar on 12/09/19.
  */

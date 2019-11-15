@@ -1,4 +1,4 @@
-import { AmexiotimelineeventComponent } from './amexiotimelineevent.component';
+import { AmexiotimelineeventComponent } from '../standard/panes/timeline/amexiotimelineevent.component';
 
 export class AmexioTimeLineModel {
     timelineevents: AmexiotimelineeventComponent[];

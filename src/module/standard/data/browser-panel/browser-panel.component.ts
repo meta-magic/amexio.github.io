@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } 
 
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-import { MinimizeService } from '../../panes/window/minimize-service.service';
+import { MinimizeService } from '../../../services/minimize/minimize-service.service';
 
 @Component({
     selector: 'amexio-browser-panel',

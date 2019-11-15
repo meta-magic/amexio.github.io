@@ -64,7 +64,7 @@ describe('Directive: amexio-dynamic-text', () => {
                         str = str.replace(key, value as string);
                         expect(key).toEqual(strelement);
                     }
-                });         
+                });
             }
        });
 

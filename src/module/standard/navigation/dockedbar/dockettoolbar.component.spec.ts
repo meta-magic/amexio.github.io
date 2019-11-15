@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {CommonIconComponent} from '../../../base/components/common.icon.component';
 import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
 import { AmexioImageComponent } from '../../media/image/image.component';
-import { DockbarComponent } from './dockbaritem';
+import { DockbarComponent } from './dockbaritem.component';
 import { DockedBarToolComponent } from './dockettoolbar.component';
 
 import { HttpClient } from '@angular/common/http';

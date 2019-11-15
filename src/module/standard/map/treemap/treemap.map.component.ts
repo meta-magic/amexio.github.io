@@ -20,7 +20,7 @@ Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
 
 import { MapTitleComponent } from '../maptitle/map.title.component';
 
-import { MapLoaderService } from '../map.loader.service';
+import { MapLoaderService } from '../../../services/map/map.loader.service';
 declare var google: any;
 @Component({
   selector: 'amexio-map-treemap', template: `

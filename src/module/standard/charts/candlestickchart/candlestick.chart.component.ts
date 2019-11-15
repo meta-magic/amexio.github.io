@@ -23,7 +23,7 @@ import {ChartTitleComponent} from '../charttitle/chart.title.component';
 import {HorizontalAxisComponent} from '../horizontalaxis/chart.horizontalaxis.component';
 import {VerticalAxisComponent} from '../verticalaxis/chart.verticalaxis.component';
 
-import {ChartLoaderService} from '../chart.loader.service';
+import {ChartLoaderService} from '../../../services/chart/chart.loader.service';
 
 declare var google: any;
 @Component({

@@ -12,7 +12,7 @@ import { AmexioHeaderComponent } from '../header/pane.action.header';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
-import { MinimizeService } from './minimize-service.service';
+import { MinimizeService } from '../../../services/minimize/minimize-service.service';
 import { AmexioWindowPaneComponent } from './window.pane.component';
 
 @Component({

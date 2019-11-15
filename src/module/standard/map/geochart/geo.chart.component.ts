@@ -16,7 +16,7 @@
 *  Created by Sagar on 10/8/17..
 */
 import { AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
-import { MapLoaderService } from '../map.loader.service';
+import { MapLoaderService } from '../../../services/map/map.loader.service';
 import { MapPropertiesComponent} from '../mapproperties/map.properties';
 
 declare var google: any;

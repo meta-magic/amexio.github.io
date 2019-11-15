@@ -1,9 +1,9 @@
-import { MapLoaderService } from '../map.loader.service';
-import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TreeMapComponent } from './treemap.map.component';
+import { FormsModule } from '@angular/forms';
+import { MapLoaderService } from '../../../services/map/map.loader.service';
 import { MapPropertiesComponent } from '../mapproperties/map.properties';
 import { MapTitleComponent } from '../maptitle/map.title.component';
+import { TreeMapComponent } from './treemap.map.component';
 declare var google: any;
 describe('Tree Map', () => {
     let treemapcomp: TreeMapComponent;

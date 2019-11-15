@@ -23,7 +23,7 @@ import {
   OnInit, Output, QueryList, Renderer2, SimpleChanges,
 } from '@angular/core';
 
-import { MinimizeService } from '../../standard/panes/window/minimize-service.service';
+import { MinimizeService } from '../../services/minimize/minimize-service.service';
 
 import { CeMinimizeWindowComponent } from './ceMinimize.window.component';
 

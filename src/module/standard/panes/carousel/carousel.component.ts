@@ -19,7 +19,7 @@
 import {
   AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, TemplateRef, ViewChild,
 } from '@angular/core';
-import { AmexioTemplateDirective } from './carousel.template.directive';
+import { AmexioTemplateDirective } from '../../../directive/carousel.template.directive';
 
 @Component({
   selector: 'amexio-carousel',

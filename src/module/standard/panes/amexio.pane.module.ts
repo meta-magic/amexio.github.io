@@ -7,11 +7,11 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { AmexioTemplateDirective } from '../../directive/carousel.template.directive';
+import { AmexioTemplateWrapperDirective } from '../../directive/carousel.wrapper.template.directive';
 import { AmexioFooterComponent } from './action/pane.action.footer';
 import { AmexioBodyComponent } from './body/pane.action.body';
 import { AmexioCarouselComponent } from './carousel/carousel.component';
-import { AmexioTemplateDirective } from './carousel/carousel.template.directive';
-import { AmexioTemplateWrapperDirective } from './carousel/carousel.wrapper.template.directive';
 import { AmexiodialoguePaneComponent } from './dialogue/dialogue.pane.component';
 import { AmexioFieldSetComponent } from './fieldset/fieldset.component';
 import { AmexioFloatingPanelComponent } from './floatingpanel/floatingpanel.component';
@@ -34,10 +34,10 @@ import { MinimizeWindowComponent } from './window/minimize.window.component';
 import { AmexioWindowPaneComponent } from './window/window.pane.component';
 import { AmexioWindowHeaderComponent } from './window/window.pane.header.component';
 
+import { AmexioFormGroupDirective } from '../../directive/form.group.directive';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { DeviceQueryService } from '../../services/device/device.query.service';
 import { IconLoaderService } from '../../services/icon/icon.service';
-import { AmexioFormGroupDirective } from './form/form.group.directive';
 
 import { AmexioFormsModule } from '../forms/amexio.forms.module';
 
@@ -48,17 +48,17 @@ import { AmexioBaseContextMenuModule } from '../../base/base.contextmenu.compone
 import { PanelItemComponent } from './slidingpanel/panelitem.component';
 import { SlidingPanelComponent } from './slidingpanel/slidingpanel.component';
 
-import { StackableItemComponent } from './stackablePanel/StackablePanel-Item/stackablePanel-item.component';
-import { StackablePanelComponent } from './stackablePanel/stackablePanel/stackablePanel.component';
-import { StepBlockComponent } from './steps/step-block';
+import { StackableItemComponent } from './stackablepanel/stackablepanel-item/stackablepanel-item.component';
+import { StackablePanelComponent } from './stackablepanel/stackablepanel/stackablepanel.component';
+import { StepBlockComponent } from './steps/step-block.component';
 
 import { AmexioMediaModule } from '../media/amexio.media.module';
 
 export * from './action/pane.action.footer';
 export * from './body/pane.action.body';
 export * from './carousel/carousel.component';
-export * from './carousel/carousel.template.directive';
-export * from './carousel/carousel.wrapper.template.directive';
+export * from '../../directive/carousel.template.directive';
+export * from '../../directive/carousel.wrapper.template.directive';
 export * from './dialogue/dialogue.pane.component';
 export * from './fieldset/fieldset.component';
 export * from './form/form.action.component';
@@ -67,10 +67,10 @@ export * from './form/form.component';
 export * from './form/form.header.component';
 export * from './header/pane.action.header';
 export * from './panel/panel.header.component';
-export * from './stackablePanel/StackablePanel-Item/stackablePanel-item.component';
-export * from './stackablePanel/stackablePanel/stackablePanel.component';
+export * from './stackablepanel/stackablepanel-item/stackablepanel-item.component';
+export * from './stackablepanel/stackablepanel/stackablepanel.component';
 export * from './steps/steps.component';
-export * from './steps/step-block';
+export * from './steps/step-block.component';
 export * from './tab/right-vertical-tab/right.vertical.component';
 export * from './tab/tab.action';
 export * from './tab/tab.component';
@@ -82,7 +82,7 @@ export * from './window/window.pane.component';
 export * from './window/window.pane.header.component';
 export * from './window/minimize.window.component';
 export * from './overlay/overlay.component';
-export * from './form/form.group.directive';
+export * from '../../directive/form.group.directive';
 export * from '../../services/icon/icon.service';
 
 const PANE_COMPONENTS = [

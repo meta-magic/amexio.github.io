@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
+import { SocialUserInfo } from '../../../../models/social.user.info.model';
 import { SocialBaseComponent } from '../social.base.component';
-import { SocialUserInfo } from '../social.user.info.model';
 /*
  * Copyright [2019] [Metamagic]
  *

@@ -5,7 +5,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
 import { CeMinimizeWindowComponent } from './ceMinimize.window.component';
 
-import { MinimizeService } from '../../standard/panes/window/minimize-service.service';
+import { MinimizeService } from '../../services/minimize/minimize-service.service';
 
 describe('amexio-minimize-ce-window', () => {
 

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'amexio-stackablepanel-item',
-  templateUrl: './stackablePanel-item.component.html',
+  templateUrl: './stackablepanel-item.component.html',
 })
 export class StackableItemComponent {
 

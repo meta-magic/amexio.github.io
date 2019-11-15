@@ -15,7 +15,7 @@ import { AmexioLayoutModule } from '../layout/amexio.layout.module';
 import { AmexioMediaModule } from '../media/amexio.media.module';
 
 import { AmexioBreadcrumbComponent } from './breadcrumb/breadcrumb.component';
-import { DockbarComponent } from './dockedbar/dockbaritem';
+import { DockbarComponent } from './dockedbar/dockbaritem.component';
 import { DockedBarToolComponent } from './dockedbar/dockettoolbar.component';
 import { AmexioMenuBarComponent } from './menubar/menubar.component';
 import { AmexioNavActionComponent } from './navbar/navaction.component';

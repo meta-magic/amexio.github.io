@@ -1,4 +1,4 @@
-import { CALENDAR } from './calendar.const';
+import { CALENDAR } from './calendar.constants';
 import { CalendarEventModel } from './calendarevent.model';
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../../index';
-import { DashboardLoaderService } from '../chart.loader.service';
+import { DashboardLoaderService } from '../../../services/dashboard/dashboard.loader.service';
 import { GaugeChartComponent } from './gauge.chart.component';
 
 describe('amexio-gauge-chart-dataPoint', () => {

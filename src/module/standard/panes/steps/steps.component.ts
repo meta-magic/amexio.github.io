@@ -20,7 +20,7 @@ import {
   AfterContentInit, Component, ContentChildren, EventEmitter, Input,
   Output, QueryList,
 } from '@angular/core';
-import {StepBlockComponent} from './step-block';
+import {StepBlockComponent} from './step-block.component';
 
 @Component({
   selector: 'amexio-steps', templateUrl: 'steps.html',

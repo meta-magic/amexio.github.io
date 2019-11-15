@@ -15,8 +15,8 @@
 *
 */
 import { Injectable } from '@angular/core';
-import { GridConfig } from '../../../models/gridconfig';
-import { AmexioGridModel } from '../../../models/gridmodel.component';
+import { AmexioGridModel } from '../../models/grid.model';
+import { GridConfig } from '../../standard/layout/gridlayout/gridconfig';
 
 @Injectable()
 export class AmexioGridLayoutService {

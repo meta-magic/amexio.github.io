@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MinimizeService } from './minimize-service.service';
+import { MinimizeService } from '../../../services/minimize/minimize-service.service';
 
 @Component({
     selector: 'minimize-window',

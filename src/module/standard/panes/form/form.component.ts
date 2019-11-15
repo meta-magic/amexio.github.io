@@ -23,10 +23,10 @@ import {
 import { FormGroup, NgForm, NgModel } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
+import { AmexioFormGroupDirective } from '../../../directive/form.group.directive';
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 import { AmexioFormActionComponent } from './form.action.component';
 import { AmexioFormBodyComponent } from './form.body.component';
-import { AmexioFormGroupDirective } from './form.group.directive';
 import { AmexioFormHeaderComponent } from './form.header.component';
 
 @Component({
