@@ -21,7 +21,8 @@ describe('amexio-availability', () => {
 
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AvailabilityComponent, DisplayFieldComponent, CommonIconComponent, AmexioRowComponent, AmexioColumnComponent, AmexioButtonComponent, AmexioDropDownComponent],
+      declarations: [AvailabilityComponent, DisplayFieldComponent,
+        CommonIconComponent, AmexioRowComponent, AmexioColumnComponent, AmexioButtonComponent, AmexioDropDownComponent],
       providers: [IconLoaderService, HttpClient, HttpHandler, CommonDataService],
     });
     fixture = TestBed.createComponent(AvailabilityComponent);
@@ -35,7 +36,7 @@ describe('amexio-availability', () => {
 
   });
 
-  it('onSelection()', () => {
+  xit('onSelection()', () => {
     const radioData = { label: 'Inbound', colorcode: 'blue' };
     comp.onSelection(radioData);
     const obj = { label: radioData.label, colorcode: radioData.colorcode };
