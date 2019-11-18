@@ -403,7 +403,6 @@ description : Context Menu provides the list of menus on right click.
     const tempData = JSON.parse(JSON.stringify(rowData));
     delete tempData['index'];
     delete tempData['onClickFlag'];
-    delete tempData['isSelected'];
     this.selectedRows.emit(tempData);
   }
   selectAllRecord() {
