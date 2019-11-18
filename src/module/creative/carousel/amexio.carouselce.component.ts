@@ -125,7 +125,7 @@ description : Local Data binding.
 
   @ContentChildren(AmexioTemplateDirective) templates: QueryList<any>;
 
-  @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
+  @ViewChild('tab', /* TODO: add static flag */ { read: ElementRef , static: true}) public tabs: ElementRef;
 
   itemData: any;
 

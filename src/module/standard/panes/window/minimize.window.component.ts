@@ -10,7 +10,7 @@ export class MinimizeWindowComponent implements OnInit {
 
     localData: any[] = [];
     minimizeButton: boolean;
-    @ViewChild('btnWidth') input: ElementRef;
+    @ViewChild('btnWidth', /* TODO: add static flag */ { static: true}) input: ElementRef;
 
     constructor(private _minimizeService1: MinimizeService) {
     }

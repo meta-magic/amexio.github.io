@@ -441,11 +441,13 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
   setVisibility(dateObj: any) {
     if (this.inlineDatepicker === false) {
       this.dropdownstyle = { visibility: 'visible' };
+      // tslint:disable-next-line: deprecation
       event.stopPropagation();
     }
 
     if (dateObj.date.isDisabled) {
       this.dropdownstyle = { visibility: 'visible' };
+      // tslint:disable-next-line: deprecation
       event.stopPropagation();
     }
   }

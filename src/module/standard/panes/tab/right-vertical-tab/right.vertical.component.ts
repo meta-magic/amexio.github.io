@@ -41,13 +41,13 @@ import { AmexioTabPillComponent } from '../tab.pill.component';
 })
 export class AmexioRightVerticalTabComponent extends BaseTabComponent implements AfterContentInit, AfterViewInit, OnInit {
 
-  @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
+  @ViewChild('tab', /* TODO: add static flag */ { read: ElementRef , static: true}) public tabs: ElementRef;
 
   @ContentChildren(AmexioTabPillComponent) queryTabs: QueryList<AmexioTabPillComponent>;
 
-  @ViewChild('target', { read: ViewContainerRef }) target: any;
+  @ViewChild('target', /* TODO: add static flag */ { read: ViewContainerRef , static: true}) target: any;
 
-  @ViewChild('tabId') tabId: ElementRef;
+  @ViewChild('tabId', /* TODO: add static flag */ { static: true}) tabId: ElementRef;
 
   tabCollection: AmexioTabPillComponent[];
 

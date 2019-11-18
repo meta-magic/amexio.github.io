@@ -174,11 +174,11 @@ description : sets background color for active tab
   @Output() onCloseClick: any = new EventEmitter<any>();
 
   // @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
-  @ViewChild('tabAction', { read: ElementRef }) public tabAction: ElementRef;
-  @ViewChild('headerWidth', { read: ElementRef }) public headerWidth: ElementRef;
-  @ViewChild('headerName', { read: ElementRef }) public headerName: ElementRef;
+  @ViewChild('tabAction', /* TODO: add static flag */ { read: ElementRef , static: true}) public tabAction: ElementRef;
+  @ViewChild('headerWidth', /* TODO: add static flag */ { read: ElementRef , static: true}) public headerWidth: ElementRef;
+  @ViewChild('headerName', /* TODO: add static flag */ { read: ElementRef , static: true}) public headerName: ElementRef;
   // @ViewChild('tabslist', { read: ElementRef }) public tabslist: ElementRef;
-  @ViewChild('actionProperty', { read: ElementRef }) public actionProperty: ElementRef;
+  @ViewChild('actionProperty', /* TODO: add static flag */ { read: ElementRef , static: true}) public actionProperty: ElementRef;
 
   // @ContentChildren(AmexioTabPillComponent) queryTabs: QueryList<AmexioTabPillComponent>;
   // tabCollection: AmexioTabPillComponent[];

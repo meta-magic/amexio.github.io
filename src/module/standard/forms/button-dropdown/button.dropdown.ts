@@ -40,7 +40,7 @@ import { AmexioButtonDropDownItemComponent } from './button.dropdown.item';
 })
 
 export class AmexioButtonDropdownComponent extends BaseFormValidator<any> implements AfterContentInit, OnInit {
-  @ViewChild('btnRef') btnReference: any;
+  @ViewChild('btnRef', /* TODO: add static flag */ { static: true}) btnReference: any;
   private componentLoaded: boolean;
   /*
   Properties
@@ -321,6 +321,7 @@ description : Fire when button-dropdown item button/link click
       if (!itemData.disabled) {
         itemData.onItemClick.emit(clickEvent);
         this.openContent = !this.openContent;
+        // tslint:disable-next-line: deprecation
         this.onBaseBlurEvent(event);
       }
     }

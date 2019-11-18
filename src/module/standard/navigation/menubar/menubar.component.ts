@@ -290,7 +290,7 @@ description : Fire when menubar bar click.
     }
   }
   onInnerChildEnterClick(subinnernode: any, mainnode: any) {
-
+// tslint:disable-next-line: deprecation
     event.stopImmediatePropagation();
     mainnode['expandflag'] = false;
     this.nodeClick.emit(subinnernode);

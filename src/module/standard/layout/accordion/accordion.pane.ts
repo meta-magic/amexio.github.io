@@ -95,7 +95,7 @@ export class AmexioAccordionTabComponent implements OnInit, AfterContentInit {
   */
   @Input('disabled') disabled: boolean;
   @Input('data') data: any;
-  @ViewChild('btn') btn: ElementRef;
+  @ViewChild('btn', /* TODO: add static flag */ { static: true}) btn: ElementRef;
   isTransparent: boolean;
   currentstate: string;
   expanded = false;

@@ -12,12 +12,12 @@ import { LifeCycleBaseComponent } from '../../../base/lifecycle.base.component';
 //   })
 
 export class BaseTabComponent extends LifeCycleBaseComponent {
-    @ViewChild('target', { read: ViewContainerRef }) target: any;
+    @ViewChild('target', /* TODO: add static flag */ { read: ViewContainerRef , static: true}) target: any;
     @ContentChildren(AmexioTabPillComponent) queryTabs: QueryList<AmexioTabPillComponent>;
     tabCollection: AmexioTabPillComponent[];
     @Input('tab-position') tabPosition: string;
-    @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
-    @ViewChild('tabslist', { read: ElementRef }) public tabslist: ElementRef;
+    @ViewChild('tab', /* TODO: add static flag */ { read: ElementRef , static: true}) public tabs: ElementRef;
+    @ViewChild('tabslist', /* TODO: add static flag */ { read: ElementRef , static: true}) public tabslist: ElementRef;
     @Input('divide-header-equally') fullPageTabs: boolean;
     @Input('active-bg-color') activeBGColor: boolean;
     @Input('body-height') bodyheight: any;

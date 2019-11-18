@@ -25,7 +25,7 @@ export class AmexioTaskbarItemComponent implements OnInit {
   top: any;
   iconClose = false;
 
-  @ViewChild('taskbarItemId') public taskbarItemId: ElementRef;
+  @ViewChild('taskbarItemId', /* TODO: add static flag */ { static: true}) public taskbarItemId: ElementRef;
 
   @Output('onCloseEvent') onCloseEvent = new EventEmitter<any>();
 

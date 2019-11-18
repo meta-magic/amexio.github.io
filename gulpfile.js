@@ -28,6 +28,7 @@ const runSequence = require('run-sequence');
 
 /** To compile & bundle the library with Angular & Rollup */
 const ngc = (args) => new Promise((resolve, reject) => { // Promisify version of the ngc compiler
+   
     let exitCode = require('@angular/compiler-cli/src/main').main(args);
     resolve(exitCode);
 });
@@ -256,6 +257,9 @@ gulp.task('pre-compile', (cb) => {
 });
 
 gulp.task('ng-compile', () => {
+    var ngFsUtils = require('@angular/compiler-cli/src/ngtsc/file_system');
+    ngFsUtils.setFileSystem(new ngFsUtils.NodeJSFileSystem());
+    
     return Promise.resolve()
         // Compile to ES5.
         .then(() => ngc(['--project', `${buildFolder}/tsconfig.lib.es5.json`])

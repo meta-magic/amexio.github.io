@@ -121,7 +121,7 @@ description : Custom width for each column.Width must be in % but no need to men
   @Input() width: string;
   isColumnSort: boolean;
 
-  @ContentChild('amexioHeaderTmpl') headerTemplate: TemplateRef<any>;
+  @ContentChild('amexioHeaderTmpl', /* TODO: add static flag */ { static: true}) headerTemplate: TemplateRef<any>;
 
-  @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
+  @ContentChild('amexioBodyTmpl', /* TODO: add static flag */ { static: true}) bodyTemplate: TemplateRef<any>;
 }

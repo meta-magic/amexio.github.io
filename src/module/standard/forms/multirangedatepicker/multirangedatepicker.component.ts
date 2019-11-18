@@ -37,7 +37,7 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
     multiDateRangePickerModel: MultiDateRangePicker;
     @Input('disabled-date') disabledDates: any = [];
 
-    @ViewChild(AmexioMultipleDatePickerComponent) child: any;
+    @ViewChild(AmexioMultipleDatePickerComponent, /* TODO: add static flag */ { static: true}) child: any;
     constructor() {
         this.multiDateRangePickerModel = new MultiDateRangePicker();
         this.customRange = ['Today', 'Yesterday', 'This week (sun - sat)', 'Last 14 days',

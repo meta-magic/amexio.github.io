@@ -82,9 +82,8 @@ describe('Directive: amexio-dynamic-text', () => {
             expect(element.hasChildNodes()).toHaveBeenCalled
         expect(element.hasChildNodes()).toEqual(true);
         expect(element.nodeType).not.toEqual(3);
- 
-            }
-       });
+
+    });
 
 
     //    it('iterateHTMLDOM() negative condition1.2', () => {

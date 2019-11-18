@@ -20,12 +20,12 @@ export class EditableTextComponent implements AfterViewInit {
 
   @Output() onSourceCodeClick: any = new EventEmitter<any>();
 
-  @ViewChild('richDiv') richDiv: any;
-  @ViewChild('headerId') headerId: any;
-  @ViewChild('fontFamily') fontFamily: any;
-  @ViewChild('richEditableId') richEditableId: any;
-  @ViewChild('favColorId') favColorId: any;
-  @ViewChild('backColorId') backColorId: any;
+  @ViewChild('richDiv', /* TODO: add static flag */ { static: true}) richDiv: any;
+  @ViewChild('headerId', /* TODO: add static flag */ { static: true}) headerId: any;
+  @ViewChild('fontFamily', /* TODO: add static flag */ { static: true}) fontFamily: any;
+  @ViewChild('richEditableId', /* TODO: add static flag */ { static: true}) richEditableId: any;
+  @ViewChild('favColorId', /* TODO: add static flag */ { static: true}) favColorId: any;
+  @ViewChild('backColorId', /* TODO: add static flag */ { static: true}) backColorId: any;
 
   textAreaHeight: number;
   constructor() {

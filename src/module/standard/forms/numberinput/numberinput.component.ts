@@ -214,7 +214,7 @@ description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
 
-  @ViewChild(NgModel) model: NgModel;
+  @ViewChild(NgModel, /* TODO: add static flag */ { static: true}) model: NgModel;
   componentId: any;
 
   constructor() {

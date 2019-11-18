@@ -247,11 +247,11 @@ description : On field focus event
 
   componentId: string;
 
-  @ViewChild('inp') inpHandle: any;
+  @ViewChild('inp', /* TODO: add static flag */ { static: true}) inpHandle: any;
 
-  @ViewChild('tagDropRef') tagDropRef: any;
+  @ViewChild('tagDropRef', /* TODO: add static flag */ { static: true}) tagDropRef: any;
 
-  @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
+  @ViewChild('dropdownitems', /* TODO: add static flag */ { read: ElementRef , static: true}) public dropdownitems: ElementRef;
 
   isValid: boolean;
 

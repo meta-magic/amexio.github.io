@@ -173,7 +173,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
 
     @Input('word-wrap') wordwrap = true;
 
-    @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
+    @ContentChild('amexioTreeTemplate', /* TODO: add static flag */ { static: true}) parentTmp: TemplateRef<any>;
     /*
     Events
     name : onTreeNodeChecked

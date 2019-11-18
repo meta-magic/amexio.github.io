@@ -209,7 +209,7 @@ description : Set enable / disable popover.
   default :
   description : On blur event
   */
-  @ViewChild(NgModel) model: NgModel;
+  @ViewChild(NgModel, /* TODO: add static flag */ { static: true}) model: NgModel;
   @Input('name') name: string;
   show = false;
   type = 'password';

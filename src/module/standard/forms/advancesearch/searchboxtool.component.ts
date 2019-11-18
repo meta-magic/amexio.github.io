@@ -147,9 +147,9 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
    description : Fires when search button is clicked
    */
   @Output() onSearchClick: any = new EventEmitter<any>();
-  @ContentChild(AmexioSearchAdvanceComponent) advanceSearchRef: AmexioSearchAdvanceComponent;
-  @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
-  @ViewChild('inp', { read: ElementRef }) public inp: ElementRef;
+  @ContentChild(AmexioSearchAdvanceComponent, /* TODO: add static flag */ { static: true}) advanceSearchRef: AmexioSearchAdvanceComponent;
+  @ViewChild('dropdownitems', /* TODO: add static flag */ { read: ElementRef , static: true}) public dropdownitems: ElementRef;
+  @ViewChild('inp', /* TODO: add static flag */ { read: ElementRef , static: true}) public inp: ElementRef;
   value: string;
   responseData: any;
   searchformString = '';
@@ -281,6 +281,7 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
         });
         this.searchFlag = true;
         this.onBaseFocusEvent({});
+        // tslint:disable-next-line: deprecation
         this.keyup.emit(event);
       }
       this.selectedValueOnFocus();

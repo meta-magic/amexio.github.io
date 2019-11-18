@@ -237,7 +237,7 @@ description : Set enable / disable popover.
 
   @Input('name') name: string;
 
-  @ViewChild(NgModel) model: NgModel;
+  @ViewChild(NgModel, /* TODO: add static flag */ { static: true}) model: NgModel;
   componentId: any;
 
   constructor() {
@@ -256,18 +256,21 @@ description : Set enable / disable popover.
   }
 
   onFocusEvent(inputEvent: any) {
+    // tslint:disable-next-line: deprecation
     this.eventPropagation(event);
     this.showToolTip = true;
     this.focus.emit({value: this.value, event: inputEvent});
   }
 
   onInputEvent(inputEvent: any) {
+    // tslint:disable-next-line: deprecation
     this.eventPropagation(event);
     this.isValid = this.isFieldValid();
     this.input.emit({value: this.value, event: inputEvent});
   }
 
   onChangeEv(inputEvent: any) {
+    // tslint:disable-next-line: deprecation
     this.eventPropagation(event);
     this.change.emit({value: this.value, event: inputEvent});
   }

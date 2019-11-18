@@ -139,7 +139,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
 
   @Input() show: boolean;
 
-  @ViewChild('windowHeader', { read: ElementRef }) public windowHeader: ElementRef;
+  @ViewChild('windowHeader', /* TODO: add static flag */ { read: ElementRef , static: true}) public windowHeader: ElementRef;
 
   @Output() showChange: EventEmitter<any> = new EventEmitter<any>();
 
@@ -402,6 +402,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
       this.amexioHeader.toArray()[0].closeable = this.closable;
       this.amexioHeader.toArray()[0].aComponent1 = 'window';
       if (this.maximize) {
+        // tslint:disable-next-line: deprecation
         this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow, event);
         this.amexioHeader.toArray()[0].maximizeBehaiour.subscribe((max: any) => {
           this.maximumWindowStyle = this.setMaximizeClass(max.isFullWindow);

@@ -88,7 +88,7 @@ export class AmexioNavMenuComponent implements OnInit, AfterViewInit {
   // for internal use
   @Input('submenupos') submenupos = false;
 
-  @ViewChild('navmenu', { read: ElementRef }) public navmenu: ElementRef;
+  @ViewChild('navmenu', /* TODO: add static flag */ { read: ElementRef , static: true}) public navmenu: ElementRef;
 
   showMenus: boolean;
 

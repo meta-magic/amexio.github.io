@@ -20,7 +20,7 @@ export class StepWizardItemComponent  implements OnInit, AfterContentChecked, Af
 
  @Output() onPreviousStep: any = new EventEmitter<any>();
 
- @ViewChild(NgForm) public form: NgForm;
+ @ViewChild(NgForm, /* TODO: add static flag */ { static: true}) public form: NgForm;
 
  @ContentChildren(NgModel, { descendants: true }) public models: QueryList<NgModel>;
 

@@ -70,7 +70,7 @@ description : Time interval for shuffling images
 
   @ContentChildren(AmexioTemplateDirective) templates: QueryList<any>;
 
-  @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
+  @ViewChild('tab', /* TODO: add static flag */ { read: ElementRef , static: true}) public tabs: ElementRef;
   // @ViewChild('kk') kk: ElementRef;
 
   prevImage = -1;

@@ -261,7 +261,7 @@ description : The fill color of rising candles, as an HTML color string.Example:
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('candlestickwaterfall') private candlestickwaterfall: ElementRef;
+  @ViewChild('candlestickwaterfall', /* TODO: add static flag */ { static: true}) private candlestickwaterfall: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

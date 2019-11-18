@@ -210,7 +210,7 @@ description : inner-grid-dark-track-color set inner grid dark color
 
   private options: any;
 
-  @ViewChild('gantt') private ganttchart: ElementRef;
+  @ViewChild('gantt', /* TODO: add static flag */ { static: true}) private ganttchart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

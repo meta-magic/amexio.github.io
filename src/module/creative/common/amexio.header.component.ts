@@ -53,7 +53,7 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   @Input('apply-theme-color') applyThemeColor = false;
 
-  @ViewChild('contentWrapper') content: ElementRef;
+  @ViewChild('contentWrapper', /* TODO: add static flag */ { static: true}) content: ElementRef;
 
   @Output() minimizeWindow: any = new EventEmitter<any>();
 

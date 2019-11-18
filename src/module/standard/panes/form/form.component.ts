@@ -125,9 +125,9 @@ description : Provides form body height.
 
   @Input('icon') icon: any;
 
-  @ViewChild('formHeader', { read: ElementRef }) public formHeader: ElementRef;
+  @ViewChild('formHeader', /* TODO: add static flag */ { read: ElementRef , static: true}) public formHeader: ElementRef;
 
-  @ViewChild('formFooter', { read: ElementRef }) public formFooter: ElementRef;
+  @ViewChild('formFooter', /* TODO: add static flag */ { read: ElementRef , static: true}) public formFooter: ElementRef;
 
   /*
 Events
@@ -172,7 +172,7 @@ description : Event fired if showError msg info button is clicked
   @ContentChildren(AmexioButtonComponent, { descendants: true }) btns: QueryList<AmexioButtonComponent>;
   buttons: AmexioButtonComponent[];
 
-  @ViewChild(NgForm) public form: NgForm;
+  @ViewChild(NgForm, /* TODO: add static flag */ { static: true}) public form: NgForm;
 
   @ContentChildren(NgModel, { descendants: true }) public models: QueryList<NgModel>;
 

@@ -294,8 +294,10 @@ description : Triggers when slider reaches the end
       this.dragging = false;
       this.ngZone.run(() => {
         if (this.range) {
+          // tslint:disable-next-line: deprecation
           this.onSlideEnd.emit({ originalEvent: event, values: this.values });
         } else {
+          // tslint:disable-next-line: deprecation
           this.onSlideEnd.emit({ originalEvent: event, value: this.value });
         }
       });

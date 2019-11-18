@@ -58,7 +58,7 @@ export class AmexioEmailInputComponent  extends BaseInputEventComponent implemen
    description : Sets if field is required
    */
   @Input('allow-blank') allowblank: boolean;
-  @ViewChild(NgModel) model: NgModel;
+  @ViewChild(NgModel, /* TODO: add static flag */ { static: true}) model: NgModel;
 
   regEx: RegExp;
 

@@ -252,7 +252,7 @@ description : Sets background-color
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('barchart') private barchart: ElementRef;
+  @ViewChild('barchart', /* TODO: add static flag */ { static: true}) private barchart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
 

@@ -225,7 +225,7 @@ description : sets background-color of chart
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('linechart') private linechart: ElementRef;
+  @ViewChild('linechart', /* TODO: add static flag */ { static: true}) private linechart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

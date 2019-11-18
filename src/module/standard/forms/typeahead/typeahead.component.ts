@@ -167,14 +167,14 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   @Output() isComponentValid: any = new EventEmitter<any>();
 
-  @ViewChild(NgModel) model: NgModel;
+  @ViewChild(NgModel, /* TODO: add static flag */ { static: true}) model: NgModel;
 
   @ViewChildren(DropDownListComponent)
   private dropdownlist: QueryList<DropDownListComponent>;
 
   dropdown: DropDownListComponent[];
 
-  @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
+  @ContentChild('amexioBodyTmpl', /* TODO: add static flag */ { static: true}) bodyTemplate: TemplateRef<any>;
 
   rowindex = 0;
 

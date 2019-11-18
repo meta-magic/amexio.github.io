@@ -49,7 +49,7 @@ export class PanelItemComponent implements OnInit, AfterContentInit, AfterViewIn
     @Input('image-class') imgcclass: any;
     @Input('image-path') imgpath: any;
 
-    @ViewChild('tref', { read: ElementRef }) tref: ElementRef;
+    @ViewChild('tref', /* TODO: add static flag */ { read: ElementRef , static: true}) tref: ElementRef;
 
     @Output() childPanelClicked: EventEmitter<any> = new EventEmitter<any>();
 

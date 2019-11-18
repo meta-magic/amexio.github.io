@@ -14,7 +14,7 @@ export class AmexioHomePageNorthPanelComponent implements OnInit, AfterViewInit 
 
 @Output() nothPanelIconClick: any = new EventEmitter<any>();
 
-@ContentChild(AmexioNavBarComponent) amexioNavBarComponent: AmexioNavBarComponent;
+@ContentChild(AmexioNavBarComponent, /* TODO: add static flag */ { static: true}) amexioNavBarComponent: AmexioNavBarComponent;
 
 constructor(public matchMediaService: DeviceQueryService) {
 

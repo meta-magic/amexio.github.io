@@ -99,7 +99,7 @@ export class AmexioSpinnerComponent implements OnInit, OnChanges {
 
   private spinnerRelativeCss = 'spinnerCss-relative';
 
-  @ViewChild('loadindicator') element: ElementRef;
+  @ViewChild('loadindicator', /* TODO: add static flag */ { static: true}) element: ElementRef;
 
   alpha = '0.2';
 

@@ -107,12 +107,12 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
 
   @Output() onNavLoad: any = new EventEmitter<any>();
 
-  @ViewChild('navbar', { read: ElementRef }) public navbar: ElementRef;
-  @ViewChild('navbarfixed', { read: ElementRef }) public navbarfixed: ElementRef;
-  @ViewChild('navbaritems', { read: ElementRef }) public navbaritems: ElementRef;
-  @ViewChild('navbaritems1', { read: ElementRef }) public navbaritems1: ElementRef;
-  @ViewChild('navbaritems2', { read: ElementRef }) public navbaritems2: ElementRef;
-  @ViewChild('navbaritems3', { read: ElementRef }) public navbaritems3: ElementRef;
+  @ViewChild('navbar', /* TODO: add static flag */ { read: ElementRef , static: true}) public navbar: ElementRef;
+  @ViewChild('navbarfixed', /* TODO: add static flag */ { read: ElementRef , static: true}) public navbarfixed: ElementRef;
+  @ViewChild('navbaritems', /* TODO: add static flag */ { read: ElementRef , static: true}) public navbaritems: ElementRef;
+  @ViewChild('navbaritems1', /* TODO: add static flag */ { read: ElementRef , static: true}) public navbaritems1: ElementRef;
+  @ViewChild('navbaritems2', /* TODO: add static flag */ { read: ElementRef , static: true}) public navbaritems2: ElementRef;
+  @ViewChild('navbaritems3', /* TODO: add static flag */ { read: ElementRef , static: true}) public navbaritems3: ElementRef;
 
   navclass: string;
   toggle = true;

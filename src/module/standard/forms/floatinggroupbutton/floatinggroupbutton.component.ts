@@ -216,6 +216,7 @@ explicitly (using position-top/position-bottom/position-left/position-right)
         this.floatinggroupxposition = (x) + 'px';
         this.floatinggroupyposition = (y + 70) + 'px';
       }
+      // tslint:disable-next-line: deprecation
       this.floatingBtnGroupTopPostion(event);
       this.toggleVisibility();
       this.togglefloatinggroup = !this.togglefloatinggroup;

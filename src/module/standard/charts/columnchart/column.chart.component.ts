@@ -236,7 +236,7 @@ description : sets background color
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('columnchart') private columnchart: ElementRef;
+  @ViewChild('columnchart', /* TODO: add static flag */ { static: true}) private columnchart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

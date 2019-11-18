@@ -17,9 +17,9 @@ export class AmexioVirtualScrollerComponent implements OnInit, OnDestroy {
 
  @Output() onScrollDown: any = new EventEmitter<any>();
 
- @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
+ @ContentChild('amexioBodyTmpl', /* TODO: add static flag */ { static: true}) bodyTemplate: TemplateRef<any>;
 
- @ViewChild('virtualscoller') public virtualscoller: ElementRef;
+ @ViewChild('virtualscoller', /* TODO: add static flag */ { static: true}) public virtualscoller: ElementRef;
 
  windowscrolllistener: any;
  divscrolllistener: any;

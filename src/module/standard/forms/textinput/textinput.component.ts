@@ -204,7 +204,7 @@ description : Apply Reg-ex to the field
 
   isValid = false;
 
-  @ViewChild(NgModel) model: NgModel;
+  @ViewChild(NgModel, /* TODO: add static flag */ { static: true}) model: NgModel;
 
   @Input('name') name: string;
 

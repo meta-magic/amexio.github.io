@@ -225,7 +225,7 @@ export class DonutChartComponent implements AfterContentInit, OnInit {
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('donutchart') private donutchart: ElementRef;
+  @ViewChild('donutchart', /* TODO: add static flag */ { static: true}) private donutchart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

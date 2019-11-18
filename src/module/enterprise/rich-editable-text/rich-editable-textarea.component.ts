@@ -14,7 +14,7 @@ export class AmexioRichEditorComponent {
     @Input('rich-height') richHeight = 400;
     @Input('enable-source-code') enableSourceCode = false;
     @Input('toolbar-position') toolbarPosition = 'top';
-    @ViewChild(EditableTextComponent) editableComponentRef: EditableTextComponent;
+    @ViewChild(EditableTextComponent, /* TODO: add static flag */ { static: true}) editableComponentRef: EditableTextComponent;
 
     @Output() onCodeClick: any = new EventEmitter<any>();
 

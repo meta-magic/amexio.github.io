@@ -231,7 +231,7 @@ description : sets background color
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('candlestick') private candlestick: ElementRef;
+  @ViewChild('candlestick', /* TODO: add static flag */ { static: true}) private candlestick: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

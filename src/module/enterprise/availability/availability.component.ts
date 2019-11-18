@@ -11,9 +11,9 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   @Input('end-time') endTime: number;
   @Input('time-zone-data') zoneData: any;
   @Input('label-data') labelData: any;
-  @ViewChild('datesdiv') elementView: ElementRef;
-  @ViewChild('datesseconddiv') elementView1: ElementRef;
-  @ViewChild('datesfirstdiv') elementView2: ElementRef;
+  @ViewChild('datesdiv', /* TODO: add static flag */ { static: true}) elementView: ElementRef;
+  @ViewChild('datesseconddiv', /* TODO: add static flag */ { static: true}) elementView1: ElementRef;
+  @ViewChild('datesfirstdiv', /* TODO: add static flag */ { static: true}) elementView2: ElementRef;
   @Output() onClick: any = new EventEmitter<any>();
   radioValue = '';
   selectedIndexArr: any[];

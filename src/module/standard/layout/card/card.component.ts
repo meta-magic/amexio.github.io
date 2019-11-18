@@ -129,9 +129,9 @@ description : Context Menu provides the list of menus on right click.
    view child begins
   */
 
-  @ViewChild('cardHeader', { read: ElementRef }) public cardHeader: ElementRef;
+  @ViewChild('cardHeader', /* TODO: add static flag */ { read: ElementRef , static: true}) public cardHeader: ElementRef;
 
-  @ViewChild('cardFooter', { read: ElementRef }) public cardFooter: ElementRef;
+  @ViewChild('cardFooter', /* TODO: add static flag */ { read: ElementRef , static: true}) public cardFooter: ElementRef;
 
   headerPadding: string;
   bodyPadding: string;

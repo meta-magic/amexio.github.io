@@ -7,7 +7,7 @@ import {AmexioNavBarComponent} from '../../../standard/navigation/navbar/navbar.
 })
 export class ViewportContentBodyComponent implements OnInit {
 
-  @ContentChild(AmexioNavBarComponent) navTemplate: AmexioNavBarComponent;
+  @ContentChild(AmexioNavBarComponent, /* TODO: add static flag */ { static: true}) navTemplate: AmexioNavBarComponent;
 
   @Input('scrollable') scrollable = false;
 

@@ -10,7 +10,7 @@ export class AmexioCalendarDayTimeWiseComponent implements OnInit {
 
     @Input('calendar-data') calendaryData: any[];
 
-    @ViewChild('headerRow') headerRow: ElementRef;
+    @ViewChild('headerRow', /* TODO: add static flag */ { static: true}) headerRow: ElementRef;
 
     @Output('onEventClicked') onEventClicked = new EventEmitter<any>();
 

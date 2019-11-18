@@ -8,8 +8,8 @@ import { AmexioVideoPlayerComponent } from '../../../standard/media/video-player
 })
 export class ViewportBackgroundComponent implements AfterContentInit, OnInit {
 
-  @ContentChild(AmexioImageComponent) imageTemplate: AmexioImageComponent;
-  @ContentChild(AmexioVideoPlayerComponent) videoTemplate: AmexioVideoPlayerComponent;
+  @ContentChild(AmexioImageComponent, /* TODO: add static flag */ { static: true}) imageTemplate: AmexioImageComponent;
+  @ContentChild(AmexioVideoPlayerComponent, /* TODO: add static flag */ { static: true}) videoTemplate: AmexioVideoPlayerComponent;
 
   bgCss: string;
   imagePath: string;

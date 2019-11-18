@@ -12,8 +12,8 @@ export class AmexioNavDesktopMenuComponent implements AfterViewInit {
 
     position = 'left';
     marginTop: any;
-    @ViewChild('menus', { read: ElementRef }) public menus: ElementRef;
-    @ViewChild('divRef', { read: ElementRef }) public divRef: ElementRef;
+    @ViewChild('menus', /* TODO: add static flag */ { read: ElementRef , static: true}) public menus: ElementRef;
+    @ViewChild('divRef', /* TODO: add static flag */ { read: ElementRef , static: true}) public divRef: ElementRef;
 
     @Output() onNavItemClick: any = new EventEmitter<any>();
 

@@ -142,7 +142,7 @@ description : Position of notification window vertically:
 
   private notificationHorizontalCss = ' notification-horizontal-';
 
-  @ContentChild('amexioNotificationTemp') notificationTemplate: TemplateRef<any>;
+  @ContentChild('amexioNotificationTemp', /* TODO: add static flag */ { static: true}) notificationTemplate: TemplateRef<any>;
 
   // Escape Key Functionality
   @HostListener('window:keyup.esc', ['$event']) keyEvent(event: KeyboardEvent) {

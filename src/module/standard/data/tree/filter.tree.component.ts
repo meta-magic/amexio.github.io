@@ -200,7 +200,7 @@ description : It will gives whole tree data with checked flag status.
 
   isexpandAll = false;
 
-  @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
+  @ContentChild('amexioTreeTemplate', /* TODO: add static flag */ { static: true}) parentTmp: TemplateRef<any>;
 
   constructor(private _http: HttpClient, private cdf: ChangeDetectorRef, private treeViewFilterService: CommonDataService) {
     this.filterIndex = 3;

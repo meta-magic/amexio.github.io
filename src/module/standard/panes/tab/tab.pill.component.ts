@@ -89,7 +89,7 @@ description : Font color of label
 
   tablk: any;
 
-  @ViewChild('target', { read: ViewContainerRef }) public target: any;
+  @ViewChild('target', /* TODO: add static flag */ { read: ViewContainerRef, static: true }) public target: any;
 
   constructor() {
     this.tabId = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);

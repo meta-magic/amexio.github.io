@@ -11,15 +11,18 @@ import { AmexioHomePageWestPanelComponent } from './homepage.westpanel.component
 export class AmexioHomePageComponent implements OnInit, AfterContentInit {
 
   @Input('type') type = '1';
-  @ContentChild(AmexioHomePageNorthPanelComponent)
+  @ContentChild(AmexioHomePageNorthPanelComponent,
+    /* TODO: add static flag */ { static: true})
   amexoHomePageNorthpanel: AmexioHomePageNorthPanelComponent;
 
   @ContentChildren(AmexioSideNavComponent, { descendants: true }) sideNavList: QueryList<AmexioSideNavComponent>;
   sideNavComponents: AmexioSideNavComponent[];
 
-  @ContentChild(AmexioHomePageWestPanelComponent) amexioHomePageWestPanelComponent: AmexioHomePageWestPanelComponent;
+  @ContentChild(AmexioHomePageWestPanelComponent,
+    /* TODO: add static flag */ { static: true}) amexioHomePageWestPanelComponent: AmexioHomePageWestPanelComponent;
 
-  @ContentChild(AmexioNavBarComponent) amexioNavBarComponent: AmexioNavBarComponent;
+  @ContentChild(AmexioNavBarComponent,
+    /* TODO: add static flag */ { static: true}) amexioNavBarComponent: AmexioNavBarComponent;
 
   isDisableWestPanel = true;
   isPhone = false;

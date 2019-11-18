@@ -68,7 +68,7 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
 
   @HostBinding('style.background') background = '';
 
-  @ViewChild('contentWrapper') content: ElementRef;
+  @ViewChild('contentWrapper', /* TODO: add static flag */ { static: true}) content: ElementRef;
 
   @HostBinding('style.color') color = '';
   @Input() padding: string;

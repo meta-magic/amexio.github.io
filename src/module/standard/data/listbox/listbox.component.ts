@@ -195,7 +195,7 @@ description : Context Menu provides the list of menus on right click.
   */
   @Output() rightClick: any = new EventEmitter<any>();
 
-  @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
+  @ContentChild('amexioBodyTmpl', /* TODO: add static flag */ { static: true}) bodyTemplate: TemplateRef<any>;
 
   viewData: any[];
 

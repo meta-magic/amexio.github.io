@@ -73,7 +73,7 @@ export class AmexioFormCEComponent extends LifeCycleBaseComponent implements OnD
 
     buttons: AmexioButtonComponent[];
 
-    @ViewChild(NgForm) public form: NgForm;
+    @ViewChild(NgForm, /* TODO: add static flag */ { static: true}) public form: NgForm;
 
     @ContentChildren(NgModel, { descendants: true }) public models: QueryList<NgModel>;
 

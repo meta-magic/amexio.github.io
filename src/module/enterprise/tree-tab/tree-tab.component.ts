@@ -9,7 +9,7 @@ export class TreeTabComponent implements OnInit, AfterViewInit {
 
     @Input('data') data: any;
     @Input('data-reader') dataReader: string;
-    @ViewChild('tab') tab: ElementRef;
+    @ViewChild('tab', /* TODO: add static flag */ { static: true}) tab: ElementRef;
     @Output('nodeClick') nodeClick: any = new EventEmitter<any>();
     @Output('onLoad') onLoad: any = new EventEmitter<any>();
     @Input('width') width = '200px';

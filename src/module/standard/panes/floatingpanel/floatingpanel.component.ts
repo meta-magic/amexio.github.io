@@ -41,8 +41,8 @@ export class AmexioFloatingPanelComponent extends LifeCycleBaseComponent impleme
     themeCss: any;
     amexioComponentId = 'amexio-floating-panel';
     counter = 0;
-    @ViewChild(AmexioButtonComponent) buttonRef: AmexioButtonComponent;
-    @ViewChild('floatingPanel') floatingPanelRef: ElementRef;
+    @ViewChild(AmexioButtonComponent, /* TODO: add static flag */ { static: true}) buttonRef: AmexioButtonComponent;
+    @ViewChild('floatingPanel', /* TODO: add static flag */ { static: true}) floatingPanelRef: ElementRef;
     positionMapData: string[];
     showfloatingButton = false;
     showSimpleButton = false;
@@ -115,6 +115,7 @@ export class AmexioFloatingPanelComponent extends LifeCycleBaseComponent impleme
 }
     onMouseDown(event: any, floatingPanel: any) {
         if (this.draggable && event.target.getAttribute('name') && event.target.getAttribute('name') === 'floatingheader') {
+            // tslint:disable-next-line: deprecation
             event = event || window.event;
             event.preventDefault();
             this.pos3 = event.clientX;
@@ -134,6 +135,7 @@ export class AmexioFloatingPanelComponent extends LifeCycleBaseComponent impleme
         }
     }
     elementDrag(e: any, floatingPanel: any) {
+        // tslint:disable-next-line: deprecation
         e = e || window.event;
         e.preventDefault();
         this.pos1 = this.pos3 - e.clientX;

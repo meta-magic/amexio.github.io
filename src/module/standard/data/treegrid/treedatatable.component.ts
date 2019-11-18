@@ -136,7 +136,7 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
    description : It will gives you row clicked data.
    */
 
-  @ViewChild('header', { read: ElementRef }) public gridHeader: ElementRef;
+  @ViewChild('header', /* TODO: add static flag */ { read: ElementRef , static: true}) public gridHeader: ElementRef;
   @Output() rowSelect: any = new EventEmitter<any>();
 
   responseData: any;

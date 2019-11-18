@@ -10,7 +10,7 @@ export class ColorPaletteComponent implements AfterViewInit, OnChanges {
   @Input('position') position: any;
   @Output()
   color: EventEmitter<string> = new EventEmitter(true);
-  @ViewChild('canvas')
+  @ViewChild('canvas', /* TODO: add static flag */ { static: true})
   canvas: ElementRef<HTMLCanvasElement>;
   width: any;
   height: any;

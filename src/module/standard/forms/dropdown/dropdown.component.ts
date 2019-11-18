@@ -161,7 +161,7 @@ description : true for select multiple options
 */
   @Input('multi-select') multiselect: boolean;
 
-  @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
+  @ViewChild('dropdownitems', /* TODO: add static flag */ { read: ElementRef , static: true}) public dropdownitems: ElementRef;
 
   displayValue = '';
 
@@ -308,7 +308,7 @@ description : Set enable / disable popover.
     this.helpInfoMsg = value + '<br/>';
   }
 
-  @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
+  @ContentChild('amexioBodyTmpl', /* TODO: add static flag */ { static: true}) bodyTemplate: TemplateRef<any>;
   posixUp: boolean;
   isValid: boolean;
   selectedindex = -1;

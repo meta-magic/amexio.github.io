@@ -8,10 +8,10 @@ import { ViewportContentBodyComponent } from '../viewport.content.body/viewport.
 })
 export class ViewportContentComponent implements OnInit, AfterContentInit, AfterViewInit {
 
-  @ViewChild('videoId') videoId: ElementRef;
+  @ViewChild('videoId', /* TODO: add static flag */ { static: true}) videoId: ElementRef;
 
-  @ContentChild(ViewportBackgroundComponent) bgImageTemplate: ViewportBackgroundComponent;
-  @ContentChild(ViewportContentBodyComponent) contentTemplate: ViewportContentBodyComponent;
+  @ContentChild(ViewportBackgroundComponent, /* TODO: add static flag */ { static: true}) bgImageTemplate: ViewportBackgroundComponent;
+  @ContentChild(ViewportContentBodyComponent, /* TODO: add static flag */ { static: true}) contentTemplate: ViewportContentBodyComponent;
   constructor() { }
 
   backgroundCss: string;

@@ -53,11 +53,11 @@ description :  Width of the video player window
   // Internal Use Only
   @Input() rederVideo = true;
 
-  @ViewChild('videoRef') videoPlayer: any;
+  @ViewChild('videoRef', /* TODO: add static flag */ { static: true}) videoPlayer: any;
 
-  @ViewChild('progressbar') progressBar: any;
+  @ViewChild('progressbar', /* TODO: add static flag */ { static: true}) progressBar: any;
 
-  @ViewChild('volumebar') volumebar: any;
+  @ViewChild('volumebar', /* TODO: add static flag */ { static: true}) volumebar: any;
 
   isPlaying: boolean;
 

@@ -5,7 +5,7 @@ import { HostListener, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChil
   templateUrl: './colorslider.component.html',
 })
 export class ColorsliderComponent implements AfterViewInit, OnInit, OnChanges {
-  @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
+  @ViewChild('canvas', /* TODO: add static flag */ { static: true}) canvas: ElementRef<HTMLCanvasElement>;
   @Output() color: EventEmitter<any> = new EventEmitter();
   @Input('selected-hue') selctedHue: any;
   @Input('offsetY') offsetY: any;

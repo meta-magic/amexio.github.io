@@ -455,7 +455,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
-  @ViewChild('pageId') pageId: any;
+  @ViewChild('pageId', /* TODO: add static flag */ { static: true}) pageId: any;
 
   constructor(
     public element: ElementRef, public dataTableService: CommonDataService,

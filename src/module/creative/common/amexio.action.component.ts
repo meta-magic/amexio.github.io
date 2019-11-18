@@ -63,7 +63,7 @@ export class AmexioCardCEActionComponent implements AfterViewInit, OnInit {
 
   @ContentChildren(AmexioButtonGroupComponent) btngrp: QueryList<AmexioButtonGroupComponent>;
 
-  @ViewChild(AmexioFormActionCEComponent) formAction: AmexioFormActionCEComponent;
+  @ViewChild(AmexioFormActionCEComponent, /* TODO: add static flag */ { static: true}) formAction: AmexioFormActionCEComponent;
 
   constructor(public formBuilder: FormBuilder) {
     this.isFormValid = false;

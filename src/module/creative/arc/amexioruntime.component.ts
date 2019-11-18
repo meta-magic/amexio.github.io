@@ -15,7 +15,7 @@ import { defaultclass } from './amexio.arc.constant';
 })
 export class AmexioRuntimeComponent implements OnInit {
 
-    @ViewChild('vc', { read: ViewContainerRef }) _container: ViewContainerRef;
+    @ViewChild('vc', /* TODO: add static flag */ { read: ViewContainerRef , static: true}) _container: ViewContainerRef;
 
     _htmlTemplate: string;
     _tsclass: any;

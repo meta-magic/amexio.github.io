@@ -28,9 +28,9 @@ export class BrowserPanelComponent implements OnInit {
     iframeurl: SafeResourceUrl;
 
     // Html reference with view child.
-    @ViewChild('fullscreen') fullscreen: any;
-    @ViewChild('loadSite') loadSite: any;
-    @ViewChild('newURL') newURL: any;
+    @ViewChild('fullscreen', /* TODO: add static flag */ { static: true}) fullscreen: any;
+    @ViewChild('loadSite', /* TODO: add static flag */ { static: true}) loadSite: any;
+    @ViewChild('newURL', /* TODO: add static flag */ { static: true}) newURL: any;
     lockIconShow = false;
     globalListenFunc: () => void;
     constructor(private sanitizer: DomSanitizer, private renderer: Renderer2, private _browserService: MinimizeService) {

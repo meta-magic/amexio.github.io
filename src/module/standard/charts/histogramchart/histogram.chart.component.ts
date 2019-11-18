@@ -221,7 +221,7 @@ description : sets background color
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('histogramchart') private histogramchart: ElementRef;
+  @ViewChild('histogramchart', /* TODO: add static flag */ { static: true}) private histogramchart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';
