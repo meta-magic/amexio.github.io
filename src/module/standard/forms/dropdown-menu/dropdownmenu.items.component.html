@@ -1,0 +1,15 @@
+<div *ngIf="!(icon && label)"  class="dropdowndivider" style="padding-bottom: 5px;">
+  <ng-content></ng-content>
+</div>
+<a  *ngIf=" (icon || label)"   (click)="onItemClick($event)" id={{index}}  [ngStyle]="{'background': selected ? '#ffcccc':''}"  [ngClass]="{'dropdowndivider':separator}">
+
+  <ng-container *ngIf="icon">
+    <em [style.float]="iconalign" [ngClass]="icon"></em>
+  </ng-container>
+
+  <ng-container *ngIf="label">
+    <span [style.float]="labelalign" style="padding: 5px;">
+      {{label}}
+    </span>
+  </ng-container>
+</a>
