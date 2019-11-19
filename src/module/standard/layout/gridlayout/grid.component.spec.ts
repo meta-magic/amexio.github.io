@@ -196,7 +196,7 @@ describe('amexio-layout-grid', () => {
             'tab': [["west", "north", "north", "north", "north", "east"]],
             "desktop": ""
         };
-        console.log(layoutData.desktop.length);
+        //console.log(layoutData.desktop.length);
         
         comp.colCount = layoutData.count;
         comp.className = comp.className + '' + layoutData.name;

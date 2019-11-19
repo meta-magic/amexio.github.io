@@ -125,7 +125,6 @@ describe('amexio-button', () => {
 
       expect(comp.type).toBe('primary');
       expect(badgeHTML.innerHTML).toContain('btn-primary-badge');
-      console.log(badgeHTML.innerHTML);
     }
   });
 
@@ -157,7 +156,6 @@ describe('amexio-button', () => {
     comp.badge = 10;
     comp.badgeClass();
     fixture.detectChanges();
-  
     if (comp.type === 'secondary' || comp.type === 'theme-backgroundcolor') {
       className = 'btn-secondary-badge';
 
@@ -442,7 +440,6 @@ describe('amexio-button', () => {
       const res = comp.getBGStyle();
 
       fixture.detectChanges();
-      console.log(buttonHtml);
       expect(buttonHtml.style.backgroundColor).toBe('rgb(68, 68, 68)');
       expect(buttonHtml.style.color).toBe('rgb(0, 0, 0)');
       expect(comp.type).toBe('default');

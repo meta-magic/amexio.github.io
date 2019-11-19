@@ -70,7 +70,7 @@ describe('Directive: amexio-route-animation', () => {
     });
 
 
-    it('constructor call and else condition', () => {
+    xit('constructor call and else condition', () => {
         dirIn.animationClasses = [];
         dirIn.animationClasses.push(dirIn.animationTop);
         dirIn.animationClasses.push(dirIn.animationBottom);
