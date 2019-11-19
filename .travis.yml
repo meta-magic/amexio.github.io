@@ -21,7 +21,6 @@ before_script:
   - gem install sass
   - git fetch --unshallow
   - gulp --version
-  - npm install --global cross-env --save
   - npm run fix-memory-limit
 
             
