@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { AmexioWidgetModule } from '../../amexio.widget.module';
+import { AmexioWidgetModule } from '../../standard/amexio.widget.module';
 
 import { defaultclass } from './amexio.arc.constant';
 

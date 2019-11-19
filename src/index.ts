@@ -1,4 +1,4 @@
-export * from './module/amexio.widget.module';
+export * from './module/standard/amexio.widget.module';
 export * from './module/standard/forms/amexio.forms.module';
 export * from './module/standard/navigation/amexio.nav.module';
 export * from './module/standard/layout/amexio.layout.module';
