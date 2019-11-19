@@ -21,6 +21,7 @@ before_script:
   - gem install sass
   - git fetch --unshallow
   - gulp --version
+  - npm run fix-memory-limit
 
             
 script: 
