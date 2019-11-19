@@ -1,7 +1,6 @@
 <div 
 [ngClass]="[displayDiv ? 'rich-first-div-reverse' : 'rich-first-div']"
- 
-  [style.height.%]="areaHeight" [style.width.%]="areaWidth">
+ style="height: -webkit-fill-available">
 
   <div style="flex-direction: column;" class="rich-editor-buttons">
    
@@ -94,9 +93,9 @@
       </amexio-layout-item>
     </amexio-layout-columns>
 
-    <amexio-layout-columns [orientation]="'vertical'" [border]="false" [alignment]="'left'">
+    <amexio-layout-columns  [orientation]="'vertical'" [border]="false" [alignment]="'left'">
       <amexio-layout-item [fit]="true">
-        <amexio-layout-columns [border]="false" [fit]="true" [orientation]="'horizontal'" [alignment]="'left'">
+        <amexio-layout-columns style="display:unset !important" [border]="false" [fit]="true" [orientation]="'horizontal'" [alignment]="'left'">
           <amexio-layout-item>
             <select #headerId (change)="selectHeaderClick()" class="heading-dropdown" required>
               <option value="" disabled selected>Header</option>
