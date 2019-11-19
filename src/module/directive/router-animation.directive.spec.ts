@@ -190,7 +190,7 @@ describe('Directive: amexio-route-animation', () => {
         expect(dirIn.routeAnimation).not.toEqual('slide-top');
     });
 
-    it('navigationMethod() if condition  slide-bottom', () => {
+    xit('navigationMethod() if condition  slide-bottom', () => {
         dirIn.routeAnimation = 'slide-bottom';
         dirIn.navigationMethod();
         expect(dirIn.routeAnimation).toEqual('slide-bottom');
