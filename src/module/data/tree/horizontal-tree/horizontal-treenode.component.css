@@ -25,7 +25,7 @@ table{
     margin: 0;
     padding: .125em 0 0 0;
     
-    background: url("line.gif") repeat-x scroll center center transparent;
+    /* background: url("line.gif") repeat-x scroll center center transparent; */
     padding: .25em 2.5em;
 
 }
