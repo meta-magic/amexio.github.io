@@ -5,8 +5,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
 import { AmexioTemplateDirective } from '../../directive/carousel.template.directive';
 import { AmexioTemplateWrapperDirective } from '../../directive/carousel.wrapper.template.directive';
 import { AmexioFooterComponent } from './action/pane.action.footer';
