@@ -31,7 +31,8 @@
     "test": " gulp test",
     "demo": " gulp build:demo",
     "check-travis": " travis-status --repo=meta-magic/amexio.github.io/ --branch=master --fail-pending || echo 'Not yet passing'",
-    "sonar": "sonar-scanner"
+    "sonar": "sonar-scanner",
+    "fix-memory-limit": "cross-env LIMIT=2048 increase-memory-limit"
   },
   "dependencies": {
     "@angular/cdk": "^7.3.7",
@@ -42,6 +43,7 @@
     "@angular/platform-browser": "^8.2.14",
     "@angular/router": "^8.2.14",
     "angular-font-awesome": "3.1.2",
+    "cross-env": "^6.0.3",
     "font-awesome": "4.7.0",
     "gulp": "^3.9.1",
     "remap-istanbul": "^0.13.0",
