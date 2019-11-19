@@ -23,6 +23,7 @@
 
 cp mda/search-icon.png css/;
 cp mda/slider.png css/;
+cp mda/line.gif css/;
 cp mda/prev.png css/;
 cp mda/next.png css/;
 

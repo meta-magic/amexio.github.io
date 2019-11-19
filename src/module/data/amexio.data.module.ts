@@ -17,8 +17,6 @@ import { AmexioProgressBarComponent } from './progress/progress.component';
 import { PropertyGridComponent } from './property-grid/propertygrid.component';
 import { SpeechBubbleComponent } from './speech-bubble/speech-bubble.component';
 import { AmexioFilterTreeComponent } from './tree/filter.tree.component';
-import { HorizontalTreeViewNodeComponent } from './tree/horizontalnode.component';
-import { HorizontalTreeViewComponent } from './tree/horizontaltreeview.component';
 import { AmexioTreeViewComponent } from './tree/tree.component';
 import { TreeDataTableComponent } from './treegrid/treedatatable.component';
 
@@ -39,6 +37,9 @@ import { BrowserPanelComponent } from './browser-panel/browser-panel.component';
 import { AmexioCreativeModule } from '../creative/amexio.creative.module';
 
 import { AmexioFormsModule } from '../forms/amexio.forms.module';
+
+import { AmexioHorizontalTreeComponent } from './tree/horizontal-tree/horizontal-tree.component';
+import { AmexioHorizontalTreeNodeComponent } from './tree/horizontal-tree/horizontal-treenode.component';
 
 export * from '../services/data/common.data.service';
 export * from '../services/script/script.data.service';
@@ -63,15 +64,14 @@ const DATA_COMPONENTS = [
   SpeechBubbleComponent,
   AmexioProgressMultiBarComponent,
   AmexioProgressBarComponent,
-  HorizontalTreeViewNodeComponent,
-  HorizontalTreeViewComponent,
   AmexioFilterTreeComponent,
   TreeDataTableComponent,
   AmexioItemSelectorComponent,
   AmexioVirtualScrollerComponent,
   AmexioRadioGroupComponent,
-  BrowserPanelComponent
-  ,
+  BrowserPanelComponent,
+  AmexioHorizontalTreeNodeComponent,
+  AmexioHorizontalTreeComponent,
 ];
 
 @NgModule({

@@ -1,0 +1,42 @@
+<table>
+  <tbody>
+    <tr>
+      <td class="ui-treenode-connector" *ngIf="!root">
+        <table class="ui-treenode-connector-table">
+          <tbody>
+            <tr>
+              <td [ngClass]="{'ui-treenode-connector-line':!firstChild}"> </td>
+            </tr>
+            <tr>
+              <td [ngClass]="{'ui-treenode-connector-line':!lastChild}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+      <td class="ui-treenode" [ngClass]="{'ui-treenode-collapsed':!data.expand, 'leaf':  (!data[childarraykey] || !data.expand) }">
+        <div class="ui-treenode-content" (click)="onClick(data)">
+          <span *ngIf="data[childarraykey] && data.expand" style="padding-right: 5px" class="fa fa-minus"></span>
+          <span *ngIf="data[childarraykey] && !data.expand" style="padding-right: 5px" class="fa fa-plus"></span>
+          <span *ngIf="templates == null">{{data[displaykey]}}
+          </span>
+          <span *ngIf="templates != null">
+            <ng-template [ngTemplateOutlet]="templates.treeNodeTemplate" [ngTemplateOutletContext]="{ node: data }">
+            </ng-template>
+          </span>
+
+        </div>
+
+      </td>
+      <td class="ui-treenode-children-container" *ngIf="data && data[childarraykey] && data.expand" [style.display]="data.expand ? 'table-cell' : 'none'">
+        <div class="ui-treenode-children">
+
+          <horizontal-tree-node [child-array-key]="childarraykey" [display-key]="displaykey" [templates]="templates" *ngFor="let innernode of data[childarraykey];let firstChild=first;let lastChild=last;"
+            [data]="innernode" [firstChild]="firstChild" [lastChild]="lastChild">
+          </horizontal-tree-node>
+
+        </div>
+      </td>
+
+    </tr>
+  </tbody>
+</table>

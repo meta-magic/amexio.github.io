@@ -1,0 +1,7 @@
+<div class="horizontaltreeview" [ngStyle]="{'height': height, 'width': width}">
+    <!-- <span tabindex="1" class="horizontaltreeview-node-label">{{label}}</span> -->
+
+    <horizontal-tree-node [child-array-key]="childarraykey" [display-key]="displaykey" [templates]="treetemplates" [data]="data"
+        [root]="true" (onNodeClick)="nodeclick($event)">
+    </horizontal-tree-node>
+</div>
