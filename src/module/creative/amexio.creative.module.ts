@@ -57,7 +57,6 @@ import { ViewportComponent } from './../creative/viewport/viewport/viewport.comp
 import { AmexioWindowCEComponent } from './../creative/window/amexio.window.component';
 
 import { IconLoaderService } from '../services/icon/icon.service';
-import { AmexioRuntimeComponent } from './arc/amexioruntime.component';
 
 export * from './../creative/common/amexio.action.component';
 export * from './../creative/common/amexio.body.component';
@@ -96,7 +95,6 @@ const CREATIVE_COMPONENTS = [
   ViewportContentBodyComponent,
   AmexioCarouselCEComponent,
   AmexioMenuCEComponent,
-  AmexioRuntimeComponent,
 ];
 
 @NgModule({
