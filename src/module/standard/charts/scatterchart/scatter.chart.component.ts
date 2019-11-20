@@ -238,7 +238,7 @@ description : sets background color to chart
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('scatterchart', /* TODO: add static flag */ { static: true}) private scatterchart: ElementRef;
+  @ViewChild('scatterchart', /* TODO: add static flag */ { static: false}) private scatterchart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

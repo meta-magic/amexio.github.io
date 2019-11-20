@@ -200,7 +200,7 @@ export class TimeLineChartComponent implements AfterContentInit, OnInit {
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('timelinechart', /* TODO: add static flag */ { static: true}) private timelinechart: ElementRef;
+  @ViewChild('timelinechart', /* TODO: add static flag */ { static: false}) private timelinechart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

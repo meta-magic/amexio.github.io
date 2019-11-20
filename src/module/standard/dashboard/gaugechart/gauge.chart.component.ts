@@ -255,7 +255,7 @@ description : The number of minor tick section in each major tick section.
 
   chartTitleComponent: DashBoardTitleComponent;
 
-  @ViewChild('gaugedashboard', /* TODO: add static flag */ { static: true}) private gaugedashboard: ElementRef;
+  @ViewChild('gaugedashboard', /* TODO: add static flag */ { static: false}) private gaugedashboard: ElementRef;
 
   constructor(private loader: DashboardLoaderService) {
     this.width = '100%';

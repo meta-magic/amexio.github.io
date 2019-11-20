@@ -198,7 +198,7 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
 
   chartAreaArray: MapPropertiesComponent[];
   chartAreaComponent: MapPropertiesComponent;
-  @ViewChild('geochart', /* TODO: add static flag */ { static: true}) private geochart: ElementRef;
+  @ViewChild('geochart', /* TODO: add static flag */ { static: false}) private geochart: ElementRef;
 
   constructor(private loader: MapLoaderService) {
     this.width = '100%';

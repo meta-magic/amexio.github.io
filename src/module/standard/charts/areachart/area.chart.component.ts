@@ -227,7 +227,7 @@ description : Sets background color to chart
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('areachart', /* TODO: add static flag */ { static: true}) public areachart: ElementRef;
+  @ViewChild('areachart', /* TODO: add static flag */ { static: false}) public areachart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

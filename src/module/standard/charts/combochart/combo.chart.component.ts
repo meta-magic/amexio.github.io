@@ -235,7 +235,7 @@ description : sets background color to chart
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('combochart', /* TODO: add static flag */ { static: true}) private combochart: ElementRef;
+  @ViewChild('combochart', /* TODO: add static flag */ { static: false}) private combochart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

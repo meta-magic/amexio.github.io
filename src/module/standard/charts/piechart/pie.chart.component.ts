@@ -235,7 +235,7 @@ description : sets the pie hole size
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('piechart', /* TODO: add static flag */ { static: true}) private piechart: ElementRef;
+  @ViewChild('piechart', /* TODO: add static flag */ { static: false}) private piechart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

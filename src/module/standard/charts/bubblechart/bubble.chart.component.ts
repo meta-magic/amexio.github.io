@@ -245,7 +245,7 @@ description : sets background color
 
   chartTitleComponent: ChartTitleComponent;
 
-  @ViewChild('bubblechart', /* TODO: add static flag */ { static: true}) private bubblechart: ElementRef;
+  @ViewChild('bubblechart', /* TODO: add static flag */ { static: false}) private bubblechart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
     this.width = '100%';

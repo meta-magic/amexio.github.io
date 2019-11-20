@@ -245,7 +245,7 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
 
   mapTitleComponent: MapTitleComponent;
 
-  @ViewChild('treemapmap', /* TODO: add static flag */ { static: true}) private treemapmap: ElementRef;
+  @ViewChild('treemapmap', /* TODO: add static flag */ { static: false}) private treemapmap: ElementRef;
 
   constructor(private loader: MapLoaderService) {
 
