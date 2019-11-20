@@ -5,11 +5,10 @@ table, tr, td {
     vertical-align: middle;
 }
 
-.horizontaltreeview {
+/* .horizontaltreeview {
     position: relative;
     overflow: auto;
-    /* padding: 0px 40px 20px 0px; */
-  }
+  } */
 
   /* .horizontaltreeview::-webkit-scrollbar
 {
