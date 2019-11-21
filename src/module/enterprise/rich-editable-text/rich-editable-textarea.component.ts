@@ -10,7 +10,7 @@ export class AmexioRichEditorComponent {
 
     constructor() { }
     printTabSource: any;
-
+    @Input('initial-input') richTextContent: any;
     @Input('rich-height') richHeight = 400;
     @Input('enable-source-code') enableSourceCode = false;
     @Input('toolbar-position') toolbarPosition = 'top';

@@ -1,9 +1,7 @@
-<div 
-[ngClass]="[displayDiv ? 'rich-first-div-reverse' : 'rich-first-div']"
- style="height: -webkit-fill-available">
+<div [ngClass]="[displayDiv ? 'rich-first-div-reverse' : 'rich-first-div']" style="height: -webkit-fill-available">
 
   <div style="flex-direction: column;" class="rich-editor-buttons">
-   
+
     <amexio-layout-columns [orientation]="'vertical'" [border]="false" [alignment]="'left'">
       <amexio-layout-item [fit]="true">
         <amexio-layout-columns [border]="false" [fit]="true" [orientation]="'horizontal'" [alignment]="'left'">
@@ -93,9 +91,10 @@
       </amexio-layout-item>
     </amexio-layout-columns>
 
-    <amexio-layout-columns  [orientation]="'vertical'" [border]="false" [alignment]="'left'">
+    <amexio-layout-columns [orientation]="'vertical'" [border]="false" [alignment]="'left'">
       <amexio-layout-item [fit]="true">
-        <amexio-layout-columns style="display:unset !important" [border]="false" [fit]="true" [orientation]="'horizontal'" [alignment]="'left'">
+        <amexio-layout-columns style="display:unset !important" [border]="false" [fit]="true"
+          [orientation]="'horizontal'" [alignment]="'left'">
           <amexio-layout-item>
             <select #headerId (change)="selectHeaderClick()" class="heading-dropdown" required>
               <option value="" disabled selected>Header</option>
@@ -161,7 +160,10 @@
 
 
   <div style="flex-direction: column;" #richEditableId class="rich-text-editor" contenteditable="true"
-    [style.height.%]="textAreaHeight">
+    [style.height.%]="textAreaHeight"
+    [textContent]="value" [innerHTML]="richContentMain"
+     (input)="onEditableTextEvent($event)"
+    >
 
 
   </div>

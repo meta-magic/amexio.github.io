@@ -3,7 +3,9 @@
 <ng-container *ngIf="enableSourceCode">
     <amexio-tab-view [closable]="false" (onClick)="onTabSourceCode()">
         <amexio-tab class="rich-active-tab" title="Editable Area" [active]="true" [height]="richHeight">
-            <editable-text [ediatable-height]="richHeight" [ediatable-toolbar-position]="toolbarPosition"
+            <editable-text [ediatable-height]="richHeight"
+            [rich-text-content-main]="richTextContent"
+             [ediatable-toolbar-position]="toolbarPosition"
                 (onSourceCodeClick)="emitSourceCode($event)">
             </editable-text>
         </amexio-tab>
@@ -24,7 +26,9 @@
 
 <!--  Amexio Rich Text Area -->
 <ng-container *ngIf="!enableSourceCode">
-    <editable-text [ediatable-toolbar-position]="toolbarPosition" (onSourceCodeClick)="emitSourceCode($event)">
+    <editable-text [ediatable-toolbar-position]="toolbarPosition" 
+    [rich-text-content-main]="richTextContent"
+    (onSourceCodeClick)="emitSourceCode($event)">
 
     </editable-text>
 </ng-container>
