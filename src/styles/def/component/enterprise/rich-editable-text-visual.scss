@@ -1,13 +1,18 @@
 
   .rich-first-div{ 
-    border: 1px solid $richEditorBorderColor;
+    border: 1px solid $richEditorBorderColor !important;
   }
  
+  .rich-first-div-reverse { 
+    border: 1px solid $richEditorBorderColor !important;
+
+  }
   .rich-editor-buttons{
     background: $richEditorBGColor;
   }
  
   .rich-text-editor {
+    border: 1px solid $richEditorBorderColor !important;
     background-color: $richEditorBGColor;
    }
 
