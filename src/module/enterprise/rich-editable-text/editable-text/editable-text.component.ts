@@ -1,18 +1,11 @@
 
-import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild, forwardRef, ViewEncapsulation } from '@angular/core';
-import { BaseInputEventComponent } from '../../../base/base.inputevent.component';
-import { Validators, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 @Component({
   selector: 'editable-text',
   templateUrl: './editable-text.component.html',
-  providers: [{
-    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => EditableTextComponent), multi: true,
-  }, {
-    provide: NG_VALIDATORS, useExisting: forwardRef(() => EditableTextComponent), multi: true,
-  }],
-  encapsulation: ViewEncapsulation.None,
+
 })
-export class EditableTextComponent extends BaseInputEventComponent  implements Validators , AfterViewInit {
+export class EditableTextComponent implements AfterViewInit {
 
   headingData: any;
   editableTextArray: any;
@@ -27,7 +20,7 @@ export class EditableTextComponent extends BaseInputEventComponent  implements V
   @Input('ediatable-toolbar-position') toolbarPosition = 'top';
 
   @Input('rich-text-content-main') richContentMain: any;
-  
+
   @Output() onSourceCodeClick: any = new EventEmitter<any>();
 
   @ViewChild('richDiv') richDiv: any;
@@ -39,7 +32,6 @@ export class EditableTextComponent extends BaseInputEventComponent  implements V
 
   textAreaHeight: number;
   constructor() {
-    super();
     this.headingData =
       [
         {
@@ -88,10 +80,6 @@ export class EditableTextComponent extends BaseInputEventComponent  implements V
   }
 
   ngAfterViewInit() {
-
-    let letter = this.richEditableId.nativeElement.innerHTML;
-    console.log('aaaa', letter);
-    
     setTimeout(() => {
       if (this.toolbarPosition === 'top') {
         this.displayDiv = false;
@@ -105,8 +93,7 @@ export class EditableTextComponent extends BaseInputEventComponent  implements V
   }
 
   onEditableTextEvent(event: any) {
-   this.onHtmlCodeClick();
-    
+    this.onHtmlCodeClick();
   }
 
   // onButton Icon click the data get selected.
