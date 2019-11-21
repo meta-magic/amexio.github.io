@@ -625,6 +625,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   setChangeData(httpResponse: any) {
+    this.selectedRows = [];
     this.setSelectedFlag(httpResponse);
     if (this.groupby) {
       this.cloneData = JSON.parse(JSON.stringify(this.data));
@@ -685,7 +686,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
         row['isSelected'] = false;
         row['checkBoxSelectClass'] = this.checkDefaultIcon;
       } else if (row.isSelected && this.enablecheckbox) {
-        row.isSelected = false;
+        row.isSelected = true;
         row['checkBoxSelectClass'] = this.checkBoxActive;
       }
     });
