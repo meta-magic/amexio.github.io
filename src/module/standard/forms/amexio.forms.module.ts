@@ -48,7 +48,7 @@ import { ToolBarActionComponent } from './toolbar/toolbaraction.component';
 import { ToolbaroneComponent } from './toolbar/toolbarone.component';
 import { AmexioTypeAheadComponent } from './typeahead/typeahead.component';
 
-import { AmexioCommonModule } from '../../base/amexio.common.module';
+import { AmexioCommonModule } from '../../amexio.common.module';
 
 import { AmexioInputHelperComponent } from '../../base/input.helper.component';
 import { AmexioLayoutModule } from '../layout/amexio.layout.module';

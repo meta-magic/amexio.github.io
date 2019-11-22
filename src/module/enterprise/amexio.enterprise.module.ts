@@ -18,7 +18,7 @@ import { AmexioYoutubePlayerComponent } from './youtube-player/youtube.player.co
 
 import { AvailabilityComponent } from './availability/availability.component';
 
-import { AmexioCommonModule } from '../base/amexio.common.module';
+import { AmexioCommonModule } from '../amexio.common.module';
 import { AmexioMediaModule } from '../standard/media/amexio.media.module';
 import { AmexioPaneModule } from '../standard/panes/amexio.pane.module';
 import { AmexioCreativeModule } from './../creative/amexio.creative.module';

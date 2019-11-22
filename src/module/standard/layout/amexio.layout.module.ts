@@ -44,7 +44,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
 
 import {AmexioGridLayoutService} from '../../services/grid/gridlayout.service';
 
-import { AmexioCommonModule } from '../../base/amexio.common.module';
+import { AmexioCommonModule } from '../../amexio.common.module';
 
 export * from './accordion/accordion.header.component';
 export * from './accordion/accordion.pane';

@@ -15,7 +15,7 @@ import {GaugeChartComponent} from './gaugechart/gauge.chart.component';
 import {DashboardLoaderService} from '../../services/dashboard/dashboard.loader.service';
 import {CommonDataService} from '../../services/data/common.data.service';
 
-import { AmexioCommonModule } from '../../base/amexio.common.module';
+import { AmexioCommonModule } from '../../amexio.common.module';
 
 export * from '../../services/dashboard/dashboard.loader.service';
 export * from './dashboardtitle/dashboard.title.component';

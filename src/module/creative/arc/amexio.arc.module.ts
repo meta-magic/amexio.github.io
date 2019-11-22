@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AmexioCommonModule } from '../../base/amexio.common.module';
+import { AmexioCommonModule } from '../../amexio.common.module';
 import { AmexioRuntimeComponent } from './amexioruntime.component';
 
 export * from '../../services/data/common.data.service';

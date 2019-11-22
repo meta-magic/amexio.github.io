@@ -20,7 +20,7 @@ import { DeviceQueryService } from '../services/device/device.query.service';
 import { IconLoaderService } from '../services/icon/icon.service';
 import { RouterService } from '../services/routing/routing.service';
 
-import { AmexioCommonModule } from '../base/amexio.common.module';
+import { AmexioCommonModule } from '../amexio.common.module';
 import { DynamicTextDirective } from '../directive/dynamic-text.directive';
 import { AmexioFullScreenDirective } from '../directive/full-screen.directive';
 import { RoundEdgesDirective } from '../directive/round-edge.directive';

@@ -11,7 +11,7 @@ import {TreeMapComponent} from './treemap/treemap.map.component';
 import {CommonDataService} from '../../services/data/common.data.service';
 import {MapLoaderService} from '../../services/map/map.loader.service';
 
-import { AmexioCommonModule } from '../../base/amexio.common.module';
+import { AmexioCommonModule } from '../../amexio.common.module';
 
 export * from './mapproperties/map.properties';
 export * from './geochart/geo.chart.component';

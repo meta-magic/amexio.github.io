@@ -26,7 +26,7 @@ import { VerticalAxisComponent } from './verticalaxis/chart.verticalaxis.compone
 import { ChartLoaderService } from '../../services/chart/chart.loader.service';
 import { CommonDataService } from '../../services/data/common.data.service';
 
-import { AmexioCommonModule } from '../../base/amexio.common.module';
+import { AmexioCommonModule } from '../../amexio.common.module';
 
 export * from './areachart/area.chart.component';
 export * from './barchart/bar.chart.component';

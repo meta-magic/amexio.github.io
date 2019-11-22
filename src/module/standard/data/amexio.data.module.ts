@@ -22,7 +22,7 @@ import { HorizontalTreeViewComponent } from './tree/horizontaltreeview.component
 import { AmexioTreeViewComponent } from './tree/tree.component';
 import { TreeDataTableComponent } from './treegrid/treedatatable.component';
 
-import { AmexioCommonModule } from '../../base/amexio.common.module';
+import { AmexioCommonModule } from '../../amexio.common.module';
 import { AmexioBaseContextMenuModule } from '../../base/base.contextmenu.component.module';
 
 import { AmexioLayoutModule } from '../layout/amexio.layout.module';

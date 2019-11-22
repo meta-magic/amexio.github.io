@@ -36,7 +36,7 @@ import { AmexioCardCEActionComponent } from './../creative/common/amexio.action.
 import { AmexioCardCEBodyComponent } from './../creative/common/amexio.body.component';
 import { AmexioCardCEHeaderComponent } from './../creative/common/amexio.header.component';
 
-import { AmexioCommonModule } from '../base/amexio.common.module';
+import { AmexioCommonModule } from '../amexio.common.module';
 import { AmexioFormCEComponent } from './../creative/form/amexio.form.component';
 import { AmexioFormActionCEComponent } from './../creative/form/form.action.component';
 

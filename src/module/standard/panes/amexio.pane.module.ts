@@ -39,7 +39,7 @@ import { IconLoaderService } from '../../services/icon/icon.service';
 
 import { AmexioFormsModule } from '../forms/amexio.forms.module';
 
-import { AmexioCommonModule } from '../../base/amexio.common.module';
+import { AmexioCommonModule } from '../../amexio.common.module';
 import { OverlayContainerComponent } from './overlay/overlay.component';
 
 import { AmexioBaseContextMenuModule } from '../../base/base.contextmenu.component.module';
