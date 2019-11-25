@@ -1,4 +1,4 @@
-<div [attr.aria-checked]="value" class="inputgroup form-group" [ngClass]="{'checkbox-disable' : disabled}">
+<div style="height: 100%; display: flex; flex-direction: column; justify-content: flex-end;" [attr.aria-checked]="value" class="inputgroup form-group" [ngClass]="{'checkbox-disable' : disabled}">
     <label for="{{componentId}}" class="input-box-container">
         <input id="{{componentId}}" type="checkbox" style="top:0; left:0" [attr.checked]="value ? true: null" tabindex="1" (input)="onInput()"
             (click)="onClick()" (focus)="onFocus()" (blur)="onBlur()" [attr.disabled]="disabled ? true: null" [attr.aria-disabled]="disabled"
