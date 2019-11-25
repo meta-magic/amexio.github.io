@@ -20,6 +20,17 @@ module.exports = function (config) {
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
+    customLaunchers: {
+      // chrome setup for travis CI
+      Chrome_travis_ci: {
+          base: 'Chrome',
+          flags: ['--no-sandbox']
+      },
+      ChromeNoSandbox: {
+          base: 'Chrome',
+          flags: ['--no-sandbox']
+      }
+  },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,

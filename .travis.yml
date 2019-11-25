@@ -28,12 +28,12 @@ script:
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
   - cd projects/amexio-ng-extensions/src/lib/styles && sh sasstocss.sh
   - cd ../../../../../ && pwd && npm build
-  - cd dist && npm pack
+  - cd dist/amexio-ng-extensions && npm pack
   - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
   
 after_success: 
   - cd ../
-  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git clone https://github.com/meta-magic/amexio-ios.git -b v5.80 ; fi 
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git clone https://github.com/meta-magic/amexio-ios.git -b v5.80.1 ; fi 
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cd amexio-ios ; fi 
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cp -rf ../dist/amexio-ng-extensions.tgz . ; fi 
  # - cp -rf ../src/styles/css/*  themes/

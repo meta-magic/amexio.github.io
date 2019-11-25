@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test --watch=false --code-coverage",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",  
+    "check-travis": " travis-status --repo=meta-magic/amexio.github.io/ --branch=v5.80.1 --fail-pending || echo 'Not yet passing'",
+    "sonar-scanner": "sonar-scanner"
   },
   "private": true,
   "dependencies": {
