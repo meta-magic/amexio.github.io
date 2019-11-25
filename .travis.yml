@@ -26,8 +26,8 @@ before_script:
 script: 
   - npm test
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
-  - cd projects/src/lib/styles/ && sh sasstocss.sh
-  - cd ../../../../ && pwd && npm build
+  - cd projects/amexio-ng-extensions/src/lib/styles && sh sasstocss.sh
+  - cd ../../../../../ && pwd && npm build
   - cd dist && npm pack
   - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
   
