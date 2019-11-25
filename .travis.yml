@@ -29,7 +29,9 @@ script:
   - cd projects/amexio-ng-extensions/src/lib/styles && sh sasstocss.sh
   - cd ../../../../../ && pwd && npm build
   - pwd
-  - cd dist/amexio-ng-extensions && pwd && npm pack
+  - cd dist/amexio-ng-extensions 
+  - pwd 
+  - npm pack
   - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
   
 after_success: 
