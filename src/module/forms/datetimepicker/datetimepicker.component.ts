@@ -502,6 +502,9 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.currrentDate = new Date();
     this.initDate();
     this.showToolTip = !this.showToolTip;
+    if (!this.showToolTip) {
+      this.dropdownstyle.visibility = 'hidden';
+    }
   }
   initDate() {
     this.daysArray = [];
