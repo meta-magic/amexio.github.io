@@ -590,6 +590,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
 
   validateWriteValue(value: any) {
+    if (value) {
+      try {
+        value = new Date(value);
+      } catch (e) {
+
+      }
+    }
     this.innerValue = value;
     if (this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
       if (('number' === typeof this.innerValue)) {
