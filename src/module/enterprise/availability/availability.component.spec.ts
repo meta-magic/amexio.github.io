@@ -562,63 +562,63 @@ describe('amexio-availability', () => {
     });
   });
 
-  it('chkMinMaxIndexTest() for TTT  inner FF case', () => {
-    let myd = new Date();
-    myd.setHours(new Date().getHours() + 1);
-    myd.setMinutes(new Date().getMinutes() + 20);
+  // it('chkMinMaxIndexTest() for TTT  inner FF case', () => {
+  //   let myd = new Date();
+  //   myd.setHours(new Date().getHours() + 1);
+  //   myd.setMinutes(new Date().getMinutes() + 20);
 
-    let slotArray = [{ time: myd, colorflag: false },
-      //  { time: new Date(), colorflag: false },
-      //  { time: new Date(), colorflag: false },
-      //  { time: new Date(), colorflag: false },
-      //  { time: new Date(), colorflag: false },
-      //  { time: new Date(), colorflag: false }
-    ];
-    let dt = new Date();
-    let d = new Date();
-    let timeElement = { starttime: 5, endtime: 6 };
-    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
-    slotArray.forEach((slotElement: any, slotIndex: number) => {
-      // (dt.getFullYear() === d.getFullYear()) &&
-      // (dt.getMonth() === d.getMonth()) && 
-      // (dt.getDate() === d.getDate()))
-      expect(dt.getFullYear()).toEqual(d.getFullYear());
-      expect(dt.getMonth()).toEqual(d.getMonth());
-      expect(dt.getDate()).toEqual(d.getDate())
-      //  if (((obj.hours === slotElement.time.getHours()) 
-      //   && (obj.minutes === slotElement.time.getMinutes()))) {
-      const obj = comp.getHourMinuteFormat(timeElement.starttime); //5
-      // expect(obj.hours).not.toEqual(slotElement.time.getHours());
-      expect(obj.minutes).not.toEqual(slotElement.time.getMinutes());
+  //   let slotArray = [{ time: myd, colorflag: false },
+  //     //  { time: new Date(), colorflag: false },
+  //     //  { time: new Date(), colorflag: false },
+  //     //  { time: new Date(), colorflag: false },
+  //     //  { time: new Date(), colorflag: false },
+  //     //  { time: new Date(), colorflag: false }
+  //   ];
+  //   let dt = new Date();
+  //   let d = new Date();
+  //   let timeElement = { starttime: 5, endtime: 6 };
+  //   comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+  //   slotArray.forEach((slotElement: any, slotIndex: number) => {
+  //     // (dt.getFullYear() === d.getFullYear()) &&
+  //     // (dt.getMonth() === d.getMonth()) && 
+  //     // (dt.getDate() === d.getDate()))
+  //     expect(dt.getFullYear()).toEqual(d.getFullYear());
+  //     expect(dt.getMonth()).toEqual(d.getMonth());
+  //     expect(dt.getDate()).toEqual(d.getDate())
+  //     //  if (((obj.hours === slotElement.time.getHours()) 
+  //     //   && (obj.minutes === slotElement.time.getMinutes()))) {
+  //     const obj = comp.getHourMinuteFormat(timeElement.starttime); //5
+  //     // expect(obj.hours).not.toEqual(slotElement.time.getHours());
+  //     expect(obj.minutes).not.toEqual(slotElement.time.getMinutes());
 
-    });
-  });
+  //   });
+  // });
 
-  it('chkMinMaxIndexTest() for TTT  inner TF case', () => {
-    let myd = new Date();
-    myd.setHours(5);
-    myd.setMinutes(new Date().getMinutes() + 20);
+  // it('chkMinMaxIndexTest() for TTT  inner TF case', () => {
+  //   let myd = new Date();
+  //   myd.setHours(5);
+  //   myd.setMinutes(new Date().getMinutes() + 20);
 
-    let slotArray = [{ time: myd, colorflag: false },
-    ];
-    let dt = new Date();
-    let d = new Date();
-    let timeElement = { starttime: 5, endtime: 6 };
-    comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
-    slotArray.forEach((slotElement: any, slotIndex: number) => {
-      // (dt.getFullYear() === d.getFullYear()) &&
-      // (dt.getMonth() === d.getMonth()) && 
-      // (dt.getDate() === d.getDate()))
-      expect(dt.getFullYear()).toEqual(d.getFullYear());
-      expect(dt.getMonth()).toEqual(d.getMonth());
-      expect(dt.getDate()).toEqual(d.getDate())
-      //  if (((obj.hours === slotElement.time.getHours()) 
-      //   && (obj.minutes === slotElement.time.getMinutes()))) {
-      const obj = comp.getHourMinuteFormat(timeElement.starttime); //5
-      //  expect(obj.hours).toEqual(slotElement.time.getHours());
-      expect(obj.minutes).not.toEqual(slotElement.time.getMinutes());
-    });
-  });
+  //   let slotArray = [{ time: myd, colorflag: false },
+  //   ];
+  //   let dt = new Date();
+  //   let d = new Date();
+  //   let timeElement = { starttime: 5, endtime: 6 };
+  //   comp.chkMinMaxIndexTest(slotArray, dt, d, timeElement);
+  //   slotArray.forEach((slotElement: any, slotIndex: number) => {
+  //     // (dt.getFullYear() === d.getFullYear()) &&
+  //     // (dt.getMonth() === d.getMonth()) && 
+  //     // (dt.getDate() === d.getDate()))
+  //     expect(dt.getFullYear()).toEqual(d.getFullYear());
+  //     expect(dt.getMonth()).toEqual(d.getMonth());
+  //     expect(dt.getDate()).toEqual(d.getDate())
+  //     //  if (((obj.hours === slotElement.time.getHours()) 
+  //     //   && (obj.minutes === slotElement.time.getMinutes()))) {
+  //     const obj = comp.getHourMinuteFormat(timeElement.starttime); //5
+  //     //  expect(obj.hours).toEqual(slotElement.time.getHours());
+  //     expect(obj.minutes).not.toEqual(slotElement.time.getMinutes());
+  //   });
+  // });
 
   it('chkMinMaxIndexTest() for TTT  inner FT case', () => {
     let myd = new Date();
