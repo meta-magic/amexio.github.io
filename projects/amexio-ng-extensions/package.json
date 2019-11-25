@@ -1,0 +1,8 @@
+{
+  "name": "amexio-ng-extensions",
+  "version": "5.80.1",
+  "peerDependencies": {
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14"
+  }
+}

@@ -1,20 +1,34 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
     "downlevelIteration": true,
-    "target": "es2015",
+    "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "sourceMap": false,
-    "inlineSources": false,
-    "declaration": true,
-    "experimentalDecorators": true,
-    "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "skipLibCheck": true,
-    "stripInternal": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
-      "es2017",
+      "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "amexio-ng-extensions": [
+        "dist/amexio-ng-extensions"
+      ],
+      "amexio-ng-extensions/*": [
+        "dist/amexio-ng-extensions/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
   }
 }

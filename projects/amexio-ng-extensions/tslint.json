@@ -1,0 +1,17 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "amexioNgExtensions",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "amexio-ng-extensions",
+      "kebab-case"
+    ]
+  }
+}

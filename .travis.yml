@@ -16,21 +16,18 @@ node_js:
 before_script:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
-  - export NODE_OPTIONS=--max_old_space_size=8192
   - sh -e /etc/init.d/xvfb start
-  - npm install --global gulp@3.9.1 --save
   - gem install sass
   #- npm install -g increase-memory-limit
   #- npm run fix-memory-limit
   - git fetch --unshallow
-
-
+  - ng --version
             
 script: 
-  - gulp test
+  - npm test
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
-  - cd src/styles/ && sh sasstocss.sh
-  - cd ../../ && pwd && gulp build
+  - cd projects/src/lib/styles/ && sh sasstocss.sh
+  - cd ../../../../ && pwd && npm build
   - cd dist && npm pack
   - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
   
@@ -43,8 +40,7 @@ after_success:
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git add amexio-ng-extensions.tgz ; fi 
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git commit -m "date" ; fi 
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git push "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:v5.80 ; fi 
-  - gulp coveralls 
-  - codecov
+
 
 cache:
   yarn: true
