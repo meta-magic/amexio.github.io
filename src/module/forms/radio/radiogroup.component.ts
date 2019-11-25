@@ -209,26 +209,32 @@ export class AmexioRadioGroupComponent extends ValueAccessorBaseComponent<string
   }
 
   checkDefaultValidation(viewData: any) {
-    viewData.forEach((opt: any) => {
-      opt['tabindex'] = '-1';
-      opt['radioId'] = 'radio' + '_' + opt[this.valuefield] + '_' + this.getRandomString();
-      if (opt[this.valuefield] === this.innerValue || (opt.hasOwnProperty('selected') && opt.selected)) {
-        this.isValid = true;
-        opt['selected'] = true;
-        opt['tabindex'] = '0';
-        this.isComponentValid.emit(true);
-        return;
-      } else {
-        opt['selected'] = false;
-        const tempArray: any = [];
-        viewData.forEach((option: any) => {
-          if (option.selected === false) {
-            tempArray.push('0');
-            if (tempArray.length === viewData.length) {
-              viewData[0].tabindex = '0';
-            }
-          }
-        });
+    if (viewData && viewData.length > 1) {
+      viewData.forEach((opt: any) => {
+        opt['tabindex'] = '-1';
+        opt['radioId'] = 'radio' + '_' + opt[this.valuefield] + '_' + this.getRandomString();
+        if (opt[this.valuefield] === this.innerValue || (opt.hasOwnProperty('selected') && opt.selected)) {
+          this.isValid = true;
+          opt['selected'] = true;
+          opt['tabindex'] = '0';
+          this.isComponentValid.emit(true);
+          return;
+        } else {
+          this.elsePartCheckValidate(opt, viewData);
+        }
+      });
+    }
+  }
+
+  elsePartCheckValidate(opt: any, viewData: any) {
+    opt['selected'] = false;
+    const tempArray: any = [];
+    viewData.forEach((option: any) => {
+      if (option.selected === false) {
+        tempArray.push('0');
+        if (tempArray.length === viewData.length) {
+          viewData[0].tabindex = '0';
+        }
       }
     });
   }
