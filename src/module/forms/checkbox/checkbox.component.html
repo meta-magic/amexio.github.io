@@ -1,8 +1,10 @@
-<div [attr.aria-checked]="value" style="padding-top: 4%" class="inputgroup form-group" [ngClass]="{'checkbox-disable' : disabled}">
+<div [attr.aria-checked]="value" 
+style="padding-top: 17%" class="inputgroup form-group" [ngClass]="{'checkbox-disable' : disabled}">
     <label for="{{componentId}}" class="input-box-container">
         <input id="{{componentId}}" type="checkbox" style="top:0; left:0" [attr.checked]="value ? true: null" tabindex="1" (input)="onInput()"
             (click)="onClick()" (focus)="onFocus()" (blur)="onBlur()" [attr.disabled]="disabled ? true: null" [attr.aria-disabled]="disabled"
-            [(ngModel)]="value" [attr.aria-required]="required" [required]="required"> {{fieldlabel}}
+            [(ngModel)]="value" [attr.aria-required]="required" [required]="required"> 
+            <span style="vertical-align:  sub"> {{fieldlabel}} </span>
         <span class="input-box-checkbox-label" [ngClass]="{'focusOnCheckbox':tabFocus}">
         </span>
     </label>
