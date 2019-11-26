@@ -8,11 +8,11 @@
     "build:watch": "npm run build && ng build --watch",
     "build:prod": "ng build --prod && npm run postbuild",
     "postbuild": "npm run copystyles",
-    "copystyles": "cp -r projects/amexio-ng-extensions/src/lib/styles dist/amexio-ng-extensions/lib/",
+    "copystyles": "cp -r projects/amexio-ng-extensions/src/lib/styles dist/amexio-ng-extensions/",
     "test": "ng test --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "check-travis": " travis-status --repo=meta-magic/amexio.github.io/ --branch=v5.80.1 --fail-pending || echo 'Not yet passing'",
+    "check-travis": "travis-status --repo=meta-magic/amexio.github.io/ --branch=v5.80.1 --fail-pending || echo 'Not yet passing'",
     "sonar-scanner": "sonar-scanner"
   },
   "private": true,
