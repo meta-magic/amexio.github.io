@@ -24,10 +24,8 @@ before_script:
   - ng --version
             
 script: 
-  - npm test
-  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
-  - cd projects/amexio-ng-extensions/src/lib/styles && sh sasstocss.sh
-  - cd ../../../../../ && pwd && npm build
+  - pwd 
+  - npm build 
   - pwd
   - cd dist
   - pwd
