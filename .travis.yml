@@ -25,7 +25,8 @@ before_script:
             
 script: 
   - pwd 
-  - npm build 
+  - ng build 
+  - ls -la
   - pwd
   - cd dist
   - pwd
