@@ -9,7 +9,7 @@
     "build:prod": "ng build --prod && npm run postbuild",
     "postbuild": "npm run copystyles",
     "copystyles": "cp -r projects/amexio-ng-extensions/src/lib/styles dist/amexio-ng-extensions/lib/",
-    "test": "ng test --watch=false --code-coverage --single-run --sourcemap=false",
+    "test": "ng test --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "check-travis": " travis-status --repo=meta-magic/amexio.github.io/ --branch=v5.80.1 --fail-pending || echo 'Not yet passing'",
