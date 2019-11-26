@@ -8,13 +8,19 @@
       "root": "projects/amexio-ng-extensions",
       "sourceRoot": "projects/amexio-ng-extensions/src",
       "prefix": "amexio-ng-extensions",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"  
+        }                 
+      },    
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
             "tsConfig": "projects/amexio-ng-extensions/tsconfig.lib.json",
             "project": "projects/amexio-ng-extensions/ng-package.json"
-          }
+          },
+          "showCircularDependencies": false
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
