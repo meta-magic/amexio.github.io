@@ -268,10 +268,10 @@ import { AmexioWidgetModule,CommonDataService } from 'amexio-ng-extensions';
 import { AmexioChartsModule } from 'amexio-ng-extensions';
 
 //To import Maps 
-import { AmexioMapsModule } from 'amexio-ng-extensions';
+import { AmexioMapModule } from 'amexio-ng-extensions';
 
 // To import Dashboard
-import { AmexioDashboardModule } from 'amexio-ng-extensions';
+import { AmexioDashBoardModule } from 'amexio-ng-extensions';
 
 
 // To import Enterprise
@@ -285,8 +285,8 @@ import { AmexioEnterpriseModule } from 'amexio-ng-extensions';
     FormsModule,
     AmexioWidgetModule,
     AmexioChartsModule,
-    AmexioMapsModule,
-    AmexioDashboardModule,
+    AmexioMapModule,
+    AmexioDashBoardModule,
     AmexioEnterpriseModule
   ],
   providers: [CommonDataService],
@@ -329,7 +329,7 @@ export class AppModule { }
 </tr>
 
 <tr>
-<td>AmexioMapsModule</td>
+<td>AmexioMapModule</td>
 </tr>
 
 <tr>
@@ -348,10 +348,38 @@ export class AppModule { }
 
 # Amexio Themes (Amexio / Amexio Material)
 
-To use the default theme import the
-`../node_modules/amexio-ng-extensions/styles/mda/at-md-blue.scss`
-in your app styles.scss
-Or refer the below table for other themes provided.
+To use the default theme, add
+`node_modules/amexio-ng-extensions/styles/mda/at-md-blue.scss`
+in your application's **angular.json** file:
+```
+{
+  "projects": {
+    "spa": {
+      "architect": {
+        "build": {
+          "options": {
+            "styles": {
+              [
+                "src/styles.scss",
+                "node_modules/amexio-ng-extensions/styles/mda/at-md-blue.scss"
+              ]
+            }
+          }
+        },
+        "test": {
+          "options": {
+            "styles": [
+              "src/styles.scss",
+              "node_modules/amexio-ng-extensions/styles/mda/at-md-blue.scss"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+```
+Refer the below table for other themes provided.
 
 <table> 
 <tr>
