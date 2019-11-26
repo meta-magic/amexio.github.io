@@ -36,7 +36,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     captureTimeout: 60000,
-    processKillTimeout:20000,
+    processKillTimeout:40000,
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
