@@ -23,11 +23,10 @@ before_script:
   - git fetch --unshallow
   - ng --version
 env:
-    matrix:
       - TARGET= npm test
       - TARGET= "./travisscss.sh"
 script:
-    - make $TARGET
+    -  "bundle exec rspec $TARGET"
 jobs:
   include:
     - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
