@@ -8,6 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'), 
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
@@ -26,8 +27,8 @@ module.exports = function (config) {
           base: 'Chrome',
           flags: ['--no-sandbox']
       },
-      ChromeNoSandbox: {
-          base: 'Chrome',
+      ChromeHeadlessNoSandbox: {
+          base: 'ChromeHeadless',
           flags: ['--no-sandbox']
       }
   },
@@ -38,7 +39,16 @@ module.exports = function (config) {
     captureTimeout: 60000,
     processKillTimeout:20000,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome','ChromeHeadlessNoSandbox','Firefox'],
+    browserDisconnectTimeout: 10000,
+    browserDisconnectTolerance: 3,
+    browserNoActivityTimeout: 60000,
+    flags: [
+      '--disable-web-security',
+      '--disable-gpu',
+      '--no-sandbox'
+    ],
+
     singleRun: false,
     restartOnFileChange: true
   });
