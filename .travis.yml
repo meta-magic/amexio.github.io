@@ -22,20 +22,15 @@ before_script:
   #- npm run fix-memory-limit
   - git fetch --unshallow
   - ng --version
-
+env:
+    matrix:
+      - TARGET= npm test
+      - TARGET= "./travisscss.sh"
+script:
+    - make $TARGET
 jobs:
   include:
-    - stage: test
-      script: 
-        - npm test
-        - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
-    
-    - stage: scsstoCss
-      script: 
-        - cd projects/amexio-ng-extensions/src/lib/styles
-        - sh sasstocss.sh
-        - cd ../../../../
-
+    - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
     - stage: build
       script: 
         - pwd 
