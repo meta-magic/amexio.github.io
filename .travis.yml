@@ -25,12 +25,11 @@ before_script:
 
 jobs:
   include:
-    - stage: test
+    - stage: pre-build
       script: 
         - npm test
         - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
-    
-    - stage: scsstoCss
+
       script: 
         - cd projects/amexio-ng-extensions/src/lib/styles
         - sh sasstocss.sh && cd ../../../../
