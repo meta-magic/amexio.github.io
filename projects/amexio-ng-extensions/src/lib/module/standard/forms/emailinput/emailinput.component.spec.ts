@@ -21,6 +21,11 @@ describe('amexio-email-input', () => {
     comp = fixture.componentInstance;
   });
 
+
+  it('email  : AmexioEmailInputComponent defined', () => {
+    expect(fixture.componentInstance).toBeDefined();
+});
+
   it('condition check value is null or empty in onBlank method', () => {
     (comp as any).value = '';
     expect((comp as any).value).toEqual('');

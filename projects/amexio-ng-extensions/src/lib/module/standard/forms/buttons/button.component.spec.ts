@@ -22,7 +22,10 @@ describe('amexio-button', () => {
     element = fixture.debugElement;
     btn = element.nativeElement.querySelector('button');
     buttonHtml = fixture.debugElement.query(By.css('button')).nativeElement as HTMLElement;
-    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+  });
+
+  it('button : AmexioButtonComponent defined',()=>{
+    expect(fixture.componentInstance).toBeDefined();
   });
 
   it('buttonClick(): event triggered', () => {
