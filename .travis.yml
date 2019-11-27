@@ -22,12 +22,14 @@ before_script:
   #- npm run fix-memory-limit
   - git fetch --unshallow
   - ng --version
-      script: 
+  jobs:
+  include:
+      - script: 
         - npm test
         - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
         - cd projects/amexio-ng-extensions/src/lib/styles
-        - sh sasstocss.sh
-        - pwd 
+        - sh sasstocss.sh && pwd 
+      - stage: Build
         - npm run-script build
         - cd dist/amexio-ng-extensions/ && pwd && npm pack
         - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
