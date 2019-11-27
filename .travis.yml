@@ -23,19 +23,11 @@ before_script:
   - git fetch --unshallow
   - ng --version
 
-jobs:
-  include:
-    - stage: pre-build
-      script: 
+  script:
         - npm test
-        - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
-
-      script: 
+        - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi   
         - cd projects/amexio-ng-extensions/src/lib/styles
         - sh sasstocss.sh && cd ../../../../
-
-    - stage: build
-      script: 
         - pwd 
         - npm run-script build
         - cd dist/amexio-ng-extensions/ && pwd && npm pack
