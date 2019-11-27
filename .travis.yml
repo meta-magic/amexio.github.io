@@ -30,9 +30,11 @@ jobs:
         - npm test
         - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
     
-    - stage: scsstocss
+    - stage: scsstoCss
       script: 
-        - sh projects/amexio-ng-extensions/src/lib/styles/sasstocss.sh
+        - cd projects/amexio-ng-extensions/src/lib/styles
+        - sh sasstocss.sh
+        - cd ../../../../
 
     - stage: build
       script: 
