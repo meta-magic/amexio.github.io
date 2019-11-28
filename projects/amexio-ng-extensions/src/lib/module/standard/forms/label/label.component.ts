@@ -69,6 +69,7 @@ export class AmexioLabelComponent implements OnInit {
     'large-44-bold', 'large-50-bold', 'large-24-bold', 'large-4vw', 'large-4vw-bold',
     'large-54-bold', 'large-56-bold', 'large-60-bold', 'large-64-bold', 'large-68-bold', 'large-78-bold', 'large-9vw-bold'];
   constructor() { }
+
   ngOnInit() {
     if (this.styleClass == null) {
       this.styleClass = 'small';
@@ -76,6 +77,7 @@ export class AmexioLabelComponent implements OnInit {
       this.styleClass = this.tempStyleArray.find((x: any) => x === this.styleClass);
     }
   }
+
   onLabel(event: any) {
     if (this.enableclick) {
       this.onClick.emit(event);

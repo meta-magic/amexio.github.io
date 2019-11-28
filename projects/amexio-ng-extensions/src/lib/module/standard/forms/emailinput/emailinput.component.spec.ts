@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormControl, FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../../../public-api';
-import { CommonIconComponent } from '../../../base/components/common.icon.component';
-import { AmexioInputHelperComponent } from '../../../base/input.helper.component';
-import { AmexioButtonComponent } from '../buttons/button.component';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { FormsModule, FormControl } from '@angular/forms';
+
 import { AmexioEmailInputComponent } from './emailinput.component';
+import { AmexioInputHelperComponent } from '../../../base/input.helper.component';
+import { CommonIconComponent } from '../../../base/components/common.icon.component';
+import { IconLoaderService } from '../../../services/icon/icon.service';
 
 describe('amexio-email-input', () => {
   let comp: AmexioEmailInputComponent;
@@ -13,154 +13,58 @@ describe('amexio-email-input', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioEmailInputComponent, CommonIconComponent, AmexioButtonComponent, AmexioInputHelperComponent],
+      declarations: [AmexioEmailInputComponent,
+        CommonIconComponent,
+        AmexioInputHelperComponent],
 
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioEmailInputComponent);
     comp = fixture.componentInstance;
+
+    comp._pattern = '/\S+@\S+\.\S+/';
+    comp.name = 'EmailID';
+    comp.fieldlabel = 'email';
+
+    fixture.detectChanges();
   });
 
 
-  it('email  : AmexioEmailInputComponent defined', () => {
+  it('email : AmexioEmailInputComponent defined', () => {
     expect(fixture.componentInstance).toBeDefined();
-});
-
-  it('condition check value is null or empty in onBlank method', () => {
-    (comp as any).value = '';
-    expect((comp as any).value).toEqual('');
-    (comp as any).value = null;
-    expect((comp as any).value).toEqual(null);
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('check private variable showToolTip boolean', () => {
-    (comp as any).showToolTip = false;
-    expect((comp as any).showToolTip).toEqual(false);
+  it('ngOnInit() : generateName & createCompId', () => {
+
+    spyOn(comp, 'generateName');
+    spyOn(comp, 'createCompId');
+
+    comp.generateName(comp.name, comp.fieldlabel, 'emailinput');
+    comp.createCompId('emailinput', comp.name);
+
+    expect(comp.name).toEqual('EmailID');
+    expect(comp.fieldlabel).toEqual('email');
+    expect(comp.generateName).toHaveBeenCalledWith(comp.name, comp.fieldlabel, 'emailinput');
+    expect(comp.createCompId).toHaveBeenCalledWith('emailinput', comp.name);
+
+    expect(comp.componentId).toEqual('emailinput_EmailID');
   });
 
-  it('conditions check of the onBlank function', () => {
-    comp.allowblank = true;
-    comp.isValid = true;
-    (comp as any).innerValue = null;
-    expect((comp as any).innerValue).toEqual(null);
-    (comp as any).innerValue = '';
-    expect((comp as any).innerValue).toEqual('');
-    expect(comp.isValid).toEqual(jasmine.any(Boolean));
-    expect((comp as any).allowblank).toEqual(true);
-    expect((comp as any).isValid).toEqual(true);
+  it('setPattern() : ', () => {
+    comp.value = '/\S+@\S+\.\S+/';
+    comp.regEx = new RegExp('/\S+@\S+\.\S+/');
+
+    expect(comp.pattern).toEqual(comp.value);
+    expect(comp.regEx).toBeDefined();
+    expect(comp.regEx).toEqual(new RegExp(comp.value));
   });
 
-  // get pattern
-  it('get pattern', () => {
-    expect(comp.pattern).toEqual(comp._pattern);
-  });
+  it('validate() :', () => {
+    spyOn(comp, 'isEmailFieldValid');
 
-  it('register on change', () => {
-    let fn: any;
-    comp.registerOnChange(fn);
-    expect(comp['onChangeCallback']).toEqual(fn);
-  });
+    comp.isEmailFieldValid();
 
-  it('register on touched', () => {
-    let fn: any;
-    comp.registerOnTouched(fn);
-    expect(comp['onTouchedCallback']).toEqual(fn);
-  });
-
-  // get pattern
-  it('get pattern', () => {
-    expect(comp.pattern).toEqual(comp._pattern);
-  });
-
-  it('set pattern event check the data', () => {
-    expect(comp.pattern).not.toBeNull();
-    comp.pattern = '/\S+@\S+\.\S+/';
-    expect(comp._pattern).toEqual('/\S+@\S+\.\S+/');
-    expect(comp.value).not.toEqual(null);
-    expect(comp.regEx).not.toEqual(null);
-    const regEx = new RegExp('/\S+@\S+\.\S+/');
-    expect(comp.regEx).toEqual(regEx);
-  });
-
-  it('ngOninit Method', () => {
-    comp.ngOnInit();
-    comp.name = comp.generateName(comp.name, comp.fieldlabel, 'emailinput');
-    comp.componentId = comp.createCompId('emailinput', comp.name);
-  });
-
-  // //get onblur
-  // it('get onblur()', () => {
-  //   comp.showToolTip = false;
-  //   comp.value = 'kedar@xyz.in';
-  //   comp.onblur();
-  //   expect(comp.showToolTip).toBe(false);
-  //   comp.onBlur.subscribe((g: any) => {
-  //     expect(comp.onBlur).toEqual(g);
-  //   });
-  // });
-
-  // // on focus()
-  // it('onfocus method check boolean value  showtooltip is true', () => {
-  //   comp.showToolTip = true;
-  //   comp.value = 'kedar@xyz.in';
-  //   comp.onFocus(event);
-  //   expect((<any>comp).showToolTip).toEqual(true);
-  //   comp.focus.subscribe((g: any) => {
-  //     expect(comp.focus).toEqual(g);
-  //   });
-  // });
-
-  // on onInput()
-  // it('onInput method check boolean value  showtooltip is true', () => {
-  //   comp.isValid = comp.isFieldValid();
-  //   comp.onInput(event);
-  //   comp.input.subscribe((g: any) => {
-  //     expect(comp.input).toEqual(g);
-  //   });
-  // });
-
-  // on ngOnInit()
-  it('ngOnInit', () => {
-    comp.componentId = comp.createCompId('emailinput', comp.name);
-    comp.name = comp.generateName(comp.name, comp.fieldlabel, 'emailinput');
-    comp.ngOnInit();
-
-  });
-
-  // on onChangeEv()
-  // it('check onchnage method for emit data ', () => {
-  //   comp.onChangeEv(event);
-  //   comp.change.subscribe((g: any) => {
-  //     expect(comp.value).toEqual(g);
-  //   });
-  // });
-  // it('should return true from isFieldValid', () => {
-  //   comp.allowblank = false;
-  //   comp.value = 'kedar@xyz.in';
-  //   comp.emailpattern.test(comp.value)
-  //   expect(comp.isFieldValid()).toBeTruthy();
-  //   expect(comp.allowblank).toEqual(false);
-  //   expect(comp.emailpattern.test(comp.value)).toBeDefined();
-  //   comp.allowblank = true;
-  //   expect(comp.isFieldValid()).toBeTruthy();
-  //   expect(comp.allowblank).toEqual(true);
-
-  // });
-  it('validate method call null', (): any => {
-    let c: FormControl;
-    comp.validate(c);
-    expect(comp.isEmailFieldValid()).toBeTruthy;
-    return null;
-  });
-
-  it('validate method call tobefalsy', () => {
-    let c: FormControl;
-    comp.validate(c);
-    expect(comp.isEmailFieldValid()).toBeFalsy;
-    return {
-      jsonParseError: {
-        valid: true,
-      },
-    };
+    expect(comp.isEmailFieldValid).toHaveBeenCalled();
   });
 });

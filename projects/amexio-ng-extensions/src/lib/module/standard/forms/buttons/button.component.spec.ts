@@ -5,7 +5,7 @@ import { IconLoaderService } from '../../../../../public-api';
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
 import { AmexioButtonComponent } from './button.component';
 
-describe('amexio-button', () => {
+describe('Amexio Button Component :', () => {
   let comp: AmexioButtonComponent;
   let fixture: ComponentFixture<AmexioButtonComponent>;
   let btn : any;
@@ -26,6 +26,7 @@ describe('amexio-button', () => {
 
   it('button : AmexioButtonComponent defined',()=>{
     expect(fixture.componentInstance).toBeDefined();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
   it('buttonClick(): event triggered', () => {

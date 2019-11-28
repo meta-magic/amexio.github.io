@@ -1,61 +1,86 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../../../public-api';
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
-import { AmexioButtonComponent } from '../buttons/button.component';
+
 import { AmexioLabelComponent } from './label.component';
 
-describe('amexio-label' , () => {
+describe('AmexioLabelComponent : ', () => {
   let comp: AmexioLabelComponent;
   let fixture: ComponentFixture<AmexioLabelComponent>;
+  let element;
+  let label;
+  let labelHtml;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports : [FormsModule],
-      declarations: [ AmexioLabelComponent, AmexioButtonComponent, CommonIconComponent],
+      imports: [FormsModule],
+      declarations: [AmexioLabelComponent, CommonIconComponent],
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioLabelComponent);
     comp = fixture.componentInstance;
+
+    element = fixture.debugElement;
+    label = element.nativeElement.querySelector('label');
+    labelHtml = fixture.debugElement.query(By.css('label')).nativeElement as HTMLElement;
   });
 
-  it('check small ', () => {
+  it('email : AmexioLabelComponent defined', () => {
+    expect(fixture.componentInstance).toBeDefined();
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('check styleClass if small ', () => {
     const style = 'small';
-    comp.ngOnInit();
+    fixture.detectChanges();
     expect(comp.styleClass).toEqual(style);
   });
 
-  it('check it null', () => {
+  it('check styleClass if null', () => {
     comp.styleClass = null;
-    comp.ngOnInit();
+    fixture.detectChanges();
     expect('small').toEqual(comp.styleClass);
 
   });
-  it('check for not small label ', () => {
+
+  it('check styleClass if not small ', () => {
     const style = 'large';
-    comp.ngOnInit();
+    fixture.detectChanges();
     expect(comp.styleClass).not.toEqual(style);
   });
 
   it('check enableclick true', () => {
     comp.enableclick = true;
-    comp.ngOnInit();
+    fixture.detectChanges();
     expect(comp.enableclick).toEqual(true);
+
   });
 
-  it('click enable check ', () => {
-    comp.onLabel(event);
-    expect(comp.enableclick).not.toEqual(null);
+  it('check enableclick false', () => {
+    comp.enableclick = false;
+    fixture.detectChanges();
+    expect(comp.enableclick).toEqual(false);
+    expect(comp.enableclick).not.toEqual(true);
   });
 
   it('should emit on click', () => {
-    comp.onLabel(event);
-    comp.onClick.subscribe((g: any) => {
-      expect(fixture.nativeElement.onLabel(event)).toEqual({fixture});
-    });
-    comp.onLabel(event);
+    spyOn(comp.onClick, 'emit');
+    comp.enableclick = true;
+
+    if (comp.enableclick) {
+      label.click();
+      expect(comp.onClick.emit).toHaveBeenCalled();
+    }
   });
 
+  it('should not emit onClick', () => {
+    spyOn(comp.onClick, 'emit');
+    comp.enableclick = null;
+
+    expect(comp.onClick.emit).not.toHaveBeenCalled();
+
+  });
 });
 
