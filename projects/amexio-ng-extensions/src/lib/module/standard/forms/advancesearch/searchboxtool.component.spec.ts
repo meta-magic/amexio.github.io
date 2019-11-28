@@ -32,6 +32,7 @@ describe('searchboxtool ', () => {
     expect(true).toBe(true));
 
   it('onSelectClick()', () => {
+
     comp.advanceSearchFlag = false;
   });
 

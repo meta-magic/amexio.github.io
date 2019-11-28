@@ -172,7 +172,7 @@ describe('navdesktopmenu', () => {
     comp1.onNavItemClick.emit(event);
   });
 
-  xit('onScroll', () => {
+  it('onScroll', () => {
     comp1.onScroll();
     const scrollBottom = comp1.divRef.nativeElement.scrollHeight - comp1.divRef.nativeElement.clientHeight;
     const marginTop = 330 - (scrollBottom - comp1.divRef.nativeElement.scrollTop);

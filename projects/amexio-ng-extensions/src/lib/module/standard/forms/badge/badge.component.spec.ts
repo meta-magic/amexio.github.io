@@ -30,7 +30,9 @@ describe('Amexio Badge Component :', () => {
         const type = 'round-edge';
         spyOn(comp, 'setRoundEdge').withArgs(type).and.callThrough();
         comp.setRoundEdge(type);
+
         fixture.detectChanges();
+
         expect(comp.setRoundEdge).toHaveBeenCalledWith(type);
         expect(type).toBe('round-edge');
         expect(comp.roundedgeclass).toEqual('roundEdgeCommonCss');
@@ -41,7 +43,9 @@ describe('Amexio Badge Component :', () => {
 
         spyOn(comp, 'setRoundEdge').withArgs(type).and.callThrough();
         comp.setRoundEdge(type);
+
         fixture.detectChanges();
+
         expect(comp.setRoundEdge).toHaveBeenCalledWith(type);
         expect(type).toEqual('classic');
         expect(comp.roundedgeclass).toEqual('classicCommonCss');

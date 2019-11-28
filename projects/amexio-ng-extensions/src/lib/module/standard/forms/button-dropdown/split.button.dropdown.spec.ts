@@ -7,10 +7,10 @@ import { AmexioButtonComponent } from '../buttons/button.component';
 import { AmexioFloatingButtonComponent } from '../floatingbutton/floatingbutton.component';
 import { AmexioSpiltButtonDropdownComponent } from './split.button.dropdown';
 
-describe('Amexio Spilt Button Dropdown Component : ', () => {
+fdescribe('Amexio Spilt Button Dropdown Component : ', () => {
   let comp: AmexioSpiltButtonDropdownComponent;
   let fixture: ComponentFixture<AmexioSpiltButtonDropdownComponent>;
-
+  let btnDrpDwn: HTMLElement;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
@@ -19,6 +19,8 @@ describe('Amexio Spilt Button Dropdown Component : ', () => {
     });
     fixture = TestBed.createComponent(AmexioSpiltButtonDropdownComponent);
     comp = fixture.componentInstance;
+
+    btnDrpDwn = fixture.debugElement.query(By.css('.dropdown-button-content')).nativeElement as HTMLElement;
   });
 
   it('button-dropdown : AmexioSpiltButtonDropdownComponent defined', () => {
@@ -26,53 +28,148 @@ describe('Amexio Spilt Button Dropdown Component : ', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('check array dropdownItemData', () => {
-    comp.dropdownItemData = [];
-    expect(comp.dropdownItemData).toEqual([]);
+
+  it('ngAfterContentInit : call chk',()=>{
+    spyOn(comp, 'ngAfterContentInit');
+
+    fixture.detectChanges();
+
+    expect(comp.dropdownItemData).not.toBeNull();
+    expect(comp.ngAfterContentInit).toHaveBeenCalled();
   });
 
-  it('check method  onClick', () => {
-    comp.onClick();
+  it('onClick : openContent:true', () => {
+    spyOn(comp, 'onClick');
     comp.openContent = true;
-    expect(comp.openContent).toEqual(true);
+
+    comp.onClick();
+    fixture.detectChanges();
+
+    expect(btnDrpDwn.getAttribute('style')).toEqual("display: block;");
+    expect(comp.onClick).toHaveBeenCalled();
   });
 
 
-  it('check method  getBackgroundColor', () => {
+  it('onClick : openContent:false', () => {
+    spyOn(comp, 'onClick');
+    comp.openContent = false;
 
-    comp.getBackgroundColor();
+    comp.onClick();
+    fixture.detectChanges();
+    expect(btnDrpDwn.getAttribute('style')).toEqual("display: none;");
+    expect(comp.onClick).toHaveBeenCalled();
+  });
+
+  it('onClick : openContent:undefined', () => {
+    spyOn(comp, 'onClick');
+    expect(comp.onClick).not.toHaveBeenCalled();
+  });
+
+
+  it('getBackgroundColor() : type - primary', () => {
+    const returnVal =  {'background-color' : '#0275d8'};
+    spyOn(comp,'getBackgroundColor').and.returnValue(returnVal);
+
     comp.type = 'primary';
+
     expect(comp.type).toEqual('primary');
-    comp.type = 'theme-color';
-    expect(comp.type).toEqual('theme-color');
-    let colorCode = '#0275d8';
-    expect(colorCode).toBe('#0275d8');
 
     comp.getBackgroundColor();
-    comp.type = 'success';
-    expect(comp.type).toEqual('success');
-    comp.type = 'green';
-    expect(comp.type).toEqual('green');
-    colorCode = '#5cb85c';
-    expect(colorCode).toBe('#5cb85c');
-
-    comp.getBackgroundColor();
-    comp.type = 'danger';
-    expect(comp.type).toEqual('danger');
-    comp.type = 'red';
-    expect(comp.type).toEqual('red');
-    colorCode = '#d9534f';
-    expect(colorCode).toBe('#d9534f');
-
-    comp.getBackgroundColor();
-    comp.type = 'warning';
-    expect(comp.type).toEqual('warning');
-    comp.type = 'yellow';
-    expect(comp.type).toEqual('yellow');
-    colorCode = '#f0ad4e';
-    expect(colorCode).toBe('#f0ad4e');
+    fixture.detectChanges();
+    expect(comp.getBackgroundColor).toHaveBeenCalled();
 
   });
 
-});
+  it('getBackgroundColor() : type - theme-color', () => {
+    const returnVal =  {'background-color' : '#0275d8'};
+    spyOn(comp,'getBackgroundColor').and.returnValue(returnVal);
 
+    comp.type = 'theme-color';
+
+    expect(comp.type).toEqual('theme-color');
+
+    comp.getBackgroundColor();
+    fixture.detectChanges();
+    expect(comp.getBackgroundColor).toHaveBeenCalled();
+  });
+
+  it('getBackgroundColor() : type - success', () => {
+    const returnVal =  {'background-color' : '#5cb85c'};
+    spyOn(comp,'getBackgroundColor').and.returnValue(returnVal);
+    comp.type = 'success';
+
+    expect(comp.type).toEqual('success');
+
+    comp.getBackgroundColor();
+    fixture.detectChanges();
+    expect(comp.getBackgroundColor).toHaveBeenCalled();
+
+  });
+
+  it('getBackgroundColor() : type - green', () => {
+    const returnVal =  {'background-color' : '#5cb85c'};
+    spyOn(comp,'getBackgroundColor').and.returnValue(returnVal);
+
+    comp.type = 'green';
+
+    expect(comp.type).toEqual('green');
+
+    comp.getBackgroundColor();
+    fixture.detectChanges();
+    expect(comp.getBackgroundColor).toHaveBeenCalled();
+  });
+
+
+  it('getBackgroundColor() : type - danger', () => {
+    const returnVal =  {'background-color' : '#d9534f'};
+    spyOn(comp,'getBackgroundColor').and.returnValue(returnVal);
+    comp.type = 'danger';
+
+    expect(comp.type).toEqual('danger');
+
+    comp.getBackgroundColor();
+    fixture.detectChanges();
+    expect(comp.getBackgroundColor).toHaveBeenCalled();
+
+  });
+
+  it('getBackgroundColor() : type - red', () => {
+    const returnVal =  {'background-color' : '#d9534f'};
+    spyOn(comp,'getBackgroundColor').and.returnValue(returnVal);
+
+    comp.type = 'red';
+
+    expect(comp.type).toEqual('red');
+
+    comp.getBackgroundColor();
+    fixture.detectChanges();
+    expect(comp.getBackgroundColor).toHaveBeenCalled();
+  });
+
+
+  it('getBackgroundColor() : type - warning', () => {
+    const returnVal =  {'background-color' : '#f0ad4e'};
+    spyOn(comp,'getBackgroundColor').and.returnValue(returnVal);
+    comp.type = 'warning';
+
+    expect(comp.type).toEqual('warning');
+
+    comp.getBackgroundColor();
+    fixture.detectChanges();
+    expect(comp.getBackgroundColor).toHaveBeenCalled();
+
+  });
+
+  it('getBackgroundColor() : type - yellow', () => {
+    const returnVal =  {'background-color' : '#f0ad4e'};
+    spyOn(comp,'getBackgroundColor').and.returnValue(returnVal);
+   
+    comp.type = 'yellow';
+
+    expect(comp.type).toEqual('yellow');
+
+    comp.getBackgroundColor();
+    fixture.detectChanges();
+    expect(comp.getBackgroundColor).toHaveBeenCalled();
+  });
+});
