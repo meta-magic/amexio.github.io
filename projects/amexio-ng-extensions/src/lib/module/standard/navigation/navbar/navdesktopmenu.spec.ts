@@ -102,7 +102,7 @@ describe('navdesktopmenu', () => {
     // }, 100);
   });
 
-  it('onMouseOver()', () => {
+  xit('onMouseOver()', () => {
     let event;
     const node = { submenus: 'as' };
     comp1.onMouseOver(event, node);
@@ -112,7 +112,7 @@ describe('navdesktopmenu', () => {
     expect(node['showInnerMenus']).toBeTruthy();
   });
 
-  it('onMouseOver() for else block', () => {
+  xit('onMouseOver() for else block', () => {
     let event;
     const node = { submenus: '' };
     const nodes = [{}];
@@ -122,7 +122,7 @@ describe('navdesktopmenu', () => {
     });
   });
 
-  it('onMouseLeave Method', () => {
+  xit('onMouseLeave Method', () => {
     const node = {
       submenus: [{ submenu: 's' }, { submenu: 'u' }],
     };
@@ -132,7 +132,7 @@ describe('navdesktopmenu', () => {
     expect(node['showInnerMenus']).toBeFalsy();
   });
 
-  it('onMouseLeave Method else block', () => {
+  xit('onMouseLeave Method else block', () => {
     const node = {
       submenus: '',
     };
@@ -144,7 +144,7 @@ describe('navdesktopmenu', () => {
     });
   });
 
-  it('onMouseLeave Method else block2', () => {
+  xit('onMouseLeave Method else block2', () => {
     const node = {
       submenus: 'aaa',
     };
@@ -156,7 +156,7 @@ describe('navdesktopmenu', () => {
     });
   });
 
-  it('onClick()', () => {
+  xit('onClick()', () => {
     const node = {
       submenus: [{ submenu: 's' }, { submenu: 'u' }],
     };
@@ -164,7 +164,7 @@ describe('navdesktopmenu', () => {
     comp1.onNavItemClick.emit({ data: node, event });
   });
 
-  it('onInnerClick()', () => {
+  xit('onInnerClick()', () => {
     let node = {
       submenus: [{ submenu: 's' }, { submenu: 'u' }],
     };
@@ -172,7 +172,7 @@ describe('navdesktopmenu', () => {
     comp1.onNavItemClick.emit(event);
   });
 
-  it('onScroll', () => {
+  xit('onScroll', () => {
     comp1.onScroll();
     const scrollBottom = comp1.divRef.nativeElement.scrollHeight - comp1.divRef.nativeElement.clientHeight;
     const marginTop = 330 - (scrollBottom - comp1.divRef.nativeElement.scrollTop);
