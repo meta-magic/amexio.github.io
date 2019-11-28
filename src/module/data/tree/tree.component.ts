@@ -188,6 +188,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     @Output() onDrop: any = new EventEmitter<any>(); // emits at drop
     @Output() dragover: any = new EventEmitter<any>(); // Emits at drag over
     @Input() dragData: any;
+    @Input() parentNode: any;
 
     @Output() nodeRightClick: any = new EventEmitter<any>();
 
@@ -460,7 +461,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         }
     }
 
-    emitCheckedData(checkedData: any) {
+    emitCheckedData(checkedData: any, parentRef: any, data1: any) {
         checkedData.checked = !checkedData.checked;
         if (checkedData.checked) {
             if (checkedData.hasOwnProperty(this.childarraykey)) {
@@ -471,7 +472,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                     }
                 });
             }
-            this.emitData(checkedData);
+            this.emitData(checkedData, parentRef, data1);
         } else {
             if (checkedData.hasOwnProperty(this.childarraykey)) {
                 checkedData[this.childarraykey].forEach((option: any) => {
@@ -481,11 +482,26 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                     }
                 });
             }
-            this.emitData(checkedData);
+            this.emitData(checkedData, parentRef, data1);
         }
     }
 
-    emitData(data: any) {
+    emitData(data: any, parentRef: any, data1: any) {
+        let checkFlag = false;
+        if (parentRef) {
+            if (data1.length > 0) {
+                data1.forEach((node: any) => {
+                    if (node.checked) {
+                        checkFlag = true;
+                    }
+                });
+            }
+            if (checkFlag) {
+                parentRef.checked = true;
+            } else {
+                parentRef.checked = false;
+            }
+        }
         const obj = {};
         for (const [key, value] of Object.entries(data)) {
             if (key !== 'id') {

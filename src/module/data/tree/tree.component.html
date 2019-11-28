@@ -15,7 +15,7 @@
         (dragover)="allowDrop({event:$event,data:node})" (dragstart)="onDragStart({event:$event,data:node})"
         (contextmenu)="loadContextMenu({event:$event,data:node,ref:id})">
         <div class="tree-node-label" *ngIf="enablecheckbox">
-          <input type="checkbox" [checked]="'checked'?node.checked:null" (click)="emitCheckedData(node)" />
+          <input type="checkbox" [checked]="'checked'?node.checked:null" (click)="emitCheckedData(node,parentNode,data)" />
         </div>
         <div class="tree-node-label" (click)="onNodeClick(node)">
           <div class="tree-node-label" *ngIf="templates == null">
@@ -39,7 +39,7 @@
   </div>
   <div class="treenode-children" style="display: block;" *ngIf="node.expand && node[childarraykey] && (node[childarraykey].length>0)">
     <amexio-treeview [child-array-key]="childarraykey" [display-key]="displaykey" [enable-drag]="enabledrag"
-      [enable-drop]="enabledrop" [word-wrap]="wordwrap" [data]="node[childarraykey]"  [dragData]="dragData" [parentRef]="parentRef" (onDrag)=onDragStart($event)
+      [enable-drop]="enabledrop" [word-wrap]="wordwrap"  [parentNode]=node [data]="node[childarraykey]"  [dragData]="dragData" [parentRef]="parentRef" (onDrag)=onDragStart($event)
       (onDrop)=drop($event) (nodeClick)="onNodeClick($event)" (dragleave)="($event)" (nodeRightClick)="loadContextMenu($event)"
       [across-tree]="acrosstree" [templates]="templates"
        [global-tree-data]="globalTreeData"
