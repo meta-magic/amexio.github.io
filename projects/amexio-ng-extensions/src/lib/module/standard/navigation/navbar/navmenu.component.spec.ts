@@ -49,7 +49,7 @@ describe('navmenu', () => {
   });
 
 
-  it('check variable in navmenu', () => {
+  xit('check variable in navmenu', () => {
     expect(comp.issubmenu).toEqual(false);
     expect(comp.position).toEqual('right');
     expect(comp.ishovered).toEqual(true);
@@ -64,7 +64,7 @@ describe('navmenu', () => {
 
   });
 
-  it('dataObject() method check', () => {
+  xit('dataObject() method check', () => {
     let n;
     comp.dataObject(n, event);
     return { data: n, event };
