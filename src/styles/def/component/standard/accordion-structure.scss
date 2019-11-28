@@ -31,6 +31,7 @@ amexio-accordion > amexio-accordion-tab {
 .panel {
   padding: 18px;
   overflow: auto;
+  overflow: inherit !important;
 }
 
 
