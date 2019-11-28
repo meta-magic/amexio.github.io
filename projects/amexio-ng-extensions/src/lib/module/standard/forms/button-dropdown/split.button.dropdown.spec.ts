@@ -7,7 +7,7 @@ import { AmexioButtonComponent } from '../buttons/button.component';
 import { AmexioFloatingButtonComponent } from '../floatingbutton/floatingbutton.component';
 import { AmexioSpiltButtonDropdownComponent } from './split.button.dropdown';
 
-describe('Amexio Spilt Button Dropdown Component : ', () => {
+fdescribe('Amexio Spilt Button Dropdown Component : ', () => {
   let comp: AmexioSpiltButtonDropdownComponent;
   let fixture: ComponentFixture<AmexioSpiltButtonDropdownComponent>;
   let btnDrpDwn: HTMLElement;

@@ -5,7 +5,7 @@ import { IconLoaderService } from '../../../../../public-api';
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
 import { AmexioButtonComponent } from './button.component';
 
-describe('Amexio Button Component :', () => {
+fdescribe('Amexio Button Component :', () => {
   let comp: AmexioButtonComponent;
   let fixture: ComponentFixture<AmexioButtonComponent>;
   let btn : any;

@@ -5,7 +5,7 @@ import { CommonIconComponent } from '../../../base/components/common.icon.compon
 import { AmexioButtonDropdownComponent } from './button.dropdown';
 import { AmexioButtonDropDownItemComponent } from './button.dropdown.item';
 
-describe('amexio-spilt-button', () => {
+fdescribe('Amexio Button Dropdown Component', () => {
   let comp: AmexioButtonDropdownComponent;
   let fixture: ComponentFixture<AmexioButtonDropdownComponent>;
 

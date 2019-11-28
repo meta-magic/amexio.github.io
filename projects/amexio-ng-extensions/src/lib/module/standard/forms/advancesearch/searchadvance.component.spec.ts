@@ -6,7 +6,7 @@ import { CommonIconComponent } from '../../../base/components/common.icon.compon
 import { AmexioButtonComponent } from '../buttons/button.component';
 import { AmexioSearchAdvanceComponent } from './searchadvance.component';
 import { FileDetector } from 'selenium-webdriver/remote';
-describe('Amexio Search Advance Component ', () => {
+fdescribe('Amexio Search Advance Component ', () => {
   let comp: AmexioSearchAdvanceComponent;
   let fixture: ComponentFixture<AmexioSearchAdvanceComponent>;
 

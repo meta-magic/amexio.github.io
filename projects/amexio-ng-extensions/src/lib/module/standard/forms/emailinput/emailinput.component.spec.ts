@@ -6,7 +6,7 @@ import { AmexioInputHelperComponent } from '../../../base/input.helper.component
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
 import { IconLoaderService } from '../../../services/icon/icon.service';
 
-describe('amexio-email-input', () => {
+fdescribe('amexio-email-input', () => {
   let comp: AmexioEmailInputComponent;
   let fixture: ComponentFixture<AmexioEmailInputComponent>;
 
