@@ -7,7 +7,7 @@ import { AmexioButtonComponent } from '../buttons/button.component';
 import { AmexioFloatingButtonComponent } from '../floatingbutton/floatingbutton.component';
 import { AmexioSpiltButtonDropdownComponent } from './split.button.dropdown';
 
-describe('amexio-spilt-button', () => {
+describe('Amexio Spilt Button Dropdown Component : ', () => {
   let comp: AmexioSpiltButtonDropdownComponent;
   let fixture: ComponentFixture<AmexioSpiltButtonDropdownComponent>;
 
@@ -21,10 +21,14 @@ describe('amexio-spilt-button', () => {
     comp = fixture.componentInstance;
   });
 
+  it('button-dropdown : AmexioSpiltButtonDropdownComponent defined', () => {
+    expect(fixture.componentInstance).toBeDefined();
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
   it('check array dropdownItemData', () => {
     comp.dropdownItemData = [];
     expect(comp.dropdownItemData).toEqual([]);
-
   });
 
   it('check method  onClick', () => {
@@ -33,17 +37,6 @@ describe('amexio-spilt-button', () => {
     expect(comp.openContent).toEqual(true);
   });
 
-  // it('check method 9  itemClick', () => {
-  //   let ev: any;
-  //   let itemData: any;
-
-  //   comp.itemClick(ev, itemData);
-  //   //   let data = itemData.onItemClick;
-  //   // data.subscribe((g: any) => {
-  //   // expect(ev).toEqual(g);
-  //   // });
-
-  // });
 
   it('check method  getBackgroundColor', () => {
 

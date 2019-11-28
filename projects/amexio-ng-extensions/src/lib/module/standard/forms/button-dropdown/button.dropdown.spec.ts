@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../../../public-api';
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
 import { AmexioButtonDropdownComponent } from './button.dropdown';

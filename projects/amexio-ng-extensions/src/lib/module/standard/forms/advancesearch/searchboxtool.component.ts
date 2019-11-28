@@ -27,7 +27,7 @@ import { CommonDataService } from '../../../services/data/common.data.service';
   selector: 'amexio-searchbox',
   templateUrl: './searchboxtool.component.html',
 })
-export class SearchboxtoolComponent extends BaseFormValidator<string> implements OnInit, AfterContentInit {
+export class SearchToolBoxComponent extends BaseFormValidator<string> implements OnInit, AfterContentInit {
   private componentLoaded: boolean;
   /*
    Properties
@@ -198,7 +198,6 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
   }
 
   ngOnInit() {
-
     this.componentId = this.displayfield + window.crypto.getRandomValues(new Uint32Array(1))[0];
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
@@ -213,6 +212,7 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
     }
     this.componentLoaded = true;
   }
+
   updateComponent() {
     if (JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));

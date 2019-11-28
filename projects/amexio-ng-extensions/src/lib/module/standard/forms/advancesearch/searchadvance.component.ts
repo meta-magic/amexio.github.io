@@ -41,9 +41,11 @@ export class AmexioSearchAdvanceComponent implements OnInit {
   @Input('form-width') formwidth = 0;
   advanceSearchFlag = false;
   constructor() { }
+
   closeSearchForm() {
     this.advanceSearchFlag = false;
   }
+
   ngOnInit() {
   }
 }

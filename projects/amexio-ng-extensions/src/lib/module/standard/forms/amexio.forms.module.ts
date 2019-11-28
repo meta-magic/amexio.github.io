@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AmexioSearchAdvanceComponent } from './advancesearch/searchadvance.component';
-import { SearchboxtoolComponent } from './advancesearch/searchboxtool.component';
+import { SearchToolBoxComponent } from './advancesearch/searchboxtool.component';
 import { AmexioButtonDropdownComponent } from './button-dropdown/button.dropdown';
 import { AmexioButtonDropDownItemComponent } from './button-dropdown/button.dropdown.item';
 import { AmexioSpiltButtonDropdownComponent } from './button-dropdown/split.button.dropdown';
@@ -110,7 +110,7 @@ const FORM_COMPONENTS = [
   ToolbarComponent,
   ToolbaroneComponent,
   ToolBarActionComponent,
-  SearchboxtoolComponent,
+  SearchToolBoxComponent,
   AmexioSearchAdvanceComponent,
   RecaptchaComponent,
   AmexioSpinnerComponent,

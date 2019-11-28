@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../../../public-api';
 import { AmexioBadgeComponent } from './badge.component';
 
-describe('amexio-badge', () => {
+describe('Amexio Badge Component :', () => {
     let comp: AmexioBadgeComponent;
     let fixture: ComponentFixture<AmexioBadgeComponent>;
 
@@ -16,22 +16,67 @@ describe('amexio-badge', () => {
         fixture = TestBed.createComponent(AmexioBadgeComponent);
         comp = fixture.componentInstance;
     });
+
+    it('badge : AmexioBadgeComponent defined', () => {
+        expect(fixture.componentInstance).toBeDefined();
+        expect(fixture.componentInstance).toBeTruthy();
+    });
+
     it('on cClass Variable check', () => {
         expect(comp.cClass).toEqual('');
     });
 
-    it('setRoundEdge If round-edge()', () => {
+    it('setRoundEdge() If round-edge', () => {
         const type = 'round-edge';
-        comp.setRoundEdge('round-edge');
-        expect(type).toEqual('round-edge');
-        comp.roundedgeclass = 'roundEdgeCommonCss';
-      });
+        spyOn(comp, 'setRoundEdge').withArgs(type).and.callThrough();
+        comp.setRoundEdge(type);
+        fixture.detectChanges();
+        expect(comp.setRoundEdge).toHaveBeenCalledWith(type);
+        expect(type).toBe('round-edge');
+        expect(comp.roundedgeclass).toEqual('roundEdgeCommonCss');
+    });
 
-    it('setRoundEdge If classic', () => {
+    it('setRoundEdge() If classic', () => {
         const type = 'classic';
-        comp.setRoundEdge('classic');
+
+        spyOn(comp, 'setRoundEdge').withArgs(type).and.callThrough();
+        comp.setRoundEdge(type);
+        fixture.detectChanges();
+        expect(comp.setRoundEdge).toHaveBeenCalledWith(type);
         expect(type).toEqual('classic');
-        comp.roundedgeclass = 'classicCommonCss';
-      });
+        expect(comp.roundedgeclass).toEqual('classicCommonCss');
+
+    });
+
+    it('setRoundEdge() If null', () => {
+        const type = null;
+
+        spyOn(comp, 'setRoundEdge');
+
+        fixture.detectChanges();
+
+        expect(comp.setRoundEdge).not.toHaveBeenCalledWith();
+        expect(type).not.toEqual('classic');
+        expect(comp.roundedgeclass).not.toBe('classicCommonCss');
+        expect(type).not.toEqual('round-edge');
+        expect(comp.roundedgeclass).not.toBe('roundEdgeCommonCss');
+    });
+
+    it('ngOnInit : if true', () => {
+        expect(comp.color).toBeUndefined();
+        expect(comp.background).toBeUndefined();
+
+        if (!comp.color && !comp.background) {
+            fixture.detectChanges();
+            expect(comp.cClass).toBe('amexio-badge-color');
+        }
+    });
+
+    it('ngOnInit : negate', () => {
+        comp.color = '#000000';
+        comp.background = '#000000';
+        fixture.detectChanges();
+        expect(comp.cClass).not.toBe('amexio-badge-color');
+    });
 
 });

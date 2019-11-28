@@ -27,7 +27,7 @@ describe('AmexioLabelComponent : ', () => {
     labelHtml = fixture.debugElement.query(By.css('label')).nativeElement as HTMLElement;
   });
 
-  it('email : AmexioLabelComponent defined', () => {
+  it('label : AmexioLabelComponent defined', () => {
     expect(fixture.componentInstance).toBeDefined();
     expect(fixture.componentInstance).toBeTruthy();
   });

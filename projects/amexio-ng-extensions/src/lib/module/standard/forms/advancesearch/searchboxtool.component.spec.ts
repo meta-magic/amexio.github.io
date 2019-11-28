@@ -7,20 +7,20 @@ import { CommonIconComponent } from '../../../base/components/common.icon.compon
 import { CommonDataService } from '../../../services/data/common.data.service';
 import { AmexioButtonComponent } from '../buttons/button.component';
 import { AmexioSearchAdvanceComponent } from './searchadvance.component';
-import { SearchboxtoolComponent } from './searchboxtool.component';
+import { SearchToolBoxComponent } from './searchboxtool.component';
 
 describe('searchboxtool ', () => {
-  let comp: SearchboxtoolComponent;
-  let fixture: ComponentFixture<SearchboxtoolComponent>;
+  let comp: SearchToolBoxComponent;
+  let fixture: ComponentFixture<SearchToolBoxComponent>;
   let advanceSearchcomp: AmexioSearchAdvanceComponent;
   let advanceSearchfixture: ComponentFixture<AmexioSearchAdvanceComponent>;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [SearchboxtoolComponent, AmexioSearchAdvanceComponent, AmexioButtonComponent, CommonIconComponent],
+      declarations: [SearchToolBoxComponent, AmexioSearchAdvanceComponent, AmexioButtonComponent, CommonIconComponent],
       providers: [IconLoaderService, CommonDataService, HttpClient, HttpHandler],
     });
-    fixture = TestBed.createComponent(SearchboxtoolComponent);
+    fixture = TestBed.createComponent(SearchToolBoxComponent);
     comp = fixture.componentInstance;
 
     advanceSearchfixture = TestBed.createComponent(AmexioSearchAdvanceComponent);
