@@ -523,7 +523,9 @@ describe('amexio-treeview', () => {
 
 
         checkD.checked = false;
-        comp.emitCheckedData(checkD);
+        let parentNode = [{}];
+        let data = [{}];
+        comp.emitCheckedData(checkD,parentNode,data);
         checkD.checked = true;
         expect(checkD.checked).toEqual(true);
 
@@ -533,10 +535,10 @@ describe('amexio-treeview', () => {
             expect(option.hasOwnProperty(comp.childarraykey)).toEqual(true);
             comp.setCheckedStatusFromParent(option);
         });
-        comp.emitData(checkD);
+        comp.emitData(checkD,parentNode,data);
 
         checkD.checked = false;
-        comp.emitCheckedData(checkD);
+        comp.emitCheckedData(checkD,parentNode,data);
         checkD.checked = false;
         expect(checkD.checked).toBe(false);
         expect(checkD[0].hasOwnProperty('children')).toEqual(true);
@@ -545,7 +547,7 @@ describe('amexio-treeview', () => {
             expect(option.hasOwnProperty(comp.childarraykey)).toEqual(true);
             comp.searchObject(option);
         });
-        comp.emitData(checkD);
+        comp.emitData(checkD,parentNode,data);
 
 
 
