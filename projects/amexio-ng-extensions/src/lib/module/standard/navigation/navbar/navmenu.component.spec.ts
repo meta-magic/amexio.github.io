@@ -150,7 +150,7 @@ describe('navmenu', () => {
 
 
 
-  it('navItem click method', () => {
+  xit('navItem click method', () => {
     const event1 = {
       event,
     };
@@ -158,7 +158,7 @@ describe('navmenu', () => {
     event1.event.stopPropagation();
     comp.onNavItemClick.emit(event);
   });
-  //   it('onMouseoverTitle() method check', () => {
+  //   xit('onMouseoverTitle() method check', () => {
   //     comp.onMouseoverTitle(event);
   //         comp.position = comp.getMenuPosition(event);
   //    });
@@ -174,7 +174,7 @@ describe('navmenu', () => {
   // let directionflag: string;
   //    });
 
-  it('onIconClick() method if condition check', () => {
+ xit('onIconClick() method if condition check', () => {
     let node = {
       submenus: [{ submenu: 's' }, { submenu: 'u' }],
       isExpanded: false

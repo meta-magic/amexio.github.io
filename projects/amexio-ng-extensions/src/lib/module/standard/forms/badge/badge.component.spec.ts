@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../../../public-api';
 import { AmexioBadgeComponent } from './badge.component';
 
-fdescribe('Amexio Badge Component :', () => {
+describe('Amexio Badge Component :', () => {
     let comp: AmexioBadgeComponent;
     let fixture: ComponentFixture<AmexioBadgeComponent>;
 

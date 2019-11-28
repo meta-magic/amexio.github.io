@@ -5,7 +5,7 @@ import { CommonIconComponent } from '../../../base/components/common.icon.compon
 import { AmexioButtonDropdownComponent } from './button.dropdown';
 import { AmexioButtonDropDownItemComponent } from './button.dropdown.item';
 
-fdescribe('Amexio Button Dropdown Component', () => {
+describe('Amexio Button Dropdown Component', () => {
   let comp: AmexioButtonDropdownComponent;
   let fixture: ComponentFixture<AmexioButtonDropdownComponent>;
 
@@ -24,6 +24,8 @@ fdescribe('Amexio Button Dropdown Component', () => {
     comp.label = 'button-dropdown';
 
     comp.componentId = comp.label + window.crypto.getRandomValues(new Uint32Array(1))[0];
+
+    expect(comp.componentId).toContain('button-dropdown');
   });
 
   it('onHomeClick 1st condition', () => {
