@@ -12,11 +12,12 @@ import { DynamicTextDirective } from './dynamic-text.directive';
       <div amexio-dynamic-text [placeholder]="placeholdervalue">greeting </div>
   `
 })
+
 class TestDynamicTextTestComponent {
     placeholdervalue = {greeting: "Hi"};
 }
 
-describe('Directive: amexio-dynamic-text', () => {
+fdescribe('Directive: amexio-dynamic-text', () => {
     let comp: DynamicTextDirective;
 
     let fixture: ComponentFixture<DynamicTextDirective>;
@@ -27,7 +28,6 @@ describe('Directive: amexio-dynamic-text', () => {
             declarations: [DynamicTextDirective, TestDynamicTextTestComponent],
             providers: [Renderer2, ViewContainerRef],
             imports: [],
-
         });
         fixture = TestBed.createComponent(TestDynamicTextTestComponent);
         comp = fixture.componentInstance;
@@ -35,71 +35,8 @@ describe('Directive: amexio-dynamic-text', () => {
         expect(directiveEl).not.toBeNull();
         dirIn = directiveEl.injector.get(DynamicTextDirective);
         inputEl = fixture.debugElement.query(By.css('input'));
-        // dirIn.themeStyle = 'round-edge';
+
 
     });
 
-    it('ngAfterContentChecked()', () => {
-     dirIn.jsonData = {greeting: "Hi"}
-     let element = {nodeType: 3, textContent: 'greeting'};
-     dirIn.ngAfterContentChecked();
-
-       expect(dirIn.ngAfterContentChecked()).toHaveBeenCalled;
-    });
-
-    it('iterateHTMLDOM() positive condition', () => {
-        dirIn.jsonData = {greeting: "Hi"}
-        let element = {nodeType: 3, textContent: 'greeting', hasChildNodes: () => {
-            return true
-        }};
-        let str = element.textContent;
-        const strarr = element.textContent.split(' ');
-
-        dirIn.iterateHTMLDOM(element);
-
-        expect(element.nodeType).toEqual(3);
-        for(let [key, value] of Object.entries(dirIn.jsonData)) {
-                  strarr.forEach((strelement: any) => {
-                    if (key === strelement) {
-                        str = str.replace(key, value as string);
-                        expect(key).toEqual(strelement);
-                    }
-                });
-            }
-       });
-
-    it('iterateHTMLDOM() negative condition1', () => {
-        dirIn.jsonData = {greeting: "Hi"}
-        let element = {nodeType: 5, childNodes: [],textContent: 'greeting', hasChildNodes: () => {
-            return true
-        }};
-        dirIn.iterateHTMLDOM(element);
-           // const hostelement = this.viewContainerRef.element.nativeElement;
-          // this.iterateHTMLDOM(hostelement);
-
-
-          //  if (element.nodeType === 3) {
-            expect(element.hasChildNodes()).toHaveBeenCalled
-        expect(element.hasChildNodes()).toEqual(true);
-        expect(element.nodeType).not.toEqual(3);
-
-  });
-
-
-       it('iterateHTMLDOM() negative condition1.2', () => {
-        dirIn.jsonData = {greeting: "Hi"}
-        let element = {nodeType: 5, textContent: 'greeting', hasChildNodes: () => {
-            return false
-        }};
-        dirIn.iterateHTMLDOM(element);
-           // const hostelement = this.viewContainerRef.element.nativeElement;
-          // this.iterateHTMLDOM(hostelement);
-
-
-          //  if (element.nodeType === 3) {
-            expect(element.hasChildNodes()).toHaveBeenCalled
-            expect(element.hasChildNodes()).toEqual(false);
- 
-            }
-       });
 });
