@@ -718,15 +718,15 @@ describe('amexio-dropdown', () => {
   });
 
   //on onItemSelect()
-  it('on onItemSelect()', () => {
-    let item = event;
-    comp.showToolTip = false;
-    comp.onItemSelect(item);
-    comp.hide();
-    expect(comp.showToolTip).toEqual(false);
+  // it('on onItemSelect()', () => {
+  //   let item = event;
+  //   comp.showToolTip = false;
+  //   comp.onItemSelect(item);
+  //   comp.hide();
+  //   expect(comp.showToolTip).toEqual(false);
     // comp.posixUp = comp.getListPosition(item);
     // comp.focus.emit();
-  });
+  // });
 
   //wrking 1- set errormsg
   it('set errormsg', () => {
