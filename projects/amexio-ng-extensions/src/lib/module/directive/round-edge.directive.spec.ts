@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import { Component, DebugElement, ViewContainerRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -10,51 +11,47 @@ import { RoundEdgesDirective } from './round-edge.directive';
     selector: 'round-edge-directive',
     template: `
 
-  <amexio-button amexioThemeStyle [theme-style]="'round-edge'" [label]="'Previous'" [type]="'theme-color'" (onClick)="previous()">
+  <amexio-button amexioThemeStyle [theme-style]="'round-edge'" 
+    [label]="'Previous'"
+    [type]="'theme-color'"
+    (onClick)="previous()">
   </amexio-button>
   `
 })
-class RoundEdgesComponent {
+class TestRoundEdgesComponent {
 }
 
 describe('Directive: round-edge', () => {
-    let comp: RoundEdgesComponent;
-    let fixture: ComponentFixture<RoundEdgesComponent>;
-    let inputEl: DebugElement;
+    let comp: TestRoundEdgesComponent;
+    let fixture: ComponentFixture<TestRoundEdgesComponent>;
+    let inputEl: any;
     let dirIn: any;
+    let directiveEl: any;
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [RoundEdgesDirective, RoundEdgesComponent],
+            declarations: [RoundEdgesDirective, TestRoundEdgesComponent],
             providers: [ ViewContainerRef],
             imports: [AmexioFormsModule],
 
         });
-        fixture = TestBed.createComponent(RoundEdgesComponent);
+        fixture = TestBed.createComponent(TestRoundEdgesComponent);
         comp = fixture.componentInstance;
-        const directiveEl = fixture.debugElement.query(By.directive(RoundEdgesDirective));
-        expect(directiveEl).not.toBeNull();
-
+        directiveEl = fixture.debugElement.query(By.directive(RoundEdgesDirective));
+        inputEl = fixture.debugElement.query(By.css('button')) ;
         dirIn = directiveEl.injector.get(RoundEdgesDirective);
-        inputEl = fixture.debugElement.query(By.css('input'));
-        dirIn.themeStyle = 'round-edge';
-
-    });
-    xit('should create component', () => {
-        const debugEl: HTMLElement = fixture.debugElement.nativeElement;
-        const p: HTMLElement = debugEl.querySelector('p');
     });
 
-    xit('onInit()', () => {
-        dirIn.themeStyle = 'round-edge';
-        dirIn.ngOnInit();
-        expect(dirIn.themeStyle).toEqual('round-edge');
-        // dirIn.hostComponent = dirIn._viewContainerRef['_data'].componentView.component;
-        // dirIn.hostComponent.setRoundEdge();
-      });
+    it('defined: directive created',()=>{
+      fixture.detectChanges();
+      expect(directiveEl).toBeTruthy();
+    });
 
-    xit('onInit()', () => {
-        dirIn.themeStyle = 'round';
-        dirIn.ngOnInit();
-        expect(dirIn.themeStyle).not.toEqual('round-edge');
-      });
+    it('apply theme-style',()=>{
+      dirIn.themeStyle = 'round-edge';
+      console.log(inputEl);
+      console.log(dirIn);
+      fixture.detectChanges();
+      expect(dirIn.themeStyle).toContain('round-edge');
+      expect(inputEl.classes.roundEdgeCommonCss).toBeTruthy();
+    });
 });

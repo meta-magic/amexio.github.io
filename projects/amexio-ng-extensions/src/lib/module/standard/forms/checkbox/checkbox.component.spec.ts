@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { FormsModule } from "@angular/forms";
-import { AmexioCheckBoxComponent } from "./checkbox.component";
+import { FormsModule } from '@angular/forms';
+import { AmexioCheckBoxComponent } from './checkbox.component';
 
 
-describe('amexio-checkbox', () => {
+describe('Amexio Check Box Component :', () => {
   let comp: AmexioCheckBoxComponent;
   let fixture: ComponentFixture<AmexioCheckBoxComponent>;
   let de: DebugElement;    // => Handle to to Components DOM instance
@@ -17,59 +17,115 @@ describe('amexio-checkbox', () => {
       declarations: [AmexioCheckBoxComponent], // declare the test component
     });
 
-    fixture = TestBed.createComponent(AmexioCheckBoxComponent);  // => Fixture Creates the environment surrounding the component & the has access to the instance itself.
+    fixture = TestBed.createComponent(AmexioCheckBoxComponent);
+     // => Fixture Creates the environment surrounding the component & the has access to the instance itself.
     comp = fixture.componentInstance;
 
 
     de = fixture.debugElement.query(By.css('label'));
     el = de.nativeElement;
-  });
 
+    comp.required = true;
+    comp.value = false;
+   });
+
+  it('define :AmexioCheckBoxComponent is defined', () => {
+    expect(fixture.componentInstance).toBeTruthy();
+
+  });
  // Check if correct field label is applied
   it('should display correct label', () => {
-    let labelValue = 'UserName';
+    const labelValue = 'UserName';
     comp.fieldlabel = labelValue;     // => Set the field label
     fixture.detectChanges();        // Fire Change
     expect(el.textContent).toContain(labelValue);  // check ?
   });
 
-  it('callback method', () => {
-    comp.onBlur();
-    comp.tabFocus = false;
-    comp['onTouchedCallback']();
+  it('ngOnInit', () => {
+    comp.name = 'hobbies';
+    comp.required = true;
+    comp.value = false;
+    spyOn(comp, 'generateName');
+    spyOn(comp.isComponentValid, 'emit');
+
+    fixture.detectChanges();
+
+    expect(comp.componentId).toBeDefined();
+    expect(comp.componentId).toContain('checkbox');
+    expect(comp.generateName).toHaveBeenCalled();
+    expect(comp.isValid).toBeFalsy();
+    expect(comp.isComponentValid.emit).toHaveBeenCalledWith(!comp.required);
+
   });
-  it('tab Focus varible', () => {
-   comp.tabFocus = false;
+
+  it('onInput():', () => {
+    comp.required = true;
+    comp.value = false;
+
+    spyOn(comp.input, 'emit');
+
+    comp.onInput();
+    fixture.detectChanges();
+
+    expect(comp.isValid).toBeFalsy();
+    expect(comp.input.emit).toHaveBeenCalledWith(comp.value);
+
   });
 
-  it('ngOnInit', () =>{
-    comp.ngOnInit();
-    comp.componentId =comp.createCompId('checkbox',comp.name);
-  })
+  it('generateName(): If Method', () => {
+    comp.name = null;
+    comp.fieldlabel = 'checkbox';
 
-  it('createCompId If Method', () => {
-    let inputType = 'checkbox';
-    let name = null;
-    comp.createCompId(inputType, name);
-    expect(name).toEqual(null);
-    return inputType + '_' + Math.floor(Math.random() * 1000 + 999);
-  })
+    comp.generateName();
+    fixture.detectChanges();
 
-  it('createCompId If blank Method', () => {
-    let inputType = 'checkbox';
-    let name = '';
-    comp.createCompId(inputType, name);
     expect(name).toEqual('');
-    return inputType + '_' + Math.floor(Math.random() * 1000 + 999);
-  })
+    expect(comp.name).toContain('checkbox');
+  });
 
-  it('createCompId Else Method', () => {
-    let inputType = 'checkbox';
-    let name = 'chk';
-    comp.createCompId(inputType, name);
-    expect(name).not.toEqual('');
-    expect(name).not.toEqual(null);
-    return inputType + '_' + name;
-  })
- 
+  it('generateName() : createCompId Else Method', () => {
+    comp.name = undefined;
+    comp.fieldlabel = undefined;
+
+    comp.generateName();
+    fixture.detectChanges();
+
+    expect(comp.name).toContain('textinput-');
+  });
+
+  it('onClick() : ', () => {
+    comp.value = true;
+    spyOn(comp.isComponentValid, 'emit');
+    spyOn(comp.onSelection, 'emit');
+
+    comp.onClick();
+    fixture.detectChanges();
+
+    expect(comp.value).toBeFalsy();
+    expect(comp.isValid).toBeFalsy();
+    expect(comp.isComponentValid.emit).toHaveBeenCalled();
+    expect(comp.onSelection.emit).toHaveBeenCalled();
+  });
+
+
+  it('onBlur() : ', () => {
+    comp.tabFocus = undefined;
+    comp.onBlur();
+    fixture.detectChanges();
+    expect(comp.tabFocus).toBeFalsy();
+  });
+
+  it('onFocus() : ',() =>{
+    comp.tabFocus = undefined;
+    comp.onFocus();
+    fixture.detectChanges();
+    expect(comp.tabFocus).toBeTruthy();
+  });
+
+  it('checkValidity() :',()=>{
+    comp.isValid = true;
+    spyOn(comp,'checkValidity').and.returnValue(true);
+    comp.checkValidity();
+    expect(comp.checkValidity).toHaveBeenCalled();
+  });
 });

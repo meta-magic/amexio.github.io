@@ -93,6 +93,7 @@ export class AmexioChipsComponent implements AfterContentInit, OnInit {
         }
       });
   }
+  
   onCloseChipsClick(item: any) {
     if (this.chipindex > -1) {
       this.data[this.chipindex]['selected'] = false;
@@ -161,6 +162,7 @@ export class AmexioChipsComponent implements AfterContentInit, OnInit {
       this.selectedchipsData.emit(cloneNode);
     }
   }
+
   generateIndex() {
     this.data.forEach((element, index) => {
       element['index'] = this.componentId + 'chip' + index;

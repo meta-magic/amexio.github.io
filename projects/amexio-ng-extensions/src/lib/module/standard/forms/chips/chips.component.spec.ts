@@ -3,13 +3,12 @@
  */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../../../public-api';
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
 import { AmexioChipComponent } from '../chip/chip.component';
 import { AmexioLabelComponent } from '../label/label.component';
 import { AmexioChipsComponent } from './chips.component';
-describe('amexio-chips', () => {
+describe('Amexio Chips Component: ', () => {
 
     let comp: AmexioChipsComponent;
     let fixture: ComponentFixture<AmexioChipsComponent>;
@@ -22,12 +21,47 @@ describe('amexio-chips', () => {
         });
         fixture = TestBed.createComponent(AmexioChipsComponent);
         comp = fixture.componentInstance;
+
+        const sampledatachips = [{
+            icon: 'fa fa-camera',
+            label: 'Camera',
+            closable: true
+          },
+          {
+            icon: 'fa fa-fire-extinguisher',
+            label: 'Fire-Safety',
+            closable: false
+          },
+          {
+            icon: 'fa fa-wifi',
+            label: 'Wifi',
+            closable: true
+          },
+          {
+            icon: 'fa fa-taxi',
+            label: 'Parking-Area',
+            closable: false
+          },
+          {
+            icon: 'fa fa-ambulance',
+            label: 'Emergency',
+            closable: true
+          },
+        ];
     });
 
-    it('ngoninit check ', () => {
+    it('ngOnInit: chk for componentId ', () => {
         comp.ngOnInit();
-        comp.componentId = 'chips' + window.crypto.getRandomValues(new Uint32Array(1))[0];
 
+        expect(comp.componentId).toContain('chips');
     });
 
+    it('onchipsKeyup' , ()=> {
+
+        spyOn(comp,'onchipsKeyup');
+
+        comp.onchipsKeyup(event);
+
+        expect(comp.onchipsKeyup).toHaveBeenCalled();
+    });
 });
