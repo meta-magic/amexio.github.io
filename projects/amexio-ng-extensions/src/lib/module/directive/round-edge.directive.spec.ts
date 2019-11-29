@@ -46,7 +46,16 @@ describe('Directive: round-edge', () => {
       expect(directiveEl).toBeTruthy();
     });
 
-    it('apply theme-style',()=>{
+    it('apply theme-style classic' ,()=>{
+      dirIn.themeStyle = 'classic';
+      console.log(inputEl);
+      console.log(dirIn);
+      fixture.detectChanges();
+      expect(dirIn.themeStyle).toContain('classic');
+      expect(inputEl.classes.roundEdgeCommonCss).toBeTruthy();
+    });
+
+    it('apply theme-style round-edge',()=>{
       dirIn.themeStyle = 'round-edge';
       console.log(inputEl);
       console.log(dirIn);
