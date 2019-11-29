@@ -56,6 +56,9 @@ description : The name is for determining the name of item.
 
   @Input('min-content') mincontent: boolean;
 
+  @Input('collapsible-title') collapsibleTitle: string;
+
+  @Input ('fit') fit = false;
   hcPosition: string;
   vcPosition: string;
   cPosition: string;

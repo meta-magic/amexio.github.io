@@ -8,11 +8,18 @@
     </div>
 
     <div class="griditemcontainer" [ngStyle]="{'flex-direction': containerDirection}">
-        <div *ngIf="title" class="griditemcontainer-header"
-            [ngClass]="{'griditemcontainer-header-collapsed': (!showContent && hcEnabled)}">
+        <div *ngIf="title" class="griditemcontainer-header" [ngClass]="{'griditemcontainer-header-collapsed': (!showContent && hcEnabled)}">
+
             <label>{{title}}</label>
+
         </div>
-        <div class="griditemcontainer-body" [ngStyle]="{display: showContent ? 'block':'none'}">
+
+        <div *ngIf="collapsibleTitle && !showContent" [ngClass]="{' griditemcontainer-header griditemcontainer-header-collapsed': (!showContent && hcEnabled)}">
+
+            <label>{{collapsibleTitle}}</label>
+
+        </div>
+        <div class="griditemcontainer-body" [ngStyle]="{display: showContent ? 'block':'none', 'height':fit ? '100%':''}">
             <ng-content></ng-content>
         </div>
     </div>

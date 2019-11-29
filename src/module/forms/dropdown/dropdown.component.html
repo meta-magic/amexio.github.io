@@ -21,7 +21,7 @@
     <ul aria-labelledby="fieldlabel" aria-haspopup="listbox" class="dropdown-list">
 
       <li role="option" tabindex="1" class="list-items" [ngClass]="{'list-items-selected':item.selected}" *ngFor="let item of filteredOptions"
-        id="{{item.index}}" (mousedown)="onItemSelect(item)">
+        id="{{item.index}}" (mousedown)="onItemSelect({item: item, event: $event})">
         <ng-container *ngIf="bodyTemplate">
           <ng-template [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row }, row: item }">
           </ng-template>

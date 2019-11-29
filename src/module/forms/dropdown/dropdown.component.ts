@@ -202,6 +202,8 @@ default :
 description : Fire when drop down item selected.
 */
   @Output() onSingleSelect: any = new EventEmitter<any>();
+  @Output() onRecordSelect: any = new EventEmitter<any>();
+
   /*
 Events
 name : onMultiSelect
@@ -457,8 +459,8 @@ description : Set enable / disable popover.
     if (this.multiselect) {
       const optionsChecked: any = [];
       this.multiselectValues = [];
-      if (selectedItem.hasOwnProperty('checked')) {
-        selectedItem.checked = !selectedItem.checked;
+      if (selectedItem.item.hasOwnProperty('checked')) {
+        selectedItem.item.checked = !selectedItem.item.checked;
         this.filteredOptions.forEach((row: any) => {
           if (row.checked) {
             optionsChecked.push(row[this.valuefield]);
@@ -470,11 +472,12 @@ description : Set enable / disable popover.
         this.onMultiSelect.emit(this.multiselectValues);
       }
     } else {
-      this.value = selectedItem[this.valuefield];  // Issue here?
-      this.displayValue = this.displayFieldService.findValue(this.displayfield, selectedItem);
+      this.value = selectedItem.item[this.valuefield];  // Issue here?
+      this.displayValue = this.displayFieldService.findValue(this.displayfield, selectedItem.item);
       this.multiselect ? this.showToolTip = true : this.showToolTip = false;
-      delete selectedItem[this.key];
-      this.onSingleSelect.emit(selectedItem);
+      delete selectedItem.item[this.key];
+      this.onSingleSelect.emit(selectedItem.item);
+      this.onRecordSelect.emit(selectedItem);
     }
     this.isValid = true;
     this.hide();
