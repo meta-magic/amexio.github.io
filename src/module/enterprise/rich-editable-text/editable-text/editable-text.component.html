@@ -161,9 +161,8 @@
 
   <div style="flex-direction: column;" #richEditableId class="rich-text-editor" contenteditable="true"
     [style.height.%]="textAreaHeight"
-    [textContent]="value" [innerHTML]="richContentMain"
-     (input)="onEditableTextEvent($event)"
-    >
+    [innerHTML]="richContentMain"
+     (input)="onEditableTextEvent()">
 
 
   </div>

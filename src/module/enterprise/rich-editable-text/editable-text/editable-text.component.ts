@@ -92,7 +92,7 @@ export class EditableTextComponent implements AfterViewInit {
     }, 200);
   }
 
-  onEditableTextEvent(event: any) {
+  onEditableTextEvent() {
     this.onHtmlCodeClick();
   }
 

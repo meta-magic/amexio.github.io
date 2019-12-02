@@ -38,9 +38,8 @@ import { AmexioCreativeModule } from '../creative/amexio.creative.module';
 
 import { AmexioFormsModule } from '../forms/amexio.forms.module';
 
-import { AmexioHorizontalTreeComponent } from './tree/horizontal-tree/horizontal-tree.component';
-import { AmexioHorizontalTreeNodeComponent } from './tree/horizontal-tree/horizontal-treenode.component';
-
+import { HorizontalTreeViewNodeComponent } from './tree/horizontalnode.component';
+import { HorizontalTreeViewComponent } from './tree/horizontaltreeview.component';
 export * from '../services/data/common.data.service';
 export * from '../services/script/script.data.service';
 export * from './listbox/listbox.component';
@@ -70,8 +69,8 @@ const DATA_COMPONENTS = [
   AmexioVirtualScrollerComponent,
   AmexioRadioGroupComponent,
   BrowserPanelComponent,
-  AmexioHorizontalTreeNodeComponent,
-  AmexioHorizontalTreeComponent,
+  HorizontalTreeViewNodeComponent,
+  HorizontalTreeViewComponent,
 ];
 
 @NgModule({
