@@ -169,7 +169,7 @@ export class AmexioCheckBoxComponent extends AmexioFormValidator implements Cont
     if (!this.name && this.fieldlabel) {
       this.name = this.fieldlabel.replace(/\s/g, '');
     } else if (!this.name && !this.fieldlabel) {
-      this.name = 'textinput-' + this.getRandomString();
+      this.name = 'checkbox-' + this.getRandomString();
     }
   }
   getRandomString(): string {
