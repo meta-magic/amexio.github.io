@@ -37,7 +37,7 @@ describe('Directive: round-edge', () => {
         fixture = TestBed.createComponent(TestRoundEdgesComponent);
         comp = fixture.componentInstance;
         directiveEl = fixture.debugElement.query(By.directive(RoundEdgesDirective));
-        inputEl = fixture.debugElement.query(By.css('button')) ;
+        inputEl = fixture.debugElement.query(By.css('button'));
         dirIn = directiveEl.injector.get(RoundEdgesDirective);
     });
 
@@ -48,19 +48,21 @@ describe('Directive: round-edge', () => {
 
     it('apply theme-style classic' ,()=>{
       dirIn.themeStyle = 'classic';
-      console.log(inputEl);
       console.log(dirIn);
       fixture.detectChanges();
-      expect(dirIn.themeStyle).toContain('classic');
       expect(inputEl.classes.roundEdgeCommonCss).toBeTruthy();
     });
 
     it('apply theme-style round-edge',()=>{
       dirIn.themeStyle = 'round-edge';
-      console.log(inputEl);
-      console.log(dirIn);
       fixture.detectChanges();
       expect(dirIn.themeStyle).toContain('round-edge');
       expect(inputEl.classes.roundEdgeCommonCss).toBeTruthy();
+    });
+
+    it('apply theme-style not classic',()=>{
+      dirIn.themeStyle = '';
+      fixture.detectChanges();
+      expect(dirIn.themeStyle).not.toContain('classic');
     });
 });
