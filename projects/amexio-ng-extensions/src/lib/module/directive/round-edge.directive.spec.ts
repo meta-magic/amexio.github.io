@@ -21,6 +21,20 @@ import { RoundEdgesDirective } from './round-edge.directive';
 class TestRoundEdgesComponent {
 }
 
+@Component({
+  selector: 'classic-directive',
+  template: `
+
+<amexio-button amexioThemeStyle [theme-style]="'classic'"
+  [label]="'Previous'"
+  [type]="'theme-color'"
+  (onClick)="previous()">
+</amexio-button>
+`
+})
+class TestClassicComponent {
+}
+
 describe('Directive: round-edge', () => {
     let comp: TestRoundEdgesComponent;
     let fixture: ComponentFixture<TestRoundEdgesComponent>;
@@ -29,40 +43,46 @@ describe('Directive: round-edge', () => {
     let directiveEl: any;
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [RoundEdgesDirective, TestRoundEdgesComponent],
+            declarations: [RoundEdgesDirective, 
+              TestRoundEdgesComponent,
+              TestClassicComponent],
             providers: [ ViewContainerRef],
             imports: [AmexioFormsModule],
-
         });
-        fixture = TestBed.createComponent(TestRoundEdgesComponent);
-        comp = fixture.componentInstance;
-        directiveEl = fixture.debugElement.query(By.directive(RoundEdgesDirective));
-        inputEl = fixture.debugElement.query(By.css('button'));
-        dirIn = directiveEl.injector.get(RoundEdgesDirective);
     });
 
     it('defined: directive created',()=>{
-      fixture.detectChanges();
-      expect(directiveEl).toBeTruthy();
+
+      expect(TestBed.createComponent(TestRoundEdgesComponent)).toBeTruthy();
     });
 
     it('apply theme-style classic' ,()=>{
+
+      fixture = TestBed.createComponent(TestClassicComponent);
+      comp = fixture.componentInstance;
+      directiveEl = fixture.debugElement.query(By.directive(RoundEdgesDirective));
+      inputEl = fixture.debugElement.query(By.css('button'));
+      dirIn = directiveEl.injector.get(RoundEdgesDirective);
       dirIn.themeStyle = 'classic';
-      console.log(dirIn);
+
       fixture.detectChanges();
-      expect(inputEl.classes.roundEdgeCommonCss).toBeTruthy();
+
+      expect(dirIn.themeStyle).toContain('classic');
+     // expect(inputEl.classes.roundEdgeCommonCss).toBeTruthy();
     });
 
     it('apply theme-style round-edge',()=>{
+      fixture = TestBed.createComponent(TestRoundEdgesComponent);
+      comp = fixture.componentInstance;
+      directiveEl = fixture.debugElement.query(By.directive(RoundEdgesDirective));
+      inputEl = fixture.debugElement.query(By.css('button'));
+      dirIn = directiveEl.injector.get(RoundEdgesDirective);
       dirIn.themeStyle = 'round-edge';
+
       fixture.detectChanges();
+
       expect(dirIn.themeStyle).toContain('round-edge');
       expect(inputEl.classes.roundEdgeCommonCss).toBeTruthy();
     });
 
-    it('apply theme-style not classic',()=>{
-      dirIn.themeStyle = '';
-      fixture.detectChanges();
-      expect(dirIn.themeStyle).not.toContain('classic');
-    });
 });
