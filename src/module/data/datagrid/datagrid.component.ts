@@ -1123,26 +1123,44 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
           if (this.groupby) {
             this.sortOrderGrpBy(sortOrder);
           } else {
-            this.data.sort((a, b) => {
-              const x = a[sortColDataIndex].toLowerCase();
-              const y = b[sortColDataIndex].toLowerCase();
-              return this.noGrpBySortOrder(sortOrder, x, y);
-            });
+            this.sortDataFunc(sortColDataIndex, sortOrder);
           }
         } else if (this.sortColumn.datatype === 'number') {
-          this.sortOrderByNumber(sortOrder, sortColDataIndex);
+          this.sortOrderByNumber(sortColDataIndex, sortOrder);
         } else if (this.sortColumn.datatype === 'boolean') {
-          this.sortOrderByBoolean(sortOrder, sortColDataIndex);
+          this.sortOrderByBoolean(sortColDataIndex, sortOrder);
         }
       }
     }
     this.renderData();
   }
 
+  sortDataFunc(sortColDataIndex: any, sortOrder: any) {
+    this.data.sort((a, b) => {
+      let x;
+      let y;
+      if (this.sortColumn.dataindex.includes('.')) {
+        x = this.sortInnerFunc(this.sortColumn.dataindex, a).toLowerCase();
+        y = this.sortInnerFunc(this.sortColumn.dataindex, b).toLowerCase();
+      } else {
+        x = a[sortColDataIndex].toLowerCase();
+        y = b[sortColDataIndex].toLowerCase();
+      }
+      return this.noGrpBySortOrder(sortOrder, x, y);
+    });
+  }
+
   sortOrderByBoolean(sortOrder: any, sortColDataIndex: any) {
     this.data.sort((a, b) => {
-      const x = a[sortColDataIndex];
-      const y = b[sortColDataIndex];
+      let x;
+      let y;
+      if (this.sortColumn.dataindex.includes('.')) {
+        x = this.sortInnerFunc(this.sortColumn.dataindex, a);
+        y = this.sortInnerFunc(this.sortColumn.dataindex, b);
+      } else {
+        x = a[sortColDataIndex];
+        y = b[sortColDataIndex];
+      }
       if (sortOrder === 1) {
         return (x === y) ? 0 : x ? -1 : 1;
       }
@@ -1156,8 +1174,15 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   sortOrderByNumber(sortOrder: any, sortColDataIndex: any) {
     if (this.groupby) {
       this.data.sort((a, b) => {
-        const x = a.group;
-        const y = b.group;
+        let x;
+        let y;
+        if (this.sortColumn.dataindex.includes('.')) {
+          x = this.sortInnerFunc(this.sortColumn.dataindex, a);
+          y = this.sortInnerFunc(this.sortColumn.dataindex, b);
+        } else {
+          x = a[sortColDataIndex];
+          y = b[sortColDataIndex];
+        }
 
         if (sortOrder === 2) {
           return y - x;
@@ -1669,5 +1694,21 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     dataForFilter = resultData;
     return dataForFilter;
 
+  }
+
+  sortInnerFunc(temp: string, data: any) {
+    let value;
+    let i = 0;
+    const strarr = temp.split('.');
+    for (i = 0; i < strarr.length; i++) {
+      if (i === 0) {
+        value = data[strarr[i]];
+      } else {
+
+        const tmp = strarr[i];
+        value = value[tmp];
+        return value;
+      }
+    }
   }
 }
