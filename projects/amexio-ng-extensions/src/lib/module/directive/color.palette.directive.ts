@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Directive, ElementRef, Host, Input, OnInit, Optional, Self, ViewContainerRef } from '@angular/core';
-import { ColorPaletteConstants } from './color-palette-constant';
+import { ColorPaletteConstants } from './color.palette.constant';
 
 @Directive({
   selector: '[amexioColorPalette]',

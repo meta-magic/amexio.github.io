@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { notDeepEqual } from 'assert';
 import { AmexioFormsModule } from '../standard/forms/amexio.forms.module';
-import { RoundEdgesDirective } from './round-edge.directive';
+import { RoundEdgesDirective } from './round.edge.directive';
 
 // Simple test component that will not in the actual app
 @Component({

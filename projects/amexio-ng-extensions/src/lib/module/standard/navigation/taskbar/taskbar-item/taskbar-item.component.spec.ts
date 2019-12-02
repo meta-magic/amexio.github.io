@@ -8,7 +8,7 @@ import { AmexioPanelComponent } from '../../../panes/panel/panel.component';
 
 import { AmexioButtonComponent } from '../../../forms/buttons/button.component';
 
-import { ColorPaletteDirective } from '../../../../directive/color-palette.directive';
+import { ColorPaletteDirective } from '../../../../directive/color.palette.directive';
 import { AmexioLabelComponent } from '../../../forms/label/label.component';
 
 import { ToolbarComponent } from '../../../forms/toolbar/toolbar.component';

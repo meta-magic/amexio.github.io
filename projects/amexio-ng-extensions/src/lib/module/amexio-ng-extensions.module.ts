@@ -11,7 +11,7 @@ import { CommonIconComponent } from './base/components/common.icon.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { IconLoaderService } from './services/icon/icon.service';
 
-import { ColorPaletteDirective } from './directive/color-palette.directive';
+import { ColorPaletteDirective } from './directive/color.palette.directive';
 
 export * from './services/data/display.field.service';
 

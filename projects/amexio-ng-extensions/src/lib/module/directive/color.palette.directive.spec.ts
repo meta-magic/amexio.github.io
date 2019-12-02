@@ -1,4 +1,4 @@
-import { ColorPaletteDirective } from './color-palette.directive';
+import { ColorPaletteDirective } from './color.palette.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ViewContainerRef, Component, DebugElement, ElementRef } from '@angular/core';

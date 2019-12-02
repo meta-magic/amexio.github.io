@@ -1,6 +1,6 @@
 
-import { AmexioPaneModule } from './../standard/panes/amexio.pane.module';
-import { AmexioFullScreenDirective } from './full-screen.directive';
+import { AmexioPaneModule } from '../standard/panes/amexio.pane.module';
+import { AmexioFullScreenDirective } from './full.screen.directive';
 import { ViewContainerRef, Component, ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';

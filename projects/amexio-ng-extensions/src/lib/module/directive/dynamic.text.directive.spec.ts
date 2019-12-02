@@ -1,8 +1,10 @@
-import { AmexioPaneModule } from './../standard/panes/amexio.pane.module';
-import { Component, DebugElement, Renderer2, ViewContainerRef, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { trigger } from '@angular/animations';
+import { AmexioPaneModule } from '../standard/panes/amexio.pane.module';
+import { Component, DebugElement, Renderer2,
+  ViewContainerRef, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DynamicTextDirective } from './dynamic-text.directive';
+import { DynamicTextDirective } from './dynamic.text.directive';
 /**
 * Created by Manisha on 15/10/19.
 */
@@ -10,19 +12,19 @@ import { DynamicTextDirective } from './dynamic-text.directive';
 @Component({
   selector: 'amexio-dynamic-text',
   template: `
-    <amexio-label amexio-dynamic-text [placeholder]="placeholderData">
+  <amexio-label amexio-dynamic-text [placeholder]="placeholderData">
     Dear customer,
     Warm Regards,
     regardsBy
-</amexio-label>
+  </amexio-label>
   `
 })
 
 class TestDynamicTextComponent {
+  placeholderData: any;
   constructor() {
-    const placeholderData = {
-      customer: 'John Doe',
-      regardsBy: 'HDFC Manager'
+    this.placeholderData = {
+      regardsBy: 'HDFC Manager',
     };
   }
 }
@@ -32,6 +34,7 @@ describe('Directive: amexio-dynamic-text', () => {
 
   let fixture: ComponentFixture<TestDynamicTextComponent>;
   let inputEl: HTMLElement;
+  let inputDEl: DebugElement;
   let dirIn: any;
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -46,13 +49,17 @@ describe('Directive: amexio-dynamic-text', () => {
     const directiveEl = fixture.debugElement.query(By.directive(DynamicTextDirective));
     dirIn = directiveEl.injector.get(DynamicTextDirective);
     inputEl = fixture.debugElement.query(By.css('amexio-label')).nativeElement as HTMLElement;
+    inputDEl = fixture.debugElement.query(By.css('amexio-label'));
   });
 
   it('defined: directive created', () => {
     expect(comp).toBeTruthy();
   });
 
-  it('applied : ',()=>{
-    console.log(inputEl.innerText);
+  it('applied : ', () => {
+    fixture.detectChanges();
+    //console.log(inputDEl.nativeElement.innerText);
+    expect(inputDEl.nativeElement.innerText).toContain('HDFC Manager');
   });
+
 });

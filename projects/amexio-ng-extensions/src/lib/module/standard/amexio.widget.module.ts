@@ -21,10 +21,10 @@ import { IconLoaderService } from '../services/icon/icon.service';
 import { RouterService } from '../services/routing/routing.service';
 
 import { AmexioNgExtensionsModule } from '../amexio-ng-extensions.module';
-import { DynamicTextDirective } from '../directive/dynamic-text.directive';
-import { AmexioFullScreenDirective } from '../directive/full-screen.directive';
-import { RoundEdgesDirective } from '../directive/round-edge.directive';
-import { RoutedirDirective } from '../directive/router-animation.directive';
+import { DynamicTextDirective } from '../directive/dynamic.text.directive';
+import { AmexioFullScreenDirective } from '../directive/full.screen.directive';
+import { RoundEdgesDirective } from '../directive/round.edge.directive';
+import { RoutedirDirective } from '../directive/router.animation.directive';
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -38,7 +38,7 @@ export * from '../models/day.model';
 export * from '../models/time.model';
 export * from '../utils/time.util';
 export * from '../models/propertygrid.model';
-export * from '../directive/router-animation.directive';
+export * from '../directive/router.animation.directive';
 export * from '../services/routing/routing.service';
 
 @NgModule({

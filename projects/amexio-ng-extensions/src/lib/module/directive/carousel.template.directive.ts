@@ -6,7 +6,7 @@
 
 */
 
-import {Directive, EmbeddedViewRef, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
+import {Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
 @Directive({
   selector: '[amexioTemplate]',
 })
