@@ -4285,6 +4285,7 @@ input:checked + .largeType2ToggleSlider:before {
   color: var(--componentHeaderBGColor); }
 
 .griditemcontainer-header-collapsed {
+  width: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center; }
@@ -5898,12 +5899,16 @@ amexio-homepage-centerpanel .homepage-centerpanel {
     Version : Amexio v5.20 onwards
 *****************************************************************************/
 .rich-first-div {
-  border: 1px solid #ced4da; }
+  border: 1px solid #ced4da !important; }
+
+.rich-first-div-reverse {
+  border: 1px solid #ced4da !important; }
 
 .rich-editor-buttons {
-  background: white; }
+  background: var(--componentBGColor); }
 
 .rich-text-editor {
+  border: 1px solid #ced4da !important;
   background-color: var(--componentBGColor); }
 
 .rich-text-editor::-webkit-scrollbar-track {
@@ -5916,15 +5921,14 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   background-color: var(--componentHeaderBGColor); }
 
 .rich-text-editor {
-  border-radius: 5px;
-  margin: 2px;
-  overflow-x: hidden;
-  padding: 1px; }
+  margin: 10px;
+  flex: 1;
+  padding: unset;
+  border-radius: unset; }
 
 .rich-first-div-reverse {
   flex-direction: column-reverse;
   resize: both;
-  border-radius: 5px;
   overflow-x: hidden;
   position: relative;
   display: flex;
@@ -5932,8 +5936,9 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 5px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px; }
 
 .rich-first-div {
+  border-radius: unset;
+  border: 1px solid lightgray;
   resize: both;
-  border-radius: 5px;
   overflow-x: hidden;
   position: relative;
   display: flex;
@@ -5942,12 +5947,13 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 5px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px; }
 
 .rich-editor-buttons {
-  border: 0;
-  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  margin: 9px 0px;
-  text-align: start;
-  padding: 5px 0px; }
+  width: 98%;
+  padding: unset;
+  margin: 10px;
+  border: unset;
+  box-shadow: unset;
+  border-bottom: none;
+  text-align: start; }
 
 .rich-button {
   width: auto;
@@ -6280,115 +6286,67 @@ option {
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 /** Horizontaltreeview - Visual CSS **/
-.horizontaltreeview-node-label {
-  background-color: var(--componentActiveBGColor);
-  color: var(--componentActiveFontColor); }
+.ui-treenode-connector-line {
+  border-left: 1px solid #c8c8c8; }
 
-.horizontaltreeview-node-label:hover {
-  color: var(--componentHoverFontColor);
-  background-color: var(--componentHoverBGColor); }
+.horizontaltreeview::-webkit-scrollbar-track {
+  background-color: var(--componentBGColor); }
 
-.horizontaltreeview-node-label .tooltiptext {
-  background-color: var(--componentHeaderBGColor);
-  color: var(--componentHeaderFontColor); }
+.horizontaltreeview::-webkit-scrollbar {
+  background-color: var(--componentBGColor); }
+
+.horizontaltreeview::-webkit-scrollbar-thumb {
+  background-color: var(--componentDisabledBGColor); }
+
+.ui-treenode-content:hover {
+  background-color: var(--componentHoverBGColor);
+  color: var(--componentHoverFontColor); }
 
 /** Horizontaltreeview - Structure CSS **/
+.leaf {
+  padding-right: 0 !important; }
+
+.ui-treenode {
+  background-attachment: scroll;
+  background-color: transparent;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat-y;
+  list-style: none outside none;
+  margin: 0;
+  padding: .125em 0 0 0;
+  background: url("line.gif") repeat-x scroll center center transparent;
+  padding: .25em 2.5em; }
+
+.ui-treenode-connector-line {
+  border-left: 1px solid #c8c8c8;
+  width: 1px; }
+
+.ui-treenode-content {
+  padding: 0.571em 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 200px; }
+
+.ui-treenode-connector-table {
+  height: 100%;
+  width: 1px; }
+
+.ui-treenode-children {
+  padding: 0;
+  margin: 0; }
+
 .horizontaltreeview {
   position: relative;
-  overflow: auto; }
+  overflow: auto;
+  /* padding: 0px 40px 20px 0px; */ }
 
-.horizontaltreeview-node {
-  position: relative;
-  margin-left: 250px; }
-  .horizontaltreeview-node:before {
-    content: "";
-    width: 50px;
-    border-top: 2px solid var(--componentActiveBGColor);
-    position: absolute;
-    left: -100px;
-    top: 50%;
-    margin-top: 1px; }
+.horizontaltreeview::-webkit-scrollbar {
+  width: 6px;
+  height: 6px; }
 
-.horizontaltreeview-node-entry {
-  position: relative;
-  min-height: 60px; }
-  .horizontaltreeview-node-entry:before {
-    content: "";
-    height: 100%;
-    border-left: 2px solid var(--componentActiveBGColor);
-    position: absolute;
-    left: -50px; }
-  .horizontaltreeview-node-entry:after {
-    content: "";
-    width: 50px;
-    border-top: 2px solid var(--componentActiveBGColor);
-    position: absolute;
-    left: -50px;
-    top: 50%;
-    margin-top: 1px; }
-  .horizontaltreeview-node-entry:first-child:before {
-    width: 10px;
-    height: 50%;
-    top: 50%;
-    margin-top: 2px;
-    border-radius: 10px 0 0 0; }
-  .horizontaltreeview-node-entry:first-child:after {
-    height: 10px;
-    border-radius: 10px 0 0 0; }
-  .horizontaltreeview-node-entry:last-child:before {
-    width: 10px;
-    height: 50%;
-    border-radius: 0 0 0 10px; }
-  .horizontaltreeview-node-entry:last-child:after {
-    height: 10px;
-    border-top: none;
-    border-bottom: 2px solid var(--componentActiveBGColor);
-    border-radius: 0 0 0 10px;
-    margin-top: -9px; }
-  .horizontaltreeview-node-entry.sole:before {
-    display: none; }
-  .horizontaltreeview-node-entry.sole:after {
-    width: 50px;
-    height: 0;
-    margin-top: 1px;
-    border-radius: 0; }
-
-.horizontaltreeview-node-label {
-  display: block;
-  min-width: 150px;
-  padding: 5px 10px;
-  line-height: 20px;
-  text-align: center;
-  border-radius: 5px;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  margin-top: -15px;
-  cursor: pointer; }
-  .horizontaltreeview-node-label span {
-    padding-right: 5px; }
-
-.horizontaltreeview-node-label {
-  display: flex !important;
-  justify-content: space-between; }
-
-.horizontal-tree-text {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; }
-
-.horizontaltreeview-node-label .tooltiptext {
-  visibility: hidden;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 5px;
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1; }
-
-.horizontaltreeview-node-label:hover .tooltiptext {
-  visibility: visible;
-  margin: 20px 10px; }
+.horizontaltreeview::-webkit-scrollbar-track {
+  margin: 50px 0; }
 
 /****************************************************************************
     Component Name : Itemselector
@@ -8064,7 +8022,8 @@ amexio-accordion > amexio-accordion-tab {
 
 .panel {
   padding: 18px;
-  overflow: auto; }
+  overflow: auto;
+  overflow: inherit !important; }
 
 /** Transparent Styling **/
 .accordion-transparent {
@@ -8351,7 +8310,7 @@ fieldset {
 *****************************************************************************/
 /** steps - Visual CSS **/
 .step-label-highlight {
-  color: var(--componentHeaderFontColor);
+  color: var(--themeSecondaryColor);
   font-weight: bold; }
 
 .stepwizard-step p {
