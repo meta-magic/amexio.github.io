@@ -21,7 +21,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { LinkedInResponse } from '../../../../models/linkedin.response.model';
-import { LoginProvider } from '../../../../models/login.provider';
+import { LoginProvider } from '../../../../models/login.provider.model';
 import { SocialUserInfo } from '../../../../models/social.user.info.model';
 import { ScriptLoadService } from '../../../../services/script/script.load.service';
 import { SocialBaseComponent } from '../social.base.component';

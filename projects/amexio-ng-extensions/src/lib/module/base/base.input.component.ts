@@ -14,7 +14,6 @@
 * limitations under the License.
 */
 
-import { IInputValidator } from './input.validator';
 import { ValueAccessorBaseComponent } from './value-accessor';
 
 export class BaseInput<T> extends ValueAccessorBaseComponent<T> {

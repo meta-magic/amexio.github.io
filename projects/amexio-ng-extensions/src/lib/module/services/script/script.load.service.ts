@@ -17,7 +17,7 @@
  * INFO: THIS SERVICE USED FOR SCRIPT LOADING
  */
 import { Injectable } from '@angular/core';
-import { LoginProvider } from '../../models/login.provider';
+import { LoginProvider } from '../../models/login.provider.model';
 
 @Injectable()
 export class ScriptLoadService {

@@ -22,7 +22,7 @@ import {
 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { AmexioTemplateDirective } from '../../standard/panes/amexio.pane.module';
-import { TitleModel } from './amexio.carouselce.model';
+import { TitleModel } from '../../models/amexio.carouselce.model';
 @Component({
   selector: 'amexio-carousel-ce',
   templateUrl: './amexio.carouselce.component.html',

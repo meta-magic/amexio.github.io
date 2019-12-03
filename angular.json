@@ -27,7 +27,10 @@
           "options": {
             "main": "projects/amexio-ng-extensions/src/test.ts",
             "tsConfig": "projects/amexio-ng-extensions/tsconfig.spec.json",
-            "karmaConfig": "projects/amexio-ng-extensions/karma.conf.js"
+            "karmaConfig": "projects/amexio-ng-extensions/karma.conf.js",
+            "codeCoverageExclude": [
+              "**/*.model.ts"
+            ]
           }
         },
         "lint": {
