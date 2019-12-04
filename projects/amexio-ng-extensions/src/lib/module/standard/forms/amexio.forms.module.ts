@@ -28,7 +28,7 @@ import { AmexioEmailInputComponent } from './emailinput/emailinput.component';
 import { AmexioFileUploadComponent } from './fileupload/fileupload.component';
 import { AmexioFloatingButtonComponent } from './floatingbutton/floatingbutton.component';
 import { AmexioFloatingGroupButtonComponent } from './floatinggroupbutton/floatinggroupbutton.component';
-import { GeolocComponent } from './geolocation/geolocation.component';
+import { GeoLocationComponent } from './geolocation/geolocation.component';
 import { AmexioLabelComponent } from './label/label.component';
 import { AmexioMultipleDatePickerComponent } from './multidatepicker/multidatepicker.component';
 import { AmexioNumberInputComponent } from './numberinput/numberinput.component';
@@ -126,7 +126,7 @@ const FORM_COMPONENTS = [
   DarkmodeComponent,
   AmexioRangeSliderComponent,
   AmexioMultipleDatePickerComponent,
-  GeolocComponent,
+  GeoLocationComponent,
   AmexioInputPatternDirective,
   AmexioDialpadComponent,
   AmexioMultiRangePickerComponent,

@@ -6,7 +6,7 @@ import { FormControl, FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../../../public-api'
 import { AmexioInputHelperComponent } from '../../../base/input.helper.component';
 import { AmexioNumberInputComponent } from './numberinput.component';
-describe('NUMBER INPUT', () => {
+describe('Amexio Number Input Component', () => {
 
   let comp: AmexioNumberInputComponent;
   let fixture: ComponentFixture<AmexioNumberInputComponent>;
@@ -57,6 +57,7 @@ describe('NUMBER INPUT', () => {
     comp.registerOnTouched(fn);
     expect(comp['onTouchedCallback']).toEqual(fn);
   });
+
   it('validate method call allowblank true', (): any => {
     comp.allowblank = true;
     let c: FormControl;
@@ -64,8 +65,9 @@ describe('NUMBER INPUT', () => {
     expect(comp.allowblank).toEqual(true);
     const isValid = comp.allowblank;
     expect(isValid).toEqual(true);
-    return null;
+
   });
+
   it('validate method call allowblank false', () => {
     comp.allowblank = false;
     let c: FormControl;
@@ -90,49 +92,7 @@ describe('NUMBER INPUT', () => {
     expect(comp.isFieldValidate()).toHaveBeenCalled;
     const isValid = comp.allowblank;
     expect(isValid).toEqual(true);
-    return null;
+
   });
 
 });
-  // on focus()
-  // it('on focus()', () => {
-  //   //comp.showToolTip=true;
-  //   let flag = true;
-  //   comp.onFocus(event);
-  //   event.stopPropagation();
-  //   expect(comp.showToolTip).toEqual(flag);
-  // })
-
-  // // On Change()
-  // it('on change()', () => {
-  //   comp.onChangeEv(event);
-  //   event.stopPropagation();
-  // })
-
-  //   // On Input()
-  //   it('on input()', () => {
-  //     comp.onInput(event);
-  //     event.stopPropagation();
-  //     comp.isValid = comp.isFieldValidate();
-  //   })
-
-  // on blur()
-
-  // it('writevalue', () => {
-  //   comp.writeValue(fixture);
-
-  //   expect(comp.value).not.toEqual(comp['innerValue']);
-
-  // })
-
-  // set maxerrormsg
-
-  // set minerrormsg
-  // it('set minerrormsg', () => {
-  //   let testvalue = comp._minerrormsg;
-  //   comp.minerrormsg = testvalue;
-  //   comp.helpInfoMsg="testMin value: <br/>";
-  //   let str = comp.helpInfoMsg + 'Min value: ' + comp.value+ '<br/>';
-  //   expect(comp.helpInfoMsg).toBe(str);
-  // });
-

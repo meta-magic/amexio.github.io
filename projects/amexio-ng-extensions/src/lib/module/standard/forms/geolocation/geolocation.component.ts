@@ -4,7 +4,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
     selector: 'amexio-geolocation',
     templateUrl: './geolocation.component.html',
 })
-export class GeolocComponent implements OnInit {
+export class GeoLocationComponent implements OnInit {
 
     @Output('onSuccess') getlocation: EventEmitter<any> = new EventEmitter<any>();
     @Output('onFailure') onfailure: EventEmitter<any> = new EventEmitter<any>();
