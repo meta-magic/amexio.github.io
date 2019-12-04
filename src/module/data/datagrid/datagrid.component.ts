@@ -625,6 +625,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   setChangeData(httpResponse: any) {
+    this.selectedRows = [];
     this.setSelectedFlag(httpResponse);
     if (this.groupby) {
       this.cloneData = JSON.parse(JSON.stringify(this.data));
