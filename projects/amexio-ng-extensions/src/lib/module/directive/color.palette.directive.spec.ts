@@ -84,6 +84,7 @@ describe('Directive: Color', () => {
   it('should create component', () => {
     const debugEl: HTMLElement = fixture.debugElement.nativeElement;
     const p: HTMLElement = debugEl.querySelector('p');
+    expect(comp).toBeTruthy();
   });
 
 
@@ -110,16 +111,7 @@ describe('Directive: Color', () => {
     dirIn.hostComponent.amexioComponentId = 'amexio-card';
     dirIn.getBGColorStyles(dirIn.hostComponent);
     let c;
-    // navbar = 'amexio-navbar';
-    // static  accordion = 'amexio-accordion';
-    // static  panel = 'amexio-panel';
-    // static  window = 'amexio-window';
-    // static  dialogue = 'amexio-dialogue';
-    // static  grid = 'amexio-grid';
-    // static  box = 'amexio-box';
-    // static  tab = 'amexio-tab';
-    // static banner = 'amexio-banner';
-    // static floatingpanel = 'amexio-floating-panel';
+    
     dirIn.ColorPaletteConstants = { card: c, cardce: c, }
 
     expect(dirIn.ColorPaletteConstants.card).toBeUndefined();

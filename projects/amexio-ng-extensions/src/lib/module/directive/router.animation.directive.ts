@@ -62,6 +62,7 @@ export class RoutedirDirective {
             this.addDynamicClass(this.animationLeft);
         }
     }
+
     addDynamicClass(className: any) {
         setTimeout(() => {
             this.animationClasses.forEach((cls: any) => {

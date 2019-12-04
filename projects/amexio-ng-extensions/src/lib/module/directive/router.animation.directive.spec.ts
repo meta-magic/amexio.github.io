@@ -1,5 +1,5 @@
-import { Component, DebugElement, Renderer2 } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement, Renderer2, Type } from '@angular/core';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouterService } from '../services/routing/routing.service';
@@ -11,18 +11,26 @@ import { RoutedirDirective } from './router.animation.directive';
 @Component({
     selector: 'amexio-route-animation',
     template: `
+    <div>
     <router-outlet amexio-route-animation [style-type]="styleType">
+    </router-outlet>
+    </div>
   `
 })
 class RouterTestComponent {
+
 }
 
 describe('Directive: amexio-route-animation', () => {
     let comp: RouterTestComponent;
     let fixture: ComponentFixture<RouterTestComponent>;
-    let inputEl: DebugElement;
+
     let dirIn: any;
     let routerSer: RouterService;
+    let inputEl: HTMLElement;
+    let inputDEl: DebugElement;
+    let renderer2: Renderer2;
+
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [RoutedirDirective, RouterTestComponent],
@@ -33,15 +41,12 @@ describe('Directive: amexio-route-animation', () => {
         fixture = TestBed.createComponent(RouterTestComponent);
         comp = fixture.componentInstance;
         const directiveEl = fixture.debugElement.query(By.directive(RoutedirDirective));
-        expect(directiveEl).not.toBeNull();
         routerSer = TestBed.get(RouterService);
         dirIn = directiveEl.injector.get(RoutedirDirective);
-        inputEl = fixture.debugElement.query(By.css('input'));
-        // dirIn.themeStyle = 'round-edge';
+        inputEl = fixture.debugElement.query(By.css('div')).nativeElement as HTMLElement;
+        inputDEl = fixture.debugElement.query(By.css('div'));
 
-    });
-
-    it('variables check ', () => {
+ 
         dirIn.slideTop = 'slide-top';
         dirIn.slideBottom = 'slide-bottom';
         dirIn.slideRight = 'slide-right';
@@ -52,153 +57,167 @@ describe('Directive: amexio-route-animation', () => {
         dirIn.animationRight = 'myanislideright';
     });
 
-    it('constructor call and if condition', () => {
-        dirIn.animationClasses = [];
-        dirIn.animationClasses.push(dirIn.animationTop);
-        dirIn.animationClasses.push(dirIn.animationBottom);
-        dirIn.animationClasses.push(dirIn.animationLeft);
-        dirIn.animationClasses.push(dirIn.animationRight);
-        dirIn.routerInstance.routerEvent.subscribe(
-            (router: any) => {
-                if (router) {
-                    router.events.subscribe((event1: any) => {
-                        dirIn.navigationMethod(event1);
-                    });
-                }
-            },
-        );
+    it('should create component', () => {
+        expect(comp).toBeTruthy();
     });
 
-
-    xit('constructor call and else condition', () => {
-        dirIn.animationClasses = [];
-        dirIn.animationClasses.push(dirIn.animationTop);
-        dirIn.animationClasses.push(dirIn.animationBottom);
-        dirIn.animationClasses.push(dirIn.animationLeft);
-        dirIn.animationClasses.push(dirIn.animationRight);
-        dirIn.routerInstance.routerEvent.subscribe(
-            (router: any) => {
-                // router = [];
-                expect(router).toBeNull();
-            },
-        );
-    });
-
-    it('addBottomCss() if method', () => {
+    it('addBottomCss() if method',() => {
+        dirIn.routeAnimation = dirIn.slideBottom;
+        spyOn(dirIn, 'addDynamicClass');
         dirIn.addBottomCss();
-        if (dirIn.routeAnimation === dirIn.slideBottom) {
-            dirIn.addDynamicClass(dirIn.animationBottom);
-        }
+        fixture.detectChanges();
+        expect(dirIn.addDynamicClass).toHaveBeenCalledWith(dirIn.animationBottom);
+
     });
 
     it('addBottomCss() else method', () => {
-        dirIn.addBottomCss();
-        if (dirIn.routeAnimation != dirIn.slideBottom) {
-        }
+        spyOn(dirIn, 'addDynamicClass');
+        fixture.detectChanges();
+        expect(dirIn.addDynamicClass).not.toHaveBeenCalledWith(dirIn.animationBottom);
     });
 
-
-    xit('addTopCss() if method', () => {
+    it('addTopCss() if method', () => {
+        dirIn.routeAnimation = dirIn.slideTop;
+        spyOn(dirIn, 'addDynamicClass');
         dirIn.addTopCss();
-        if (dirIn.routeAnimation === dirIn.slideTop) {
-            dirIn.addDynamicClass(dirIn.animationTop);
-        }
+        fixture.detectChanges();
+        expect(dirIn.addDynamicClass).toHaveBeenCalledWith(dirIn.animationTop);
+
     });
 
-    xit('addTopCss() else method', () => {
-        dirIn.addTopCss();
-        if (dirIn.routeAnimation != dirIn.slideTop) {
-        }
+    it('addTopCss() else method', () => {
+        dirIn.routeAnimation = dirIn.slideTo;
+        spyOn(dirIn, 'addDynamicClass');
+        fixture.detectChanges();
+        expect(dirIn.addDynamicClass).not.toHaveBeenCalledWith(dirIn.animationTop);
+
     });
 
 
     it('addRightCss() if condition', () => {
+        dirIn.routeAnimation = dirIn.slideRight;
+        spyOn(dirIn, 'addDynamicClass');
         dirIn.addRightCss();
-        if (dirIn.routeAnimation === dirIn.slideRight) {
-            dirIn.addDynamicClass(dirIn.animationRight);
-        }
+        fixture.detectChanges();
+
+        expect(dirIn.addDynamicClass).toHaveBeenCalledWith(dirIn.animationRight);
     });
 
     it('addRightCss() else condition', () => {
+        dirIn.routeAnimation = dirIn.slideRigt;
+        spyOn(dirIn, 'addDynamicClass');
         dirIn.addRightCss();
-        if (dirIn.routeAnimation != dirIn.slideRight) {
-        }
+        fixture.detectChanges();
+        expect(dirIn.addDynamicClass).not.toHaveBeenCalledWith(dirIn.animationRight);
     });
 
     it('addLeftCss() if condition', () => {
+        dirIn.routeAnimation = dirIn.slideLeft;
+        spyOn(dirIn, 'addDynamicClass');
         dirIn.addLeftCss();
-        if (dirIn.routeAnimation === dirIn.slideLeft) {
-            dirIn.addDynamicClass(dirIn.animationLeft);
-        }
+        fixture.detectChanges();
+
+        expect(dirIn.addDynamicClass).toHaveBeenCalledWith(dirIn.animationLeft);
     });
 
     it('addLeftCss() else condition', () => {
+        dirIn.routeAnimation = dirIn.slideLef;
+        spyOn(dirIn, 'addDynamicClass');
         dirIn.addLeftCss();
-        if (dirIn.routeAnimation != dirIn.slideLeft) {
-        }
+        fixture.detectChanges();
+
+        expect(dirIn.addDynamicClass).not.toHaveBeenCalledWith(dirIn.animationLeft);
     });
 
 
-    it('addDynamicClass() condition', () => {
-        dirIn.addDynamicClass();
-        setTimeout(() => {
-            fixture = TestBed.createComponent(RouterTestComponent);
-            comp = fixture.componentInstance;
-            const directiveEl = fixture.debugElement.query(By.directive(RoutedirDirective));
-            dirIn = directiveEl.injector.get(RoutedirDirective);
-            dirIn.animationClasses.forEach((cls: any) => {
-                dirIn.renderer.removeClass(dirIn.el.nativeElement.parentNode, cls);
-            });
-            dirIn.renderer.addClass(dirIn.el.nativeElement.parentNode, dirIn.className);
-        }, 0)
-    });
+    it('addDynamicClass() condition', fakeAsync(() => {
+        dirIn.routeAnimation = 'slide-bottom';
+        dirIn.slideBottom = 'slide-bottom';
+        dirIn.animationBottom = 'myanislidebottom';
+        dirIn.addBottomCss();
+
+        renderer2 = fixture.componentRef.injector.get<Renderer2>(Renderer2 as Type<Renderer2>);
+        spyOn(renderer2, 'addClass');
+        tick(500);
+        fixture.detectChanges();
+        fixture.whenRenderingDone().then(() => {
+            expect(renderer2.addClass).toHaveBeenCalled();
+        });
+    }));
 
     it('navigationMethod() if condition slide-left ', () => {
         dirIn.routeAnimation = 'slide-left';
+        spyOn(dirIn, 'addLeftCss');
+
         dirIn.navigationMethod();
+
         expect(dirIn.routeAnimation).toEqual('slide-left');
-        dirIn.addLeftCss();
+        expect(dirIn.addLeftCss).toHaveBeenCalled();
     });
+
     it('navigationMethod() else condition slide-left ', () => {
         dirIn.routeAnimation = 'slide-rift';
+        spyOn(dirIn, 'addLeftCss');
+
         dirIn.navigationMethod();
+
         expect(dirIn.routeAnimation).not.toEqual('slide-left');
+        expect(dirIn.addLeftCss).not.toHaveBeenCalled();
     });
 
     it('navigationMethod() if condition  slide-right', () => {
         dirIn.routeAnimation = 'slide-right';
+        spyOn(dirIn, 'addRightCss');
+
         dirIn.navigationMethod();
+
         expect(dirIn.routeAnimation).toEqual('slide-right');
-        dirIn.addRightCss();
+        expect(dirIn.addRightCss).toHaveBeenCalled();
     });
 
     it('navigationMethod() else condition  slide-right', () => {
         dirIn.routeAnimation = 'slide-rigth';
+        spyOn(dirIn, 'addRightCss');
+
         dirIn.navigationMethod();
+
         expect(dirIn.routeAnimation).not.toEqual('slide-right');
+        expect(dirIn.addRightCss).not.toHaveBeenCalled();
     });
 
     it('navigationMethod() if condition  slide-top', () => {
         dirIn.routeAnimation = 'slide-top';
+        spyOn(dirIn, 'addTopCss');
+
         dirIn.navigationMethod();
+
         expect(dirIn.routeAnimation).toEqual('slide-top');
-        dirIn.addTopCss();
+        expect(dirIn.addTopCss).toHaveBeenCalled();
     });
     it('navigationMethod() else condition  slide-top', () => {
         dirIn.routeAnimation = 'slide-tp';
+        spyOn(dirIn, 'addTopCss');
         dirIn.navigationMethod();
+
         expect(dirIn.routeAnimation).not.toEqual('slide-top');
+        expect(dirIn.addTopCss).not.toHaveBeenCalled();
     });
 
-    xit('navigationMethod() if condition  slide-bottom', () => {
+    it('navigationMethod() if condition  slide-bottom', () => {
         dirIn.routeAnimation = 'slide-bottom';
+        spyOn(dirIn, 'addBottomCss');
+
         dirIn.navigationMethod();
         expect(dirIn.routeAnimation).toEqual('slide-bottom');
-        dirIn.addBottomCss();
+        expect(dirIn.addBottomCss).toHaveBeenCalled();
+
     });
     it('navigationMethod() else condition  slide-bottom', () => {
         dirIn.routeAnimation = 'slide-tp';
+        spyOn(dirIn, 'addBottomCss');
         dirIn.navigationMethod();
         expect(dirIn.routeAnimation).not.toEqual('slide-bottom');
+        expect(dirIn.addBottomCss).not.toHaveBeenCalled();
+
     });
 });
