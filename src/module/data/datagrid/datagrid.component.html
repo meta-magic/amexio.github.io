@@ -187,7 +187,7 @@
               <div class="datatable-col datatable-checkbox-width checkbox-col">
                 <div class="inputgroup">
                   <div class="input-box">
-                    <div (click)="setSelectedRow(row, check)" [class]="row.checkBoxSelectClass" #check>
+                    <div (click)="setSelectedRow(viewRows,row, check)" [class]="row.checkBoxSelectClass" #check>
                       {{((row.checkBoxSelectClass == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((row.checkBoxSelectClass
                       == 'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;' : ''}}
                     </div>

@@ -94,12 +94,13 @@ describe('amexio-datagrid', () => {
     })
     it('setSelectedRow If Check', () => {
         let rowData: any;
+        let viewRows:any;
         let event = {
             classList: {
                 value: 'checkbox active'
             }
         };
-        comp.setSelectedRow(rowData, event);
+        comp.setSelectedRow(viewRows,rowData, event);
         expect(event.classList.value).toEqual(comp.checkDefaultIcon);
         comp.selectedRows.push(rowData);
         event.classList.value = comp.checkBoxActive;
@@ -112,7 +113,8 @@ describe('amexio-datagrid', () => {
                 value: 'checkbox default'
             }
         };
-        comp.setSelectedRow(rowData, event);
+        let viewRows:any;
+        comp.setSelectedRow(viewRows,rowData, event);
         expect(event.classList.value).not.toEqual(comp.checkDefaultIcon);
         const indexOf = comp.selectedRows.indexOf(rowData);
         comp.selectedRows.splice(indexOf, 1);

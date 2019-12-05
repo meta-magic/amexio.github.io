@@ -1048,13 +1048,29 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     }
   }
 
-  setSelectedRow(rowData: any, event: any) {
+  setSelectedRow(viewRows: any, rowData: any, event: any) {
+    if ( this.selectedRows.length === 0 && this.enablecheckbox) {
+      viewRows.forEach((row: any) => {
+        if (event.classList.value === this.checkDefaultIcon && row !== rowData && row.checkBoxSelectClass === this.checkBoxActive) {
+          this.selectedRows.push(row);
+        } else if (row.checkBoxSelectClass === this.checkBoxActive) {
+          this.selectedRows.push(row);
+        }
+      });
+    }
     if (event.classList.value === this.checkDefaultIcon) {
       this.selectedRows.push(rowData);
       event.classList.value = this.checkBoxActive;
     } else {
       const indexOf = this.selectedRows.indexOf(rowData);
       this.selectedRows.splice(indexOf, 1);
+      if (this.enablecheckbox) {
+        viewRows.forEach((row: any) => {
+          if (row === rowData) {
+            row.checkBoxSelectClass = this.checkDefaultIcon;
+          }
+        });
+      }
       event.classList.value = this.checkDefaultIcon;
     }
     this.emitSelectedRows();
