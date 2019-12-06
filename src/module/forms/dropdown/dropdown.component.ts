@@ -392,7 +392,7 @@ description : Set enable / disable popover.
     this.viewData = data.sort((a: any, b: any) => this.displayFieldService.findValue(this.displayfield, a).toLowerCase()
       !== this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ?
       this.displayFieldService.findValue(this.displayfield, a).toLowerCase() <
-      this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ? -1 : 1 : 0);
+        this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ? -1 : 1 : 0);
     this.filteredOptions = this.viewData;
     this.generateIndex(this.filteredOptions);
 
@@ -401,7 +401,7 @@ description : Set enable / disable popover.
     this.viewData = data.sort((a: any, b: any) => this.displayFieldService.findValue(this.displayfield, a).toLowerCase()
       !== this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ?
       this.displayFieldService.findValue(this.displayfield, a).toLowerCase() >
-      this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ? -1 : 1 : 0);
+        this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ? -1 : 1 : 0);
     this.filteredOptions = this.viewData;
     this.generateIndex(this.filteredOptions);
   }
@@ -421,20 +421,42 @@ description : Set enable / disable popover.
           if (row.checked) {
             optionsChecked.push(row[this.valuefield]);
             this.multiselectValues.push(row);
-            preSelectedMultiValues === '' ? preSelectedMultiValues +=
-            this.displayFieldService.findValue(this.displayfield, row) : preSelectedMultiValues += ', ' +
-            this.displayFieldService.findValue(this.displayfield, row);
+            preSelectedMultiValues === '' ? preSelectedMultiValues += this.displayFieldService.findValue(this.displayfield, row)
+              : preSelectedMultiValues += ', ' + this.displayFieldService.findValue(this.displayfield, row);
           }
         } else {
           row['checked'] = false;
         }
-
       });
-      this.displayValue = this.setMultiSelect();
+      this.bindData();
       this.onMultiSelect.emit(this.multiselectValues);
     }
   }
-
+  bindData() {
+    if (this.value && this.multiselect) {
+      this.bindMultiselectModel();
+    } else {
+      this.displayValue = this.setMultiSelect();
+    }
+  }
+  bindMultiselectModel() {
+    if (this.value && this.multiselect && this.viewData.length > 0) {
+      this.bindMultiSelectModelData(this.value);
+    }
+  }
+  bindMultiSelectModelData(valueArray: any[]) {
+    let preSelectedValues = '';
+    this.viewData.forEach((row: any) => {
+      valueArray.forEach((valueData: any) => {
+        if (row[this.valuefield] === valueData) {
+          row['checked'] = true;
+          preSelectedValues === '' ? preSelectedValues += this.displayFieldService.findValue(this.displayfield, row) : preSelectedValues += ', ' +
+            this.displayFieldService.findValue(this.displayfield, row);
+        }
+      });
+    });
+    this.displayValue = preSelectedValues;
+  }
   setUserSelection() {
     // Set user selection
     if (this.innerValue != null) {
@@ -519,11 +541,18 @@ description : Set enable / disable popover.
   setMultiSelect() {
     this.setMultiSelectData();
     let multiselectDisplayString: any = '';
+    let multiselectValueModel: any = '';
     this.multiselectValues.forEach((row: any) => {
       multiselectDisplayString === '' ? multiselectDisplayString +=
-      this.displayFieldService.findValue(this.displayfield, row) : multiselectDisplayString += ', '
-      + this.displayFieldService.findValue(this.displayfield, row);
+        this.displayFieldService.findValue(this.displayfield, row) : multiselectDisplayString += ', '
+        + this.displayFieldService.findValue(this.displayfield, row);
     });
+    this.multiselectValues.forEach((row: any) => {
+      multiselectValueModel === '' ? multiselectValueModel +=
+        this.displayFieldService.findValue(this.valuefield, row) : multiselectValueModel += ', '
+        + this.displayFieldService.findValue(this.valuefield, row);
+    });
+    this.value = multiselectValueModel;
     if (this.multiselectValues.length > 0) {
       return multiselectDisplayString;
     } else {
@@ -678,7 +707,7 @@ description : Set enable / disable popover.
     }
     if (this.showToolTip) {
       this.showToolTip = !this.showToolTip;
-   }
+    }
     this.onTouchedCallback();
     this.onBlur.emit();
   }
@@ -700,6 +729,9 @@ description : Set enable / disable popover.
   writeValue(value: any) {
     if (value != null) {
       this.writeChangedValue(value);
+      if (this.value && this.multiselect) {
+        this.bindMultiselectModel();
+      }
     } else {
       this.innerValue = '';
       if (this.allowblank) {
