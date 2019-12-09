@@ -3,31 +3,45 @@
         *ngIf="!inlineDatepicker" #rootDiv>
 
 
-        <label  *ngIf="hasLabel">
+        <label *ngIf="hasLabel">
             {{fieldlabel}}
         </label>
 
         <ng-container *ngIf="datepicker && !timepicker">
-            <input tabindex="-1" type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
+             <input tabindex="-1" type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
                 [required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)"
                 class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder"
             />
         </ng-container>
 
-        <ng-container *ngIf="timepicker">
-            <input type="text" [(ngModel)]="selectedDate" value="{{selectedDate|date:dateformat}} {{hrs + ' : ' + min}}" [attr.disabled]="disabled ? true: null"
+        <ng-container *ngIf="timepicker && !datepicker">
+             <input type="text" [(ngModel)]="formatedSelectedDate" value="{{selectedDate|date:dateformat}} {{hrs + ' : ' + min}}" [attr.disabled]="disabled ? true: null"
+                [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (input)="onInput($event)"
+                (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder"
+            />
+        </ng-container>
+
+        <ng-container *ngIf="datepicker && timepicker">
+            <input type="text" [(ngModel)]="formatedSelectedDate" value="{{selectedDate|date:dateformat}}" [attr.disabled]="disabled ? true: null"
                 [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (input)="onInput($event)"
                 (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder"
             />
         </ng-container>
 
         <div class="drodown-caret-down" [ngStyle]="{'cursor':disabled ? 'not-allowed' : 'pointer'}" (click)="openPicker(rootDiv)">
-            <ng-container *ngIf="timepicker">
+            <ng-container *ngIf="timepicker && !datepicker">
                 <span tabindex="1" (keyup.enter)="openPicker(rootDiv)" aria-label="timepicker push button">
                     <amexio-c-icon key="datepicker-clock-icon"></amexio-c-icon>
                 </span>
             </ng-container>
-            <ng-container *ngIf="!timepicker">
+            <ng-container *ngIf="!timepicker && datepicker">
+                <span>
+                    <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
+                </span>
+
+            </ng-container>
+
+            <ng-container *ngIf="timepicker && datepicker">
                 <span>
                     <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
                 </span>
@@ -112,9 +126,12 @@
             </div>
         </span>
         <!--datepicker ends  -->
-        <table  aria-describedby="table" role="none" aria-label="timepicker window opened" tabindex="1" class="table" [ngStyle]="{'display': timepicker ? 'block' : 'none'}"
-            style="cursor : pointer;text-align: center;padding: 5px;">
-            <!--if picker is true-->
+        <!-- <table  aria-describedby="table" role="none" aria-label="timepicker window opened" tabindex="1" class="table" [ngStyle]="{'display': timepicker ? 'flex' : 'none'}"
+            style="cursor : pointer;text-align: center;padding: 5px; display: flex; flex-direction: row; justify-content: space-around">
+             <tr style=" display: flex; flex-direction: row; justify-content: center;">
+                <th>HH</th>
+                <th>MM</th>
+              </tr>
             <tr style="padding: 10px;">
                 <td colspan="2"></td>
                 <td tabindex="1" aria-label="increment hour push button" (keyup.enter)="plus('hrs', $event)" (click)="plus('hrs', $event);">&#9650;</td>
@@ -139,8 +156,37 @@
                 </td>
             </tr>
 
-        </table>
+        </table> -->
 
+        <!-- new time picker format -->
+        <span aria-describedby="table" role="none" aria-label="timepicker window opened" 
+        tabindex="1" class="table" [ngStyle]="{'display': timepicker ? 'flex' : 'none'}"
+            (click)="onTimeClick($event)" style="cursor : pointer; 
+            text-align: center;padding: 5px;
+        display: flex; flex-direction: row; justify-content: space-around">
+            <amexio-row>
+                <amexio-column [size]="1">
+
+                </amexio-column>
+                <amexio-column [size]="5">
+                    <amexio-dropdown [(ngModel)]="hrs" [search]="true" 
+                    [field-label]="'HH'" [display-field]="'hr'" 
+                    [value-field]="'hr'" [data]="hrsArr"
+                        (onSingleSelect)="onHrsMinSelect($event)">
+                    </amexio-dropdown>
+                </amexio-column>
+                <amexio-column [size]="5">
+                    <amexio-dropdown [(ngModel)]="min" [search]="true" 
+                    [field-label]="'MM'" [display-field]="'min'" 
+                    [value-field]="'min'" [data]="minArr"
+                        (onSingleSelect)="onHrsMinSelect($event)">
+                    </amexio-dropdown>
+                </amexio-column>
+                <amexio-column [size]="1">
+
+                </amexio-column>
+            </amexio-row>
+        </span>
         <!--dropdown datepicker -->
         <div [ngStyle]="positionClass" class="datedropdown" *ngIf="drop && !timepicker">
 
@@ -204,19 +250,3 @@
 
                         </ul>
                     </span>
-
-                </span>
-            </div>
-            <div class="btndiv1">
-                <span class="dropbtnspan">
-                    <button tabindex="1" role="button" [attr.aria-pressed]="okispressed" (click)="navigateDropdown()" class="datedropbtn">
-                        ok
-                    </button>
-                    <button tabindex="1" role="button" [attr.aria-pressed]="cancelispressed" class="datedropbtn" (click)="negateDrop()">
-                        cancel
-                    </button>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>

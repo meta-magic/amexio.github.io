@@ -214,8 +214,10 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   selectedDate: any;
   hostFlag = false;
   dateModel: any;
+  dateFormat2 = 'MMM d, y, h:mm';
   isValid: boolean;
   roundedgeclass: string;
+  actualDate: Date;
   @Output() isComponentValid: any = new EventEmitter<any>();
   backArrowFlag = false;
   forwardArrowFlag = false;
@@ -223,7 +225,10 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   min: number;
   viewmode: string;
   okispressed = false;
+  formatedSelectedDate: string;
   cancelispressed = false;
+  hrsArr: any[] = [];
+  minArr: any[] = [];
   // The internal dataviews model
   private innerValue: any = '';
   // Placeholders for the callbacks which are later provided
@@ -238,6 +243,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.maxDate = '';
     this.elementId = new Date().getTime() + '';
     this.selectedDate = new Date();
+    this.setFormatedDate(this.selectedDate);
     this.commonDeclaration();
     this.daysTitle = [];
     this.daysArray = [];
@@ -248,6 +254,32 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.createDaysForCurrentMonths(this.currrentDate);
     this.monthList1.forEach((tmpElement: any) => {
     });
+    this.hrsArr = [
+      { hr: '0' }, { hr: '1' }, { hr: '2' }, { hr: '3' },
+      { hr: '4' }, { hr: '5' }, { hr: '6' }, { hr: '7' },
+      { hr: '8' }, { hr: '9' }, { hr: '10' }, { hr: '11' },
+      { hr: '12' }, { hr: '13' }, { hr: '14' }, { hr: '15' },
+      { hr: '16' }, { hr: '17' }, { hr: '18' }, { hr: '19' },
+      { hr: '20' }, { hr: '21' }, { hr: '22' }, { hr: '23' },
+    ];
+    this.minArr = [
+      { min: '0' }, { min: '1' }, { min: '2' }, { min: '3' },
+      { min: '4' }, { min: '5' }, { min: '6' }, { min: '7' },
+      { min: '8' }, { min: '9' }, { min: '10' }, { min: '11' },
+      { min: '12' }, { min: '13' }, { min: '14' }, { min: '15' },
+      { min: '16' }, { min: '17' }, { min: '18' }, { min: '19' },
+      { min: '20' }, { min: '21' }, { min: '22' }, { min: '23' },
+      { min: '24' }, { min: '25' }, { min: '26' }, { min: '27' },
+      { min: '28' }, { min: '29' }, { min: '30' }, { min: '31' },
+      { min: '31' }, { min: '32' }, { min: '33' }, { min: '34' },
+      { min: '35' }, { min: '36' }, { min: '37' }, { min: '38' },
+      { min: '39' }, { min: '40' }, { min: '41' }, { min: '42' },
+      { min: '43' }, { min: '44' }, { min: '45' }, { min: '46' },
+      { min: '47' }, { min: '48' }, { min: '49' }, { min: '50' },
+      { min: '51' }, { min: '52' }, { min: '53' }, { min: '54' },
+      { min: '55' }, { min: '56' }, { min: '57' }, { min: '58' },
+      { min: '59' },
+    ];
   }
   ngOnInit() {
     if (this.inlineDatepicker) {
@@ -256,9 +288,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
     this.isValid = !this.required;
     this.isComponentValid.emit(!this.required);
-    if (this.dateformat != null) {
+    if ((this.timepicker) && (this.datepicker)) {
+      this.dateformat = this.dateFormat2;
+    }
+    if (this.dateformat === null) {
       this.dateformat = 'dd/MM/yyyy';
     }
+
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
       this.minMaxDateFound();
     }  // main if ends
@@ -273,6 +309,27 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.disableMinMaxYear(element, min, max);
       });
     }
+  }
+
+  setFormatedDate(sdate: Date) {
+    const fullMonthName = this.getFullMonthName(sdate);
+    const formatedMonthName = this.getFormatedMonth(fullMonthName);
+
+    const hrs = sdate.getHours();
+    const min = sdate.getMinutes();
+    const yr = sdate.getFullYear();
+    const day = sdate.getDate();
+
+    const ret = formatedMonthName + ' ' + day.toString() + ',  '
+      + yr.toString() + ',' + ' ' + (hrs % 12).toString() + ' : ' +
+      min.toString() + ' ' + ((hrs < 12) ? 'AM' : 'PM');
+    // return ret;
+    this.formatedSelectedDate = ret;
+    this.actualDate = sdate;
+  }
+
+  getFormatedMonth(monthName: string) {
+    return monthName[0] + monthName[1] + monthName[2];
   }
 
   private initDaysTitle() {
@@ -357,6 +414,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.selectedDate = dateObj.date;
       this.selectedDate.setHours(this.hrs);
       this.selectedDate.setMinutes(this.min);
+      this.setFormatedDate(this.selectedDate);
       this.resetSelection(dateObj.date);
       this.dateModel = this.selectedDate;
       this.value = this.selectedDate;
@@ -392,6 +450,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         const mins = parseInt(timeValue[1].trim(), 10);
         this.selectedDate.setHours(hrs);
         this.selectedDate.setMinutes(mins);
+        this.setFormatedDate(this.selectedDate);
         this.hrs = hrs;
         this.min = mins;
         this.value = this.selectedDate;
@@ -518,6 +577,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       });
     });
     this.selectedDate = this.currrentDate;
+    this.setFormatedDate(this.selectedDate);
     this.dateModel = this.selectedDate;
     this.value = this.selectedDate;
     this.innerValue = '';
@@ -538,6 +598,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
     this.selectedDate.setHours(this.hrs);
     this.selectedDate.setMinutes(this.min);
+    this.setFormatedDate(this.selectedDate);
     this.value = this.selectedDate;
     this.isValid = true;
     this.isComponentValid.emit(true);
@@ -560,12 +621,29 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
     this.selectedDate.setHours(this.hrs);
     this.selectedDate.setMinutes(this.min);
+    this.setFormatedDate(this.selectedDate);
     this.value = this.selectedDate;
     this.isValid = true;
     this.isComponentValid.emit(true);
     this.change.emit(this.value);
     event.stopPropagation();
   }
+  onHrsMinSelect(event: any) {
+    this.selectedDate.setHours(this.hrs);
+    this.selectedDate.setMinutes(this.min);
+    this.setFormatedDate(this.selectedDate);
+    this.value = this.selectedDate;
+    this.isValid = true;
+    this.isComponentValid.emit(true);
+    this.change.emit(this.formatedSelectedDate);
+    event.stopPropagation();
+  }
+
+  onNgChange() {
+    this.change.emit(this.formatedSelectedDate);
+
+  }
+
   // get accessor
   get value(): any {
     return this.innerValue;
@@ -608,6 +686,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.dateModel = this.innerValue;
       this.currrentDate = this.dateModel;
       this.selectedDate = this.currrentDate;
+      this.setFormatedDate(this.selectedDate);
       this.createDaysForCurrentMonths(this.dateModel);
       if (this.required) {
         this.isValid = true;
@@ -644,6 +723,9 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
 
   openPicker(elem: any) {
+    if (this.datepicker && this.timepicker) {
+      this.setSelectedDate();
+    }
     this.inputtabindex = -1;
     this.daystabindex = 1;
     if (this.disabled === false) {
@@ -667,6 +749,10 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
 
   }
 
+  setSelectedDate() {
+    // form new Date frm bits
+    this.selectedDate = this.actualDate;
+  }
   setFocus() {
     setTimeout(() => {
       // focus code starts
@@ -783,10 +869,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     if (this.yearNo != null && this.monthNo != null) {
       this.selectedDate.setFullYear(this.yearNo);
       this.selectedDate.setMonth(this.monthNo);
+      this.setFormatedDate(this.selectedDate);
     } else if (this.yearNo != null && this.monthNo === null) {
       this.selectedDate.setFullYear(this.yearNo);
+      this.setFormatedDate(this.selectedDate);
     } else if (this.yearNo === null && this.monthNo != null) {
       this.selectedDate.setMonth(this.monthNo);
+      this.setFormatedDate(this.selectedDate);
     }
     this.drop = false;
     this.daysArray = [];
@@ -1350,4 +1439,9 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
   }
 
+  onTimeClick(event: any) {
+    this.showToolTip = true;
+    this.dropdownstyle = { visibility: 'visible' };
+    event.stopPropagation();
+  }
 }
