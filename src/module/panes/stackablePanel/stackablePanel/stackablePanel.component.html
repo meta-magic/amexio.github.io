@@ -1,9 +1,11 @@
 <div style="padding-bottom: 5px" >
+  <ng-container *ngIf = "showbtn">
   <amexio-button style="float: right;"
         [label]="text"
         [type]="'theme-color'"
         (onClick)="showAll()">
   </amexio-button>
-  <h2> {{panelName}} ({{totalCount}})</h2>
+  </ng-container>
+  <h2 *ngIf = "panelName.length > 0"> {{panelName}} ({{totalCount}})</h2>
 <ng-content></ng-content>
 </div>

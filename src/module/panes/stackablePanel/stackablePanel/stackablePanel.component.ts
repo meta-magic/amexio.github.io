@@ -11,7 +11,8 @@ export class StackablePanelComponent implements AfterContentInit {
   public text = 'Show All';
   expand = true;
   anyExpand = false;
-  @Input('panel-name') panelName = 'Comments';
+  @Input('panel-name') panelName = '';
+  @Input('show-button')showbtn: boolean;
   show = false;
 
   @ContentChildren(StackableItemComponent) groups: QueryList<StackableItemComponent>;
