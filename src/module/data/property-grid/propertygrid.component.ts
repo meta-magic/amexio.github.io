@@ -12,6 +12,8 @@ export class PropertyGridComponent {
 
     @Input('has-border') hasBorder = false;
 
+    @Input() height: any;
+
     @Input('has-colon') hasColon = false;
 
     @Input('enable-key-bold') enableKeyBold = false;
