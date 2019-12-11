@@ -36,7 +36,8 @@
                             <div *ngIf="tabnode.icon" class="tablecol">
                                 <amexio-c-icon *ngIf="tabnode.icon" [customclass]="tabnode.icon"></amexio-c-icon>
                             </div>
-                            <div class="tablecol">
+                           
+                            <div  [ngClass]="{'tablecoltitle':tabnode.icon,'tablecol':!tabnode.icon }">
                                 {{tabnode.title}}
                             </div>
                             <div *ngIf="tabnode.closable" class="tablecol">

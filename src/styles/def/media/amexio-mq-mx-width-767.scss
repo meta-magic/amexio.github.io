@@ -428,3 +428,19 @@
         height: auto !important;
      }
    }
+
+   /************************************************************************/
+
+
+/*        Tab Media-Q COMPONENT         */
+
+
+/************************************************************************/
+
+
+@media only screen and (max-width: 767px) {
+
+    .table1 .tablerow .tablecoltitle{
+        display: none;
+   }
+}

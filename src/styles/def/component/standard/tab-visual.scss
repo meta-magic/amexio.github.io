@@ -280,6 +280,13 @@ $amexioColorPink: #FF69B4;
     vertical-align: middle;
 }
 
+.table1 .tablerow .tablecoltitle {
+    display: table-cell;
+    padding-right: 5px;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+
 .table1:focus{
     background-color: $tabFocusBGColor;
     color: $tabFocusColor;
