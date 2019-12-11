@@ -1,7 +1,9 @@
 <div role="radiogroup" [attr.name]="name"  attr.aria-labelledby="{{componentId}}" [attr.aria-disabled]="disabled"
   [attr.aria-required]="!allowblank" class="inputgroup from-group">
   <div *ngIf="hasLabel">
-    <legend style="margin-bottom: .6rem; margin-top: 5px;" id="{{componentId}}">{{fieldlabel}}</legend>
+    <legend style="margin-bottom: .6rem; margin-top: 5px;" id="{{componentId}}">{{fieldlabel}}     <ng-container *ngIf="!allowblank">
+      <span style="color: red">*</span>
+  </ng-container></legend>
   </div>
 
   <ng-container *ngIf="horizontal">
