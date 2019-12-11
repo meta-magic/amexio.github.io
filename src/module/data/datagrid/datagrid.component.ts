@@ -1143,9 +1143,9 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
             this.sortDataFunc(sortColDataIndex, sortOrder);
           }
         } else if (this.sortColumn.datatype === 'number') {
-          this.sortOrderByNumber(sortColDataIndex, sortOrder);
+          this.sortOrderByNumber(sortOrder, sortColDataIndex);
         } else if (this.sortColumn.datatype === 'boolean') {
-          this.sortOrderByBoolean(sortColDataIndex, sortOrder);
+          this.sortOrderByBoolean(sortOrder, sortColDataIndex);
         }
       }
     }
@@ -1191,15 +1191,8 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   sortOrderByNumber(sortOrder: any, sortColDataIndex: any) {
     if (this.groupby) {
       this.data.sort((a, b) => {
-        let x;
-        let y;
-        if (this.sortColumn.dataindex.includes('.')) {
-          x = this.sortInnerFunc(this.sortColumn.dataindex, a);
-          y = this.sortInnerFunc(this.sortColumn.dataindex, b);
-        } else {
-          x = a[sortColDataIndex];
-          y = b[sortColDataIndex];
-        }
+        const x = a.group;
+        const y = b.group;
 
         if (sortOrder === 2) {
           return y - x;
@@ -1210,8 +1203,16 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
       });
     } else {
       this.data.sort((a, b) => {
-        const x = a[sortColDataIndex];
-        const y = b[sortColDataIndex];
+        let x;
+        let y;
+        if (this.sortColumn.dataindex.includes('.')) {
+          x = this.sortInnerFunc(this.sortColumn.dataindex, a);
+          y = this.sortInnerFunc(this.sortColumn.dataindex, b);
+        } else {
+          x = a[sortColDataIndex];
+          y = b[sortColDataIndex];
+        }
+
         if (sortOrder === 2) {
           return y - x;
         } else {
