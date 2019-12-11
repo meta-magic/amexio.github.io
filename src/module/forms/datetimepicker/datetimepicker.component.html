@@ -5,33 +5,31 @@
 
         <label *ngIf="hasLabel">
             {{fieldlabel}}
+            <ng-container *ngIf="required">
+                <span style="color: red">*</span>
+            </ng-container>
+
         </label>
 
         <ng-container *ngIf="datepicker && !timepicker">
-             <input tabindex="-1" type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
+            <input tabindex="-1" type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
                 [required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)"
                 class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder"
             />
         </ng-container>
 
         <ng-container *ngIf="timepicker && !datepicker">
-             <input type="text" [ngModel]="selectedDate | date: 'medium'" 
-             (ngModelChange)="selectedDate=$event"
-             value="{{selectedDate|date:dateformat}} {{hrs + ' : ' + min}}" [attr.disabled]="disabled ? true: null"
-                [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (input)="onInput($event)"
-                (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder"
-            />
+            <input type="text" [ngModel]="selectedDate | date: 'medium'" (ngModelChange)="selectedDate=$event" value="{{selectedDate|date:dateformat}} {{hrs + ' : ' + min}}"
+                [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)"
+                (input)="onInput($event)" (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
+                [attr.placeholder]="placeholder" />
         </ng-container>
 
         <ng-container *ngIf="datepicker && timepicker">
-            <input type="text" 
-            [ngModel]="selectedDate | date: 'medium'" 
-            (ngModelChange)="selectedDate=$event"
-            value="{{selectedDate|date:dateformat}}" 
-            [attr.disabled]="disabled ? true: null"
-                [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (input)="onInput($event)"
-                (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder"
-            />
+            <input type="text" [ngModel]="selectedDate | date: 'medium'" (ngModelChange)="selectedDate=$event" value="{{selectedDate|date:dateformat}}"
+                [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)"
+                (input)="onInput($event)" (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
+                [attr.placeholder]="placeholder" />
         </ng-container>
 
         <div class="drodown-caret-down" [ngStyle]="{'cursor':disabled ? 'not-allowed' : 'pointer'}" (click)="openPicker(rootDiv)">
@@ -165,8 +163,7 @@
         </table> -->
 
         <!-- new time picker format -->
-        <span aria-describedby="table" role="none" aria-label="timepicker window opened" 
-        tabindex="1" class="table" [ngStyle]="{'display': timepicker ? 'flex' : 'none'}"
+        <span aria-describedby="table" role="none" aria-label="timepicker window opened" tabindex="1" class="table" [ngStyle]="{'display': timepicker ? 'flex' : 'none'}"
             (click)="onTimeClick($event)" style="cursor : pointer; 
             text-align: center;padding: 5px;
         display: flex; flex-direction: row; justify-content: space-around">
@@ -175,16 +172,12 @@
 
                 </amexio-column>
                 <amexio-column [size]="5">
-                    <amexio-dropdown [(ngModel)]="hrs" [search]="true" 
-                    [field-label]="'HH'" [display-field]="'hr'" 
-                    [value-field]="'hr'" [data]="hrsArr"
+                    <amexio-dropdown [(ngModel)]="hrs" [search]="true" [field-label]="'HH'" [display-field]="'hr'" [value-field]="'hr'" [data]="hrsArr"
                         (onSingleSelect)="onHrsMinSelect($event)">
                     </amexio-dropdown>
                 </amexio-column>
                 <amexio-column [size]="5">
-                    <amexio-dropdown [(ngModel)]="min" [search]="true" 
-                    [field-label]="'MM'" [display-field]="'min'" 
-                    [value-field]="'min'" [data]="minArr"
+                    <amexio-dropdown [(ngModel)]="min" [search]="true" [field-label]="'MM'" [display-field]="'min'" [value-field]="'min'" [data]="minArr"
                         (onSingleSelect)="onHrsMinSelect($event)">
                     </amexio-dropdown>
                 </amexio-column>
@@ -256,3 +249,19 @@
 
                         </ul>
                     </span>
+
+                </span>
+            </div>
+            <div class="btndiv1">
+                <span class="dropbtnspan">
+                    <button tabindex="1" role="button" [attr.aria-pressed]="okispressed" (click)="navigateDropdown()" class="datedropbtn">
+                        ok
+                    </button>
+                    <button tabindex="1" role="button" [attr.aria-pressed]="cancelispressed" class="datedropbtn" (click)="negateDrop()">
+                        cancel
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
