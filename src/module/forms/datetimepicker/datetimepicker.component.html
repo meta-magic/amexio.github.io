@@ -5,7 +5,7 @@
 
         <label *ngIf="hasLabel">
             {{fieldlabel}}
-            <ng-container *ngIf="required">
+            <ng-container *ngIf="fieldlabel != '' && required">
                 <span style="color: red">*</span>
             </ng-container>
 

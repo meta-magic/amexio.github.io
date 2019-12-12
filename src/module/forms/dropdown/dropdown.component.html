@@ -2,9 +2,9 @@
 
   <label id="fieldlabel" for="input" *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
-    <ng-container *ngIf="!allowblank">
+    <ng-container *ngIf="fieldlabel != '' && !allowblank">
       <span style="color: red">*</span>
-  </ng-container>
+    </ng-container>
   </label>
 
   <input type="hidden" [ngModel]="value" (ngModelChange)="onChange($event)" #inp="ngModel" />

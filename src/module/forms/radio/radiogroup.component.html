@@ -1,35 +1,24 @@
-<div role="radiogroup" [attr.name]="name"  attr.aria-labelledby="{{componentId}}" [attr.aria-disabled]="disabled"
-  [attr.aria-required]="!allowblank" class="inputgroup from-group">
+<div role="radiogroup" [attr.name]="name" attr.aria-labelledby="{{componentId}}" [attr.aria-disabled]="disabled" [attr.aria-required]="!allowblank"
+  class="inputgroup from-group">
   <div *ngIf="hasLabel">
-    <legend style="margin-bottom: .6rem; margin-top: 5px;" id="{{componentId}}">{{fieldlabel}}     <ng-container *ngIf="!allowblank">
-      <span style="color: red">*</span>
-  </ng-container></legend>
+    <legend style="margin-bottom: .6rem; margin-top: 5px;" id="{{componentId}}">{{fieldlabel}}
+      <ng-container *ngIf="fieldlabel != '' && !allowblank">
+        <span style="color: red">*</span>
+      </ng-container>
+    </legend>
   </div>
 
   <ng-container *ngIf="horizontal">
     <ng-container *ngFor="let rData of data let index=index">
-      <label for="{{name+rData[displayfield]+index}}" 
-      [attr.aria-checked]="value" 
-      [attr.aria-disabled]="rData.disabled"
-     
-        class="input-box-container" style="padding-bottom:0px !important; margin: 5px !important" (click)="onClick(rData, $event)"
-        [ngClass]="{'disable-component' : rData.disabled || disabled}">
+      <label for="{{name+rData[displayfield]+index}}" [attr.aria-checked]="value" [attr.aria-disabled]="rData.disabled" class="input-box-container"
+        style="padding-bottom:0px !important; margin: 5px !important" (click)="onClick(rData, $event)" [ngClass]="{'disable-component' : rData.disabled || disabled}">
         {{rData[displayfield]}}
 
-        <input [attr.tabindex]="disabled ? -1 : 1"
-        style="top:0; left:0" id="{{name+rData[displayfield]+index}}"
-         type="radio" 
+        <input [attr.tabindex]="disabled ? -1 : 1" style="top:0; left:0" id="{{name+rData[displayfield]+index}}" type="radio" [required]="!allowblank"
+          [attr.name]="name" [value]="rData?.selected ? rData[valuefield] : rData[valuefield] " [attr.disabled]="rData?.disabled ? true: null"
+          [(ngModel)]="value" (focus)="onFocus()" (blur)="onBlur()" [checked]="(value === rData[valuefield] || rData.selected)">
 
-          [required]="!allowblank"
-           [attr.name]="name" 
-           [value]="rData?.selected ? rData[valuefield] : rData[valuefield] "
-          [attr.disabled]="rData?.disabled ? true: null" 
-          [(ngModel)]="value"
-          (focus)="onFocus()"
-          (blur)="onBlur()"
-          [checked]="(value === rData[valuefield] || rData.selected)">
-
-        <span class="input-box-radiobox-label" [ngClass]="{'focusOnCheckbox':tabFocus}" ></span>
+        <span class="input-box-radiobox-label" [ngClass]="{'focusOnCheckbox':tabFocus}"></span>
       </label>
     </ng-container>
   </ng-container>
@@ -37,15 +26,11 @@
   <ng-container *ngIf="!horizontal">
     <ng-container *ngFor="let rData of data let index=index">
       <div>
-        <label for="{{name+rData[displayfield]+index}}" [attr.aria-checked]="value" [attr.aria-disabled]="rData.disabled"
-          class="input-box-container" style="padding-bottom:0px !important; margin: 5px !important" (click)="onClick(rData, $event)"
-          [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
-          <input style="top:0; left:0" id="{{name+rData[displayfield]+index}}" type="radio"
-          [attr.tabindex]="disabled ? -1 : 1" [required]="!allowblank" [attr.name]="name" [value]="rData?.selected ? rData[valuefield] : rData[valuefield] "
-          (focus)="onFocus()"
-          (blur)="onBlur()"
-          [attr.disabled]="rData?.disabled ? true: null" [(ngModel)]="value"
-            [checked]="(value === rData[valuefield] || rData.selected)">
+        <label for="{{name+rData[displayfield]+index}}" [attr.aria-checked]="value" [attr.aria-disabled]="rData.disabled" class="input-box-container"
+          style="padding-bottom:0px !important; margin: 5px !important" (click)="onClick(rData, $event)" [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
+          <input style="top:0; left:0" id="{{name+rData[displayfield]+index}}" type="radio" [attr.tabindex]="disabled ? -1 : 1" [required]="!allowblank"
+            [attr.name]="name" [value]="rData?.selected ? rData[valuefield] : rData[valuefield] " (focus)="onFocus()" (blur)="onBlur()"
+            [attr.disabled]="rData?.disabled ? true: null" [(ngModel)]="value" [checked]="(value === rData[valuefield] || rData.selected)">
           <span class="input-box-radiobox-label" [ngClass]="{'focusOnCheckbox':tabFocus}"></span>
         </label>
       </div>
