@@ -1049,7 +1049,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   setSelectedRow(viewRows: any, rowData: any, event: any) {
-    if ( this.selectedRows.length === 0 && this.enablecheckbox) {
+    if (this.selectedRows.length === 0 && this.enablecheckbox) {
       viewRows.forEach((row: any) => {
         if (event.classList.value === this.checkDefaultIcon && row !== rowData && row.checkBoxSelectClass === this.checkBoxActive) {
           this.selectedRows.push(row);
@@ -1083,11 +1083,24 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
         sRows.push(sr);
       }
     }
+    if (this.globalfilter) {
+      this.setGlobalFiterCheckFlag();
+    }
     const selectedAllData = JSON.parse(JSON.stringify(sRows));
     selectedAllData.forEach((select: any) => {
       delete select['checkBoxSelectClass'];
     });
     this.selectedRowData.emit(selectedAllData);
+  }
+
+  setGlobalFiterCheckFlag() {
+    this.filterCloneData.forEach((filterObj: any) => {
+      this.selectedRows.forEach((rowObj: any) => {
+        if (rowObj === filterObj) {
+          filterObj['checkBoxSelectClass'] = this.checkBoxActive;
+        }
+      });
+    });
   }
 
   setCheckBoxSelectClass() {
