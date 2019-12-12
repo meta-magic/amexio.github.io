@@ -705,11 +705,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       }
       this.posixUp = this.getListPosition(elem);
       const visibility = this.dropdownstyle.visibility;
+      // 1
       this.dropdownstyle = JSON.parse(JSON.stringify(this.positionClass));
       this.dropdownstyle.visibility = visibility;
       this.dropdownstyle.position = 'fixed';
       this.disableddays(this.diabledDate);
       this.setFocus();
+      this.poscls = this.positionClass;
     }
 
   }
@@ -794,7 +796,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       });
     }
   }
-  dropdownDatePicker() {
+  dropdownDatePicker(elem: any) {
     this.monthList1.forEach((element: any) => {
       this.elementFlagMethod(element);
     });
@@ -813,6 +815,11 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     super.focus({});
     this.okispressed = false;
     this.cancelispressed = false;
+    this.posixUp = this.getListPosition(this.pickerele);
+    const visibility = this.dropdownstyle.visibility;
+    this.dropdownstyle = JSON.parse(JSON.stringify(this.positionClass));
+    this.dropdownstyle.visibility = visibility;
+    this.dropdownstyle.position = 'fixed';
   }
 
   negateDrop() {
@@ -821,6 +828,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.drop = false;
     this.showToolTip = true;
     this.tempFlag = true;
+    this.setDateWindowPosition();
   }
 
   navigateDropdown() {
@@ -851,6 +859,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.createDaysForCurrentMonths(this.selectedDate);
     this.disableddays(this.diabledDate);
     super.focus({});
+    this.setDateWindowPosition();
   }
   cancelDropdown() {
     this.drop = false;
@@ -874,6 +883,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     // rechking arrow flags after reinitialization of yrlist1 & 2
     this.rechkYearFlag();
     event.stopPropagation();
+    this.setDateWindowPosition();
   }
 
   // this function is obtained by breaking arrowClickBack() for dropdown year back arrow logic for if
@@ -1043,6 +1053,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.disableYearFlag();
     // rechking arrow flags after reinitialization of yrlist1 & 2
     this.rechkYearFlag();
+    this.setDateWindowPosition();
     event.stopPropagation();
   }
   // onInit Method: If min max date is provided
@@ -1127,6 +1138,15 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     itemid = month[drindex][currentindex];
     document.getElementById(itemid['id']).focus();
   }
+
+  setDateWindowPosition() {
+    this.posixUp = this.getListPosition(this.pickerele);
+    const visibility = this.dropdownstyle.visibility;
+    this.dropdownstyle = JSON.parse(JSON.stringify(this.positionClass));
+    this.dropdownstyle.visibility = visibility;
+    this.dropdownstyle.position = 'fixed';
+  }
+
   arrowleft(day: any, month: any, event: any) {
     let currentindex: number;
     const flag = false;
@@ -1237,6 +1257,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       itemid = this.monthList2[0];
       document.getElementById(itemid['id']).focus();
     }
+    this.setDateWindowPosition();
   }
 
   dropdownListOneArrowUp(currentmonth: any) {
@@ -1258,6 +1279,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       itemid = this.monthList2[this.monthList2.length - 1];
     }
     document.getElementById(itemid['id']).focus();
+    this.setDateWindowPosition();
   }
 
   dropdownListTwoArrowDown(currentmonth: any) {
@@ -1279,7 +1301,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       itemid = this.monthList1[0];
     }
     document.getElementById(itemid['id']).focus();
-
+    this.setDateWindowPosition();
   }
 
   dropdownListTwoArrowUp(currentmonth: any) {
@@ -1302,6 +1324,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       itemid = this.monthList1[this.monthList1.length - 1];
     }
     document.getElementById(itemid['id']).focus();
+    this.setDateWindowPosition();
   }
 
   yearList1ArrowDown(currentyear: any) {
@@ -1323,6 +1346,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       itemid = this.yearList2[0];
     }
     document.getElementById(itemid['id']).focus();
+    this.setDateWindowPosition();
   }
 
   yearList2ArrowDown(currentyear: any) {
@@ -1344,6 +1368,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       itemid = this.yearList1[0];
     }
     document.getElementById(itemid['id']).focus();
+    this.setDateWindowPosition();
   }
 
   yearList1ArrowUp(currentyear: any) {
@@ -1365,6 +1390,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       itemid = this.yearList2[this.yearList2.length - 1];
     }
     document.getElementById(itemid['id']).focus();
+    this.setDateWindowPosition();
   }
 
   yearList2ArrowUp(currentyear: any) {
@@ -1387,6 +1413,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       itemid = this.yearList1[this.yearList1.length - 1];
     }
     document.getElementById(itemid['id']).focus();
+    this.setDateWindowPosition();
   }
 
   onTimeClick(event: any) {

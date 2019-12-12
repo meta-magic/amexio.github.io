@@ -194,15 +194,29 @@
    box-shadow: 0 1px 3px 0 $datetimepickerBorderColor;
    z-index: 3;
     
-   
+  //  here
  li {
-   padding-left: 10px;
-   padding-right: 10px;
-   padding-top: 5px;
-   padding-bottom: 5px;
+  //  padding-left: 8px;
+  //  padding-right: 8px;
+  //  padding-top: 3px;
+  //  padding-bottom: 3px;
+  width:23px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
    border-radius: 5px;
    cursor: pointer;
- } }
+ }
+ 
+ li:hover {
+  width:30px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  // border-radius: 5px;
+ }
+
+}
  
   .dropdiv1{
     width: 100%;
@@ -236,7 +250,7 @@
  }
  .dropiconpadding{
    cursor:pointer;     
-   -webkit-padding-start: 20px;
+  //  -webkit-padding-start: 20px;
  }
  .btndiv1{
    position: relative;

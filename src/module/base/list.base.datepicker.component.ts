@@ -23,7 +23,7 @@ import { BaseInput } from './base.input.component';
 // })
 
 export class ListBaseDatepickerComponent<T> extends AmexioFormValidator {
-
+    poscls: any;
     self = false;
     itemClick = false;
     dropdownstyle: any;
@@ -208,6 +208,14 @@ export class ListBaseDatepickerComponent<T> extends AmexioFormValidator {
                 break;
         }
         this.focus({});
+        this.setPosition();
+    }
+
+    setPosition() {
+        const visibility = this.dropdownstyle.visibility;
+        this.dropdownstyle = JSON.parse(JSON.stringify(this.poscls));
+        this.dropdownstyle.visibility = visibility;
+        this.dropdownstyle.position = 'fixed';
     }
 
     // Added method to avois recursive code
@@ -241,6 +249,7 @@ export class ListBaseDatepickerComponent<T> extends AmexioFormValidator {
         });
         this.yearNo = year.year;
         this.focus({});
+        this.setPosition();
     }
 
     // this function is broken from getDropdownYear
@@ -256,6 +265,6 @@ export class ListBaseDatepickerComponent<T> extends AmexioFormValidator {
     }
 
     getCryptoId() {
-       return Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_id';
+        return Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_id';
     }
 }
