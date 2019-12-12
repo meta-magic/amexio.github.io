@@ -61,7 +61,7 @@
     <div [@changeState]="dropdownstyle.visibility" [ngStyle]="dropdownstyle" [ngClass]="{'datetimepicker1':inlineDatepicker , 'datetimepicker':!inlineDatepicker}">
         <!-- datepicker starts -->
         <span aria-label="datepicker window opened " class={{roundedgeclass}}>
-            <div style ="background: red" aria-label="datetimepicker header" class="datetimepickertopbar" aria-label="datepicker header" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+            <div aria-label="datetimepicker header" class="datetimepickertopbar" aria-label="datepicker header" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
                 <ul>
                     <li class="prev">
                         <span tabindex="1" aria-label="previous year push button" (keyup.enter)="prevYear($event)">
@@ -81,14 +81,14 @@
                     </li>
                     <li>
                         <span *ngIf="dropdownDatepicker">
-                            <span style="cursor:pointer" (click)="dropdownDatePicker(rootDiv)">
+                            <span style="cursor:pointer" (click)="dropdownDatePicker()">
                                 {{selectedDate | date:'MMMM'}}
                                 <br>
                                 <span class="title">{{selectedDate | date:'y'}}</span>
                             </span>
-                            <span tabindex="1" aria-label="dropdown datepicker push button" (keyup.enter)="dropdownDatePicker(rootDiv)" (onClick)=" dropdownDatePicker(rootDiv)"
+                            <span tabindex="1" aria-label="dropdown datepicker push button" (keyup.enter)="dropdownDatePicker()" (onClick)=" dropdownDatePicker()"
                                 style="cursor:pointer">
-                                <amexio-c-icon key="dropdown_caret" (onClick)="dropdownDatePicker(rootDiv)"></amexio-c-icon>
+                                <amexio-c-icon key="dropdown_caret" (onClick)="dropdownDatePicker()"></amexio-c-icon>
                             </span>
                         </span>
 
@@ -159,7 +159,6 @@
                 <td colspan="2">
                 </td>
             </tr>
-
         </table> -->
 
         <!-- new time picker format -->

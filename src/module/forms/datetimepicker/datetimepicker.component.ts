@@ -689,6 +689,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.isValid = true;
     }
   }
+// open picker
 
   openPicker(elem: any) {
     this.inputtabindex = -1;
