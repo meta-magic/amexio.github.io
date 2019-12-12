@@ -272,6 +272,11 @@ description : sets background color for active tab
     super.ngOnInit();
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(evt: MouseEvent) {
+    this.adjustWidth();
+  }
+
   updateTabComponent() {
     if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
       this.headeralign = 'left';
