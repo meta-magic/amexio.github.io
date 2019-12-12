@@ -3,6 +3,9 @@
 
   <label *ngIf="haslabel" role="textarea" for="{{componentId}}" id="{{componentId}}"  [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
+    <ng-container *fieldlabel != '' && ngIf="!allowblank">
+      <span style="color: red">*</span>
+  </ng-container>
   </label>
  
   <textarea type="text"
