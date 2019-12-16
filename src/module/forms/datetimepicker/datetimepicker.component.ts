@@ -412,10 +412,16 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       }
       this.hostFlag = true;
       this.selectedDate = dateObj.date;
+      this.selectedDate.setDate(dateObj.date.getDate());
+      this.selectedDate.setMonth(dateObj.date.getMonth());
+      this.selectedDate.setFullYear(dateObj.date.getFullYear());
       this.selectedDate.setHours(this.hrs);
       this.selectedDate.setMinutes(this.min);
       this.resetSelection(dateObj.date);
       this.dateModel = this.selectedDate;
+      this.dateModel.setDate(this.selectedDate.getDate());
+      this.dateModel.setMonth(this.selectedDate.getMonth());
+      this.dateModel.setFullYear(this.selectedDate.getFullYear());
       this.value = this.selectedDate;
       this.isValid = true;
       this.isComponentValid.emit(true);
@@ -689,7 +695,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.isValid = true;
     }
   }
-// open picker
+  // open picker
 
   openPicker(elem: any) {
     this.inputtabindex = -1;
