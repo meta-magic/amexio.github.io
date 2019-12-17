@@ -52,8 +52,8 @@ $amexioFontForYellowDark : #241500;
    fffafb: #fffafb rgb(255,250,251,0.0);
 */
 .amexio-red {
-	background-color: $amexioColorRedDark ;
-	color:$amexioFontForRedDark;
+	background-color: $amexioColorRedDark !important ;
+	color:$amexioFontForRedDark !important;
 }
 /** Amexio Colors --- 
    Lime: #00ff00 rgb(0,255,0,0.0);
@@ -68,8 +68,8 @@ $amexioFontForYellowDark : #241500;
    f0faf4: #f0faf4 rgb(240,250,244,0.0);
 */
 .amexio-green {
-	background-color: $amexioColorGreenDark;
-	color: $amexioFontForGreenDark;
+	background-color: $amexioColorGreenDark !important;
+	color: $amexioFontForGreenDark !important;
 }
 /** Amexio Colors --- 
    Magenta: #ff00ff rgb(255,0,255,0.0);
@@ -132,8 +132,8 @@ $amexioFontForYellowDark : #241500;
    241500: #241500 rgb(36,21,0,0.0);
 */
 .amexio-yellow {
-	background-color: $amexioColorYellowDark;
-	color: $amexioFontForYellowDark;
+	background-color: $amexioColorYellowDark !important;
+	color: $amexioFontForYellowDark !important;
 }
 /** Amexio Colors --- 
    Black: #000000 rgb(0,0,0,0.0);

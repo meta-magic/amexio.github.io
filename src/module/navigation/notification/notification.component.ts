@@ -131,6 +131,10 @@ description : Position of notification window vertically:
     */
   @Input('foreground-color') foregroundColor: string;
 
+  @Input('amexio-color') amexioColor: string;
+
+  @Input('type') type: string;
+
   data: any[];
 
   positionclass: string;

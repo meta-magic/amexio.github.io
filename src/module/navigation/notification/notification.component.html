@@ -1,7 +1,7 @@
 <div class="notification-content {{roundedgeclass}}" [ngClass]="positionclass">
 
     <ng-container *ngIf="!notificationTemplate">
-        <div id="{{componentID}}" role="alert" [attr.aria-label]="'notification is'+ messageData" class="notification" *ngFor="let msg of messageData"
+        <div id="{{componentID}}" role="alert" [attr.aria-label]="'notification is'+ messageData" class="notification" *ngFor="let msg of messageData" [ngClass]="amexioColor"
             [style.color]="foregroundColor" [style.background-color]="backgroundColor">
             <span class="float-right" (click)="closeNotification(msg)">
                 <ng-container *ngIf="closable">
