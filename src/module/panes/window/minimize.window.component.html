@@ -3,18 +3,12 @@
 
     <ng-container *ngIf="minimizeButton">
         <span *ngFor="let data of localData">
-
-            <ng-container *ngIf="data.icon && data.textName">
-                <amexio-button [icon]=data.amexioHeader.first.minimizeIcon [label]="data.textName"
+<!-- {{data.amexioHeader.first.content.nativeElement.innerText}} -->
+             <amexio-button [icon]="data.amexioHeader.first.minimizeIcon" [label]="data.amexioHeader.first.content.nativeElement.innerText"
                     [type]="'theme-color'" [tooltip]="data.textName" (onClick)="minimizeBtnClick(data)">
                 </amexio-button>
-            </ng-container>
-            <ng-container *ngIf="!data.icon && data.textName">
-                <amexio-button [label]="data.textName" [type]="'theme-color'" [tooltip]="data.textName"
-                    (onClick)="minimizeBtnClick(data)">
-                </amexio-button>
-            </ng-container>
-
         </span>
     </ng-container>
+
+
 </div>

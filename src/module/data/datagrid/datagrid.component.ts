@@ -159,7 +159,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
    default : none
    description : height of grid
    */
-  @Input() height: string;
+  @Input() height: any;
 
   /*
    Properties

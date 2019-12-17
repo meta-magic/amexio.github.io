@@ -18,7 +18,7 @@
 import { DOCUMENT } from '@angular/common';
 import {
   AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Inject,
-  Input, OnInit, Output, ViewChild,
+  Input, OnChanges, OnInit, Output, ViewChild,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/index';
 
@@ -59,7 +59,7 @@ import { BehaviorSubject } from 'rxjs/index';
   ],
 })
 
-export class AmexioHeaderComponent implements OnInit, AfterViewInit {
+export class AmexioHeaderComponent implements OnInit, OnChanges {
 
   @HostBinding('class.modal-card-header') get c1() { return this.aComponent; }
   @HostBinding('class.modal-window-header') get c2() { return this.aComponent1; }
@@ -101,15 +101,17 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
   aComponent1: string;
   textName: any;
   elem: any;
-  constructor( @Inject(DOCUMENT) public document: any) {
+  constructor(@Inject(DOCUMENT) public document: any) {
 
   }
 
   ngOnInit() {
   }
-  ngAfterViewInit() {
+  ngOnChanges() {
+
     this.textName = this.content.nativeElement.textContent;
-    if (this.textName && this.minimizeIcon) {
+
+    if (this.textName) {
       return this.textName;
     }
     if (this.textName && !this.minimizeIcon) {
@@ -125,7 +127,7 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
   setMaximizeData(maximize: boolean, isFullWindow: boolean, event: any) {
     this.maximize = maximize;
     this.isFullWindow = isFullWindow;
-    this.maximizeBehaiour.next({isFullWindow: this.isFullWindow, event1: event});
+    this.maximizeBehaiour.next({ isFullWindow: this.isFullWindow, event1: event });
   }
 
   setMaterialDesignStatus(materialDesign: boolean) {
@@ -137,7 +139,7 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
 
   sizeChange(event: any) {
     this.isFullWindow = !this.isFullWindow;
-    this.maximizeBehaiour.next({isFullWindow: this.isFullWindow, event1: event});
+    this.maximizeBehaiour.next({ isFullWindow: this.isFullWindow, event1: event });
   }
 
   onCloseClick() {
