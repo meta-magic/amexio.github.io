@@ -11,7 +11,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
 import { DisplayFieldService } from '../../services/data/display.field.service';
-
+import { AmexioButtonComponent } from '../buttons/button.component';
 
 describe('amexio-dropdown', () => {
   let comp: AmexioDropDownComponent;
@@ -25,7 +25,7 @@ describe('amexio-dropdown', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule],
-      declarations: [AmexioDropDownComponent, DisplayFieldComponent, CommonIconComponent],
+      declarations: [AmexioButtonComponent,AmexioDropDownComponent, DisplayFieldComponent, CommonIconComponent],
       providers: [IconLoaderService, CommonDataService, DisplayFieldService, HttpClient],
     });
     fixture = TestBed.createComponent(AmexioDropDownComponent);
@@ -56,6 +56,7 @@ describe('amexio-dropdown', () => {
     expect(comp.key).toBe('index');
     expect(comp.displayValue).toBe('');
     expect(comp.filteredOptions).toEqual([]);
+    expect(comp.selectAllFlag).toEqual(false);
   });
 
   // it('setUserSelection  method', () => {
