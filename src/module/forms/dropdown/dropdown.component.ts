@@ -167,7 +167,7 @@ description : true for select multiple options
 
   filteredOptions: any[] = [];
 
-  selectAllFlag:boolean = false;
+  selectAllFlag = false;
   /*
   Events
   name : onBlur
@@ -300,7 +300,7 @@ description : Set enable / disable popover.
 
   @Input('sort') sort = '';
 
-  @Input('enable-checkbox') enablecheckbox =false;
+  @Input('enable-checkbox') enablecheckbox = false;
 
   helpInfoMsg: string;
   _errormsg: string;
@@ -494,12 +494,7 @@ description : Set enable / disable popover.
           }
         });
         this.innerValue = optionsChecked;
-        if (!this.enablecheckbox) {
-          this.displayValue = this.setMultiSelect();
-        }
-        if (this.enablecheckbox) {
-          this.onBaseFocusEvent(selectedItem);
-        }
+        this.checkboxMethod(selectedItem);
         this.onMultiSelect.emit(this.multiselectValues);
       }
     } else {
@@ -515,6 +510,15 @@ description : Set enable / disable popover.
       this.hide();
     }
     this.isComponentValid.emit(true);
+  }
+
+  checkboxMethod(selectedItem: any) {
+    if (!this.enablecheckbox) {
+      this.displayValue = this.setMultiSelect();
+    }
+    if (this.enablecheckbox) {
+      this.onBaseFocusEvent(selectedItem);
+    }
   }
   setMultiSelectData() {
     this.multiselectValues = [];
@@ -825,7 +829,7 @@ description : Set enable / disable popover.
     }
     this.onMultiSelect.emit(this.multiselectValues);
   }
-  onSaveClick(event:any) {
+  onSaveClick(event: any) {
     this.displayValue = this.setMultiSelect();
     this.hide();
   }
