@@ -166,6 +166,8 @@ description : true for select multiple options
   displayValue = '';
 
   filteredOptions: any[] = [];
+
+  selectAllFlag:boolean = false;
   /*
   Events
   name : onBlur
@@ -297,6 +299,8 @@ description : Set enable / disable popover.
   @Input('enable-sort') enablesort = false;
 
   @Input('sort') sort = '';
+
+  @Input('enable-checkbox') enablecheckbox =false;
 
   helpInfoMsg: string;
   _errormsg: string;
@@ -490,7 +494,12 @@ description : Set enable / disable popover.
           }
         });
         this.innerValue = optionsChecked;
-        this.displayValue = this.setMultiSelect();
+        if (!this.enablecheckbox) {
+          this.displayValue = this.setMultiSelect();
+        }
+        if (this.enablecheckbox) {
+          this.onBaseFocusEvent(selectedItem);
+        }
         this.onMultiSelect.emit(this.multiselectValues);
       }
     } else {
@@ -502,7 +511,9 @@ description : Set enable / disable popover.
       this.onRecordSelect.emit(selectedItem);
     }
     this.isValid = true;
-    this.hide();
+    if (!this.enablecheckbox) {
+      this.hide();
+    }
     this.isComponentValid.emit(true);
   }
   setMultiSelectData() {
@@ -791,5 +802,31 @@ description : Set enable / disable popover.
         valid: true,
       },
     };
+  }
+  selectAll(event: any) {
+    this.selectAllFlag = !this.selectAllFlag;
+    const optionsChecked: any = [];
+    this.multiselectValues = [];
+    this.filteredOptions.forEach((row: any) => {
+      if (this.selectAllFlag) {
+        row.checked = true;
+      } else {
+        row.checked = false;
+      }
+      optionsChecked.push(row[this.valuefield]);
+      this.multiselectValues.push(row);
+    });
+    this.innerValue = optionsChecked;
+    if (!this.enablecheckbox) {
+      this.displayValue = this.setMultiSelect();
+    }
+    if (this.enablecheckbox) {
+      this.onBaseFocusEvent(event);
+    }
+    this.onMultiSelect.emit(this.multiselectValues);
+  }
+  onSaveClick(event:any) {
+    this.displayValue = this.setMultiSelect();
+    this.hide();
   }
 }

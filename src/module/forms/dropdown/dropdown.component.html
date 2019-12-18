@@ -22,7 +22,12 @@
 <ng-container *ngIf="!readonly">
   <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="dropdownstyle">
     <ul aria-labelledby="fieldlabel" aria-haspopup="listbox" class="dropdown-list">
-
+      <div *ngIf="enablecheckbox" class="list-items">
+        <span>SelectAll</span>
+        <div (click)="selectAll($event)" style="float : left" class="input-box checkbox">
+             <span >{{selectAllFlag ? '&#10004;': ''}}</span>
+       </div>
+    </div>
       <li role="option" tabindex="1" class="list-items" [ngClass]="{'list-items-selected':item.selected}" *ngFor="let item of filteredOptions"
         id="{{item.index}}" (mousedown)="onItemSelect({item: item, event: $event})">
         <ng-container *ngIf="bodyTemplate">
@@ -35,13 +40,26 @@
           </span>
 
         </ng-container>
-        <span style="float : right">{{item?.checked ? '&#10004;': ''}}</span>
+        <div *ngIf="enablecheckbox" style="float : left" class="input-box checkbox">
+          <span>{{item?.checked ? '&#10004;': ''}}</span>
+          </div>
+          <span *ngIf="!enablecheckbox" style="float : right" >{{item?.checked ? '&#10004;': ''}}</span>
       </li>
 
       <ng-template *ngIf="filteredOptions && (filteredOptions.length < 1)">
         <li class="list-items">No Options</li>
       </ng-template>
     </ul>
+    <ng-container *ngIf="enablecheckbox && multiselect">
+      <div style="padding-top: 10px;padding-bottom: 10px;">
+          <amexio-button
+          [label]="'Save'"
+          [type]="'theme-color'"
+          [size]="'medium'"
+          (onClick)="onSaveClick($event)">
+        </amexio-button>
+      </div>
+    </ng-container>
     <ng-content></ng-content>
   </span>
 </ng-container>
