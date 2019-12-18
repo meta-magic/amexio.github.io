@@ -818,11 +818,11 @@ description : Set enable / disable popover.
     this.filteredOptions.forEach((row: any) => {
       if (this.selectAllFlag) {
         row.checked = true;
+        optionsChecked.push(row[this.valuefield]);
+        this.multiselectValues.push(row);
       } else {
         row.checked = false;
       }
-      optionsChecked.push(row[this.valuefield]);
-      this.multiselectValues.push(row);
     });
     this.innerValue = optionsChecked;
     if (!this.enablecheckbox) {
