@@ -455,7 +455,8 @@ description : Set enable / disable popover.
         valueArray.forEach((valueData: any) => {
           if (row[this.valuefield] === valueData) {
             row['checked'] = true;
-            preSelectedValues === '' ? preSelectedValues += this.displayFieldService.findValue(this.displayfield, row) : preSelectedValues += ', ' +
+            preSelectedValues === '' ? preSelectedValues +=
+              this.displayFieldService.findValue(this.displayfield, row) : preSelectedValues += ', ' +
               this.displayFieldService.findValue(this.displayfield, row);
           }
         });
@@ -528,17 +529,21 @@ description : Set enable / disable popover.
       const modelValue = this.innerValue;
       this.filteredOptions.forEach((test) => {
         if (modelValue.length > 0) {
-          modelValue.forEach((mdValue: any) => {
-            if (test[this.valuefield] === mdValue) {
-              if (test.hasOwnProperty('checked')) {
-                test.checked = true;
-              }
-              this.multiselectValues.push(test);
-            }
-          });
+          this.modelCheck(modelValue, test);
         }
       });
     }
+  }
+
+  modelCheck(modelValue: any, test: any) {
+    modelValue.forEach((mdValue: any) => {
+      if (test[this.valuefield] === mdValue) {
+        if (test.hasOwnProperty('checked')) {
+          test.checked = true;
+        }
+        this.multiselectValues.push(test);
+      }
+    });
   }
   navigateKey(event: any) {
   }
