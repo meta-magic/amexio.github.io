@@ -486,6 +486,7 @@ description : Set enable / disable popover.
   onItemSelect(selectedItem: any) {
     debounceTime(300);
     if (this.multiselect) {
+      this.selectAllFlag = false;
       const optionsChecked: any = [];
       this.multiselectValues = [];
       if (selectedItem.item.hasOwnProperty('checked')) {
