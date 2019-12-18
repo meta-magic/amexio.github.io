@@ -451,13 +451,15 @@ description : Set enable / disable popover.
   bindMultiSelectModelData(valueArray: any[]) {
     let preSelectedValues = '';
     this.viewData.forEach((row: any) => {
-      valueArray.forEach((valueData: any) => {
-        if (row[this.valuefield] === valueData) {
-          row['checked'] = true;
-          preSelectedValues === '' ? preSelectedValues += this.displayFieldService.findValue(this.displayfield, row) : preSelectedValues += ', ' +
-            this.displayFieldService.findValue(this.displayfield, row);
-        }
-      });
+      if (valueArray.length > 0) {
+        valueArray.forEach((valueData: any) => {
+          if (row[this.valuefield] === valueData) {
+            row['checked'] = true;
+            preSelectedValues === '' ? preSelectedValues += this.displayFieldService.findValue(this.displayfield, row) : preSelectedValues += ', ' +
+              this.displayFieldService.findValue(this.displayfield, row);
+          }
+        });
+      }
     });
     this.displayValue = preSelectedValues;
   }
@@ -525,14 +527,16 @@ description : Set enable / disable popover.
     if (this.innerValue && this.innerValue.length > 0) {
       const modelValue = this.innerValue;
       this.filteredOptions.forEach((test) => {
-        modelValue.forEach((mdValue: any) => {
-          if (test[this.valuefield] === mdValue) {
-            if (test.hasOwnProperty('checked')) {
-              test.checked = true;
+        if (modelValue.length > 0) {
+          modelValue.forEach((mdValue: any) => {
+            if (test[this.valuefield] === mdValue) {
+              if (test.hasOwnProperty('checked')) {
+                test.checked = true;
+              }
+              this.multiselectValues.push(test);
             }
-            this.multiselectValues.push(test);
-          }
-        });
+          });
+        }
       });
     }
   }
