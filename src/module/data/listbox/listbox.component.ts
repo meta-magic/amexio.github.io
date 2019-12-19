@@ -184,6 +184,7 @@ default :
 description : Context Menu provides the list of menus on right click.
 */
   @Input('context-menu') contextmenu: any[];
+@Input('icon') icon: string;
 
   /*
   Events
@@ -194,6 +195,7 @@ description : Context Menu provides the list of menus on right click.
   description : It will gives you row clicked data.
   */
   @Output() rightClick: any = new EventEmitter<any>();
+  @Output() onIconClick: any = new EventEmitter<any>();
 
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
@@ -504,6 +506,10 @@ description : Context Menu provides the list of menus on right click.
 
   ngOnDestroy(): void {
     this.removeListner();
+  }
+
+  onClickIcon() {
+    this.onIconClick.emit();
   }
 
 }

@@ -5,12 +5,16 @@
         <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
         <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
       </div>
-      <div tabindex="0" attr.aria-label="{{header}} list" class="title">&nbsp;&nbsp;{{header}}</div>
+      <div tabindex="0" attr.aria-label="{{header}} list" class="title">&nbsp;&nbsp;{{header}} 
+       
+      </div>
     </div>
 
     <div *ngIf="(filter == true)">
       <input type="text" [(ngModel)]="filterText" [placeholder]="searchplaceholder" (keyup)="filterData()" class="search " />
     </div>
+    <i style="float:right; cursor:pointer" (click)="onClickIcon()" [class]="icon"
+    ></i>
   </div>
   <div class="listbox-height" tabindex="0" (keyup.arrowdown)="onArrowdown()" (keyup.arrowup)="onArrowUp()"
     (keyup.enter)="onEnterPress()" [style.height.px]="height">
