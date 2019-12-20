@@ -13,6 +13,15 @@
     left: 0;
 }
 
+.draggable-header{
+    display: contents;
+
+}
+
+.draggable-header  amexio-header{
+    padding: 10px !important;
+}
+
 .amexio-root-window-content {
     display: flex;
     flex-direction: column;

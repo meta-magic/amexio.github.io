@@ -324,14 +324,16 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   setMaximizeClass(isFullWindow: boolean) {
     this.isFullWindow = isFullWindow;
     if (!isFullWindow) {
+      this.draggable = false;
       this.width = '100%';
       return {
         'margin-top': '0', 'height': '100%',
       };
     } else {
+      this.draggable = true;
       this.width = this.dummyWidth;
       return {
-        'margin-top': '1%', 'height': '96%',
+        'margin-top': '1%', 'height': '96%', 'top': '0', 'left': '0',
       };
     }
   }
