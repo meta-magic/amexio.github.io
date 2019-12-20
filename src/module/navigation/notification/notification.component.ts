@@ -158,6 +158,13 @@ description : Position of notification window vertically:
     super();
   }
   ngOnInit() {
+    if (this.type === 'warning') {
+      this.amexioColor = 'amexio-yellow';
+    } else if (this.type === 'error') {
+      this.amexioColor = 'amexio-red';
+    } else if (this.type === 'success') {
+      this.amexioColor = 'amexio-green';
+    }
     this.componentID = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
     if (this.autodismissmsg) {
       if (!this.autodismissmsginterval) {
