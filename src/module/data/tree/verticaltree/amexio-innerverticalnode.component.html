@@ -1,0 +1,15 @@
+<ul>
+    <li style="width: max-content" class="amexio-innerveticalnode-li" *ngFor="let node of data">
+        <div class="amexiovertialtreecontent" (click)="onClick(node)">
+            <span *ngIf="templates == null">{{node.title}}
+            </span>
+            <span *ngIf="templates != null">
+                <ng-template [ngTemplateOutlet]="templates.treeNodeTemplate" [ngTemplateOutletContext]="{ node: node }">
+                </ng-template>
+            </span>
+        </div>
+        <!-- <span (click)="onClick(node)" class="amexiovertialtreecontent" >{{node.text}}</span> -->
+        <amexio-innerveticalnode-demo *ngIf="(node.children && node.children.length>0)" [templates]="templates" [data]="node.children"
+            [root]="true"></amexio-innerveticalnode-demo>
+    </li>
+</ul>

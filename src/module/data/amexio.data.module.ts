@@ -40,6 +40,10 @@ import { AmexioFormsModule } from '../forms/amexio.forms.module';
 
 import { HorizontalTreeViewNodeComponent } from './tree/horizontalnode.component';
 import { HorizontalTreeViewComponent } from './tree/horizontaltreeview.component';
+import { AmexioInnerVerticalNodeComponent } from './tree/verticaltree/amexio-innerverticalnode.component';
+
+import { AmexioVerticalTreeComponent } from './tree/verticaltree/amexio-verticaltree.component';
+
 export * from '../services/data/common.data.service';
 export * from '../services/script/script.data.service';
 export * from './listbox/listbox.component';
@@ -49,6 +53,8 @@ export * from '../services/icon/icon.service';
 export * from './treegrid/treedatatable.component';
 export * from './googlemap/googlemap.component';
 export * from './browser-panel/browser-panel.component';
+export * from './tree/verticaltree/amexio-verticaltree.component';
+export * from './tree/verticaltree/amexio-innerverticalnode.component';
 
 const DATA_COMPONENTS = [
   AmexioTreeViewComponent,
@@ -71,6 +77,8 @@ const DATA_COMPONENTS = [
   BrowserPanelComponent,
   HorizontalTreeViewNodeComponent,
   HorizontalTreeViewComponent,
+  AmexioInnerVerticalNodeComponent,
+  AmexioVerticalTreeComponent,
 ];
 
 @NgModule({
