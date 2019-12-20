@@ -1,8 +1,8 @@
 <div class="notification-content {{roundedgeclass}}" [ngClass]="positionclass">
-
     <ng-container *ngIf="!notificationTemplate">
-        <div id="{{componentID}}" role="alert" [attr.aria-label]="'notification is'+ messageData" class="notification" *ngFor="let msg of messageData" [ngClass]="amexioColor"
-            [style.color]="foregroundColor" [style.background-color]="backgroundColor">
+        <div id="{{componentID}}" role="alert" [attr.aria-label]="'notification is'+ messageData" class="notification"
+            *ngFor="let msg of messageData" [ngClass]="amexioColor" [style.color]="foregroundColor"
+            [style.background-color]="backgroundColor">
             <span class="float-right" (click)="closeNotification(msg)">
                 <ng-container *ngIf="closable">
                     <amexio-c-icon style="cursor: pointer" key="notify_close"></amexio-c-icon>
@@ -28,8 +28,9 @@
     </ng-container>
 
     <ng-container *ngIf="notificationTemplate">
-        <div id="{{componentID}}" role="alert" [attr.aria-label]="'notification is'+ messageData" class="notification" *ngFor="let msg of messageData"
-            [style.color]="foregroundColor" [style.background-color]="backgroundColor">
+        <div id="{{componentID}}" role="alert" [attr.aria-label]="'notification is'+ messageData" class="notification"
+            [ngClass]="amexioColor" *ngFor="let msg of messageData" [style.color]="foregroundColor"
+            [style.background-color]="backgroundColor">
 
             <span class="float-right" (click)="closeNotification(msg)">
                 <ng-container *ngIf="closable">
