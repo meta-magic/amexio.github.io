@@ -84,7 +84,6 @@ export class LinkedInAuthComponent extends SocialBaseComponent implements OnInit
               });
             }
           });
-
         });
     });
   }
