@@ -3,7 +3,7 @@ import {
   HostListener, Input, OnInit, Output, QueryList,
 } from '@angular/core';
 import {ViewChildren} from '@angular/core';
-import { AmexioDropDownitemsComponent } from './dropdownmenu.component.items';
+import { AmexioDropDownItemsComponent } from './dropdownmenu.items.component';
 
 import { DeviceQueryService } from '../../../services/device/device.query.service';
 
@@ -97,14 +97,16 @@ export class AmexioDropDownMenuComponent extends LifeCycleBaseComponent implemen
 
   @Input() height: any;
   @Output() onClick: any = new EventEmitter<any>();
-  @ContentChildren(AmexioDropDownitemsComponent) dropdowns: QueryList<AmexioDropDownitemsComponent>;
-  optionsCollection: AmexioDropDownitemsComponent[] = [];
+  @ContentChildren(AmexioDropDownItemsComponent) dropdowns: QueryList<AmexioDropDownItemsComponent>;
+  optionsCollection: AmexioDropDownItemsComponent[] = [];
+
   constructor(public element: ElementRef, public matchMediaService: DeviceQueryService) {
     super();
     this.iconalign = 'left';
     this.padding = '5px 10px';
     this.componentId = 'dropdownmenu' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
   }
+  
   ngOnInit() {
     if (this.data) {
       this.data.forEach((node: any) => {

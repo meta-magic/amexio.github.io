@@ -22,7 +22,7 @@ import { DarkmodeComponent } from './darkmode/darkmode.component';
 import { AmexioDateTimePickerComponent } from './datetimepicker/datetimepicker.component';
 import { AmexioDialpadComponent } from './dialpad/dialpad.component';
 import { AmexioDropDownMenuComponent } from './dropdown-menu/dropdownmenu.component';
-import { AmexioDropDownitemsComponent } from './dropdown-menu/dropdownmenu.component.items';
+import { AmexioDropDownItemsComponent } from './dropdown-menu/dropdownmenu.items.component';
 import { AmexioDropDownComponent } from './dropdown/dropdown.component';
 import { AmexioEmailInputComponent } from './emailinput/emailinput.component';
 import { AmexioFileUploadComponent } from './fileupload/fileupload.component';
@@ -105,7 +105,7 @@ const FORM_COMPONENTS = [
   AmexioLabelComponent,
   AmexioFloatingButtonComponent,
   AmexioFloatingGroupButtonComponent,
-  AmexioDropDownitemsComponent,
+  AmexioDropDownItemsComponent,
   AmexioDropDownMenuComponent,
   ToolbarComponent,
   ToolbaroneComponent,

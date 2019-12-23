@@ -10,7 +10,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   selector: 'amexio-drop-down-menu-item',
   templateUrl: `./dropdownmenu.items.component.html`,
 })
-export class AmexioDropDownitemsComponent implements OnInit {
+export class AmexioDropDownItemsComponent implements OnInit {
   toggle: boolean;
 /*
    Properties
@@ -70,6 +70,7 @@ export class AmexioDropDownitemsComponent implements OnInit {
    */
 
   @Output() onClick: any = new EventEmitter<any>();
+
   ngOnInit() {
     if (this.iconalign && this.labelalign
       && this.iconalign.toLowerCase() === this.labelalign.toLowerCase()) {
@@ -82,6 +83,7 @@ export class AmexioDropDownitemsComponent implements OnInit {
       this.labelalign = null;
     }
   }
+
   onItemClick(clickEvent: any) {
   this.toggle = false;
   const e = {
