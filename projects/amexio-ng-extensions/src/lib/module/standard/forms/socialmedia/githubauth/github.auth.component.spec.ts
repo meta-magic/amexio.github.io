@@ -4,11 +4,15 @@ import { IconLoaderService, ScriptLoadService } from '../../../../../../public-a
 
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { LinkedInAuthComponent as GithubAuthComponent } from '../linkedinauth/linkedin.auth.component';
+import { By } from '@angular/platform-browser';
+import { SocialUserInfo } from '../../../../models/social.user.info.model';
 
 describe('Amexio Linkedin Component' , () => {
   let comp: GithubAuthComponent;
   let fixture: ComponentFixture<GithubAuthComponent>;
-
+  let element;
+  let body;
+  let bodyHTML;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports : [FormsModule],
@@ -18,6 +22,9 @@ describe('Amexio Linkedin Component' , () => {
     });
     fixture = TestBed.createComponent(GithubAuthComponent);
     comp = fixture.componentInstance;
+
+    element = fixture.debugElement;
+  
   });
 
   it('component created : ', () => {
@@ -39,6 +46,17 @@ describe('Amexio Linkedin Component' , () => {
     fixture.detectChanges();
 
     expect(comp.isCircle).toBeFalsy();
+
   });
 
+
+  it('loginToGithub: ',()=>{
+    const user: SocialUserInfo = new SocialUserInfo();
+    spyOn(comp.onLogin, 'emit').withArgs(user);
+
+    comp.onLogin.emit(user);
+    fixture.detectChanges();
+    expect(user).toBeDefined();
+    expect(comp.onLogin.emit).toHaveBeenCalledWith(user);
+  });
 });
