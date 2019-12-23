@@ -64,4 +64,15 @@ describe('Amexio DropDown Menu Item Component', () => {
 
     expect(comp.onClick.emit).toHaveBeenCalled();
   });
+
+
+  it('onItemClick(): ', () => {
+
+    comp.toggle = false;
+    spyOn(comp.onClick, 'emit');
+
+    fixture.detectChanges();
+
+    expect(comp.onClick.emit).not.toHaveBeenCalled();
+  });
 });

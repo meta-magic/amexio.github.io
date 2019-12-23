@@ -106,7 +106,7 @@ export class AmexioDropDownMenuComponent extends LifeCycleBaseComponent implemen
     this.padding = '5px 10px';
     this.componentId = 'dropdownmenu' + Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);
   }
-  
+
   ngOnInit() {
     if (this.data) {
       this.data.forEach((node: any) => {
@@ -175,6 +175,7 @@ export class AmexioDropDownMenuComponent extends LifeCycleBaseComponent implemen
     this.toggle = false;
     this.onClick.emit(event);
   }
+  
   getLabelPosition(childPosition: any, parentLabelPosition: string): boolean {
     if (childPosition.hasOwnProperty('labelalign') && childPosition.labelalign !== '') {
       if (childPosition.labelalign === 'right') {
