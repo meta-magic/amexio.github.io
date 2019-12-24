@@ -4,6 +4,7 @@ import { IconLoaderService, ScriptLoadService } from '../../../../../../public-a
 
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { GoogleAuthComponent } from './google.auth.component';
+import { SocialUserInfo } from '../../../../models/social.user.info.model';
 
 describe('Amexio Google Auth Component' , () => {
   let comp: GoogleAuthComponent;
@@ -54,4 +55,13 @@ describe('Amexio Google Auth Component' , () => {
    
   });
 
+  it('getLoginInUserInfo: ',()=>{
+    const user: SocialUserInfo = new SocialUserInfo();
+    spyOn(comp.onLogin, 'emit').withArgs(user);
+
+    comp.onLogin.emit(user);
+    fixture.detectChanges();
+    expect(user).toBeDefined();
+    expect(comp.onLogin.emit).toHaveBeenCalledWith(user);
+  });
 });
