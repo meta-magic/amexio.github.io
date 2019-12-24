@@ -22,7 +22,7 @@ describe('navmenu', () => {
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
   });
 
-  xit('ngAfterViewInit if condition', () => {
+  it('ngAfterViewInit if condition', () => {
 
     comp.ngAfterViewInit();
     setTimeout(() => {
@@ -37,7 +37,7 @@ describe('navmenu', () => {
 
   });
 
-  xit('ngAfterViewInit else condition', () => {
+  it('ngAfterViewInit else condition', () => {
     el = fixture.debugElement.query(By.css('#navmenu'));
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
     comp.ngAfterViewInit();
@@ -50,14 +50,14 @@ describe('navmenu', () => {
   });
 
 
-  xit('check variable in navmenu', () => {
+  it('check variable in navmenu', () => {
     expect(comp.issubmenu).toEqual(false);
     expect(comp.position).toEqual('right');
     expect(comp.ishovered).toEqual(true);
 
   });
 
-  xit('setMobileMode() method check', () => {
+  it('setMobileMode() method check', () => {
     const mobileMode = false;
     const flag = false;
     comp.setMobileMode(flag);
@@ -65,13 +65,13 @@ describe('navmenu', () => {
 
   });
 
-  xit('dataObject() method check', () => {
+  it('dataObject() method check', () => {
     let n;
     comp.dataObject(n, event);
     return { data: n, event };
   });
 
-  xit('onHeaderClick() method  if check', () => {
+  it('onHeaderClick() method  if check', () => {
     comp.onHeaderClick(event);
     const node = {
       header: true,
@@ -87,7 +87,7 @@ describe('navmenu', () => {
     comp.onClick(node, event);
   });
 
-  xit('onHeaderClick() method  else check', () => {
+  it('onHeaderClick() method  else check', () => {
     comp.onHeaderClick(event);
     const node = {
       header: true,
@@ -102,7 +102,7 @@ describe('navmenu', () => {
     comp.onClick(node, event);
   });
 
-  xit('onMouseOver() method if check', () => {
+  it('onMouseOver() method if check', () => {
     comp.mobilemode = true;
     comp.showMenus = true;
     comp.onMouseOver(event);
@@ -110,7 +110,7 @@ describe('navmenu', () => {
     expect(comp.showMenus).toEqual(true);
   });
 
-  xit('onMouseOver() method else check', () => {
+  it('onMouseOver() method else check', () => {
     comp.mobilemode = false;
     comp.showMenus = true;
     comp.onMouseOver(event);
@@ -118,7 +118,7 @@ describe('navmenu', () => {
     expect(comp.showMenus).toEqual(true);
   });
 
-  xit('onMouseLeave() method if check', () => {
+  it('onMouseLeave() method if check', () => {
     comp.mobilemode = true;
     comp.showMenus = false;
     comp.onMouseLeave(event);
@@ -126,7 +126,7 @@ describe('navmenu', () => {
     expect(comp.showMenus).toEqual(false);
   });
 
-  xit('onMouseLeave() method else check', () => {
+  it('onMouseLeave() method else check', () => {
     comp.mobilemode = false;
     comp.showMenus = false;
     comp.onMouseLeave(event);
@@ -134,7 +134,7 @@ describe('navmenu', () => {
     expect(comp.showMenus).toEqual(false);
   });
 
-  xit('toggleMenu() method if check', () => {
+  it('toggleMenu() method if check', () => {
     comp.mobilemode = true;
     comp.showMenus = false;
     comp.toggleMenu(event);
@@ -142,7 +142,7 @@ describe('navmenu', () => {
     comp.showMenus = true;
   });
 
-  xit('toggleMenu() method else check', () => {
+  it('toggleMenu() method else check', () => {
     comp.mobilemode = false;
     comp.toggleMenu(event);
     expect(comp.mobilemode).toEqual(false);
@@ -150,7 +150,7 @@ describe('navmenu', () => {
 
 
 
-  xit('navItem click method', () => {
+  it('navItem click method', () => {
     const event1 = {
       event,
     };
@@ -158,7 +158,7 @@ describe('navmenu', () => {
     event1.event.stopPropagation();
     comp.onNavItemClick.emit(event);
   });
-  //   xit('onMouseoverTitle() method check', () => {
+  //   it('onMouseoverTitle() method check', () => {
   //     comp.onMouseoverTitle(event);
   //         comp.position = comp.getMenuPosition(event);
   //    });
@@ -174,7 +174,7 @@ describe('navmenu', () => {
   // let directionflag: string;
   //    });
 
- xit('onIconClick() method if condition check', () => {
+ it('onIconClick() method if condition check', () => {
     let node = {
       submenus: [{ submenu: 's' }, { submenu: 'u' }],
       isExpanded: false

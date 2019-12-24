@@ -26,7 +26,7 @@ describe('AmexioHeaderComponent', () => {
     comp.closeDataEmit.emit(this);
   });
 
-  xit('onMinimizeClick  method check', () => {
+  it('onMinimizeClick  method check', () => {
     comp.onMinimizeClick(event);
     comp.closeableBehaiour.next(false);
     comp.minimizeWindow.subscribe((g: any) => {

@@ -11,14 +11,14 @@ describe('Pipe: Filter', () => {
     });
 
     it('items [] empty', () => {
-        expect(pipe.transform([], 'A','B')).toEqual([]);
+        expect(pipe.transform([], 'A', 'B')).toEqual([]);
     });
 
     it('field or value is undefined', () => {
-        expect(pipe.transform(['AAA','BAB','BBA','ACS'],null,null)).toEqual(['AAA','BAB','BBA','ACS']);
+        expect(pipe.transform(['AAA', 'BAB', 'BBA', 'ACS'], null, null)).toEqual(['AAA', 'BAB', 'BBA', 'ACS']);
     });
 
-    xit('value is defined', () => {
-        expect(pipe.transform(['AAA','BAB','BBA','ACS'], '4', 'A')).toBe(['aaa','acs']);
-    });
+    // it('value is defined', () => {
+    //     expect(pipe.transform(['AAA', 'BAB', 'BBA', 'ACS'], '4', 'A')).toBe(['AAA', 'ACS']);
+    // });
 });

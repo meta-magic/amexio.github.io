@@ -36,7 +36,7 @@ describe('amexio-availability', () => {
 
   });
 
-  xit('onSelection()', () => {
+  it('onSelection()', () => {
     const radioData = { label: 'Inbound', colorcode: 'blue' };
     comp.onSelection(radioData);
     const obj = { label: radioData.label, colorcode: radioData.colorcode };

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { DisplayFieldComponent } from './display-field.component';
 
@@ -6,7 +6,7 @@ describe('DisplayFieldComponent', () => {
   let component: DisplayFieldComponent;
   let fixture: ComponentFixture<DisplayFieldComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DisplayFieldComponent ]
     })
@@ -19,7 +19,7 @@ describe('DisplayFieldComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

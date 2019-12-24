@@ -27,17 +27,11 @@ describe('amexio-datagrid-filter', () => {
     });
 
     xit('constructor call()', () => {
-        comp.constructor();
-        comp.option = 'OR';
-        comp.radioGroupData = {
-            response: {
-                data: [{
-                    filterOption: 'AND',
-                }, {
-                    filterOption: 'OR',
-                }],
-            },
-        };
+        fixture.detectChanges();
+
+        expect(comp.option).toBeDefined();
+        expect(comp.radioGroupData).toBeDefined();
+        expect(comp.filterOptions).toBeDefined();
     });
 
     it('setSelectedOption If Method', () => {
@@ -53,12 +47,10 @@ describe('amexio-datagrid-filter', () => {
             text: 'Full Name',
             width: 'undefined',
         };
-
         const event = {
             filterOption: 'AND',
             selected: true,
         };
-
         comp.setSelectedOption(col, event);
         expect(event.filterOption).toEqual('AND');
         comp.option = 'AND';

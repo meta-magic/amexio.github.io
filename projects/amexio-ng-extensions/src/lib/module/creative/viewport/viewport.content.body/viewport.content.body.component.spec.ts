@@ -1,12 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { ViewportContentBodyComponent } from './viewport.content.body.component';
 
-describe('ViewportContentBodyComponent', () => {
+describe('Viewport Content Body Component', () => {
   let component: ViewportContentBodyComponent;
   let fixture: ComponentFixture<ViewportContentBodyComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ViewportContentBodyComponent ]
     })
@@ -19,21 +19,21 @@ describe('ViewportContentBodyComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('setRoundEdge If round-edge()', () => {
-    let type = 'round-edge';
-    component.setRoundEdge('round-edge');
-    expect(type).toEqual('round-edge')
-    component.roundedgeclass = 'roundEdgeCommonCss';
+  it('setRoundEdge(): If round-edge', () => {
+    const type = 'round-edge';
+    component.setRoundEdge(type);
+    fixture.detectChanges();
+    expect(component.roundedgeclass).toBe('roundEdgeCommonCss');
   });
 
-  xit('setRoundEdge If classic', () => {
-    let type = 'classic';
-    component.setRoundEdge('classic');
-    expect(type).toEqual('classic')
-    component.roundedgeclass = 'classicCommonCss';
+  it('setRoundEdge If classic', () => {
+    const type = 'classic';
+    component.setRoundEdge(type);
+    fixture.detectChanges();
+    expect(component.roundedgeclass).toBe('classicCommonCss');
   });
 
-  xit('should create', () => {
+  it('should create component', () => {
     expect(component).toBeTruthy();
   });
 });

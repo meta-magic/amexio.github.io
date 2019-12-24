@@ -208,7 +208,7 @@ describe('amexio-floating-panel', () => {
         comp.setColorPalette(themeClass);
         comp.themeCss = themeClass;
     });
-    xit('setpanelAbsolutePosition if  method', () => {
+    it('setpanelAbsolutePosition if  method', () => {
         comp.width = '200';
         comp.commanservice.zindex = 600;
         comp.setPanelAbsolutePostion();
@@ -223,7 +223,7 @@ describe('amexio-floating-panel', () => {
         comp.setPanelStylePostion();
         comp.arrowPadding();
     });
-    xit('setpanelAbsolutePosition else  method', () => {
+    it('setpanelAbsolutePosition else  method', () => {
         comp.width = '';
         comp.commanservice.zindex = 600;
         comp.setPanelAbsolutePostion();
@@ -238,7 +238,7 @@ describe('amexio-floating-panel', () => {
         comp.setPanelStylePostion();
         comp.arrowPadding();
     });
-    xit('checking togglePanel method', () => {
+    it('checking togglePanel method', () => {
         comp.showPanel = false;
         comp.togglePanel();
         comp.showPanel = false;

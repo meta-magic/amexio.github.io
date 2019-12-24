@@ -191,7 +191,7 @@ describe('amexio-calendar-month', () => {
   });
 
   // check variables
-  xit('check variables in dropdown component ', () => {
+  it('check variables in dropdown component ', () => {
 
     comp.leftPositionPanel = 'leftPositionPanel';
     expect(comp.leftPositionPanel).toEqual('leftPositionPanel');
@@ -213,7 +213,7 @@ describe('amexio-calendar-month', () => {
   //   });
 
   // refactoredleftday method
-  xit('refactoredleftday() method check', () => {
+  it('refactoredleftday() method check', () => {
 
     let innerindex: any;
     let rowindex: any;
@@ -251,7 +251,7 @@ describe('amexio-calendar-month', () => {
     expect(comp.focusiindex).toEqual(innerindex - 1);
   });
 
-  xit('getFullDayName()', () => {
+  it('getFullDayName()', () => {
     const receiveddate = new Date('16-Jul-2019');
     comp.getFullDayName(receiveddate);
     const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
@@ -268,7 +268,7 @@ describe('amexio-calendar-month', () => {
     return dayname;
   });
 
-  xit('getFullMonthName()', () => {
+  it('getFullMonthName()', () => {
     const receiveddate = new Date('16-Jul-2019');
     comp.getFullMonthName(receiveddate);
     const months = ['January', 'Febuary', 'March', 'April', 'May', 'June',
@@ -284,7 +284,7 @@ describe('amexio-calendar-month', () => {
     return monthString;
   });
 
-  xit('receiveDateFormat()', () => {
+  it('receiveDateFormat()', () => {
     const day = new Date();
     comp.receiveDateFormat(day);
     let datestring = '';
@@ -293,7 +293,7 @@ describe('amexio-calendar-month', () => {
     return datestring;
   });
 
-  xit('formatAMPM()', () => {
+  it('formatAMPM()', () => {
     const date = new Date();
     comp.formatAMPM(date);
     let hours = date.getHours();
@@ -306,7 +306,7 @@ describe('amexio-calendar-month', () => {
     return (hours + ':' + lmins + ' ' + ampm);
   });
 
-  xit('eventClicked()', () => {
+  it('eventClicked()', () => {
     const eventData: any = 'a';
     const runTimeDiv: any = 'b';
     comp.eventClicked(event, eventData, runTimeDiv);
@@ -318,14 +318,14 @@ describe('amexio-calendar-month', () => {
     comp.onEventClicked.emit(eventObject);
   });
 
-  xit('onCloseClick()', () => {
+  it('onCloseClick()', () => {
     const event1 = { data: { fpFlag: false } };
     comp.onCloseClick(event1);
     event1.data.fpFlag = false;
     comp.onCloseClicked.emit(event);
   });
 
-  xit('onChipClick()', () => {
+  it('onChipClick()', () => {
     const item: any = 'a';
     const runtimeDiv: any = 'b';
     const event1 = { pageX: 'page' };
@@ -344,7 +344,7 @@ describe('amexio-calendar-month', () => {
     comp.xValue = event1.pageX;
     // comp.onMoreEventClicked.emit(emitEvent);
   });
-  xit('onMoreClicked() else block', () => {
+  it('onMoreClicked() else block', () => {
     const data = [
       {
         detais: { title: 'Java Conference', end: new Date(), eventclass: 'calendar-active-3', hasTimeSlot: true, people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }], phone: '020-23456789', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
@@ -386,7 +386,7 @@ describe('amexio-calendar-month', () => {
     data['fpFlag'] = true;
     comp.openFloatingPanel = true;
   });
-  xit('onMoreClicked() if condition for calendaryData', () => {
+  it('onMoreClicked() if condition for calendaryData', () => {
     const data = [
       {
         detais: { title: 'Java Conference', end: new Date(), eventclass: 'calendar-active-3', hasTimeSlot: true, people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }], phone: '020-23456789', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
@@ -463,7 +463,7 @@ describe('amexio-calendar-month', () => {
     comp.openFloatingPanel = true;
   });
 
-  xit('onMoreClicked() if condition for day.eventDetails', () => {
+  it('onMoreClicked() if condition for day.eventDetails', () => {
     const data = [
       {
         detais: { title: 'Java Conference', end: new Date(), eventclass: 'calendar-active-3', hasTimeSlot: true, people: [{ personName: 'Priyanka Gokhale' }, { personName: 'Seema Rai' }], phone: '020-23456789', start: new Date(), url: 'meet.google.com/izm-pooa-gns' },
@@ -523,7 +523,7 @@ describe('amexio-calendar-month', () => {
     comp.openFloatingPanel = true;
   });
 
-  xit('ondatefocus()', () => {
+  it('ondatefocus()', () => {
     const day = {
       eventDetails: {
         isEvent: true,
@@ -562,7 +562,7 @@ describe('amexio-calendar-month', () => {
 
   });
 
-  xit('addDynamicClass()', () => {
+  it('addDynamicClass()', () => {
     const calculatedWidth = 140;
     const cssClass = 'rightPositionPanel';
     const nextSiblingElement = document.createElement('app-events-panel');

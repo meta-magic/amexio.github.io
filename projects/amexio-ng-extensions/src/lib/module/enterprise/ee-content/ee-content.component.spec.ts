@@ -39,14 +39,14 @@ describe('amexio-ee-content', () => {
         });
     });
 
-    xit('check likeClick  method', () => {
+    it('check likeClick  method', () => {
         comp.likeClick();
         comp.overviewData = ('title,rate');
         comp.onLikeClick.subscribe((g: any) => {
             expect(comp.overviewData).toEqual(g);
         });
     });
-    xit('check unlikeClick  method', () => {
+    it('check unlikeClick  method', () => {
         comp.unlikeClick();
         comp.overviewData = ('title,rate');
         comp.onUnlikeLikeClick.subscribe((g: any) => {

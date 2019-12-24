@@ -1482,7 +1482,7 @@ describe('amexio-date-range-picker', () => {
     });
 
     /*
-    xit('ngAfterViewInit: check if date selected is not today', () => {
+    it('ngAfterViewInit: check if date selected is not today', () => {
         const today = '9-Oct-2019';
         const dfrom = new Date('1-Oct-2019');
         const dto = new Date('10-Oct-2019');
@@ -1501,7 +1501,7 @@ describe('amexio-date-range-picker', () => {
         expect(component.todayIconFlag).toEqual(false);;
     });
 
-    xit('ngAfterViewInit: check if altercompleteDaysArray method is callled', () => {
+    it('ngAfterViewInit: check if altercompleteDaysArray method is callled', () => {
 
         component.fromCardSelected = true;
         component.toCardSelected = true;
@@ -1511,7 +1511,7 @@ describe('amexio-date-range-picker', () => {
         expect(component.child.altercompleteDaysArray).toHaveBeenCalled();
     });
 
-    xit('ngAfterViewInit: check if date selected is Tomorrow', () => {
+    it('ngAfterViewInit: check if date selected is Tomorrow', () => {
         const today = '9-Oct-2019';
         const dfrom = new Date('1-Oct-2019');
         const dto = new Date('10-Oct-2019');
@@ -1533,7 +1533,7 @@ describe('amexio-date-range-picker', () => {
         expect(component.yesterdayIconFlag).toEqual(true);
     });
 
-    xit('ngAfterViewInit: check if date selected is not Tomorrow', () => {
+    it('ngAfterViewInit: check if date selected is not Tomorrow', () => {
         const today = '9-Oct-2019';
         const dfrom = new Date('1-Oct-2019');
         const dto = new Date('10-Oct-2019');
@@ -1552,7 +1552,7 @@ describe('amexio-date-range-picker', () => {
         expect(component.yesterdayIconFlag).toEqual(false);;
     });
 
-    xit('ngAfterViewInit: check if date selected is today', () => {
+    it('ngAfterViewInit: check if date selected is today', () => {
 
         const dfrom = new Date('1-Oct-2019');
         const dto = new Date('10-Oct-2019');
@@ -1570,7 +1570,7 @@ describe('amexio-date-range-picker', () => {
         expect(component.todayIconFlag).toEqual(true);
     });
 
-    xit('ngAfterViewInit: check if disabledDates is defined', () => {
+    it('ngAfterViewInit: check if disabledDates is defined', () => {
 
         const today = new Date();
         component.fromCardSelected = true;
@@ -1586,7 +1586,7 @@ describe('amexio-date-range-picker', () => {
         expect(component.disabledDates).toBeDefined();
     });
 
-    xit('ngAfterViewInit: check if disabledDates is not defined', () => {
+    it('ngAfterViewInit: check if disabledDates is not defined', () => {
 
         component.fromCardSelected = true;
         component.toCardSelected = true;
@@ -1594,14 +1594,14 @@ describe('amexio-date-range-picker', () => {
         expect(component.disabledDates).toBeNull();
     });
 
-    xit('ngAfterViewInit : check if todayIconFlag is true', () => {
+    it('ngAfterViewInit : check if todayIconFlag is true', () => {
         component.todayIconFlag = true;
         const spy = spyOn(component, 'updateFromTodate');
         component.ngAfterViewInit();
         expect(spy).toHaveBeenCalled();
     });
 
-    xit('ngAfterViewInit : check if todayIconFlag is false', () => {
+    it('ngAfterViewInit : check if todayIconFlag is false', () => {
         component.todayIconFlag = false;
         spyOn(component, 'updateFromTodate');
         expect(component.updateFromTodate).not.toHaveBeenCalled();
