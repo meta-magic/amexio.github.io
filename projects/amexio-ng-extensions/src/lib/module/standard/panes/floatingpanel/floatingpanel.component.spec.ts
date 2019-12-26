@@ -24,12 +24,7 @@ describe('amexio-floating-panel', () => {
         changes =  new SimpleChange(null, comp.showPanel, false)
 
     });
-    // it('should create the app', async(() => {
-    //     const fixture = TestBed.createComponent(AmexioFloatingPanelComponent);
-    //     const comp = fixture.debugElement.componentInstance;
-    //     fixture.detectChanges();
-    //     expect(comp).toBeTruthy();
-    // }));
+
 
     it('ngOnchanges method call if condition', () => {
         let element = fixture.nativeElement;

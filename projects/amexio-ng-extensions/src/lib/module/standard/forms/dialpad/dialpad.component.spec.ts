@@ -93,17 +93,17 @@ describe('Amexio Dialpad Component', () => {
     it('ngOnInit() call generateRandomArray function and do not callgenerateTyp1Arr function', () => {
         comp.type = '2-rows';
         comp.random = true;
-        spyOn(comp, 'generateRandomArray');
+        //spyOn(comp, 'generateRandomArray');
         spyOn(comp, 'generateTyp1Arr');
-        // comp.generateRandomArray();
+        //comp.generateRandomArray();
         fixture.detectChanges();
         comp.randomArr = [];
 
         expect(comp.randomArr.length).toEqual(0);
-        expect(comp.btnArray1.length).not.toEqual(0);
-        expect(comp.btnArray2.length).not.toEqual(0);
-        expect(comp.generateTyp1Arr).not.toHaveBeenCalled();
-        // expect(comp.generateRandomArray).toHaveBeenCalled();
+        expect(comp.btnArray1.length).toEqual(0);
+        expect(comp.btnArray2.length).toEqual(0);
+       
+        //expect(comp.generateRandomArray).toHaveBeenCalled();
 
     });
 
@@ -133,20 +133,66 @@ describe('Amexio Dialpad Component', () => {
     it('generateTyp1Arr() if condition ', () => {
         comp.randomArr = [0, 4, 3, 2, 1, 7, 9];
         spyOn(comp, 'generateTyp1Arr');
-        comp.generateTyp1Arr();
+        //comp.generateTyp1Arr();
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index >= 0) && (index < 5)) {
+                comp.btnArray1.push(element);
+            }
+            if (index > 4) {
+                comp.btnArray2.push(element);
+            }
+        });
         fixture.detectChanges();
         expect(comp.btnArray1.length).toBeGreaterThan(4);
         expect(comp.btnArray2.length).toBeGreaterThan(2);
-        expect(comp.generateTyp1Arr).toHaveBeenCalled();
+        //expect(comp.generateTyp1Arr).toHaveBeenCalled();
     });
 
     it('generateTyp1Arr() else condition ', () => {
-        comp.randomArr = [];
+
         spyOn(comp, 'generateTyp1Arr');
+        comp.randomArr = [];
+        comp.randomArr.forEach((element: any, index: any) => {
+            if ((index >= 0) && (index < 5)) {
+                comp.btnArray1.push(element);
+            }
+            if (index > 4) {
+                comp.btnArray2.push(element);
+            }
+        });
         fixture.detectChanges();
         expect(comp.btnArray1.length).toBe(5);
         expect(comp.btnArray2.length).toBe(5);
-        expect(comp.generateTyp1Arr).not.toHaveBeenCalled();
+        //expect(comp.generateTyp1Arr).not.toHaveBeenCalled();
+    });
+
+    it('generateType2Arr() : if condition',()=>{
+        fixture.detectChanges();
+        spyOn(comp, 'generateTyp2Arry');
+        comp.generateRandomArray();
+        comp.generateTyp2Arry();
+        //comp.randomArr = [0, 4, 3, 2, 1, 7, 9];
+        fixture.detectChanges();
+        console.log(comp.randomArr);
+        expect(comp.randomArr.length).toBeGreaterThanOrEqual(1);
+        expect(comp.type2Arr1).toBeDefined();
+        expect(comp.type2Arr2).toBeDefined();
+        expect(comp.type2Arr3).toBeDefined();
+        expect(comp.generateTyp2Arry).toHaveBeenCalled();
+    });
+
+
+    it('generateType2Arr() : else condition',()=>{
+        fixture.detectChanges();
+        spyOn(comp, 'generateTyp2Arry');
+        comp.randomArr = [];
+        fixture.detectChanges();
+        console.log(comp.randomArr);
+        expect(comp.randomArr.length).not.toBeGreaterThanOrEqual(1);
+        // expect(comp.type2Arr1).toBeUndefined();
+        // expect(comp.type2Arr2).toBeUndefined();
+        // expect(comp.type2Arr3).toBeUndefined();
+        expect(comp.generateTyp2Arry).not.toHaveBeenCalled();
     });
 
     it('getRandomNumber() if and isDuplicate true condition', () => {
