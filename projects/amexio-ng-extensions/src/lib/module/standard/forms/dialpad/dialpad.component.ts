@@ -223,7 +223,6 @@ export class AmexioDialpadComponent implements OnInit {
             }
          } else {
             return num;
-
         }
     }
 
