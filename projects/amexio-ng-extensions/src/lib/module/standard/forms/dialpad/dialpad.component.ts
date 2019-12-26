@@ -40,7 +40,7 @@ export class AmexioDialpadComponent implements OnInit {
     @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
     ngOnInit() {
-        console.log('maxlen', this.maxlen, this.minlen);
+        //console.log('maxlen', this.maxlen, this.minlen);
         if (this.password || this.showpassword) {
             this.textType = 'password';
         } else {

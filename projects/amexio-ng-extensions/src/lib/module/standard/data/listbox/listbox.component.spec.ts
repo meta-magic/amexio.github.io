@@ -6,7 +6,7 @@ import {AmexioContextMenuComponent} from '../../../base/base.contextmenu.compone
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {HttpClientModule} from '@angular/common/http';
-describe('AmexioListBoxComponent', () => {
+describe('Amexio List Box Component', () => {
   let comp1: AmexioListBoxComponent;
   let fixture1: ComponentFixture<AmexioListBoxComponent>;
 
