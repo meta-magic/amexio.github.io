@@ -335,54 +335,77 @@ describe('Amexio Dialpad Component', () => {
         comp.value = '123';
         comp.isValid = true;
         comp.iconfeedback = true;
-        comp.eraseData();
-        let str;
-        str = comp.value.slice(0, -1);
-        comp.value = str;
-        expect(comp.cls).toEqual('greencls');
+        const object = { data: comp.value };
+        spyOn(comp.onClick,'emit').withArgs(object);
+        spyOn(comp.valueChange,'emit').withArgs(comp.value);
+        spyOn(comp,'validateMinMax');
+        comp.onClick.emit(object);
+        comp.valueChange.emit(comp.value);
+        comp.validateMinMax();
+        fixture.detectChanges();
+        expect(comp.cls).toEqual('nonecls');
+
     });
 
     it('eraseData() else if condition', () => {
         comp.value = '123';
         comp.isValid = false;
         comp.iconfeedback = true;
-        comp.eraseData();
-        let str;
-        str = comp.value.slice(0, -1);
-        comp.value = str;
-        expect(comp.cls).toEqual('redcls');
-        expect(comp.iconfeedback).toEqual(true);
-        comp.cls = 'redcls';
+        const object = { data: comp.value };
+        spyOn(comp.onClick,'emit').withArgs(object);
+        spyOn(comp.valueChange,'emit').withArgs(comp.value);
+        spyOn(comp,'validateMinMax');
+        comp.onClick.emit(object);
+        comp.valueChange.emit(comp.value);
+        comp.validateMinMax();
+        fixture.detectChanges();
+        expect(comp.cls).toEqual('nonecls');
+
     });
 
-    it('eraseData() if if condition', () => {
+    it('eraseData() if condition', () => {
         comp.value = '';
-        comp.isValid = true;
         comp.iconfeedback = true;
-        comp.eraseData();
-        let str;
-        str = comp.value.slice(0, -1);
-        comp.value = str;
-        expect(comp.isValid).toBeNull();
-        expect(comp.cls).toEqual('redcls');
+        const object = { data: comp.value };
+        spyOn(comp.onClick,'emit').withArgs(object);
+        spyOn(comp.valueChange,'emit').withArgs(comp.value);
+        spyOn(comp,'validateMinMax');
+        comp.onClick.emit(object);
+        comp.valueChange.emit(comp.value);
+        comp.validateMinMax();
+        fixture.detectChanges();
+        expect(comp.isValid).toBeUndefined();
+        expect(comp.cls).toEqual('nonecls');
     });
 
     it('eraseData() else condition', () => {
-        comp.value = '123' + '123';
-        comp.isValid = false;
-        comp.iconfeedback = false;
-        comp.eraseData();
-        let str;
-        str = comp.value.slice(0, -1);
-        comp.value = str;
-        expect(comp.cls).toBeUndefined();
+        comp.value = '';
+        comp.iconfeedback = true;
+        const object = { data: comp.value };
+        spyOn(comp.onClick,'emit').withArgs(object);
+        spyOn(comp.valueChange,'emit').withArgs(comp.value);
+        spyOn(comp, 'validateMinMax');
+
+        fixture.detectChanges();
+        expect(comp.isValid).toBeUndefined();
+        expect(comp.cls).toBe('nonecls');
     });
 
     it('emitBtnData()', () => {
         let keycode;
         const obj = { key: keycode, data: comp.value };
+        spyOn(comp.onClick,'emit');
         comp.emitBtnData(keycode);
-        comp.onClick.emit(obj);
+        fixture.detectChanges();
+        expect(comp.onClick.emit).toHaveBeenCalledWith(obj)
+    });
+
+    it('emitBtnData() negate', () => {
+        let keycode;
+        const obj = { key: keycode, data: comp.value };
+        spyOn(comp.onClick,'emit');
+        fixture.detectChanges();
+        expect(comp.onClick.emit).not.toHaveBeenCalledWith(obj)
     });
 
     it('clearData() if condition', () => {
@@ -391,11 +414,15 @@ describe('Amexio Dialpad Component', () => {
         comp.maxlen = 4;
         comp.isValid = null;
         const object = { data: comp.value };
+        spyOn(comp.onClick,'emit').withArgs(object);
+        spyOn(comp.valueChange,'emit').withArgs(comp.value);
         comp.onClick.emit(object);
         comp.valueChange.emit(comp.value);
         comp.clearData();
+        fixture.detectChanges();
         expect(comp.isValid).toBeNull();
-        expect(comp.cls).toEqual('redcls');
+        expect(comp.cls).toEqual('nonecls');
+        expect(comp.onClick.emit).toHaveBeenCalledWith(object);
     });
 
     it('clearData() else condition', () => {
@@ -404,10 +431,14 @@ describe('Amexio Dialpad Component', () => {
         comp.maxlen = undefined;
         comp.isValid = null;
         const object = { data: comp.value };
+        spyOn(comp.onClick,'emit').withArgs(object);
+        spyOn(comp.valueChange,'emit').withArgs(comp.value);
+      
         comp.onClick.emit(object);
         comp.valueChange.emit(comp.value);
         comp.clearData();
-        expect(comp.cls).toEqual('redcls');
+        fixture.detectChanges();
+        expect(comp.cls).toEqual('nonecls');
     });
 
     it('clearData() else condition', () => {
@@ -416,10 +447,16 @@ describe('Amexio Dialpad Component', () => {
         comp.maxlen = undefined;
         comp.isValid = null;
         const object = { data: comp.value };
+        spyOn(comp.onClick,'emit').withArgs(object);
+        spyOn(comp.valueChange,'emit').withArgs(comp.value);
+      
         comp.onClick.emit(object);
         comp.valueChange.emit(comp.value);
         comp.clearData();
+        fixture.detectChanges();
         expect(comp.cls).toEqual('nonecls');
+        expect(comp.onClick.emit).toHaveBeenCalledWith(object);
+        expect(comp.valueChange.emit).toHaveBeenCalledWith(comp.value);
     });
 
     it('clearData() else condition', () => {
@@ -428,46 +465,30 @@ describe('Amexio Dialpad Component', () => {
         comp.maxlen = 4;
         comp.isValid = null;
         const object = { data: comp.value };
+        spyOn(comp.onClick,'emit').withArgs(object);
+        spyOn(comp.valueChange,'emit').withArgs(comp.value);
+      
         comp.onClick.emit(object);
         comp.valueChange.emit(comp.value);
-        comp.clearData();
-        expect(comp.cls).toEqual('redcls');
+        fixture.detectChanges();
+        expect(comp.cls).toEqual('nonecls');
+        expect(comp.onClick.emit).toHaveBeenCalledWith(object);
+        expect(comp.valueChange.emit).toHaveBeenCalledWith(comp.value);
     });
 
     it('onToggle If call ', () => {
+        
+        comp.show = false;
         comp.toggleShow();
-        comp.show = true;
-        comp.show = !comp.show;
+        fixture.detectChanges();
         expect(comp.textType).toEqual('text');
     });
 
     it('onToggle else call ', () => {
-        comp.show = !comp.show;
-        comp.toggleShow();
         comp.show = false;
-        expect(comp.textType).toEqual('password');
+        comp.toggleShow();
+        fixture.detectChanges();
+        expect(comp.textType).toEqual('text');
     });
 
-    // it('generateType2Arr method randomArr less than 1 Condition', () => {
-    //     comp.generateType2Arr();
-    //     comp.generateRandomArray();
-    //     comp.randomArr = [];
-    //     // expect(comp.randomArr).toBe([]);
-    //     expect(comp.generateTyp2Arry()).not.toHaveBeenCalled;
-
-    // })
-    // it('generateType2Arr method If Condition', () => {
-    //     comp.generateType2Arr();
-    //     comp.generateRandomArray();
-    //     comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
-    //     expect(comp.randomArr.length).toBeGreaterThanOrEqual(1);
-    //     comp.type2Arr1 = [];
-    //     comp.type2Arr2 = [];
-    //     comp.type2Arr3 = [];
-    //     expect(comp.type2Arr1).toEqual([]);
-    //     expect(comp.type2Arr2).toEqual([]);
-    //     expect(comp.type2Arr3).toEqual([]);
-    //     expect(comp.generateTyp2Arry()).toHaveBeenCalled;
-
-    // })
 });
