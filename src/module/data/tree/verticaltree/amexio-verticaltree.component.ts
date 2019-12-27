@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { AmexioInnerVerticalNodeComponent } from '../verticaltree/amexio-innerverticalnode.component';
 
 @Component({
-    selector: 'amexio-verticaltree-demo',
+    selector: 'amexio-verticaltree',
     templateUrl: './amexio-verticaltree.component.html',
 })
 export class AmexioVerticalTreeComponent implements AfterViewInit, OnInit {
@@ -9,10 +10,12 @@ export class AmexioVerticalTreeComponent implements AfterViewInit, OnInit {
     @Input() data: any;
 
     @Output() onNodeClick: any = new EventEmitter<any>();
+    @Output() onDropClick: any = new EventEmitter<any>();
+
     treetemplates: any;
 
     @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
-
+    @ViewChild(AmexioInnerVerticalNodeComponent) innernodeRef: AmexioInnerVerticalNodeComponent;
     constructor() {
 
     }
@@ -33,5 +36,14 @@ export class AmexioVerticalTreeComponent implements AfterViewInit, OnInit {
                 this.parentTmp = this.treetemplates.treeNodeTemplate;
             }
         });
+    }
+
+    dragOver(event: DragEvent) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    dropTable(event: any) {
+        this.onDropClick.emit({ event: event.event, questData: event.questData, node: event.node });
     }
 }

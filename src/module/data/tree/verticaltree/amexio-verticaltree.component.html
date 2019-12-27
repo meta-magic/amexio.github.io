@@ -1,6 +1,4 @@
-
 <div class="amexio-vtree">
-    <amexio-innerveticalnode-demo [templates]="treetemplates" [data]="data"  [root]="true" (onNodeClick)="nodeclick($event)"></amexio-innerveticalnode-demo>
+    <amexio-innerveticalnode [templates]="treetemplates" [data]="data" [root]="true" (ondragover1)="dragOver($event)" (onDropClick)="dropTable($event)"
+        (onNodeClick)="nodeclick($event)"></amexio-innerveticalnode>
 </div>
-
- 
