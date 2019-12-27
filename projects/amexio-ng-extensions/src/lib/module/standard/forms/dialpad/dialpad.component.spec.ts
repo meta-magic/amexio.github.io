@@ -5,6 +5,7 @@ import { CommonIconComponent } from '../../../base/components/common.icon.compon
 import { AmexioButtonComponent } from '../buttons/button.component';
 import { AmexioLabelComponent } from '../label/label.component';
 import { AmexioDialpadComponent } from './dialpad.component';
+import { AnimationDriver } from '@angular/animations/browser';
 describe('Amexio Dialpad Component', () => {
     let comp: AmexioDialpadComponent;
     let fixture: ComponentFixture<AmexioDialpadComponent>;
@@ -166,74 +167,63 @@ describe('Amexio Dialpad Component', () => {
         //expect(comp.generateTyp1Arr).not.toHaveBeenCalled();
     });
 
-    it('generateType2Arr() : if condition',()=>{
+    it('generateType2Arr() : if condition', () => {
         fixture.detectChanges();
         spyOn(comp, 'generateTyp2Arry');
-        comp.generateRandomArray();
+        comp.randomArr = [0, 4, 3, 2, 1, 7, 9];
         comp.generateTyp2Arry();
-        //comp.randomArr = [0, 4, 3, 2, 1, 7, 9];
+        comp.type2Arr1 = [];
+        comp.type2Arr2 = [];
+        comp.type2Arr3 = [];
         fixture.detectChanges();
-        console.log(comp.randomArr);
+        console.log(comp.type2Arr1);
         expect(comp.randomArr.length).toBeGreaterThanOrEqual(1);
-        expect(comp.type2Arr1).toBeDefined();
-        expect(comp.type2Arr2).toBeDefined();
-        expect(comp.type2Arr3).toBeDefined();
+        expect(comp.type2Arr1.length).toBe(0);
+        expect(comp.type2Arr2.length).toBe(0);
+        expect(comp.type2Arr3.length).toBe(0);
         expect(comp.generateTyp2Arry).toHaveBeenCalled();
     });
 
 
-    it('generateType2Arr() : else condition',()=>{
+    it('generateType2Arr() : else condition', () => {
         fixture.detectChanges();
         spyOn(comp, 'generateTyp2Arry');
+
+        comp.randomArr = [];
+        comp.generateType2Arr();
         comp.randomArr = [];
         fixture.detectChanges();
         console.log(comp.randomArr);
         expect(comp.randomArr.length).not.toBeGreaterThanOrEqual(1);
-        // expect(comp.type2Arr1).toBeUndefined();
-        // expect(comp.type2Arr2).toBeUndefined();
-        // expect(comp.type2Arr3).toBeUndefined();
-        expect(comp.generateTyp2Arry).not.toHaveBeenCalled();
+        expect(comp.type2Arr1.length).toBe(0);
+        expect(comp.type2Arr2.length).toBe(0);
+        expect(comp.type2Arr3.length).toBe(0);
+        
     });
 
     it('getRandomNumber() if and isDuplicate true condition', () => {
 
         const myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         const num = myArray[Math.floor(Math.random() * myArray.length)];
-        let isDuplicate = true;
         comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        spyOn(comp,'getRandomNumber').and.returnValue(num);
         comp.getRandomNumber();
-        expect(comp.randomArr.length).toBeGreaterThan(0);
-        comp.randomArr.forEach((element: any) => {
-            if (num === element) {
-                expect(isDuplicate).toEqual(true);
-            }
-        });
-        isDuplicate = true;
-        return comp.getRandomNumber();
+        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
+        fixture.detectChanges();
+        expect(comp.getRandomNumber).toHaveBeenCalled();
     });
 
-    it('getRandomNumber() if and isDuplicate false condition', () => {
-
-        const myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-        const num = myArray[Math.floor(Math.random() * myArray.length)];
-        let isDuplicate = false;
-        comp.randomArr = [0, 5, 4, 3, 2, 5, 1, 7, 8, 9];
-        comp.getRandomNumber();
-        expect(comp.randomArr.length).toBeGreaterThan(0);
-        comp.randomArr.forEach((element: any) => {
-            if (num != element) {
-            }
-        });
-        isDuplicate = false;
-        return num;
-    });
 
     it('getRandomNumber() else ', () => {
         const myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         const num = myArray[Math.floor(Math.random() * myArray.length)];
         comp.randomArr = [];
         comp.getRandomNumber();
-        return num;
+        spyOn(comp, 'getRandomNumber').and.returnValue(num);
+        fixture.detectChanges();
+
+        expect(comp.randomArr.length).toBe(0);
+        expect(comp.getRandomNumber).not.toHaveBeenCalled();
     });
 
     it('generateTyp2Arry() if condition ', () => {
@@ -279,6 +269,16 @@ describe('Amexio Dialpad Component', () => {
         expect(comp.isValid).toEqual(false);
     });
 
+    it('validateMax() else check ', () => {
+        comp.maxlen = 2;
+        comp.minlen = 5;
+        comp.value = 'abcd';
+        comp.validateMax();
+        fixture.detectChanges();
+
+        expect(comp.isValid).toBeUndefined();
+    });
+
     it('validateMin() if check ', () => {
         comp.minlen = 2;
         comp.maxlen = undefined;
@@ -288,7 +288,6 @@ describe('Amexio Dialpad Component', () => {
         expect(comp.isValid).toEqual(true);
     });
 
-
     it('validateMin() else check ', () => {
         comp.minlen = 8;
         comp.maxlen = undefined;
@@ -296,6 +295,15 @@ describe('Amexio Dialpad Component', () => {
         comp.validateMin();
         fixture.detectChanges();
         expect(comp.isValid).toEqual(false);
+    });
+
+    it('validateMin() else check ', () => {
+        comp.minlen = 8;
+        comp.maxlen = 10;
+        comp.value = 'abcd';
+        comp.validateMin();
+        fixture.detectChanges();
+        expect(comp.isValid).toBeUndefined();
     });
 
     it('validateMinMax() if condition ', () => {
@@ -349,11 +357,13 @@ describe('Amexio Dialpad Component', () => {
         spyOn(comp.valueChange, 'emit').withArgs(comp.value);
         comp.isValid = true;
         comp.iconfeedback = true;
+
         comp.emitBtnData(data);
         comp.valueChange.emit(comp.value);
 
         fixture.detectChanges();
 
+        expect(comp.value).toContain('aa');
         expect(comp.cls).toEqual('nonecls');
         expect(comp.emitBtnData).toHaveBeenCalledWith(data);
         expect(comp.valueChange.emit).toHaveBeenCalledWith(comp.value);
