@@ -11,7 +11,8 @@ import { RoundEdgesDirective } from './round.edge.directive';
     selector: 'round-edge-directive',
     template: `
 
-  <amexio-button amexioThemeStyle [theme-style]="'round-edge'" 
+  <amexio-button amexioThemeStyle 
+    [theme-style]="'round-edge'"
     [label]="'Previous'"
     [type]="'theme-color'"
     (onClick)="previous()">

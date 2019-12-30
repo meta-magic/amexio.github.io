@@ -4,9 +4,8 @@ import { AmexioFullScreenDirective } from './full.screen.directive';
 import { ViewContainerRef, Component, ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AmexioFormsModule } from '../standard/forms/amexio.forms.module';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AmexioMediaModule } from '../standard/media/amexio.media.module';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Simple test component that will not in the actual app

@@ -233,6 +233,7 @@ describe('amexio-floating-panel', () => {
         comp.setPanelStylePostion();
         comp.arrowPadding();
     });
+
     it('checking togglePanel method', () => {
         comp.showPanel = false;
         spyOn(comp.onclose, 'emit');

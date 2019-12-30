@@ -67,8 +67,6 @@ import { AmexioSocialComponent } from './socialmedia/social.component';
 
 import { AmexioMultiRangePickerComponent } from './multirangedatepicker/multirangedatepicker.component';
 
-import { AmexioInputPatternDirective } from '../../directive/input.mask.directive';
-
 export * from '../../services/data/common.data.service';
 export * from '../../services/icon/icon.service';
 export * from './recaptcha/load.recaptcha.service';
@@ -127,7 +125,6 @@ const FORM_COMPONENTS = [
   AmexioRangeSliderComponent,
   AmexioMultipleDatePickerComponent,
   GeoLocationComponent,
-  AmexioInputPatternDirective,
   AmexioDialpadComponent,
   AmexioMultiRangePickerComponent,
 ];

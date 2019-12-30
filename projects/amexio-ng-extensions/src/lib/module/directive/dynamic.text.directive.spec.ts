@@ -5,9 +5,7 @@ import { Component, DebugElement, Renderer2,
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DynamicTextDirective } from './dynamic.text.directive';
-/**
-* Created by Manisha on 15/10/19.
-*/
+
 // Simple test component that will not in the actual app
 @Component({
   selector: 'amexio-dynamic-text',

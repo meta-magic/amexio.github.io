@@ -2,7 +2,7 @@
 import { Component, DebugElement, Renderer2,
   ViewContainerRef, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+
 import { AmexioFormGroupDirective } from './form.group.directive';
 
 @Component({

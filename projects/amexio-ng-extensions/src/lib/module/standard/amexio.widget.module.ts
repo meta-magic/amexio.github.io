@@ -26,6 +26,8 @@ import { AmexioFullScreenDirective } from '../directive/full.screen.directive';
 import { RoundEdgesDirective } from '../directive/round.edge.directive';
 import { RoutedirDirective } from '../directive/router.animation.directive';
 
+import { AmexioInputPatternDirective } from '../directive/input.mask.directive';
+
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
 export * from '../services/icon/icon.service';
@@ -72,8 +74,9 @@ export * from '../services/routing/routing.service';
     AmexioFullScreenDirective,
     RoutedirDirective,
     DynamicTextDirective,
+    AmexioInputPatternDirective
   ],
-  declarations: [RoutedirDirective, DynamicTextDirective, RoundEdgesDirective, AmexioFullScreenDirective,
+  declarations: [RoutedirDirective, DynamicTextDirective, RoundEdgesDirective, AmexioFullScreenDirective, AmexioInputPatternDirective
     ],
   providers: [CommonDataService, DeviceQueryService, IconLoaderService, RouterService],
 })
