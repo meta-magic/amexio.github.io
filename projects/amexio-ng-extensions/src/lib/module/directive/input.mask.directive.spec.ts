@@ -25,7 +25,7 @@ class TestInputPatternDirective {
  
 }
 
-fdescribe('Directive: amexio-input-mask', () => {
+describe('Directive: amexio-input-mask', () => {
   let comp: TestInputPatternDirective;
 
   let fixture: ComponentFixture<TestInputPatternDirective>;
