@@ -235,15 +235,20 @@ describe('amexio-floating-panel', () => {
     });
     it('checking togglePanel method', () => {
         comp.showPanel = false;
+        spyOn(comp.onclose, 'emit');
+        spyOn(comp.showPanelChange, 'emit').withArgs(!comp.showPanel);
         comp.togglePanel();
-        comp.showPanel = false;
-        expect(comp.showPanel).toEqual(false);
+        fixture.detectChanges();
+
+        expect(comp.showPanel).toEqual(true);
         comp.onclose.subscribe((g: any) => {
             expect(comp.onclose).toEqual(g);
         });
         comp.showPanelChange.subscribe((g: any) => {
             expect(comp.showPanelChange).toEqual(g);
         });
+        expect(comp.onclose.emit).toHaveBeenCalled();
+        expect(comp.showPanelChange.emit).toHaveBeenCalledWith(comp.showPanel);
     });
     it('elementDrag method  if call', () => {
         comp.pos1 = 0;

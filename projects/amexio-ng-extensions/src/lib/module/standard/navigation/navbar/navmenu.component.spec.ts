@@ -151,13 +151,16 @@ describe('navmenu', () => {
 
 
   it('navItem click method', () => {
+    spyOn(comp.onNavItemClick, 'emit');
     const event1 = {
       event,
     };
     comp.navItemClick(event1);
-    event1.event.stopPropagation();
+    fixture.detectChanges();
     comp.onNavItemClick.emit(event);
+    expect(comp.onNavItemClick.emit).toHaveBeenCalled();
   });
+  
   //   it('onMouseoverTitle() method check', () => {
   //     comp.onMouseoverTitle(event);
   //         comp.position = comp.getMenuPosition(event);
