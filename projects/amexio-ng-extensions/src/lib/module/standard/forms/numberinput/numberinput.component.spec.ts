@@ -7,7 +7,7 @@ import { IconLoaderService } from '../../../../../public-api'
 import { AmexioInputHelperComponent } from '../../../base/input.helper.component';
 import { AmexioNumberInputComponent } from './numberinput.component';
 
-fdescribe('Amexio Number Input Component', () => {
+describe('Amexio Number Input Component', () => {
 
   let comp: AmexioNumberInputComponent;
   let fixture: ComponentFixture<AmexioNumberInputComponent>;
