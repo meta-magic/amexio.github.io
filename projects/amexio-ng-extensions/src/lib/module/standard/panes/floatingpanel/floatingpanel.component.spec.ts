@@ -175,12 +175,17 @@ describe('amexio-floating-panel', () => {
         comp.setPanelStylePostion();
         comp.arrowPadding();
     })
+
+
     it('arrowPadding method', () => {
         comp.arrow = true;
         comp.arrowPadding();
+        fixture.detectChanges();
         expect(comp.arrow).toEqual(true);
         expect(comp.style['margin-top']).toBe('16px');
     });
+
+
     it('setpanelStyleposition', () => {
         comp.topPosition = '20px';
         comp.bottomPosition = '20px';

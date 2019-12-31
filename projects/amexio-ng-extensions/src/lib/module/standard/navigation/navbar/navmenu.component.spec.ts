@@ -104,16 +104,22 @@ describe('navmenu', () => {
 
   it('onMouseOver() method if check', () => {
     comp.mobilemode = true;
-    comp.showMenus = true;
+    spyOn(comp,'onMouseOver')
+      .withArgs(event)
+      .and.callThrough();
     comp.onMouseOver(event);
+    fixture.detectChanges();
     expect(comp.mobilemode).toEqual(true);
-    expect(comp.showMenus).toEqual(true);
+    expect(comp.showMenus).toBeUndefined();
   });
 
   it('onMouseOver() method else check', () => {
     comp.mobilemode = false;
-    comp.showMenus = true;
+    spyOn(comp,'onMouseOver')
+      .withArgs(event)
+      .and.callThrough();
     comp.onMouseOver(event);
+    fixture.detectChanges();
     expect(comp.mobilemode).toEqual(false);
     expect(comp.showMenus).toEqual(true);
   });
