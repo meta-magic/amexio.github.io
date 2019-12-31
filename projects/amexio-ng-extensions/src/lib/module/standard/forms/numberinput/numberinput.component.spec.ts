@@ -6,7 +6,8 @@ import { FormControl, FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../../../public-api'
 import { AmexioInputHelperComponent } from '../../../base/input.helper.component';
 import { AmexioNumberInputComponent } from './numberinput.component';
-describe('Amexio Number Input Component', () => {
+
+fdescribe('Amexio Number Input Component', () => {
 
   let comp: AmexioNumberInputComponent;
   let fixture: ComponentFixture<AmexioNumberInputComponent>;
@@ -19,6 +20,11 @@ describe('Amexio Number Input Component', () => {
     });
     fixture = TestBed.createComponent(AmexioNumberInputComponent);
     comp = fixture.componentInstance;
+
+    comp.name = "age";
+    comp.fieldlabel = 'Age';
+
+    fixture.detectChanges();
   });
 
   it('initialize innervalue', () => {
@@ -26,9 +32,22 @@ describe('Amexio Number Input Component', () => {
     expect(comp['innerValue']).toEqual(comp.value);
   });
 
-  it('ngOninit Method', () => {
-    comp.ngOnInit();
-    comp.componentId = comp.createCompId('numberinput', comp.name);
+  it('ngOninit(): ', () => {
+
+    spyOn(comp, 'generateName').withArgs(
+      comp.name,
+      comp.fieldlabel,
+      'numberinput'
+    );
+    spyOn(comp, 'createCompId')
+    .withArgs(
+      'numberinput',
+      comp.name
+    ).and.returnValue('numberinput_age');
+   // comp.ngOnInit();
+    fixture.detectChanges();
+    //expect(comp.name).toContain('numberinput');
+    expect(comp.componentId).toContain('numberinput');
   });
 
   // wrking 1- set errormsg
@@ -68,31 +87,16 @@ describe('Amexio Number Input Component', () => {
 
   });
 
-  it('validate method call allowblank false', () => {
-    comp.allowblank = false;
-    let c: FormControl;
-    comp.validate(c);
-    expect(comp.allowblank).toEqual(false);
-    expect(comp.isFieldValidate()).toHaveBeenCalled;
-    const isValid = comp.allowblank && comp.isFieldValidate();
-    expect(isValid).toEqual(false);
-    return {
-      jsonParseError: {
-        valid: true,
-      },
-    };;
-  });
-
   it('validate method call isvalid true', (): any => {
 
     let c: FormControl;
+    spyOn(comp,'isFieldValidate');
     comp.validate(c);
     comp.allowblank = true;
     expect(comp.allowblank).toEqual(true);
-    expect(comp.isFieldValidate()).toHaveBeenCalled;
+    expect(comp.isFieldValidate).toHaveBeenCalled();
     const isValid = comp.allowblank;
     expect(isValid).toEqual(true);
-
   });
 
 });

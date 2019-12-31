@@ -253,6 +253,7 @@ description : On field value change event
     this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
     this.componentId = this.createCompId('textinput', this.name);
   }
+
   public validate(c: FormControl) {
     return this.isFieldValid() ? null : {
       jsonParseError: {

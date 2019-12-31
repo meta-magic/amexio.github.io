@@ -8,7 +8,7 @@ import { IconLoaderService } from '../../../../../public-api';
 import { AmexioInputHelperComponent } from '../../../base/input.helper.component';
 import { AmexioTextInputComponent } from './textinput.component';
 
-describe('Text INPUT', () => {
+fdescribe('Amexio Text Input Component: ', () => {
 
   let comp: AmexioTextInputComponent;
   let fixture: ComponentFixture<AmexioTextInputComponent>;
@@ -18,8 +18,14 @@ describe('Text INPUT', () => {
       declarations: [AmexioTextInputComponent, AmexioInputHelperComponent],
       providers: [IconLoaderService],
     });
+   
     fixture = TestBed.createComponent(AmexioTextInputComponent);
     comp = fixture.componentInstance;
+
+    comp.name = "age";
+    comp.fieldlabel = 'Age';
+
+    fixture.detectChanges();
   });
 
   it('initialize innervalue', () => {
@@ -42,18 +48,13 @@ describe('Text INPUT', () => {
     comp.registerOnTouched(fn);
     expect(comp['onTouchedCallback']).toEqual(fn);
   });
+
   it('writeValue()', () => {
     const value = 'abc';
     comp.innerValue = 'xyz';
     expect(value).not.toEqual(comp.innerValue);
-    comp.innerValue = value;
   });
 
-  it('ngOninit Method', () => {
-    comp.ngOnInit();
-    comp.name = comp.generateName(comp.name, comp.fieldlabel, 'textinput');
-    comp.componentId = comp.createCompId('textinput', comp.name);
-  });
 
   it('check for isValid', () => {
     comp.isValid = true;
@@ -61,16 +62,29 @@ describe('Text INPUT', () => {
   });
 
   it('onInputTextEvent call ', () => {
+    let event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+    spyOn(comp, 'onInputTextEvent').withArgs(event);
     comp.onInputTextEvent(event);
-    comp.onInputEvent(event);
+    fixture.detectChanges();
+    expect(comp.onInputTextEvent).toHaveBeenCalledWith(event);
   });
 
-  it('createComponentId textfield call ', () => {
-    const inputType = 'textfield';
-    const name = '';
-    comp.createCompId(inputType, name);
-    // name === '' || name === null
-    expect(name).toEqual('');
-    return inputType + '_' + window.crypto.getRandomValues(new Uint32Array(1))[0];
-    });
+  it('ngOninit(): ', () => {
+
+    spyOn(comp, 'generateName').withArgs(
+      comp.name,
+      comp.fieldlabel,
+      'textinput'
+    );
+    spyOn(comp, 'createCompId')
+    .withArgs(
+      'textinput',
+      comp.name
+    ).and.returnValue('textinput_age');
+
+    fixture.detectChanges();
+    //expect(comp.name).toContain('textinput');
+    expect(comp.componentId).toContain('textinput');
+  });
+
 });
