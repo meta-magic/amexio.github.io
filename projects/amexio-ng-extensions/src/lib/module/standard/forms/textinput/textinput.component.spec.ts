@@ -28,6 +28,11 @@ describe('Amexio Text Input Component: ', () => {
     fixture.detectChanges();
   });
 
+  it('AmexioTextInputComponent: defined', () => {
+    expect(fixture.componentInstance).toBeDefined();
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
   it('initialize innervalue', () => {
     comp.value = 'sagfaf';
     expect(comp['innerValue']).toEqual(comp.value);

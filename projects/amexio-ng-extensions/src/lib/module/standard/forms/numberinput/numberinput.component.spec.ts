@@ -1,6 +1,4 @@
-/**
- * Created by pratik on 1/12/17.
- */
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../../../public-api'
@@ -23,8 +21,15 @@ describe('Amexio Number Input Component', () => {
 
     comp.name = "age";
     comp.fieldlabel = 'Age';
+    comp._pattern = '\d{5}';
 
     fixture.detectChanges();
+    
+  });
+
+  it('AmexioNumberInputComponent : defined', () => {
+    expect(fixture.componentInstance).toBeDefined();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
   it('initialize innervalue', () => {
@@ -44,26 +49,27 @@ describe('Amexio Number Input Component', () => {
       'numberinput',
       comp.name
     ).and.returnValue('numberinput_age');
-   // comp.ngOnInit();
+
     fixture.detectChanges();
     //expect(comp.name).toContain('numberinput');
     expect(comp.componentId).toContain('numberinput');
   });
 
-  // wrking 1- set errormsg
-
   // get pattern
   it('get pattern', () => {
-    expect(comp.pattern).toEqual(comp._pattern);
+    fixture.detectChanges();
+    let pat = comp.pattern;
+
+    expect(pat).toEqual(comp._pattern);
   });
 
-  // set pattern
-  // it('set pattern', () => {
-
-  //   let obj = new RegExp(comp.pattern);
-  //   expect(comp.value).not.toEqual(null);
-  //   expect(comp.regEx).toEqual(obj);
-  //  })
+  
+  xit('set pattern', () => {
+    console.log(new RegExp(comp.pattern));
+    let obj = new RegExp(comp.pattern);
+    expect(comp.value).not.toEqual(null);
+    expect(comp.regEx).toEqual(obj);
+   })
 
   it('register on change', () => {
     let fn: any;
@@ -98,5 +104,21 @@ describe('Amexio Number Input Component', () => {
     const isValid = comp.allowblank;
     expect(isValid).toEqual(true);
   });
+
+
+  it('onKeyUpHome(): ',()=>{
+    comp.minvalue = '3';
+    comp.onKeyUpHome(event);
+    fixture.detectChanges();
+    expect(comp.value).toBe('3');
+  });
+
+  it('onKeyUpEnd(): ',()=>{
+    comp.maxvalue = '6';
+    comp.onKeyUpEnd(event);
+    fixture.detectChanges();
+    expect(comp.value).toBe('6');
+  });
+
 
 });
