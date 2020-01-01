@@ -66,7 +66,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBaseComponent<string
    default :
    description : The label of this field
    */
-  @Input('field-label') fieldlabel: string;
+  @Input('field-label') fieldlabel = '';
   /*
    Properties
    name : data-reader
