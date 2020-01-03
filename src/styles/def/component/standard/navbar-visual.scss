@@ -69,7 +69,13 @@
 }
 .nav-dropdown:hover {
     .dropdownData {
-        background-color: white;
+        background-color:$navbarComponentBGColor;
+        color: $navbarComponentColor;
+    }
+
+    .dropdownData:hover {
+        background-color: $navbarHoverBG;
+        color: $navbarHoverColor!important
     }
 }
 

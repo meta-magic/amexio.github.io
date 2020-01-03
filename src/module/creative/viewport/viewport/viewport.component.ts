@@ -19,7 +19,7 @@ export class ViewportComponent implements AfterContentInit, OnInit {
 
   @Input('type') type = '1';
 
-  @Input('page-color') pageColor = 'black';
+  @Input('page-color') pageColor: string;
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: any) {
