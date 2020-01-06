@@ -13,6 +13,7 @@ export class AmexioVerticalTreeComponent implements AfterViewInit, OnInit {
     @Output() onDropClick: any = new EventEmitter<any>();
 
     treetemplates: any;
+    retevent: any;
 
     @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
     @ViewChild(AmexioInnerVerticalNodeComponent) innernodeRef: AmexioInnerVerticalNodeComponent;
@@ -42,8 +43,20 @@ export class AmexioVerticalTreeComponent implements AfterViewInit, OnInit {
         event.preventDefault();
         event.stopPropagation();
     }
-
     dropTable(event: any) {
-        this.onDropClick.emit({ event: event.event, questData: event.questData, node: event.node });
+        this.chkEvent(event);
+        this.onDropClick.emit({ event: this.retevent, questData: this.retevent.questData, node: this.retevent.node });
+    }
+
+    chkEvent(event: any) {
+        //  processing logic
+        if (event.hasOwnProperty('questData')) {
+            this.retevent = event;
+            return;
+        } else {
+            if (event.hasOwnProperty('event')) {
+                this.chkEvent(event.event);
+            }
+        }
     }
 }

@@ -1,3 +1,4 @@
+
 <ul>
     <li style="width: max-content" class="amexio-innerveticalnode-li" *ngFor="let node of data">
         <div class="amexiovertialtreecontent" (click)="onClick(node)" (dragover)="dragOver($event)" (drop)="dropTable({event: $event, data: node})">
@@ -8,7 +9,8 @@
                 </ng-template>
             </span>
         </div>
-        <amexio-innerveticalnode *ngIf="(node.children && node.children.length>0)" (onDropClick)="dropInnerTable($event)" (click)="onClick(node)"
+        <!-- {{node | json}} -->
+        <amexio-innerveticalnode    *ngIf="(node.children && node.children.length>0)" (onDropClick)="dropInnerTable({event:$event, data: node})" (click)="onClick(node)"
             [templates]="templates" [data]="node.children" [root]="true"></amexio-innerveticalnode>
 
     </li>

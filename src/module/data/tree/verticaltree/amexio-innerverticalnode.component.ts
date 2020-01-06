@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import { AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 
 @Component({
     selector: 'amexio-innerveticalnode',
@@ -54,14 +54,14 @@ export class AmexioInnerVerticalNodeComponent implements OnInit, AfterViewInit {
     }
 
     dropTable(event: any) {
-        if (event.event.dataTransfer.getData('text')) {
+         if (event.event.dataTransfer.getData('text')) {
             const dropData = JSON.parse(event.event.dataTransfer.getData('text'));
             this.onDropClick.emit({ event: event.event, questData: dropData, node: event.data });
         }
     }
 
     dropInnerTable(event: any) {
-        this.onDropClick.emit(event);
+         this.onDropClick.emit(event);
     }
 
 }
