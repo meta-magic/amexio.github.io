@@ -30,19 +30,22 @@
 
 </div>
 <br>
-<div style="width:100%; height:100%; margin:5px; border: 1px solid  darkgrey">
+<div style="width:100%; height:100%; margin:5px; border: 1px solid  darkgrey" >
     <div #datesdiv style="width: 100%; height:80%; display: -webkit-box">
         <div #datesfirstdiv style="width:15%; height:100% ; display: grid;">
-            <div [style.height.px]="dateSpanHt" class="datespan1">
+            <div [style.height.px]="dateSpanHt + 8" class="datespan1">
                 <span class="datespan2">
                 </span>
             </div>
             <div>
                 <!-- dates arr -->
                 <ul style="padding: 5px 0 !important; margin: 0; list-style: none;">
-                    <li [style.height.px]="dateSpanHt" style=" padding-left:8%; text-align: left; margin-bottom: 3px; color:black;
-                                                            background-color:#DCDCDC"
-                        *ngFor="let item of dateArr[0].dates">
+                    <li [style.height.px]="dateSpanHt" style=" padding-left:8%; text-align: left; margin-bottom: 3px;
+                             border-left: 1px solid darkgrey;
+                              "
+                        *ngFor="let item of dateArr[0].dates; let index = index;" 
+                        [ngClass]="{'noborder': (index == dateArr[0].dates.length -1)}"      
+                        class = "availabilitycell aborder">
                         {{item.date | date:'EEE'}} -
                         {{item.date | date: 'd'}}/{{item.date | date: 'MM'}}/{{item.date | date: 'yy'}}
 
@@ -56,9 +59,8 @@
                 <ul style="padding: 5px 0px 2px 0px !important; margin: 0; display:flex;
                                    list-style: none;">
                     <li [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt" style="text-align: center; display: inline-block; 
-line-height: 20px; margin-bottom: 3px;width:46px;
-background-color:#DCDCDC; 
-border-left:3px solid #F6F6F6" *ngFor="let item of newTimeArr">
+      line-height: 20px; margin-bottom: 3px;width:46px;
+        border-left:3px solid #F6F6F6" class="availabilitycell availabilityborders" *ngFor="let item of newTimeArr">
                         {{item | date: 'h:mm '}}
                     </li>
                 </ul>
@@ -69,11 +71,12 @@ border-left:3px solid #F6F6F6" *ngFor="let item of newTimeArr">
                                        list-style: none;">
                     <li [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt"
                         (click)="onTimeBlockClick(iterate, parentindex, item, childindex)" style="text-align: center; 
-display: inline-block; width:46px;
-line-height: 20px; margin-bottom: 3px;
-background-color:#DCDCDC; 
-border-left:3px solid #F6F6F6"
-                        [ngStyle]="{'background-color': (item.colorflag) ? item.color : '#DCDCDC', 'cursor': (radioValue.length > 0) ?'pointer':''}"
+                         display: inline-block; width:46px;
+                         line-height: 20px; margin-bottom: 3px;
+                          border-left:3px solid #F6F6F6"
+                         class= "availabilitycell availabilityborders"
+                         [ngClass]="{'availabilitycell':!(item.colorflag) }"
+                        [ngStyle]="{'background-color': (item.colorflag) ? item.color : '', 'cursor': (radioValue.length > 0) ?'pointer':''}"
                         *ngFor="let item of iterate.slots; index as childindex">
                     </li>
                 </ul>

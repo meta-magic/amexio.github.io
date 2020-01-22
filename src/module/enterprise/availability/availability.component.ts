@@ -11,10 +11,13 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   @Input('end-time') endTime: number;
   @Input('time-zone-data') zoneData: any;
   @Input('label-data') labelData: any;
+  @Input('default-radio') defaultRadio = '';
   @ViewChild('datesdiv') elementView: ElementRef;
   @ViewChild('datesseconddiv') elementView1: ElementRef;
   @ViewChild('datesfirstdiv') elementView2: ElementRef;
   @Output() onClick: any = new EventEmitter<any>();
+  @Output() onRadioClick: any = new EventEmitter<any>();
+  @Output('onUndoClick') UndoBtnClick: any = new EventEmitter<any>();
   radioValue = '';
   selectedIndexArr: any[];
   styleVar: any;
@@ -39,8 +42,9 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.generateData();
+
   }
-// generate data structure
+  // generate data structure
   generateData() {
     this.selectedIndexArr = [];
     this.completeNewArr = [];
@@ -269,6 +273,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   }
 
   generateLegendArr() {
+
     this.labelData.forEach((element: any) => {
       this.legendObj[element.label] = false;
     });
@@ -278,6 +283,16 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
       this.legendArr.push(obj);
     });
 
+    if (this.defaultRadio.length > 0) {
+      this.radioValue = this.defaultRadio;
+      // this.styleVar will be initialized
+      this.legendArr.forEach((element: any) => {
+        if (element.label === this.defaultRadio) {
+          this.styleVar = element;
+        }
+      });
+
+    }
   }
 
   initializeTimeArr() {
@@ -316,6 +331,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
     this.styleVar = '';
     const obj = { label: radioData.label, colorcode: radioData.colorcode };
     this.styleVar = obj;
+    this.onRadioClick.emit(obj);
   }
 
   clearColorFlag() {
@@ -358,6 +374,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
 
   onUndoClick() {
     this.generateData();
+    this.UndoBtnClick.emit('');
   }
 
 }

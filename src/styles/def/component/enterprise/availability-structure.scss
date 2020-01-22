@@ -1,5 +1,6 @@
 .datespan {
-    background-color: #DCDCDC;
+    // background-color: #DCDCDC;
+    background-color: $availabilityCellColor;
     height: 5px;
     line-height: 20px;
 }
@@ -13,9 +14,26 @@
     margin-bottom: 3px; 
     text-align: left;
     padding-left: 5px;
-    background-color: #DCDCDC;
+    // background-color: #DCDCDC;
+    background-color: $availabilityCellColor;
+
 }
 
+.availabilitycell{
+    background-color: $availabilityCellColor;
+}
+
+.availabilityborders {
+    border: 3px solid rgb(220,220,220);
+    border-bottom: none;
+}
+
+.aborder {
+    border-bottom: 3px solid rgb(220,220,220);
+}
+.noborder {
+    border-bottom: none;
+}
 .availability-row:nth-child(odd) {
     // background-color: $availabilityOddRowColor;
 }
@@ -25,13 +43,19 @@
     height:100%
 }
 
+.availabilityborder {
+    border: 1px solid white;
+}
+
 .availability-right-row {
     text-align: center; 
     display: inline-block; 
     width:46px;    
     line-height: 20px; 
     margin-bottom: 3px;
-    background-color:#DCDCDC; 
+    // background-color:#DCDCDC; 
+    background-color: $availabilityCellColor;
+
     border-left:3px solid #F6F6F6
 }
 
@@ -48,7 +72,9 @@
 
 // 
 .datespan {
-    background-color: #DCDCDC;
+    // background-color: #DCDCDC;
+    background-color: $availabilityCellColor;
+
     height: 5px;
     line-height: 20px;
 }
@@ -75,14 +101,22 @@
 .datespan1 {
 width: 100%; 
 float:left; 
-background-color:#DCDCDC; 
+// background-color:#DCDCDC; 
+background-color: $availabilityCellColor;
+
 margin-top:5px;
+border-left: 1px solid  darkgrey;                              
+border-right: 1px solid  darkgrey;                              
+border-bottom: 1px solid darkgrey;
 }
 
 .datespan2 {
     padding: 5px 0 !important; 
     text-align: center;
-    display: inline-block;                                 
+    display: inline-block;   
+    // border-left: 1px solid  darkgrey;                    
+    // border-right: 1px solid  darkgrey;                              
+    // border-bottom: 1px solid darkgrey;          
 }
 
 .firstdiv {
