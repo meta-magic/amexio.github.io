@@ -12,6 +12,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   @Input('time-zone-data') zoneData: any;
   @Input('label-data') labelData: any;
   @Input('default-radio') defaultRadio = '';
+  @Input('no-changes') nochanges = false;
   @ViewChild('datesdiv') elementView: ElementRef;
   @ViewChild('datesseconddiv') elementView1: ElementRef;
   @ViewChild('datesfirstdiv') elementView2: ElementRef;
@@ -345,20 +346,25 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   }
 
   onTimeBlockClick(parentiterateitem: any, parentindex: any, childiterateitem: any, childindex: any) {
+  //  debugger;
     if (this.radioValue.length > 0) {
       if (this.dateArr1[parentindex].slots[childindex].label) {
+        if (!this.nochanges) {
         if (this.dateArr1[parentindex].slots[childindex].label === this.styleVar.label) {
           //  unselect logic
+          debugger
           const newobj = {
             time: this.dateArr1[parentindex].slots[childindex].time, colorflag: false,
           };
           this.dateArr1[parentindex].slots[childindex] = newobj;
         } else {
+          debugger
           this.dateArr1[parentindex].slots[childindex].label = this.styleVar.label;
           this.dateArr1[parentindex].slots[childindex].color = this.styleVar.colorcode;
           this.dateArr1[parentindex].slots[childindex].colorflag = true;
-        }
-      } else {
+        }  }
+      } else { 
+              debugger
         const newobj = this.dateArr1[parentindex].slots[childindex];
         newobj['label'] = this.styleVar.label;
         newobj['color'] = this.styleVar.colorcode;
