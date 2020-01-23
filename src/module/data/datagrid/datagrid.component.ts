@@ -313,6 +313,8 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
    */
   @Input('context-menu') contextmenu: any[];
 
+  @Input('enable-column-header') enableColumnHeader = true;
+
   enableHeader: boolean;
 
   @Output() rightClick: any = new EventEmitter<any>();
@@ -486,7 +488,10 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     if (this.enabledatafilter === true) {
       this.globalfilter = false;
     }
-
+    if (this.enableColumnHeader === false) {
+      this.enablecolumnfilter = false;
+      this.enablecolumnfiter = false;
+   }
     if (this.selectedrowcolor == null || this.selectedrowcolor === '') {
       this.selectedrowcolor = '#dcecf7';
     }

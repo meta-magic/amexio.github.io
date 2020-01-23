@@ -460,6 +460,10 @@ description : Set enable / disable popover.
               this.displayFieldService.findValue(this.displayfield, row);
           }
         });
+      } else {
+        if (row.checked) {
+          row['checked'] = false;
+        }
       }
     });
     this.displayValue = preSelectedValues;

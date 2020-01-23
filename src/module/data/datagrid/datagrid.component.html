@@ -127,6 +127,7 @@
             </div>
           </ng-container>
           <!--datagrid start unhidden-->
+          <ng-container *ngIf="enableColumnHeader">
           <ng-container *ngFor="let cols of columns">
             <ng-container *ngIf="!cols.hidden">
               <ng-container *ngIf="(cols.datatype=='string' || cols.datatype == 'boolean')">
@@ -166,6 +167,7 @@
                 </div>
               </ng-container>
             </ng-container>
+          </ng-container>
           </ng-container>
         </div>
       </div>
