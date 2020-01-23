@@ -25,7 +25,13 @@
     color: $datetimeHoverColor;
     background: $datetimeHoverBG;
 }
-
+.multidisable {
+     opacity:.40;
+     cursor: not-allowed;
+     background-color:none; 
+     border-color:none; 
+     color:none;
+}
 .dropicon {
     color: $datetimepickerActiveColor;
     font-weight: bolder

@@ -164,7 +164,7 @@
                                 <ng-container *ngFor="let dayArray of itemdaysArray.montharray">
                                     <li [ngStyle]="{'cursor': day.isDisabled ? 'not-allowed' : 'pointer'}" *ngFor="let day of dayArray" [ngClass]="{'notclickable':disabled}">
                                         <span [attr.tabindex]="(day.selected ? 1: -1)" id="{{day.id}}" (keyup.enter)="onDateClick(day, $event, rootDiv)" attr.aria-label="{{day.fulldate}}"
-                                            (click)="onDateClick(day, $event, rootDiv)" class="day" [ngClass]="{'active': (day.from || day.to) , 'datesrange': day.range, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
+                                            (click)="onDateClick(day, $event, rootDiv)" class="day" [ngClass]="{'active': (day.from || day.to) , 'datesrange': day.range, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'multidisable':day.isDisabled}">
                                             {{ day.date | date:'d' }}
                                         </span>
                                     </li>
