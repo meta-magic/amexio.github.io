@@ -402,11 +402,21 @@ description : Context Menu provides the list of menus on right click.
         this.selectedData.push(node);
       }
     });
+    if (this.filter) {
+      this.checkSelectedFlag(rowData);
+      }
     const tempData = JSON.parse(JSON.stringify(rowData));
     delete tempData['index'];
     delete tempData['onClickFlag'];
     this.selectedRows.emit(tempData);
   }
+  checkSelectedFlag(rowData: any) {
+    this.orgData.forEach((orgObj) => {
+      if (rowData.index === orgObj.index) {
+        orgObj.isSelected = rowData.isSelected;
+      }
+    });
+    }
   selectAllRecord() {
     this.selectedData = [];
     this.selectAll = !this.selectAll;
