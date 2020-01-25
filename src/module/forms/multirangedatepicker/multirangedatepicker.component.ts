@@ -14,7 +14,7 @@
 * limitations under the License.
 *
 */
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { AmexioMultipleDatePickerComponent } from '../multidatepicker/multidatepicker.component';
 import { MultiDateRangePicker } from './multirangedatepicker.component.model';
 @Component({
@@ -36,7 +36,7 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
     disabledChkedIndex = 0;
     multiDateRangePickerModel: MultiDateRangePicker;
     @Input('disabled-date') disabledDates: any = [];
-
+    @Output() change: EventEmitter<any> = new EventEmitter<any>();
     @ViewChild(AmexioMultipleDatePickerComponent) child: any;
     constructor() {
         this.multiDateRangePickerModel = new MultiDateRangePicker();
@@ -270,5 +270,9 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
         const newto = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 1);
         this.child.todate = newto;
         this.child.altercompleteDaysArray();
+    }
+
+    onDateClick(event: any) {
+        this.change.emit({ fromDate: this.newFromDate, toDate: this.newToDate });
     }
 }

@@ -34,7 +34,7 @@
   </span>
   <span style="display: inline-block; margin-left: 2px;">
     <amexio-multiple-date-picker [fromlabel]="'Departure'" [tolabel]="'Return'" [number-of-months]="2"
-      [from-date]="newFromDate" [to-date]="newToDate" [date-range-picker]="true">
+      [from-date]="newFromDate" (change)="onDateClick($event)" [to-date]="newToDate" [date-range-picker]="true">
     </amexio-multiple-date-picker>
   </span>
 </span>
