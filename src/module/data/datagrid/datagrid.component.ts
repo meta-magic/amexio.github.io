@@ -1101,7 +1101,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   setGlobalFiterCheckFlag() {
     this.filterCloneData.forEach((filterObj: any) => {
       this.selectedRows.forEach((rowObj: any) => {
-        if (rowObj === filterObj) {
+        if (JSON.stringify(rowObj) === JSON.stringify(filterObj)) {
           filterObj['checkBoxSelectClass'] = this.checkBoxActive;
         }
       });
