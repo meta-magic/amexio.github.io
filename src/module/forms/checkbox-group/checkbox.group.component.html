@@ -7,7 +7,7 @@
         <legend id="{{componentId}}">{{fieldlabel}}</legend>
     </div>  
 
-    <div *ngIf="horizontal" style="display: inline-flex; flex-direction :row;">
+    <div *ngIf="horizontal" style="display: inherit; flex-direction :row;">
         <checkbox *ngFor="let data of viewdata | async" [checked]="data.checked" [value]="data" [disabled]="data?.disabled || disabled" [label]="data[displayfield]">
         </checkbox>    
     </div>
