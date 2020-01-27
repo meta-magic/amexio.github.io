@@ -5,46 +5,45 @@
         <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
         <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
       </div>
-      <div tabindex="0" attr.aria-label="{{header}} list" class="title">&nbsp;&nbsp;{{header}} 
-       
+      <div tabindex="0" attr.aria-label="{{header}} list" class="title">&nbsp;&nbsp;{{header}}
+
       </div>
     </div>
 
     <div *ngIf="(filter == true)">
-      <input type="text" [(ngModel)]="filterText" [placeholder]="searchplaceholder" (keyup)="filterData()" class="search " />
+      <input type="text" [(ngModel)]="filterText" [placeholder]="searchplaceholder" (keyup)="filterData()"
+        class="search " />
     </div>
-    <i style="float:right; cursor:pointer" (click)="onClickIcon()" [class]="icon"
-    ></i>
   </div>
   <div class="listbox-height" tabindex="0" (keyup.arrowdown)="onArrowdown()" (keyup.arrowup)="onArrowUp()"
     (keyup.enter)="onEnterPress()" [style.height.px]="height">
     <ul id="{{componentId}}" tabindex="0" role="listbox" class="list" [ngClass]="{'loading-mask' : maskloader}">
-      <li #id role="option" [attr.aria-selected]="row.isSelected"
-       class="list-items" *ngFor="let row of viewData let rowno = index "
-        [ngClass]="{'tree-node-label-selected':row.isSelected ,
+      <li #id role="option" [attr.aria-selected]="row.isSelected" class="list-items"
+        *ngFor="let row of viewData let rowno = index " [ngClass]="{'tree-node-label-selected':row.isSelected ,
         'list-box-items':row.ishoverselected, 'list-items-click': row.onClickFlag,
-        'tree-node-label-not-selected':row.isSelected==false}"
-        id="{{row.index}}">
+        'tree-node-label-not-selected':row.isSelected==false}" id="{{row.index}}">
         <div (click)="onClick(row)" (contextmenu)="loadContextMenu($event,row, id)">
           <ng-container *ngIf="enablecheckbox">
             <div class="inputgroup" style="float: left; height: 100%;">
               <div class="input-box">
-                <div role="checkbox" [attr.checked]="row.isSelected" (click)="selectedCheckBox(row)" [class]="row.isSelected ?'checkbox active':'checkbox default'">
+                <div role="checkbox" [attr.checked]="row.isSelected" (click)="selectedCheckBox(row)"
+                  [class]="row.isSelected ?'checkbox active':'checkbox default'">
                   {{row.isSelected ? '&#10004;' : ''}}
                 </div>
               </div>
             </div>&nbsp;
           </ng-container>
           <ng-container *ngIf="!bodyTemplate"> {{row[displayfield]}}</ng-container>
-          <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }"></ng-template>
+          <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }">
+          </ng-template>
         </div>
       </li>
     </ul>
   </div>
 </div>
 <ng-container *ngIf="contextMenuFlag">
-  <base-contextmenu [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top" [mouse-location-left]="mouseLocation.left"
-    [is-FlagShow]="contextMenuFlag" [right-click-data]="rightClickRowData" (onRightClick)="rightClickDataEmit($event)"
-    [position-up]="posixUp">
+  <base-contextmenu [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top"
+    [mouse-location-left]="mouseLocation.left" [is-FlagShow]="contextMenuFlag" [right-click-data]="rightClickRowData"
+    (onRightClick)="rightClickDataEmit($event)" [position-up]="posixUp">
   </base-contextmenu>
 </ng-container>
