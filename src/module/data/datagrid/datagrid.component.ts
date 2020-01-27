@@ -491,7 +491,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     if (this.enableColumnHeader === false) {
       this.enablecolumnfilter = false;
       this.enablecolumnfiter = false;
-   }
+    }
     if (this.selectedrowcolor == null || this.selectedrowcolor === '') {
       this.selectedrowcolor = '#dcecf7';
     }
@@ -524,6 +524,13 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   updateComponent() {
+    if (this.data.length > 0) {
+      this.data.forEach((obj: any) => {
+        if (!obj.hasOwnProperty('rowindexid')) {
+          obj['rowindexid'] = Math.floor(Math.random() * 90000) + 10000;
+        }
+      });
+    }
     if (!this.fliterFlag && this.previousData != null && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setChangeData(this.data);
@@ -1067,20 +1074,26 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
       this.selectedRows.push(rowData);
       event.classList.value = this.checkBoxActive;
     } else {
-      const indexOf = this.selectedRows.indexOf(rowData);
-      this.selectedRows.splice(indexOf, 1);
-      if (this.enablecheckbox) {
-        viewRows.forEach((row: any) => {
-          if (row === rowData) {
-            row.checkBoxSelectClass = this.checkDefaultIcon;
-          }
-        });
-      }
-      event.classList.value = this.checkDefaultIcon;
+      this.removeSelectedRows(viewRows, rowData, event);
     }
     this.emitSelectedRows();
   }
 
+  removeSelectedRows(viewRows: any, rowData: any, event: any) {
+    this.selectedRows.forEach((row: any, index: number) => {
+      if (row.rowindexid === rowData.rowindexid) {
+        this.selectedRows.splice(index, 1);
+      }
+    });
+    if (this.enablecheckbox) {
+      viewRows.forEach((row: any) => {
+        if (row === rowData) {
+          row.checkBoxSelectClass = this.checkDefaultIcon;
+        }
+      });
+    }
+    event.classList.value = this.checkDefaultIcon;
+  }
   emitSelectedRows() {
     const sRows = [];
     for (const sr of this.selectedRows) {
@@ -1099,15 +1112,22 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   setGlobalFiterCheckFlag() {
+    this.setDefaultFlag();
     this.filterCloneData.forEach((filterObj: any) => {
       this.selectedRows.forEach((rowObj: any) => {
-        if (JSON.stringify(rowObj) === JSON.stringify(filterObj)) {
+        if (rowObj.rowindexid === filterObj.rowindexid) {
           filterObj['checkBoxSelectClass'] = this.checkBoxActive;
         }
       });
     });
   }
 
+  setDefaultFlag() {
+    this.filterCloneData.forEach((filterObj: any) => {
+      filterObj.checkBoxSelectClass = this.checkDefaultIcon;
+
+    });
+  }
   setCheckBoxSelectClass() {
     if (this.selectAll) {
       return this.checkBoxActive;
