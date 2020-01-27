@@ -14,6 +14,9 @@
       <input type="text" [(ngModel)]="filterText" [placeholder]="searchplaceholder" (keyup)="filterData()"
         class="search " />
     </div>
+    <ng-container *ngIf="icon">
+      <i style="float:right; cursor:pointer" (click)="onClickIcon()" [class]="icon"></i>
+    </ng-container>
   </div>
   <div class="listbox-height" tabindex="0" (keyup.arrowdown)="onArrowdown()" (keyup.arrowup)="onArrowUp()"
     (keyup.enter)="onEnterPress()" [style.height.px]="height">
