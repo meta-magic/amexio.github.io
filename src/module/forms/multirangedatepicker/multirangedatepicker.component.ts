@@ -273,6 +273,6 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
     }
 
     onDateClick(event: any) {
-        this.change.emit({ fromDate: this.newFromDate, toDate: this.newToDate });
+        this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
     }
 }
