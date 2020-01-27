@@ -164,6 +164,8 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                     //  set todate to currentdate
                     this.child.todate = currentdate;
                 }
+                this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
+
                 break;
 
             case 'Yesterday':
@@ -178,6 +180,8 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                     // reinitialize todate to yesterday date
                     this.child.todate = yesterdaydate;
                 }
+                this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
+
                 break;
 
             case 'This week (sun - sat)':
@@ -193,6 +197,8 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 // set todate
                 enddate.setDate(enddate.getDate() - dayindex + 6);
                 this.child.todate = enddate;
+                this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
+
                 break;
 
             case 'Last 14 days':
@@ -201,6 +207,8 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 const firstday = new Date();
                 firstday.setDate(firstday.getDate() - 14);
                 this.child.fromdate = firstday;
+                this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
+
                 break;
 
             case 'This month':
@@ -209,6 +217,8 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 this.child.fromdate = firstmonthday;
                 const lastmonthday = new Date(d1.getFullYear(), d1.getMonth() + 1, 0);
                 this.child.todate = lastmonthday;
+                this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
+
                 break;
 
             case 'Last 30 days':
@@ -218,6 +228,8 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 this.child.todate = last30thdate;
                 first30thdate.setDate(d2.getDate() - 29);
                 this.child.fromdate = first30thdate;
+                this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
+
                 break;
 
             case 'Last month':
@@ -226,6 +238,8 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 const lday = new Date(d3.getFullYear(), d3.getMonth(), 0);
                 this.child.fromdate = fday;
                 this.child.todate = lday;
+                this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
+
                 break;
 
             case 'All time':
@@ -235,6 +249,8 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 d4.setDate(1);
                 this.child.fromdate = d4;
                 this.child.todate = new Date();
+                this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
+
                 break;
 
             case '30 Days upto today':
@@ -257,6 +273,7 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
         const newto = new Date();
         this.child.todate = newto;
         this.child.altercompleteDaysArray();
+        this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
 
     }
 
@@ -270,6 +287,8 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
         const newto = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 1);
         this.child.todate = newto;
         this.child.altercompleteDaysArray();
+        this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
+
     }
 
     onDateClick(event: any) {
