@@ -469,11 +469,11 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     this.sortBy = -1;
 
     this.globalFilterOptions = [{
-      key: 'Start With', value: '1', checkedStatus: this.checkIcon, type: 'string',
+      key: 'Start With', value: '1', checkedStatus: '', type: 'string',
     }, {
       key: 'Ends With', value: '2', checkedStatus: '', type: 'string',
     }, {
-      key: 'Contains', value: '3', checkedStatus: '', type: 'string',
+      key: 'Contains', value: '3', checkedStatus: this.checkIcon, type: 'string',
     }];
   }
 

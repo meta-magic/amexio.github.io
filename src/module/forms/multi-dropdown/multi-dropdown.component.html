@@ -1,0 +1,100 @@
+<div class="inputgroup" #rootDiv (keyup.esc)="closeOnEScape($event)">
+
+  <label id="fieldlabel" for="input" *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+    {{fieldlabel}}
+    <ng-container *ngIf="fieldlabel != '' && !allowblank">
+      <span style="color: red">*</span>
+    </ng-container>
+  </label>
+
+  <input type="hidden" [ngModel]="value" (ngModelChange)="onChange($event)" #inp="ngModel" />
+  <input id="{{componentId}}" tabindex="1" aria-autocomplete="list" role="combobox" [attr.aria-expanded]="showToolTip" [attr.aria-activedescendant]=""
+    type="text" class="input-control" [value]="displayValue" [ngClass]="{'input-control-error' : inp.invalid && !displayValue && (inp.dirty || inp.touched),
+           'input-control-success' : inp.valid && displayValue && (inp.dirty || inp.touched)}" (input)="onInput(inp)" (blur)="onblur($event)"
+    (focus)="onFocus(rootDiv)" (click)=" onDropDownClick($event)" [attr.placeholder]="placeholder" [attr.readonly]="readonly ? true: null"
+    [attr.disabled]="disabled ? true: null" [required]="!allowblank" (keyup.end)="focusToLast($event)" (keyup)="onDropDownSearchKeyUp($event)"
+    (keyup.enter)="closeOnEScape($event)" (keydown)="navigateKey($event)" />
+
+  <span class="drodown-caret-down" role="listbox" [attr.aria-expanded]="showToolTip" (click)="onIconClick()">
+    <amexio-c-icon key="dropdown_caret" *ngIf="!maskloader"></amexio-c-icon>
+    <em class="fa fa-spinner fa-spin" *ngIf="maskloader"></em>
+  </span>
+  <ng-container *ngIf="!readonly">
+    <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="dropdownstyle">
+      <ul aria-labelledby="fieldlabel" aria-haspopup="listbox" class="dropdown-list">
+        <div *ngIf="enablecheckbox" class="list-items">
+          <span>SelectAll</span>
+          <div (click)="selectAll($event)" style="float : left" class="input-box checkbox">
+            <span>{{selectAllFlag ? '&#10004;': ''}}</span>
+          </div>
+        </div>
+        <ng-container *ngIf="!group">
+          <li role="option" tabindex="1" class="list-items" [ngClass]="{'list-items-selected':item.selected}" *ngFor="let item of filteredOptions"
+            id="{{item.index}}" (mousedown)="onItemSelect({item: item, event: $event})">
+            <ng-container *ngIf="bodyTemplate">
+              <ng-template [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row }, row: item }">
+              </ng-template>
+            </ng-container>
+            <ng-container *ngIf="!bodyTemplate">
+              <span>
+                <amexio-display-field [data]="item" [data-index]="displayfield"></amexio-display-field>
+              </span>
+
+            </ng-container>
+            <div *ngIf="enablecheckbox" style="float : left" class="input-box checkbox">
+              <span>{{item?.checked ? '&#10004;': ''}}</span>
+            </div>
+            <span *ngIf="!enablecheckbox" style="float : right">{{item?.checked ? '&#10004;': ''}}</span>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="group">
+          <li *ngFor="let node of filteredOptions"  style="padding:5px" [ngClass]="{'list-items-selected':node.selected, 'list-item-hover': node.flag}">
+            <b>
+              <amexio-display-field [data]="node" [data-index]="displayfield"></amexio-display-field>
+            </b>
+            <ul aria-labelledby="fieldlabel" aria-haspopup="listbox" class="dropdown-list" style="max-height: unset;">
+              <span *ngFor="let item of node[childArrayKey]">
+              <li role="option" tabindex="1"  style="padding:5px 5px 5px 10px"  [ngClass]="{'list-items-selected':item.selected, 'list-item-hover1': item.childflag}" 
+                id="{{item.index}}" (mousedown)="onItemSelect({item:item,node:node,event: $event})">
+                <ng-container *ngIf="bodyTemplate">
+                  <ng-template [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row }, row: item }">
+                  </ng-template>
+                </ng-container>
+                <ng-container *ngIf="!bodyTemplate">
+                  <span>
+                    <amexio-display-field [data]="item" [data-index]="displayfield"></amexio-display-field>
+                  </span>
+                </ng-container>
+                <div *ngIf="enablecheckbox && multiselect" style="float : left" class="input-box checkbox">
+                  <span>{{item?.checked ? '&#10004;': ''}}</span>
+                </div>
+                <span *ngIf="!enablecheckbox" style="float : right">{{item?.checked ? '&#10004;': ''}}</span>
+              </li>
+            </span>
+            </ul>
+          </li>
+        </ng-container>
+        <ng-template *ngIf="filteredOptions && (filteredOptions.length < 1)">
+          <li class="list-items">No Options</li>
+        </ng-template>
+      </ul>
+      <ng-container *ngIf="enablecheckbox && multiselect">
+        <div style="padding-top: 10px;padding-bottom: 10px;">
+          <amexio-button [label]="'Save'" [type]="'theme-color'" [size]="'medium'" (onClick)="onSaveClick($event)">
+          </amexio-button>
+        </div>
+      </ng-container>
+      <ng-content></ng-content>
+    </span>
+  </ng-container>
+  <span class="inputfieldbar"></span>
+</div>
+<span *ngIf="showToolTip && enablepopover" class="tooltiptext">
+  <div [innerHTML]="helpInfoMsg"></div>
+</span>
+
+<span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
+  <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
+  <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
+
+</span>

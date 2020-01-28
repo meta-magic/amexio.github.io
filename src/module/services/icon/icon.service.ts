@@ -288,6 +288,11 @@ const ICON_MAPPING =
       mat: 'keyboard_arrow_down',
     },
     {
+      component: 'window-worning-msg',
+      fa: 'fa fa-exclamation-triangle',
+      mat: 'keyboard_arrow_down',
+    },
+    {
       component: 'window-msgtype-warning',
       fa: 'fa fa-exclamation-triangle fa-2x fa-fw',
       mat: 'keyboard_arrow_down',
