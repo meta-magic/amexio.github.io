@@ -1,17 +1,28 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input,
+  OnChanges, OnInit, Output, SimpleChanges, ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'amexio-availability',
   templateUrl: './availability.component.html',
 })
-export class AvailabilityComponent implements OnInit, AfterViewInit {
+export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
   @Input('start-date') startDate: string;
   @Input('end-date') endDate: string;
   @Input('start-time') startTime: number;
   @Input('end-time') endTime: number;
   @Input('time-zone-data') zoneData: any;
-  @Input('label-data') labelData: any;
+  _labelData: any;
+  @Input('label-data')
+  set labelData(value: any[]) {
+    this._labelData = value;
+  }
+  get labelData(): any[] {
+    return this._labelData;
+  }
   @Input('default-radio') defaultRadio = '';
+  @Input('no-change') nocellchange = false;
   @ViewChild('datesdiv') elementView: ElementRef;
   @ViewChild('datesseconddiv') elementView1: ElementRef;
   @ViewChild('datesfirstdiv') elementView2: ElementRef;
@@ -37,10 +48,38 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   newTimeArr: any[];
   minIndex: number;
   maxIndex: number;
-  constructor() {
+  count = 0;
+  newTimeArr2: any = [];
+  constructor(public cdf: ChangeDetectorRef) {
   }
 
   ngOnInit() {
+    this.generateData();
+    if ((this.defaultRadio.length > 0)) {
+      this.radioValue = this.defaultRadio;
+      // this.styleVar will be initialized
+      this.legendArr.forEach((element: any) => {
+        if (element.label === this.defaultRadio) {
+          this.styleVar = element;
+          this.onRadioClick.emit(element);
+        }
+      });
+
+    }
+    this.newTimeArr2 = this.dateArr1[0].slots;
+  }
+
+  updateComponent() {
+    // this.labelData = this._labelData
+    this.generateData();
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['labelData'] && changes.labelData.currentValue) {
+      this.labelData = changes.labelData.currentValue;
+    }
+  }
+
+  ngOnchanges() {
     this.generateData();
 
   }
@@ -56,11 +95,13 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
     this.legendArr = [];
     this.newTimeArr = [];
     this.sDate = new Date(this.startDate);
+
     this.eDate = new Date(this.endDate);
     let i = 0;
     this.dateArr = [{ dates: [], timearr: [] }];
     this.dateArr1 = [];
     let d;
+    // if startdate is less than enddate
     if (this.sDate < this.eDate) {
       do {
         d = new Date(this.sDate.getFullYear(), this.sDate.getMonth(), this.sDate.getDate() + i);
@@ -69,6 +110,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
         i++;
       } while (d < this.eDate);
     } else if (this.sDate === this.eDate) {
+      // if startdate equals enddate
       d = new Date(this.sDate.getFullYear(), this.sDate.getMonth(), this.sDate.getDate() + i);
       const dobj = { date: d };
       this.dateArr[0].dates.push(dobj);
@@ -82,7 +124,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
       do {
         d = new Date(this.sDate.getFullYear(), this.sDate.getMonth(), this.sDate.getDate() + i);
         const dobj = { date: d, slots: arr };
-        dobj.slots = this.setSlots(d);
+        dobj.slots = this.setSlots1(d);
         this.dateArr1.push(dobj);
         i++;
       } while (d < this.eDate);
@@ -90,11 +132,12 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
       const arry: any = [];
       d = new Date(this.sDate.getFullYear(), this.sDate.getMonth(), this.sDate.getDate() + i);
       const dobj = { date: d, slots: arry };
-      dobj.slots = this.setSlots(d);
+      dobj.slots = this.setSlots1(d);
       this.dateArr1.push(dobj);
     }
 
     this.initializeTimeArr();
+
     this.generateTimeArr();
     this.datesArrlen = this.dateArr[0].dates.length;
     let j;
@@ -106,6 +149,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
   }
 
   generateSlotTimeArr() {
+
     let i = this.startTime;
     while (i <= this.endTime) {
       let j = 0;
@@ -125,35 +169,46 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
     }
   }
 
-  setSlots(d: Date) {
-    const slot = [];
-    let difference = this.startTime - this.endTime;
-    if (difference < 0) {
-      difference = difference * (-1);
-    }
-    let i = 0;
-    while (i <= difference) {
-      let j = 0;
-      for (j === 0; j <= 1; j++) {
-        const obj = {};
+  setSlots1(d: Date) {
 
-        const date1 = new Date(d.getFullYear(), d.getMonth(), d.getDate());
-        date1.setHours(this.startTime + i);
+    const slot: any = [];
+
+    const etime = this.endTime;
+
+    let i = this.startTime;
+    let j;
+    while (i <= etime) {
+      let previousendtime;
+      for (j = 0; j <= 1; j++) {
+        const obj = {};
+        let objstarttime = new Date(d);
+        const objendtime = new Date(d);
 
         if (j === 0) {
-          date1.setMinutes(0);
+          objstarttime.setHours(i);
+          objendtime.setHours(i);
+          objstarttime.setMinutes(0);
+          objendtime.setMinutes(30);
+          previousendtime = objendtime;
         }
         if (j === 1) {
-          date1.setMinutes(30);
+          objstarttime = previousendtime;
+          objendtime.setHours(previousendtime.getHours() + 1);
+          objendtime.setMinutes(0);
         }
-        obj['time'] = date1;
+
+        obj['starttime'] = objstarttime;
+        obj['endtime'] = objendtime;
         obj['colorflag'] = false;
         slot.push(obj);
+
       }
       i++;
     }
+
     return this.chkLabels(d, slot);
   }
+
   chkLabels(d: Date, slotArray: any) {
     const minindex: any = null;
     const maxindex: any = null;
@@ -240,19 +295,28 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
       if (
         (dt.getFullYear() === d.getFullYear()) &&
         (dt.getMonth() === d.getMonth()) && (dt.getDate() === d.getDate())) {
-        const obj = this.getHourMinuteFormat(timeElement.starttime);
-        if (((obj.hours === slotElement.time.getHours()) && (obj.minutes === slotElement.time.getMinutes()))) {
+        //  u hav to modify ur condns here
+        const starttimeobj = this.getHourMinuteFormat(timeElement.starttime);
+
+        if (
+          ((starttimeobj.hours === slotElement.starttime.getHours()) && (starttimeobj.minutes === slotElement.starttime.getMinutes()))
+        ) {
+
           minindex = slotIndex;
           minflag = true;
         }
+
       }
       if ((dt.getFullYear() === d.getFullYear()) && (dt.getMonth() === d.getMonth()) &&
         (dt.getDate() === d.getDate())) {
-        const obj = this.getHourMinuteFormat(timeElement.endtime);
-        if ((obj.hours === slotElement.time.getHours()) && (obj.minutes === slotElement.time.getMinutes())) {
+
+        const endtimeobj = this.getHourMinuteFormat(timeElement.endtime);
+        if ((endtimeobj.hours === slotElement.endtime.getHours()) && (endtimeobj.minutes === slotElement.endtime.getMinutes())) {
           maxindex = slotIndex;
           maxflag = true;
+
         }
+        // start end
       }
     });
     return { minFlag: minflag, maxFlag: maxflag, minIndex: minindex, maxIndex: maxindex };
@@ -283,18 +347,17 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
       this.legendArr.push(obj);
     });
 
-    if (this.defaultRadio.length > 0) {
-      this.radioValue = this.defaultRadio;
-      // this.styleVar will be initialized
-      this.legendArr.forEach((element: any) => {
-        if (element.label === this.defaultRadio) {
-          this.styleVar = element;
-        }
-      });
-
-    }
+    this.count++;
   }
 
+  alterNoChangeFlag() {
+    this.nocellchange = true;
+  }
+
+  negateNoChangeFlag() {
+    this.nocellchange = false;
+
+  }
   initializeTimeArr() {
     this.completeTimeArr = ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am',
       '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm',
@@ -306,6 +369,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
     let startindex;
     let endindex;
     this.completeTimeArr.forEach((element: any, index: number) => {
+
       if (element === this.startTime) {
         startindex = index;
       }
@@ -344,19 +408,11 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
     });
   }
 
-  onTimeBlockClick(parentiterateitem: any, parentindex: any, childiterateitem: any, childindex: any) {
+  timeBlockWithoutUndo(parentiterateitem: any, parentindex: any, childiterateitem: any, childindex: any) {
+    const flag = false;
     if (this.radioValue.length > 0) {
-      if (this.dateArr1[parentindex].slots[childindex].label) {
-        if (this.dateArr1[parentindex].slots[childindex].label === this.styleVar.label) {
-          const newobj = {
-            time: this.dateArr1[parentindex].slots[childindex].time, colorflag: false,
-          };
-          this.dateArr1[parentindex].slots[childindex] = newobj;
-        } else {
-          this.dateArr1[parentindex].slots[childindex].label = this.styleVar.label;
-          this.dateArr1[parentindex].slots[childindex].color = this.styleVar.colorcode;
-          this.dateArr1[parentindex].slots[childindex].colorflag = true;
-        }
+      if ((this.dateArr1[parentindex].slots[childindex].colorflag)) {
+
       } else {
         const newobj = this.dateArr1[parentindex].slots[childindex];
         newobj['label'] = this.styleVar.label;
@@ -369,6 +425,55 @@ export class AvailabilityComponent implements OnInit, AfterViewInit {
       time: this.dateArr1[parentindex].slots[childindex].time,
       label: this.dateArr1[parentindex].slots[childindex].label,
     });
+    this.generateData();
+  }
+  timeBlockWithUndo(parentiterateitem: any, parentindex: any, childiterateitem: any, childindex: any) {
+    const flag = false;
+    if (this.radioValue.length > 0) {
+      if ((this.dateArr1[parentindex].slots[childindex].label)) {
+        // overriding logic wrks fr false
+        // overiding logic starts here
+        if (this.dateArr1[parentindex].slots[childindex].label === this.styleVar.label) {
+          //  unselect logic
+          // label exist and same label
+          const newobj = {
+            time: this.dateArr1[parentindex].slots[childindex].time, colorflag: false,
+          };
+          // assignment
+          this.dateArr1[parentindex].slots[childindex] = newobj;
+
+          // blank
+
+        } else {
+          // label exist and  diff label
+          // blank
+
+          const newobj2 = {
+            time: this.dateArr1[parentindex].slots[childindex].time, colorflag: false,
+          };
+
+          this.dateArr1[parentindex].slots[childindex] = newobj2;
+
+        }
+        // overiding logic ends here
+      }
+    }
+    this.onClick.emit({
+      time: this.dateArr1[parentindex].slots[childindex].time,
+      label: this.dateArr1[parentindex].slots[childindex].label,
+    });
+    this.generateData();
+
+  }
+  onTimeBlockClick(parentiterateitem: any, parentindex: any, childiterateitem: any, childindex: any) {
+
+    this.onClick.emit({
+      starttime: this.dateArr1[parentindex].slots[childindex].starttime,
+      endtime: this.dateArr1[parentindex].slots[childindex].endtime,
+      label: this.dateArr1[parentindex].slots[childindex].label ? this.dateArr1[parentindex].slots[childindex].label : 'not selected',
+    });
+
+    this.generateData();
   }
 
   onUndoClick() {

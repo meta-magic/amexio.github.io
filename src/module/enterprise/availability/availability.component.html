@@ -59,14 +59,18 @@
                 <ul style="padding: 5px 0px 2px 0px !important; margin: 0; display:flex;
                                    list-style: none;">
                     <li [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt" style="text-align: center; display: inline-block; 
-      line-height: 20px; margin-bottom: 3px;width:46px;
-        border-left:3px solid #dcdcdc; border-top: none" class="availabilitycell availabilityborders" *ngFor="let item of newTimeArr">
+      line-height: 17px; margin-bottom: 3px;width:46px;
+        border-left:3px solid #dcdcdc; border-top: none" class="availabilitycell availabilityborders" 
+        *ngFor="let item of newTimeArr2"
+        >
+        <!-- *ngFor="let item of newTimeArr" -->
+
                         {{item | date: 'h:mm '}}
+                        {{item.starttime | date: 'h: mm'}} - {{item.endtime | date: 'h:mm'}}
                     </li>
                 </ul>
             </span>
-            <!-- chk here -->
-            <span *ngFor="let iterate of dateArr1; index as parentindex">
+             <span *ngFor="let iterate of dateArr1; index as parentindex">
                 <ul style="padding: 0px 0px 0px 0px !important; margin: 0; display:flex;
                                        list-style: none;">
                     <li [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt"
