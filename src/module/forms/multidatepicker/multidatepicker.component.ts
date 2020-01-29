@@ -267,7 +267,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     }
   }
 
-   createDaysForCurrentMonths(selectedPeriod: any) {
+  createDaysForCurrentMonths(selectedPeriod: any) {
     this.daysArray = [];
     const date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
     const extras = (date.getDay() + 6) % 7; // How many days of the last month do we need to include?
@@ -389,7 +389,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
       if (this.tocardselected) {
         this.onToCardSelected(dateObj, event, elem);
       }
-      this.change.emit(dateObj.date);
+      this.change.emit({ fromDate: this.fromdate ? this.fromdate : 'not selected', toDate: this.todate ? this.todate : 'not selected' });
     } else {
       event.stopPropagation();
     }
@@ -519,7 +519,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     });
   }
 
-   disableddays() {
+  disableddays() {
     if (this.diabledDate) {
       this.diabledDate.forEach((element: any) => {
         const From = new Date(element.from);
@@ -545,7 +545,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     }
   }
 
-   validateDaysForMinMax() {
+  validateDaysForMinMax() {
     this.completeDaysArray.forEach((dayarr: any) => {
       dayarr.montharray.forEach((weekarr: any) => {
         weekarr.forEach((day: any) => {
