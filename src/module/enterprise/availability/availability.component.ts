@@ -477,8 +477,9 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   onUndoClick() {
-    this.generateData();
     this.UndoBtnClick.emit('');
+    this.generateData();
+
   }
 
 }
