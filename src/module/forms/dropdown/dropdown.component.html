@@ -51,9 +51,10 @@
       </ng-template>
     </ul>
     <ng-container *ngIf="enablecheckbox && multiselect">
-      <div style="padding-top: 10px;padding-bottom: 10px;">
+      <div style="padding-top: 10px;padding-bottom: 10px;display: flex;
+      justify-content: space-around;">
           <amexio-button
-          [label]="'Save'"
+          [label]="buttonLabel"
           [type]="'theme-color'"
           [size]="'medium'"
           (onClick)="onSaveClick($event)">

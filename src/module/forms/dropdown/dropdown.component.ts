@@ -161,6 +161,8 @@ description : true for select multiple options
 */
   @Input('multi-select') multiselect: boolean;
 
+  @Input('button-label') buttonLabel = 'Ok';
+
   @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
 
   displayValue = '';
@@ -445,14 +447,25 @@ description : Set enable / disable popover.
   }
   bindMultiselectModel() {
     if (this.value && this.multiselect && this.viewData.length > 0) {
+      this.displayValue = this.value;
       this.bindMultiSelectModelData(this.value);
     }
   }
+  splitData(): any {
+    let data: any[] = [];
+    if (this.value && this.multiselect) {
+      this.displayValue = this.value;
+      data = this.value.split(',');
+    }
+    return data;
+  }
   bindMultiSelectModelData(valueArray: any[]) {
     let preSelectedValues = '';
+    let res: any[] = [];
+    res = this.splitData();
     this.viewData.forEach((row: any) => {
-      if (valueArray.length > 0) {
-        valueArray.forEach((valueData: any) => {
+      if (res.length > 0) {
+        res.forEach((valueData: any) => {
           if (row[this.valuefield] === valueData) {
             row['checked'] = true;
             preSelectedValues === '' ? preSelectedValues +=
@@ -466,7 +479,6 @@ description : Set enable / disable popover.
         }
       }
     });
-    this.displayValue = preSelectedValues;
   }
   setUserSelection() {
     // Set user selection
@@ -503,7 +515,9 @@ description : Set enable / disable popover.
         });
         this.innerValue = optionsChecked;
         this.checkboxMethod(selectedItem);
-        this.onMultiSelect.emit(this.multiselectValues);
+        if (!this.enablecheckbox) {
+          this.onMultiSelect.emit(this.multiselectValues);
+        }
       }
     } else {
       this.value = selectedItem.item[this.valuefield];  // Issue here?
@@ -845,6 +859,7 @@ description : Set enable / disable popover.
   }
   onSaveClick(event: any) {
     this.displayValue = this.setMultiSelect();
+    this.onMultiSelect.emit(this.multiselectValues);
     this.hide();
   }
 }
