@@ -1,40 +1,98 @@
-<span style="display:inline-flex">
-  <span style="display:inline-grid;     box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 5px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px;  ">
-    <span class="customRangePanel customRange">
-      Custom
-    </span>
-    <span *ngFor="let item of customRange ; let i = index" class="customRangePanel" (click)="selectRangeOption(item)">
-      {{item}}
-      <!-- today tooltip span -->
-      <span *ngIf=" (i == 0) && todayIconFlag" class="tooltipRange"> <i class="fa fa-info-circle "
-          style="color: red; font-weight: bold" aria-hidden="true"></i>
-        <span class="tooltiptextRange">
-          today is disabled date
+<div>
+  <!-- topbar -->
+  <div style="display: flex; border: 1px solid lightgrey; width: 476px;">
+    <!-- {{newFromDate}} - {{newToDate}} -->
+    <div *ngIf="newFromDate" style="width:95%;display:flex">
+      <span style="margin: 10px" id="parentdate" class="blackText font20">
+        <span class="font30 lactoBlack">
+          {{newFromDate | date :'dd'}}
+        </span>
+        <span class="">
+          {{newFromDate | date: 'MMM'}}
+          <ng-container *ngIf="fromdate !== null"> ' </ng-container>
+        </span>
+        <span class="">
+          {{newFromDate | date: 'yy'}}
+        </span>
+        <span>
+          <h6 style="padding: 0%; margin:1%; opacity:0.5">
+            {{fromdate | date: 'EEEE'}}
+          </h6>
         </span>
       </span>
-      <!-- yesterday tooltip span -->
-      <span *ngIf=" (i == 1) && yesterdayIconFlag" class="tooltipRange"> <i class="fa fa-info-circle "
-          style="color: red; font-weight: bold" aria-hidden="true"></i>
-        <span class="tooltiptextRange">
-          yesterday is disabled date
+      <span style="display: flex;
+           flex-direction: column;
+           justify-content: center;"> - </span>
+      <span style="margin: 10px" id="parentdate" class="blackText font20">
+        <span class="font30 lactoBlack">
+          {{newToDate | date :'dd'}}
+        </span>
+        <span class="">
+          {{newToDate | date: 'MMM'}}
+          <ng-container *ngIf="fromdate !== null"> ' </ng-container>
+        </span>
+        <span class="">
+          {{newToDate | date: 'yy'}}
+        </span>
+        <span>
+          <h6 style="padding: 0%; margin:1%; opacity:0.5">
+            {{fromdate | date: 'EEEE'}}
+          </h6>
         </span>
       </span>
-    </span>
-    <span style="display:inline-grid;   box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);">
-      <!-- blank days upto today -->
-      <span class="customRangePanel">
-        <input  [(ngModel)] = "multiDateRangePickerModel.daysOptionToday" (keyup.enter)="ResetDaysTillToday()" type="text" size="3"> Days upto today
+    </div>
+    <div *ngIf="!newFromDate" style="width:95%;display:flex; margin:20px"> </div>
+    <div style="width:5%;display:flex">
+      <span (click)="openPicker()" style="cursor: pointer; 
+        cursor: pointer;
+       display: flex;
+       flex-direction: column;
+        justify-content: center;
+        margin-right: 10px;">
+        <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
       </span>
-      <!-- blank days upto Yesterday -->
-      <span class="customRangePanel">
-        <input [(ngModel)] = "multiDateRangePickerModel.daysOptionYesterday"  (keyup.enter)="ResetDaysTillYesterday()" type="text" size="3"> Days upto Yesterday
-      </span>
-    </span>
+    </div>
 
+
+  </div>
+  <span *ngIf="showMultiRangePicker" style="display:inline-flex">
+    <span style="display:inline-grid;     box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 5px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px;  ">
+      <span class="customRangePanel customRange">
+        Custom
+      </span>
+      <span *ngFor="let item of customRange ; let i = index" class="customRangePanel" (click)="selectRangeOption(item)">
+        {{item}}
+        <!-- today tooltip span -->
+        <span *ngIf=" (i == 0) && todayIconFlag" class="tooltipRange">
+          <i class="fa fa-info-circle " style="color: red; font-weight: bold" aria-hidden="true"></i>
+          <span class="tooltiptextRange">
+            today is disabled date
+          </span>
+        </span>
+        <!-- yesterday tooltip span -->
+        <span *ngIf=" (i == 1) && yesterdayIconFlag" class="tooltipRange">
+          <i class="fa fa-info-circle " style="color: red; font-weight: bold" aria-hidden="true"></i>
+          <span class="tooltiptextRange">
+            yesterday is disabled date
+          </span>
+        </span>
+      </span>
+      <span style="display:inline-grid;   box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);">
+        <!-- blank days upto today -->
+        <span class="customRangePanel">
+          <input [(ngModel)]="multiDateRangePickerModel.daysOptionToday" (keyup.enter)="ResetDaysTillToday()" type="text" size="3"> Days upto today
+        </span>
+        <!-- blank days upto Yesterday -->
+        <span class="customRangePanel">
+          <input [(ngModel)]="multiDateRangePickerModel.daysOptionYesterday" (keyup.enter)="ResetDaysTillYesterday()" type="text" size="3"> Days upto Yesterday
+        </span>
+      </span>
+
+    </span>
+    <span style="display: inline-block; margin-left: 2px;">
+      <amexio-multiple-date-picker [fromlabel]="'Departure'" [tolabel]="'Return'" [number-of-months]="2" [from-date]="newFromDate"
+        (change)="onDateClick($event)" [to-date]="newToDate" [date-range-picker]="true">
+      </amexio-multiple-date-picker>
+    </span>
   </span>
-  <span style="display: inline-block; margin-left: 2px;">
-    <amexio-multiple-date-picker [fromlabel]="'Departure'" [tolabel]="'Return'" [number-of-months]="2"
-      [from-date]="newFromDate" (change)="onDateClick($event)" [to-date]="newToDate" [date-range-picker]="true">
-    </amexio-multiple-date-picker>
-  </span>
-</span>
+</div>

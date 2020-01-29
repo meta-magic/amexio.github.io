@@ -24,8 +24,8 @@ import { MultiDateRangePicker } from './multirangedatepicker.component.model';
 export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
 
     dateRangePickerFlag = true;
-    newFromDate = new Date();
-    newToDate = new Date();
+    @Input('from-date') newFromDate = new Date();
+    @Input('to-date') newToDate = new Date();
     customRange: any[];
     fromCardSelected = false;
     toCardSelected = false;
@@ -34,6 +34,7 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
     todayIconFlag = false;
     yesterdayIconFlag = false;
     disabledChkedIndex = 0;
+    showMultiRangePicker = false;
     multiDateRangePickerModel: MultiDateRangePicker;
     @Input('disabled-date') disabledDates: any = [];
     @Output() change: EventEmitter<any> = new EventEmitter<any>();
@@ -164,6 +165,9 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                     //  set todate to currentdate
                     this.child.todate = currentdate;
                 }
+
+                this.newFromDate = this.child.fromdate;
+                this.newToDate = this.child.todate;
                 this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
 
                 break;
@@ -180,6 +184,9 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                     // reinitialize todate to yesterday date
                     this.child.todate = yesterdaydate;
                 }
+
+                this.newFromDate = this.child.fromdate;
+                this.newToDate = this.child.todate;
                 this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
 
                 break;
@@ -197,6 +204,9 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 // set todate
                 enddate.setDate(enddate.getDate() - dayindex + 6);
                 this.child.todate = enddate;
+
+                this.newFromDate = this.child.fromdate;
+                this.newToDate = this.child.todate;
                 this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
 
                 break;
@@ -207,6 +217,9 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 const firstday = new Date();
                 firstday.setDate(firstday.getDate() - 14);
                 this.child.fromdate = firstday;
+
+                this.newFromDate = this.child.fromdate;
+                this.newToDate = this.child.todate;
                 this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
 
                 break;
@@ -217,6 +230,9 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 this.child.fromdate = firstmonthday;
                 const lastmonthday = new Date(d1.getFullYear(), d1.getMonth() + 1, 0);
                 this.child.todate = lastmonthday;
+
+                this.newFromDate = this.child.fromdate;
+                this.newToDate = this.child.todate;
                 this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
 
                 break;
@@ -228,6 +244,9 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 this.child.todate = last30thdate;
                 first30thdate.setDate(d2.getDate() - 29);
                 this.child.fromdate = first30thdate;
+
+                this.newFromDate = this.child.fromdate;
+                this.newToDate = this.child.todate;
                 this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
 
                 break;
@@ -238,6 +257,9 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 const lday = new Date(d3.getFullYear(), d3.getMonth(), 0);
                 this.child.fromdate = fday;
                 this.child.todate = lday;
+
+                this.newFromDate = this.child.fromdate;
+                this.newToDate = this.child.todate;
                 this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
 
                 break;
@@ -249,6 +271,9 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
                 d4.setDate(1);
                 this.child.fromdate = d4;
                 this.child.todate = new Date();
+
+                this.newFromDate = this.child.fromdate;
+                this.newToDate = this.child.todate;
                 this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
 
                 break;
@@ -292,6 +317,12 @@ export class AmexioMultiRangePickerComponent implements OnInit, AfterViewInit {
     }
 
     onDateClick(event: any) {
+        this.newFromDate = this.child.fromdate;
+        this.newToDate = this.child.todate;
         this.change.emit({ fromDate: this.child.fromdate, toDate: this.child.todate });
+    }
+
+    openPicker() {
+        this.showMultiRangePicker = !this.showMultiRangePicker;
     }
 }
