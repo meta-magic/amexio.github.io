@@ -526,7 +526,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   updateComponent() {
     if (this.data.length > 0) {
       this.data.forEach((obj: any) => {
-        if (!obj.hasOwnProperty('rowindexid')) {
+        if (!obj.hasOwnProperty('rowindexid') && this.enablecheckbox) {
           obj['rowindexid'] = Math.floor(Math.random() * 90000) + 10000;
         }
       });
