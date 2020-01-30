@@ -48,8 +48,8 @@ version : 4.0 onwards
 default :
 description : Sets if field is required
 */
-  @Input('allow-blank') allowblank: boolean;
-  /*
+@Input('allow-blank') allowblank = true ;
+/*
 Properties
 name : min-value
 datatype : number

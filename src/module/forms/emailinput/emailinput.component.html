@@ -3,8 +3,11 @@
 
   <label *ngIf="hasLabel"  role="email" for="{{componentId}}" id="{{componentId}}" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
-    <ng-container *ngIf="fieldlabel != '' && !allowblank && iconfeedback">
-      <span style="color: red">*</span>
+  <ng-container *ngIf="(fieldlabel != '' && !allowblank && iconfeedback); else elseblock">
+    <span style="color: red">*</span>
+    <ng-template #elseBlock>
+      <span></span>
+    </ng-template>
   </ng-container>
   </label> 
 

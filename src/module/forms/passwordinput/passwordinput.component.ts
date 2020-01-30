@@ -69,8 +69,8 @@ version : 4.0 onwards
 default :
 description : Sets if field is required
 */
-  @Input('allow-blank') allowblank: boolean;
-  isValid = false;
+@Input('allow-blank') allowblank = true ;
+isValid = false;
   regEx: RegExp;
   showToolTip: boolean;
   showandfeedback: boolean;

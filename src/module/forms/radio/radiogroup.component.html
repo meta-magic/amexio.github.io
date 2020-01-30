@@ -2,8 +2,11 @@
   class="inputgroup from-group">
   <div *ngIf="hasLabel">
     <legend style="margin-bottom: .6rem; margin-top: 5px;" id="{{componentId}}">{{fieldlabel}}
-      <ng-container *ngIf="fieldlabel != '' && !allowblank">
+      <ng-container *ngIf="(fieldlabel != '' && !allowblank); else elseblock">
         <span style="color: red">*</span>
+        <ng-template #elseBlock>
+          <span></span>
+        </ng-template>
       </ng-container>
     </legend>
   </div>
