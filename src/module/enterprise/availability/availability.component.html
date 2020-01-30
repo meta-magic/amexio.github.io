@@ -20,7 +20,7 @@
             </span>
         </amexio-column>
         <amexio-column [size]="2" style="padding-top:14px">
-            <span style="float: right">
+            <span style="float: right"*ngIf="undoFlag" >
                 <amexio-button [label]="'Undo'" [size]="'default'" [type]="'theme-color'" (onClick)="onUndoClick()"
                     [icon]="'fa fa-undo'">
                 </amexio-button>

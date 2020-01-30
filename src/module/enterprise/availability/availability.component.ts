@@ -13,6 +13,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
   @Input('start-time') startTime: number;
   @Input('end-time') endTime: number;
   @Input('time-zone-data') zoneData: any;
+  @Input('undo-button') undoFlag = false;
   _labelData: any;
   @Input('label-data')
   set labelData(value: any[]) {
