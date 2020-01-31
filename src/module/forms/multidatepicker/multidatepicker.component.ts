@@ -389,7 +389,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
       if (this.tocardselected) {
         this.onToCardSelected(dateObj, event, elem);
       }
-      this.change.emit({ fromDate: this.fromdate ? this.fromdate : 'not selected', toDate: this.todate ? this.todate : 'not selected' });
+      this.change.emit({ fromDate: this.fromdate ? this.fromdate : null, toDate: this.todate ? this.todate : null });
     } else {
       event.stopPropagation();
     }
