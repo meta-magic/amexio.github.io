@@ -52,23 +52,23 @@ description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
   /*
-Properties
-name : allow-blank
-datatype : string
-version : 4.0 onwards
-default :
-description : Sets if field is required
-*/
+  Properties
+  name : allow-blank
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets if field is required
+  */
   @Input('allow-blank') allowblank: boolean;
 
   /*
-Properties
-name : data
-datatype : any
-version : 4.0 onwards
-default :
-description : Local data for dropdown.
-*/
+  Properties
+  name : data
+  datatype : any
+  version : 4.0 onwards
+  default :
+  description : Local data for dropdown.
+  */
   @Input('child-array-key') childArrayKey = 'childrens';
 
   _data: any;
@@ -84,13 +84,13 @@ description : Local data for dropdown.
     return this._data;
   }
   /*
- Properties
- name : data-reader
- datatype : string
- version : 4.0 onwards
- default :
- description : Key in JSON datasource for records
- */
+  Properties
+  name : data-reader
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Key in JSON datasource for records
+  */
   @Input('data-reader') datareader: string;
 
   /*
@@ -105,42 +105,42 @@ description : Local data for dropdown.
 
   @Input('group') group: boolean;
   /*
- Properties
- name : http-url
- datatype : string
- version : 4.0 onwards
- default :
- description : REST url for fetching datasource.
- */
+  Properties
+  name : http-url
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : REST url for fetching datasource.
+  */
   @Input('http-url') httpurl: string;
 
   /*
-Properties
-name : display-field
-datatype : string
-version : 4.0 onwards
-default :
-description : Name of key inside response data to display on ui.
-*/
+  Properties
+  name : display-field
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Name of key inside response data to display on ui.
+  */
   @Input('display-field') displayfield: string;
   /*
-Properties
-name : value-field
-datatype : string
-version : 4.0 onwards
-default :
-description : Name of key inside response data.use to send to backend
-*/
+  Properties
+  name : value-field
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Name of key inside response data.use to send to backend
+  */
   @Input('value-field') valuefield: string;
 
   /*
-Properties
-name : search
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : true for search box enable
-*/
+  Properties
+  name : search
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description : true for search box enable
+  */
   @Input() search: boolean;
   /*
   Properties
@@ -153,13 +153,13 @@ description : true for search box enable
   @Input() readonly: boolean;
 
   /*
-Properties
-name : multi-select
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : true for select multiple options
-*/
+  Properties
+  name : multi-select
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description : true for select multiple options
+  */
   @Input('multi-select') multiselect: boolean;
 
   @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
@@ -169,6 +169,8 @@ description : true for select multiple options
   filteredOptions: any[] = [];
 
   selectAllFlag = false;
+
+  filterText: any;
   /*
   Events
   name : onBlur
@@ -179,125 +181,127 @@ description : true for select multiple options
   */
   @Output() onBlur: any = new EventEmitter<any>();
   /*
-Events
-name : input
-datatype : any
-version : none
-default :
-description : 	On input event field.
-*/
+  Events
+  name : input
+  datatype : any
+  version : none
+  default :
+  description : 	On input event field.
+  */
   @Output() input: any = new EventEmitter<any>();
   /*
-Events
-name : focus
-datatype : any
-version : none
-default :
-description : On field focus event
-*/
+  Events
+  name : focus
+  datatype : any
+  version : none
+  default :
+  description : On field focus event
+  */
   @Output() focus: any = new EventEmitter<any>();
   /*
-Events
-name : onSingleSelect
-datatype : any
-version : none
-default :
-description : Fire when drop down item selected.
-*/
+  Events
+  name : onSingleSelect
+  datatype : any
+  version : none
+  default :
+  description : Fire when drop down item selected.
+  */
   @Output() onSingleSelect: any = new EventEmitter<any>();
   @Output() onRecordSelect: any = new EventEmitter<any>();
 
   /*
-Events
-name : onMultiSelect
-datatype : any
-version :none
-default :
-description : Fire when multiple record select in drop down.this event is only
-applied when multi-select=true
-*/
+  Events
+  name : onMultiSelect
+  datatype : any
+  version :none
+  default :
+  description : Fire when multiple record select in drop down.this event is only
+  applied when multi-select=true
+  */
   @Output() onMultiSelect: any = new EventEmitter<any>();
   /*
-Events
-name : onClick
-datatype : any
-version :none
-default :
-description : On record select event.this event is only for normal dropdown.
-*/
+  Events
+  name : onClick
+  datatype : any
+  version :none
+  default :
+  description : On record select event.this event is only for normal dropdown.
+  */
   @Output() onClick: any = new EventEmitter<any>();
   showToolTip: boolean;
   /*
-Properties
-name : place-holder
-datatype : string
-version : 4.0 onwards
-default :
-description : Show place-holder inside dropdown component*/
+  Properties
+  name : place-holder
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Show place-holder inside dropdown component*/
   @Input('place-holder') placeholder = '';
   /*
-Properties
-name : disabled
-datatype :  boolean
-version : 4.0 onwards
-default : false
-description : If true will not react on any user events and show disable icon over*/
+  Properties
+  name : disabled
+  datatype :  boolean
+  version : 4.0 onwards
+  default : false
+  description : If true will not react on any user events and show disable icon over*/
   @Input() disabled: boolean;
   /*
-Properties
-name : icon-feedback
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : */
+  Properties
+  name : icon-feedback
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description : */
   @Input('icon-feedback') iconfeedback: boolean;
   /*
-Properties
-name : font-style
-datatype : string
-version : 4.0 onwards
-default :
-description : Set font-style to field
-*/
+  Properties
+  name : font-style
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Set font-style to field
+  */
   @Input('font-style') fontstyle: string;
   /*
-Properties
-name : font-family
-datatype : string
-version : 4.0 onwards
-default :
-description : Set font-family to field
-*/
+  Properties
+  name : font-family
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Set font-family to field
+  */
   @Input('font-family') fontfamily: string;
   /*
-Properties
-name : font-size
-datatype : string
-version : 4.0 onwards
-default :
-description : Set font-size to field
-*/
+  Properties
+  name : font-size
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Set font-size to field
+  */
   @Input('font-size') fontsize: string;
   /*
-Properties
-name : has-label
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : flag to set label
-*/
+  Properties
+  name : has-label
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description : flag to set label
+  */
   @Input('has-label') haslabel = true;
   /*
-Properties
-name : enable-popover
-datatype : boolean
-version : 4.0 onwards
-default :false
-description : Set enable / disable popover.
-*/
+  Properties
+  name : enable-popover
+  datatype : boolean
+  version : 4.0 onwards
+  default :false
+  description : Set enable / disable popover.
+  */
   @Input('enable-popover') enablepopover: boolean;
 
   @Input('enable-sort') enablesort = false;
+
+  isDataFound = true;
 
   @Input('sort') sort = '';
 
@@ -305,6 +309,8 @@ description : Set enable / disable popover.
 
   helpInfoMsg: string;
   _errormsg: string;
+
+  count = 1;
 
   get errormsg(): string {
     return this._errormsg;
@@ -323,6 +329,7 @@ description : Set enable / disable popover.
   responseData: any;
   previousData: any;
   viewData: any;
+  dropdownData: any;
   componentId: string;
   multiselectValues: any[] = [];
   maskloader = true;
@@ -377,6 +384,7 @@ description : Set enable / disable popover.
     this.setUserSelection();
     this.maskloader = false;
   }
+
   setResponseData(responsedata: any) {
     if (responsedata) {
 
@@ -449,38 +457,10 @@ description : Set enable / disable popover.
           row['checked'] = false;
         }
       });
-      this.bindData();
       this.onMultiSelect.emit(this.multiselectValues);
     }
   }
-  bindData() {
-    if (this.value && this.multiselect) {
-      this.bindMultiselectModel();
-    } else {
-      this.displayValue = this.setMultiSelect();
-    }
-  }
-  bindMultiselectModel() {
-    if (this.value && this.multiselect && this.viewData.length > 0) {
-      this.bindMultiSelectModelData(this.value);
-    }
-  }
-  bindMultiSelectModelData(valueArray: any[]) {
-    let preSelectedValues = '';
-    this.viewData.forEach((row: any) => {
-      if (valueArray.length > 0) {
-        valueArray.forEach((valueData: any) => {
-          if (row[this.valuefield] === valueData) {
-            row['checked'] = true;
-            preSelectedValues === '' ? preSelectedValues +=
-              this.displayFieldService.findValue(this.displayfield, row) : preSelectedValues += ', ' +
-              this.displayFieldService.findValue(this.displayfield, row);
-          }
-        });
-      }
-    });
-    this.displayValue = preSelectedValues;
-  }
+
   setUserSelection() {
     // Set user selection
     if (this.innerValue != null) {
@@ -500,7 +480,10 @@ description : Set enable / disable popover.
       }
     }
   }
-  onItemSelect(selectedItem: any) {
+  onItemSelectdata(selectedItem: any) {
+
+    event.preventDefault();
+    event.stopPropagation();
     debounceTime(300);
     if (this.multiselect) {
       this.selectAllFlag = false;
@@ -648,17 +631,109 @@ description : Set enable / disable popover.
     this.isValid = input.valid;
     this.isComponentValid.emit(input.valid);
   }
+
+  filterData() {
+    this.showToolTip = false;
+    if (this.filterText.length >= 0) {
+      const tData = JSON.parse(JSON.stringify(this.viewData));
+      const treeNodes = this.searchTree(tData, this.filterText);
+      treeNodes.forEach((filterData: any) => {
+        this.filteredOptions.push(filterData);
+      });
+      if (this.viewData.length === 0) {
+        this.isDataFound = false;
+      } else {
+        this.isDataFound = true;
+      }
+    }
+  }
+  searchTree(data: any[], matchingTitle: string) {
+    return this.filterActualData(data, matchingTitle);
+  }
+
+  filterActualData(data: any[], matchingTitle: any): any {
+
+    let tempdisplay: string;
+    let tempchildarrayKey: string;
+    tempdisplay = this.displayfield;
+    tempchildarrayKey = this.childArrayKey;
+    return data.filter(function f(node) {
+      if (node[tempdisplay].toLowerCase().startsWith(matchingTitle.toLowerCase())) {
+        node[tempchildarrayKey] = [];
+        return true;
+      }
+      if (node[tempchildarrayKey]) {
+        return (node[tempchildarrayKey] = node[tempchildarrayKey].filter(f)).length;
+      }
+    });
+  }
+
+  getChildData(childData: any) {
+    this.dropdownData = childData;
+    this.writeValue(this.displayValue);
+  }
+
+  // From ControlValueAccessor interface
+  writeValue(value: any) {
+    if (value != null) {
+      this.displayValue = value;
+    }
+    if (value != null && this.dropdownData && this.dropdownData.length > 0) {
+      this.writeChangedValue(value);
+    } else {
+      this.innerValue = '';
+      if (this.allowblank) {
+        this.isValid = true;
+      }
+    }
+  }
+
+  findingChild(row: any, value: any) {
+    if (row.hasOwnProperty('childrens') && row.childrens.length > 0) {
+      row.childrens.forEach((data: any) => {
+        if (data[this.valuefield] === value) {
+          this.isValid = true;
+          this.displayValue = this.displayFieldService.findValue(this.displayfield, data);
+          this.status = true;
+          return;
+        } else {
+          this.findingChild(data, value);
+        }
+      });
+    }
+
+  }
+
+  writeChangedValue(value: any) {
+    if ((value !== this.innerValue)  && this.dropdownData && this.dropdownData.length > 0) {
+      this.dropdownData.forEach((item: any) => {
+        if (item[this.valuefield] === value) {
+          this.isValid = true;
+          this.displayValue = this.displayFieldService.findValue(this.displayfield, item);
+          this.status = true;
+          return;
+        } else if (item.hasOwnProperty('childrens') && item.childrens.length > 0) {
+          this.findingChild(item, value);
+        }
+      });
+    }
+    this.fromWriteChangedValue(value);
+  }
+
+  fromWriteChangedValue(value: any) {
+    if (!this.status) {
+      this.displayValue = '';
+    }
+    this.value = value;
+  }
+
   onDropDownSearchKeyUp(event: any) {
     if (this.search && this.viewData) {
       const keyword = event.target.value;
       if (keyword != null && keyword !== '' && keyword !== ' ') {
         this.filteredOptions = [];
-        const search_Term = keyword.toLowerCase();
-        this.viewData.forEach((row: any) => {
-          if (this.displayFieldService.findValue(this.displayfield, row).toLowerCase().startsWith(search_Term)) {
-            this.filteredOptions.push(row);
-          }
-        });
+        this.filterText = keyword.toLowerCase();
+        this.filterData();
       }
       if (keyword === '') {
         this.filteredOptions = this.viewData;
@@ -693,7 +768,7 @@ description : Set enable / disable popover.
       this.navigateFilterOptions(prevselectedindex);
     }
     if (event.keyCode === 13 && this.filteredOptions[this.selectedindex]) {
-      this.onItemSelect(this.filteredOptions[this.selectedindex]);
+      this.onItemSelectdata(this.filteredOptions[this.selectedindex]);
     }
   }
   // for highlight  navigated options
@@ -743,7 +818,7 @@ description : Set enable / disable popover.
       const row = this.filteredOptions[0];
       const rvalue = this.displayFieldService.findValue(this.displayfield, row);
       if (fvalue && rvalue && (fvalue.toLowerCase() === rvalue.toLowerCase())) {
-        this.onItemSelect(row);
+        this.onItemSelectdata(row);
       }
       this.onBaseBlurEvent(event);
     }
@@ -766,49 +841,6 @@ description : Set enable / disable popover.
     } else {
       return false;
     }
-  }
-  // From ControlValueAccessor interface
-  writeValue(value: any) {
-    if (value != null) {
-      this.writeChangedValue(value);
-      if (this.value && this.multiselect) {
-        this.bindMultiselectModel();
-      }
-    } else {
-      this.innerValue = '';
-      if (this.allowblank) {
-        this.isValid = true;
-      }
-    }
-  }
-  writeChangedValue(value: any) {
-    if ((value !== this.innerValue) && this.viewData && this.viewData.length > 0) {
-      this.viewData.forEach((item: any) => {
-        if (item[this.valuefield] === value) {
-          this.isValid = true;
-          this.displayValue = this.displayFieldService.findValue(this.displayfield, item);
-          this.status = true;
-          return;
-        } else if (item.hasOwnProperty('childrens') && item.childrens.length > 0) {
-          item.childrens.forEach((data: any) => {
-            if (data[this.valuefield] === value) {
-              this.isValid = true;
-              this.displayValue = this.displayFieldService.findValue(this.displayfield, data);
-              this.status = true;
-              return;
-            }
-          });
-        }
-      });
-    }
-    this.fromWriteChangedValue(value);
-  }
-
-  fromWriteChangedValue(value: any) {
-    if (!this.status) {
-      this.displayValue = '';
-    }
-    this.value = value;
   }
 
   // From ControlValueAccessor interface

@@ -49,8 +49,19 @@ background-color: $dropdownScrollThumbColor;
   .dropdown-list .list-item-hover1:hover {
   color: var(--componentHoverFontColor) !important;
   background-color: var(--componentHoverBGColor) !important;
+  border-bottom: 2px solid black !important;
   }
   
+
+   
+  .dropdowntreelabel:hover {
+    cursor: pointer;
+    color: var(--componentHoverFontColor) !important;
+    background-color: var(--componentHoverBGColor) !important;
+    border-bottom: 2px solid black !important;
+}
+
+
   .dropdown-list .list-item-hover {
   cursor: pointer;
   }
