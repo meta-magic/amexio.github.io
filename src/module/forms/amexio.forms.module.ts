@@ -69,10 +69,6 @@ import { AmexioMultiRangePickerComponent } from './multirangedatepicker/multiran
 
 import { AmexioInputPatternDirective } from '../directive/input-mask';
 
-import { AmexioMultiDropDownComponent } from './multi-dropdown/multi-dropdown.component';
-
-import { MultiChildDropdownComponent } from './multi-dropdown/mutli-child-dropdown/mutli-child-dropdown.component';
-
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
 export * from './recaptcha/load.recaptcha.service';
@@ -134,8 +130,6 @@ const FORM_COMPONENTS = [
   AmexioInputPatternDirective,
   AmexioDialpadComponent,
   AmexioMultiRangePickerComponent,
-  AmexioMultiDropDownComponent,
-  MultiChildDropdownComponent,
 ];
 
 @NgModule({
