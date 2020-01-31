@@ -762,6 +762,51 @@ description : sets background color for active tab
       this.disabledsplitmethod(input, flag);
     }
   }
+
+  enableTab(input: any, flag: boolean) {
+    if (typeof input === 'string') {
+      this.tabCollection.forEach((tabs: any) => {
+        if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
+          tabs.disabled = false;
+          flag = true;
+        }
+        this.asignTabPillClass(tabs);
+      });
+    } else if (typeof input === 'number') {
+      this.tabCollection.forEach((tabs: any, index: any) => {
+        if (index === input) {
+          tabs.disabled = false;
+          flag = true;
+        }
+        this.asignTabPillClass(tabs);
+      });
+    } else if (typeof input === 'object') {
+      this.disabledsplitmethod(input, flag);
+    }
+  }
+
+  enabledsplitmethod(input: any, flag: any) {
+    input.forEach((element: string) => {
+      if (typeof element === 'string') {
+        this.tabCollection.forEach((tabs: any) => {
+          if (element.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
+            tabs.disabled = false;
+            flag = true;
+          }
+          this.asignTabPillClass(tabs);
+        });
+      } else if (typeof element === 'number') {
+        this.tabCollection.forEach((tabs: any, index: any) => {
+          if (index === element) {
+            tabs.disabled = false;
+            flag = true;
+          }
+          this.asignTabPillClass(tabs);
+        });
+      }
+    });
+  }
+
   disabledsplitmethod(input: any, flag: any) {
     input.forEach((element: string) => {
       if (typeof element === 'string') {

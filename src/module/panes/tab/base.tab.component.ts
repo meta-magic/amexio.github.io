@@ -179,6 +179,11 @@ description : Callback to invoke on activated tab event.
         if (tabData.disabled) {
             tabData.tabPillClass = 'disabled-tab';
         }
+
+        if (!tabData.disabled) {
+            tabData.tabPillClass = 'enabled-tab';
+        }
+
         if ((tabData.amexiocolor !== '') && (this.tabPosition === 'top') && tabData.active && !this.activeBGColor) {
             tabData.tabPillClass = 'activecolortab';
         }
