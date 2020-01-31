@@ -333,7 +333,7 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
 
   generateIndex(data: any, parentId: number, rannumber: any) {
     data.forEach((element: any, index: number) => {
-      element['id'] = '' + rannumber + '-';
+      element['refId'] = '' + rannumber + '-';
       if (element.hasOwnProperty(this.childarraykey)) {
         this.generateIndex(element[this.childarraykey], element.id.split('-')[1], rannumber);
       }

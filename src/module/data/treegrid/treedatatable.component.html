@@ -39,7 +39,7 @@
                 <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
                     <ng-container *ngFor="let cols of columns;let colIndex = index">
                         <ng-container *ngIf="cols.datatype=='string' && !cols?.bodyTemplate">
-                            <div #ref id="{{row.id}}{{i+1}}{{colIndex+1}}" [attr.tabindex]="(((i+1== 1) && (colIndex + 1 == 1))? 1: -1)" (keyup.enter)="toogle(row,i)"
+                            <div #ref id="{{row.refId}}{{i+1}}{{colIndex+1}}" [attr.tabindex]="(((i+1== 1) && (colIndex + 1 == 1))? 1: -1)" (keyup.enter)="toogle(row,i)"
                                 (keyup.enter)="setSelectedRow(row, $event)" class="datatable-col" (keyup.arrowright)="arrowRight(ref)"
                                 (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.arrowdown)="arrowDown(ref)"
                                 (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd(ref)"
@@ -72,7 +72,7 @@
                             </div>
                         </ng-container>
                         <ng-container *ngIf="cols.datatype=='number' && !cols?.bodyTemplate">
-                            <div #ref class="datatable-col" id="{{row.id}}{{i+1}}{{colIndex+1}}" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)"
+                            <div #ref class="datatable-col" id="{{row.refId}}{{i+1}}{{colIndex+1}}" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)"
                                 (keyup.control.end)="keyControlEnd(ref)" (keyup.control.home)="keyControlHome(ref)" (keyup.arrowright)="arrowRight(ref)"
                                 (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.arrowdown)="arrowDown(ref)"
                                 [attr.tabindex]="(((i+1== 1) && (colIndex + 1 == 1))? 1: -1)" (keyup.enter)="toogle(row,i)" (keyup.enter)="setSelectedRow(row, $event)"
@@ -112,7 +112,7 @@
 
                         <ng-container *ngIf="cols.bodyTemplate">
 
-                            <div #ref class="datatable-col" id="{{row.id}}{{i+1}}{{colIndex+1}}" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)"
+                            <div #ref class="datatable-col" id="{{row.refId}}{{i+1}}{{colIndex+1}}" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)"
                                 (keyup.control.end)="keyControlEnd(ref)" (keyup.control.home)="keyControlHome(ref)" (keyup.arrowright)="arrowRight(ref)"
                                 (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.arrowdown)="arrowDown(ref)"
                                 [attr.tabindex]="(((i+1== 1) && (colIndex + 1 == 1))? 1: -1)" (keyup.enter)="toogle(row,i)" (keyup.enter)="setSelectedRow(row, $event)"
