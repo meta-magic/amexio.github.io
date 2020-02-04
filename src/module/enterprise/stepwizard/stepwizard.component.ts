@@ -62,31 +62,39 @@ export class StepWizardComponent implements AfterContentInit {
 
   // ON NEXT STEP CLICK
   private onNextStep(event: any) {
-
     let activeIndex = 0;
     const updatedTitle = event.title.replace(/\s/g, '').toLowerCase();
     this.data[updatedTitle] = event.data;
     this.stepItemList.forEach((stepItem: any, index: any) => {
       if (stepItem.index === event.index) {
         activeIndex = index + 1;
-        this.stepItemList[activeIndex].activeClass = 'active';
-        this.stepItemList[activeIndex].active = true;
-        this.title = this.stepItemList[activeIndex].title;
+        if (this.stepItemList[activeIndex]) {
+          this.stepItemList[activeIndex].activeClass = 'active';
+          this.stepItemList[activeIndex].active = true;
+          this.title = this.stepItemList[activeIndex].title;
+        }
       }
     });
-
+    if (activeIndex !== this.stepItemList.length) {
+      if (event && event.emitData && event.emitData.currentdata) {
+        this.onNextStepClick.emit({ title: event.title,
+          currentdata: event.emitData.currentdata,
+          data: this.data, event: event.emitData.event });
+      }
+    }
     this.stepItemList.forEach((stepItem: any, index: any) => {
       const ind = index + 1;
       if (ind <= activeIndex) {
         this.stepItemList[ind - 1].activeClass = 'completed';
         this.stepItemList[ind - 1].active = false;
       }
+      if (activeIndex === this.stepItemList.length) {
+        this.stepItemList[activeIndex - 1].active = true;
+      }
     });
-    if (event && event.emitData && event.emitData.currentdata) {
-      // tslint:disable-next-line:max-line-length
-      this.onNextStepClick.emit({ title: event.title, currentdata: event.emitData.currentdata, data: this.data, event: event.emitData.event });
+    if (activeIndex === this.stepItemList.length) {
+      this.finalStage.emit(this.data);
     }
-    this.finalStage.emit(this.data);
   }
 
   // ON PREVIOUS STEP CLICK
