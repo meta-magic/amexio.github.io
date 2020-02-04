@@ -321,6 +321,7 @@ description : Fire when button-dropdown item button/link click
       if (!itemData.disabled) {
         itemData.onItemClick.emit(clickEvent);
         this.openContent = !this.openContent;
+        this.getLinkData.emit({ event: clickEvent, parentRef: this, data: itemData });
         this.onBaseBlurEvent(event);
       }
     }
