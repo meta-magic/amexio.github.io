@@ -24,6 +24,11 @@ import { AmexioDialpadComponent } from './dialpad/dialpad.component';
 import { AmexioDropDownMenuComponent } from './dropdown-menu/dropdownmenu.component';
 import { AmexioDropDownitemsComponent } from './dropdown-menu/dropdownmenu.component.items';
 import { AmexioDropDownComponent } from './dropdown/dropdown.component';
+
+import { MultiChildDropdownComponent } from './multi-dropdown/multi-child-dropdown/multi-child-dropdown.component';
+
+import { AmexioMultiDropDownComponent } from './multi-dropdown/multi-dropdown.component';
+
 import { AmexioEmailInputComponent } from './emailinput/emailinput.component';
 import { AmexioFileUploadComponent } from './fileupload/fileupload.component';
 import { AmexioFloatingButtonComponent } from './floatingbutton/floatingbutton.component';
@@ -130,6 +135,8 @@ const FORM_COMPONENTS = [
   AmexioInputPatternDirective,
   AmexioDialpadComponent,
   AmexioMultiRangePickerComponent,
+  AmexioMultiDropDownComponent,
+  MultiChildDropdownComponent,
 ];
 
 @NgModule({
