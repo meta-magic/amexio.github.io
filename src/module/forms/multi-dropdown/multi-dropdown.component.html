@@ -1,5 +1,6 @@
 <div class="inputgroup" #rootDiv (keyup.esc)="closeOnEScape($event)">
 
+  {{fieldlabel}}
   <label id="fieldlabel" for="input" *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily"
     [style.font-size]="fontsize">
 
