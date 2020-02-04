@@ -16,7 +16,7 @@
         [ngStyle]="dropdownstyle">
         <div id="{{itemData.index}}" role="option" tabindex="1" *ngFor="let itemData of dropdownItemData let index = index">
             <div [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large'}">
-                <div [ngStyle]="{'cursor': itemData.disabled ? 'not-allowed':'pointer'}" (click)="btnItemClick($event,itemData)">
+                <div [ngStyle]="{'cursor': itemData.disabled ? 'not-allowed':'pointer'}" (mousedown)="btnItemClick($event,itemData)">
                     <amexio-c-icon style="padding-right: 5px;" [customclass]="itemData.iconStyleClass"></amexio-c-icon>
                     <span [ngClass]="{'button-group-list-items':itemData.selected}" [attr.disabled]="itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
                     <ng-container *ngIf="itemData.badge">

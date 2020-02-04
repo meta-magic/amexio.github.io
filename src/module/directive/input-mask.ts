@@ -45,7 +45,11 @@ export class AmexioInputPatternDirective {
         const e = event.target.value;
         const strippedValue = isCharsetPresent ? e.replace(/\W/g, '') : e.replace(/\D/g, '');
         const newVal = this.handleCurrentValue(strippedValue, placeholder, isCharsetPresent, e);
-        this.model.update.emit(newVal);
+        if (this.model != null) {
+            this.model.update.emit(newVal);
+        } else {
+            this.ngControl.control.setValue(newVal);
+        }
     }
 
     handleCurrentValue(strippedValue: any, placeholder: any, isCharsetPresent: any, e: any) {
