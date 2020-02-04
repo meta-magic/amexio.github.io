@@ -1,0 +1,46 @@
+<li *ngFor="let node of filteredOptions  let rowindex = index" style="padding:5px"
+  (keyup.arrowdown)="onArrowChildDown($event,filteredOptions,node,rowindex)"
+  (mousedown)="onItemSelect({ item: node, event: $event})">
+
+  <b   id="{{node.elementId}}" [ngClass]="{'list-items-selected':node.selected}">
+    <b class="list-items" >
+      <amexio-display-field style="font-weight:bold !important;" [data]="node" [data-index]="displayfield"></amexio-display-field>
+    </b>
+  </b>
+
+  <ul aria-labelledby="fieldlabel" aria-haspopup="listbox" class="dropdown-list" style="max-height: unset;">
+    <span *ngFor="let item of node[childArrayKey]">
+
+      <li role="option" tabindex="1" style="padding:5px 5px 5px 13px"
+        (mousedown)="onItemSelect({item: item, event: $event})">
+
+        <ng-container *ngIf="bodyTemplate">
+          <ng-template [ngTemplateOutlet]="bodyTemplate"
+            [ngTemplateOutletContext]="{ $implicit: { text : row }, row: item }">
+          </ng-template>
+        </ng-container>
+
+        <ng-container *ngIf="!bodyTemplate">
+          <span class="list-items" id="{{item.elementId}}"
+            [ngClass]="{'list-items-selected':item.selected, 'list-item-hover1': item.childflag}">
+            <amexio-display-field [data]="item" [data-index]="displayfield"></amexio-display-field>
+          </span>
+        </ng-container>
+       
+        <div *ngIf="enablecheckbox && multiselect" style="float : left" class="input-box checkbox">
+          <span>{{item?.checked ? '&#10004;': ''}}</span>
+        </div>
+        <span *ngIf="!enablecheckbox" style="float : right">
+          {{item?.checked ? '&#10004;': ''}}
+        </span>
+        <ng-container *ngIf="item[childArrayKey] && item[childArrayKey].length > 0">
+        <multi-child-dropdown [data]="item[childArrayKey]" (onChildRecordSelect)="onItemSelect($event)"
+          [display-label]="displayfield">
+
+          <!-- {{index}} -->
+        </multi-child-dropdown>
+        </ng-container>
+      </li>
+    </span>
+  </ul>
+</li>
