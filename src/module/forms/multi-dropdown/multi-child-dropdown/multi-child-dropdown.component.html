@@ -4,7 +4,7 @@
 
   <b   id="{{node.elementId}}" [ngClass]="{'list-items-selected':node.selected}">
     <b class="list-items" >
-      <amexio-display-field style="font-weight:bold !important;" [data]="node" [data-index]="displayfield"></amexio-display-field>
+      <amexio-display-field class="parentclass" style="font-weight:bold !important;" [data]="node" [data-index]="displayfield"></amexio-display-field>
     </b>
   </b>
 
@@ -22,8 +22,8 @@
 
         <ng-container *ngIf="!bodyTemplate">
           <span class="list-items" id="{{item.elementId}}"
-            [ngClass]="{'list-items-selected':item.selected, 'list-item-hover1': item.childflag}">
-            <amexio-display-field [data]="item" [data-index]="displayfield"></amexio-display-field>
+            [ngClass]="{'list-items-selected':item.selected}">
+            <amexio-display-field  class="parentclass" [data]="item" [data-index]="displayfield"></amexio-display-field>
           </span>
         </ng-container>
        

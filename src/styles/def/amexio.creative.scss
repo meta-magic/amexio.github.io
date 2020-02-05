@@ -34,7 +34,11 @@
     Component Name : Color Picker
     Version : Amexio v5.12 onwards
 *****************************************************************************/
-/** creative carousel - Structure CSS **/
+/** creative color picker - Structure CSS **/
+
+@import "component/creative/colorpicker-vars.scss";
+
+@import "component/creative/colorpicker-visual.scss";
 
 @import "component/creative/colorpicker-structure.scss";
 

@@ -52,6 +52,11 @@ background-color: $dropdownScrollThumbColor;
   border-bottom: 2px solid black !important;
   }
   
+  .parentclass:hover {
+    color: var(--componentHoverFontColor) !important;
+    background-color: var(--componentHoverBGColor) !important;
+    border-bottom: 2px solid black !important;
+}
 
    
   .dropdowntreelabel:hover {

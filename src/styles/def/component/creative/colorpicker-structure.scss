@@ -42,20 +42,15 @@
     line-height: 2;
     border-radius: 0;
     border: none;
-    border-bottom: 1px solid black;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   }   
   .color-slider:hover {
     cursor: pointer;
   }
-  .color-slider{
-    border: 5px solid #323232;
-  }
   .color-palette:hover {
     cursor: pointer;
   }
   .color-palette{
-    border: 5px solid #323232;
     border-right:0px;
   }  
   :host {   
