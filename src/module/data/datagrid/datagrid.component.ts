@@ -159,7 +159,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
    default : none
    description : height of grid
    */
-  @Input() height: string;
+  @Input() height: any;
 
   /*
    Properties
@@ -312,6 +312,8 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
    description : Context Menu provides the list of menus on right click of row.
    */
   @Input('context-menu') contextmenu: any[];
+
+  @Input('enable-column-header') enableColumnHeader = true;
 
   enableHeader: boolean;
 
@@ -467,11 +469,11 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     this.sortBy = -1;
 
     this.globalFilterOptions = [{
-      key: 'Start With', value: '1', checkedStatus: this.checkIcon, type: 'string',
+      key: 'Start With', value: '1', checkedStatus: '', type: 'string',
     }, {
       key: 'Ends With', value: '2', checkedStatus: '', type: 'string',
     }, {
-      key: 'Contains', value: '3', checkedStatus: '', type: 'string',
+      key: 'Contains', value: '3', checkedStatus: this.checkIcon, type: 'string',
     }];
   }
 
@@ -486,7 +488,10 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     if (this.enabledatafilter === true) {
       this.globalfilter = false;
     }
-
+    if (this.enableColumnHeader === false) {
+      this.enablecolumnfilter = false;
+      this.enablecolumnfiter = false;
+    }
     if (this.selectedrowcolor == null || this.selectedrowcolor === '') {
       this.selectedrowcolor = '#dcecf7';
     }
@@ -519,6 +524,13 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   updateComponent() {
+    if (this.data.length > 0) {
+      this.data.forEach((obj: any) => {
+        if (!obj.hasOwnProperty('rowindexid') && this.enablecheckbox) {
+          obj['rowindexid'] = Math.floor(Math.random() * 90000) + 10000;
+        }
+      });
+    }
     if (!this.fliterFlag && this.previousData != null && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setChangeData(this.data);
@@ -625,6 +637,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   setChangeData(httpResponse: any) {
+    this.selectedRows = [];
     this.setSelectedFlag(httpResponse);
     if (this.groupby) {
       this.cloneData = JSON.parse(JSON.stringify(this.data));
@@ -1047,24 +1060,49 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     }
   }
 
-  setSelectedRow(rowData: any, event: any) {
+  setSelectedRow(viewRows: any, rowData: any, event: any) {
+    if (this.selectedRows.length === 0 && this.enablecheckbox) {
+      viewRows.forEach((row: any) => {
+        if (event.classList.value === this.checkDefaultIcon && row !== rowData && row.checkBoxSelectClass === this.checkBoxActive) {
+          this.selectedRows.push(row);
+        } else if (row.checkBoxSelectClass === this.checkBoxActive) {
+          this.selectedRows.push(row);
+        }
+      });
+    }
     if (event.classList.value === this.checkDefaultIcon) {
       this.selectedRows.push(rowData);
       event.classList.value = this.checkBoxActive;
     } else {
-      const indexOf = this.selectedRows.indexOf(rowData);
-      this.selectedRows.splice(indexOf, 1);
-      event.classList.value = this.checkDefaultIcon;
+      this.removeSelectedRows(viewRows, rowData, event);
     }
     this.emitSelectedRows();
   }
 
+  removeSelectedRows(viewRows: any, rowData: any, event: any) {
+    this.selectedRows.forEach((row: any, index: number) => {
+      if (row.rowindexid === rowData.rowindexid) {
+        this.selectedRows.splice(index, 1);
+      }
+    });
+    if (this.enablecheckbox) {
+      viewRows.forEach((row: any) => {
+        if (row === rowData) {
+          row.checkBoxSelectClass = this.checkDefaultIcon;
+        }
+      });
+    }
+    event.classList.value = this.checkDefaultIcon;
+  }
   emitSelectedRows() {
     const sRows = [];
     for (const sr of this.selectedRows) {
       if (sr) {
         sRows.push(sr);
       }
+    }
+    if (this.globalfilter) {
+      this.setGlobalFiterCheckFlag();
     }
     const selectedAllData = JSON.parse(JSON.stringify(sRows));
     selectedAllData.forEach((select: any) => {
@@ -1073,6 +1111,23 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     this.selectedRowData.emit(selectedAllData);
   }
 
+  setGlobalFiterCheckFlag() {
+    this.setDefaultFlag();
+    this.filterCloneData.forEach((filterObj: any) => {
+      this.selectedRows.forEach((rowObj: any) => {
+        if (rowObj.rowindexid === filterObj.rowindexid) {
+          filterObj['checkBoxSelectClass'] = this.checkBoxActive;
+        }
+      });
+    });
+  }
+
+  setDefaultFlag() {
+    this.filterCloneData.forEach((filterObj: any) => {
+      filterObj.checkBoxSelectClass = this.checkDefaultIcon;
+
+    });
+  }
   setCheckBoxSelectClass() {
     if (this.selectAll) {
       return this.checkBoxActive;
@@ -1126,9 +1181,9 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
             this.sortDataFunc(sortColDataIndex, sortOrder);
           }
         } else if (this.sortColumn.datatype === 'number') {
-          this.sortOrderByNumber(sortColDataIndex, sortOrder);
+          this.sortOrderByNumber(sortOrder, sortColDataIndex);
         } else if (this.sortColumn.datatype === 'boolean') {
-          this.sortOrderByBoolean(sortColDataIndex, sortOrder);
+          this.sortOrderByBoolean(sortOrder, sortColDataIndex);
         }
       }
     }
@@ -1174,15 +1229,8 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   sortOrderByNumber(sortOrder: any, sortColDataIndex: any) {
     if (this.groupby) {
       this.data.sort((a, b) => {
-        let x;
-        let y;
-        if (this.sortColumn.dataindex.includes('.')) {
-          x = this.sortInnerFunc(this.sortColumn.dataindex, a);
-          y = this.sortInnerFunc(this.sortColumn.dataindex, b);
-        } else {
-          x = a[sortColDataIndex];
-          y = b[sortColDataIndex];
-        }
+        const x = a.group;
+        const y = b.group;
 
         if (sortOrder === 2) {
           return y - x;
@@ -1193,8 +1241,16 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
       });
     } else {
       this.data.sort((a, b) => {
-        const x = a[sortColDataIndex];
-        const y = b[sortColDataIndex];
+        let x;
+        let y;
+        if (this.sortColumn.dataindex.includes('.')) {
+          x = this.sortInnerFunc(this.sortColumn.dataindex, a);
+          y = this.sortInnerFunc(this.sortColumn.dataindex, b);
+        } else {
+          x = a[sortColDataIndex];
+          y = b[sortColDataIndex];
+        }
+
         if (sortOrder === 2) {
           return y - x;
         } else {

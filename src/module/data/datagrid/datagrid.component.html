@@ -10,6 +10,8 @@
           <span style="padding-right: 10px" *ngIf="!show">
             <em class="fa fa-bars"></em>
           </span>
+        </span>
+        <span>
           <amexio-c-icon class="float-right" style="cursor:pointer; padding-left:10px" *ngIf="((yesFullScreen && fullscreenMax))" [key]="'full-screen-min-icon'"
             (onClick)="minScreenChange($event)"></amexio-c-icon>
 
@@ -127,6 +129,7 @@
             </div>
           </ng-container>
           <!--datagrid start unhidden-->
+          <ng-container *ngIf="enableColumnHeader">
           <ng-container *ngFor="let cols of columns">
             <ng-container *ngIf="!cols.hidden">
               <ng-container *ngIf="(cols.datatype=='string' || cols.datatype == 'boolean')">
@@ -167,6 +170,7 @@
               </ng-container>
             </ng-container>
           </ng-container>
+          </ng-container>
         </div>
       </div>
     </div>
@@ -174,7 +178,7 @@
 
   <!--Group BY datagrid start-->
   <ng-container *ngIf="!groupby">
-    <div class="datatable-height {{roundedgeclass}}" [style.height]="height">
+    <div class="datatable-height {{roundedgeclass}}" [style.height.px]="height">
       <div class="datatable" role="grid">
         <div style="height: 300px;" *ngIf="mask">
           <div class="spinner"></div>
@@ -187,7 +191,7 @@
               <div class="datatable-col datatable-checkbox-width checkbox-col">
                 <div class="inputgroup">
                   <div class="input-box">
-                    <div (click)="setSelectedRow(row, check)" [class]="row.checkBoxSelectClass" #check>
+                    <div (click)="setSelectedRow(viewRows,row, check)" [class]="row.checkBoxSelectClass" #check>
                       {{((row.checkBoxSelectClass == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((row.checkBoxSelectClass
                       == 'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;' : ''}}
                     </div>
@@ -256,7 +260,7 @@
 
   <!--Group BY and Filter Data datagrid start-->
   <ng-container *ngIf="groupby && !enabledatafilter">
-    <div class="datatable-height {{roundedgeclass}}" [style.height]="height">
+    <div class="datatable-height {{roundedgeclass}}" [style.height.px]="height">
       <div class="datatable" role="grid" style="table-layout: inherit !important;">
         <div style="height: 300px;" *ngIf="mask">
           <div class="spinner"></div>
