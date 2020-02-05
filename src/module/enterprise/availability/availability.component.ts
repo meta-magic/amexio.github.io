@@ -14,6 +14,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
   @Input('end-time') endTime: number;
   @Input('time-zone-data') zoneData: any;
   @Input('undo-button') undoFlag = false;
+  @Input('enable-drag') enableDrag = true;
   _labelData: any;
   @Input('label-data')
   set labelData(value: any[]) {
@@ -30,6 +31,10 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
   @Output() onClick: any = new EventEmitter<any>();
   @Output() onRadioClick: any = new EventEmitter<any>();
   @Output('onUndoClick') UndoBtnClick: any = new EventEmitter<any>();
+  @Output('onDragStart') onDragStartEvent: any = new EventEmitter<any>();
+  @Output('onDragOver') onDragOverEvent: any = new EventEmitter<any>();
+  @Output('onDragEnd') onDragEndEvent: any = new EventEmitter<any>();
+
   radioValue = '';
   selectedIndexArr: any[];
   styleVar: any;
@@ -45,6 +50,10 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
   dateSpanWt = 46;
   dateSpanlist: any[];
   legendArr: any[];
+
+  dragStartObj: any;
+  dragEndObj: any;
+  dragFlag = false;
   legendObj = {};
   newTimeArr: any[];
   minIndex: number;
@@ -480,7 +489,39 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
   onUndoClick() {
     this.UndoBtnClick.emit('');
     this.generateData();
+  }
 
+  onDragStart(event: any, iterate: any, parentindex: any, item: any, childindex: any) {
+    const img = document.createElement('img');
+    event.dataTransfer.setDragImage(img, 0, 0);
+    this.dragFlag = true;
+    this.dragStartObj = {
+      dateObj: iterate,
+      dragparentindex: parentindex, dragcell: item, dragchildindex: childindex,
+    };
+
+    this.onDragStartEvent.emit({
+      starttime: this.dateArr1[parentindex].slots[childindex].starttime,
+      endtime: this.dateArr1[parentindex].slots[childindex].endtime,
+      label: this.dateArr1[parentindex].slots[childindex].label ? this.dateArr1[parentindex].slots[childindex].label : null,
+    });
+
+  }
+
+  ondragover(event: any, iterate: any, parentindex: any, item: any, childindex: any) {
+    this.dragEndObj = event;
+
+    this.onDragOverEvent.emit({
+      starttime: this.dateArr1[parentindex].slots[childindex].starttime,
+      endtime: this.dateArr1[parentindex].slots[childindex].endtime,
+      label: this.dateArr1[parentindex].slots[childindex].label ? this.dateArr1[parentindex].slots[childindex].label : null,
+    });
+    this.generateData();
+  }
+
+  onDragEnd(event: any, iterate: any, parentindex: any, item: any, childindex: any) {
+    this.onDragEndEvent.emit('');
+    this.generateData();
   }
 
 }

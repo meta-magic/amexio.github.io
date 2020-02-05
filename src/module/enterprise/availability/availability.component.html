@@ -3,26 +3,24 @@
 
     <amexio-row>
         <amexio-column [size]="3">
-            <amexio-dropdown [allow-blank]="true" [place-holder]="'Select Timezone'" name="timezone" [data]="zoneData"
-                [display-field]="'timezone'" [enable-sort]="true" [sort]="'asc'">
+            <amexio-dropdown [allow-blank]="true" [place-holder]="'Select Timezone'" name="timezone" [data]="zoneData" [display-field]="'timezone'"
+                [enable-sort]="true" [sort]="'asc'">
             </amexio-dropdown>
         </amexio-column>
         <amexio-column [size]="7" style="padding-top:15px">
-            <span style=" margin-left: 15px; padding: 5px 4px; "
-                [ngStyle]="{'background-color': radio.colorcode}" *ngFor="let radio of legendArr">
+            <span style=" margin-left: 15px; padding: 5px 4px; " [ngStyle]="{'background-color': radio.colorcode}" *ngFor="let radio of legendArr">
                 <span style="padding: 5px 3px 3px; ">
 
-                    <input style="cursor:pointer" type="radio" [(ngModel)]="radioValue" name="{{labelData[0].label}}"
-                        (change)="onSelection(radio)" value="{{radio.label}}">
+                    <input style="cursor:pointer" type="radio" [(ngModel)]="radioValue" name="{{labelData[0].label}}" (change)="onSelection(radio)"
+                        value="{{radio.label}}">
                 </span>
 
                 <span style="font-size:medium; margin-right: 2%" [style.color]="radio.textcolor"> {{radio.label}}</span>
             </span>
         </amexio-column>
         <amexio-column [size]="2" style="padding-top:14px">
-            <span style="float: right"*ngIf="undoFlag" >
-                <amexio-button [label]="'Undo'" [size]="'default'" [type]="'theme-color'" (onClick)="onUndoClick()"
-                    [icon]="'fa fa-undo'">
+            <span style="float: right" *ngIf="undoFlag">
+                <amexio-button [label]="'Undo'" [size]="'default'" [type]="'theme-color'" (onClick)="onUndoClick()" [icon]="'fa fa-undo'">
                 </amexio-button>
             </span>
         </amexio-column>
@@ -30,7 +28,7 @@
 
 </div>
 <br>
-<div style="width:100%; height:100%; margin:5px; border: 1px solid  darkgrey" >
+<div style="width:100%; height:100%; margin:5px; border: 1px solid  darkgrey">
     <div #datesdiv style="width: 100%; height:80%; display: -webkit-box">
         <div #datesfirstdiv style="width:15%; height:100% ; display: grid;">
             <div [style.height.px]="dateSpanHt + 5" class="datespan1">
@@ -42,12 +40,9 @@
                 <ul style="padding: 5px 0 !important; margin: 0; list-style: none;">
                     <li [style.height.px]="dateSpanHt" style=" padding-left:8%; text-align: left; margin-bottom: 3px;
                              border-left: 3px solid rgb(220,220,220);
-                              "
-                        *ngFor="let item of dateArr[0].dates; let index = index;" 
-                        [ngClass]="{'noborder': (index == dateArr[0].dates.length -1)}"      
-                        class = "availabilitycell aborder">
-                        {{item.date | date:'EEE'}} -
-                        {{item.date | date: 'd'}}/{{item.date | date: 'MM'}}/{{item.date | date: 'yy'}}
+                              " *ngFor="let item of dateArr[0].dates; let index = index;" [ngClass]="{'noborder': (index == dateArr[0].dates.length -1)}"
+                        class="availabilitycell aborder">
+                        {{item.date | date:'EEE'}} - {{item.date | date: 'd'}}/{{item.date | date: 'MM'}}/{{item.date | date: 'yy'}}
 
                     </li>
                 </ul>
@@ -60,31 +55,33 @@
                                    list-style: none;">
                     <li [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt" style="text-align: center; display: inline-block; 
       line-height: 11px; margin-bottom: 3px;width:46px;
-        border-left:3px solid #dcdcdc; border-top: none" class="availabilitycell availabilityborders" 
-        *ngFor="let item of newTimeArr2"
-        >
-        <!-- *ngFor="let item of newTimeArr" -->
+        border-left:3px solid #dcdcdc; border-top: none" class="availabilitycell availabilityborders" *ngFor="let item of newTimeArr2">
+                        <!-- *ngFor="let item of newTimeArr" -->
 
                         <!-- {{item | date: 'h:mm '}} -->
-                     <div> {{item.starttime | date: 'h: mm'}} </div>
+                        <div> {{item.starttime | date: 'h: mm'}} </div>
                         <div>-</div>
-                         <div> {{item.endtime | date: 'h:mm'}} </div>
+                        <div> {{item.endtime | date: 'h:mm'}} </div>
                     </li>
                 </ul>
             </span>
-             <span *ngFor="let iterate of dateArr1; index as parentindex">
+            <span *ngFor="let iterate of dateArr1; index as parentindex">
                 <ul style="padding: 0px 0px 0px 0px !important; margin: 0; display:flex;
                                        list-style: none;">
-                    <li [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt"
-                        (click)="onTimeBlockClick(iterate, parentindex, item, childindex)" style="text-align: center; 
+                    <li id="dragli" [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt" 
+                        [attr.draggable] = "true"
+                     (click)="onTimeBlockClick(iterate, parentindex, item, childindex)"
+                         (dragstart)="onDragStart($event,iterate, parentindex, item, childindex)" 
+                         (dragover)="ondragover($event, iterate, parentindex, item, childindex)"
+                         (dragend)="onDragEnd($event, iterate, parentindex, item, childindex);"
+                         style="text-align: center;
                          display: inline-block; width:46px;
-                         line-height: 20px; margin-bottom: 3px;
-                          border-left:3px solid #dcdcdc"
-                         class= "availabilitycell availabilityborders"
-                         [ngClass]="{'availabilitycell':!(item.colorflag) }"
-                        [ngStyle]="{'background-color': (item.colorflag) ? item.color : '', 'cursor': (radioValue.length > 0) ?'pointer':''}"
+                         line-height: 20px; margin-bottom: 3px; overflow: auto;
+                          border-left:3px solid #dcdcdc" class="availabilitycell availabilityborders" [ngClass]="{'availabilitycell':!(item.colorflag) }"
+                        [ngStyle]="{'background-color': (item.colorflag) ? item.color : '', 'cursor': (radioValue.length > 0) ? 'pointer' :''}"
                         *ngFor="let item of iterate.slots; index as childindex">
                     </li>
+                    <!-- (dragFlag ? 'crosshair' :  -->
                 </ul>
 
             </span>
