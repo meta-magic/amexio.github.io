@@ -9,7 +9,7 @@
   display: table;
   //border: $datatableBorderSize solid $datatableBorderColor;
   border-collapse: collapse;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 5px 0 rgba(214, 212, 212, 0.8), 0 2px 10px 0 rgba(0,0,0,.12);
   border: 0px;
   margin: 0;
   padding: 0;
@@ -24,7 +24,7 @@
 .datatable-height {
   overflow-y: auto;
   overflow-x: hidden;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 5px 0 rgba(214, 212, 212, 0.8), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 
 .datatable-height::-webkit-scrollbar-track
