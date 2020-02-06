@@ -20,13 +20,17 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import {
   ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2, ViewChild,
 } from '@angular/core';
+import { forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { EventBaseComponent } from '../../base/event.base.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { DisplayFieldService } from '../../services/data/display.field.service';
-
 @Component({
   selector: 'amexio-tag-input',
   templateUrl: './tags.input.component.html',
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTagsInputComponent), multi: true,
+  }],
   animations: [
     trigger('changeState', [
       state('visible', style({
@@ -40,7 +44,7 @@ import { DisplayFieldService } from '../../services/data/display.field.service';
   ],
 })
 
-export class AmexioTagsInputComponent extends EventBaseComponent<string> implements OnInit {
+export class AmexioTagsInputComponent extends EventBaseComponent<string> implements OnInit, ControlValueAccessor {
   /*
 Properties
 name : field-label
@@ -459,6 +463,7 @@ description : On field focus event
     }
 
     this.viewData = responsedata;
+    this.onSelections = [];
     this.generateIndex(this.viewData);
     this.maskloader = false;
   }
@@ -476,7 +481,9 @@ description : On field focus event
     }
     this.hide();
     if (index) {
-      this.filteredResult[index].selected = false;
+      if (this.filteredResult[index].selected) {
+        this.filteredResult[index].selected = false;
+      }
     }
     this.selectedindex = -1;
     this.showToolTip = false;
@@ -499,5 +506,39 @@ description : On field focus event
   checkValidity(): boolean {
     return this.isValid;
   }
-
+  writeValue(value: any) {
+    if (typeof value === 'string' && value !== this.innerValue) {
+      this.onSelections = [];
+      this.innerValue = value;
+      if (this.viewData && this.viewData.length > 0) {
+        this.bindModel();
+      }
+    }
+  }
+  bindModel() {
+    let res: any[] = [];
+    if (this.value) {
+      res = this.value.split(',');
+    }
+    this.viewData.forEach((row: any) => {
+      if (res.length > 0) {
+        res.forEach((valueData: any) => {
+          if (row[this.valuefield] === valueData) {
+            this.onSelections.push(row);
+          }
+        });
+      }
+    });
+  }
+  // get accessor
+  get value(): any {
+    return this.innerValue;
+  }
+  // set accessor including call the onchange callback
+  set value(v: any) {
+    if (v != null && v !== this.innerValue) {
+      this.innerValue = v;
+      this.onChangeCallback(v);
+    }
+  }
 }
