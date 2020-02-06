@@ -1,25 +1,28 @@
 
-// $horizontalnodeColor: $componentActiveBGColor;
-// $horizontalTreeviewColor: $componentActiveFontColor;
-// $horizontalnodeGutter: 100px;
-// $horizontalnodeBorderRadius: 10px;
-// $horizontalnodeEntryMinHeight: 60px;
+$horizontalnodeColor: $componentActiveBGColor;
+$horizontalTreeviewColor: $componentActiveFontColor;
+$horizontalnodeGutter: 100px;
+$horizontalnodeBorderRadius: 10px;
+$horizontalnodeEntryMinHeight: 60px;
 
-// $horizontalnodeLabelWidth: 150px;
-// $horizontalnodeLabelHeight: 30px;
-// $horizontalnodeLabelBorderRadius: 5px;
+$horizontalnodeLabelWidth: 150px;
+$horizontalnodeLabelHeight: 30px;
+$horizontalnodeLabelBorderRadius: 5px;
 
-// $horizontaltreeviewLabelHoverColor:$componentHoverFontColor;
-// $horizontaltreeviewLabelHoverBGColor:$componentHoverBGColor;
+$horizontaltreeviewLabelHoverColor:$componentHoverFontColor;
+$horizontaltreeviewLabelHoverBGColor:$componentHoverBGColor;
 
-// $horizontaltreeviewToolTipBG: $componentHeaderBGColor;
-// $horizontaltreeviewToolTipColor: $componentHeaderFontColor;
+$horizontaltreeviewToolTipBG: $componentHeaderBGColor;
+$horizontaltreeviewToolTipColor: $componentHeaderFontColor;
 
-$horizontaltreeviewActiveBGColor: $componentActiveBGColor;
-$horizontaltreeviewActiveFontColor: $componentActiveFontColor;
 
-$horizontalScrollbarBGColor: $componentBGColor;
-$horizontalDisabledColor: $componentDisabledBGColor;
+// // Unity 4 css
 
-$horizontalHoverBGColor: $componentHoverBGColor;
-$horizontalHoverBGColor: $componentHoverFontColor;
+// $horizontaltreeviewActiveBGColor: $componentActiveBGColor;
+// $horizontaltreeviewActiveFontColor: $componentActiveFontColor;
+
+// $horizontalScrollbarBGColor: $componentBGColor;
+// $horizontalDisabledColor: $componentDisabledBGColor;
+
+// $horizontalHoverBGColor: $componentHoverBGColor;
+// $horizontalHoverBGColor: $componentHoverFontColor;

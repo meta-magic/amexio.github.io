@@ -1,5 +1,5 @@
 /**
- * Created by ketangote on 12/1/17.
+ * Created by Kedar on 6-2-2020.
  */
 
 /*
@@ -7,22 +7,14 @@ Component Name : Amexio horizontal tree
 Component Selector : <amexio-horizontal-treeview>
 Component Description : A Horizontal Tree Component.
 */
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CommonDataService } from '../../services/data/common.data.service';
+import { AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { CommonDataService } from '../../../services/data/common.data.service';
 
 @Component({
-  selector: 'amexio-horizontal-treeview', template: `
-
-    <div class="horizontaltreeview">
-      <span tabindex="1" class="horizontaltreeview-node-label">{{label}}</span>
-      <div style="height: 300px;" *ngIf="mask">
-        <div class="spinner"></div>
-      </div>
-      <amexio-horizontal-treeviewnode *ngIf="!mask" [data]="data" (onNodeClick)="nodeclick($event)"></amexio-horizontal-treeviewnode>
-    </div>
-  `,
+  selector: 'amexio-horizontal-treeview',
+  templateUrl: './horizontaltreeview.component.html',
 })
-export class HorizontalTreeViewComponent implements OnInit {
+export class HorizontalTreeViewComponent implements AfterViewInit, OnInit {
 
   /*
 Properties
@@ -88,6 +80,10 @@ description : It will gives you clicked node data.
 
   mask = true;
 
+  treetemplates: any;
+
+  @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
+
   constructor(public dataService: CommonDataService) {
 
   }
@@ -101,6 +97,16 @@ description : It will gives you clicked node data.
         this.setData(this.responseData);
       });
     }
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      if (this.parentTmp != null) {
+        this.treetemplates = { treeNodeTemplate: this.parentTmp };
+      } else if (this.treetemplates != null) {
+        this.parentTmp = this.treetemplates.treeNodeTemplate;
+      }
+    });
   }
 
   setData(httpResponse: any) {

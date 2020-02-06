@@ -1,0 +1,13 @@
+
+
+
+
+<div class="horizontaltreeview">
+    <span tabindex="1" class="horizontaltreeview-node-label">{{label}}</span>
+    <div style="height: 300px;" *ngIf="mask">
+        <div class="spinner"></div>
+    </div>
+    <amexio-horizontal-treeviewnode *ngIf="!mask" [data]="data" [templates]="treetemplates"
+        (onNodeClick)="nodeclick($event)">
+    </amexio-horizontal-treeviewnode>
+</div>

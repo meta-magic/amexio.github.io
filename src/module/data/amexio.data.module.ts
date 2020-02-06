@@ -38,11 +38,13 @@ import { AmexioCreativeModule } from '../creative/amexio.creative.module';
 
 import { AmexioFormsModule } from '../forms/amexio.forms.module';
 
-import { HorizontalTreeViewNodeComponent } from './tree/horizontalnode.component';
-import { HorizontalTreeViewComponent } from './tree/horizontaltreeview.component';
 import { AmexioInnerVerticalNodeComponent } from './tree/verticaltree/amexio-innerverticalnode.component';
 
 import { AmexioVerticalTreeComponent } from './tree/verticaltree/amexio-verticaltree.component';
+
+import { HorizontalTreeViewNodeComponent } from './tree/horizontaltree/horizontalnode.component';
+
+import { HorizontalTreeViewComponent } from './tree/horizontaltree/horizontaltreeview.component';
 
 export * from '../services/data/common.data.service';
 export * from '../services/script/script.data.service';

@@ -1,0 +1,25 @@
+<div #id class="horizontaltreeview-node">
+    <div class="horizontaltreeview-node-entry" [ngClass]="{'sole':data.length==1}"
+        *ngFor="let node of data; let i = index">
+        <span id={{node.id}} tabindex="1" [attr.aria-expanded]="node.expand" class="horizontaltreeview-node-label"
+            (click)="onClick(node)" (keyup.enter)="onEnterClick(node)" (keyup.arrowup)="onArrowUp(data,node,i)"
+            (keyup.arrowdown)="onArrowDown($event,data,node,i)">
+
+            <span *ngIf="templates == null">{{node.text}}
+            </span>
+            <span *ngIf="templates != null">
+                <ng-template [ngTemplateOutlet]="templates.treeNodeTemplate" [ngTemplateOutletContext]="{ node: node }">
+                </ng-template>
+            </span>
+
+            <span *ngIf="node.children && (node.children.length>0)" class="float-right" (click)="onClick(node)"
+                (keyup.enter)="onClick(node)">
+                <amexio-c-icon *ngIf="node.expand" key="horizontal-tree-collapse"></amexio-c-icon>
+                <amexio-c-icon *ngIf="!node.expand" key="horizontal-tree-expanded"></amexio-c-icon>
+            </span>
+        </span>
+        <amexio-horizontal-treeviewnode *ngIf="node.expand && node.children && (node.children.length>0)"
+            [data]="node.children" (onNodeClick)="onInnerClick($event)">
+        </amexio-horizontal-treeviewnode>
+    </div>
+</div>

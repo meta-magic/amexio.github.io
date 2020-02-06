@@ -1,46 +1,59 @@
 
-// .horizontaltreeview-node-label {
+.horizontaltreeview-node-label {
 
-//   background-color: $horizontalnodeColor;
-//   color: $horizontalTreeviewColor;
-// }
+  background-color: $horizontalnodeColor;
+  color: $horizontalTreeviewColor;
+}
 
-// .horizontaltreeview-node-label:hover{
-//   // border-color:  darken($horizontalnodeColor,10%);
-//   color: $horizontaltreeviewLabelHoverColor;
-//   background-color: $horizontaltreeviewLabelHoverBGColor;
-// }
+.horizontaltreeview-node-label:hover{
+  // border-color:  darken($horizontalnodeColor,10%);
+  color: $horizontaltreeviewLabelHoverColor;
+  background-color: $horizontaltreeviewLabelHoverBGColor;
+}
+
+
+
+
 
 // .horizontaltreeview-node-label .tooltiptext{
 //   background-color: $componentHeaderBGColor;
 //   color: $componentHeaderFontColor;
 // }
 
-.ui-treenode-connector-line {
-  border-left: 1px solid #c8c8c8;
-}
+// .ui-treenode-connector-line {
+//   border-left: 1px solid #c8c8c8;
+// }
 
-.ui-treenode-content {
-  // background-color: $horizontaltreeviewActiveBGColor;
-  // color: $horizontaltreeviewActiveFontColor;
-}
+// .ui-treenode-content {
+//   // background-color: $horizontaltreeviewActiveBGColor;
+//   // color: $horizontaltreeviewActiveFontColor;
+// }
 
-.horizontaltreeview::-webkit-scrollbar-track
-{
-background-color: $horizontalScrollbarBGColor;
-}
 
-.horizontaltreeview::-webkit-scrollbar
-{
-background-color: $horizontalScrollbarBGColor;
-}
 
-.horizontaltreeview::-webkit-scrollbar-thumb
-{
-  background-color: $horizontalDisabledColor;
-}
 
-.ui-treenode-content:hover {
-background-color: $componentHoverBGColor;
-color: $componentHoverFontColor;
-}
+
+// Unity 4 css
+
+
+
+
+// .horizontaltreeview::-webkit-scrollbar-track
+// {
+// background-color: $horizontalScrollbarBGColor;
+// }
+
+// .horizontaltreeview::-webkit-scrollbar
+// {
+// background-color: $horizontalScrollbarBGColor;
+// }
+
+// .horizontaltreeview::-webkit-scrollbar-thumb
+// {
+//   background-color: $horizontalDisabledColor;
+// }
+
+// .ui-treenode-content:hover {
+// background-color: $componentHoverBGColor;
+// color: $componentHoverFontColor;
+// }
