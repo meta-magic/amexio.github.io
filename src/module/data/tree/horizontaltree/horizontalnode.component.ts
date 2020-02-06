@@ -1,7 +1,6 @@
 /**
  * Created by Kedar on 6-2-2020.
  */
-
 /*
 Component Name : Amexio horizontal tree
 Component Selector : <amexio-horizontal-treeviewnode>
