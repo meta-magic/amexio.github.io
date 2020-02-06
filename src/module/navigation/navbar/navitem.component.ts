@@ -96,6 +96,8 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
   // For Internal Use
   @Input('submenupos') submenupos = false;
 
+  @Input('display-key') displaykey: string;
+
   isAction = false;
   isTextField = false;
   isMenu = false;
@@ -110,6 +112,7 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
   componentId = '';
   offsetWidth = 0;
   constructor(public elementref: ElementRef) {
+    this.displaykey = 'text';
     this.componentId = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_navctyt';
     this.offsetWidth = this.elementref.nativeElement.offsetWidth;
 

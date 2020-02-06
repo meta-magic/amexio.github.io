@@ -99,6 +99,8 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
 
   @Output() navSubmenuClick: any = new EventEmitter<any>();
 
+  @Input('display-key') displaykey: string;
+
   @ContentChildren(AmexioNavItemComponent) navitems: QueryList<AmexioNavItemComponent>;
 
   @ContentChildren(AmexioBannerComponent) bannerItem: QueryList<AmexioBannerComponent>;
@@ -136,7 +138,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   showBanner = false;
 
   constructor(public matchMediaService: DeviceQueryService) {
-
+    this.displaykey = 'text';
   }
 
   ngOnInit() {

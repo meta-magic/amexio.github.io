@@ -85,6 +85,8 @@ export class AmexioNavMenuComponent implements OnInit, AfterViewInit {
 
   @Input('color') color: string;
 
+  @Input('display-key') displaykey: string;
+
   // for internal use
   @Input('submenupos') submenupos = false;
 
@@ -93,7 +95,7 @@ export class AmexioNavMenuComponent implements OnInit, AfterViewInit {
   showMenus: boolean;
 
   constructor() {
-
+    this.displaykey = 'text';
   }
 
   ngOnInit() {

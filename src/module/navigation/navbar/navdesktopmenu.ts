@@ -10,6 +10,7 @@ export class AmexioNavDesktopMenuComponent implements AfterViewInit {
 
     @Input('nodes') nodes: any[];
 
+    @Input('display-key') displaykey: string;
     position = 'left';
     marginTop: any;
     @ViewChild('menus', { read: ElementRef }) public menus: ElementRef;

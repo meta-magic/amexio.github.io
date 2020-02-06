@@ -9,6 +9,8 @@ export class AmexioNavMobileMenuComponent implements AfterViewInit {
 
     @Input('nodes') nodes: any[];
 
+    @Input('display-key') displaykey: string;
+
     @Output() onNavItemClick: any = new EventEmitter<any>();
 
     ngAfterViewInit() {

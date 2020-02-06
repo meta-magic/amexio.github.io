@@ -9,13 +9,14 @@
 
         <span class="flex-inline" (click)="toggleMenu($event,node)">
             <em *ngIf="node.icon" [ngClass]="node.icon"></em>
-            <span style="flex-grow: 1;">{{node.text}}</span>
+            <span style="flex-grow: 1;">{{node[displaykey]}}</span>
             <i *ngIf="node.submenus" class="fa fa-angle-down" aria-hidden="true"></i>
         </span>
 
-        
 
-        <amexio-nav-mobile *ngIf="node.showInnerMenus" (onNavItemClick)="onInnerClick($event)"  class="amexio-nav-mobile amexio-nav-submenus amexio-nav-mobile-submenus" 
+        <amexio-nav-mobile *ngIf="node.showInnerMenus"
+        [display-key]="displaykey"
+         (onNavItemClick)="onInnerClick($event)"  class="amexio-nav-mobile amexio-nav-submenus amexio-nav-mobile-submenus" 
         [nodes]="node.submenus" >
         </amexio-nav-mobile>
 
