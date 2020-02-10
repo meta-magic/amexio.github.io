@@ -520,15 +520,16 @@ description : On field focus event
     if (this.value) {
       res = this.value.split(',');
     }
-    this.viewData.forEach((row: any) => {
-      if (res.length > 0) {
-        res.forEach((valueData: any) => {
+    if (res.length > 0) {
+      res.forEach((valueData: any) => {
+        this.viewData.forEach((row: any) => {
+
           if (row[this.valuefield] === valueData) {
             this.onSelections.push(row);
           }
         });
-      }
-    });
+      });
+    }
   }
   // get accessor
   get value(): any {
