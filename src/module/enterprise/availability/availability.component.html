@@ -72,7 +72,7 @@
                         [attr.draggable] = "true"
                      (click)="onTimeBlockClick(iterate, parentindex, item, childindex)"
                          (dragstart)="onDragStart($event,iterate, parentindex, item, childindex)" 
-                         (dragover)="ondragover($event, iterate, parentindex, item, childindex)"
+                         (dragleave)="ondragover($event, iterate, parentindex, item, childindex)"
                          (dragend)="onDragEnd($event, iterate, parentindex, item, childindex);"
                          style="text-align: center;
                          display: inline-block; width:46px;

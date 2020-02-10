@@ -2,6 +2,7 @@ import {
   AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input,
   OnChanges, OnInit, Output, SimpleChanges, ViewChild,
 } from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'amexio-availability',
@@ -52,7 +53,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
   legendArr: any[];
 
   dragStartObj: any;
-  dragEndObj: any;
+  dragEndObj: any = {};
   dragFlag = false;
   legendObj = {};
   newTimeArr: any[];
@@ -492,6 +493,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   onDragStart(event: any, iterate: any, parentindex: any, item: any, childindex: any) {
+    debounceTime(1000);
     const img = document.createElement('img');
     event.dataTransfer.setDragImage(img, 0, 0);
     this.dragFlag = true;
@@ -507,19 +509,27 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
     });
 
   }
-
   ondragover(event: any, iterate: any, parentindex: any, item: any, childindex: any) {
-    this.dragEndObj = event;
+
+    debounceTime(1000);
 
     this.onDragOverEvent.emit({
       starttime: this.dateArr1[parentindex].slots[childindex].starttime,
       endtime: this.dateArr1[parentindex].slots[childindex].endtime,
       label: this.dateArr1[parentindex].slots[childindex].label ? this.dateArr1[parentindex].slots[childindex].label : null,
     });
+
     this.generateData();
+    this.dragEndObj = {
+      iterate1: iterate, parentindex1: parentindex,
+      item1: item, childindex1: childindex,
+    };
+
   }
 
   onDragEnd(event: any, iterate: any, parentindex: any, item: any, childindex: any) {
+    debounceTime(1000);
+
     this.onDragEndEvent.emit('');
     this.generateData();
   }
