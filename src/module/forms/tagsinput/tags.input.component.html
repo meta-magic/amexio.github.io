@@ -10,7 +10,7 @@
       <amexio-display-field [data]="item" [data-index]="key"></amexio-display-field>
       <span class="closebtn" (click)="removePill(item)">&times;</span>
     </div>
-    <input type="hidden" [ngModel]="value" (ngModelChange)="onChange1($event)" #inp1="ngModel" />
+    <input type="hidden" [ngModel]="value" #inp1="ngModel" />
     <input id="{{componentId}}" aria-autocomplete="list" role="combobox" [attr.aria-expanded]="showToolTip" type="text"
       class="input-control"
       [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
