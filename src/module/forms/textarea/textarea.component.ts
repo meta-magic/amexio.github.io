@@ -237,6 +237,8 @@ description : Set enable / disable popover.
 
   @Input('name') name: string;
 
+  @Input() readonly: boolean;
+
   @ViewChild(NgModel) model: NgModel;
   componentId: any;
 
