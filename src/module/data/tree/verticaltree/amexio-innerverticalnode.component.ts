@@ -54,14 +54,34 @@ export class AmexioInnerVerticalNodeComponent implements OnInit, AfterViewInit {
     }
 
     dropTable(event: any) {
-         if (event.event.dataTransfer.getData('text')) {
+        if (event.event.dataTransfer.getData('text')) {
             const dropData = JSON.parse(event.event.dataTransfer.getData('text'));
             this.onDropClick.emit({ event: event.event, questData: dropData, node: event.data });
         }
     }
 
     dropInnerTable(event: any) {
-         this.onDropClick.emit(event);
+        this.onDropClick.emit(event);
     }
 
+    clickTable(event: any) {
+        this.onNodeClick.emit({ event: event.event, questData: 'dropData', node: event.data });
+        event.event.stopPropagation();
+        event.event.preventDefault();
+    }
+
+    clickInnerTable(event: any) {
+        this.onNodeClick.emit({ event: event.event, questData: 'dropData', node: event.data });
+    }
+
+    chknodeclickevent(event: any) {
+
+        if (event.hasOwnProperty('event')) {
+            this.chknodeclickevent(event.event);
+        } else {
+            this.onNodeClick.emit(event);
+            event.stopPropagation();
+
+        }
+    }
 }

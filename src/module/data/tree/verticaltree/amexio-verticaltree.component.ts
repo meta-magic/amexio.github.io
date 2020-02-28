@@ -26,7 +26,29 @@ export class AmexioVerticalTreeComponent implements AfterViewInit, OnInit {
     }
 
     nodeclick(event: any) {
-        this.onNodeClick.emit(event);
+        this.chknodeclickevent(event, event);
+    }
+
+    chkdEvent(event: any) {
+        if (event.hasOwnProperty('event')
+        ) {
+            this.chkdEvent(event.event);
+        } else {
+            this.onNodeClick.emit(event);
+
+        }
+    }
+
+    chknodeclickevent(parentevent: any, event: any) {
+
+        if (event.hasOwnProperty('event')) {
+            this.chknodeclickevent(event, event.event);
+        } else {
+            this.onNodeClick.emit(parentevent);
+            event.stopPropagation();
+            event.preventDefault();
+        }
+
     }
 
     ngAfterViewInit() {
@@ -49,7 +71,6 @@ export class AmexioVerticalTreeComponent implements AfterViewInit, OnInit {
     }
 
     chkEvent(event: any) {
-        //  processing logic
         if (event.hasOwnProperty('questData')) {
             this.retevent = event;
             return;
