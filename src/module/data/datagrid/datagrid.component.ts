@@ -518,7 +518,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
 
   ngAfterViewInit(): void {
-    if (this.enabledatafilter) {
+    if (this.enabledatafilter && this.filterRef) {
       this.filterComRef = this.filterRef.toArray();
     }
   }

@@ -157,8 +157,8 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
   uploadFile(event: any, singleFile: boolean) {
     if (singleFile) {
       const formData = new FormData();
-
       formData.append(this.paramname, event);
+
       if (this.httpmethod && this.httpurl) {
         this.dataService
           .uploadFile(this.httpurl, this.httpmethod, formData)
