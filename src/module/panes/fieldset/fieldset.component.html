@@ -12,7 +12,7 @@
         </ng-container>
     </legend>
     <div class="collapsible-fieldset" [@fieldsetContent]="!isActive ? {value: 'hidden', params: {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)'}} : {value: 'visible', params: {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)'}}"
-    [ngStyle]="{'overflow': isActive ? '': 'hidden'}">
+    [ngStyle]="{'overflow': isActive ? '': 'hidden', 'height':isActive ? 'auto': '0px'}">
         <ng-content></ng-content>
     </div>
 </fieldset> 
