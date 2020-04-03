@@ -283,9 +283,6 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
     this.isValid = !this.required;
     this.isComponentValid.emit(!this.required);
-    // if (this.dateformat != null) {
-    //   this.dateformat = 'dd/MM/yyyy';
-    // }
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
       this.minMaxDateFound();
     }  // main if ends
@@ -643,7 +640,6 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
   // From ControlValueAccessor interface
   writeValue(value: any) {
-    // value = new Date(value);
     if (value !== '') {
       if (value !== this.innerValue) {
         this.validateWriteValue(value);
