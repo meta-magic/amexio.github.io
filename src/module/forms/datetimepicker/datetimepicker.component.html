@@ -10,7 +10,6 @@
             </ng-container>
 
         </label>
-
         <ng-container *ngIf="datepicker && !timepicker">
             <input tabindex="-1" type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
                 [required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)"
