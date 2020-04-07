@@ -24,7 +24,6 @@ import { CommonDataService } from '../../services/data/common.data.service';
 import { EventBaseComponent } from './event.base.component';
 
 import { MultiChildDropdownComponent } from '../multi-dropdown/multi-child-dropdown/multi-child-dropdown.component';
-
 @Component({
   selector: 'amexio-tree-dropdown',
   templateUrl: './multi-dropdown.component.html',
@@ -47,37 +46,36 @@ import { MultiChildDropdownComponent } from '../multi-dropdown/multi-child-dropd
 })
 export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implements OnInit, ControlValueAccessor, Validators {
   /*
-  Properties
-  name : field-label
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : The label of this field
-  */
+Properties
+name : field-label
+datatype : string
+version : 4.0 onwards
+default :
+description : The label of this field
+*/
   @Input('field-label') fieldlabel: string;
   /*
-  Properties
-  name : allow-blank
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Sets if field is required
-  */
+Properties
+name : allow-blank
+datatype : string
+version : 4.0 onwards
+default :
+description : Sets if field is required
+*/
   @Input('allow-blank') allowblank: boolean;
 
   /*
-  Properties
-  name : data
-  datatype : any
-  version : 4.0 onwards
-  default :
-  description : Local data for dropdown.
-  */
+Properties
+name : data
+datatype : any
+version : 4.0 onwards
+default :
+description : Local data for dropdown.
+*/
   @Input('child-array-key') childArrayKey = 'childrens';
 
   _data: any;
   componentLoaded: boolean;
-  parentIndex = 0;
   @Input('data')
   set data(value: any) {
     this._data = value;
@@ -89,13 +87,13 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
     return this._data;
   }
   /*
-  Properties
-  name : data-reader
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Key in JSON datasource for records
-  */
+ Properties
+ name : data-reader
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Key in JSON datasource for records
+ */
   @Input('data-reader') datareader: string;
 
   /*
@@ -110,42 +108,42 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
 
   @Input('group') group: boolean;
   /*
-  Properties
-  name : http-url
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : REST url for fetching datasource.
-  */
+ Properties
+ name : http-url
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : REST url for fetching datasource.
+ */
   @Input('http-url') httpurl: string;
 
   /*
-  Properties
-  name : display-field
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Name of key inside response data to display on ui.
-  */
+Properties
+name : display-field
+datatype : string
+version : 4.0 onwards
+default :
+description : Name of key inside response data to display on ui.
+*/
   @Input('display-field') displayfield: string;
   /*
-  Properties
-  name : value-field
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Name of key inside response data.use to send to backend
-  */
+Properties
+name : value-field
+datatype : string
+version : 4.0 onwards
+default :
+description : Name of key inside response data.use to send to backend
+*/
   @Input('value-field') valuefield: string;
 
   /*
-  Properties
-  name : search
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : true for search box enable
-  */
+Properties
+name : search
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : true for search box enable
+*/
   @Input() search: boolean;
   /*
   Properties
@@ -158,16 +156,17 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
   @Input() readonly: boolean;
 
   /*
-  Properties
-  name : multi-select
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : true for select multiple options
-  */
+Properties
+name : multi-select
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : true for select multiple options
+*/
   @Input('multi-select') multiselect: boolean;
 
   @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
+
   displayValue = '';
 
   filteredOptions: any[] = [];
@@ -175,134 +174,132 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
   selectAllFlag = false;
 
   filterText: any;
-
-  mainIndex = 0;
   /*
   Events
   name : onBlur
   datatype : any
   version : 4.0 onwards
   default :
-  description : On blur event
+  description : 	On blur event
   */
   @Output() onBlur: any = new EventEmitter<any>();
   /*
-  Events
-  name : input
-  datatype : any
-  version : none
-  default :
-  description : On input event field.
-  */
+Events
+name : input
+datatype : any
+version : none
+default :
+description : 	On input event field.
+*/
   @Output() input: any = new EventEmitter<any>();
   /*
-  Events
-  name : focus
-  datatype : any
-  version : none
-  default :
-  description : On field focus event
-  */
+Events
+name : focus
+datatype : any
+version : none
+default :
+description : On field focus event
+*/
   @Output() focus: any = new EventEmitter<any>();
   /*
-  Events
-  name : onSingleSelect
-  datatype : any
-  version : none
-  default :
-  description : Fire when drop down item selected.
-  */
+Events
+name : onSingleSelect
+datatype : any
+version : none
+default :
+description : Fire when drop down item selected.
+*/
   @Output() onSingleSelect: any = new EventEmitter<any>();
   @Output() onRecordSelect: any = new EventEmitter<any>();
 
   /*
-  Events
-  name : onMultiSelect
-  datatype : any
-  version :none
-  default :
-  description : Fire when multiple record select in drop down.this event is only
-  applied when multi-select=true
-  */
+Events
+name : onMultiSelect
+datatype : any
+version :none
+default :
+description : Fire when multiple record select in drop down.this event is only
+applied when multi-select=true
+*/
   @Output() onMultiSelect: any = new EventEmitter<any>();
   /*
-  Events
-  name : onClick
-  datatype : any
-  version :none
-  default :
-  description : On record select event.this event is only for normal dropdown.
-  */
+Events
+name : onClick
+datatype : any
+version :none
+default :
+description : On record select event.this event is only for normal dropdown.
+*/
   @Output() onClick: any = new EventEmitter<any>();
   showToolTip: boolean;
   /*
-  Properties
-  name : place-holder
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Show place-holder inside dropdown component*/
+Properties
+name : place-holder
+datatype : string
+version : 4.0 onwards
+default :
+description : Show place-holder inside dropdown component*/
   @Input('place-holder') placeholder = '';
   /*
-  Properties
-  name : disabled
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : If true will not react on any user events and show disable icon over*/
+Properties
+name : disabled
+datatype :  boolean
+version : 4.0 onwards
+default : false
+description : If true will not react on any user events and show disable icon over*/
   @Input() disabled: boolean;
   /*
-  Properties
-  name : icon-feedback
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : */
+Properties
+name : icon-feedback
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : */
   @Input('icon-feedback') iconfeedback: boolean;
   /*
-  Properties
-  name : font-style
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Set font-style to field
-  */
+Properties
+name : font-style
+datatype : string
+version : 4.0 onwards
+default :
+description : Set font-style to field
+*/
   @Input('font-style') fontstyle: string;
   /*
-  Properties
-  name : font-family
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Set font-family to field
-  */
+Properties
+name : font-family
+datatype : string
+version : 4.0 onwards
+default :
+description : Set font-family to field
+*/
   @Input('font-family') fontfamily: string;
   /*
-  Properties
-  name : font-size
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Set font-size to field
-  */
+Properties
+name : font-size
+datatype : string
+version : 4.0 onwards
+default :
+description : Set font-size to field
+*/
   @Input('font-size') fontsize: string;
   /*
-  Properties
-  name : has-label
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : flag to set label
-  */
+Properties
+name : has-label
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : flag to set label
+*/
   @Input('has-label') haslabel = true;
   /*
-  Properties
-  name : enable-popover
-  datatype : boolean
-  version : 4.0 onwards
-  default :false
-  description : Set enable / disable popover.
-  */
+Properties
+name : enable-popover
+datatype : boolean
+version : 4.0 onwards
+default :false
+description : Set enable / disable popover.
+*/
   @Input('enable-popover') enablepopover: boolean;
 
   @Input('enable-sort') enablesort = false;
@@ -317,8 +314,6 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
   _errormsg: string;
 
   count = 1;
-
-  findIndex = 0;
 
   get errormsg(): string {
     return this._errormsg;
@@ -336,7 +331,6 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
   selectedindex = -1;
   responseData: any;
   previousData: any;
-  dropdownData: any;
   viewData: any;
   componentId: string;
   multiselectValues: any[] = [];
@@ -344,8 +338,6 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
   activedescendant = 'aria-activedescendant';
   key = 'index';
   // The internal dataviews model
-
-  @ViewChild(MultiChildDropdownComponent) childRef: MultiChildDropdownComponent;
 
   @Output() isComponentValid: any = new EventEmitter<any>();
   @Input('name') name: string;
@@ -364,12 +356,11 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response: any) => {
         this.responseData = response;
-      }, (error: any) => {
+      }, (error) => {
       }, () => {
         this.setData(this.responseData);
       });
     } else if (this.data) {
-
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
@@ -407,8 +398,7 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
       } else if (this.enablesort === false) {
         this.viewData = responsedata;
         this.filteredOptions = this.viewData;
-        this.generateIndex(this.filteredOptions, 0, window.crypto.getRandomValues(new Uint32Array(1))[0]);
-
+        this.generateIndex(this.filteredOptions);
         this.setHover();
       }
     }
@@ -434,7 +424,8 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
       this.displayFieldService.findValue(this.displayfield, a).toLowerCase() <
         this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ? -1 : 1 : 0);
     this.filteredOptions = this.viewData;
-    this.generateIndex(this.filteredOptions, 1, window.crypto.getRandomValues(new Uint32Array(1))[0]);
+    this.generateIndex(this.filteredOptions);
+
   }
   sortDataDescending(data: any) {
     this.viewData = data.sort((a: any, b: any) => this.displayFieldService.findValue(this.displayfield, a).toLowerCase()
@@ -442,25 +433,63 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
       this.displayFieldService.findValue(this.displayfield, a).toLowerCase() >
         this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ? -1 : 1 : 0);
     this.filteredOptions = this.viewData;
-    this.generateIndex(this.filteredOptions, 1, window.crypto.getRandomValues(new Uint32Array(1))[0]);
+    this.generateIndex(this.filteredOptions);
   }
 
-  generateIndex(data: any, parentId: number, rannumber: any) {
-    this.findIndex = parentId;
-    data.forEach((element: any) => {
-      element['elementId'] = this.findIndex + 1;
-      if (element[this.childArrayKey]) {
-        this.findIndex = this.findIndex + 1;
-        element.elementId = this.findIndex;
-        this.generateIndex(element[this.childArrayKey], this.findIndex, rannumber);
-      } else {
-        this.findIndex = this.findIndex + 1;
-        element.elementId = this.findIndex;
+  generateIndex(data: any) {
+    data.forEach((element: any, index: number) => {
+      element['index'] = this.componentId + 'listitem' + index;
+    });
+  }
+
+  multiSelection() {
+    if (this.multiselect && this.viewData) {
+      let preSelectedMultiValues = '';
+      const optionsChecked: any = [];
+      this.viewData.forEach((row: any) => {
+        if (row.hasOwnProperty('checked')) {
+          if (row.checked) {
+            optionsChecked.push(row[this.valuefield]);
+            this.multiselectValues.push(row);
+            preSelectedMultiValues === '' ? preSelectedMultiValues += this.displayFieldService.findValue(this.displayfield, row)
+              : preSelectedMultiValues += ', ' + this.displayFieldService.findValue(this.displayfield, row);
+          }
+        } else {
+          row['checked'] = false;
+        }
+      });
+      this.bindData();
+      this.onMultiSelect.emit(this.multiselectValues);
+    }
+  }
+  bindData() {
+    if (this.value && this.multiselect) {
+      this.bindMultiselectModel();
+    } else {
+      this.displayValue = this.setMultiSelect();
+    }
+  }
+  bindMultiselectModel() {
+    if (this.value && this.multiselect && this.viewData.length > 0) {
+      this.bindMultiSelectModelData(this.value);
+    }
+  }
+  bindMultiSelectModelData(valueArray: any[]) {
+    let preSelectedValues = '';
+    this.viewData.forEach((row: any) => {
+      if (valueArray.length > 0) {
+        valueArray.forEach((valueData: any) => {
+          if (row[this.valuefield] === valueData) {
+            row['checked'] = true;
+            preSelectedValues === '' ? preSelectedValues +=
+              this.displayFieldService.findValue(this.displayfield, row) : preSelectedValues += ', ' +
+              this.displayFieldService.findValue(this.displayfield, row);
+          }
+        });
       }
     });
-
+    this.displayValue = preSelectedValues;
   }
-
   setUserSelection() {
     // Set user selection
     if (this.innerValue != null) {
@@ -481,8 +510,6 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
     }
   }
   onItemSelectdata(selectedItem: any) {
-    event.preventDefault();
-    event.stopPropagation();
     debounceTime(300);
     if (this.multiselect) {
       this.selectAllFlag = false;
@@ -501,7 +528,7 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
         this.onMultiSelect.emit(this.multiselectValues);
       }
     } else {
-      this.value = selectedItem.item[this.valuefield]; // Issue here?
+      this.value = selectedItem.item[this.valuefield];  // Issue here?
       this.displayValue = this.displayFieldService.findValue(this.displayfield, selectedItem.item);
       this.multiselect ? this.showToolTip = true : this.showToolTip = false;
       delete selectedItem.item[this.key];
@@ -515,6 +542,74 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
     this.isComponentValid.emit(true);
   }
 
+  checkboxMethod(selectedItem: any) {
+    if (!this.enablecheckbox) {
+      this.displayValue = this.setMultiSelect();
+    }
+    if (this.enablecheckbox) {
+      this.onBaseFocusEvent(selectedItem);
+    }
+  }
+  setMultiSelectData() {
+    this.multiselectValues = [];
+    if (this.innerValue && this.innerValue.length > 0) {
+      const modelValue = this.innerValue;
+      this.filteredOptions.forEach((test) => {
+        if (modelValue.length > 0) {
+          this.modelCheck(modelValue, test);
+        }
+      });
+    }
+  }
+
+  modelCheck(modelValue: any, test: any) {
+    modelValue.forEach((mdValue: any) => {
+      if (test[this.valuefield] === mdValue) {
+        if (test.hasOwnProperty('checked')) {
+          test.checked = true;
+        }
+        this.multiselectValues.push(test);
+      }
+    });
+  }
+  navigateKey(event: any) {
+  }
+  getDisplayText() {
+    if (this.innerValue != null || this.innerValue !== '') {
+      if (this.multiselect) {
+        this.displayValue = this.setMultiSelect();
+      } else {
+        this.displayValue = '';
+        this.filteredOptions.forEach((test) => {
+          if (test[this.valuefield] === this.innerValue) {
+            this.displayValue = this.displayFieldService.findValue(this.displayfield, test);
+          }
+        });
+        this.displayValue = this.displayValue === undefined ? '' : this.displayValue;
+      }
+    }
+  }
+  setMultiSelect() {
+    this.setMultiSelectData();
+    let multiselectDisplayString: any = '';
+    let multiselectValueModel: any = '';
+    this.multiselectValues.forEach((row: any) => {
+      multiselectDisplayString === '' ? multiselectDisplayString +=
+        this.displayFieldService.findValue(this.displayfield, row) : multiselectDisplayString += ', '
+        + this.displayFieldService.findValue(this.displayfield, row);
+    });
+    this.multiselectValues.forEach((row: any) => {
+      multiselectValueModel === '' ? multiselectValueModel +=
+        this.displayFieldService.findValue(this.valuefield, row) : multiselectValueModel += ', '
+        + this.displayFieldService.findValue(this.valuefield, row);
+    });
+    this.value = multiselectValueModel;
+    if (this.multiselectValues.length > 0) {
+      return multiselectDisplayString;
+    } else {
+      return '';
+    }
+  }
   onDropDownClick(event: any) {
     this.onBaseFocusEvent(event);
     this.showToolTip = true;
@@ -527,131 +622,6 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
       const inputid = document.getElementById(this.componentId);
       inputid.setAttribute(this.activedescendant, this.filteredOptions[this.selectedindex].index);
       this.generateScroll(this.selectedindex);
-    }
-  }
-
-  keyDownFocusOnNode(index: any, data: any) {
-    data.forEach((node: any) => {
-      if (node.elementId === index) {
-        const nextIndex = index - 1;
-        this.setFocus(node, nextIndex);
-      } else if (node[this.childArrayKey] && node[this.childArrayKey].length > 0) {
-        this.keyDownFocusOnNode(index, node[this.childArrayKey]);
-      }
-    });
-
-  }
-  sethideFocus(focuselement: any, nextIndex: any) {
-    this.hideUpFocus(this.filteredOptions, nextIndex);
-    focuselement['selected'] = true;
-    this.generateScroll(nextIndex);
-  }
-  hideUpFocus(data: any, index: any) {
-    data.forEach((node: any) => {
-      if (node.elementId === index) {
-        node['selected'] = false;
-      } else if (node[this.childArrayKey] && node[this.childArrayKey].length > 0) {
-        this.hideUpFocus(node[this.childArrayKey], index);
-      }
-    });
-  }
-  keyUpFocusOnNode(index: any, data: any) {
-    data.forEach((node: any) => {
-      if (node.elementId === index) {
-        const prevIndex = index + 1;
-        this.sethideFocus(node, prevIndex);
-      } else if (node[this.childArrayKey] && node[this.childArrayKey].length > 0) {
-        this.keyUpFocusOnNode(index, node[this.childArrayKey]);
-      }
-    });
-  }
-  hideFocus(data: any, index: any) {
-    data.forEach((node: any) => {
-      if (node.elementId === index) {
-        node['selected'] = false;
-      } else if (node[this.childArrayKey] && node[this.childArrayKey].length > 0) {
-        this.hideFocus(node[this.childArrayKey], index);
-      }
-    });
-  }
-  setFocus(focuselement: any, prevIndex: any) {
-    if (focuselement.elementId !== 1) {
-      this.hideFocus(this.filteredOptions, prevIndex);
-    }
-    focuselement['selected'] = true;
-    this.generateScroll(prevIndex);
-  }
-
-  onArrowUp() {
-    this.parentIndex = this.parentIndex - 1;
-    this.filteredOptions.forEach((node) => {
-      if (node.hasOwnProperty('selected')) {
-        node.selected = false;
-      }
-    });
-    if (this.parentIndex === 0) {
-      this.parentIndex = this.findIndex;
-      this.filteredOptions[0].selected = false;
-      this.setfocusToLast(this.filteredOptions, this.parentIndex);
-      this.generateScroll(this.findIndex - 1);
-    } else {
-      this.keyUpFocusOnNode(this.parentIndex, this.filteredOptions);
-    }
-  }
-  setfocusToLast(data: any, lastIndex: any) {
-    data.forEach((node: any) => {
-      if (node.elementId === lastIndex) {
-        node['selected'] = true;
-      } else if (node[this.childArrayKey] && node[this.childArrayKey].length > 0) {
-        this.setfocusToLast(node[this.childArrayKey], lastIndex);
-      }
-    });
-
-  }
-  removeFocusFromLast(data: any, lastIndex: any) {
-    data.forEach((node: any) => {
-      if (node.elementId === lastIndex) {
-        node['selected'] = false;
-      } else if (node[this.childArrayKey] && node[this.childArrayKey].length > 0) {
-        this.removeFocusFromLast(node[this.childArrayKey], lastIndex);
-      }
-    });
-  }
-  onArrowDown1() {
-    this.parentIndex = this.parentIndex + 1;
-    // tslint:disable-next-line:no-identical-functions
-    this.filteredOptions.forEach((node: any) => {
-      if (node.hasOwnProperty('selected')) {
-        node.selected = false;
-      }
-    });
-    if (this.parentIndex > this.findIndex) {
-      this.removeFocusFromLast(this.filteredOptions, this.findIndex);
-      this.parentIndex = 1;
-      this.filteredOptions[0].selected = true;
-      this.generateScroll(1);
-    } else {
-      this.keyDownFocusOnNode(this.parentIndex, this.filteredOptions);
-    }
-  }
-
-  multiSelection() {
-    if (this.multiselect && this.viewData) {
-      let preSelectedMultiValues = '';
-      const optionsChecked: any = [];
-      this.viewData.forEach((row: any) => {
-        if (row.hasOwnProperty('checked')) {
-          if (row.checked) {
-            optionsChecked.push(row[this.valuefield]);
-            this.multiselectValues.push(row);
-            preSelectedMultiValues === '' ? preSelectedMultiValues += this.displayFieldService.findValue(this.displayfield, row)
-              : preSelectedMultiValues += ', ' + this.displayFieldService.findValue(this.displayfield, row);
-          }
-        } else {
-          row['checked'] = false;
-        }
-      });
-      this.onMultiSelect.emit(this.multiselectValues);
     }
   }
 
@@ -669,7 +639,35 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
       this.filteredOptions[this.filteredOptions.length - 1].selected = true;
       const inputid = document.getElementById(this.componentId);
       inputid.setAttribute(this.activedescendant, this.filteredOptions[this.filteredOptions.length - 1].index);
-      this.generateScroll(this.parentIndex);
+      this.generateScroll(this.selectedindex);
+    }
+  }
+  closeOnEScape(event: any) {
+    this.showToolTip = false;
+    this.hide();
+  }
+  onChange(event: string) {
+    this.innerValue = event;
+    this.isValid = true;
+    this.getDisplayText();
+    this.isComponentValid.emit(true);
+  }
+  onInput(input: any) {
+    this.input.emit();
+    this.isValid = input.valid;
+    this.isComponentValid.emit(input.valid);
+  }
+
+  findingChild(row: any, rowdata: any, filterText: any) {
+    if (row.hasOwnProperty('childrens') && row.childrens.length > 0) {
+      row.childrens.forEach((element: any) => {
+        if (this.displayFieldService.findValue(this.displayfield, element).toLowerCase().startsWith(filterText)) {
+          this.filteredOptions.push(element);
+          return -1;
+        } else {
+          this.findingChild(element, rowdata, filterText);
+        }
+      });
     }
   }
 
@@ -680,6 +678,7 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
       const treeNodes = this.searchTree(tData, this.filterText);
       treeNodes.forEach((filterData: any) => {
         this.filteredOptions.push(filterData);
+        console.log('filteredOptions', this.filteredOptions);
       });
       if (this.viewData.length === 0) {
         this.isDataFound = false;
@@ -687,7 +686,6 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
         this.isDataFound = true;
       }
     }
-    this.generateIndex(this.filteredOptions, 0, 0);
   }
   searchTree(data: any[], matchingTitle: string) {
     return this.filterActualData(data, matchingTitle);
@@ -698,10 +696,8 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
     let tempchildarrayKey: string;
     tempdisplay = this.displayfield;
     tempchildarrayKey = this.childArrayKey;
-
     return data.filter(function f(node) {
       if (node[tempdisplay].toLowerCase().startsWith(matchingTitle.toLowerCase())) {
-        node[tempchildarrayKey] = [];
         return true;
       }
       if (node[tempchildarrayKey]) {
@@ -711,115 +707,76 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
   }
 
   onDropDownSearchKeyUp(event: any) {
-    if ((event.keyCode === 40) || (event.keyCode === 38) || (event.keyCode === 13)) {
-    } else {
-      if (this.search && this.viewData) {
-        const keyword = event.target.value;
-        if (keyword != null && keyword !== '' && keyword !== ' ') {
-          this.parentIndex = 0;
-          this.filteredOptions = [];
-          this.filterText = keyword.toLowerCase();
-          this.filterData();
-        }
-        if (keyword === '') {
-          this.filteredOptions = this.viewData;
-        }
+    if (this.search && this.viewData) {
+      const keyword = event.target.value;
+      if (keyword != null && keyword !== '' && keyword !== ' ') {
+        this.filteredOptions = [];
+        this.filterText = keyword.toLowerCase();
+        this.filterData();
+      }
+      if (keyword === '') {
+        this.filteredOptions = this.viewData;
       }
     }
     if (event.keyCode === 8) {
-      this.backSpaceEvent(event);
+      this.innerValue = '';
+      this.displayValue = event.target.value;
+    }
+    if (event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13) {
+      this.navigateUsingKey(event);
     }
     this.onBaseFocusEvent({});
   }
-
-  backSpaceEvent(event: any) {
-    if (event.target.value === '') {
-      this.hideUpFocus(this.filteredOptions, this.parentIndex);
-      this.resetAll(this.filteredOptions);
-      this.parentIndex = 0;
-      this.generateIndex(this.filteredOptions, 0, 0);
+  // navigate using keys
+  navigateUsingKey(event: any) {
+    if (!this.showToolTip) {
+      this.showToolTip = true;
     }
-    this.innerValue = '';
-    this.displayValue = event.target.value;
-  }
-
-  resetAll(data: any) {
-    data.forEach((node: any) => {
-      if (node.elementId) {
-        node['selected'] = false;
+    if (this.selectedindex > this.filteredOptions.length) {
+      this.selectedindex = 0;
+    }
+    if (event.keyCode === 40 || event.keyCode === 38 && this.selectedindex <
+      this.filteredOptions.length) {
+      let prevselectedindex = -1;
+      prevselectedindex = this.selectedindex;
+      if (event.keyCode === 40) {
+        this.selectedindex++;
+      } else if (event.keyCode === 38) {
+        this.selectedindex--;
       }
-      if (node[this.childArrayKey] && node[this.childArrayKey].length > 0) {
-        this.resetAll(node[this.childArrayKey]);
-      }
-    });
-  }
-
-  getChildData(childData: any) {
-    this.dropdownData = childData;
-    this.writeValue(this.displayValue);
-  }
-
-  // From ControlValueAccessor interface
-  writeValue(value: any) {
-
-    if (value && value != null) {
-      this.displayValue = value;
+      this.navigateFilterOptions(prevselectedindex);
     }
-    if (value != null && this.dropdownData && this.dropdownData.length > 0) {
-      this.writeChangedValue(value);
-    } else {
-      this.innerValue = '';
-      if (this.allowblank) {
-        this.isValid = true;
-      }
+    if (event.keyCode === 13 && this.filteredOptions[this.selectedindex]) {
+      this.onItemSelectdata(this.filteredOptions[this.selectedindex]);
     }
   }
-
-  findingChild(row: any, value: any) {
-    if (row.hasOwnProperty('childrens') && row.childrens.length > 0) {
-      row.childrens.forEach((data: any) => {
-        if (value) {
-          if (data[this.valuefield] === value) {
-            this.isValid = true;
-            this.displayValue = this.displayFieldService.findValue(this.displayfield, data);
-            this.status = true;
-            return;
-          } else {
-            this.findingChild(data, value);
-          }
-        }
-      });
+  // for highlight  navigated options
+  navigateFilterOptions(previndex: number) {
+    if (this.filteredOptions[this.selectedindex]) {
+      this.filteredOptions[this.selectedindex].selected = true;
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute(this.activedescendant, this.filteredOptions[this.selectedindex].index);
+    }
+    if (this.filteredOptions[previndex]) {
+      this.filteredOptions[previndex].selected = false;
+      this.toNavigateFirstAndLastOption();
+    }
+    this.generateScroll(this.selectedindex);
+  }
+  // to navigate first and last option
+  toNavigateFirstAndLastOption() {
+    if (this.selectedindex === -1) {
+      this.selectedindex = this.filteredOptions.length - 1;
+      this.filteredOptions[this.filteredOptions.length - 1].selected = true;
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute(this.activedescendant, this.filteredOptions[this.filteredOptions.length - 1].index);
+    } else if (this.selectedindex === this.filteredOptions.length) {
+      this.selectedindex = 0;
+      this.filteredOptions[this.selectedindex].selected = true;
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute(this.activedescendant, this.filteredOptions[this.selectedindex].index);
     }
   }
-
-  writeChangedValue(value: any) {
-    if ((value !== this.innerValue) && this.dropdownData && this.dropdownData.length > 0) {
-      this.dropdownData.forEach((item: any) => {
-        if (value) {
-
-          if (item[this.valuefield] === value) {
-            this.isValid = true;
-            this.displayValue = this.displayFieldService.findValue(this.displayfield, item);
-            this.status = true;
-            return;
-          } else if (item.hasOwnProperty('childrens') && item.childrens.length > 0) {
-            this.findingChild(item, value);
-          }
-        }
-      });
-    }
-    this.fromWriteChangedValue(value);
-  }
-
-  fromWriteChangedValue(value: any) {
-    if (!this.status) {
-      this.displayValue = '';
-    }
-    if (value) {
-      this.value = value;
-    }
-  }
-
   // get accessor
   get value(): any {
     return this.innerValue;
@@ -864,21 +821,49 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
       return false;
     }
   }
+  // From ControlValueAccessor interface
+  writeValue(value: any) {
+    if (value != null && this.viewData && this.viewData.length > 0) {
+      this.writeChangedValue(value);
+      if (this.value && this.multiselect) {
+        this.bindMultiselectModel();
+      }
+    } else {
+      this.innerValue = '';
+      if (this.allowblank) {
+        this.isValid = true;
+      }
+    }
+  }
+  writeChangedValue(value: any) {
 
-  closeOnEScape(event: any) {
-    this.showToolTip = false;
-    this.hide();
+    if ((value !== this.innerValue) && this.viewData && this.viewData.length > 0) {
+      this.viewData.forEach((item: any) => {
+        if (item[this.valuefield] === value) {
+          this.isValid = true;
+          this.displayValue = this.displayFieldService.findValue(this.displayfield, item);
+          this.status = true;
+          return;
+        } else if (item.hasOwnProperty('childrens') && item.childrens.length > 0) {
+          item.childrens.forEach((data: any) => {
+            if (data[this.valuefield] === value) {
+              this.isValid = true;
+              this.displayValue = this.displayFieldService.findValue(this.displayfield, data);
+              this.status = true;
+              return;
+            }
+          });
+        }
+      });
+    }
+    this.fromWriteChangedValue(value);
   }
-  onChange(event: string) {
-    this.innerValue = event;
-    this.isValid = true;
-    this.getDisplayText();
-    this.isComponentValid.emit(true);
-  }
-  onInput(input: any) {
-    this.input.emit();
-    this.isValid = input.valid;
-    this.isComponentValid.emit(input.valid);
+
+  fromWriteChangedValue(value: any) {
+    if (!this.status) {
+      this.displayValue = '';
+    }
+    this.value = value;
   }
 
   // From ControlValueAccessor interface
@@ -939,121 +924,5 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
   onSaveClick(event: any) {
     this.displayValue = this.setMultiSelect();
     this.hide();
-  }
-  // navigate using keys
-  navigateUsingKey(event: any) {
-    if (!this.showToolTip) {
-      this.showToolTip = true;
-    }
-    if (this.selectedindex > this.filteredOptions.length) {
-      this.selectedindex = 0;
-    }
-    if (event.keyCode === 40 || event.keyCode === 38 && this.selectedindex <
-      this.filteredOptions.length) {
-      let prevselectedindex = -1;
-      prevselectedindex = this.selectedindex;
-      if (event.keyCode === 40) {
-        this.selectedindex++;
-      } else if (event.keyCode === 38) {
-        this.selectedindex--;
-      }
-      this.navigateFilterOptions(prevselectedindex);
-    }
-    if (event.keyCode === 13 && this.filteredOptions[this.selectedindex]) {
-      this.onItemSelectdata(this.filteredOptions[this.selectedindex]);
-    }
-  }
-  // for highlight navigated options
-  navigateFilterOptions(previndex: number) {
-    if (this.filteredOptions[this.selectedindex]) {
-      this.filteredOptions[this.selectedindex].selected = true;
-      const inputid = document.getElementById(this.componentId);
-      inputid.setAttribute(this.activedescendant, this.filteredOptions[this.selectedindex].index);
-    }
-    if (this.filteredOptions[previndex]) {
-      this.filteredOptions[previndex].selected = false;
-      this.toNavigateFirstAndLastOption();
-    }
-  }
-  // to navigate first and last option
-  toNavigateFirstAndLastOption() {
-    if (this.parentIndex === 0) {
-      this.selectedindex = this.filteredOptions.length - 1;
-      this.filteredOptions[this.filteredOptions.length - 1].selected = true;
-      const inputid = document.getElementById(this.componentId);
-      inputid.setAttribute(this.activedescendant, this.filteredOptions[this.filteredOptions.length - 1].index);
-    } else if (this.selectedindex === this.filteredOptions.length) {
-      this.selectedindex = 0;
-      this.filteredOptions[this.selectedindex].selected = true;
-      const inputid = document.getElementById(this.componentId);
-      inputid.setAttribute(this.activedescendant, this.filteredOptions[this.selectedindex].index);
-    }
-  }
-  checkboxMethod(selectedItem: any) {
-    if (!this.enablecheckbox) {
-      this.displayValue = this.setMultiSelect();
-    }
-    if (this.enablecheckbox) {
-      this.onBaseFocusEvent(selectedItem);
-    }
-  }
-  setMultiSelectData() {
-    this.multiselectValues = [];
-    if (this.innerValue && this.innerValue.length > 0) {
-      const modelValue = this.innerValue;
-      this.filteredOptions.forEach((test) => {
-        if (modelValue.length > 0) {
-          this.modelCheck(modelValue, test);
-        }
-      });
-    }
-  }
-
-  modelCheck(modelValue: any, test: any) {
-    modelValue.forEach((mdValue: any) => {
-      if (test[this.valuefield] === mdValue) {
-        if (test.hasOwnProperty('checked')) {
-          test.checked = true;
-        }
-        this.multiselectValues.push(test);
-      }
-    });
-  }
-
-  getDisplayText() {
-    if (this.innerValue != null || this.innerValue !== '') {
-      if (this.multiselect) {
-        this.displayValue = this.setMultiSelect();
-      } else {
-        this.displayValue = '';
-        this.filteredOptions.forEach((test) => {
-          if (test[this.valuefield] === this.innerValue) {
-            this.displayValue = this.displayFieldService.findValue(this.displayfield, test);
-          }
-        });
-        this.displayValue = this.displayValue === undefined ? '' : this.displayValue;
-      }
-    }
-  }
-  setMultiSelect() {
-    this.setMultiSelectData();
-    let multiselectDisplayString: any = '';
-    let multiselectValueModel: any = '';
-    this.multiselectValues.forEach((row: any) => {
-      multiselectDisplayString === '' ? multiselectDisplayString +=
-        this.displayFieldService.findValue(this.displayfield, row) : multiselectDisplayString += ', '
-        + this.displayFieldService.findValue(this.displayfield, row);
-    });
-    this.multiselectValues.forEach((row: any) => {
-      multiselectValueModel === '' ? multiselectValueModel +=
-        this.displayFieldService.findValue(this.valuefield, row) : multiselectValueModel += ', '
-        + this.displayFieldService.findValue(this.valuefield, row);
-    });
-    this.value = multiselectValueModel;
-    if (this.multiselectValues.length > 0) {
-      return multiselectDisplayString;
-    } else {
-      return '';
-    }
   }
 }
