@@ -16,9 +16,8 @@
     (blur)="onblur($event)" (focus)="onFocus(rootDiv)" (click)=" onDropDownClick($event)"
     [attr.placeholder]="placeholder" [attr.readonly]="readonly ? true: null" [attr.disabled]="disabled ? true: null"
     [required]="!allowblank" (keyup.end)="focusToLast($event)"  (keyup)="onDropDownSearchKeyUp($event)"
-    (keyup.enter)="closeOnEScape($event)"   />
+    (keyup.enter)="closeOnEScape($event)"  (keyup.arrowup)="onArrowUp()" (keyup.arrowdown)="onArrowDown1()" />
 
-    <!-- (keyup.arrowup)="onArrowUp()" (keyup.arrowdown)="onArrowDown1()" -->
   <span class="drodown-caret-down" role="listbox" [attr.aria-expanded]="showToolTip" (click)="onIconClick()">
     <amexio-c-icon key="dropdown_caret" *ngIf="!maskloader"></amexio-c-icon>
     <em class="fa fa-spinner fa-spin" *ngIf="maskloader"></em>
