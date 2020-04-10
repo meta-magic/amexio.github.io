@@ -61,7 +61,7 @@ version : 4.0 onwards
 default :
 description : Sets if field is required
 */
-  @Input('allow-blank') allowblank = true ;
+  @Input('allow-blank') allowblank = true;
 
   /*
 Properties
@@ -644,7 +644,12 @@ description : Set enable / disable popover.
     this.getDisplayText();
     this.isComponentValid.emit(true);
   }
-  onInput(input: any) {
+  onInput(input: any, event: any) {
+    if (event.target.value.length === 0) {
+      this.value = '';
+      this.displayValue = '';
+      this.onChangeCallback(this.value);
+    }
     this.input.emit();
     this.isValid = input.valid;
     this.isComponentValid.emit(input.valid);
