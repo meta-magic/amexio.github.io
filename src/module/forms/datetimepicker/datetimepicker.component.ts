@@ -457,6 +457,9 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.value = this.selectedDate;
         event.stopPropagation();
       }
+    } else {
+      this.value = '';
+      this.dateModel = '';
     }
   }
   public nextMonth(event: any) {
