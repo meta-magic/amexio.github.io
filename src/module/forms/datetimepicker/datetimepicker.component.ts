@@ -67,6 +67,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
    description : Enable/Disable Date Picker
    */
   @Input('date-picker') datepicker = true;
+
+  @Input() utc = false;
   /*
   Properties
   name : has-label
@@ -352,9 +354,12 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         day.date = new Date(date.getTime());
         day.isCurrentMonth = (date.getMonth() === selectedPeriod.getMonth());
         day['id'] = this.getCryptoId();
+
+        day['daynum'] = (day.date).getDate() + '';
         day['fulldate'] = (day.date).getDate() + ' ' +
           this.getFullMonthName(day.date) + ' ' + (day.date).getFullYear() +
           ' ' + this.getFullDayName(day.date);
+
         if (this.dateModel && (date.getMonth() === this.dateModel.getMonth()) &&
           (date.getDate() === this.dateModel.getDate())) {
           day.selected = true;
@@ -388,6 +393,19 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     return monthString;
   }
 
+  getHalfMonthName(recDate: Date) {
+    const mons = ['Jan', 'Feb', 'Mar', 'Apr', 'May',
+      'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const datemonth = recDate.getMonth();
+    let mString = '';
+    mons.forEach((element: any, index: number) => {
+      if (datemonth === index) {
+        mString = element;
+      }
+    });
+    return mString;
+
+  }
   getFullDayName(receiveddate: Date) {
     const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
       'Thursday', 'Friday', 'Saturday'];
@@ -419,6 +437,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.dateModel.setDate(this.selectedDate.getDate());
       this.dateModel.setMonth(this.selectedDate.getMonth());
       this.dateModel.setFullYear(this.selectedDate.getFullYear());
+      if (this.utc) {
+
+        this.dateModel = new Date(this.selectedDate);
+        this.setDateModel();
+        this.onChangeCallback(this.dateModel);
+      }
+
       this.value = this.selectedDate;
       this.isValid = true;
       this.isComponentValid.emit(true);
@@ -457,14 +482,16 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.value = this.selectedDate;
         event.stopPropagation();
       }
-    } else {
-      this.value = '';
-      this.dateModel = '';
     }
   }
   public nextMonth(event: any) {
     this.setDateData('plus', 1, event);
     this.disableddays(this.diabledDate);
+  }
+
+  setDateModel() {
+    this.dateModel = new Date(this.getHalfMonthName(this.dateModel) + ' ' +
+      this.dateModel.getDate() + ' ' + this.dateModel.getFullYear() + ' 05:30:00 UTC');
   }
   public prevMonth(event: any) {
     this.setDateData('minus', 1, event);
@@ -640,7 +667,9 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   // Set touched on blur
   onBlur() {
     this.onTouchedCallback();
+    this.onChangeCallback(this.dateModel);
   }
+
   // From ControlValueAccessor interface
   writeValue(value: any) {
     if (value !== '') {
@@ -653,12 +682,23 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
 
   validateWriteValue(value: any) {
+
     this.innerValue = value;
     if (this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
       if (('number' === typeof this.innerValue)) {
         this.innerValue = new Date(this.innerValue);
       }
-      this.dateModel = this.innerValue;
+      if (this.utc) {
+
+        this.dateModel = new Date(this.innerValue);
+
+        this.setDateModel();
+        this.onChangeCallback(this.dateModel);
+
+      } else {
+        this.dateModel = this.innerValue;
+
+      }
       this.currrentDate = this.dateModel;
       this.selectedDate = this.currrentDate;
       this.createDaysForCurrentMonths(this.dateModel);
@@ -691,7 +731,18 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.isValid = false;
       value.value = '';
     } else {
-      this.value = new Date(value.value);
+
+      if (this.utc) {
+
+        const d = new Date(value.value);
+        this.value = new Date(this.getHalfMonthName(d) + ' ' + d.getDate() + ' '
+          + d.getFullYear() + ' 05:30:00 UTC');
+        this.dateModel = d;
+        this.setDateModel();
+      } else {
+        this.value = new Date(value.value);
+
+      }
       this.isValid = true;
     }
   }
