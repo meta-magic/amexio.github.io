@@ -136,7 +136,7 @@
                 <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)" (keyup.enter)="sortOnColHeaderClick(cols, $event)">
 
                   <ng-container *ngIf="cols.headerTemplate">
-                    <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols}"></ng-template>
+                    <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols, index: i }"></ng-template>
                   </ng-container>
                   <ng-container *ngIf="!cols.headerTemplate">
                     {{cols.text}} &nbsp;
@@ -153,7 +153,7 @@
               <ng-container *ngIf="cols.datatype=='number'">
                 <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" (keyup.enter)="sortOnColHeaderClick(cols, $event)" (click)="sortOnColHeaderClick(cols, $event)">
                   <ng-container *ngIf="cols.headerTemplate">
-                    <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols}"></ng-template>
+                    <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols, index: i }"></ng-template>
                   </ng-container>
                   <ng-container *ngIf="!cols.headerTemplate">
                     <span class="float-right">
@@ -242,7 +242,7 @@
                     (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd()" (keyup.control.home)="keyControlHome()"
                     (keyup.pagedown)="onPageDownClick()" (keyup.pageup)="onPageUpClick()" class="datatable-col" [style.width.%]="cols.width"
                     scope="row" [attr.data-label]="cols.text">
-                    <ng-template [ngTemplateOutlet]="cols.bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
+                    <ng-template [ngTemplateOutlet]="cols.bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row , index: i }"></ng-template>
                   </div>
                 </ng-container>
               </ng-container>
