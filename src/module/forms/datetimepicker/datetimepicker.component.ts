@@ -69,6 +69,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   @Input('date-picker') datepicker = true;
 
   @Input() utc = false;
+
+  @Input() timestamp = true;
   /*
   Properties
   name : has-label
@@ -444,6 +446,15 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.onChangeCallback(this.dateModel);
       }
 
+      if (!this.timestamp) {
+
+        this.dateModel = this.selectedDate.getFullYear() + '-' +
+          (this.selectedDate.getMonth() + 1) + '-' + this.selectedDate.getDate();
+
+        this.setDateModel();
+        this.onChangeCallback(this.dateModel);
+      }
+
       this.value = this.selectedDate;
       this.isValid = true;
       this.isComponentValid.emit(true);
@@ -490,8 +501,15 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
 
   setDateModel() {
+    this.dateModel = new Date(this.dateModel);
     this.dateModel = new Date(this.getHalfMonthName(this.dateModel) + ' ' +
       this.dateModel.getDate() + ' ' + this.dateModel.getFullYear() + ' 05:30:00 UTC');
+    if (!this.timestamp) {
+      this.dateModel = new Date(this.dateModel);
+      this.dateModel = this.dateModel.getFullYear() + '-'
+        + (this.dateModel.getMonth() + 1) + '-' + this.dateModel.getDate();
+
+    }
   }
   public prevMonth(event: any) {
     this.setDateData('minus', 1, event);
@@ -680,24 +698,38 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.dateModel = '';
     }
   }
+  setTimeStamp() {
+    if (!this.timestamp) {
+      this.dateModel = new Date(this.dateModel);
+      this.dateModel = this.dateModel.getFullYear() + '-' +
+        (this.dateModel.getMonth() + 1) + '-' + this.dateModel.getDate();
+      this.setDateModel();
+      this.onChangeCallback(this.dateModel);
+    }
+  }
 
   validateWriteValue(value: any) {
-
     this.innerValue = value;
     if (this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
       if (('number' === typeof this.innerValue)) {
         this.innerValue = new Date(this.innerValue);
       }
       if (this.utc) {
-
         this.dateModel = new Date(this.innerValue);
 
         this.setDateModel();
         this.onChangeCallback(this.dateModel);
 
+        this.setTimeStamp();
       } else {
         this.dateModel = this.innerValue;
+        if (!this.timestamp) {
+          this.dateModel = this.dateModel.getFullYear() + '-'
+            + this.dateModel.getMonth() + '-' + this.dateModel.getDate();
 
+          this.setDateModel();
+          this.onChangeCallback(this.dateModel);
+        }
       }
       this.currrentDate = this.dateModel;
       this.selectedDate = this.currrentDate;
@@ -739,9 +771,26 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
           + d.getFullYear() + ' 05:30:00 UTC');
         this.dateModel = d;
         this.setDateModel();
+
+        if (!this.timestamp) {
+          this.dateModel = new Date(this.dateModel);
+          this.dateModel = this.dateModel.getFullYear() + '-' +
+            (this.dateModel.getMonth() + 1) + '-' + this.dateModel.getDate();
+
+          this.setDateModel();
+          this.onChangeCallback(this.dateModel);
+
+        }
       } else {
         this.value = new Date(value.value);
+        if (!this.timestamp) {
+          this.dateModel = new Date(this.dateModel);
+          this.dateModel = this.dateModel.getFullYear() + '-' +
+            (this.dateModel.getMonth() + 1) + '-' + this.dateModel.getDate();
+          this.setDateModel();
+          this.onChangeCallback(this.dateModel);
 
+        }
       }
       this.isValid = true;
     }
