@@ -23,6 +23,7 @@ export class BrowserPanelComponent implements OnInit {
     @Input('show') show = false;
 
     @Output() showChange: any = new EventEmitter<any>();
+    @Output('onClose') onclose: any = new EventEmitter<any>();
     amexioComponentId = 'amexio-browser' + Math.floor(Math.random() * 1000 + 999);
 
     iframeurl: SafeResourceUrl;
@@ -54,6 +55,7 @@ export class BrowserPanelComponent implements OnInit {
         this.show = false;
         this._browserService.onCloseClick(this);
         this.showChange.emit(this.show);
+        this.onclose.emit();
 
     }
     browserShowOnBtn() {
