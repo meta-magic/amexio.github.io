@@ -110,7 +110,6 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   @Output() onNavLoad: any = new EventEmitter<any>();
   @Output() collapseClick: any = new EventEmitter<any>();
 
-
   @ViewChild('navbar', { read: ElementRef }) public navbar: ElementRef;
   @ViewChild('navbarfixed', { read: ElementRef }) public navbarfixed: ElementRef;
   @ViewChild('navbaritems', { read: ElementRef }) public navbaritems: ElementRef;
