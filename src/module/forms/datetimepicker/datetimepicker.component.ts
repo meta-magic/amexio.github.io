@@ -449,7 +449,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       if (!this.timestamp) {
 
         this.dateModel = this.selectedDate.getFullYear() + '-' +
-          (this.selectedDate.getMonth() + 1) + '-' + this.selectedDate.getDate();
+          ("0" + (this.selectedDate.getMonth() + 1)).slice(-2)
+          + '-' + ("0" + this.selectedDate.getDate()).slice(-2);
 
         this.setDateModel();
         this.onChangeCallback(this.dateModel);
@@ -507,7 +508,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     if (!this.timestamp) {
       this.dateModel = new Date(this.dateModel);
       this.dateModel = this.dateModel.getFullYear() + '-'
-        + (this.dateModel.getMonth() + 1) + '-' + this.dateModel.getDate();
+        + (("0" + (this.dateModel.getMonth() + 1)).slice(-2)) + '-' 
+        + ("0" + this.dateModel.getDate()).slice(-2);
 
     }
   }
@@ -702,7 +704,9 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     if (!this.timestamp) {
       this.dateModel = new Date(this.dateModel);
       this.dateModel = this.dateModel.getFullYear() + '-' +
-        (this.dateModel.getMonth() + 1) + '-' + this.dateModel.getDate();
+        ("0" + (this.dateModel.getMonth() + 1)).slice(-2)
+        + '-' + ("0" + this.dateModel.getDate()).slice(-2)
+        ;
       this.setDateModel();
       this.onChangeCallback(this.dateModel);
     }
@@ -725,7 +729,9 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.dateModel = this.innerValue;
         if (!this.timestamp) {
           this.dateModel = this.dateModel.getFullYear() + '-'
-            + this.dateModel.getMonth() + '-' + this.dateModel.getDate();
+            + ("0" + (this.dateModel.getMonth() + 1)).slice(-2)
+            + '-' + ("0" + this.dateModel.getDate()).slice(-2)
+            ;
 
           this.setDateModel();
           this.onChangeCallback(this.dateModel);
@@ -775,7 +781,9 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         if (!this.timestamp) {
           this.dateModel = new Date(this.dateModel);
           this.dateModel = this.dateModel.getFullYear() + '-' +
-            (this.dateModel.getMonth() + 1) + '-' + this.dateModel.getDate();
+          ("0" + (this.dateModel.getMonth() + 1)).slice(-2)
+          + '-' + ("0" + this.dateModel.getDate()).slice(-2)
+            ;
 
           this.setDateModel();
           this.onChangeCallback(this.dateModel);
@@ -786,7 +794,9 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         if (!this.timestamp) {
           this.dateModel = new Date(this.dateModel);
           this.dateModel = this.dateModel.getFullYear() + '-' +
-            (this.dateModel.getMonth() + 1) + '-' + this.dateModel.getDate();
+          ("0" + (this.dateModel.getMonth() + 1)).slice(-2)
+          + '-' + ("0" + this.dateModel.getDate()).slice(-2)
+          ;
           this.setDateModel();
           this.onChangeCallback(this.dateModel);
 
