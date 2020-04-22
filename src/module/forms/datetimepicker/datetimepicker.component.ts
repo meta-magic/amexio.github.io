@@ -1,14 +1,14 @@
 /*
 * Copyright [2019] [Metamagic]
 *
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 * http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
@@ -449,8 +449,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       if (!this.timestamp) {
 
         this.dateModel = this.selectedDate.getFullYear() + '-' +
-          ("0" + (this.selectedDate.getMonth() + 1)).slice(-2)
-          + '-' + ("0" + this.selectedDate.getDate()).slice(-2);
+          ('0' + (this.selectedDate.getMonth() + 1)).slice(-2)
+          + '-' + ('0' + this.selectedDate.getDate()).slice(-2);
 
         this.setDateModel();
         this.onChangeCallback(this.dateModel);
@@ -508,8 +508,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     if (!this.timestamp) {
       this.dateModel = new Date(this.dateModel);
       this.dateModel = this.dateModel.getFullYear() + '-'
-        + (("0" + (this.dateModel.getMonth() + 1)).slice(-2)) + '-' 
-        + ("0" + this.dateModel.getDate()).slice(-2);
+        + (('0' + (this.dateModel.getMonth() + 1)).slice(-2)) + '-'
+        + ('0' + this.dateModel.getDate()).slice(-2);
 
     }
   }
@@ -704,8 +704,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     if (!this.timestamp) {
       this.dateModel = new Date(this.dateModel);
       this.dateModel = this.dateModel.getFullYear() + '-' +
-        ("0" + (this.dateModel.getMonth() + 1)).slice(-2)
-        + '-' + ("0" + this.dateModel.getDate()).slice(-2)
+        ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
+        + '-' + ('0' + this.dateModel.getDate()).slice(-2)
         ;
       this.setDateModel();
       this.onChangeCallback(this.dateModel);
@@ -729,8 +729,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.dateModel = this.innerValue;
         if (!this.timestamp) {
           this.dateModel = this.dateModel.getFullYear() + '-'
-            + ("0" + (this.dateModel.getMonth() + 1)).slice(-2)
-            + '-' + ("0" + this.dateModel.getDate()).slice(-2)
+            + ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
+            + '-' + ('0' + this.dateModel.getDate()).slice(-2)
             ;
 
           this.setDateModel();
@@ -781,8 +781,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         if (!this.timestamp) {
           this.dateModel = new Date(this.dateModel);
           this.dateModel = this.dateModel.getFullYear() + '-' +
-          ("0" + (this.dateModel.getMonth() + 1)).slice(-2)
-          + '-' + ("0" + this.dateModel.getDate()).slice(-2)
+          ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
+          + '-' + ('0' + this.dateModel.getDate()).slice(-2)
             ;
 
           this.setDateModel();
@@ -794,8 +794,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         if (!this.timestamp) {
           this.dateModel = new Date(this.dateModel);
           this.dateModel = this.dateModel.getFullYear() + '-' +
-          ("0" + (this.dateModel.getMonth() + 1)).slice(-2)
-          + '-' + ("0" + this.dateModel.getDate()).slice(-2)
+          ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
+          + '-' + ('0' + this.dateModel.getDate()).slice(-2)
           ;
           this.setDateModel();
           this.onChangeCallback(this.dateModel);
