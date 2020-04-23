@@ -701,7 +701,6 @@ export class AmexioMultiDropDownComponent extends EventBaseComponent<any> implem
 
     return data.filter(function f(node) {
       if (node[tempdisplay].toLowerCase().startsWith(matchingTitle.toLowerCase())) {
-        node[tempchildarrayKey] = [];
         return true;
       }
       if (node[tempchildarrayKey]) {
