@@ -22,7 +22,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   template: `
   <label [ngClass]="{'labelFontClass': blackLabel, 'eclipse' : !wordwrap}" style="outline: none"
   role="text" tabindex="1" class="label-content {{styleClass}}" (click)="onLabel($event)"
-    [ngStyle]="{'color' : fontColor,'cursor': enableclick ? 'pointer': 'text'}">
+    [ngStyle]="{'font-family':fontFamily,'font-style':fontStyle,'color' : fontColor,'cursor': enableclick ? 'pointer': 'text'}">
     <ng-content></ng-content>
     <span class="label-badge" *ngIf="badge">{{badge}}</span>
   </label>
@@ -58,6 +58,8 @@ export class AmexioLabelComponent implements OnInit {
   @Input('font-color') fontColor: string;
   @Input('enable-click') enableclick = false;
   @Input('word-wrap') wordwrap = true;
+  @Input('font-family') fontFamily: string;
+  @Input('font-style') fontStyle: string;
 
   // For internal use
   @Input() blackLabel = false;
