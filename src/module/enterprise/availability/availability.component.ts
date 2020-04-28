@@ -48,7 +48,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
   dateArr1: any[];
   completeTimeArr: any[];
   dateSpanHt = 18;
-  dateSpanWt = 64;
+  dateSpanWt = 46;
   dateSpanlist: any[];
   legendArr: any[];
 
@@ -91,7 +91,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnchanges() {
-    this.dateSpanWt = 64;
+    this.dateSpanWt = 37;
     this.generateData();
 
   }
@@ -346,7 +346,7 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
     divWt = this.elementView1.nativeElement.offsetWidth;
     this.dateSpanHt = Math.round(divHt / this.datesArrlen);
     this.dateSpanWt = Math.round((divWt) / this.newTimeArr.length);
-    this.dateSpanWt = 64;
+    this.dateSpanWt = 37;
   }
 
   generateLegendArr() {
