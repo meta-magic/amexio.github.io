@@ -1,6 +1,9 @@
-<div [style.height]="height" [ngClass]="{'datagrid-full-screen': yesFullScreen && fullscreenMax}">
-  <div class="datagrid">
-    <div class="datatabletitle">
+<div #datagrid 
+[ngStyle]="{'height': 'height!=null' ? height+'px' : 'none',
+'min-height': 'fit' ? minheight+'px' : 'none'}"
+ [ngClass]="{'datagrid-full-screen': yesFullScreen && fullscreenMax}">
+  <div #grid class="datagrid">
+    <div #gtitle class="datatabletitle">
       <span *ngIf="title" id="{{gridId}}"> {{title}} </span>
       <span class="dataheaderFilter" class="float-right" style="padding-bottom:1.1%">
         <ng-content select="amexio-datagrid-header"></ng-content>
@@ -117,7 +120,7 @@
     <div class="{{roundedgeclass}}">
 
       <div class="datatable" role="grid" attr.aria-labelledby="{{gridId}}">
-        <div class="datatable-header" [ngClass]="themeCss">
+        <div #gheader class="datatable-header" [ngClass]="themeCss">
           <ng-container *ngIf="enablecheckbox">
             <div class="datatable-col datatable-checkbox-width checkbox-col">
               <div class="inputgroup">
@@ -178,7 +181,10 @@
 
   <!--Group BY datagrid start-->
   <ng-container *ngIf="!groupby">
-    <div class="datatable-height {{roundedgeclass}}" [style.height.px]="height">
+    <div class="datatable-height {{roundedgeclass}}"    
+    [ngStyle]="{'height' : fit ? '100%' : height+'px',
+        'overflow-y' : fit ? 'auto' : 'none',
+        'max-height' : fit ? scrollHeight  +'px': 'none' }">
       <div class="datatable" role="grid">
         <div style="height: 300px;" *ngIf="mask">
           <div class="spinner"></div>
@@ -260,7 +266,10 @@
 
   <!--Group BY and Filter Data datagrid start-->
   <ng-container *ngIf="groupby && !enabledatafilter">
-    <div class="datatable-height {{roundedgeclass}}" [style.height.px]="height">
+    <div class="datatable-height {{roundedgeclass}}"     
+    [ngStyle]="{'height' : fit ? '100%' : height+'px',
+        'overflow-y' : fit ? 'auto' : 'none',
+        'max-height' : fit ? scrollHeight  +'px': 'none' }">
       <div class="datatable" role="grid" style="table-layout: inherit !important;">
         <div style="height: 300px;" *ngIf="mask">
           <div class="spinner"></div>
@@ -366,7 +375,7 @@
   </ng-container>
 
   <!-- Footer of the grid -->
-  <div class="footer">
+  <div #footer class="footer">
     <ng-container *ngIf="(pagesize && (data && data.length > pagesize)) || (serverSidePaging && totalPages)">
       <amexio-paginator #pageId [server-side-paging]="serverSidePaging" [pages]="totalPages" [rows]="pagesize" (onPageChange)="loadPageData($event)"></amexio-paginator>
     </ng-container>

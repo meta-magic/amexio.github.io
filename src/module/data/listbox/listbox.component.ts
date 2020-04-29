@@ -10,8 +10,8 @@ more items from list based on configuration. User can provide custom template to
 change look and feel.
 */
 import {
-  AfterViewInit, Component, ContentChild, EventEmitter,
-  HostListener, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef,
+  AfterViewChecked, AfterViewInit, Component, ContentChild,
+  ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild,
 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
@@ -20,7 +20,7 @@ import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 @Component({
   selector: 'amexio-listbox', templateUrl: './listbox.component.html',
 })
-export class AmexioListBoxComponent extends LifeCycleBaseComponent implements AfterViewInit, OnInit, OnDestroy {
+export class AmexioListBoxComponent extends LifeCycleBaseComponent implements AfterViewInit, OnInit, OnDestroy, AfterViewChecked {
 
   private componentLoaded: boolean;
   contextMenuStyle: any;
@@ -84,6 +84,7 @@ default : none
 description : Local Data binding.
 */
   _data: any;
+  scrollHeight: number;
   @Input('data')
   set data(value: any[]) {
     this._data = value;
@@ -146,6 +147,15 @@ description : height for ListBox.
   @Input() height: any;
 
   /*
+Properties
+name : fit
+datatype : any
+version : 5.21 onwards
+default :boolen
+description : fit layout for body height */
+  @Input('fit') fit: false;
+
+  /*
 Events
 name : selectedRows
 datatype : none
@@ -184,7 +194,7 @@ default :
 description : Context Menu provides the list of menus on right click.
 */
   @Input('context-menu') contextmenu: any[];
-@Input('icon') icon: string;
+  @Input('icon') icon: string;
 
   /*
   Events
@@ -199,6 +209,11 @@ description : Context Menu provides the list of menus on right click.
 
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
+  @ViewChild('listbox', { read: ElementRef }) public listbox: ElementRef;
+
+  @ViewChild('list', { read: ElementRef }) public list: ElementRef;
+
+  @ViewChild('listheader', { read: ElementRef }) public listheader: ElementRef;
   viewData: any[];
 
   orgData: any[];
@@ -271,6 +286,37 @@ description : Context Menu provides the list of menus on right click.
     this.componentId = 'listbox' + window.crypto.getRandomValues(new Uint32Array(1))[0];
 
     this.listenListboxOutClick();
+  }
+
+  ngAfterViewChecked() {
+    if (this.fit) {
+      this.calMaxHeight();
+    }
+  }
+
+  calMaxHeight() {
+    let domRect;
+    if (this.listbox && this.listbox.nativeElement && this.listbox.nativeElement.offsetHeight) {
+
+      domRect = this.listbox.nativeElement.offsetParent.getBoundingClientRect();
+
+      if ( domRect.height ===  window.innerHeight) {
+        this.scrollHeight = window.innerHeight;
+      } else {
+          this.scrollHeight = domRect.height;
+      }
+      if (this.height === null || this.height === undefined) {
+        this.height = this.scrollHeight;
+        this.height = this.height - (this.height * 0.10);
+      }
+    }
+    this.scrollHeight = window.innerHeight;
+    if (this.list && this.list.nativeElement && this.list.nativeElement.offsetHeight) {
+      if (this.listheader && this.listheader.nativeElement && this.listheader.nativeElement.offsetHeight) {
+        this.scrollHeight = this.scrollHeight - this.listheader.nativeElement.offsetHeight;
+      }
+    }
+    this.scrollHeight = this.scrollHeight - (this.scrollHeight * 0.10) ;
   }
 
   listenListboxOutClick() {
@@ -404,7 +450,7 @@ description : Context Menu provides the list of menus on right click.
     });
     if (this.filter) {
       this.checkSelectedFlag(rowData);
-      }
+    }
     const tempData = JSON.parse(JSON.stringify(rowData));
     delete tempData['index'];
     delete tempData['onClickFlag'];
@@ -416,7 +462,7 @@ description : Context Menu provides the list of menus on right click.
         orgObj.isSelected = rowData.isSelected;
       }
     });
-    }
+  }
   selectAllRecord() {
     this.selectedData = [];
     this.selectAll = !this.selectAll;
@@ -521,5 +567,4 @@ description : Context Menu provides the list of menus on right click.
   onClickIcon() {
     this.onIconClick.emit();
   }
-
 }

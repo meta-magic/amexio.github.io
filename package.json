@@ -1,7 +1,7 @@
 {
     "name": "amexio-ng-extensions",
     "description": "Angular UI library",
-    "version": "5.20.0",
+    "version": "5.21.2",
     "homepage": "https://www.amexio.tech/",
     "author": {
         "name": "MetaMagic Global",
@@ -96,7 +96,7 @@
         "karma-remap-coverage": "0.1.4",
         "karma-sourcemap-loader": "0.3.7",
         "karma-webpack": "2.0.5",
-        "node-sass": "4.5.3",
+        "node-sass": "^4.14.0",
         "npm": "6.13.4",
         "postcss": "6.0.13",
         "postcss-strip-inline-comments": "0.1.5",

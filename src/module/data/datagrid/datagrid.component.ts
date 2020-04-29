@@ -25,9 +25,9 @@
  */
 import { DOCUMENT } from '@angular/common';
 import {
-  AfterContentInit, AfterViewInit, ChangeDetectorRef, Component,
-  ContentChildren, ElementRef, EventEmitter, HostListener, Inject, Input,
-  OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewChildren,
+  AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef,
+  Component, ContentChildren, ElementRef, EventEmitter, HostListener, Inject,
+  Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewChildren,
 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { AmexioGridColumnComponent } from './data.grid.column';
@@ -40,7 +40,8 @@ import { LifeCycleBaseComponent } from './../../base/lifecycle.base.component';
   providers: [CommonDataService],
 })
 
-export class AmexioDatagridComponent extends LifeCycleBaseComponent implements OnInit, OnDestroy, AfterContentInit, AfterViewInit {
+export class AmexioDatagridComponent extends LifeCycleBaseComponent implements OnInit, OnDestroy,
+  AfterContentInit, AfterViewInit, AfterViewChecked {
   private componentLoaded: boolean;
   /*
    Properties
@@ -110,6 +111,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
    description : Local Data binding.
    */
   _data: any;
+  minheight: any;
   @Input('data')
   set data(value: any[]) {
     this._data = value;
@@ -160,6 +162,14 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
    description : height of grid
    */
   @Input() height: any;
+  /*
+Properties
+name : fit
+datatype : any
+version : 5.21 onwards
+default :boolen
+description : fit layout for body */
+@Input('fit') fit: false;
 
   /*
    Properties
@@ -453,11 +463,23 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
 
   resultData: any = [];
 
+  scrollHeight: any;
+
   @ViewChildren(DataGridFilterComponent) filterRef: QueryList<DataGridFilterComponent>;
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
   @ViewChild('pageId') pageId: any;
+
+  @ViewChild('grid', { read: ElementRef }) public grid: ElementRef;
+
+  @ViewChild('datagrid', { read: ElementRef }) public datagrid: ElementRef;
+
+  @ViewChild('gtitle', { read: ElementRef }) public gtitle: ElementRef;
+
+  @ViewChild('footer', { read: ElementRef }) public footer: ElementRef;
+
+  @ViewChild('gheader', { read: ElementRef }) public gheader: ElementRef;
 
   constructor(
     public element: ElementRef, public dataTableService: CommonDataService,
@@ -521,6 +543,39 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     if (this.enabledatafilter && this.filterRef) {
       this.filterComRef = this.filterRef.toArray();
     }
+  }
+  ngAfterViewChecked() {
+    this.calMaxHeight();
+  }
+
+  calMaxHeight() {
+    let domRect: { height: any; };
+    if (this.datagrid && this.datagrid.nativeElement && this.datagrid.nativeElement.offsetHeight) {
+
+      domRect = this.datagrid.nativeElement.offsetParent.getBoundingClientRect();
+
+      if ( domRect.height ===  window.innerHeight) {
+        this.scrollHeight = window.innerHeight;
+      } else {
+          this.scrollHeight = domRect.height;
+      }
+      if (this.height === null || this.height === undefined) {
+        this.minheight = this.scrollHeight;
+
+        this.minheight = this.minheight - (this.minheight * 0.05);
+      }
+    }
+    if (this.footer && this.footer.nativeElement && this.footer.nativeElement.offsetHeight) {
+      this.scrollHeight = this.scrollHeight - this.footer.nativeElement.offsetHeight;
+    }
+    if (this.gtitle && this.gtitle.nativeElement && this.gtitle.nativeElement.offsetHeight) {
+      this.scrollHeight = this.scrollHeight - this.gtitle.nativeElement.offsetHeight;
+    }
+    if (this.gheader && this.gheader.nativeElement && this.gheader.nativeElement.offsetHeight) {
+      this.scrollHeight = this.scrollHeight - this.gheader.nativeElement.offsetHeight;
+    }
+    // tslint:disable-next-line: no-commented-code
+    this.scrollHeight = this.scrollHeight - (this.scrollHeight * 0.05) ;
   }
 
   updateComponent() {

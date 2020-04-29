@@ -1,5 +1,6 @@
-<div class="listbox {{roundedgeclass}}" [style.border]="border">
-  <div *ngIf="enableHeader" class="header" style="display: flex; justify-content: space-between">
+<div #listbox class="listbox {{roundedgeclass}}" [style.border]="border" 
+[ngStyle]="{'min-height': 'height!=null' ? height+'px' : 'none'}">
+  <div #listheader *ngIf="enableHeader" class="header" style="display: flex; justify-content: space-between">
     <div style="display: flex;justify-content: flex-start;">
       <div role="checkbox" tabindex="0" *ngIf="enablecheckbox" (keyup.enter)="selectAllRecord()" class="input-box">
         <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
@@ -18,8 +19,10 @@
       <i style="float:right; cursor:pointer" (click)="onClickIcon()" [class]="icon"></i>
     </ng-container>
   </div>
-  <div class="listbox-height" tabindex="0" (keyup.arrowdown)="onArrowdown()" (keyup.arrowup)="onArrowUp()"
-    (keyup.enter)="onEnterPress()" [style.height.px]="height">
+  <div #list class="listbox-height" tabindex="0" (keyup.arrowdown)="onArrowdown()" (keyup.arrowup)="onArrowUp()"
+    (keyup.enter)="onEnterPress()" [ngStyle]="{'height' : fit ? '100%' : height+'px',
+    'overflow-y' : fit ? 'auto' : 'none',
+    'max-height' : fit ? scrollHeight  +'px': 'none' }">
     <ul id="{{componentId}}" tabindex="0" role="listbox" class="list" [ngClass]="{'loading-mask' : maskloader}">
       <li #id role="option" [attr.aria-selected]="row.isSelected" class="list-items"
         *ngFor="let row of viewData let rowno = index " [ngClass]="{'tree-node-label-selected':row.isSelected ,
