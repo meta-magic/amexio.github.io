@@ -82,6 +82,15 @@ description : Font color of label
  description : Font color of label
  */
   @Input() closable: boolean = null;
+    /*
+  Properties
+  name : fit
+  datatype : boolean
+  version : 4.21 onwards
+  default : false
+  description : fit layout for each tab sets height to 100%
+  */
+  @Input('fit') fit: any;
 
   @Input('height') height: any;
 
@@ -90,6 +99,7 @@ description : Font color of label
   tablk: any;
 
   @ViewChild('target', { read: ViewContainerRef }) public target: any;
+    tab: boolean;
 
   constructor() {
     this.tabId = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]);

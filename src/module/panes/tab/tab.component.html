@@ -1,4 +1,4 @@
-<div class="tabwrapper">
+<div #wrapper class="tabwrapper">
     <div *ngIf="showprev"
         [ngClass]="{'tabnavigation float-right tabnavigation-bottom-left':tabPosition=='bottom', 'tabnavigation float-left':tabPosition=='top'}"
         (click)="previous()">
@@ -60,7 +60,8 @@
 </div>
 
 <div class="tabcontent" [attr.id]="componentId"
-    [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}">
+    [ngStyle]="{'height' : fit ? '100%' : height+'px', 'max-height' : fit ? scrollHeight+'px': 'none',
+    'overflow-y' : fit ? 'auto' : 'none','min-height.px' : minHeight}">
     <ng-content></ng-content>
     <ng-template #target></ng-template>
 </div>

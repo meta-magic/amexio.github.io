@@ -1,11 +1,16 @@
 <div #id class="card-container {{roundedgeclass}} {{tempPolaride}}" *ngIf="show" (window:resize)="onResize()" 
+[ngStyle]="{'height' : 'height!=null'? '100%':'', 
+'min-height': fit ? minheight+'px' : 'none'}"
 (contextmenu)="loadContextMenu({event:$event,ref:id})" [ngClass]="{'full-screen-card': maximizeflagchanged}">
     <header #cardHeader [ngClass]="themeCss" [style.padding]="headerPadding" class="card-header" *ngIf="header"
      [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
         <ng-content select="amexio-header"></ng-content>
     </header>
     <div class="card-body cardbody" [style.padding]="bodyPadding"
-     [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}">
+     [ngStyle]="{'height' : fit ? '100%' : height+'px',
+     'overflow-y' : height!=null || fit ? 'auto' : 'none',
+     'max-height' : fit ? scrollHeight+'px': 'none',
+     'min-height.px' : minHeight}">
         <ng-content select="amexio-body"></ng-content>
     </div>
     <footer #cardFooter [style.padding]="footerPadding" class="card-footer {{roundedgeclass}}" *ngIf="footer"

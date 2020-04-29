@@ -17,8 +17,8 @@
 */
 
 import {
-  AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChildren, ElementRef, EventEmitter,
-  HostListener, Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewContainerRef,
+  AfterContentInit, AfterViewChecked, AfterViewInit, Component, ComponentFactoryResolver, ContentChildren, ElementRef,
+  EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewContainerRef,
 } from '@angular/core';
 import { BaseTabComponent } from './base.tab.component';
 import { AmexioTabActionComponent } from './tab.action';
@@ -52,7 +52,7 @@ export const BOTTOM_COMPONENT_CLASS_MAP: any = {
   selector: 'amexio-tab-view',
   templateUrl: './tab.component.html',
 })
-export class AmexioTabComponent extends BaseTabComponent implements AfterContentInit, AfterViewInit, OnInit, OnDestroy {
+export class AmexioTabComponent extends BaseTabComponent implements AfterContentInit, AfterViewInit, OnInit, OnDestroy , AfterViewChecked {
 
   /*
    Properties
@@ -180,6 +180,9 @@ description : sets background color for active tab
   // @ViewChild('tabslist', { read: ElementRef }) public tabslist: ElementRef;
   @ViewChild('actionProperty', { read: ElementRef }) public actionProperty: ElementRef;
 
+  @ViewChild('tabwrapper', { read: ElementRef }) public tabwrapper: ElementRef;
+  @ViewChild('wrapper', { read: ElementRef }) public wrapper: ElementRef;
+
   // @ContentChildren(AmexioTabPillComponent) queryTabs: QueryList<AmexioTabPillComponent>;
   // tabCollection: AmexioTabPillComponent[];
   // @ViewChild('target', { read: ViewContainerRef }) target: any;
@@ -199,6 +202,8 @@ description : sets background color for active tab
   /* for internal purpose .*/
   _tabLocalData: any;
   componentLoaded: boolean;
+  scrollHeight: number;
+  minheight: number;
   @Input('tabLocalData')
   set tabLocalData(value: any) {
     this._tabLocalData = value;
@@ -270,6 +275,34 @@ description : sets background color for active tab
     this.componentLoaded = true;
     this.componentId = Math.floor(window.crypto.getRandomValues(new Uint32Array(1))[0]) + '_tabc';
     super.ngOnInit();
+  }
+
+  ngAfterViewChecked() {
+    if (this.fit) {
+      this.calMaxHeight();
+    }
+  }
+
+  calMaxHeight() {
+    let domRect: { height: any; };
+    if (this.wrapper && this.wrapper.nativeElement && this.wrapper.nativeElement.offsetHeight) {
+
+      domRect = this.wrapper.nativeElement.offsetParent.getBoundingClientRect();
+      if (this.fit) {
+        if (domRect.height === window.innerHeight) {
+          this.scrollHeight = window.innerHeight;
+        } else {
+          this.scrollHeight = domRect.height;
+        }
+      }
+      this.minheight = this.scrollHeight;
+
+    }
+    if (this.wrapper && this.wrapper.nativeElement && this.wrapper.nativeElement.offsetHeight) {
+        this.scrollHeight = this.scrollHeight - this.wrapper.nativeElement.offsetHeight;
+    }
+    // tslint:disable-next-line: no-commented-code
+    this.scrollHeight = this.scrollHeight - (this.scrollHeight * 0.10);
   }
 
   @HostListener('window:resize', ['$event'])
@@ -452,8 +485,8 @@ description : sets background color for active tab
     });
   }
 
+  // tslint:disable-next-line: cognitive-complexity
   tabNodeProperties() {
-
     const tabWidth = this.tabCollection.length;
     for (let i = 0; i < tabWidth; i++) {
       if (this.tabPosition === 'top') {
@@ -466,6 +499,13 @@ description : sets background color for active tab
           this.tabCollection[i].closable = true;
         } else if (this.tabCollection[i].closable === false) {
           this.tabCollection[i].closable = false;
+        }
+      }
+      if (this.fit) {
+        if (this.tabCollection[i].fit === null || this.tabCollection[i].fit === true) {
+          this.tabCollection[i].fit = true;
+        } else if (this.tabCollection[i].fit === false) {
+          this.tabCollection[i].fit = false;
         }
       }
       this.asignTabPillClass(this.tabCollection[i]);

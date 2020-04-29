@@ -4,7 +4,6 @@ import { IconLoaderService } from '../../../index';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AmexioCardComponent } from './card.component';
 import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 @Component({

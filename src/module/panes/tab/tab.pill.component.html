@@ -1,4 +1,7 @@
-<div style = "outline: none"  [style.height.px]="height" role="tabpanel" tabindex="1" class="tab-pane active" attr.aria-labelledby="{{tablk}}" [attr.id]="tabId" [hidden]="!active">
+<div style = "outline: none"  
+[ngStyle]="{'height' : 'height!=null'? '100%':'',
+ 'min-height': fit ? minheight+'px' : 'none'}"
+role="tabpanel" tabindex="1" class="tab-pane active" attr.aria-labelledby="{{tablk}}" [attr.id]="tabId" [hidden]="!active">
   <ng-content></ng-content>
   <ng-template #target></ng-template>
 </div>

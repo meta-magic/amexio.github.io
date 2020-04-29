@@ -18,9 +18,9 @@
 
 import { DOCUMENT } from '@angular/common';
 import {
-  AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef,
-  EventEmitter, HostListener, Inject, Input, OnDestroy, OnInit, Output,
-  Renderer2, ViewChild,
+  AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component,
+  ElementRef, EventEmitter, HostListener, Inject, Input, OnDestroy, OnInit,
+  Output, Renderer2, ViewChild,
 } from '@angular/core';
 import { ContentChildren, QueryList } from '@angular/core';
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
@@ -32,7 +32,7 @@ import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
   selector: 'amexio-card',
   templateUrl: './card.component.html',
 })
-export class AmexioCardComponent extends LifeCycleBaseComponent implements OnInit, OnDestroy, AfterContentChecked,
+export class AmexioCardComponent extends LifeCycleBaseComponent implements OnInit, OnDestroy, AfterViewChecked, AfterContentChecked,
   AfterViewInit, AfterContentInit {
   /*
 Properties
@@ -121,6 +121,14 @@ description : Context Menu provides the list of menus on right click.
   @Input('polaroid-type') styletype: any;
 
   @Input() parentRef: any;
+  /*
+   Properties
+   name : fit
+   datatype : any
+   version : 5.21 onwards
+   default :boolen
+   description : fit height*/
+  @Input('fit') fit: false;
 
   @Output() nodeRightClick: any = new EventEmitter<any>();
 
@@ -132,6 +140,8 @@ description : Context Menu provides the list of menus on right click.
   @ViewChild('cardHeader', { read: ElementRef }) public cardHeader: ElementRef;
 
   @ViewChild('cardFooter', { read: ElementRef }) public cardFooter: ElementRef;
+
+  @ViewChild('id', { read: ElementRef }) public card: ElementRef;
 
   headerPadding: string;
   bodyPadding: string;
@@ -163,6 +173,11 @@ description : Context Menu provides the list of menus on right click.
   @ContentChildren(AmexioFooterComponent) amexioFooter: QueryList<AmexioFooterComponent>;
   footerComponentList: AmexioFooterComponent[];
   globalClickListenFunc: () => void;
+  maxHeight: any;
+  componentHeight: number;
+  scrollHeight: number;
+  tempHeight: any;
+  minheight: any;
   constructor(private renderer: Renderer2, @Inject(DOCUMENT) public document: any) {
     super(document);
     this.headeralign = 'left';
@@ -190,6 +205,13 @@ description : Context Menu provides the list of menus on right click.
   ngAfterContentChecked() {
 
   }
+
+  ngAfterViewChecked() {
+    if (this.fit) {
+      this.calMaxHeight();
+    }
+  }
+
   ngAfterContentInit() {
     // FOR HEADER PADING
     this.headerComponentList = this.amexioHeader.toArray();
@@ -238,12 +260,17 @@ description : Context Menu provides the list of menus on right click.
   }
 
   adjustHeight(event: any) {
+    if (this.fit === false) {
+      this.calMaxHeight();
+    }
+
     this.onResize();
   }
 
   // Calculate body size based on browser height
   onResize() {
-    if (this.bodyheight) {
+
+    if (this.bodyheight && !this.fit) {
       let h = (window.innerHeight / 100) * this.bodyheight;
       if (this.cardHeader && this.cardHeader.nativeElement && this.cardHeader.nativeElement.offsetHeight) {
         h = h - this.cardHeader.nativeElement.offsetHeight;
@@ -257,6 +284,37 @@ description : Context Menu provides the list of menus on right click.
       this.minHeight = h;
       this.height = h;
     }
+  }
+
+  calMaxHeight() {
+    let domRect: { height: any; };
+    if (this.card && this.card.nativeElement && this.card.nativeElement.offsetHeight) {
+
+      domRect = this.card.nativeElement.offsetParent.getBoundingClientRect();
+
+      if (this.fit) {
+        if (domRect.height === window.innerHeight) {
+          this.scrollHeight = window.innerHeight;
+        } else {
+          this.scrollHeight = domRect.height;
+        }
+      }
+      if (this.height === null || this.height === undefined) {
+      this.minheight = this.scrollHeight;
+      this.minheight = this.minheight - (this.minheight * 0.10);
+
+      }
+    }
+    if (this.cardHeader && this.cardHeader.nativeElement && this.cardHeader.nativeElement.offsetHeight) {
+      this.scrollHeight = this.scrollHeight - this.cardHeader.nativeElement.offsetHeight;
+      this.tempHeight = this.cardHeader.nativeElement.offsetHeight;
+    }
+    if (this.cardFooter && this.cardFooter.nativeElement && this.cardFooter.nativeElement.offsetHeight) {
+      this.scrollHeight = this.scrollHeight - this.cardFooter.nativeElement.offsetHeight;
+      this.tempHeight = this.cardFooter.nativeElement.offsetHeight;
+    }
+    // tslint:disable-next-line: no-commented-code
+    // this.scrollHeight = this.scrollHeight - (this.scrollHeight * 0.10);
   }
 
   getContextMenu() {
@@ -274,6 +332,7 @@ description : Context Menu provides the list of menus on right click.
       return false;
     }
   }
+
   loadContextMenu(rightClickData: any) {
     if (this.contextmenu && this.contextmenu.length > 0) {
       this.mouseLocation.left = rightClickData.event.clientX;
@@ -315,4 +374,5 @@ description : Context Menu provides the list of menus on right click.
   setColorPalette(themeClass: any) {
     this.themeCss = themeClass;
   }
+
 }

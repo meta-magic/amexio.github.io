@@ -169,7 +169,7 @@ datatype : any
 version : 5.21 onwards
 default :boolen
 description : fit layout for body */
-@Input('fit') fit: false;
+  @Input('fit') fit: false;
 
   /*
    Properties
@@ -545,7 +545,9 @@ description : fit layout for body */
     }
   }
   ngAfterViewChecked() {
-    this.calMaxHeight();
+    if (this.fit) {
+      this.calMaxHeight();
+    }
   }
 
   calMaxHeight() {
@@ -554,10 +556,10 @@ description : fit layout for body */
 
       domRect = this.datagrid.nativeElement.offsetParent.getBoundingClientRect();
 
-      if ( domRect.height ===  window.innerHeight) {
+      if (domRect.height === window.innerHeight) {
         this.scrollHeight = window.innerHeight;
       } else {
-          this.scrollHeight = domRect.height;
+        this.scrollHeight = domRect.height;
       }
       if (this.height === null || this.height === undefined) {
         this.minheight = this.scrollHeight;
@@ -575,7 +577,7 @@ description : fit layout for body */
       this.scrollHeight = this.scrollHeight - this.gheader.nativeElement.offsetHeight;
     }
     // tslint:disable-next-line: no-commented-code
-    this.scrollHeight = this.scrollHeight - (this.scrollHeight * 0.05) ;
+    this.scrollHeight = this.scrollHeight - (this.scrollHeight * 0.05);
   }
 
   updateComponent() {

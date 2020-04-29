@@ -6,11 +6,6 @@ import { AmexioTabPillComponent } from './tab.pill.component';
 
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 
-// @Component({
-//     selector: 'base.tab',
-//     template: './base.tab.component.html',
-//   })
-
 export class BaseTabComponent extends LifeCycleBaseComponent {
     @ViewChild('target', { read: ViewContainerRef }) target: any;
     @ContentChildren(AmexioTabPillComponent) queryTabs: QueryList<AmexioTabPillComponent>;
@@ -30,6 +25,7 @@ export class BaseTabComponent extends LifeCycleBaseComponent {
      description : This flag will make tab closable.
      */
     @Input() closable: boolean;
+
     /*
 Events
 name : onClick
@@ -39,6 +35,17 @@ default :none
 description : Callback to invoke on activated tab event.
 */
     @Output() onClick: any = new EventEmitter<any>();
+
+    /*
+Properties
+name : fit
+datatype : boolean
+version : 4.21 onwards
+default : false
+description : fit layout for each tab sets height to 100%
+*/
+    @Input('fit') fit: false;
+
     singleTabWidth: any;
     minHeight: any;
     totalTabs: number;
@@ -52,7 +59,7 @@ description : Callback to invoke on activated tab event.
     shownext = false;
     height: any;
     tabType: string;
-    addDynamicTab(title: string, amexiocolor: string, closable: boolean, component: any) {
+    addDynamicTab(title: string, amexiocolor: string, fit: boolean, closable: boolean, component: any) {
         // get a component factory for our TabComponent
         const tpCF = this.componentFactoryResolver.resolveComponentFactory(
             AmexioTabPillComponent,
@@ -63,6 +70,7 @@ description : Callback to invoke on activated tab event.
         instance.title = title;
         instance.active = true;
         instance.closable = closable;
+        instance.fit = fit;
         instance['tabpillinstance'] = this.target;
         if (instance.amexiocolor === '') {
             instance.amexiocolor = 'amexio-top-tab-black';
@@ -125,9 +133,11 @@ description : Callback to invoke on activated tab event.
         }
         if (this.tabCollection.length === 1) {
             this.closable = false;
+            this.fit = false;
         }
         if (newTab.length === 1) {
             newTab[0].closable = false;
+            newTab[0].fit = false;
         }
     }
 
