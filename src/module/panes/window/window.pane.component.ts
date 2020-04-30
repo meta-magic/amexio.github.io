@@ -19,7 +19,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
 import {
-  AfterContentInit, ApplicationRef, Component, ComponentFactoryResolver, ContentChildren, ElementRef, EmbeddedViewRef,
+  AfterContentInit, ApplicationRef, ChangeDetectorRef, Component, ComponentFactoryResolver, ContentChildren, ElementRef, EmbeddedViewRef,
   EventEmitter, Inject, Injector, Input, OnChanges, OnDestroy,
   OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
 } from '@angular/core';
@@ -226,9 +226,9 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   @Input('width') width: any = '90%';
 
   @Input('window-model') windowModel = true;
-
+  @Input('initial-maximize') inimax = false;
   textName: any;
-
+  maxstyle = { 'margin-top': '0', 'height': '100%', 'width': '100%' };
   @Output() nodeRightClick: any = new EventEmitter<any>();
 
   @Output() rightClick: any = new EventEmitter<any>();
@@ -255,6 +255,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   globalDragListenFunc: () => void;
   constructor(
     @Inject(DOCUMENT) public document: any, private appRef: ApplicationRef,
+    private cdf: ChangeDetectorRef,
     private componentFactoryResolver: ComponentFactoryResolver, private injector: Injector,
     private renderer: Renderer2, private _miniService: MinimizeService) {
     super();
@@ -288,7 +289,12 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
     if (this.maximize) {
       this.dummyWidth = this.width;
       this.isFullWindow = true;
-      this.maximumWindowStyle = this.setMaximizeClass(this.isFullWindow);
+      if (!this.inimax) {
+        this.maximumWindowStyle = this.setMaximizeClass(this.isFullWindow);
+      } else {
+        this.draggable = false;
+        this.maximumWindowStyle = this.maxstyle;
+      }
     }
     if (this.showWindow) {
       this.show = this.showWindow;
@@ -328,9 +334,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
         this.draggable = false;
       }
       this.width = '100%';
-      return {
-        'margin-top': '0', 'height': '100%', 'width': '100%',
-      };
+      return this.maxstyle;
     } else {
       if (this.maximize) {
         this.draggable = true;
@@ -394,7 +398,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
       });
     }
     if (this.amexioHeader && this.header) {
-      if (this.minimize) {
+      if (this.minimize && !this.inimax) {
         this.amexioHeader.toArray()[0].minimize = this.minimize;
         this.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
           this.textName = event.textName;
@@ -407,12 +411,25 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
       }
       this.amexioHeader.toArray()[0].closeable = this.closable;
       this.amexioHeader.toArray()[0].aComponent1 = 'window';
-      if (this.maximize) {
+      if (this.maximize && !this.inimax) {
         this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow, event);
         this.amexioHeader.toArray()[0].maximizeBehaiour.subscribe((max: any) => {
           this.maximumWindowStyle = this.setMaximizeClass(max.isFullWindow);
           this.onMaximize.emit(max.event1);
         });
+      }
+      if (this.inimax) {
+        this.amexioHeader.toArray()[0].closeable = this.closable;
+        this.amexioHeader.toArray()[0].aComponent1 = 'window';
+        this.amexioHeader.toArray()[0].initmax = true;
+        this.draggable = false;
+
+        this.amexioHeader.toArray()[0].sizeChange(event);
+        this.isFullWindow = false;
+        this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow, event);
+        this.maximumWindowStyle = this.maxstyle;
+        this.cdf.detectChanges();
+
       }
       this.amexioHeader.toArray()[0].setMaterialDesignStatus(this.materialDesign);
       this.amexioHeader.toArray()[0].closeableBehaiour.subscribe((close: any) => {

@@ -1,20 +1,12 @@
-<div #id *ngIf="show" 
-class="amexio-root-window" 
+<div #id *ngIf="show" class="amexio-root-window" [ngClass]="{'amexio-root-window': windowModel, 'amexio-root-window-windowModel': !windowModel}"
+  [style.justify-content]="horizontalposition">
 
-[ngClass]="{'amexio-root-window': windowModel, 'amexio-root-window-windowModel': !windowModel}"
-[style.justify-content]="horizontalposition">
-  <div class="{{roundedgeclass}}"
-   (mousedown)='onWindowPress($event)' (mousemove)='onWindowDrag($event)'
-    (contextmenu)="loadContextMenu({event:$event,ref:id})" 
-    
-    [style.justify-content]="verticalposition" [ngStyle]="maximumWindowStyle"
-
-    [ngClass]="{'content-max-height': (maximize && !isFullWindow), 'amexio-root-window-content': windowModel, 'amexio-root-window-content-windowModel': !windowModel, 'full-screen-card': maximizeflagchanged}"
-    
-    
-    [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}"
-    [style.width]="width" [style.height]="bodyHeight" [style.top.px]='y' [style.left.px]='x' [style.cursor]="draggable ? 'all-scroll':'' " [style.resize]="resizable ? 'both':'' " [style.overflow]="resizable? 'auto':''" >
-      <ng-content></ng-content>
+  <div class="{{roundedgeclass}}" (mousedown)='onWindowPress($event)' (mousemove)='onWindowDrag($event)' (contextmenu)="loadContextMenu({event:$event,ref:id})"
+    [style.justify-content]="verticalposition" [ngStyle]="inimax?maxstyle:maximumWindowStyle" [ngClass]="{'content-max-height': (maximize && !isFullWindow), 'amexio-root-window-content': windowModel, 'amexio-root-window-content-windowModel': !windowModel, 'full-screen-card': maximizeflagchanged}"
+    [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}" [style.width]="inimax?'100%':width" [style.height]="inimax?'100%':bodyHeight"
+    [style.top.px]='y' [style.left.px]='x' [style.cursor]="draggable ? 'all-scroll':'' " [style.resize]="resizable ? 'both':'' "
+    [style.overflow]="resizable? 'auto':''">
+    <ng-content></ng-content>
   </div>
 </div>
 <ng-container *ngIf="flag">

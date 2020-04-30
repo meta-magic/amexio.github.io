@@ -31,13 +31,12 @@ import { BehaviorSubject } from 'rxjs/index';
   <em  *ngIf="minimize" class="fa fa-window-minimize" (click)="onMinimizeClick($event)"
   style = "cursor: pointer"></em>
 
-  <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(isFullWindow && maximize )"
+  <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(isFullWindow && maximize && !initmax)"
   [key]="'window_maximize'" (onClick)="sizeChange($event)"></amexio-c-icon>
-  <amexio-c-icon style = "padding-left: 10px" class="cursor-style"
-  *ngIf="(!isFullWindow && maximize )"
+   <amexio-c-icon style = "padding-left: 10px" class="cursor-style"
+  *ngIf="(!isFullWindow && maximize && !initmax )"
   [key]="'window_restore'" (click)="sizeChange($event)"></amexio-c-icon>
-
-  <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(fullScreenFlag && fullscreenMaxCard)"
+   <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(fullScreenFlag && fullscreenMaxCard)"
   [key]="'full-screen-max-icon'" (onClick)="maxScreenChangeCard($event)"></amexio-c-icon>
   <amexio-c-icon style = "padding-left: 10px" class="cursor-style"
   *ngIf="(fullScreenFlag && !fullscreenMaxCard)"
@@ -89,7 +88,7 @@ export class AmexioHeaderComponent implements OnInit, OnChanges {
   maximize = false;
 
   isFullWindow = false;
-
+  initmax = false;
   fullScreenFlag: boolean;
 
   fullscreenMaxCard: boolean;
