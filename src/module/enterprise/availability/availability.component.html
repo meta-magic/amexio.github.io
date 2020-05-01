@@ -1,4 +1,3 @@
-<!-- third structure starts-->
 <div style="margin-top: 10px;">
 
     <amexio-row>
@@ -53,15 +52,15 @@
             <span>
                 <ul style="padding: 5px 0px 2px 0px !important; margin: 0; display:flex;
                                    list-style: none;">
-                    <li [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt" style="text-align: center; display: inline-block; 
+                    <li [style.height.px]="dateSpanHt" [style.width.px]="dateSpanWt*2-3" style="text-align: center; display: inline-block; 
       line-height: 11px; margin-bottom: 3px;width:46px;
         border-left:3px solid #dcdcdc; border-top: none" class="availabilitycell availabilityborders" *ngFor="let item of newTimeArr2">
                         <!-- *ngFor="let item of newTimeArr" -->
 
                         <!-- {{item | date: 'h:mm '}} -->
-                        <div style="font-size: xx-small"> {{item.starttime | date: 'h: mm'}} </div>
-                        <div>-</div>
-                        <div style="font-size: xx-small"> {{item.endtime | date: 'h:mm'}} </div>
+                        <div style="font-size: xx-small"> {{item.starttime | date: 'h: mm'}}-{{item.endtime | date: 'h:mm'}}</div>
+                        <!-- <div>-</div>
+                        <div style="font-size: xx-small"> {{item.endtime | date: 'h:mm'}} </div> -->
                     </li>
                 </ul>
             </span>

@@ -1,3 +1,4 @@
+
 import {
   AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input,
   OnChanges, OnInit, Output, SimpleChanges, ViewChild,
@@ -77,11 +78,47 @@ export class AvailabilityComponent implements OnInit, AfterViewInit, OnChanges {
       });
 
     }
-    this.newTimeArr2 = this.dateArr1[0].slots;
+    const tarr: any = [];
+
+    this.dateArr1[0].slots.forEach((slele: any, sindex: number) => {
+      if (((sindex % 2) === 0) || (sindex === 0)) {
+        tarr.push(slele);
+      }
+    });
+    let tcnt = 0;
+    const newttarr2: any = [];
+    let prevt;
+    while (tcnt <= tarr.length - 2) {
+      let obj;
+      if (tcnt === 0) {
+
+        obj = { starttime: tarr[tcnt].starttime, endtime: tarr[tcnt + 1].starttime };
+        prevt = obj.endtime;
+        newttarr2.push(obj);
+      } else {
+
+        obj = { starttime: prevt, endtime: tarr[tcnt + 1].starttime };
+
+        prevt = obj.endtime;
+        if (!((obj.starttime.getHours() === obj.endtime.getHours()) &&
+          (obj.starttime.getMinutes() === obj.endtime.getMinutes()))) {
+          newttarr2.push(obj);
+        }
+      }
+      tcnt = tcnt + 1;
+    }
+    const prevlastobj = newttarr2[newttarr2.length - 1];
+
+    const lastendtime = new Date(newttarr2[newttarr2.length - 1].endtime);
+
+    lastendtime.setHours(lastendtime.getHours() + 1);
+    const lastobj = { starttime: prevlastobj.endtime, endtime: lastendtime };
+    newttarr2.push(lastobj);
+
+    this.newTimeArr2 = newttarr2;
   }
 
   updateComponent() {
-    // this.labelData = this._labelData
     this.generateData();
   }
   ngOnChanges(changes: SimpleChanges) {
