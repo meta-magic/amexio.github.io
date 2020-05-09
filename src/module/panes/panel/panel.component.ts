@@ -18,7 +18,10 @@
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, EventEmitter, HostListener, Inject, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
+import {
+  AfterViewInit, Component, EventEmitter, HostListener, Inject, Input, OnChanges,
+  OnDestroy, OnInit, Output, Renderer2, SimpleChanges,
+} from '@angular/core';
 
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 
@@ -50,7 +53,7 @@ import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
   ],
 })
 
-export class AmexioPanelComponent extends LifeCycleBaseComponent implements AfterViewInit, OnInit, OnDestroy {
+export class AmexioPanelComponent extends LifeCycleBaseComponent implements AfterViewInit, OnInit, OnChanges, OnDestroy {
 
   /*
 Properties
@@ -216,7 +219,13 @@ description : Fires the on accordion pane click event.
   ngAfterViewInit() {
     super.ngAfterViewInit();
   }
-
+  // panel expand chnages on ng
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['expanded']) {
+      this.expanded = changes.expanded.currentValue;
+      this.updatestyle();
+    }
+  }
   onTabClick(btn: any) {
     btn.classList.toggle('active-accordion');
     if (this.iconclassKey === this.faFaIconDownCss) {
@@ -229,6 +238,11 @@ description : Fires the on accordion pane click event.
     this.onClick.emit();
   }
 
+  togglePanel(expand: any) {
+    this.expanded = expand;
+    this.updatestyle();
+
+  }
   rightClickDataEmit(Data: any) {
     this.rightClick.emit(Data);
   }
