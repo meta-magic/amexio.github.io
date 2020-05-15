@@ -12,6 +12,7 @@
         </label>
         <!-- (input)="onInput($event)" -->
         <ng-container *ngIf="datepicker && !timepicker">
+            
             <input tabindex="-1" type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
                 [required]="required ? true: null" (blur)="onBlur()"  (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)"
                 class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder"
@@ -19,13 +20,15 @@
         </ng-container>
 
         <ng-container *ngIf="timepicker && !datepicker">
+                selectedDate = {{selectedDate}}
             <input type="text" [ngModel]="selectedDate | date: 'medium'" (ngModelChange)="selectedDate=$event" value="{{selectedDate|date:dateformat}} {{hrs + ' : ' + min}}"
                 [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)"
                 (input)="onInput($event)" (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
                 [attr.placeholder]="placeholder" />
         </ng-container>
-
+ 
         <ng-container *ngIf="datepicker && timepicker">
+                selectedDate = {{selectedDate}}
             <input type="text" [ngModel]="selectedDate | date: 'medium'" (ngModelChange)="selectedDate=$event" value="{{selectedDate|date:dateformat}}"
                 [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)"
                 (input)="onInput($event)" (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"

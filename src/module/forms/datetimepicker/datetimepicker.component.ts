@@ -342,8 +342,15 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.daysTitle.push({ text: 'Sa' });
     this.daysTitle.push({ text: 'Su' });
   }
+  validateDateModel() {
+    if (this.dateModel && typeof (this.dateModel) === 'string') {
+      this.dateModel = new Date(this.dateModel);
+    }
+  }
+
   private createDaysForCurrentMonths(selectedPeriod: any) {
     this.daysArray = [];
+    this.validateDateModel();
     const date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
     const extras = (date.getDay() + 6) % 7; // How many days of the last month do we need to include?
     date.setDate(date.getDate() - extras); // Skip back to the previous monday
@@ -435,6 +442,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.selectedDate.setHours(this.hrs);
       this.selectedDate.setMinutes(this.min);
       this.resetSelection(dateObj.date);
+
       this.dateModel = this.selectedDate;
       this.dateModel.setDate(this.selectedDate.getDate());
       this.dateModel.setMonth(this.selectedDate.getMonth());
@@ -451,7 +459,6 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.dateModel = this.selectedDate.getFullYear() + '-' +
           ('0' + (this.selectedDate.getMonth() + 1)).slice(-2)
           + '-' + ('0' + this.selectedDate.getDate()).slice(-2);
-
         this.setDateModel();
         this.onChangeCallback(this.dateModel);
       }
@@ -707,6 +714,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
         + '-' + ('0' + this.dateModel.getDate()).slice(-2)
         ;
+
       this.setDateModel();
       this.onChangeCallback(this.dateModel);
     }
@@ -781,8 +789,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         if (!this.timestamp) {
           this.dateModel = new Date(this.dateModel);
           this.dateModel = this.dateModel.getFullYear() + '-' +
-          ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
-          + '-' + ('0' + this.dateModel.getDate()).slice(-2)
+            ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
+            + '-' + ('0' + this.dateModel.getDate()).slice(-2)
             ;
 
           this.setDateModel();
@@ -794,9 +802,10 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         if (!this.timestamp) {
           this.dateModel = new Date(this.dateModel);
           this.dateModel = this.dateModel.getFullYear() + '-' +
-          ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
-          + '-' + ('0' + this.dateModel.getDate()).slice(-2)
-          ;
+            ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
+            + '-' + ('0' + this.dateModel.getDate()).slice(-2)
+            ;
+
           this.setDateModel();
           this.onChangeCallback(this.dateModel);
 
