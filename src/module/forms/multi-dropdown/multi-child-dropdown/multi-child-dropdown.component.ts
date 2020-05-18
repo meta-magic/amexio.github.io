@@ -21,7 +21,7 @@ export class MultiChildDropdownComponent extends EventBaseComponent<any> impleme
   filteredOptions: any;
 
   @Input('field-label') fieldlabel: string;
-  @Input('child-array-key') childArrayKey = 'childrens';
+  @Input('child-array-key') childArrayKey: string;
 
   _data: any;
   componentLoaded: boolean;
@@ -71,6 +71,7 @@ export class MultiChildDropdownComponent extends EventBaseComponent<any> impleme
     public dataService: CommonDataService, private displayFieldService: DisplayFieldService, public element: ElementRef,
     public renderer: Renderer2, _cd: ChangeDetectorRef,
   ) {
+
     super(renderer, element, _cd);
 
   }
@@ -106,8 +107,8 @@ export class MultiChildDropdownComponent extends EventBaseComponent<any> impleme
           this.displayValue = this.displayFieldService.findValue(this.displayfield, item);
           this.status = true;
           return;
-        } else if (item.hasOwnProperty('childrens') && item.childrens.length > 0) {
-          item.childrens.forEach((data: any) => {
+        } else if (item.hasOwnProperty(this.childArrayKey) && item[this.childArrayKey].length > 0) {
+          item[this.childArrayKey].forEach((data: any) => {
             if (data[this.valuefield] === value) {
               this.isValid = true;
               this.displayValue = this.displayFieldService.findValue(this.displayfield, data);

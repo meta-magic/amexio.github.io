@@ -53,7 +53,7 @@
         </ng-container>
         <ng-container *ngIf="group">
 
-          <multi-child-dropdown (sendDataToParent)="getChildData($event)" (onChildRecordSelect)="onItemSelectdata($event)" [data]="filteredOptions"
+          <multi-child-dropdown [child-array-key]="childArrayKey" (sendDataToParent)="getChildData($event)" (onChildRecordSelect)="onItemSelectdata($event)" [data]="filteredOptions"
           [display-label]="displayfield">
         </multi-child-dropdown>
 

@@ -1,3 +1,4 @@
+<!-- childArrayKey=>{{childArrayKey}} -->
 <li *ngFor="let node of filteredOptions  let rowindex = index" style="padding:5px"
   (keyup.arrowdown)="onArrowChildDown($event,filteredOptions,node,rowindex)"
   (mousedown)="onItemSelect({ item: node, event: $event})">
@@ -34,11 +35,10 @@
           {{item?.checked ? '&#10004;': ''}}
         </span>
         <ng-container *ngIf="item[childArrayKey] && item[childArrayKey].length > 0">
-        <multi-child-dropdown [data]="item[childArrayKey]" (onChildRecordSelect)="onItemSelect($event)"
+         <multi-child-dropdown [child-array-key]="childArrayKey" [data]="item[childArrayKey]" (onChildRecordSelect)="onItemSelect($event)"
           [display-label]="displayfield">
 
-          <!-- {{index}} -->
-        </multi-child-dropdown>
+         </multi-child-dropdown>
         </ng-container>
       </li>
     </span>
