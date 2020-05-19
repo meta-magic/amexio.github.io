@@ -335,6 +335,17 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
     data.forEach((element: any, index: number) => {
       element['refId'] = '' + rannumber + '-';
       if (element.hasOwnProperty(this.childarraykey)) {
+        let idstr;
+
+        let id1: any = Math.random().toPrecision(8);
+        id1 = id1 * 100000000;
+        let id2: any = Math.random().toPrecision(4);
+        id2 = id2 * 10000;
+        idstr = id1 + '-' + id2;
+        if (!element.hasOwnProperty('id')) {
+          element['id'] = idstr;
+        }
+
         this.generateIndex(element[this.childarraykey], element.id.split('-')[1], rannumber);
       }
     });
