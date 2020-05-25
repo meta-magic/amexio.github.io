@@ -529,6 +529,7 @@ description : Set enable / disable popover.
     }
     this.isValid = true;
     if (!this.enablecheckbox) {
+      this.hideDropdown = true;
       this.hide();
     }
     this.isComponentValid.emit(true);
@@ -636,7 +637,11 @@ description : Set enable / disable popover.
   }
   closeOnEScape(event: any) {
     this.showToolTip = false;
-    this.hide();
+    if (!this.enablecheckbox) {
+      this.hideDropdown = true;
+      this.hide();
+    }
+
   }
   onChange(event: string) {
     this.innerValue = event;
@@ -843,6 +848,7 @@ description : Set enable / disable popover.
       },
     };
   }
+
   selectAll(event: any) {
     this.selectAllFlag = !this.selectAllFlag;
     const optionsChecked: any = [];
@@ -865,9 +871,11 @@ description : Set enable / disable popover.
     }
     this.onMultiSelect.emit(this.multiselectValues);
   }
+
   onSaveClick(event: any) {
     this.displayValue = this.setMultiSelect();
     this.onMultiSelect.emit(this.multiselectValues);
+    this.hideDropdown = true;
     this.hide();
   }
 }

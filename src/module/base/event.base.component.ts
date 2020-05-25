@@ -18,12 +18,13 @@
 import { ChangeDetectorRef, ElementRef, Renderer2 } from '@angular/core';
 import { ValueAccessorBaseComponent } from './value-accessor';
 
-export class  EventBaseComponent<T> extends ValueAccessorBaseComponent<T> {
+export class EventBaseComponent<T> extends ValueAccessorBaseComponent<T> {
 
     self = false;
     itemClick = false;
     dropdownstyle: any;
     documentClickListener: any;
+    hideDropdown: any = undefined;
 
     constructor(public renderer: Renderer2, public element: ElementRef, private cd: ChangeDetectorRef) {
         super();
@@ -32,7 +33,7 @@ export class  EventBaseComponent<T> extends ValueAccessorBaseComponent<T> {
 
     onBaseFocusEvent(event: any) {
         this.self = true;
-        this.dropdownstyle = {visibility: 'visible'};
+        this.dropdownstyle = { visibility: 'visible' };
         this.bindDocumentClickListener();
     }
 
@@ -50,8 +51,8 @@ export class  EventBaseComponent<T> extends ValueAccessorBaseComponent<T> {
 
     bindDocumentClickListener() {
         if (!this.documentClickListener) {
-             this.documentClickListener = this.renderer
-                                              .listen('document', 'click', (event: any) => this.handleDocumentListener(event));
+            this.documentClickListener = this.renderer
+                .listen('document', 'click', (event: any) => this.handleDocumentListener(event));
 
         }
 
@@ -78,8 +79,10 @@ export class  EventBaseComponent<T> extends ValueAccessorBaseComponent<T> {
         }
 
     }
-
     hide() {
-        this.dropdownstyle = {visibility: 'hidden'};
+        if (this.hideDropdown || this.hideDropdown === undefined) {
+            this.dropdownstyle = { visibility: 'hidden' };
+            this.hideDropdown = false;
+        }
     }
 }
