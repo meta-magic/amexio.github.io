@@ -86,6 +86,7 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
    description : Allow Drop Zone For Files.
    */
   @Input() droppable: boolean;
+  @Input('show-list') showList = true;
 
   responseData: any;
 

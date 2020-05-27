@@ -19,6 +19,7 @@
     </div>
 </ng-container>
 
+<ng-container *ngIf="showList">
 <div class='file-upload-box' style='width: 100%'>
     <ul>
             <li *ngFor='let file of uploadedFiles ; let index = index' class='file-upload-info'>
@@ -28,3 +29,4 @@
                 </li>
     </ul>
 </div>
+</ng-container>
