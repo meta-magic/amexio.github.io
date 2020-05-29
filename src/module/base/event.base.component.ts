@@ -24,7 +24,7 @@ export class EventBaseComponent<T> extends ValueAccessorBaseComponent<T> {
     itemClick = false;
     dropdownstyle: any;
     documentClickListener: any;
-    hideDropdown: any = undefined;
+    // hideDropdown: any = undefined;
 
     constructor(public renderer: Renderer2, public element: ElementRef, private cd: ChangeDetectorRef) {
         super();
@@ -80,9 +80,6 @@ export class EventBaseComponent<T> extends ValueAccessorBaseComponent<T> {
 
     }
     hide() {
-        if (this.hideDropdown || this.hideDropdown === undefined) {
-            this.dropdownstyle = { visibility: 'hidden' };
-            this.hideDropdown = false;
-        }
+        this.dropdownstyle = { visibility: 'hidden' };
     }
 }
