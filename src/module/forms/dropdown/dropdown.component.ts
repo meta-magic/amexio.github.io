@@ -528,7 +528,10 @@ description : Set enable / disable popover.
       this.onRecordSelect.emit(selectedItem);
     }
     this.isValid = true;
-    this.hide();
+    if (!this.enablecheckbox) {
+      this.hideDropdown = true;
+      this.hide();
+    }
     this.isComponentValid.emit(true);
   }
 
@@ -601,6 +604,9 @@ description : Set enable / disable popover.
     }
   }
   onDropDownClick(event: any) {
+    if (!this.enablecheckbox) {
+      this.hideDropdown = true;
+    }
     this.onBaseFocusEvent(event);
     this.showToolTip = true;
     this.onClick.emit(event);
@@ -634,9 +640,12 @@ description : Set enable / disable popover.
   }
   closeOnEScape(event: any) {
     this.showToolTip = false;
-    this.hide();
-  }
+    if (!this.enablecheckbox) {
+      this.hideDropdown = true;
+      this.hide();
+    }
 
+  }
   onChange(event: string) {
     this.innerValue = event;
     this.isValid = true;
@@ -762,6 +771,9 @@ description : Set enable / disable popover.
     this.onBlur.emit();
   }
   onFocus(elem: any) {
+    if (!this.enablecheckbox) {
+      this.hideDropdown = true;
+    }
     this.onBaseFocusEvent(elem);
     this.showToolTip = true;
     this.posixUp = this.getListPosition(elem);
@@ -869,6 +881,7 @@ description : Set enable / disable popover.
   onSaveClick(event: any) {
     this.displayValue = this.setMultiSelect();
     this.onMultiSelect.emit(this.multiselectValues);
+    this.hideDropdown = true;
     this.hide();
   }
 }

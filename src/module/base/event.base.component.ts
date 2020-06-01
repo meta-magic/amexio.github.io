@@ -24,7 +24,8 @@ export class EventBaseComponent<T> extends ValueAccessorBaseComponent<T> {
     itemClick = false;
     dropdownstyle: any;
     documentClickListener: any;
-    // hideDropdown: any = undefined;
+    /* hideDropdown : flag for multiselect with chcekbox */
+    hideDropdown: any = undefined;
 
     constructor(public renderer: Renderer2, public element: ElementRef, private cd: ChangeDetectorRef) {
         super();
@@ -80,6 +81,9 @@ export class EventBaseComponent<T> extends ValueAccessorBaseComponent<T> {
 
     }
     hide() {
-        this.dropdownstyle = { visibility: 'hidden' };
+        if (this.hideDropdown || this.hideDropdown === undefined) { // fix to handle visibility in case of multiselect
+            this.dropdownstyle = { visibility: 'hidden' };
+            this.hideDropdown = false;
+        }
     }
 }
