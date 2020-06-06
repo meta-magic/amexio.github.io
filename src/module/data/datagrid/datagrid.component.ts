@@ -110,6 +110,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
    description : Local Data binding.
    */
   _data: any;
+  allRecords: any;
   @Input('data')
   set data(value: any[]) {
     this._data = value;
@@ -679,6 +680,8 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     }
     this.setPaginatorData();
     this.mask = false;
+
+    this.allRecords = JSON.parse(JSON.stringify(this.data));
   }
 
   setPaginatorData() {
