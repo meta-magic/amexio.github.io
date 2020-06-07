@@ -518,8 +518,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                 parentRef.checked = false;
             }
         }
-        // tslint:disable-next-line: no-commented-code
-        // this.searchAllParent(parentRef);
+        this.searchAllParent(parentRef);
         const obj = {};
         for (const [key, value] of Object.entries(data)) {
             if (key !== 'id') {
@@ -542,8 +541,9 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     searchAllParent(parentRef: any) {
         if (parentRef['parentRef'] !== 1) {
             parentRef['parentRef'].checked = parentRef.checked;
+            this.searchAllParent(parentRef['parentRef']);
         }
-        this.searchAllParent(parentRef['parentRef']);
+
     }
 
     setCheckedStatusFromParent(object: any) {
