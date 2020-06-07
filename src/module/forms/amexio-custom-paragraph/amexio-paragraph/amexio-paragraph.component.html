@@ -1,0 +1,21 @@
+<span *ngIf="!newline" [class]="'custom-p-newline'"></span>
+  <amexio-label
+    class="custom-p-label"
+    *ngIf="!editContent"
+    size="medium"
+    [font-color]="color"
+    enable-click="isEditable"
+    (onClick)="onLblClick()"
+    >{{ content }}
+  </amexio-label>
+
+  &nbsp;
+
+  <amexio-text-input
+    class="custom-p-text"
+    *ngIf="editContent"
+    name="editableText"
+    [(ngModel)]="textcontent"
+    (change)="onTxtUpdate()"
+  >
+  </amexio-text-input>

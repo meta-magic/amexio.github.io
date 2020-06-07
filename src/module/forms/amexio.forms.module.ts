@@ -7,6 +7,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AmexioSearchAdvanceComponent } from './advancesearch/searchadvance.component';
 import { SearchboxtoolComponent } from './advancesearch/searchboxtool.component';
+import { AmexioParagraphComponent } from './amexio-custom-paragraph/amexio-paragraph/amexio-paragraph.component';
 import { AmexioButtonDropdownComponent } from './button-dropdown/button.dropdown';
 import { AmexioButtonDropDownItemComponent } from './button-dropdown/button.dropdown.item';
 import { AmexioSpiltButtonDropdownComponent } from './button-dropdown/split.button.dropdown';
@@ -73,6 +74,7 @@ import { AmexioSocialComponent } from './socialmedia/social.component';
 import { AmexioMultiRangePickerComponent } from './multirangedatepicker/multirangedatepicker.component';
 
 import { AmexioInputPatternDirective } from '../directive/input-mask';
+import { AmexioCustomParagraphComponent } from './amexio-custom-paragraph/amexio-custom-paragraph.component';
 
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
@@ -137,6 +139,8 @@ const FORM_COMPONENTS = [
   AmexioMultiRangePickerComponent,
   AmexioMultiDropDownComponent,
   MultiChildDropdownComponent,
+  AmexioParagraphComponent,
+  AmexioCustomParagraphComponent,
 ];
 
 @NgModule({
@@ -149,9 +153,13 @@ const FORM_COMPONENTS = [
   ],
   exports: FORM_COMPONENTS,
   declarations: FORM_COMPONENTS,
+  entryComponents: [
+    AmexioParagraphComponent,
+  ],
   providers: [CommonDataService, DomHandler, ScriptLoadService,
   ],
 })
+
 export class AmexioFormsModule {
   static forRoot(): ModuleWithProviders {
     return {
