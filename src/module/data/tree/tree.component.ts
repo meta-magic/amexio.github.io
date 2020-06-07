@@ -11,7 +11,7 @@ import {
     AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnDestroy,
     OnInit, Output, Renderer2, TemplateRef,
 } from '@angular/core';
-import { CommonDataService } from '../../services/data/common.data.service';
+import { CommonDataService } from 'amexio-ng-extensions';
 
 @Component({
     selector: 'amexio-treeview', templateUrl: './tree.component.html',
@@ -394,6 +394,18 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         });
     }
 
+    // method to set the reference of parent in every child
+    setParentRef(data: any, parent: any) {
+
+        const currentParent = data[0];
+        data.forEach((element: any, index: number) => {
+            element['parentRef'] = parent;
+            if (element[this.childarraykey]) {
+                this.setParentRef(element[this.childarraykey], currentParent);
+            }
+        });
+    }
+
     activateNode(data: any[], node: any) {
         for (const i of data) {
             if (node === data[i] && !i[this.childarraykey]) {
@@ -424,11 +436,13 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         if (this.globalTreeData.length === 0 && !this.filtertreeflag) {
             this.globalTreeData = this.data;
             this.generateIndex(this.globalTreeData, 1, window.crypto.getRandomValues(new Uint32Array(1))[0]);
+            this.setParentRef(this.globalTreeData, 1); // add a parent reference to every child
         }
         this.setSelectedFlag();
         this.activateNode(this.data, null);
     }
     // To add isSelected flag explicitily in tree Data
+
     setSelectedFlag() {
         if (this.parentRef && this.parentRef.length > 0) {
             this.parentRef.forEach((node: any) => {
@@ -462,6 +476,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
 
     emitCheckedData(checkedData: any, parentRef: any, data1: any) {
+
         checkedData.checked = !checkedData.checked;
         if (checkedData.checked) {
             if (checkedData.hasOwnProperty(this.childarraykey)) {
@@ -487,6 +502,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
 
     emitData(data: any, parentRef: any, data1: any) {
+
         let checkFlag = false;
         if (parentRef) {
             if (data1.length > 0) {
@@ -502,12 +518,14 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                 parentRef.checked = false;
             }
         }
+        this.searchAllParent(parentRef);
         const obj = {};
         for (const [key, value] of Object.entries(data)) {
             if (key !== 'id') {
                 obj[key] = value;
             }
         }
+
         this.onTreeNodeChecked.emit(obj);
     }
 
@@ -520,7 +538,15 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         });
     }
 
+    searchAllParent(parentRef: any) {
+        if (parentRef['parentRef'] !== 1) {
+            parentRef['parentRef'].checked = parentRef.checked;
+        }
+        this.searchAllParent(parentRef['parentRef']);
+    }
+
     setCheckedStatusFromParent(object: any) {
+
         object[this.childarraykey].forEach((childOption: any) => {
             childOption.checked = true;
             if (childOption.hasOwnProperty(this.childarraykey)) {
@@ -530,6 +556,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
 
     onTreeNodeCheck(data: any) {
+
         this.onTreeNodeChecked.emit(data);
     }
 
