@@ -7,7 +7,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Renderer2, Renderer } from '@angular/core';
 
-describe('amexio-treeview', () => {
+xdescribe('amexio-treeview', () => {
     let comp: AmexioTreeViewComponent;
     let fixture: ComponentFixture<AmexioTreeViewComponent>;
 
