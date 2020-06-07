@@ -11,7 +11,7 @@ import {
     AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnDestroy,
     OnInit, Output, Renderer2, TemplateRef,
 } from '@angular/core';
-import { CommonDataService } from 'amexio-ng-extensions';
+import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
     selector: 'amexio-treeview', templateUrl: './tree.component.html',
@@ -518,7 +518,8 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                 parentRef.checked = false;
             }
         }
-        this.searchAllParent(parentRef);
+        // tslint:disable-next-line: no-commented-code
+        // this.searchAllParent(parentRef);
         const obj = {};
         for (const [key, value] of Object.entries(data)) {
             if (key !== 'id') {

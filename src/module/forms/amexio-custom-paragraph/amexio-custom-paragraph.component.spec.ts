@@ -8,7 +8,7 @@ xdescribe('AmexioCustomParagraphComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AmexioCustomParagraphComponent ]
+      declarations: [ AmexioCustomParagraphComponent],
     })
     .compileComponents();
   }));

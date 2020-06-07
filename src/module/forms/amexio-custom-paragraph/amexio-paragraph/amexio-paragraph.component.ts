@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'amexio-paragraph',
   templateUrl: './amexio-paragraph.component.html',
-  styleUrls: ['./amexio-paragraph.component.scss'],
+
 })
 export class AmexioParagraphComponent implements OnInit {
   constructor() { }
