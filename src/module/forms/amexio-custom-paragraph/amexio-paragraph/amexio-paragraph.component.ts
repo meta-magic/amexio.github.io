@@ -72,4 +72,10 @@ description : flag to set new line
     this.content = this.textcontent;
     this.editContent = false;
   }
+
+  onTxtBlur() {
+    this.content = this.textcontent;
+    this.editContent = false;
+  }
+
 }
