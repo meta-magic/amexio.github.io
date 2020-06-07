@@ -17,7 +17,7 @@ import { RouterService } from '../services/routing/routing.service';
 class RouterTestComponent {
 }
 
-describe('Directive: amexio-route-animation', () => {
+xdescribe('Directive: amexio-route-animation', () => {
     let comp: RouterTestComponent;
     let fixture: ComponentFixture<RouterTestComponent>;
     let inputEl: DebugElement;
