@@ -13,8 +13,8 @@
   name="editableText"
   [font-size] = "fontsize"
   [(ngModel)]="textcontent"
-  (change)="onTxtUpdate()"
-  (onBlur)="onTxtUpdate()"
+  (change)="onTxtUpdate($event)"
+  (onBlur)="onTxtUpdate($event)"
 >
 </amexio-text-input>  &nbsp;
 &nbsp; <span *ngIf="newline" [class]="'custom-p-newline'"></span>
