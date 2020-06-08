@@ -1,5 +1,7 @@
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild,
-  ViewContainerRef } from '@angular/core';
+import {
+  Component, ComponentFactoryResolver, Input, OnInit, ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { AmexioParagraphComponent } from './amexio-paragraph/amexio-paragraph.component';
 
@@ -89,11 +91,24 @@ export class AmexioCustomParagraphComponent implements OnInit {
   addComponent(attr: any) {
     const factory = this.resolver.resolveComponentFactory(AmexioParagraphComponent);
     this.componentRef = this.customText.createComponent(factory);
-
+    this.componentRef.instance.data = this.data;
     this.componentRef.instance.content = attr.content;
     this.componentRef.instance.color = attr.color;
-    this.componentRef.instance.type = attr.type;
-    this.componentRef.instance.newline = attr.newline;
+    if (attr.type) {
+      this.componentRef.instance.type = attr.type;
+    } else {
+      this.componentRef.instance.type = 'label';
+    }
+    if (attr.newline) {
+      this.componentRef.instance.newline = attr.newline;
+    } else {
+      this.componentRef.instance.newline = false;
+    }
+    if (attr.fontsize) {
+      this.componentRef.instance.fontsize = attr.fontsize;
+    } else {
+      this.componentRef.instance.fontsize = 'medium';
+    }
   }
 
   loadData() {

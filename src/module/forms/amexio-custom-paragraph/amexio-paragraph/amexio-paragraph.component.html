@@ -1,7 +1,7 @@
-<amexio-label
+  <amexio-label
   class="custom-p-label"
   *ngIf="!editContent"
-  size="medium"
+  [size]="fontsize"
   [font-color]="color"
   enable-click="isEditable"
   (onClick)="onLblClick()"
@@ -11,9 +11,10 @@
   class="custom-p-text"
   *ngIf="editContent"
   name="editableText"
+  [font-size] = "fontsize"
   [(ngModel)]="textcontent"
   (change)="onTxtUpdate()"
-  (onBlur)="onTxtBlur()"
+  (onBlur)="onTxtUpdate()"
 >
-</amexio-text-input>
+</amexio-text-input>  &nbsp;
 &nbsp; <span *ngIf="newline" [class]="'custom-p-newline'"></span>

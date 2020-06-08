@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'amexio-paragraph',
   templateUrl: './amexio-paragraph.component.html',
-
 })
 export class AmexioParagraphComponent implements OnInit {
   constructor() { }
@@ -13,7 +12,7 @@ export class AmexioParagraphComponent implements OnInit {
  datatype : string
  version : 5.21 onwards
  default : label
- description : label | editabletext
+ description : label | editabletextfield
  */
   @Input('type') type = 'label';
   /*
@@ -44,12 +43,40 @@ description : flag to set new line
 */
   @Input('new-line') newline = false;
 
-  editContent = false;
-  isEditable = false;
+  /*
+Properties
+name : fontsize
+datatype : string
+version : 5.21 onwards
+default : medium
+description : small | medium | large
+*/
+  @Input('font-size') fontsize = 'medium';
+
+  editContent: boolean;
+  isEditable: boolean;
   textcontent: string;
 
+  /*
+ Properties
+ name : data
+ datatype : string
+ version : 5.21 onwards
+ default : none
+ description : local JSON data variable
+ */
+  _data: any;
+  responseData: any;
+  @Input('data')
+  set data(value: any[]) {
+    this._data = value;
+  }
+  get data(): any[] {
+    return this._data;
+  }
   ngOnInit() {
-
+    this.editContent = false;
+    this.isEditable = false;
     this.validateLabel();
   }
 
@@ -71,11 +98,12 @@ description : flag to set new line
   onTxtUpdate() {
     this.content = this.textcontent;
     this.editContent = false;
+    console.log(this.data);
   }
 
-  onTxtBlur() {
-    this.content = this.textcontent;
-    this.editContent = false;
-  }
-
+  // onTxtBlur() {
+  //   this.content = this.textcontent;
+  //   this.editContent = false;
+  //   console.log(this.data);
+  // }
 }
