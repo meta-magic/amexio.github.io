@@ -1,5 +1,7 @@
 import {
-  Component, ComponentFactoryResolver, Input, OnInit, ViewChild,
+  Component, ComponentFactoryResolver, EventEmitter, Input, OnInit,
+  Output,
+  ViewChild,
   ViewContainerRef,
 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
@@ -31,13 +33,13 @@ export class AmexioCustomParagraphComponent implements OnInit {
   }
 
   /*
- Properties
- name : data-reader
- datatype : string
- version : 5.21 onwards
- default : none
- description : Key in JSON Datasource for records.
- */
+  Properties
+  name : data-reader
+  datatype : string
+  version : 5.21 onwards
+  default : none
+  description : Key in JSON Datasource for records.
+  */
   @Input('data-reader') datareader: string;
 
   /*
@@ -62,6 +64,15 @@ export class AmexioCustomParagraphComponent implements OnInit {
 
   viewData: any[];
   componentRef: any;
+  /*
+  Events
+  name : dataChange
+  datatype : none
+  version : 5.21 onwards
+  default : none
+  description : returns the updated json value
+  */
+  @Output() dataChange = new EventEmitter();
 
   @ViewChild('customtext', { read: ViewContainerRef }) customText: ViewContainerRef;
 
@@ -83,15 +94,16 @@ export class AmexioCustomParagraphComponent implements OnInit {
     this.data = responsedata;
     this.viewData = this.data;
 
-    this.viewData.forEach((ele) => {
+    this.viewData.forEach((ele, index) => {
+      ele['index'] = index;
       this.addComponent(ele);
     });
   }
 
-  addComponent(attr: any) {
+  addComponent(attr: { content: any; color: any; type: any; newline: any; fontsize: any; }) {
     const factory = this.resolver.resolveComponentFactory(AmexioParagraphComponent);
     this.componentRef = this.customText.createComponent(factory);
-    this.componentRef.instance.data = this.data;
+    this.componentRef.instance.pdata = this.data;
     this.componentRef.instance.content = attr.content;
     this.componentRef.instance.color = attr.color;
     if (attr.type) {
@@ -109,13 +121,20 @@ export class AmexioCustomParagraphComponent implements OnInit {
     } else {
       this.componentRef.instance.fontsize = 'medium';
     }
+    (this.componentRef.instance).pdataChange.subscribe(() => {
+      this.dataChanged();
+    });
+  }
+
+  dataChanged() {
+    this.dataChange.emit(this.data);
   }
 
   loadData() {
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response: any) => {
         this.responseData = response;
-      }, (error) => {
+      }, (error: any) => {
       }, () => {
         this.setData(this.responseData);
       });

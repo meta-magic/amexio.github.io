@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'amexio-paragraph',
@@ -65,15 +65,25 @@ description : small | medium | large
  default : none
  description : local JSON data variable
  */
-  _data: any;
-  responseData: any;
-  @Input('data')
-  set data(value: any[]) {
-    this._data = value;
+  _pdata: any;
+
+  @Input('pdata')
+  set pdata(value: any[]) {
+    this._pdata = value;
   }
-  get data(): any[] {
-    return this._data;
+  get pdata(): any[] {
+    return this._pdata;
   }
+  /*
+  Events
+  name : pdataChange
+  datatype : none
+  version : 5.21 onwards
+  default : none
+  description : returns the updated json value
+  */
+  @Output() pdataChange = new EventEmitter();
+
   ngOnInit() {
     this.editContent = false;
     this.isEditable = false;
@@ -95,15 +105,14 @@ description : small | medium | large
     }
   }
 
-  onTxtUpdate() {
+  onTxtUpdate(item: any) {
+    this.pdata.forEach((element) => {
+      if (element['content'] === this.content) {
+        element['content'] = item;
+      }
+    });
     this.content = this.textcontent;
     this.editContent = false;
-    console.log(this.data);
+    this.pdataChange.emit(this.pdata);
   }
-
-  // onTxtBlur() {
-  //   this.content = this.textcontent;
-  //   this.editContent = false;
-  //   console.log(this.data);
-  // }
 }
