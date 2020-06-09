@@ -518,7 +518,9 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                 parentRef.checked = false;
             }
         }
-        this.searchAllParent(parentRef);
+        if (parentRef) {  // for root node there wont be a parent
+            this.searchAllParent(parentRef);
+        }
         const obj = {};
         for (const [key, value] of Object.entries(data)) {
             if (key !== 'id') {
