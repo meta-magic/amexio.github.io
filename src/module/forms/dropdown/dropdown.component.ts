@@ -340,6 +340,10 @@ description : Set enable / disable popover.
 
   }
   ngOnInit() {
+    if (!this.enablecheckbox) {
+      this.hideDropdown = true;
+    }
+
     this.name = this.generateName(this.name, this.fieldlabel, 'dropdowninput');
     this.componentId = this.createCompId('dropdown', this.name);
     this.isValid = this.allowblank;
@@ -754,6 +758,7 @@ description : Set enable / disable popover.
     if (this.self) {
       this.self = false;
     }
+    this.hideDropdown = true;
     if (event.target && event.target.value && this.filteredOptions &&
       this.filteredOptions.length === 1) {
       const fvalue = event.target.value;
@@ -771,9 +776,8 @@ description : Set enable / disable popover.
     this.onBlur.emit();
   }
   onFocus(elem: any) {
-    if (!this.enablecheckbox) {
-      this.hideDropdown = true;
-    }
+    this.hideDropdown = true;
+
     this.onBaseFocusEvent(elem);
     this.showToolTip = true;
     this.posixUp = this.getListPosition(elem);
@@ -830,6 +834,9 @@ description : Set enable / disable popover.
     this.onTouchedCallback = fn;
   }
   onIconClick() {
+    if (!this.enablecheckbox) {
+      this.hideDropdown = true;
+    }
     if (this.dropdownstyle.visibility === 'hidden') {
       this.showToolTip = false;
     }
