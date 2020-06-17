@@ -881,6 +881,9 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     const newRows = [];
     let startIndex = 0;
     let endIndex = this.pagesize;
+    if (this.data.length <= this.pagesize) {
+      this.currentPage = 1;
+    }
     if (this.currentPage > 1) {
       startIndex = (this.currentPage - 1) * this.pagesize;
       endIndex = startIndex + this.pagesize;
