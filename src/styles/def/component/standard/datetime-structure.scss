@@ -341,3 +341,7 @@
 .tooltip:hover .tooltiptext {
    visibility: visible;
 }
+
+.table:focus {
+  outline: none;
+}

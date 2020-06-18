@@ -302,33 +302,38 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       });
     }
   }
-
   onHrsMinSelect(event: any) {
+
+    this.dropdownstyle = { visibility: 'visible' };
+    this.showToolTip = true;
+    super.posateItemClick();
+
     this.selectedDate.setDate(this.selectedDate.getDate());
     this.selectedDate.setMonth(this.selectedDate.getMonth());
     this.selectedDate.setFullYear(this.selectedDate.getFullYear());
     this.selectedDate.setHours(this.hrs);
     this.selectedDate.setMinutes(this.min);
+    this.dateModel = new Date(this.selectedDate);
 
-    this.dateModel.setDate(this.dateModel.getDate());
-    this.dateModel.setMonth(this.dateModel.getMonth());
-    this.dateModel.setFullYear(this.dateModel.getFullYear());
-    this.dateModel.setHours(this.hrs);
-    this.dateModel.setMinutes(this.min);
     this.value = this.selectedDate;
-    this.isValid = true;
+
+    this.onChangeCallback(this.dateModel);
     this.isComponentValid.emit(true);
-    this.change.emit(this.selectedDate);
 
     this.isValid = true;
-    this.isComponentValid.emit(true);
-    if (this.inlineDatepicker) {
+
+    if (this.inlineDatepicker || (this.datepicker && this.timepicker)) {
       this.showToolTip = true;
+
     } else {
       this.showToolTip = !this.showToolTip;
     }
+    this.dropdownstyle = { visibility: 'visible' };
+    super.itemClicked(true);
+    this.change.emit(this.dateModel);
 
   }
+
   onNgChange() {
     this.change.emit(this.selectedDate);
   }
@@ -431,8 +436,10 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   onDateClick(dateObj: any, event: any) {
     if (dateObj.isDisabled === false) {
       this.change.emit(dateObj.date);
-      if (this.inlineDatepicker === false) {
-        super.itemClicked();
+      if ((this.inlineDatepicker === false) && (this.timepicker === false && this.datepicker === true)) {
+        super.itemClicked(false);
+      } else if ((this.inlineDatepicker === false) && (this.datepicker === true) && (this.timepicker === true)) {
+        super.posateItemClick();
       }
       this.hostFlag = true;
       this.selectedDate = dateObj.date;

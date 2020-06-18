@@ -43,6 +43,10 @@ export class ListBaseDatepickerComponent<T> extends AmexioFormValidator {
         this.hide();
     }
 
+    posateItemClick() {
+        this.itemClick = true;
+    }
+
     focus(event: any) {
         this.self = true;
         this.dropdownstyle = { visibility: 'visible' };
@@ -50,14 +54,16 @@ export class ListBaseDatepickerComponent<T> extends AmexioFormValidator {
     }
 
     blur(event: any) {
-        this.itemClicked();
+        this.itemClicked(false);
     }
 
-    itemClicked() {
-        this.itemClick = true;
-        this.hide();
-        this.unbindDocumentClickListener();
-        this.clearClicks();
+    itemClicked(flag: boolean) {
+        if (flag === false) {
+            this.itemClick = true;
+            this.hide();
+            this.unbindDocumentClickListener();
+            this.clearClicks();
+        }
     }
 
     bindDocumentClickListener() {

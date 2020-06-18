@@ -28,10 +28,15 @@
         </ng-container>
  
         <ng-container *ngIf="datepicker && timepicker">
-            <input type="text" [ngModel]="selectedDate | date: 'medium'" (ngModelChange)="selectedDate=$event" value="{{selectedDate|date:dateformat}}"
+            <!-- <input type="text" [ngModel]="selectedDate | date: 'medium'" (ngModelChange)="selectedDate=$event" value="{{selectedDate|date:dateformat}}"
                 [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)"
                 (input)="onInput($event)" (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
-                [attr.placeholder]="placeholder" />
+                [attr.placeholder]="placeholder" /> -->
+
+                <input tabindex="-1" type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
+                [required]="required ? true: null" (blur)="onBlur()"  (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)"
+                class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder"
+            />
         </ng-container>
 
         <div class="drodown-caret-down" [ngStyle]="{'cursor':disabled ? 'not-allowed' : 'pointer'}" (click)="openPicker(rootDiv)">
@@ -164,7 +169,8 @@
         </table> -->
 
         <!-- new time picker format -->
-        <span aria-describedby="table" role="none" aria-label="timepicker window opened" tabindex="1" class="table" [ngStyle]="{'display': timepicker ? 'flex' : 'none'}"
+        <!-- aria-describedby="table" role="none" aria-label="timepicker window opened" -->
+        <span style="outline:none" tabindex="1" class="table" [ngStyle]="{'display': timepicker ? 'flex' : 'none'}"
             (click)="onTimeClick($event)" style="cursor : pointer; 
             text-align: center;padding: 5px;
         display: flex; flex-direction: row; justify-content: space-around">

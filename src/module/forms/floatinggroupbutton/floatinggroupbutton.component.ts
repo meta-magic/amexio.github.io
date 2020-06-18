@@ -243,7 +243,7 @@ explicitly (using position-top/position-bottom/position-left/position-right)
 
   toggleVisibility() {
     if (this.dropdownstyle.visibility === 'visible') {
-      super.itemClicked();
+      super.itemClicked(false);
     } else {
       const event: any = '';
       super.focus(event);
