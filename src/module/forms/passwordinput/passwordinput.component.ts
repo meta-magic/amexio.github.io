@@ -212,6 +212,9 @@ description : Set enable / disable popover.
   */
   @ViewChild(NgModel) model: NgModel;
   @Input('name') name: string;
+
+  @Output() onEnter: any = new EventEmitter<any>();
+
   show = false;
   type = 'password';
   componentId: any;
@@ -244,5 +247,9 @@ description : Set enable / disable popover.
     } else {
       this.type = 'password';
     }
+  }
+
+  onEnterPress(event: any) {
+    this.onEnter.emit(this.value);
   }
 }

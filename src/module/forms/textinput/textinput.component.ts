@@ -17,7 +17,7 @@
 
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import {BaseInputEventComponent} from '../../base/base.inputevent.component';
+import { BaseInputEventComponent } from '../../base/base.inputevent.component';
 import { ValueAccessorBaseComponent } from '../../base/value-accessor';
 @Component({
   selector: 'amexio-text-input',
@@ -30,7 +30,7 @@ import { ValueAccessorBaseComponent } from '../../base/value-accessor';
   encapsulation: ViewEncapsulation.None,
 })
 
-export class AmexioTextInputComponent extends BaseInputEventComponent  implements OnInit, Validators {
+export class AmexioTextInputComponent extends BaseInputEventComponent implements OnInit, Validators {
 
   /*
    Properties
@@ -88,14 +88,14 @@ description : Sets if field is required
  description : Sets the error message for max validation
  */
   @Input('max-error-msg') maxerrormsg: string;
- /*
- Properties
- name : error-msg
- datatype : string
- version : 4.0 onwards
- default :
- description : Sets the error message for validation
- */
+  /*
+  Properties
+  name : error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message for validation
+  */
   @Input('error-msg') errormsg: string;
 
   /*
@@ -117,15 +117,15 @@ description : Show place-holder inside dropdown component
  */
   @Input() disabled: boolean;
 
-    /*
- Properties
- name : readonly
- datatype : boolean
- version : 5.21 onwards
- default : false
- description : True to readonly the field.
- */
-@Input() readonly: boolean;
+  /*
+Properties
+name : readonly
+datatype : boolean
+version : 5.21 onwards
+default : false
+description : True to readonly the field.
+*/
+  @Input() readonly: boolean;
   /*
 Properties
 name : icon-feedback
@@ -218,7 +218,6 @@ description : Apply Reg-ex to the field
  */
   @Output() onBlur: any = new EventEmitter<any>();
 
-  @Output() onEnter: any = new EventEmitter<any>();
   /*
 Events
 name : input
@@ -267,7 +266,4 @@ description : On field value change event
     super.onInputEvent(event);
   }
 
-  onEnterPress(event: any) {
-    this.onEnter.emit(this.value);
-  }
 }
