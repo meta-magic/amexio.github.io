@@ -523,14 +523,15 @@ description : Set enable / disable popover.
           this.onMultiSelect.emit(this.multiselectValues);
         }
       }
-    } else {
-      this.value = selectedItem.item[this.valuefield];  // Issue here?
-      this.displayValue = this.displayFieldService.findValue(this.displayfield, selectedItem.item);
-      this.multiselect ? this.showToolTip = true : this.showToolTip = false;
-      delete selectedItem.item[this.key];
       this.onSingleSelect.emit(selectedItem.item);
       this.onRecordSelect.emit(selectedItem);
+    } else {
+      this.refactoredItemClick(selectedItem);
     }
+
+    this.RefactoredItemEmit();
+  }
+  RefactoredItemEmit() {
     this.isValid = true;
     if (!this.enablecheckbox) {
       this.hideDropdown = true;
@@ -538,7 +539,18 @@ description : Set enable / disable popover.
     }
     this.isComponentValid.emit(true);
   }
-
+  refactoredItemClick(selectedItem: any) {
+    if (selectedItem.hasOwnProperty('item')) {
+      if (selectedItem.item[this.valuefield] && (selectedItem.item[this.valuefield].length > 0)) {
+        this.value = selectedItem.item[this.valuefield];  // Issue here?
+        this.displayValue = this.displayFieldService.findValue(this.displayfield, selectedItem.item);
+        this.multiselect ? this.showToolTip = true : this.showToolTip = false;
+        delete selectedItem.item[this.key];
+        this.onSingleSelect.emit(selectedItem.item);
+        this.onRecordSelect.emit(selectedItem);
+      }
+    }
+  }
   checkboxMethod(selectedItem: any) {
     if (!this.enablecheckbox) {
       this.displayValue = this.setMultiSelect();
