@@ -22,7 +22,7 @@
         [attr.aria-invalid]="!isValid "
 
 
-
+        (keyup.enter)="onEnterPress($event)"
         class="input-control" 
         [ngClass]="model.touched ? allowblank ? '' : (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''" 
         [(ngModel)]="value"

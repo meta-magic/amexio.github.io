@@ -217,6 +217,8 @@ description : Apply Reg-ex to the field
  description : On blur event
  */
   @Output() onBlur: any = new EventEmitter<any>();
+
+  @Output() onEnter: any = new EventEmitter<any>();
   /*
 Events
 name : input
@@ -263,5 +265,9 @@ description : On field value change event
 
   onInputTextEvent(event: any) {
     super.onInputEvent(event);
+  }
+
+  onEnterPress(event: any) {
+    this.onEnter.emit(this.value);
   }
 }
