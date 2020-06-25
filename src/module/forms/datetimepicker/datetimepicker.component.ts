@@ -967,14 +967,14 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   navigateDropdown() {
     this.okispressed = true;
     this.hostFlag = true;
-    this.selectedDate = new Date();
-    if (this.yearNo != null && this.monthNo != null) {
-      this.selectedDate.setFullYear(this.yearNo);
+    this.selectedDate = new Date(this.selectedDate);
+
+    if (this.monthNo || (this.monthNo === 0)) {
       this.selectedDate.setMonth(this.monthNo);
-    } else if (this.yearNo != null && this.monthNo === null) {
+    }
+
+    if (this.yearNo) {
       this.selectedDate.setFullYear(this.yearNo);
-    } else if (this.yearNo === null && this.monthNo != null) {
-      this.selectedDate.setMonth(this.monthNo);
     }
     this.drop = false;
     this.daysArray = [];
