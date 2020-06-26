@@ -633,8 +633,22 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
   setToday() {
     this.currrentDate = new Date();
+
     this.initDate();
+    if (!this.timestamp) {
+      if (this.xferDateFormat.length > 0) {
+        this.dateModel = new Date(this.currrentDate);
+        this.dateModel = this.datePipe.transform(this.dateModel, this.xferDateFormat);
+      } else {
+        this.dateModel = this.currrentDate.getFullYear() + '-' +
+          ('0' + (this.currrentDate.getMonth() + 1)).slice(-2)
+          + '-' + ('0' + this.currrentDate.getDate()).slice(-2);
+      }
+      this.setDateModel();
+      this.onChangeCallback(this.dateModel);
+    }
     this.showToolTip = !this.showToolTip;
+
   }
   initDate() {
     this.daysArray = [];
