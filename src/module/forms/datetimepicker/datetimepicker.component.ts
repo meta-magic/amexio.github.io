@@ -523,6 +523,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   public nextMonth(event: any) {
     this.setDateData('plus', 1, event);
     this.disableddays(this.diabledDate);
+    this.dateFormatting();
   }
 
   setDateModel() {
@@ -539,12 +540,17 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   public prevMonth(event: any) {
     this.setDateData('minus', 1, event);
     this.disableddays(this.diabledDate);
+    if (!this.timestamp) {
+      this.dateFormatting();
+    }
   }
   public nextYear(event: any) {
     this.setDateData1('plus', 12, event);
+    this.dateFormatting();
   }
   public prevYear(event: any) {
     this.setDateData1('minus', 12, event);
+    this.dateFormatting();
   }
   // this function validates month
   setDateData(state1: string, mon: number, event: any) {
@@ -649,6 +655,21 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
     this.showToolTip = !this.showToolTip;
 
+  }
+
+  dateFormatting() {
+    if (!this.timestamp) {
+      if (this.xferDateFormat.length > 0) {
+        this.dateModel = new Date(this.selectedDate);
+        this.dateModel = this.datePipe.transform(this.dateModel, this.xferDateFormat);
+      } else {
+        this.dateModel = this.selectedDate.getFullYear() + '-' +
+          ('0' + (this.selectedDate.getMonth() + 1)).slice(-2)
+          + '-' + ('0' + this.selectedDate.getDate()).slice(-2);
+      }
+      this.setDateModel();
+      this.onChangeCallback(this.dateModel);
+    }
   }
   initDate() {
     this.daysArray = [];
