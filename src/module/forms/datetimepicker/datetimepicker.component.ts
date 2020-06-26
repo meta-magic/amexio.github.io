@@ -16,6 +16,7 @@
 */
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { DatePipe } from '@angular/common';
 import {
   ChangeDetectorRef, Component, ElementRef,
   EventEmitter, forwardRef, Input, OnInit, Output, Renderer2,
@@ -45,7 +46,7 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDateTimePickerComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioDateTimePickerComponent), multi: true,
-  }],
+  }, DatePipe],
 })
 export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<string> implements OnInit, Validators {
 
@@ -71,6 +72,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   @Input() utc = false;
 
   @Input() timestamp = true;
+  @Input() xferDateFormat = '';
   /*
  Properties
  name : has-label
@@ -236,7 +238,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   // by the Control Value Accessor
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
-  constructor(public element: ElementRef, private cdf: ChangeDetectorRef, renderer: Renderer2) {
+  constructor(private datePipe: DatePipe, public element: ElementRef, private cdf: ChangeDetectorRef, renderer: Renderer2) {
     super(renderer, element, cdf);
     this.viewmode = '1';
     this.hrsArr = [
@@ -462,15 +464,10 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       }
 
       if (!this.timestamp) {
-        this.dateModel =
-          ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
-          '/' +
-          ('0' + this.selectedDate.getDate()).slice(-2) +
-          '/' +
-          this.selectedDate.getFullYear();
-
+        this.formatDatePipe();
         this.setDateModel();
         this.onChangeCallback(this.dateModel);
+
       }
 
       this.value = this.selectedDate;
@@ -483,6 +480,16 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       }
     } else {
       event.stopPropagation();
+    }
+  }
+
+  formatDatePipe() {
+    if (this.xferDateFormat.length > 0) {
+      this.dateModel = this.datePipe.transform(this.dateModel, this.xferDateFormat);
+    } else {
+      this.dateModel = this.selectedDate.getFullYear() + '-' +
+        ('0' + (this.selectedDate.getMonth() + 1)).slice(-2)
+        + '-' + ('0' + this.selectedDate.getDate()).slice(-2);
     }
   }
 
@@ -525,12 +532,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     if (!this.timestamp) {
       this.dateModel = new Date(this.dateModel);
 
-      this.dateModel =
-        ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
-        '/' +
-        ('0' + this.selectedDate.getDate()).slice(-2) +
-        '/' +
-        this.selectedDate.getFullYear();
+      this.formatDatePipe();
 
     }
   }
@@ -725,12 +727,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     if (!this.timestamp) {
       this.dateModel = new Date(this.dateModel);
 
-      this.dateModel =
-        ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
-        '/' +
-        ('0' + this.selectedDate.getDate()).slice(-2) +
-        '/' +
-        this.selectedDate.getFullYear();
+      this.formatDatePipe();
 
       this.setDateModel();
       this.onChangeCallback(this.dateModel);
@@ -754,13 +751,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.dateModel = this.innerValue;
         if (!this.timestamp) {
 
-          this.dateModel =
-            ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
-            '/' +
-            ('0' + this.selectedDate.getDate()).slice(-2) +
-            '/' +
-            this.selectedDate.getFullYear();
-
+          this.formatDatePipe();
           this.setDateModel();
           this.onChangeCallback(this.dateModel);
         }
@@ -808,13 +799,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
 
         if (!this.timestamp) {
 
-          this.dateModel =
-            ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
-            '/' +
-            ('0' + this.selectedDate.getDate()).slice(-2) +
-            '/' +
-            this.selectedDate.getFullYear();
-
+          this.formatDatePipe();
           this.setDateModel();
           this.onChangeCallback(this.dateModel);
 
@@ -824,13 +809,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         if (!this.timestamp) {
           this.dateModel = new Date(this.dateModel);
 
-          this.dateModel =
-            ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
-            '/' +
-            ('0' + this.selectedDate.getDate()).slice(-2) +
-            '/' +
-            this.selectedDate.getFullYear();
-
+          this.formatDatePipe();
           this.setDateModel();
           this.onChangeCallback(this.dateModel);
         }
