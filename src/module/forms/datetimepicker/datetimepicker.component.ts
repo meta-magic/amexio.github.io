@@ -72,13 +72,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
 
   @Input() timestamp = true;
   /*
-  Properties
-  name : has-label
-  datatype : boolean
-  version : 5.21 onwards
-  default : false
-  description : Flag to set label
-  */
+ Properties
+ name : has-label
+ datatype : boolean
+ version : 5.21 onwards
+ default : false
+ description : Flag to set label
+ */
   @Input('has-label') hasLabel = true;
   /*
    Properties
@@ -462,10 +462,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       }
 
       if (!this.timestamp) {
+        this.dateModel =
+          ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
+          '/' +
+          ('0' + this.selectedDate.getDate()).slice(-2) +
+          '/' +
+          this.selectedDate.getFullYear();
 
-        this.dateModel = this.selectedDate.getFullYear() + '-' +
-          ('0' + (this.selectedDate.getMonth() + 1)).slice(-2)
-          + '-' + ('0' + this.selectedDate.getDate()).slice(-2);
         this.setDateModel();
         this.onChangeCallback(this.dateModel);
       }
@@ -521,9 +524,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.dateModel.getDate() + ' ' + this.dateModel.getFullYear() + ' 05:30:00 UTC');
     if (!this.timestamp) {
       this.dateModel = new Date(this.dateModel);
-      this.dateModel = this.dateModel.getFullYear() + '-'
-        + (('0' + (this.dateModel.getMonth() + 1)).slice(-2)) + '-'
-        + ('0' + this.dateModel.getDate()).slice(-2);
+
+      this.dateModel =
+        ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
+        '/' +
+        ('0' + this.selectedDate.getDate()).slice(-2) +
+        '/' +
+        this.selectedDate.getFullYear();
 
     }
   }
@@ -717,10 +724,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   setTimeStamp() {
     if (!this.timestamp) {
       this.dateModel = new Date(this.dateModel);
-      this.dateModel = this.dateModel.getFullYear() + '-' +
-        ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
-        + '-' + ('0' + this.dateModel.getDate()).slice(-2)
-        ;
+
+      this.dateModel =
+        ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
+        '/' +
+        ('0' + this.selectedDate.getDate()).slice(-2) +
+        '/' +
+        this.selectedDate.getFullYear();
 
       this.setDateModel();
       this.onChangeCallback(this.dateModel);
@@ -743,10 +753,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       } else {
         this.dateModel = this.innerValue;
         if (!this.timestamp) {
-          this.dateModel = this.dateModel.getFullYear() + '-'
-            + ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
-            + '-' + ('0' + this.dateModel.getDate()).slice(-2)
-            ;
+
+          this.dateModel =
+            ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
+            '/' +
+            ('0' + this.selectedDate.getDate()).slice(-2) +
+            '/' +
+            this.selectedDate.getFullYear();
 
           this.setDateModel();
           this.onChangeCallback(this.dateModel);
@@ -794,11 +807,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.setDateModel();
 
         if (!this.timestamp) {
-          this.dateModel = new Date(this.dateModel);
-          this.dateModel = this.dateModel.getFullYear() + '-' +
-            ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
-            + '-' + ('0' + this.dateModel.getDate()).slice(-2)
-            ;
+
+          this.dateModel =
+            ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
+            '/' +
+            ('0' + this.selectedDate.getDate()).slice(-2) +
+            '/' +
+            this.selectedDate.getFullYear();
 
           this.setDateModel();
           this.onChangeCallback(this.dateModel);
@@ -808,14 +823,16 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.value = new Date(value.value);
         if (!this.timestamp) {
           this.dateModel = new Date(this.dateModel);
-          this.dateModel = this.dateModel.getFullYear() + '-' +
-            ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
-            + '-' + ('0' + this.dateModel.getDate()).slice(-2)
-            ;
+
+          this.dateModel =
+            ('0' + (this.selectedDate.getMonth() + 1)).slice(-2) +
+            '/' +
+            ('0' + this.selectedDate.getDate()).slice(-2) +
+            '/' +
+            this.selectedDate.getFullYear();
 
           this.setDateModel();
           this.onChangeCallback(this.dateModel);
-
         }
       }
       this.isValid = true;
