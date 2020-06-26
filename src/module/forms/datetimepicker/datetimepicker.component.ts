@@ -1393,6 +1393,10 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.setDateWindowPosition();
   }
 
+  onInputChange(event: any) {
+    this.dateModel = new Date(event.target.value);
+  }
+
   dropdownListOneArrowUp(currentmonth: any) {
     let focusindex: number;
     let isfirst = false;
