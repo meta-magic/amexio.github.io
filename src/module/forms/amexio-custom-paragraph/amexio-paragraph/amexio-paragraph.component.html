@@ -1,4 +1,4 @@
-  <amexio-label
+  <amexio-label style="padding-right:5px"
   class="custom-p-label"
   *ngIf="!editContent"
   [size]="fontsize"
@@ -7,7 +7,7 @@
   (onClick)="onLblClick()"
   >{{ content }}
 </amexio-label>
-<amexio-text-input
+<amexio-text-input style="padding-right:5px"
   class="custom-p-text"
   *ngIf="editContent"
   name="editableText"
@@ -17,4 +17,4 @@
   (onBlur)="onTxtUpdate($event)"
 >
 </amexio-text-input>
-&nbsp; <span *ngIf="newline" [class]="'custom-p-newline'"></span>
+ <span *ngIf="newline" [class]="'custom-p-newline'"></span>
