@@ -168,7 +168,6 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
           .subscribe(
             (response: any) => {
               this.responseData = response;
-              // this.form.nativeElement.reset();
             },
             (error: any) => {
               this.error.emit(error);
