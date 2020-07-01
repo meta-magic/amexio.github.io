@@ -5,7 +5,9 @@
     <ng-container *ngIf='!fieldlabel'>
         <label for="fileName">Choose File</label>
     </ng-container>
-    <input type='file' aria-controls="fileUpload" id="fileName" class='input-control' [attr.accept]='filetype' (change)='uploadFile($event,false)' [attr.multiple]='multiplefile' #inp>
+    <!-- <form #form> -->
+        <input #fileinp type='file' aria-controls="fileUpload" id="fileName" class='input-control' [attr.accept]='filetype' (change)='uploadFile($event,false)' [attr.multiple]='multiplefile' #inp>
+    <!-- </form> -->
 </div>
 <ng-container *ngIf='droppable'>
     <ng-container *ngIf='fieldlabel'>

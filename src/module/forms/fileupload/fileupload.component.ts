@@ -15,7 +15,7 @@
 *
 */
 
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-fileupload',
@@ -31,6 +31,8 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
    description : The label of this field
    */
   @Input('field-label') fieldlabel: string;
+  @ViewChild('form') form: any;
+
   /*
    Properties
    name : http-url
@@ -105,7 +107,7 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
   @Output() success: EventEmitter<any> = new EventEmitter<any>();
 
   @Output() error: EventEmitter<any> = new EventEmitter<any>();
-
+  @ViewChild('fileinp') fileInputRef: any;
   uploadedFiles: any[] = [];
 
   dropClass: string;
@@ -164,15 +166,17 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
         this.dataService
           .uploadFile(this.httpurl, this.httpmethod, formData)
           .subscribe(
-          (response: any) => {
-            this.responseData = response;
-          },
-          (error: any) => {
-            this.error.emit(error);
-          },
-          () => {
-            this.success.emit(this.responseData);
-          },
+            (response: any) => {
+              this.responseData = response;
+              // this.form.nativeElement.reset();
+            },
+            (error: any) => {
+              this.error.emit(error);
+            },
+            () => {
+              this.success.emit(this.responseData);
+
+            },
         );
       }
       this.uploadedFiles.push({
@@ -183,6 +187,8 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
     } else {
       this.serviceCall(event);
     }
+    this.fileInputRef.nativeElement.value = '';
+
     this.onFileUpload.emit(this.uploadedFiles);
   }
 
@@ -214,15 +220,15 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
   uploadService(formData: FormData) {
     this.dataService.uploadFile(this.httpurl, this.httpmethod, formData)
       .subscribe(
-      (response: any) => {
-        this.responseData = response;
-      },
-      (error: any) => {
-        this.error.emit(error);
-      },
-      () => {
-        this.success.emit(this.responseData);
-      },
+        (response: any) => {
+          this.responseData = response;
+        },
+        (error: any) => {
+          this.error.emit(error);
+        },
+        () => {
+          this.success.emit(this.responseData);
+        },
     );
   }
 }
