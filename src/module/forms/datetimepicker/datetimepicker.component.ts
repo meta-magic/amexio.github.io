@@ -354,8 +354,19 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.dateModel = new Date(this.dateModel);
     }
   }
-
+  initdateModel() {
+    if (typeof (this.dateModel) === 'string') {
+      this.dateModel = new Date(this.dateModel);
+    }
+  }
   private createDaysForCurrentMonths(selectedPeriod: any) {
+    if (typeof (selectedPeriod) === 'string') {
+      selectedPeriod = new Date(selectedPeriod);
+    }
+    this.initdateModel();
+
+    this.currrentDate = new Date();
+
     this.daysArray = [];
     this.validateDateModel();
     const date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
