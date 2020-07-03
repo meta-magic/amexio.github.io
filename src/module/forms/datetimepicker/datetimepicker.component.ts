@@ -49,15 +49,14 @@ const noop = () => {
   }, DatePipe],
 })
 export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<string> implements OnInit, Validators {
-
   /*
- Properties
- name : date-format
- datatype : string
- version : 4.0 onwards
- default :
- description : The label of this field
- */
+Properties
+name : date-format
+datatype : string
+version : 4.0 onwards
+default :
+description : The label of this field
+*/
   @Input('date-format') dateformat: string;
   /*
    Properties
@@ -74,13 +73,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   @Input() timestamp = true;
   @Input() xferDateFormat = '';
   /*
- Properties
- name : has-label
- datatype : boolean
- version : 5.21 onwards
- default : false
- description : Flag to set label
- */
+  Properties
+  name : has-label
+  datatype : boolean
+  version : 5.21 onwards
+  default : false
+  description : Flag to set label
+  */
   @Input('has-label') hasLabel = true;
   /*
    Properties
@@ -278,6 +277,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.hrs = this.currrentDate.getHours();
     this.min = this.currrentDate.getMinutes();
     this.initDaysTitle();
+
     this.createDaysForCurrentMonths(this.currrentDate);
     this.monthList1.forEach((tmpElement: any) => {
     });
@@ -365,8 +365,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
     this.initdateModel();
 
-    this.currrentDate = new Date();
-
+    this.currrentDate = new Date(this.currrentDate);
     this.daysArray = [];
     this.validateDateModel();
     const date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
@@ -475,6 +474,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       }
 
       if (!this.timestamp) {
+
         this.formatDatePipe();
         this.setDateModel();
         this.onChangeCallback(this.dateModel);
@@ -498,9 +498,14 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     if (this.xferDateFormat.length > 0) {
       this.dateModel = this.datePipe.transform(this.dateModel, this.xferDateFormat);
     } else {
-      this.dateModel = this.selectedDate.getFullYear() + '-' +
-        ('0' + (this.selectedDate.getMonth() + 1)).slice(-2)
-        + '-' + ('0' + this.selectedDate.getDate()).slice(-2);
+      if ((this.dateModel !== null) && (this.dateModel !== '')) {
+        this.dateModel = new Date(this.dateModel);
+        if (!this.timestamp) {
+          this.dateModel = this.dateModel.getFullYear() + '-' +
+            ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
+            + '-' + ('0' + this.dateModel.getDate()).slice(-2);
+        }
+      }
     }
   }
 
@@ -539,10 +544,12 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
 
   setDateModel() {
     this.dateModel = new Date(this.dateModel);
+    const day = this.dateModel.getDate();
     this.dateModel = new Date(this.getHalfMonthName(this.dateModel) + ' ' +
       this.dateModel.getDate() + ' ' + this.dateModel.getFullYear() + ' 05:30:00 UTC');
     if (!this.timestamp) {
       this.dateModel = new Date(this.dateModel);
+      this.dateModel.setDate(day);
 
       this.formatDatePipe();
 
@@ -804,6 +811,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       }
       this.currrentDate = this.dateModel;
       this.selectedDate = this.currrentDate;
+
       this.createDaysForCurrentMonths(this.dateModel);
       if (this.required) {
         this.isValid = true;
@@ -887,6 +895,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.disableddays(this.diabledDate);
       this.setFocus();
       this.poscls = this.positionClass;
+
     }
 
   }
