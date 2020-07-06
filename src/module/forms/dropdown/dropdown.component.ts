@@ -505,6 +505,9 @@ description : Set enable / disable popover.
  }
  onItemSelect(selectedItem: any) {
  debounceTime(300);
+if (this.enablecheckbox) {
+    this.dropFlag = true;
+}
  if (this.multiselect) {
  this.selectAllFlag = false;
  const optionsChecked: any = [];
@@ -889,6 +892,7 @@ description : Set enable / disable popover.
  this.displayValue = this.setMultiSelect();
  this.onMultiSelect.emit(this.multiselectValues);
  this.hideDropdown = true;
+ this.dropFlag = false;
  this.hide();
  }
 }
