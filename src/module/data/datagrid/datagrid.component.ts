@@ -405,7 +405,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   isExpanded = false;
 
   mask = true;
-
+  cascadedCollections: any[] = [];
   private checkIcon = 'fa fa-check';
 
   private plusIcon = 'fa fa-plus';
@@ -773,33 +773,67 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     }
     this.renderData();
   }
+  chkfrObjKey(opt: any, row: any, filteredObj: any) {
+    let optvalue = '';
+    let filtervalue = '';
+    // step split on .dot
+    let keyarray: any[] = [];
+    keyarray = opt.dataindex.split('.');
+    //  step 2
+    let r = row;
+    let i;
+    for (i = 0; i < keyarray.length; i++) {
+      r = r[keyarray[i]];
+    }
 
+    if ((typeof r === 'string')) {
+      optvalue = r.toLowerCase();
+    }
+    if ((typeof filteredObj.value === 'string')) {
+      filtervalue = filteredObj.value.toLowerCase();
+
+    }
+    return { opt: optvalue, fil: filtervalue };
+  }
   checkValueInColumn(row: any, filteredObj: any): boolean {
     let searchStatus = false;
-    const statusCollection: any = [];
+    let statusCollection: any = [];
     this.columns.forEach((opt: any) => {
       let optvalue = '';
       let filtervalue = '';
-      if (typeof row[opt.dataindex] === 'string') {
+      if ((typeof row[opt.dataindex] === 'string') && (opt.dataindex.indexOf('.') === -1)) {
         optvalue = row[opt.dataindex].toLowerCase();
       }
-      if (typeof filteredObj.value === 'string') {
+      if ((typeof filteredObj.value === 'string') && (opt.dataindex.indexOf('.') === -1)) {
         filtervalue = filteredObj.value.toLowerCase();
+
       }
-      if (filteredObj.filter === '1') {
-        statusCollection.push(optvalue.startsWith(filtervalue));
-      } else if (filteredObj.filter === '2') {
-        statusCollection.push(optvalue.endsWith(filtervalue));
-      } else if (filteredObj.filter === '3') {
-        statusCollection.push(optvalue.includes(filtervalue));
+      if (opt.dataindex.length > 0) {
+        if (opt.dataindex.indexOf('.') > -1) {
+          const retObj = this.chkfrObjKey(opt, row, filteredObj);
+
+          optvalue = retObj.opt;
+          filtervalue = retObj.fil;
+        }
       }
+
+      statusCollection = this.addStatusCollection(statusCollection, filteredObj, optvalue, filtervalue);
     });
     if (statusCollection.filter((status: any) => status === true).length > 0) {
       searchStatus = true;
     }
     return searchStatus;
   }
-
+  addStatusCollection(statusCollection: any, filteredObj: any, optvalue: any, filtervalue: any) {
+    if (filteredObj.filter === '1') {
+      statusCollection.push(optvalue.startsWith(filtervalue));
+    } else if (filteredObj.filter === '2') {
+      statusCollection.push(optvalue.endsWith(filtervalue));
+    } else if (filteredObj.filter === '3') {
+      statusCollection.push(optvalue.includes(filtervalue));
+    }
+    return statusCollection;
+  }
   filterConditionMethod(filteredObj: any, option: any, opt: any) {
     const status = false;
     this.data = [];
