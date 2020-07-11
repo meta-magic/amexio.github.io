@@ -76,8 +76,7 @@ export class AmexioCustomParagraphComponent implements OnInit {
 
   @ViewChild('customtext', { read: ViewContainerRef }) customText: ViewContainerRef;
 
-  constructor(public dataService: CommonDataService,
-              private resolver: ComponentFactoryResolver) {
+  constructor(public dataService: CommonDataService, private resolver: ComponentFactoryResolver) {
   }
 
   setData(httpResponse: any) {

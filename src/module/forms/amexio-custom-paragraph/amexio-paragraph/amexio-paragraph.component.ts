@@ -56,6 +56,7 @@ description : small | medium | large
   editContent: boolean;
   isEditable: boolean;
   textcontent: string;
+  componentType = '';
 
   /*
  Properties
@@ -106,9 +107,13 @@ description : small | medium | large
   }
 
   onTxtUpdate(item: any) {
+    if (item.target.value === '') {
+      this.editContent = false;
+      this.textcontent = 'Add Text';
+    }
     this.pdata.forEach((element) => {
       if (element['content'] === this.content) {
-        element['content'] = item;
+        element['content'] = item.target.value;
       }
     });
     this.content = this.textcontent;

@@ -1,20 +1,25 @@
-  <amexio-label style="padding-right:5px"
-  class="custom-p-label"
-  *ngIf="!editContent"
-  [size]="fontsize"
-  [font-color]="color"
-  enable-click="isEditable"
-  (onClick)="onLblClick()"
-  >{{ content }}
+<amexio-label style="padding-right:5px" class="custom-p-label" *ngIf="!editContent" [size]="fontsize" [font-color]="color"
+  enable-click="isEditable" (onClick)="onLblClick()">
+
+
+  {{ content }}
 </amexio-label>
-<amexio-text-input style="padding-right:5px"
-  class="custom-p-text"
-  *ngIf="editContent"
-  name="editableText"
-  [font-size] = "fontsize"
-  [(ngModel)]="textcontent"
-  (change)="onTxtUpdate($event)"
-  (onBlur)="onTxtUpdate($event)"
->
+
+<!-- <amexio-text-input style="padding-right:5px" class="custom-p-text" *ngIf="editContent && textcontent !== 'Add Text' &&  componentType !== 'text area'" name="editableText"
+  [font-size]="fontsize" [(ngModel)]="textcontent" (change)="onTxtUpdate($event)" (onBlur)="onTxtUpdate($event)">
 </amexio-text-input>
- <span *ngIf="newline" [class]="'custom-p-newline'"></span>
+
+<amexio-textarea-input style="padding-right:5px; display: block" class="custom-p-text" *ngIf="editContent && textcontent === 'Add Text' && componentType !== 'text area'"
+  name="editableText1" [font-size]="fontsize" [(ngModel)]="textcontent" (change)="onTxtUpdateArea($event)" (onBlur)="onTxtUpdateArea($event)"
+  [rows]="'2'" [columns]="'2'">
+</amexio-textarea-input>
+
+<amexio-textarea-input style="padding-right:5px; display: block" class="custom-p-text" *ngIf="editContent && componentType === 'text area'"
+  name="editableText2" [font-size]="fontsize" [(ngModel)]="textcontent" (change)="onTxtUpdateArea($event)" (onBlur)="onTxtUpdateArea($event)"
+  [rows]="'2'" [columns]="'2'">
+</amexio-textarea-input> -->
+
+
+<textarea style="width: 95%" *ngIf="editContent" [(ngModel)]="textcontent" type="text" (blur)="onTxtUpdate($event)" (change)="onTxtUpdate($event)"></textarea>
+
+<span *ngIf="newline" [class]="'custom-p-newline'"></span>
