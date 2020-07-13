@@ -86,9 +86,14 @@ description : small | medium | large
   @Output() pdataChange = new EventEmitter();
 
   ngOnInit() {
-    this.editContent = false;
-    this.isEditable = false;
-    this.validateLabel();
+    this.pdata.forEach((element: any) => {
+      element.editContent = false;
+      if (element.type === 'editabletextfield') {
+        element['isEditable'] = true;
+      } else {
+        element['isEditable'] = false;
+      }
+    });
   }
 
   validateLabel() {
@@ -99,25 +104,21 @@ description : small | medium | large
     }
   }
 
-  onLblClick() {
-    if (this.isEditable) {
-      this.textcontent = this.content;
-      this.editContent = true;
-    }
+  onLblClick(item: any) {
+    item.editContent = true;
   }
 
-  onTxtUpdate(item: any) {
-    if (item.target.value === '') {
+  onTxtUpdate(event: any, item: any) {
+    if (event.target.value === '') {
       this.editContent = false;
       this.textcontent = 'Add Text';
     }
     this.pdata.forEach((element) => {
-      if (element['content'] === this.content) {
-        element['content'] = item.target.value;
+      if (element['content'] === item.content && element.index === item.index) {
+        element['content'] = event.target.value;
+        element.editContent = false;
       }
     });
-    this.content = this.textcontent;
-    this.editContent = false;
     this.pdataChange.emit(this.pdata);
   }
 }

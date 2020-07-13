@@ -95,7 +95,6 @@ export class AmexioCustomParagraphComponent implements OnInit {
 
     this.viewData.forEach((ele, index) => {
       ele['index'] = index;
-      this.addComponent(ele);
     });
   }
 
