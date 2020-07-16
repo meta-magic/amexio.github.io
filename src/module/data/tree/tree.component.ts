@@ -27,7 +27,6 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
    description : Local Data binding.
    */
     _data: any;
-
     @Input('data')
     set data(value: any[]) {
         this._data = value;
@@ -397,15 +396,10 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
 
     // method to set the reference of parent in every child
     setParentRef(data: any, parent: any) {
-        let currentParent;
-        if (parent === 1) {
-            data[0]['parentRef'] = parent;
-        }
+
+        const currentParent = data[0];
         data.forEach((element: any, index: number) => {
             element['parentRef'] = parent;
-        });
-        data.forEach((element: any, index: number) => {
-            currentParent = element;
             if (element[this.childarraykey]) {
                 this.setParentRef(element[this.childarraykey], currentParent);
             }
@@ -442,13 +436,9 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         if (this.globalTreeData.length === 0 && !this.filtertreeflag) {
             this.globalTreeData = this.data;
             this.generateIndex(this.globalTreeData, 1, window.crypto.getRandomValues(new Uint32Array(1))[0]);
-            this.setParentRef(this.data, 1); // add a parent reference to every child
-            this.setSelectedFlag();
+            this.setParentRef(this.globalTreeData, 1); // add a parent reference to every child
         }
-        if (this.filtertreeflag && this.data[0]['parentRef'] === undefined) {
-            this.setParentRef(this.data, 1); // add a parent reference to every child
-            this.setSelectedFlag();
-        }
+        this.setSelectedFlag();
         this.activateNode(this.data, null);
     }
     // To add isSelected flag explicitily in tree Data
@@ -569,6 +559,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
 
     onTreeNodeCheck(data: any) {
+
         this.onTreeNodeChecked.emit(data);
     }
 
