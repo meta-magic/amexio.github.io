@@ -789,8 +789,11 @@ description : The label of this field
 
   validateWriteValue(value: any) {
     this.innerValue = value;
-    if (this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
+    if (this.innerValue instanceof Date || 'number' === typeof this.innerValue || 'string' === typeof this.innerValue) {
       if (('number' === typeof this.innerValue)) {
+        this.innerValue = new Date(this.innerValue);
+      }
+      if (('string' === typeof this.innerValue)) {
         this.innerValue = new Date(this.innerValue);
       }
       if (this.utc) {

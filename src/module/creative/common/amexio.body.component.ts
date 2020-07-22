@@ -18,23 +18,35 @@
 import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
-    selector : 'amexio-body-ce',
-    templateUrl : './amexio.body.component.html',
+    selector: 'amexio-body-ce',
+    templateUrl: './amexio.body.component.html',
 })
 export class AmexioCardCEBodyComponent {
 
     @HostBinding('attr.class') cardclass = 'card-container-body';
 
+    @HostBinding('style.overflow')
+    get width(): string {
+        if (this.height === '' || this.height ===  null) {
+            return 'unset';
+        } else {
+            return 'auto';
+        }
+    }
+
     @Input('align') align = '';
 
     // tslint:disable-next-line:no-input-rename
-    @Input('bg-image') bgimage: string ;
+    @Input('bg-image') bgimage: string;
 
     @Input('color') color: string;
 
     @Input('background') background: string;
 
-    @Input('height') height: string;
+    @Input('height') height = '';
 
     ribbonType = false;
+
+    constructor() {
+    }
 }
