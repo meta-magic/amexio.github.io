@@ -266,6 +266,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
     this.draggingWindow = false;
 
   }
+
   onCloseClick() {
     if (this.closable) {
       this.showWindow = false;
@@ -388,6 +389,13 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
     }
   }
 
+  resize() {
+    this.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
+      this.textName = event.textName;
+      this._miniService.onMinimizeClick(this);
+      this.onMinimize.emit(event);
+    });
+  }
   /* ASSIGN PROPERTIES TO FOOTER AND HEADER*/
 
   ngAfterContentInit() {
@@ -400,11 +408,8 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
     if (this.amexioHeader && this.header) {
       if (this.minimize && !this.inimax) {
         this.amexioHeader.toArray()[0].minimize = this.minimize;
-        this.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
-          this.textName = event.textName;
-          this._miniService.onMinimizeClick(this);
-          this.onMinimize.emit(event);
-        });
+
+        this.resize();
         this.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
           this._miniService.onCloseClick(this);
         });
@@ -545,4 +550,37 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
       this.py = event.clientY;
     }
   }
+  showwindow() {
+    this.show = true;
+  }
+  hideWindow() {
+    this.show = false;
+  }
+  closeWindow() {
+    this.onCloseClick();
+  }
+  minimizeWindow() {
+
+    this.amexioHeader.toArray()[0].onCloseClick();
+
+    this.amexioHeader.toArray()[0].minimize = this.minimize;
+    this.resize();
+    this.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
+      this._miniService.onCloseClick(this);
+    });
+
+    this.amexioHeader.toArray()[0].closeableBehaiour.next(false);
+    this.amexioHeader.toArray()[0].minimizeWindow.emit(this);
+    this.onCloseClick();
+  }
+
+  maximizeWindow(event: any) {
+    this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow, event);
+    this.amexioHeader.toArray()[0].maximizeBehaiour.subscribe((max: any) => {
+      this.maximumWindowStyle = this.setMaximizeClass(max.isFullWindow);
+      this.onMaximize.emit(max.event1);
+    });
+    this.amexioHeader.toArray()[0].sizeChange(event);
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Component, Inject, Injectable, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AmexioToggleComponent } from './../toggle/toggle.component';
 @Component({
     selector: 'amexio-darkmode',
@@ -12,8 +12,11 @@ export class DarkmodeComponent implements OnInit {
     @Input('size') size = 'medium';
     @Input('mode') mode = 'day-night';
     @Input('data') colorData: any;
+    @Output('onChange') statusChange = new EventEmitter<any>();
+
     stepVal = 0;
     maxValue = 2;
+    statusFlag = true;
     sepiaColorCode = '#f4ecd8';
     sepiaFontColor = '#020202';
 
@@ -62,6 +65,7 @@ export class DarkmodeComponent implements OnInit {
         }
     }
     onToggleClick(event: any) {
+
         this.themeStyles = [];
         this.themesdata.forEach((obj: any) => {
             const varObj: any = {
@@ -82,7 +86,10 @@ export class DarkmodeComponent implements OnInit {
         this.themeStyles.forEach((style: any) => {
             document.documentElement.style.setProperty(style.name, style.value);
         });
-
+        if (this.mode === 'day-night') {
+            this.statusFlag = !this.statusFlag;
+        }
+        this.statusChange.emit(this.statusFlag);
     }
 
     onChange(eventV: any) {
