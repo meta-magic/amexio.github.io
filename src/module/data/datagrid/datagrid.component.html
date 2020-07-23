@@ -1,4 +1,4 @@
-<div [style.height]="height" [ngClass]="{'datagrid-full-screen': yesFullScreen && fullscreenMax}">
+<div [style.height]="height" [ngStyle]="{'overflow-y': height === '' || height === null ? 'unset':'auto'}" [ngClass]="{'datagrid-full-screen': yesFullScreen && fullscreenMax}">
   <div class="datagrid">
     <div class="datatabletitle">
       <span *ngIf="title" id="{{gridId}}"> {{title}} </span>
