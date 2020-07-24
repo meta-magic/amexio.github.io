@@ -19,7 +19,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { DatePipe } from '@angular/common';
 import {
   ChangeDetectorRef, Component, ElementRef,
-  EventEmitter, forwardRef, Input, OnInit, Output, Renderer2,
+  EventEmitter, forwardRef, Input, OnInit, Output, Renderer2, ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ListBaseDatepickerComponent } from '../../base/list.base.datepicker.component';
@@ -200,6 +200,10 @@ description : The label of this field
    description : On input event field.
    */
   @Output() input: EventEmitter<any> = new EventEmitter<any>();
+  @Output() isComponentValid: any = new EventEmitter<any>();
+  @ViewChild('inputref1') inputRef1: any;
+  @ViewChild('inputref2') inputRef2: any;
+
   /*
    Properties
    name : focus
@@ -223,7 +227,6 @@ description : The label of this field
   dateModel: any;
   isValid: boolean;
   roundedgeclass: string;
-  @Output() isComponentValid: any = new EventEmitter<any>();
   backArrowFlag = false;
   forwardArrowFlag = false;
   hrs: number;
@@ -521,6 +524,7 @@ description : The label of this field
       }
     }
   }
+
   onInput(event: any) {
     if (event.target.value != null && event.target.value !== '') {
       const timeValue = event.target.value.split(':');
@@ -874,9 +878,14 @@ description : The label of this field
       this.isValid = true;
     }
   }
-  // open picker
-
+  // date1 openpicker
   openPicker(elem: any) {
+    if (this.dateModel) {
+      this.selectedDate = new Date(this.dateModel);
+      this.currrentDate = new Date(this.selectedDate);
+      this.initDate();
+    }
+
     this.inputtabindex = -1;
     this.daystabindex = 1;
     if (this.disabled === false) {
@@ -1446,9 +1455,13 @@ description : The label of this field
     }
     this.setDateWindowPosition();
   }
-
+  // date1 oninputchnge
   onInputChange(event: any) {
-    this.dateModel = new Date(event.target.value);
+    this.dateModel = new Date(this.inputRef1.nativeElement.value);
+  }
+  // date1 oninput1change
+  onInput1Change(event: any) {
+    this.dateModel = new Date(this.inputRef2.nativeElement.value);
   }
 
   dropdownListOneArrowUp(currentmonth: any) {
