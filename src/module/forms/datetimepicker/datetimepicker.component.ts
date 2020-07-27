@@ -234,6 +234,8 @@ description : The label of this field
   viewmode: string;
   okispressed = false;
   cancelispressed = false;
+  dateFormat1 = 'dd/MM/yyyy';
+  dateFormat2 = 'dd-MM-yyyy';
   // The internal dataviews model
   private innerValue: any = '';
   // Placeholders for the callbacks which are later provided
@@ -790,7 +792,80 @@ description : The label of this field
       this.onChangeCallback(this.dateModel);
     }
   }
+  setInnerValue() {
+    if (this.dateformat === this.dateFormat1 || this.dateformat === this.dateFormat2) {
+      const str = this.innerValue;
+      let seprator = '';
+      if (str.indexOf('-') > -1) {
+        seprator = '-';
+      }
+      if (str.indexOf('/') > -1) {
+        seprator = '/';
+      }
+      let splitarr: any = [];
+      if ((seprator === '-') || (seprator === '/')) {
+        splitarr = str.split(seprator);
+      }
+      const date = splitarr[0];
+      const month = splitarr[1];
+      const year = splitarr[2];
+      const datestr = month + '-' + date + '-' + year;
+      this.innerValue = new Date(datestr);
+    } else {
+      this.innerValue = new Date(this.innerValue);
+    }
+  }
+  setUtcInnerValue() {
+    if (('string' === typeof this.innerValue)) {
+      if (this.dateformat === this.dateFormat1 || this.dateformat === this.dateFormat2) {
+        const str = this.innerValue;
+        let seprator = '';
+        if (str.indexOf('-') > -1) {
+          seprator = '-';
+        }
+        if (str.indexOf('/') > -1) {
+          seprator = '/';
+        }
+        let splitarr: any = [];
+        if ((seprator === '-') || (seprator === '/')) {
+          splitarr = str.split(seprator);
+        }
+        const date = splitarr[0];
+        const month = splitarr[1];
+        const year = splitarr[2];
+        const datestr = month + '-' + date + '-' + year;
+        this.dateModel = new Date(datestr);
+      }
+    } else {
+      this.dateModel = new Date(this.innerValue);
+    }
+  }
+  setdateModelValue() {
 
+    if (('string' === typeof this.innerValue)) {
+      if (this.dateformat === this.dateFormat1 || this.dateformat === this.dateFormat2) {
+        const str = this.innerValue;
+        let seprator = '';
+        if (str.indexOf('-') > -1) {
+          seprator = '-';
+        }
+        if (str.indexOf('/') > -1) {
+          seprator = '/';
+        }
+        let splitarr: any = [];
+        if ((seprator === '-') || (seprator === '/')) {
+          splitarr = str.split(seprator);
+        }
+        const date = splitarr[0];
+        const month = splitarr[1];
+        const year = splitarr[2];
+        const datestr = month + '-' + date + '-' + year;
+        this.dateModel = new Date(datestr);
+      }
+    } else {
+      this.dateModel = this.innerValue;
+    }
+  }
   validateWriteValue(value: any) {
     this.innerValue = value;
     if (this.innerValue instanceof Date || 'number' === typeof this.innerValue || 'string' === typeof this.innerValue) {
@@ -798,17 +873,18 @@ description : The label of this field
         this.innerValue = new Date(this.innerValue);
       }
       if (('string' === typeof this.innerValue)) {
-        this.innerValue = new Date(this.innerValue);
+        this.setInnerValue();
       }
       if (this.utc) {
-        this.dateModel = new Date(this.innerValue);
 
+        this.setUtcInnerValue();
         this.setDateModel();
         this.onChangeCallback(this.dateModel);
 
         this.setTimeStamp();
       } else {
-        this.dateModel = this.innerValue;
+
+        this.setdateModelValue();
         if (!this.timestamp) {
 
           this.formatDatePipe();
@@ -849,33 +925,62 @@ description : The label of this field
       this.isValid = false;
       value.value = '';
     } else {
+      this.utcOnFocusOut(value);
 
-      if (this.utc) {
-
-        const d = new Date(value.value);
-        this.value = new Date(this.getHalfMonthName(d) + ' ' + d.getDate() + ' '
-          + d.getFullYear() + ' 05:30:00 UTC');
-        this.dateModel = d;
-        this.setDateModel();
-
-        if (!this.timestamp) {
-
-          this.formatDatePipe();
-          this.setDateModel();
-          this.onChangeCallback(this.dateModel);
-
-        }
-      } else {
-        this.value = new Date(value.value);
-        if (!this.timestamp) {
-          this.dateModel = new Date(this.dateModel);
-
-          this.formatDatePipe();
-          this.setDateModel();
-          this.onChangeCallback(this.dateModel);
-        }
-      }
       this.isValid = true;
+    }
+  }
+
+  setUtc(value: any) {
+    const d = new Date(value.value);
+    this.value = new Date(this.getHalfMonthName(d) + ' ' + d.getDate() + ' '
+      + d.getFullYear() + ' 05:30:00 UTC');
+    this.dateModel = d;
+    this.setDateModel();
+  }
+
+  setValue(str: any) {
+    let seprator = '';
+    if (str.indexOf('-') > -1) {
+      seprator = '-';
+    }
+    if (str.indexOf('/') > -1) {
+      seprator = '/';
+    }
+    let splitarr = [];
+    if ((seprator === '-') || (seprator === '/')) {
+      splitarr = str.split(seprator);
+    }
+    const date = splitarr[0];
+    const month = splitarr[1];
+    const year = splitarr[2];
+    const datestr = month + '-' + date + '-' + year;
+    this.value = new Date(datestr);
+  }
+  utcOnFocusOut(value: any) {
+    if (this.utc) {
+      this.setUtc(value);
+      if (!this.timestamp) {
+
+        this.formatDatePipe();
+        this.setDateModel();
+        this.onChangeCallback(this.dateModel);
+
+      }
+    } else {
+
+      if (this.dateformat === this.dateFormat1 || this.dateformat === this.dateFormat2) {
+        const str = this.inputRef1.nativeElement.value;
+
+        this.setValue(str);
+      }
+
+      if (!this.timestamp) {
+        this.dateModel = new Date(this.dateModel);
+        this.formatDatePipe();
+        this.setDateModel();
+        this.onChangeCallback(this.dateModel);
+      }
     }
   }
   // date1 openpicker
@@ -1457,11 +1562,53 @@ description : The label of this field
   }
   // date1 oninputchnge
   onInputChange(event: any) {
-    this.dateModel = new Date(this.inputRef1.nativeElement.value);
+    if (this.dateformat === this.dateFormat1 || this.dateformat === this.dateFormat2) {
+      const str = this.inputRef1.nativeElement.value;
+      let seprator = '';
+      if (str.indexOf('-') > -1) {
+        seprator = '-';
+      }
+      if (str.indexOf('/') > -1) {
+        seprator = '/';
+      }
+      let splitarr = [];
+      if ((seprator === '-') || (seprator === '/')) {
+        splitarr = str.split(seprator);
+      }
+      const date = splitarr[0];
+      const month = splitarr[1];
+      const year = splitarr[2];
+      const datestr = month + '-' + date + '-' + year;
+      this.dateModel = new Date(datestr);
+    } else {
+      // transforms in default date format internally MM-dd-yyyy
+      this.dateModel = new Date(this.inputRef1.nativeElement.value);
+    }
   }
   // date1 oninput1change
   onInput1Change(event: any) {
-    this.dateModel = new Date(this.inputRef2.nativeElement.value);
+    if (this.dateformat === this.dateFormat1 || this.dateformat === this.dateFormat2) {
+      const str = this.inputRef2.nativeElement.value;
+      let seprator = '';
+      if (str.indexOf('-') > -1) {
+        seprator = '-';
+      }
+      if (str.indexOf('/') > -1) {
+        seprator = '/';
+      }
+      let splitarr = [];
+      if ((seprator === '-') || (seprator === '/')) {
+        splitarr = str.split(seprator);
+      }
+      const date = splitarr[0];
+      const month = splitarr[1];
+      const year = splitarr[2];
+      const datestr = month + '-' + date + '-' + year;
+      this.dateModel = new Date(datestr);
+    } else {
+      // transforms in default date format internally MM-dd-yyyy
+      this.dateModel = new Date(this.inputRef2.nativeElement.value);
+    }
   }
 
   dropdownListOneArrowUp(currentmonth: any) {
