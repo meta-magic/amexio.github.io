@@ -359,9 +359,35 @@ description : The label of this field
       this.dateModel = new Date(this.dateModel);
     }
   }
+  initModel() {
+    const str = this.dateModel;
+    let seprator = '';
+    if (str.indexOf('-') > -1) {
+      seprator = '-';
+    }
+    if (str.indexOf('/') > -1) {
+      seprator = '/';
+    }
+    let splitarr = [];
+    if ((seprator === '-') || (seprator === '/')) {
+      splitarr = str.split(seprator);
+    }
+    const date = splitarr[0];
+    const month = splitarr[1];
+    const year = splitarr[2];
+    const datestr = month + '-' + date + '-' + year;
+    this.dateModel = new Date(datestr);
+  }
   initdateModel() {
     if (typeof (this.dateModel) === 'string') {
-      this.dateModel = new Date(this.dateModel);
+      // sdsd
+      if (this.dateModel.length > 0) {
+        if (this.dateformat === this.dateFormat1 || this.dateformat === this.dateFormat2) {
+          this.initModel();
+        } else {
+          this.dateModel = new Date(this.dateModel);
+        }
+      }
     }
   }
   private createDaysForCurrentMonths(selectedPeriod: any) {
