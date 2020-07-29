@@ -503,17 +503,66 @@ export class AmexioDropDownComponent extends EventBaseComponent<any> implements 
             }
         }
     }
-    onItemSelect(selectedItem: any) {
+    enableChkbox() {
         debounceTime(300);
         if (this.enablecheckbox) {
             this.dropFlag = true;
         }
-        if (this.multiselect) {
-            this.selectAllFlag = false;
-            const optionsChecked: any = [];
-            this.multiselectValues = [];
+    }
+    emitItem(selectedItem: any) {
+
+        if (selectedItem.hasOwnProperty('item')) {
+            this.value = selectedItem.item[this.valuefield];
+            this.displayValue = this.displayFieldService.findValue(this.displayfield, selectedItem.item);
+
+        } else {
+            this.value = selectedItem[this.valuefield];
+            this.displayValue = this.displayFieldService.findValue(this.displayfield, selectedItem);
+        }
+        this.multiselect ? this.showToolTip = true : this.showToolTip = false;
+        if (selectedItem.hasOwnProperty('item')) {
+
+            delete selectedItem.item[this.key];
+        } else {
+            delete selectedItem[this.key];
+
+        }
+        if (selectedItem.hasOwnProperty('item')) {
+
+            this.onSingleSelect.emit(selectedItem.item);
+        } else {
+            this.onSingleSelect.emit(selectedItem);
+        }
+        this.onRecordSelect.emit(selectedItem);
+    }
+    validateChkbox() {
+        this.isValid = true;
+        if (!this.enablecheckbox) {
+            this.hideDropdown = true;
+            this.hide();
+        }
+        this.isComponentValid.emit(true);
+    }
+    setFlags() {
+        this.selectAllFlag = false;
+        this.multiselectValues = [];
+    }
+    chkFlag(selectedItem: any) {
+        if (selectedItem.hasOwnProperty('item')) {
             if (selectedItem.item.hasOwnProperty('checked')) {
                 selectedItem.item.checked = !selectedItem.item.checked;
+            }
+        } else if (selectedItem.hasOwnProperty('checked')) {
+            selectedItem.checked = !selectedItem.checked;
+        }
+    }
+    onItemSelect(selectedItem: any) {
+        this.enableChkbox();
+        if (this.multiselect) {
+            this.setFlags();
+            const optionsChecked: any = [];
+            if ((selectedItem.hasOwnProperty('item')) || (selectedItem.hasOwnProperty('checked'))) {
+                this.chkFlag(selectedItem);
                 this.filteredOptions.forEach((row: any) => {
                     if (row.checked) {
                         optionsChecked.push(row[this.valuefield]);
@@ -525,21 +574,12 @@ export class AmexioDropDownComponent extends EventBaseComponent<any> implements 
                 if (!this.enablecheckbox) {
                     this.onMultiSelect.emit(this.multiselectValues);
                 }
-            }
+            } // if ends here
+
         } else {
-            this.value = selectedItem.item[this.valuefield]; // Issue here?
-            this.displayValue = this.displayFieldService.findValue(this.displayfield, selectedItem.item);
-            this.multiselect ? this.showToolTip = true : this.showToolTip = false;
-            delete selectedItem.item[this.key];
-            this.onSingleSelect.emit(selectedItem.item);
-            this.onRecordSelect.emit(selectedItem);
-        }
-        this.isValid = true;
-        if (!this.enablecheckbox) {
-            this.hideDropdown = true;
-            this.hide();
-        }
-        this.isComponentValid.emit(true);
+            this.emitItem(selectedItem);
+        } // else ends here
+        this.validateChkbox();
     }
 
     checkboxMethod(selectedItem: any) {
