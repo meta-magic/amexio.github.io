@@ -476,6 +476,7 @@ description : The label of this field
     return dayname;
   }
 
+  // Changes for timezone doner in this method only in block if timestamp = false
   onDateClick(dateObj: any, event: any) {
     if (dateObj.isDisabled === false) {
       this.change.emit(dateObj.date);
@@ -498,18 +499,13 @@ description : The label of this field
       this.dateModel.setMonth(this.selectedDate.getMonth());
       this.dateModel.setFullYear(this.selectedDate.getFullYear());
       if (this.utc) {
-
         this.dateModel = new Date(this.selectedDate);
         this.setDateModel();
         this.onChangeCallback(this.dateModel);
       }
 
       if (!this.timestamp) {
-
-        this.formatDatePipe();
-        this.setDateModel();
-        this.onChangeCallback(this.dateModel);
-
+        this.dateModel = this.datePipe.transform(this.dateModel, this.dateformat);
       }
 
       this.value = this.selectedDate;
@@ -532,6 +528,7 @@ description : The label of this field
       if ((this.dateModel !== null) && (this.dateModel !== '')) {
         this.dateModel = new Date(this.dateModel);
         if (!this.timestamp) {
+
           this.dateModel = this.dateModel.getFullYear() + '-' +
             ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
             + '-' + ('0' + this.dateModel.getDate()).slice(-2);
@@ -580,6 +577,7 @@ description : The label of this field
     this.dateModel = new Date(this.getHalfMonthName(this.dateModel) + ' ' +
       this.dateModel.getDate() + ' ' + this.dateModel.getFullYear() + ' 05:30:00 UTC');
     if (!this.timestamp) {
+
       this.dateModel = new Date(this.dateModel);
       this.dateModel.setDate(day);
 
@@ -591,6 +589,7 @@ description : The label of this field
     this.setDateData('minus', 1, event);
     this.disableddays(this.diabledDate);
     if (!this.timestamp) {
+
       this.dateFormatting();
     }
   }
@@ -692,6 +691,7 @@ description : The label of this field
 
     this.initDate();
     if (!this.timestamp) {
+
       if (this.xferDateFormat.length > 0) {
         this.dateModel = new Date(this.currrentDate);
         this.dateModel = this.datePipe.transform(this.dateModel, this.xferDateFormat);
@@ -709,6 +709,7 @@ description : The label of this field
 
   dateFormatting() {
     if (!this.timestamp) {
+
       if (this.xferDateFormat.length > 0) {
         this.dateModel = new Date(this.selectedDate);
         this.dateModel = this.datePipe.transform(this.dateModel, this.xferDateFormat);
@@ -801,6 +802,7 @@ description : The label of this field
   // From ControlValueAccessor interface
   writeValue(value: any) {
     if (value !== '') {
+
       if (value !== this.innerValue) {
         this.validateWriteValue(value);
       }
@@ -809,7 +811,9 @@ description : The label of this field
     }
   }
   setTimeStamp() {
+
     if (!this.timestamp) {
+
       this.dateModel = new Date(this.dateModel);
 
       this.formatDatePipe();
@@ -892,6 +896,7 @@ description : The label of this field
       this.dateModel = this.innerValue;
     }
   }
+  // Changes for timezone doner in this method only in block if timestamp = false
   validateWriteValue(value: any) {
     this.innerValue = value;
     if (this.innerValue instanceof Date || 'number' === typeof this.innerValue || 'string' === typeof this.innerValue) {
@@ -912,10 +917,8 @@ description : The label of this field
 
         this.setdateModelValue();
         if (!this.timestamp) {
+          this.dateModel = this.datePipe.transform(this.dateModel, this.dateformat);
 
-          this.formatDatePipe();
-          this.setDateModel();
-          this.onChangeCallback(this.dateModel);
         }
       }
       this.currrentDate = this.dateModel;
@@ -1002,6 +1005,7 @@ description : The label of this field
       }
 
       if (!this.timestamp) {
+
         this.dateModel = new Date(this.dateModel);
         this.formatDatePipe();
         this.setDateModel();
