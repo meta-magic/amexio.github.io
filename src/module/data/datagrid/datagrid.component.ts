@@ -100,6 +100,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
    description : Enables checkbox for each row, this allows user for multi selection.
    */
   @Input('enable-checkbox') enablecheckbox: boolean;
+  flag1 = false;
 
   /*
    Properties
@@ -795,30 +796,131 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
     }
     return { opt: optvalue, fil: filtervalue };
   }
+  traverseObj(valObj: any) {
+    let stCollection: any[] = [];
+    if (typeof valObj === 'object') {
+      for (const [key, value] of Object.entries(valObj)) {
+        if (typeof key === 'string') {
+          this.flag1 = true;
+        }
+        if ((typeof value === 'object') && (value !== null)) {
+          let ar: any = [];
+          ar = this.traverseObj(value);
+
+          stCollection = this.refactorAr(ar, stCollection);
+        } else if ((typeof value === 'string') && (value !== null)) {
+          stCollection.push(value);
+        }
+      }
+    }
+
+    return stCollection;
+  }
+  refactorAr(ar: any, stCollection: any) {
+    if (ar.length > 0) {
+      ar.forEach((arele: any) => {
+        stCollection.push(arele);
+      });
+    }
+    return stCollection;
+  }
+  traverseCompleteRow(row: any) {
+    // row is an object
+    // iterate row
+    let optvalue;
+    const travStatusCollection: any[] = [];
+    for (const [key, value] of Object.entries(row)) {
+      if (typeof key === 'string') {
+        this.flag1 = true;
+      }
+      // validate if value is string or object
+      if ((typeof value === 'object') && (value !== null)) {
+        //  pass obj to a intermediate fun tht will return an arr with multiple values
+        let arr: any[] = [];
+        arr = this.traverseObj(value);
+        if (arr.length > 0) {
+          arr.forEach((aelement: any) => {
+            travStatusCollection.push(aelement);
+          });
+        }
+      } else if ((typeof value === 'string') && (value !== null)) {
+        const val: string = value;
+        optvalue = val.toLowerCase();
+        travStatusCollection.push(optvalue);
+      }
+    }
+    return travStatusCollection;
+  }
+  setStatus(scollection: any, filteredObj: any, optvalue: any, filtervalue: any) {
+
+    const stausArr: any[] = [];
+    scollection.forEach((sele: any) => {
+      if (filteredObj.filter === '1') {
+        stausArr.push(sele.startsWith(filtervalue));
+      } else if (filteredObj.filter === '2') {
+        stausArr.push(sele.endsWith(filtervalue));
+      } else if (filteredObj.filter === '3') {
+        stausArr.push(sele.includes(filtervalue));
+      }
+    });
+
+    return stausArr;
+  }
+  chkDataIndex(statusCollection: any, row: any, opt: any, optvalue: any, filtervalue: any, filteredObj: any) {
+    const scollection: any[] = [];
+
+    if ((opt.dataindex === undefined) || (opt.dataindex === null) || (opt.dataindex === '')) {
+      // traverse complete row , to find if any matches available
+      if ((typeof filteredObj.value === 'string')) {
+        filtervalue = filteredObj.value.toLowerCase();
+      }
+      let arr: any = [];
+      arr = this.traverseCompleteRow(row);
+      if (arr.length > 0) {
+        arr.forEach((aelement: any) => {
+          if ((aelement !== null) && (aelement.length > 0)) {
+            scollection.push(aelement);
+          }
+        });
+      }
+    } else if (opt.dataindex.length > 0) {
+      if (opt.dataindex.indexOf('.') > -1) {
+        const retObj = this.chkfrObjKey(opt, row, filteredObj);
+
+        optvalue = retObj.opt;
+        filtervalue = retObj.fil;
+      }
+    }
+    statusCollection = this.createStatus(opt, statusCollection, scollection, filteredObj, optvalue, filtervalue);
+    return statusCollection;
+  }
+
+  createStatus(opt: any, statusCollection: any, scollection: any, filteredObj: any, optvalue: any, filtervalue: any) {
+    if ((opt.dataindex === undefined) || (opt.dataindex === null) || (opt.dataindex === '')) {
+      statusCollection = this.setStatus(scollection, filteredObj, optvalue, filtervalue);
+    } else {
+      statusCollection = this.addStatusCollection(statusCollection, filteredObj, optvalue, filtervalue);
+    }
+    return statusCollection;
+  }
   checkValueInColumn(row: any, filteredObj: any): boolean {
     let searchStatus = false;
     let statusCollection: any = [];
     this.columns.forEach((opt: any) => {
       let optvalue = '';
       let filtervalue = '';
-      if ((typeof row[opt.dataindex] === 'string') && (opt.dataindex.indexOf('.') === -1)) {
-        optvalue = row[opt.dataindex].toLowerCase();
-      }
-      if ((typeof filteredObj.value === 'string') && (opt.dataindex.indexOf('.') === -1)) {
-        filtervalue = filteredObj.value.toLowerCase();
-
-      }
-      if (opt.dataindex.length > 0) {
-        if (opt.dataindex.indexOf('.') > -1) {
-          const retObj = this.chkfrObjKey(opt, row, filteredObj);
-
-          optvalue = retObj.opt;
-          filtervalue = retObj.fil;
+      if (opt.dataindex) {
+        if ((typeof row[opt.dataindex] === 'string') && (opt.dataindex.indexOf('.') === -1)) {
+          optvalue = row[opt.dataindex].toLowerCase();
+        }
+        if ((typeof filteredObj.value === 'string') && (opt.dataindex.indexOf('.') === -1)) {
+          filtervalue = filteredObj.value.toLowerCase();
         }
       }
 
-      statusCollection = this.addStatusCollection(statusCollection, filteredObj, optvalue, filtervalue);
-    });
+      statusCollection = this.chkDataIndex(statusCollection, row, opt, optvalue, filtervalue, filteredObj);
+    }); // columnfor each ends here
+
     if (statusCollection.filter((status: any) => status === true).length > 0) {
       searchStatus = true;
     }
