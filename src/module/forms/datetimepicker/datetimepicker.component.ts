@@ -50,13 +50,13 @@ const noop = () => {
 })
 export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<string> implements OnInit, Validators {
   /*
-Properties
-name : date-format
-datatype : string
-version : 4.0 onwards
-default :
-description : The label of this field
-*/
+  Properties
+  name : date-format
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : The label of this field
+  */
   @Input('date-format') dateformat: string;
   /*
    Properties
@@ -477,6 +477,7 @@ description : The label of this field
   }
 
   onDateClick(dateObj: any, event: any) {
+
     if (dateObj.isDisabled === false) {
       this.change.emit(dateObj.date);
       if ((this.inlineDatepicker === false) && (this.timepicker === false && this.datepicker === true)) {
@@ -505,7 +506,6 @@ description : The label of this field
       }
 
       if (!this.timestamp) {
-
         this.formatDatePipe();
         this.setDateModel();
         this.onChangeCallback(this.dateModel);
@@ -526,15 +526,16 @@ description : The label of this field
   }
 
   formatDatePipe() {
+
     if (this.xferDateFormat.length > 0) {
       this.dateModel = this.datePipe.transform(this.dateModel, this.xferDateFormat);
     } else {
       if ((this.dateModel !== null) && (this.dateModel !== '')) {
         this.dateModel = new Date(this.dateModel);
         if (!this.timestamp) {
-          this.dateModel = this.dateModel.getFullYear() + '-' +
+          this.dateModel = this.dateModel.getFullYear() + '/' +
             ('0' + (this.dateModel.getMonth() + 1)).slice(-2)
-            + '-' + ('0' + this.dateModel.getDate()).slice(-2);
+            + '/' + ('0' + this.dateModel.getDate()).slice(-2);
         }
       }
     }
@@ -819,6 +820,7 @@ description : The label of this field
     }
   }
   setInnerValue() {
+
     if (this.dateformat === this.dateFormat1 || this.dateformat === this.dateFormat2) {
       const str = this.innerValue;
       let seprator = '';
@@ -837,6 +839,12 @@ description : The label of this field
       const year = splitarr[2];
       const datestr = month + '-' + date + '-' + year;
       this.innerValue = new Date(datestr);
+    } else if (this.dateformat === 'MM-dd-yyyy' || this.dateformat === 'MM/dd/yyyy') {
+      this.innerValue = new Date(this.innerValue);
+    } else if (this.dateformat === 'yyyy-MM-dd') {
+
+      const as = (this.innerValue.replace(/-/g, '\/'));
+      this.innerValue = new Date(as);
     } else {
       this.innerValue = new Date(this.innerValue);
     }
@@ -889,6 +897,7 @@ description : The label of this field
         this.dateModel = new Date(datestr);
       }
     } else {
+
       this.dateModel = this.innerValue;
     }
   }
@@ -902,21 +911,13 @@ description : The label of this field
         this.setInnerValue();
       }
       if (this.utc) {
-
         this.setUtcInnerValue();
         this.setDateModel();
         this.onChangeCallback(this.dateModel);
 
         this.setTimeStamp();
       } else {
-
-        this.setdateModelValue();
-        if (!this.timestamp) {
-
-          this.formatDatePipe();
-          this.setDateModel();
-          this.onChangeCallback(this.dateModel);
-        }
+        this.refactorValidate();
       }
       this.currrentDate = this.dateModel;
       this.selectedDate = this.currrentDate;
@@ -930,6 +931,19 @@ description : The label of this field
     }
   }
 
+  refactorValidate() {
+    this.setdateModelValue();
+    if (!this.timestamp) {
+      if (this.dateformat === 'dd-MM-yyyy' || this.dateformat === 'dd/MM/yyyy') {
+        this.dateModel = this.datePipe.transform(this.dateModel, this.dateformat);
+      } else {
+        this.formatDatePipe();
+        this.setDateModel();
+      }
+
+      this.onChangeCallback(this.dateModel);
+    }
+  }
   negateisValid() {
     this.isValid = false;
     this.hrs = 0;
@@ -984,6 +998,7 @@ description : The label of this field
     this.value = new Date(datestr);
   }
   utcOnFocusOut(value: any) {
+
     if (this.utc) {
       this.setUtc(value);
       if (!this.timestamp) {
