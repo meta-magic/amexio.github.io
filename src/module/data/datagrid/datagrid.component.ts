@@ -840,7 +840,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
         arr = this.traverseObj(value);
         if (arr.length > 0) {
           arr.forEach((aelement: any) => {
-            travStatusCollection.push(aelement);
+            travStatusCollection.push(aelement.toLowerCase());
           });
         }
       } else if ((typeof value === 'string') && (value !== null)) {
@@ -905,7 +905,8 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
   }
   checkValueInColumn(row: any, filteredObj: any): boolean {
     let searchStatus = false;
-    let statusCollection: any = [];
+    const statusCollection: any = [];
+    let srIntermediateCollection: any = [];
     this.columns.forEach((opt: any) => {
       let optvalue = '';
       let filtervalue = '';
@@ -917,8 +918,11 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
           filtervalue = filteredObj.value.toLowerCase();
         }
       }
-
-      statusCollection = this.chkDataIndex(statusCollection, row, opt, optvalue, filtervalue, filteredObj);
+      srIntermediateCollection = [];
+      srIntermediateCollection = this.chkDataIndex(statusCollection, row, opt, optvalue, filtervalue, filteredObj);
+      srIntermediateCollection.forEach((srchelement: any) => {
+        statusCollection.push(srchelement);
+      });
     }); // columnfor each ends here
 
     if (statusCollection.filter((status: any) => status === true).length > 0) {
