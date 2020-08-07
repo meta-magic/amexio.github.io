@@ -1,0 +1,33 @@
+
+<div id="maindiv">
+
+  <div tabindex="{{inputtabindex}}" (keyup.enter)="openPicker(rootDiv)" aria-label="datetimepicker push button" class="inputgroup"
+    #rootDiv>
+    <label>
+      {{fieldlabel}}
+      <ng-container *ngIf="fieldlabel != '' && required">
+        <span style="color: red">*</span>
+      </ng-container>
+
+    </label>
+  </div>
+
+  <span>
+
+    <span style="width:44px !important; display:inline-flex">
+      <div class="exp-month-date-label">
+        <div class="month">
+          <select [(ngModel)]="currentMonth" (change)="onMonthChange($event)" style="padding:10px" placeholder="MMM">
+            <option *ngFor="let month of monthData">{{month}}</option>
+          </select>
+        </div>
+        <div class="date">
+          <select [(ngModel)]="currentYear" (change)="onYearChange($event)" style="padding:10px" placeholder="YYYY">
+            <option *ngFor="let year of yearData">{{year}}</option>
+          </select>
+        </div>
+      </div>
+    </span>
+    <br>
+  </span>
+</div>

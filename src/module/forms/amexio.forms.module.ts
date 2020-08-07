@@ -75,7 +75,7 @@ import { AmexioMultiRangePickerComponent } from './multirangedatepicker/multiran
 
 import { AmexioInputPatternDirective } from '../directive/input-mask';
 import { AmexioCustomParagraphComponent } from './amexio-custom-paragraph/amexio-custom-paragraph.component';
-
+import { MontYearPickerComponent } from './monthyearpicker/monthyear.component';
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
 export * from './recaptcha/load.recaptcha.service';
@@ -84,6 +84,7 @@ export * from './buttongroup/button.group.component';
 export * from '../services/script/script.load.service';
 
 const FORM_COMPONENTS = [
+  MontYearPickerComponent,
   AmexioTextInputComponent,
   AmexioCheckBoxComponent,
   AmexioDropDownComponent,

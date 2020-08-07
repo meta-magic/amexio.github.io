@@ -1,0 +1,42 @@
+.btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 22px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.btn1 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 24px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+ .td1 {
+    border: 1px solid black;
+    background: white;
+    padding: 12px;
+}
+
+tab1 table {
+border-collapse: collapse;
+border-spacing: 0;
+} 
