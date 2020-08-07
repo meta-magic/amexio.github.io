@@ -107,6 +107,15 @@ export class MontYearPickerComponent extends ListBaseDatepickerComponent<string>
     if (this.minyr && this.maxyr) {
       minimumyr = this.minyr;
       maximumyr = this.maxyr;
+    } else if (this.minyr || this.maxyr) {
+      if (this.minyr) {
+        minimumyr = this.minyr;
+        maximumyr = this.minyr + 20;
+      } else {
+        maximumyr = this.maxyr;
+        minimumyr = this.maxyr - 20;
+      }
+
     } else {
       minimumyr = new Date().getFullYear() - 10;
       maximumyr = new Date().getFullYear() + 10;
