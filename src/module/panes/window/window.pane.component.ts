@@ -51,7 +51,7 @@ import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 })
 export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements OnChanges, OnInit, OnDestroy, AfterContentInit {
   maximumWindowStyle: any;
-
+  cntr = 0;
   dummyWidth: string;
 
   x: number;
@@ -408,21 +408,13 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
     if (this.amexioHeader && this.header) {
       if (this.minimize && !this.inimax) {
         this.amexioHeader.toArray()[0].minimize = this.minimize;
-
         this.resize();
-        this.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
-          this._miniService.onCloseClick(this);
-        });
+        this.chkCloseEvent();
       }
       this.amexioHeader.toArray()[0].closeable = this.closable;
       this.amexioHeader.toArray()[0].aComponent1 = 'window';
-      if (this.maximize && !this.inimax) {
-        this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow, event);
-        this.amexioHeader.toArray()[0].maximizeBehaiour.subscribe((max: any) => {
-          this.maximumWindowStyle = this.setMaximizeClass(max.isFullWindow);
-          this.onMaximize.emit(max.event1);
-        });
-      }
+      this.chkHeader(event);
+
       if (this.inimax) {
         this.amexioHeader.toArray()[0].closeable = this.closable;
         this.amexioHeader.toArray()[0].aComponent1 = 'window';
@@ -438,12 +430,15 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
       }
       this.amexioHeader.toArray()[0].setMaterialDesignStatus(this.materialDesign);
       this.amexioHeader.toArray()[0].closeableBehaiour.subscribe((close: any) => {
-        this.onCloseClick();
+        if (this.cntr > 0) {
+          this.onCloseClick();
+        }
       });
     }
     if (this.amexioBody && this.bodyHeight) {
       this.amexioBody.toArray()[0].height = this.bodyHeight + '%';
     }
+    this.cntr++;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -453,6 +448,18 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
     if (changes['showWindow']) {
       this.setShowFlag(changes.showWindow.currentValue);
     }
+  }
+  chkHeader(event: any) {
+    if (this.maximize && !this.inimax) {
+      this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow, event);
+      this.amexioHeader.toArray()[0].maximizeBehaiour.subscribe((max: any) => {
+        this.maximumWindowStyle = this.setMaximizeClass(max.isFullWindow);
+        this.onMaximize.emit(max.event1);
+      });
+    }
+  }
+  chkCloseEvent() {
+
   }
   setShowFlag(changedValue: any) {
     this.show = changedValue;
