@@ -105,8 +105,10 @@ description : small | medium | large
   }
 
   onLblClick(item: any) {
-    item.textcontent = item.content;
-    item.editContent = true;
+    if (item.isEditable) {
+      item.textcontent = item.content;
+      item.editContent = true;
+    }
   }
 
   onTxtUpdate(event: any, item: any) {
