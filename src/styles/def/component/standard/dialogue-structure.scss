@@ -127,7 +127,7 @@
   display: table;
   width: 100%;
 }
-.dialogue-table .tablerow{
+.dialogue-table .tablerow{ 
   display: table-row;
 }
 
@@ -143,4 +143,145 @@
 }
 .icon-style {
   font-size: 15px;
+}
+
+// btn
+button {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    outline: none;
+    user-select: none;
+    border: 1px solid $buttonBorderColor;
+    padding: .5rem 1rem;
+    border-radius: $buttonBorderRadius;
+    transition: all .2s ease-in-out;
+    margin-right: 5px!important;
+}
+
+.btn-badge {
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-primary-badge {
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-secondary-badge {
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-success-badge {
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-danger-badge {
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-warning-badge {
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-transparent-badge {
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.button-text {
+    display: inline-block;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.button-small {
+    padding: .25rem .5rem;
+}
+
+.button-default {
+    padding: .5rem 1rem;
+    font-size: 1rem;
+}
+
+.button-large {
+    padding: .75rem 1.5rem;
+    font-size: 1.25rem;
+}
+
+.button-block {
+    display: block;
+    width: 100%;
+}
+
+.button-transparent {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.button-round {
+    border-radius: 50%;
+    vertical-align: middle;
 }

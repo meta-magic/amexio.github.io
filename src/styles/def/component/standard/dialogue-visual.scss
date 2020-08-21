@@ -29,6 +29,13 @@
   background-color: $dialogueHovColor;
   color: $dialogueHovFontColor;
 }
+.btnonfcs > button :focus {
+
+  background-color: $dialogueHovColor !important;
+  color: $componentHoverFontColor !important;
+  border: 2px solid black !important;
+}
+
 
 .dialogue-footer{
   background-color: $cardFooterBGColor;
@@ -45,3 +52,174 @@
 .dialogue-warning {
   color: $dialogueWarningColor;
 }
+
+// btn
+
+.button-secondary {
+  background-color: $secondaryBGColor;
+  border-color: $borderColor;
+  color: $secondaryColor;
+}
+
+.button-secondary:hover:enabled {
+  // background-color: $secondaryBGHoverColor;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-badge {
+  background-color: $btnBadgeColorBG;
+  color: $btnBadgeColor;
+}
+
+.btn-primary-badge {
+  background-color: $componentBGColor;
+  color: $componentFontColor;
+}
+
+.btn-secondary-badge {
+  background-color: $secondaryColor;
+  color: $secondaryBGColor;
+}
+
+.btn-success-badge {
+  background-color: $successColor;
+  color: $successBGColor;
+}
+
+.btn-danger-badge {
+  background-color: $dangerColor;
+  color: $dangerBGColor;
+}
+
+.btn-warning-badge {
+  background-color: $warningColor;
+  color: $warningBGColor;
+}
+
+.btn-transparent-badge {
+  background-color: $componentFontColor;
+  color: $componentBGColor;
+}
+
+.button-primary {
+  background-color: $primaryBGColor;
+  border-color: $primaryBGColor;
+  color: $btnFontColor;
+}
+
+.disabled {
+  background-color: $buttonDisableBG;
+  color: $buttonDisableFontColor;
+  cursor: not-allowed;
+}
+
+.button-primary:hover:enabled {
+  background-color: $btnHoverBGColor;   //Need to Change
+  color: $btnHoverFontColor; 
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button-success {
+  background-color: $successBGColor;
+  border-color: $successBGColor;
+  color: $successColor;
+}
+
+.button-success:hover:enabled {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: $successBGHoverColor;
+}
+
+.button-danger {
+  background-color: $dangerBGColor;
+  border-color: $dangerBGColor;
+  color: $dangerColor;
+}
+
+.button-danger:hover:enabled {
+  background-color: $dangerBGHoverColor;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button-warning {
+  background-color: $warningBGColor;
+  border-color: $warningBGColor;
+  color: $warningColor;
+}
+
+.button-warning:hover:enabled {
+  background-color: $warningBGHoverColor;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button-transparent {
+  background: $componentBGColor;
+  color: $componentFontColor;
+}
+
+.button-transparent:hover:enabled {
+  // background-color: $borderColor;
+  // box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button-default:hover:enabled {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+.button-transparent::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: $borderColor;
+  opacity: 0;
+  border-radius: 100%;
+  -webkit-transform: scale(1, 1) translate(-50%);
+  transform: scale(1, 1) translate(-50%);
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+.font-with-label {
+  padding-left: 5px;
+  font-family: Roboto, Trebuchet MS, Arial, Helvetica, sans-serif;
+}
+
+// button disabled
+.button-primary-disabled{
+  background-color: $buttonDisableBG ;
+  border-color: $buttonDisableBG ;
+  color: $buttonDisableFontColor;
+  cursor: not-allowed;
+}
+
+.button-success-disabled{
+  background-color: $buttonSuccessDisabledBgColor;
+  border-color: $buttonSuccessDisabledBgColor;
+  cursor: not-allowed;
+  color: $buttonDisableFontColor;
+}
+
+.button-danger-disabled{
+  background-color: $buttonDangerDisabledBgColor;
+  border-color: $buttonDangerDisabledBgColor;
+  pointer-events: none;
+  color: $buttonDisableFontColor;
+}
+
+.button-warning-disabled{
+  background-color:  $buttonWarningDisabledBgColor;
+  border-color: $buttonWarningDisabledBgColor;
+  color: $buttonDisableFontColor;
+  cursor: not-allowed;
+}
+
+.disabled {
+  background-color: $buttonDefaultDisabledBgColor;
+  border-color: $buttonDefaultDisabledBgColor;
+  color: $buttonDisableFontColor;
+  cursor: not-allowed;
+}
+

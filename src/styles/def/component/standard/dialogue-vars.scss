@@ -25,3 +25,42 @@ $dialogueWarningColor : $warningBGColor;
 $dialogueDangerColor : $dangerBGColor;
 $dialogueHovColor : $componentHoverBGColor;
 $dialogueHovFontColor : $componentHoverFontColor;
+
+
+$spanFocusBG : $componentHoverBGColor;
+$spanFocusColor: $componentHoverFontColor;
+
+// btn
+
+
+$buttonBorderColor : $borderColor;
+$buttonBorderRadius : $borderRadius;
+$buttonFontWeight : 400;
+$buttonSmallFontSize : .875rem;
+$buttonDefaultFontSize : 1rem;
+$buttonLargeFontSize : 1.25rem;
+
+$closeBtnFontSize : 20px;
+$closeBtnColor : $componentHoverBGColor;
+$closeBtnHoverColor : $componentActiveBGColor;
+$btnBadgeColor:$componentHeaderBGColor;
+$btnBadgeColorBG:$componentActiveBGColor;
+$btnFontColor: $componentHeaderFontColor;
+
+$buttonDisableBG : $componentDisabledBGColor;
+$buttonDisableFontColor : $componentDisabledFontColor;
+
+$buttonWarningDisabledBgColor: $amexioColorYellowLighten;
+$buttonSuccessDisabledBgColor: $amexioColorGreenLighten;
+$buttonDangerDisabledBgColor: $amexioColorRedLighten;
+$buttonDefaultDisabledBgColor: $defaultDisabledBGColor;
+
+$btnHoverFontColor: $componentHoverFontColor;
+$btnHoverBGColor: $componentHoverBGColor;
+
+$dangerBGHoverColor: $amexioColorRedDark;
+$successBGHoverColor: $amexioColorGreenDark;
+$warningBGHoverColor: $amexioColorYellowDark;
+
+$componentBGColor : $componentBGColor;
+$componentFontColor : $componentFontColor;

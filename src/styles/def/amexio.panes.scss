@@ -152,3 +152,18 @@
 @import "component/standard/stackablepanel-visual.scss";
 /** Amexio StackablePanel Structure CSS **/
 @import "component/standard/stackablepanel-structure.scss";
+
+/****************************************************************************
+    Component Name : Button
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+
+@import "component/standard/button-vars.scss";
+
+/** button - Visual CSS **/
+
+@import "component/standard/button-visual.scss";
+
+/** button - Structure CSS **/
+
+@import "component/standard/button-structure.scss";

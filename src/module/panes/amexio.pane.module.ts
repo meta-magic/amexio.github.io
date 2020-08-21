@@ -13,6 +13,7 @@ import { AmexioCarouselComponent } from './carousel/carousel.component';
 import { AmexioTemplateDirective } from './carousel/carousel.template.directive';
 import { AmexioTemplateWrapperDirective } from './carousel/carousel.wrapper.template.directive';
 import { AmexiodialoguePaneComponent } from './dialogue/dialogue.pane.component';
+import { AmexiodialogueKeyPaneComponent } from './dialoguekey/dialogue.pane.component';
 import { AmexioFieldSetComponent } from './fieldset/fieldset.component';
 import { AmexioFloatingPanelComponent } from './floatingpanel/floatingpanel.component';
 import { AmexioFormActionComponent } from './form/form.action.component';
@@ -119,6 +120,7 @@ const PANE_COMPONENTS = [
   MinimizeWindowComponent,
   StackablePanelComponent,
   StackableItemComponent,
+  AmexiodialogueKeyPaneComponent,
 ];
 
 @NgModule({
