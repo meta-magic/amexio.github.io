@@ -129,7 +129,7 @@ description : Sets the error message for validation
    description : Apply Reg-ex to the field
    */
   _pattern: string;
-
+  @Input() readonly: boolean;
   get pattern(): string {
     return this._pattern;
   }

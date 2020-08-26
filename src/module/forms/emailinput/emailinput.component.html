@@ -22,10 +22,7 @@
         [attr.aria-disabled]="disabled ? true: null"
         [attr.aria-required]="!allowblank"
         [attr.aria-invalid]="!isValid "
-
-
-
-        
+        [attr.readonly]="readonly ? true: null"        
          class="input-control"
          [ngClass]="model.touched ? allowblank ? '' : (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''"
          [(ngModel)]="value"
