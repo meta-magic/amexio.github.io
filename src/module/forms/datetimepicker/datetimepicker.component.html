@@ -13,9 +13,15 @@
         <!-- (input)="onInput($event)" -->
         <ng-container *ngIf="datepicker && !timepicker">
              <input tabindex="-1" type="text" #inputref1
-            (change)="onInputChange($event)" value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
-                [required]="required ? true: null" (blur)="onBlur()"  (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(inputref1)"
-                class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder"
+            (change)="onInputChange($event)" value="{{dateModel|date:dateformat}}"
+             [attr.disabled]="disabled ? true: null"
+                [required]="required ? true: null" (blur)="onBlur()"  
+                (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(inputref1)"
+                class="input-control" 
+                [attr.placeholder]="placeholder"
+                [attr.readonly]="readonly ? true: null"
+                [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" 
+
             />
         </ng-container>
 
@@ -23,7 +29,8 @@
                 
             <input type="text" [ngModel]="selectedDate | date: 'medium'" (ngModelChange)="selectedDate=$event" value="{{selectedDate|date:dateformat}} {{hrs + ' : ' + min}}"
                 [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)"
-                (input)="onInput($event)" (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
+                (input)="onInput($event)" (change)="change.emit()" class="input-control" 
+                [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
                 [attr.placeholder]="placeholder" />
         </ng-container>
  
@@ -37,25 +44,29 @@
                 [required]="required ? true: null" (blur)="onBlur()"  
                 (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(inputref2)"
                  (change)="onInput1Change($event)"
+                 [attr.readonly]="readonly ? true: null"
                 class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder"
             />
         </ng-container>
 
-        <div class="drodown-caret-down" [ngStyle]="{'cursor':disabled ? 'not-allowed' : 'pointer'}" (click)="openPicker(rootDiv)">
+        <div class="drodown-caret-down"
+         [ngStyle]="{'cursor':disabled ? 'not-allowed' : 'pointer'}" (click)="openPicker(rootDiv)">
             <ng-container *ngIf="timepicker && !datepicker">
-                <span tabindex="1" (keyup.enter)="openPicker(rootDiv)" aria-label="timepicker push button">
+                <span tabindex="1"  
+                
+ (keyup.enter)="openPicker(rootDiv)" aria-label="timepicker push button">
                     <amexio-c-icon key="datepicker-clock-icon"></amexio-c-icon>
                 </span>
             </ng-container>
             <ng-container *ngIf="!timepicker && datepicker">
-                <span>
+                <span [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}">
                     <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
                 </span>
 
             </ng-container>
 
             <ng-container *ngIf="timepicker && datepicker">
-                <span>
+                <span [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" >
                     <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
                 </span>
 
@@ -139,7 +150,7 @@
             </div>
         </span>
         <!--datepicker ends  -->
-        <!-- <table  aria-describedby="table" role="none" aria-label="timepicker window opened" tabindex="1" class="table" [ngStyle]="{'display': timepicker ? 'flex' : 'none'}"
+        <table  aria-describedby="table" role="none" aria-label="timepicker window opened" tabindex="1" class="table" [ngStyle]="{'display': timepicker ? 'flex' : 'none'}"
             style="cursor : pointer;text-align: center;padding: 5px; display: flex; flex-direction: row; justify-content: space-around">
              <tr style=" display: flex; flex-direction: row; justify-content: center;">
                 <th>HH</th>
@@ -168,14 +179,14 @@
                 <td colspan="2">
                 </td>
             </tr>
-        </table> -->
+        </table>
 
         <!-- new time picker format -->
         <!-- aria-describedby="table" role="none" aria-label="timepicker window opened" -->
         <span style="outline:none" tabindex="1" class="table" [ngStyle]="{'display': timepicker ? 'flex' : 'none'}"
             (click)="onTimeClick($event)" style="cursor : pointer; 
             text-align: center;padding: 5px;
-        display: flex; flex-direction: row; justify-content: space-around">
+             display: flex; flex-direction: row; justify-content: space-around">
             <amexio-row>
                 <amexio-column [size]="1">
 

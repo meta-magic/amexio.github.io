@@ -125,7 +125,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
    default : false
    description : Disable Date/Time Picker field
    */
-  @Input('read-only') readonly: boolean;
+  @Input('read-only') readonly = false;
   /*
    Properties
    name : min-date
@@ -1026,6 +1026,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
   // date1 openpicker
   openPicker(elem: any) {
+    if (this.readonly === false) {
     if (this.dateModel) {
       this.selectedDate = new Date(this.dateModel);
       this.currrentDate = new Date(this.selectedDate);
@@ -1055,7 +1056,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.poscls = this.positionClass;
 
     }
-
+  }
   }
 
   setFocus() {

@@ -47,7 +47,10 @@ export class AmexioRadioGroupComponent extends ValueAccessorBaseComponent<string
    default :
    description : Sets if field is required
    */
-  @Input('allow-blank') allowblank = true ;
+  @Input('allow-blank') allowblank = true;
+
+  @Input('read-only') readonly: boolean;
+
   /*
    Properties
    name :name
@@ -308,34 +311,40 @@ export class AmexioRadioGroupComponent extends ValueAccessorBaseComponent<string
     this.onTouchedCallback();
   }
   onFocus() {
-    this.tabFocus = true;
+    if (!this.readonly) {
+      this.tabFocus = true;
+    }
   }
 
   onClick(row: any, event: any) {
-    event.preventDefault();
-    for (const r of this.data) {
-      if (r.selected) {
-        r.selected = false;
+    if (!this.readonly) {
+
+      event.preventDefault();
+      for (const r of this.data) {
+        if (r.selected) {
+          r.selected = false;
+        }
       }
-    }
-    for (const r of this.data) {
-      if (r === row) {
-        r.selected = true;
-        this.isValid = true;
-        this.value = row[this.valuefield];
-        this.listCopy = Object.assign({}, row);
-        delete this.listCopy.tabindex;
-        delete this.listCopy.radioId;
-        this.onSelection.emit(this.listCopy);
-        delete row.tabindex;
-        this.isComponentValid.emit(true);
-        const obj = {};
-        obj['row'] = row;
-        obj['event'] = event;
-        this.onSelect.emit(obj);
-      } else {
-        r.selected = false;
+      for (const r of this.data) {
+        if (r === row) {
+          r.selected = true;
+          this.isValid = true;
+          this.value = row[this.valuefield];
+          this.listCopy = Object.assign({}, row);
+          delete this.listCopy.tabindex;
+          delete this.listCopy.radioId;
+          this.onSelection.emit(this.listCopy);
+          delete row.tabindex;
+          this.isComponentValid.emit(true);
+          const obj = {};
+          obj['row'] = row;
+          obj['event'] = event;
+          this.onSelect.emit(obj);
+        } else {
+          r.selected = false;
+        }
       }
+
     }
   }
   // THIS MEHTOD CHECK INPUT IS VALID OR NOT
@@ -348,5 +357,17 @@ export class AmexioRadioGroupComponent extends ValueAccessorBaseComponent<string
         valid: true,
       },
     };
+  }
+
+  chkReadVal(rData: any) {
+    let ischked = false;
+
+    if (this.readonly) {
+      ischked = false;
+    } else if ((this.value === rData[this.valuefield] || rData.selected)) {
+      ischked = true;
+    }
+
+    return ischked;
   }
 }
