@@ -533,7 +533,13 @@ export class AmexioDropDownComponent extends EventBaseComponent<any> implements 
         } else {
             this.onSingleSelect.emit(selectedItem);
         }
-        this.onRecordSelect.emit(selectedItem);
+
+        if (selectedItem.hasOwnProperty('item')) {
+
+            this.onRecordSelect.emit(selectedItem.item);
+        } else {
+            this.onRecordSelect.emit(selectedItem);
+        }
     }
     validateChkbox() {
         this.isValid = true;
