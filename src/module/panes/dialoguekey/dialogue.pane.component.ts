@@ -297,6 +297,8 @@ export class AmexiodialogueKeyPaneComponent extends LifeCycleBaseComponent imple
     if (document.getElementById('main2div')) {
       document.getElementById('main2div').focus();
       document.getElementById('okbtn').focus();
+      document.getElementById('cancelbtn').style.color = 'black';
+      document.getElementById('okbtn').style.color = 'blue';
 
     }
   }
@@ -307,6 +309,9 @@ export class AmexiodialogueKeyPaneComponent extends LifeCycleBaseComponent imple
 
         document.getElementById('main2div').focus();
         document.getElementById('okbtn').focus();
+
+        document.getElementById('cancelbtn').style.color = 'black';
+        document.getElementById('okbtn').style.color = 'blue';
       }
     }, 100);
   }
@@ -321,6 +326,8 @@ export class AmexiodialogueKeyPaneComponent extends LifeCycleBaseComponent imple
         if (document.getElementById('main2div')) {
           document.getElementById('main2div').focus();
           document.getElementById('okbtn').focus();
+          document.getElementById('cancelbtn').style.color = 'black';
+          document.getElementById('okbtn').style.color = 'blue';
         } else {
           this.focusonTimeOut();
         }
@@ -421,18 +428,39 @@ export class AmexiodialogueKeyPaneComponent extends LifeCycleBaseComponent imple
   }
 
   toggleleft(event: any) {
+    const currentFocusId = document.activeElement.id;
+    let focusBtnId;
+    if (currentFocusId === 'okbtn') {
+      focusBtnId = 'cancelbtn';
+    }
+    if (currentFocusId === 'cancelbtn') {
+      focusBtnId = 'okbtn';
+    }
     this.leftflag = true;
     this.rightflag = false;
     document.getElementById('maindiv').focus();
     document.getElementById('main2div').focus();
-    document.getElementById('cancelbtn').focus();
+
+    document.getElementById(focusBtnId).focus();
+    document.getElementById(focusBtnId).style.color = 'blue';
+    document.getElementById(currentFocusId).style.color = 'black';
   }
 
   toggleright(event: any) {
+    const currentFocusId = document.activeElement.id;
+    let focusBtnId;
+    if (currentFocusId === 'okbtn') {
+      focusBtnId = 'cancelbtn';
+    }
+    if (currentFocusId === 'cancelbtn') {
+      focusBtnId = 'okbtn';
+    }
     this.rightflag = true;
     this.leftflag = false;
     document.getElementById('maindiv').focus();
     document.getElementById('main2div').focus();
-    document.getElementById('okbtn').focus();
+    document.getElementById(focusBtnId).focus();
+    document.getElementById(focusBtnId).style.color = 'blue';
+    document.getElementById(currentFocusId).style.color = 'black';
   }
 }

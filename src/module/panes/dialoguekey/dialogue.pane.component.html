@@ -73,13 +73,12 @@
             <!-- class="custom-btn" -->
             <div >
                 <span autofocus class="btnonfcs">
-                        <!-- buttonsize = {{buttonsize}}
-                        defaultStyle = {{defaultStyle}} -->
-                        <!-- [attr.tabindex]="(rightlag ? 1 : -1)" -->
-                        <!-- <amexio-button  autofocus class="btnonfcs" #okbtn id="okbtn"  *ngIf="type =='confirm' || type == 'alert'" [size]="buttonsize" [label]="primaryactionlabel" [ngStyle]="{'color':materialDesign ? 'blue':'white'}" [type]="buttontype" (onClick)="getStatus('ok')">
-                            </amexio-button> -->
+ 
+
+                            <!-- [ngStyle]="{'color':materialDesign ? 'blue':'white'}"  -->
                             <button id="okbtn" class="btnonfcs" tabindex="1" *ngIf="type =='confirm' || type == 'alert'" 
-                            [ngStyle]="{'color':materialDesign ? 'blue':'white'}"  [ngClass]="{'button-default': buttonsize=='default'
+                            
+                             [ngClass]="{'button-default': buttonsize=='default'
                 || buttonsize ==null,
                 'button-small': buttonsize=='small',
                 'button-large' : buttonsize=='large',
