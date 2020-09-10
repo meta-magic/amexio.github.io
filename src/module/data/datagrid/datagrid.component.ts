@@ -101,7 +101,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
    */
   @Input('enable-checkbox') enablecheckbox: boolean;
   flag1 = false;
-  @Input('place-holder')  placeholder = '';
+  @Input('place-holder')  placeholder = 'Search';
 
   /*
    Properties
