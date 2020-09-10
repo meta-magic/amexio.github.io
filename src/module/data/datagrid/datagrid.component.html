@@ -60,8 +60,11 @@
     <ng-container *ngIf="globalfilter ? true : false">
       <div class="datatable datatable-row">
         <ng-container class="datatable datatable-column">
-          <div class="inputgroup" style="padding-left: 1%; padding-right: 1%">
-            <input type="text" tabindex="1" [(ngModel)]="filterValue" (keyup)="keyUpSearch()" type="text" class="input-control" aria-label="Text input with dropdown button">
+          <div class="inputgroup" style="padding-left: 1%; padding-right: 1%"> 
+            <input type="text" tabindex="1" [(ngModel)]="filterValue"
+             (keyup)="keyUpSearch()" type="text" class="input-control" 
+             [attr.placeholder]="placeholder"
+             aria-label="Text input with dropdown button">
             <span style=" cursor: pointer;" tabindex="1" (click)="onFilterIconClick($event)" (keyup.enter)="onFilterIconClick($event)"
               class="datatable-filter-icon">
               <amexio-c-icon key="datagrid_filter"></amexio-c-icon>
