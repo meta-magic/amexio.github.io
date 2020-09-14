@@ -60,7 +60,8 @@
     <ng-container *ngIf="globalfilter ? true : false">
       <div class="datatable datatable-row">
         <ng-container class="datatable datatable-column">
-          <div class="inputgroup" style="padding-left: 1%; padding-right: 1%"> 
+          <!-- style="padding-left: 1%; padding-right: 1%" -->
+          <div class="inputgroup" style="padding: 1%"> 
             <input type="text" tabindex="1" [(ngModel)]="filterValue"
              (keyup)="keyUpSearch()" type="text" class="input-control" 
              [attr.placeholder]="placeholder"
