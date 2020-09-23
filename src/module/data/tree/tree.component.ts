@@ -541,7 +541,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
 
     searchAllParent(parentRef: any) {
-        if (parentRef['parentRef'] !== 1) {
+        if ((parentRef['parentRef'] !== 1) && (parentRef.hasOwnProperty('parentRef'))) {
             parentRef['parentRef'].checked = parentRef.checked;
             this.searchAllParent(parentRef['parentRef']);
         }
