@@ -315,23 +315,27 @@ export class AmexioRadioGroupComponent extends ValueAccessorBaseComponent<string
       this.tabFocus = true;
     }
   }
-
+  resetData() {
+    for (const r of this.data) {
+      if (r.selected) {
+        r.selected = false;
+      }
+    }
+  }
+  rightLogic() {
+    if (typeof (this.value) === 'string') {
+      this.value = '';
+    } else {
+      this.value = null;
+    }
+  }
   onClick(row: any, event: any) {
     if (!this.readonly) {
-
       event.preventDefault();
-      for (const r of this.data) {
-        if (r.selected) {
-          r.selected = false;
-        }
-      }
-      if(this.value !== '' && this.value === row[this.valuefield] ) {
-        if(typeof(this.value) === 'string') {
-          this.value = '';
-        }else {
-         this.value = null;
-        }
-      }else {
+      this.resetData();
+      if (this.value !== '' && this.value === row[this.valuefield]) {
+        this.rightLogic();
+      } else {
         for (const r of this.data) {
           if (r === row) {
             r.selected = true;
