@@ -325,26 +325,33 @@ export class AmexioRadioGroupComponent extends ValueAccessorBaseComponent<string
           r.selected = false;
         }
       }
-      for (const r of this.data) {
-        if (r === row) {
-          r.selected = true;
-          this.isValid = true;
-          this.value = row[this.valuefield];
-          this.listCopy = Object.assign({}, row);
-          delete this.listCopy.tabindex;
-          delete this.listCopy.radioId;
-          this.onSelection.emit(this.listCopy);
-          delete row.tabindex;
-          this.isComponentValid.emit(true);
-          const obj = {};
-          obj['row'] = row;
-          obj['event'] = event;
-          this.onSelect.emit(obj);
-        } else {
-          r.selected = false;
+      if(this.value !== '' && this.value === row[this.valuefield] ) {
+        if(typeof(this.value) === 'string') {
+          this.value = '';
+        }else {
+         this.value = null;
+        }
+      }else {
+        for (const r of this.data) {
+          if (r === row) {
+            r.selected = true;
+            this.isValid = true;
+            this.value = row[this.valuefield];
+            this.listCopy = Object.assign({}, row);
+            delete this.listCopy.tabindex;
+            delete this.listCopy.radioId;
+            this.onSelection.emit(this.listCopy);
+            delete row.tabindex;
+            this.isComponentValid.emit(true);
+            const obj = {};
+            obj['row'] = row;
+            obj['event'] = event;
+            this.onSelect.emit(obj);
+          } else {
+            r.selected = false;
+          }
         }
       }
-
     }
   }
   // THIS MEHTOD CHECK INPUT IS VALID OR NOT
