@@ -74,16 +74,26 @@ export class MontYearPickerComponent extends ListBaseDatepickerComponent<string>
 
   @Input('max-year') maxyr: number;
 
+  @Input('enable-date') isdateFlag = false;
+
+  @Input('select-date') selectDate = 'start';
   @Output() input: EventEmitter<any> = new EventEmitter<any>();
   @Output() isComponentValid: any = new EventEmitter<any>();
+
+  @Output() onMonthChange: any = new EventEmitter<any>();
+  @Output() onYearChnage: any = new EventEmitter<any>();
+  @Output() onDateChange: any = new EventEmitter<any>();
 
   monthYrModel: any;
   isValid: boolean;
 
   currentMonth: any;
   currentYear: any;
+  currrentDate: any;
+  dateCount: any;
   monthData: any[] = [];
   yearData: any[] = [];
+  dateArray: any[] = [];
   // The internal dataviews model
   private innerValue: any = '';
   // Placeholders for the callbacks which are later provided
@@ -92,16 +102,25 @@ export class MontYearPickerComponent extends ListBaseDatepickerComponent<string>
   private onChangeCallback: (_: any) => void = noop;
   constructor(private datePipe: DatePipe, public element: ElementRef, private cdf: ChangeDetectorRef, renderer: Renderer2) {
     super(renderer, element, cdf);
-    this.monthData = ['Jan', 'Feb',
-      'Mar', 'Apr', 'May',
-      'Jun', 'Jul',
-      'Aug', 'Sep',
-      'Oct', 'Nov',
-      'Dec'];
+    this.monthData = [
+      '01',
+      '02',
+      '03',
+      '04',
+      '05',
+      '06',
+      '07',
+      '08',
+      '09',
+      '10',
+      '11',
+      '12',
+    ];
   }
 
   // mycustinput
   ngOnInit() {
+    this.dateflagInit();
     let minimumyr;
     let maximumyr;
     if (this.minyr && this.maxyr) {
@@ -125,38 +144,120 @@ export class MontYearPickerComponent extends ListBaseDatepickerComponent<string>
     }
     this.currentMonth = this.monthData[0];
     this.currentYear = this.yearData[0];
+    this.currrentDate = this.dateArray[0];
     this.isValid = !this.required;
     this.isComponentValid.emit(!this.required);
+    this.currrentDate = this.dateArray[0];
+
+  }
+  dateflagInit() {
+    if (this.isdateFlag) {
+      this.dateCount = 31;
+      let i = 1;
+      for (i = 1; i <= 31; i++) {
+        let val;
+        if (i <= 9) {
+          val = '0' + i;
+        } else {
+          val = '' + i;
+        }
+        this.dateArray.push(val);
+      }
+    }
+  }
+  dateChange(event: any) {
+
+    this.monthYrModel = this.currentMonth + '/' + event.target.value + '/' + this.currentYear;
+
+    this.currrentDate = event.target.value;
+    this.innerValue = this.monthYrModel;
+    this.onChangeCallback(this.innerValue);
 
   }
 
-  onMonthChange(event: any) {
-    if (this.monthYrModel) {
-      const arr = this.monthYrModel.split(' ');
-      arr[0] = this.currentMonth;
-      this.monthYrModel = arr.join().replace(',', ' ');
-      this.innerValue = this.monthYrModel;
-      this.onChangeCallback(this.innerValue);
-
+  monthChange(event: any) {
+    this.reinitializeDateArr();
+    if (this.selectDate === 'start') {
+      this.currrentDate = this.dateArray[0];
     } else {
-      const mstr = this.currentMonth + ' ' + this.currentYear;
-      this.innerValue = mstr;
-      this.onChangeCallback(this.innerValue);
-
+      this.currrentDate = this.dateArray[this.dateArray.length - 1];
     }
+    const mstr = this.currentMonth + '/' + this.currrentDate + '/' + this.currentYear;
+
+    this.innerValue = mstr;
+
+    this.onChangeCallback(this.innerValue);
+
   }
-  onYearChange(event: any) {
-    if (this.monthYrModel) {
-      const arr = this.monthYrModel.split(' ');
-      arr[1] = this.currentYear;
-      this.monthYrModel = arr.join().replace(',', ' ');
-      this.innerValue = this.monthYrModel;
-      this.onChangeCallback(this.innerValue);
-    } else {
-      const mstr = this.currentMonth + ' ' + this.currentYear;
-      this.innerValue = mstr;
-      this.onChangeCallback(mstr);
+
+  reinitializeDateArr() {
+    this.dateArray = [];
+    switch (this.currentMonth) {
+      case '01':
+        this.dateCount = 31;
+        break;
+      case '02':
+        if (((this.currentYear % 4 === 0) && (this.currentYear % 100 !== 0)) || (this.currentYear % 400 === 0)) {
+          // leap yr
+          this.dateCount = 29;
+        } else {
+          this.dateCount = 28;
+        }
+        break;
+      case '03':
+        this.dateCount = 31;
+        break;
+      case '04':
+        this.dateCount = 30;
+        break;
+      case '05':
+        this.dateCount = 31;
+        break;
+      case '06':
+        this.dateCount = 30;
+        break;
+      case '07':
+        this.dateCount = 31;
+        break;
+      case '08':
+        this.dateCount = 31;
+        break;
+      case '09':
+        this.dateCount = 30;
+        break;
+      case '10':
+        this.dateCount = 31;
+        break;
+      case '11':
+        this.dateCount = 30;
+        break;
+      case '12':
+        this.dateCount = 31;
+        break;
+      default:
+        break;
     }
+    this.reformDateArr();
+  }
+
+  reformDateArr() {
+    this.dateArray = [];
+    let i = 1;
+    for (i = 1; i <= this.dateCount; i++) {
+      let datval;
+      if (i <= 9) {
+        datval = '0' + i;
+      } else {
+        datval = '' + i;
+      }
+      this.dateArray.push(datval);
+    }
+
+  }
+  yearChange(event: any) {
+    this.monthYrModel = this.currentMonth + '/' + this.currrentDate + '/' + this.currentYear;
+    this.innerValue = this.monthYrModel;
+    this.onChangeCallback(this.innerValue);
   }
 
   // get accessor
@@ -176,17 +277,19 @@ export class MontYearPickerComponent extends ListBaseDatepickerComponent<string>
 
   // From ControlValueAccessor interface
   writeValue(value: any) {
-    if ((value !== '') && (value !== null)) {
+    if ((value !== '') && (value !== null) && (value !== undefined)) {
       this.validateWriteValue(value);
     }
 
   }
 
   validateWriteValue(value: any) {
-    const arr = value.split(' ');
-    this.currentMonth = arr[0];
-    this.currentYear = arr[1] + '';
+    const arr = value.split('/');
+    this.currrentDate = arr[1];
 
+    this.currentMonth = arr[0];
+
+    this.currentYear = arr[2] + '';
     this.innerValue = value;
   }
 

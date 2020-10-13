@@ -1,8 +1,6 @@
-
 <div id="maindiv">
 
-  <div aria-label="datetimepicker push button" class="inputgroup"
-    #rootDiv>
+  <div aria-label="datetimepicker push button" class="inputgroup" #rootDiv>
     <label>
       {{fieldlabel}}
       <ng-container *ngIf="fieldlabel != '' && required">
@@ -11,18 +9,27 @@
 
     </label>
   </div>
-
   <span>
-
-    <span style="width:44px !important; display:inline-flex">
-      <div class="exp-month-date-label">
-        <div class="month">
-          <select [(ngModel)]="currentMonth" (change)="onMonthChange($event)" style="padding:10px" placeholder="MMM">
-            <option *ngFor="let month of monthData">{{month}}</option>
+    <!-- width:66px !important; -->
+    <span style="display:inline-flex" [ngStyle]="{'width': isdateFlag ? '66px' : '44px'}">
+      <div class="exp-month-date-label1">
+          <!-- 2 -->
+          <div class="month">
+              <select [(ngModel)]="currentMonth" (change)="monthChange(month)" style="padding:10px" placeholder="MMM">
+                <option *ngFor="let month of monthData">{{month}}</option>
+              </select>
+            </div>
+     <!-- 1 -->
+        <div class="date"  *ngIf="isdateFlag == true">
+          <select [(ngModel)]="currrentDate" (change)="dateChange($event)" 
+          style="padding:10px" placeholder="DD">
+            <option *ngFor="let date of dateArray">{{date}}</option>
           </select>
         </div>
+      
+        <!-- 3 -->
         <div class="date">
-          <select [(ngModel)]="currentYear" (change)="onYearChange($event)" style="padding:10px" placeholder="YYYY">
+          <select [(ngModel)]="currentYear" (change)="yearChange(year)" style="padding:10px" placeholder="YYYY">
             <option *ngFor="let year of yearData">{{year}}</option>
           </select>
         </div>

@@ -100,6 +100,15 @@
     grid-gap: .2em;
     padding-top: 9px;
 }
+
+.exp-month-date-label1{
+    display:grid;
+    grid-template-columns: .1fr .1fr .1fr;
+    grid-gap: .2em;
+    padding-top: 9px;
+}
+
+
 @media(max-width:500px){
     .creditCardForm{
         display: block;
