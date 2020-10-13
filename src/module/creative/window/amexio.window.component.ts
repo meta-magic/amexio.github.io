@@ -139,12 +139,19 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
     if (this.closable) {
       this.showWindow = false;
       this.show = false;
+      if (this.closable) {
+
+        this.isFullWindow = false;
+
+        this.maximumWindowStyle = this.setMaximizeClass(this.isFullWindow);
+      }
       this.showChange.emit(false);
       this.close.emit(this.showWindow);
       if (this.windowposition) {
         this.x = 0;
         this.y = 0;
       }
+
     }
   }
 
@@ -160,7 +167,6 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
     this.setHorizontalPosition();
     if (this.maximize) {
       this.dummyWidth = this.width;
-      this.isFullWindow = true;
       this.maximumWindowStyle = this.setMaximizeClass(this.isFullWindow);
     }
     if (this.showWindow) {
