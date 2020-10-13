@@ -18,7 +18,7 @@
 
         role="number"
         tabindex="1"
-       
+        autocomplete="off"
         aria-describedby="numberDes"
         attr.aria-labelledby="{{componentId}}"
         [attr.aria-required]="!allowblank"
@@ -39,6 +39,7 @@
          [pattern]="regEx"
          [attr.placeholder]="placeholder" 
          [attr.max]="maxvalue" 
+         [attr.readonly]="readonly ? true: null"
          [attr.min]="minvalue" 
          [attr.disabled]="disabled ? true: null"
          [required]="!allowblank" />

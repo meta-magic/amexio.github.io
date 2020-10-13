@@ -213,7 +213,7 @@ default :
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
-
+  @Input() readonly: boolean;
   @ViewChild(NgModel) model: NgModel;
   componentId: any;
 
