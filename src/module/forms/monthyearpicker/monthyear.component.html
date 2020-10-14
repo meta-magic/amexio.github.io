@@ -15,7 +15,7 @@
       <div class="exp-month-date-label1">
           <!-- 2 -->
           <div class="month">
-              <select [(ngModel)]="currentMonth" (change)="monthChange(month)" style="padding:10px" placeholder="MMM">
+              <select [(ngModel)]="currentMonth" (change)="monthChange($event)" style="padding:10px" placeholder="MMM">
                 <option *ngFor="let month of monthData">{{month}}</option>
               </select>
             </div>
@@ -29,7 +29,7 @@
       
         <!-- 3 -->
         <div class="date">
-          <select [(ngModel)]="currentYear" (change)="yearChange(year)" style="padding:10px" placeholder="YYYY">
+          <select [(ngModel)]="currentYear" (change)="yearChange($event)" style="padding:10px" placeholder="YYYY">
             <option *ngFor="let year of yearData">{{year}}</option>
           </select>
         </div>
