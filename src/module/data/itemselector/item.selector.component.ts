@@ -159,7 +159,7 @@ export class AmexioItemSelectorComponent implements OnInit {
 
   availableData: any[];
 
-  selectedData: any[] = [];
+  @Input() selectedData: any[] = [];
 
   switchingObject: any;
 
