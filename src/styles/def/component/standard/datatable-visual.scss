@@ -80,6 +80,11 @@ color : $componentHoverFontColor;
 outline: none;
 }
 
+.datatable .datatable-col .tooltiptext {
+  background-color: $tooltipHoverBGColor !important;
+  color: $tooltipHoverFontColor !important;
+}
+
 .datatable-filter-icon:focus{
   background-color: $datatableRowHoverBG;
 color : $componentHoverFontColor;

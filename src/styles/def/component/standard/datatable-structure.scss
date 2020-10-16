@@ -72,7 +72,67 @@
   padding: .625em;
   text-align: left;
   overflow-wrap: break-word;
+// write here
 
+}
+
+// .da:hover{
+ 
+// }
+
+.gridellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Tooltip container */
+// .tooltip {
+  // position: relative;
+  // display: inline-block;
+//   border-bottom: 1px dotted black !important; /* If you want dots under the hoverable text */
+// }
+
+// /* Tooltip text */
+// .datatable .datatable-col .tooltiptext {
+//   visibility: hidden;
+//   // width: 120px;
+
+//   text-align: center;
+//   padding: 5px 6px;
+//   border-radius: 6px;
+ 
+//   /* Position the tooltip text - see examples below! */
+//   position: absolute;
+//   z-index: 1;
+//   bottom: 87%;
+// }
+.datatable .datatable-col .tooltiptext {
+visibility: hidden;
+// width: 120px;
+// background-color: black;
+// color: #fff;
+text-align: center;
+padding: 5px 0;
+border-radius: 6px;
+
+/* Position the tooltip text - see examples below! */
+position: absolute;
+z-index: 1;
+
+ 
+// padding: 6px 7px;
+// border-radius: 6px;
+// margin-top: 22px;
+margin-top: -37px;
+ }
+.datatable .datatable-col .righttooltip {
+  // right: 33% !important;
+  margin-left: -71px !important;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.datatable .datatable-col:hover .tooltiptext {
+  visibility: visible;
 }
 
 .footer{

@@ -13,7 +13,7 @@
         </span>
         <span>
           <amexio-c-icon class="float-right" style="cursor:pointer; padding-left:10px" *ngIf="((yesFullScreen && fullscreenMax))" [key]="'full-screen-min-icon'"
-            (onClick)="minScreenChange($event)"></amexio-c-icon>
+            (onClick)="minScreenChange($event)"></amexio-c-icon> 
 
           <amexio-c-icon class="float-right" style="cursor:pointer; padding-left:10px" *ngIf="((yesFullScreen && !fullscreenMax))"
             [key]="'full-screen-max-icon'" (onClick)="maxScreenChange($event)"></amexio-c-icon>
@@ -134,17 +134,25 @@
           </ng-container>
           <!--datagrid start unhidden-->
           <ng-container *ngIf="enableColumnHeader">
-          <ng-container *ngFor="let cols of columns">
+          <ng-container *ngFor="let cols of columns; let index = index; let last = last">
+            
             <ng-container *ngIf="!cols.hidden">
               <ng-container *ngIf="(cols.datatype=='string' || cols.datatype == 'boolean')">
-                <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)" (keyup.enter)="sortOnColHeaderClick(cols, $event)">
+                <div [ngClass]="{'gridellipsis': istooltip}"
+                 class="datatable-col" tabindex="1" [style.width.%]="cols.width" 
+                (click)="sortOnColHeaderClick(cols, $event)" 
+                (keyup.enter)="sortOnColHeaderClick(cols, $event)">
 
                   <ng-container *ngIf="cols.headerTemplate">
                     <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols, index: i }"></ng-template>
-                  </ng-container>
+                  </ng-container> 
                   <ng-container *ngIf="!cols.headerTemplate">
+                     <!-- tooltip span -->
+                  <span class="tooltiptext" *ngIf="istooltip" [ngClass]="{'righttooltip': last}">
+                      {{cols.text}}
+                   </span>
                     {{cols.text}} &nbsp;
-
+                  
                   </ng-container>
                   <ng-container *ngIf="this.sortBy==1   && cols.isColumnSort">
                     <amexio-c-icon key="datagrid_arrowup"></amexio-c-icon>
@@ -160,8 +168,14 @@
                     <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols, index: i }"></ng-template>
                   </ng-container>
                   <ng-container *ngIf="!cols.headerTemplate">
+               
+                      <span class="tooltiptext" *ngIf="istooltip"  [ngClass]="{'righttooltip': last}">
+                          {{cols.text}}
+                       </span>
                     <span class="float-right">
+                        
                       {{cols.text}} &nbsp;
+                     
                       <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
                         <amexio-c-icon key="datagrid_arrowup"></amexio-c-icon>
                       </ng-container>
