@@ -22,7 +22,7 @@ import { EventBaseComponent } from '../../base/event.base.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { DisplayFieldService } from '../../services/data/display.field.service';
 
-import { debounceTime } from 'rxjs/operators';
+ import { debounceTime } from 'rxjs/operators';
 @Component({
     selector: 'amexio-dropdown',
     templateUrl: './dropdown.component.html',
@@ -304,6 +304,7 @@ export class AmexioDropDownComponent extends EventBaseComponent<any> implements 
 
     @Input('enable-checkbox') enablecheckbox = false;
 
+    @Input('mask-loader') maskloader1 = false;
     helpInfoMsg: string;
     _errormsg: string;
 
@@ -941,4 +942,5 @@ export class AmexioDropDownComponent extends EventBaseComponent<any> implements 
         this.dropFlag = false;
         this.hide();
     }
+
 }

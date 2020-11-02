@@ -22,6 +22,9 @@
     <amexio-c-icon key="dropdown_caret" *ngIf="!maskloader"></amexio-c-icon>
     <em class="fa fa-spinner fa-spin" *ngIf="maskloader"></em>
   </span>
+  <span>
+    <em class="fa fa-spinner fa-spin" *ngIf="maskloader1"></em>
+  </span>
 <ng-container *ngIf="!readonly">
   <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="dropdownstyle">
     <ul aria-labelledby="fieldlabel" aria-haspopup="listbox" class="dropdown-list">
