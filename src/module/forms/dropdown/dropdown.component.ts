@@ -22,7 +22,7 @@ import { EventBaseComponent } from '../../base/event.base.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { DisplayFieldService } from '../../services/data/display.field.service';
 
- import { debounceTime } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 @Component({
     selector: 'amexio-dropdown',
     templateUrl: './dropdown.component.html',
