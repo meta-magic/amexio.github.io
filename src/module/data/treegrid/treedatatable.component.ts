@@ -283,31 +283,33 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
     if (row.hasOwnProperty(this.childarraykey)) {
       if (row[this.childarraykey].length > 0) {
         for (let i = 0; i < row[this.childarraykey].length; i++) {
-          let node = row[this.childarraykey][i];
-          if (!row.level) {
-            row.level = 1;
+          const node = row[this.childarraykey][i];
+
+          this.processMagicIndex(row, node);
+          const magicindex: any = this.getMagicIndex(ppid);
+
+          this.viewRows.splice(magicindex + i + 1, 0, node);
+
+          if (node.hasOwnProperty('expanded')) {
+            if (node.expanded) {
+              this.chkChildrenExpand(node, index + i, node.pid);
+              ppid = node.pid;
+            }
           }
-          node.level = (row.level + 1);
-          const magicindex: any = null;
-
-          this.alterViewRows(ppid, magicindex, i, node);
-
-          node = this.chkExp(node, index, i, ppid);
         }
       }
     }
   }
-  chkExp(node: any, index: any, i: any, ppid: any) {
-    if (node.hasOwnProperty('expanded')) {
-      if (node.expanded) {
-        this.chkChildrenExpand(node, index + i, node.pid);
-        ppid = node.pid;
-      }
-    }
-    return node;
-  }
-  alterViewRows(ppid: any, magicindex: any, i: any, node: any) {
 
+  processMagicIndex(row: any, node: any) {
+    if (!row.level) {
+      row.level = 1;
+    }
+    node.level = (row.level + 1);
+
+  }
+  getMagicIndex(ppid: any) {
+    let magicindex;
     this.viewRows.forEach((vele: any, mindex: any) => {
       if (vele.hasOwnProperty('pid')) {
         if (vele.pid === ppid) {
@@ -315,8 +317,7 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
         }
       }
     });
-
-    this.viewRows.splice(magicindex + i + 1, 0, node);
+    return magicindex;
   }
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
