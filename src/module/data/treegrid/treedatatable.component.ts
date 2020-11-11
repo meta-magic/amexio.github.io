@@ -153,6 +153,7 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
   yesFullScreen: boolean;
   desktopFlag: boolean;
   fullscreenMax: boolean;
+  chilarrids: any = [];
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
   constructor(public treeDataTableService: CommonDataService, @Inject(DOCUMENT) public document: any) {
@@ -232,19 +233,90 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
       this.viewRows = this.getResponseData(this.data);
     }
   }
+
   setData(httpResponse: any) {
     if (httpResponse) {
-      const treedata = this.getResponseData(httpResponse);
-      this.viewRows = treedata;
-      this.viewRows.forEach((row: any, index: any) => {
-        this.viewRows[index].level = 1;
-        this.viewRows[index].expanded = false;
+      let treedata = this.getResponseData(httpResponse);
+      // set pid
+      treedata = this.setPid(treedata);
+      this.viewRows = JSON.parse(JSON.stringify(treedata));
+      treedata.forEach((row: any, index: any) => {
+        treedata[index].level = 1;
+        if (row.hasOwnProperty('expanded')) {
+          if (row.expanded) {
+            this.chkChildrenExpand(row, index, row.hasOwnProperty('pid') ? row.pid : null);
+          }
+        }
       });
       this.mask = false;
     } else {
       this.viewRows = [];
     }
     this.generateIndex(this.viewRows, 1, window.crypto.getRandomValues(new Uint32Array(1))[0]);
+  }
+
+  setPid(treedata: any) {
+    treedata.forEach((parentnode: any) => {
+      parentnode['pid'] = Math.random();
+
+      if (parentnode.hasOwnProperty(this.childarraykey)) {
+        if (parentnode[this.childarraykey].length > 0) {
+          this.generatePids(parentnode);
+        }
+      }
+    });
+    return treedata;
+  }
+  generatePids(node: any) {
+    node[this.childarraykey].forEach((childele: any) => {
+      childele['pid'] = Math.random();
+      if (childele.hasOwnProperty(this.childarraykey)) {
+        if (childele[this.childarraykey].length > 0) {
+          this.generatePids(childele);
+        }
+
+      }
+    });
+  }
+
+  chkChildrenExpand(row: any, index: number, ppid: any) {
+    if (row.hasOwnProperty(this.childarraykey)) {
+      if (row[this.childarraykey].length > 0) {
+        for (let i = 0; i < row[this.childarraykey].length; i++) {
+          let node = row[this.childarraykey][i];
+          if (!row.level) {
+            row.level = 1;
+          }
+          node.level = (row.level + 1);
+          const magicindex: any = null;
+
+          this.alterViewRows(ppid, magicindex, i, node);
+
+          node = this.chkExp(node, index, i, ppid);
+        }
+      }
+    }
+  }
+  chkExp(node: any, index: any, i: any, ppid: any) {
+    if (node.hasOwnProperty('expanded')) {
+      if (node.expanded) {
+        this.chkChildrenExpand(node, index + i, node.pid);
+        ppid = node.pid;
+      }
+    }
+    return node;
+  }
+  alterViewRows(ppid: any, magicindex: any, i: any, node: any) {
+
+    this.viewRows.forEach((vele: any, mindex: any) => {
+      if (vele.hasOwnProperty('pid')) {
+        if (vele.pid === ppid) {
+          magicindex = mindex;
+        }
+      }
+    });
+
+    this.viewRows.splice(magicindex + i + 1, 0, node);
   }
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
@@ -271,12 +343,55 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
     });
   }
   toogle(row: any, index: number) {
-    row.expanded = !row.expanded;
+
     if (row.expanded) {
-      this.addRows(row, index);
+      row.expanded = false;
+      this.chilarrids = [];
+      this.removeRows1(row);
+      if (this.chilarrids.length > 0) {
+        this.rmRows();
+      }
     } else {
-      this.removeRows(row);
+      row.expanded = true;
+      this.addRows(row, index);
     }
+  }
+  removeRows1(row: any) {
+
+    if (row.hasOwnProperty(this.childarraykey)) {
+      if (row[this.childarraykey].length > 0) {
+        row[this.childarraykey].forEach((echild: any) => {
+          this.chilarrids.push(echild.pid);
+          if (echild.hasOwnProperty(this.childarraykey)) {
+            if (echild[this.childarraykey].length > 0) {
+              echild[this.childarraykey].forEach((innerchild: any) => {
+                this.chilarrids.push(innerchild.pid);
+                this.removeRows1(innerchild);
+
+              });
+            }
+          }
+        });
+      }
+    }
+    // if child exist  thn create pid arrays
+  }
+
+  rmRows() {
+    this.chilarrids.forEach((rid: any) => {
+      let ismatch = false;
+      let rind;
+      this.viewRows.forEach((rele: any, rindex: any) => {
+        if (rele.pid === rid) {
+          ismatch = true;
+          rind = rindex;
+        }
+      });
+
+      if (ismatch) {
+        this.viewRows.splice(rind, 1);
+      }
+    });
   }
   addRows(row: any, index: number) {
     if (row.hasOwnProperty(this.childarraykey)) {
