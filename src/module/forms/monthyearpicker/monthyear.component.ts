@@ -75,6 +75,7 @@ export class MontYearPickerComponent extends ListBaseDatepickerComponent<string>
   @Input('max-year') maxyr: number;
 
   @Input('enable-date') isdateFlag = false;
+  @Input('display-placeholder') displayPlaceholder = true;
 
   @Input('select-date') selectDate = 'start';
   @Output() input: EventEmitter<any> = new EventEmitter<any>();

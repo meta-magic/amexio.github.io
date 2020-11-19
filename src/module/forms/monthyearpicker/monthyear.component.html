@@ -11,22 +11,34 @@
   </div>
   <span>
     <!-- width:66px !important; -->
-    <span style="display:inline-flex" [ngStyle]="{'width': isdateFlag ? '66px' : '44px'}">
+
+    <div *ngIf="displayPlaceholder == true" class="exp-month-date-label1" style="padding-left: 20px;">
+        <div class="month">
+          MM
+        </div>
+        <div class="date" *ngIf="isdateFlag == true">
+          DD
+        </div>
+        <div class="date">
+          YYYY
+        </div>
+      </div>
+      <div>
+     <span style="display:inline-flex" [ngStyle]="{'width': isdateFlag ? '66px' : '44px'}">
       <div class="exp-month-date-label1">
-          <!-- 2 -->
-          <div class="month">
-              <select [(ngModel)]="currentMonth" (change)="monthChange($event)" style="padding:10px" placeholder="MMM">
-                <option *ngFor="let month of monthData">{{month}}</option>
-              </select>
-            </div>
-     <!-- 1 -->
-        <div class="date"  *ngIf="isdateFlag == true">
-          <select [(ngModel)]="currrentDate" (change)="dateChange($event)" 
-          style="padding:10px" placeholder="DD">
+        <!-- 2 -->
+        <div class="month">
+          <select [(ngModel)]="currentMonth" (change)="monthChange($event)" style="padding:10px" placeholder="MMM">
+            <option *ngFor="let month of monthData">{{month}}</option>
+          </select>
+        </div>
+        <!-- 1 -->
+        <div class="date" *ngIf="isdateFlag == true">
+          <select [(ngModel)]="currrentDate" (change)="dateChange($event)" style="padding:10px" placeholder="DD">
             <option *ngFor="let date of dateArray">{{date}}</option>
           </select>
         </div>
-      
+
         <!-- 3 -->
         <div class="date">
           <select [(ngModel)]="currentYear" (change)="yearChange($event)" style="padding:10px" placeholder="YYYY">
@@ -34,7 +46,10 @@
           </select>
         </div>
       </div>
+
     </span>
+  </div>
     <br>
+
   </span>
 </div>
