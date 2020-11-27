@@ -248,6 +248,7 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
           }
         }
       });
+      this.viewRows = treedata;
       this.mask = false;
     } else {
       this.viewRows = [];
