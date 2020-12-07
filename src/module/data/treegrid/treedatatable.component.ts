@@ -261,8 +261,10 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
       parentnode['pid'] = Math.random();
 
       if (parentnode.hasOwnProperty(this.childarraykey)) {
-        if (parentnode[this.childarraykey].length > 0) {
-          this.generatePids(parentnode);
+        if (parentnode[this.childarraykey] !== null) {
+          if (parentnode[this.childarraykey].length > 0) {
+            this.generatePids(parentnode);
+          }
         }
       }
     });
@@ -272,25 +274,23 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
     node[this.childarraykey].forEach((childele: any) => {
       childele['pid'] = Math.random();
       if (childele.hasOwnProperty(this.childarraykey)) {
-        if (childele[this.childarraykey].length > 0) {
-          this.generatePids(childele);
+        if (childele[this.childarraykey] !== null) {
+          if (childele[this.childarraykey].length > 0) {
+            this.generatePids(childele);
+          }
         }
-
       }
     });
   }
 
   chkChildrenExpand(row: any, index: number, ppid: any) {
     if (row.hasOwnProperty(this.childarraykey)) {
-      if (row[this.childarraykey].length > 0) {
+      if (this.chkfrChild(row)) {
         for (let i = 0; i < row[this.childarraykey].length; i++) {
           const node = row[this.childarraykey][i];
-
           this.processMagicIndex(row, node);
           const magicindex: any = this.getMagicIndex(ppid);
-
           this.viewRows.splice(magicindex + i + 1, 0, node);
-
           if (node.hasOwnProperty('expanded')) {
             if (node.expanded) {
               this.chkChildrenExpand(node, index + i, node.pid);
@@ -301,7 +301,15 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
       }
     }
   }
-
+  chkfrChild(row: any) {
+    let flag = false;
+    if (row[this.childarraykey] !== null) {
+      if (row[this.childarraykey].length > 0) {
+        flag = true;
+      }
+    }
+    return flag;
+  }
   processMagicIndex(row: any, node: any) {
     if (!row.level) {
       row.level = 1;
@@ -350,8 +358,10 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
       row.expanded = false;
       this.chilarrids = [];
       this.removeRows1(row);
-      if (this.chilarrids.length > 0) {
-        this.rmRows();
+      if (this.chilarrids !== null) {
+        if (this.chilarrids.length > 0) {
+          this.rmRows();
+        }
       }
     } else {
       row.expanded = true;
@@ -361,11 +371,12 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
   removeRows1(row: any) {
 
     if (row.hasOwnProperty(this.childarraykey)) {
-      if (row[this.childarraykey].length > 0) {
+
+      if (this.chkfrChild(row)) {
         row[this.childarraykey].forEach((echild: any) => {
           this.chilarrids.push(echild.pid);
           if (echild.hasOwnProperty(this.childarraykey)) {
-            if (echild[this.childarraykey].length > 0) {
+            if (this.chkfrChild(echild)) {
               echild[this.childarraykey].forEach((innerchild: any) => {
                 this.chilarrids.push(innerchild.pid);
                 this.removeRows1(innerchild);
@@ -449,23 +460,27 @@ export class TreeDataTableComponent extends LifeCycleBaseComponent implements On
   // Tab Navigation
 
   generateIndex(data: any, parentId: number, rannumber: any) {
-    data.forEach((element: any, index: number) => {
-      element['refId'] = '' + rannumber + '-';
-      if (element.hasOwnProperty(this.childarraykey)) {
-        let idstr;
+    if (data !== null) {
+      data.forEach((element: any, index: number) => {
+        element['refId'] = '' + rannumber + '-';
+        if (element.hasOwnProperty(this.childarraykey)) {
+          if (element[this.childarraykey] !== null) {
+            let idstr;
 
-        let id1: any = Math.random().toPrecision(8);
-        id1 = id1 * 100000000;
-        let id2: any = Math.random().toPrecision(4);
-        id2 = id2 * 10000;
-        idstr = id1 + '-' + id2;
-        if (!element.hasOwnProperty('id')) {
-          element['id'] = idstr;
+            let id1: any = Math.random().toPrecision(8);
+            id1 = id1 * 100000000;
+            let id2: any = Math.random().toPrecision(4);
+            id2 = id2 * 10000;
+            idstr = id1 + '-' + id2;
+            if (!element.hasOwnProperty('id')) {
+              element['id'] = idstr;
+            }
+
+            this.generateIndex(element[this.childarraykey], element.id.split('-')[1], rannumber);
+          }
         }
-
-        this.generateIndex(element[this.childarraykey], element.id.split('-')[1], rannumber);
-      }
-    });
+      });
+    }
   }
 
   splitID(id: any) {
