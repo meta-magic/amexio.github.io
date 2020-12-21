@@ -66,6 +66,7 @@ export class AmexioProgressBarComponent extends LifeCycleBaseComponent implement
   description : Current Position of progress.
   */
   @Input('current-value') currentvalue: string;
+  @Input('show-value') showvalue = false;
   /*
   Properties
   name : label

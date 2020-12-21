@@ -8,5 +8,8 @@
   <span tabindex="1" attr.aria-label="'progressbar {{tooltip}}'" role="progressbar" attr.aria-valuenow="{{currentvalue}}"
     aria-valuemin="0" aria-valuemax="100" [ngClass]="progressclass" *ngIf="!infinite" [ngStyle]="{'width.%' : currentvalue}">
   </span>
+  <div *ngIf="showvalue" [ngStyle]="{'margin-left.%' : currentvalue}">
+    {{currentvalue}}
+  </div>
 </div>
 </div>
