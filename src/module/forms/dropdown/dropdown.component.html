@@ -14,7 +14,7 @@
   <input id="{{componentId}}" tabindex="1" autocomplete="off" aria-autocomplete="list" role="combobox" [attr.aria-expanded]="showToolTip" [attr.aria-activedescendant]=""
     type="text" class="input-control" [value]="displayValue" [ngClass]="{'input-control-error' : inp.invalid && !displayValue && (inp.dirty || inp.touched),
          'input-control-success' : inp.valid && displayValue && (inp.dirty || inp.touched)}" (input)="onInput(inp, $event)" (blur)="onblur($event)"
-    (focus)="onFocus(rootDiv)" (click)=" onDropDownClick($event)" [attr.placeholder]="placeholder" [attr.readonly]="readonly ? true: null"
+    (focus)="onFocus(rootDiv,$event)" (click)=" onDropDownClick($event)" [attr.placeholder]="placeholder" [attr.readonly]="readonly ? true: null"
     [attr.disabled]="disabled ? true: null" [required]="!allowblank" (keyup.end)="focusToLast($event)" (keyup)="onDropDownSearchKeyUp($event)"
     (keyup.enter)="closeOnEScape($event)" (keydown)="navigateKey($event)" />
 

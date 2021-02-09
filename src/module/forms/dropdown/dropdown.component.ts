@@ -822,16 +822,27 @@ export class AmexioDropDownComponent extends EventBaseComponent<any> implements 
         if (this.showToolTip) {
             this.showToolTip = !this.showToolTip;
         }
+        let flag: any;
+        if (event.target.value !== '') {
+            const result = this.filteredOptions.find((o: any) => o[this.displayfield] === event.target.value);
+            if (result !== undefined) {
+                flag = false;
+            } else {
+                flag = true;
+            }
+        } else {
+            flag = true;
+        }
         this.onTouchedCallback();
-        this.onBlur.emit();
+        this.onBlur.emit({ event, flag });
     }
-    onFocus(elem: any) {
+    onFocus(elem: any, event: /*  */any) {
         this.hideDropdown = true;
 
         this.onBaseFocusEvent(elem);
         this.showToolTip = true;
         this.posixUp = this.getListPosition(elem);
-        this.focus.emit();
+        this.focus.emit(event);
     }
     getListPosition(elementRef: any): boolean {
         const dropdownHeight = 325; // must be same in dropdown.scss
