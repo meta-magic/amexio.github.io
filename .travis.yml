@@ -24,10 +24,10 @@ before_script:
 
             
 script: 
-  - gulp test --max_old_space_size=10222
+  - gulp test --max_old_space_size=12222
   #- if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
   - cd src/styles/ && sh sasstocss.sh
-  - cd ../../ && pwd && gulp build --max_old_space_size=10222
+  - cd ../../ && pwd && gulp build --max_old_space_size=12222
   - cd dist && npm pack
   - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
   
