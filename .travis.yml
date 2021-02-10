@@ -11,7 +11,7 @@ addons:
  
 language: node_js
 node_js:
-  - "8"
+  - "12"
 
 before_script:
   - export CHROME_BIN=chromium-browser
@@ -24,8 +24,8 @@ before_script:
 
             
 script: 
- # - gulp test --max_old_space_size=8192
- # - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
+  - gulp test --max_old_space_size=8192
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner ; fi
   - cd src/styles/ && sh sasstocss.sh
   - cd ../../ && pwd && gulp build --max_old_space_size=8192
   - cd dist && npm pack
