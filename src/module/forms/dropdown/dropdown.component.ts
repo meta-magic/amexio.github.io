@@ -440,7 +440,6 @@ export class AmexioDropDownComponent extends EventBaseComponent<any> implements 
                 }
             });
             this.bindData();
-            this.onMultiSelect.emit(this.multiselectValues);
         }
     }
     bindData() {
