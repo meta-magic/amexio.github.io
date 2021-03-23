@@ -101,7 +101,7 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
    */
   @Input('enable-checkbox') enablecheckbox: boolean;
   flag1 = false;
-  @Input('place-holder')  placeholder = 'Search';
+  @Input('place-holder') placeholder = 'Search';
   @Input('tooltip') istooltip = false;
   /*
    Properties
@@ -1899,8 +1899,9 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
 
   }
 
+  // Changes made for filter for inner
   sortInnerFunc(temp: string, data: any) {
-    let value;
+    let value: any;
     let i = 0;
     const strarr = temp.split('.');
     for (i = 0; i < strarr.length; i++) {
@@ -1910,8 +1911,8 @@ export class AmexioDatagridComponent extends LifeCycleBaseComponent implements O
 
         const tmp = strarr[i];
         value = value[tmp];
-        return value;
       }
     }
+    return value;
   }
 }
