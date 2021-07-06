@@ -906,9 +906,11 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     if (this.innerValue instanceof Date || 'number' === typeof this.innerValue || 'string' === typeof this.innerValue) {
       if (('number' === typeof this.innerValue)) {
         this.innerValue = new Date(this.innerValue);
+        console.log('v1', value);
       }
       if (('string' === typeof this.innerValue)) {
         this.setInnerValue();
+        console.log('v2', value);
       }
       if (this.utc) {
         this.setUtcInnerValue();
@@ -918,6 +920,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.setTimeStamp();
       } else {
         this.refactorValidate();
+        console.log('v3', value);
       }
       this.currrentDate = this.dateModel;
       this.selectedDate = this.currrentDate;
@@ -926,7 +929,11 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       if (this.required) {
         this.isValid = true;
       }
-    } else {
+    }else if(value == '' || value == null){
+      this.innerValue = '';
+      this.dateModel = '';
+    }
+     else {
       this.negateisValid();
     }
   }
