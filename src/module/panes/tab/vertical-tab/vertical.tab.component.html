@@ -6,7 +6,7 @@
                     <div class="defaultnode" [ngClass]="{'leftactiverotatetab':tabnode.active,'disabled-tab':tabnode.disabled}" (click)="onVerticalTabClick(tabnode)"
                         [ngStyle]="{'color': tabnode.amexiocolor}">
                         <span #icon *ngIf="tabnode.icon" [ngClass]="tabnode.icon" style="padding-right:8px" aria-hidden="true"></span>
-                        <span>{{tabnode.title}}</span>
+                        <span>{{tabnode.title}} {{tabnode.amexiotabtitle}}</span>
                         <span *ngIf="closable" class="tablecol">
                  <amexio-c-icon key="tab_close" (onClick)="tabPillClose(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
                   </span>
@@ -22,7 +22,9 @@
                             <div class="defaultnode" [ngClass]="{'leftactivetab':tabnode.active,'disabled-tab':tabnode.disabled}" (click)="onVerticalTabClick(tabnode)"
                                 [ngStyle]="{'color': tabnode.amexiocolor}">
                                 <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon" style="padding-right:8px" aria-hidden="true"></span>
-                                <span>{{tabnode.title}}</span>
+                                <span>{{tabnode.title}}
+                                    {{tabnode.amexiotabtitle}}
+                                </span>
                                 <span *ngIf="closable" class="tablecol">
                 <amexio-c-icon key="tab_close" (onClick)="tabPillClose(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
               </span>

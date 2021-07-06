@@ -13,7 +13,7 @@
                     <div class="righttabdefaultnode" [ngClass]="{'rightactivetabrotate':tabnode.active,'disabled-tab':tabnode.disabled }" (click)="onVerticalTabClick(tabnode)"
                         [ngStyle]="{'color': tabnode.amexiocolor}">
                         <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon" aria-hidden="true"></span>
-                        <span style="padding-left:5px">{{tabnode.title}}</span>
+                        <span style="padding-left:5px">{{tabnode.title}} {{tabnode.amexitabtitle}}</span>
                         <span *ngIf="closable" class="tablecol">
                 <amexio-c-icon key="tab_close" (onClick)="tabPillClose(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
               </span>
@@ -28,7 +28,7 @@
                     <li *ngFor="let tabnode of tabCollection">
                         <div class="defaultnode" [ngClass]="{'rightactivetab':tabnode.active,'disabled-tab':tabnode.disabled }" (click)="onVerticalTabClick(tabnode)" [ngStyle]="{'color': tabnode.amexiocolor}">
                             <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon" aria-hidden="true"></span>
-                            <span style="padding-left:5px">{{tabnode.title}}</span>
+                            <span style="padding-left:5px">{{tabnode.title}}  {{tabnode.amexitabtitle}}</span>
                             <span *ngIf="closable" class="tablecol">
                 <amexio-c-icon key="tab_close" (onClick)="tabPillClose(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
               </span>

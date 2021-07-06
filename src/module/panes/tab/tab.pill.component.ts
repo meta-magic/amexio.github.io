@@ -32,7 +32,7 @@ default :
 description : Title on Tab Button/Pill.
 */
   @Input() title: string;
-
+  @Input() amexiotabtitle: string;
   /*
 Properties
 name : disabled

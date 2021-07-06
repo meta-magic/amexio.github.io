@@ -52,7 +52,7 @@ description : Callback to invoke on activated tab event.
     shownext = false;
     height: any;
     tabType: string;
-    addDynamicTab(title: string, amexiocolor: string, closable: boolean, component: any) {
+    addDynamicTab(title: string,amexiotabtitle: string, amexiocolor: string, closable: boolean, component: any) {
         // get a component factory for our TabComponent
         const tpCF = this.componentFactoryResolver.resolveComponentFactory(
             AmexioTabPillComponent,
@@ -61,6 +61,7 @@ description : Callback to invoke on activated tab event.
         // set the according properties on our component instance
         const instance: AmexioTabPillComponent = tp.instance as AmexioTabPillComponent;
         instance.title = title;
+        instance.amexiotabtitle = amexiotabtitle
         instance.active = true;
         instance.closable = closable;
         instance['tabpillinstance'] = this.target;
