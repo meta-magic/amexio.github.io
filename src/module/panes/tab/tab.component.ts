@@ -727,7 +727,7 @@ description : sets background color for active tab
   hideTab(input: any) {
     if (typeof input === 'string') {
       this.tabCollection.forEach((tabs: any, index: any) => {
-        if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase() && tabs.active) {
+        if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase() || input.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase() && tabs.active) {
           const i = index + 1;
           tabs.hide = false;
           this.tabCollection[i].active = true;
@@ -735,19 +735,7 @@ description : sets background color for active tab
           tabs.active = false;
           tabs['showflag'] = true;
           this.asignTabPillClass(newTab);
-        } else if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase() && !tabs.active) {
-          tabs.hide = true;
-          tabs['showflag'] = true;
-        }
-        if (input.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase() && tabs.active) {
-          const i = index + 1;
-          tabs.hide = false;
-          this.tabCollection[i].active = true;
-          const newTab = this.tabCollection[i];
-          tabs.active = false;
-          tabs['showflag'] = true;
-          this.asignTabPillClass(newTab);
-        } else if (input.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase() && !tabs.active) {
+        } else if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase() || input.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase() && !tabs.active) {
           tabs.hide = true;
           tabs['showflag'] = true;
         }
