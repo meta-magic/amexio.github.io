@@ -39,7 +39,7 @@ after_success:
  # - cp -rf ../src/styles/css/*  themes/
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git add amexio-ng-extensions.tgz ; fi 
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git commit -m "date" ; fi 
-  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git push "https://deepali-arvind:${GITHUB_TOKEN}@github.com/amexio-ios.git" HEAD:v5.21 ; fi 
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git push "https://deepali-arvind:${GITHUB_TOKEN}@github.com/meta-magic/amexio-ios.git" HEAD:v5.21 ; fi 
   - gulp coveralls 
   - codecov
 
