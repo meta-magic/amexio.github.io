@@ -909,7 +909,6 @@ description : sets background color for active tab
       if (input === index) {
         tabs.title = replacetab;
         tabs.amexiotabtitle = replacetab;
-        
       }
     });
   }
