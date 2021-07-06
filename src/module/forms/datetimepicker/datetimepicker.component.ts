@@ -1626,7 +1626,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       // transforms in default date format internally MM-dd-yyyy
       this.dateModel = new Date(this.inputRef1.nativeElement.value);
     }
-    console.log('dateModel', this.dateModel ,event);
+    console.log('dateModel', this.dateModel , event);
   }
   // date1 oninput1change
   onInput1Change(event: any) {
