@@ -929,7 +929,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       if (this.required) {
         this.isValid = true;
       }
-      } else if (value === '' || value === null){
+      } else if (value === '' || value === null) {
         this.innerValue = '';
         this.dateModel = '';
       } else {
