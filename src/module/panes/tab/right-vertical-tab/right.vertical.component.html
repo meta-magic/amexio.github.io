@@ -1,42 +1,43 @@
-<div class="righttable" style="position:relative;padding-right:10px">
-    <div class="righttablerow">
-        <div class="tablecol verticalalign-tabcontent" style="padding-right:30px">
-            <div style="float:left" class="tabcontent" [attr.id]="componentId">
-                <ng-content></ng-content>
-                <ng-template #target></ng-template>
-            </div>
-        </div>
-        <div #tab *ngIf="rotate;
-         else elseBlock" [ngStyle]="{'height': height + 'px'}" class="verticalnavtab-right verticalalign-rotatetabright" [ngClass]="{'tabposition-rightrotate-top': (tabPosition==='top')}">
-            <ul #tabId id="rightclass">
+<div class="vertical-table" style="position:relative;">
+    <div class="vertical-tablerow" [ngStyle]="{'height': height + 'px'}">
+        <div *ngIf="rotate;else elseBlock" style="width:44px;" class="vertical-tablecol verticalalign-tableft" [ngClass]="{'tabposition-top': (tabPosition==='top')}">
+            <ul #tabId id="tabclass" [ngStyle]="{'top': rotatedtabsHeight + 'px'}" style="padding:1px" class="verticalnavtab verticalnavtab-left">
                 <li *ngFor="let tabnode of tabCollection">
-                    <div class="righttabdefaultnode" [ngClass]="{'rightactivetabrotate':tabnode.active,'disabled-tab':tabnode.disabled }" (click)="onVerticalTabClick(tabnode)"
+                    <div class="defaultnode" [ngClass]="{'leftactiverotatetab':tabnode.active,'disabled-tab':tabnode.disabled}" (click)="onVerticalTabClick(tabnode)"
                         [ngStyle]="{'color': tabnode.amexiocolor}">
-                        <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon" aria-hidden="true"></span>
-                        <span style="padding-left:5px">{{tabnode.title}} {{tabnode.amexitabtitle}}</span>
+                        <span #icon *ngIf="tabnode.icon" [ngClass]="tabnode.icon" style="padding-right:8px" aria-hidden="true"></span>
+                        <span>{{tabnode.title}}</span>
                         <span *ngIf="closable" class="tablecol">
-                <amexio-c-icon key="tab_close" (onClick)="tabPillClose(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
-              </span>
+                 <amexio-c-icon key="tab_close" (onClick)="tabPillClose(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
+                  </span>
                     </div>
                 </li>
             </ul>
         </div>
-     <ng-template #elseBlock>
-          <div style="float:right;height:580px" class="righttablecol verticalalign-tabright">
-            <div #tab class="verticalnavtab verticalnavtab-right" [ngClass]="{'tabposition-right-top': (tabPosition==='top'),'tabposition-right-bottom':(tabPosition==='bottom')}">
-                <ul>
-                    <li *ngFor="let tabnode of tabCollection">
-                        <div class="defaultnode" [ngClass]="{'rightactivetab':tabnode.active,'disabled-tab':tabnode.disabled }" (click)="onVerticalTabClick(tabnode)" [ngStyle]="{'color': tabnode.amexiocolor}">
-                            <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon" aria-hidden="true"></span>
-                            <span style="padding-left:5px">{{tabnode.title}}  {{tabnode.amexitabtitle}}</span>
-                            <span *ngIf="closable" class="tablecol">
+        <ng-template #elseBlock>
+            <div class="vertical-tablecol verticalalign-tableft" [ngClass]="{'tabposition-top': (tabPosition==='top'),'tabposition-bottom':(tabPosition==='bottom')}">
+                <div #tab class="verticalnavtab verticalnavtab-left">
+                    <ul>
+                        <li *ngFor="let tabnode of tabCollection">
+                            <div class="defaultnode" [ngClass]="{'leftactivetab':tabnode.active,'disabled-tab':tabnode.disabled}" (click)="onVerticalTabClick(tabnode)"
+                                [ngStyle]="{'color': tabnode.amexiocolor}">
+                                <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon" style="padding-right:8px" aria-hidden="true"></span>
+                                <span>{{tabnode.title}}</span>
+                                <span *ngIf="closable" class="tablecol">
                 <amexio-c-icon key="tab_close" (onClick)="tabPillClose(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
               </span>
-                        </div>
-                    </li>
-                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </ng-template>
+        <div class="vertical-tablecol verticalalign-tabcontent">
+            <div class="tabcontent" [attr.id]="componentId">
+                <ng-content></ng-content>
+                <ng-template #target></ng-template>
+            </div>
+
         </div>
-     </ng-template>   
     </div>
 </div>

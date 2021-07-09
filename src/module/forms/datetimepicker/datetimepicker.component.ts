@@ -927,12 +927,10 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
 
       this.createDaysForCurrentMonths(this.dateModel);
       if (this.required) {
+      }
         this.isValid = true;
       }
-      } else if (value === '' || value === null) {
-        this.innerValue = '';
-        this.dateModel = '';
-      } else {
+      else {
       this.negateisValid();
     }
   }

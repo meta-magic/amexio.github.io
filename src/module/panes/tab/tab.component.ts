@@ -399,10 +399,6 @@ description : sets background color for active tab
         tabs.disabled = true;
         flag = true;
       }
-      if (ele.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase()) {
-        tabs.disabled = true;
-        flag = true;
-      }
       this.asignTabPillClass(tabs);
     });
   }
@@ -438,10 +434,6 @@ description : sets background color for active tab
     this.tabCollection.forEach((tabs: any) => {
       tabs.tabPillClass = '';
       if (ele.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
-        tabs.disabled = false;
-        flag = true;
-      }
-      if (ele.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase()) {
         tabs.disabled = false;
         flag = true;
       }
@@ -670,9 +662,6 @@ description : sets background color for active tab
       if (data.nodeData.title.toLowerCase() !== tabs.title.toLowerCase() && (tabs.closable || this.closable)) {
         this.closeTab(tabs);
       }
-      if (data.nodeData.amexiotabtitle.toLowerCase() !== tabs.amexiotabtitle.toLowerCase() && (tabs.closable || this.closable)) {
-        this.closeTab(tabs);
-      }
     });
   }
 
@@ -727,8 +716,7 @@ description : sets background color for active tab
   hideTab(input: any) {
     if (typeof input === 'string') {
       this.tabCollection.forEach((tabs: any, index: any) => {
-        if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase() ||
-          input.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase() && tabs.active) {
+        if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase() && tabs.active) {
           const i = index + 1;
           tabs.hide = false;
           this.tabCollection[i].active = true;
@@ -736,8 +724,7 @@ description : sets background color for active tab
           tabs.active = false;
           tabs['showflag'] = true;
           this.asignTabPillClass(newTab);
-        } else if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase() ||
-          input.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase() && !tabs.active) {
+        } else if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase() && !tabs.active) {
           tabs.hide = true;
           tabs['showflag'] = true;
         }
@@ -761,10 +748,6 @@ description : sets background color for active tab
           tabs.disabled = true;
           flag = true;
         }
-        if (input.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase()) {
-          tabs.disabled = true;
-          flag = true;
-        }
         this.asignTabPillClass(tabs);
       });
     } else if (typeof input === 'number') {
@@ -784,10 +767,6 @@ description : sets background color for active tab
     if (typeof input === 'string') {
       this.tabCollection.forEach((tabs: any) => {
         if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
-          tabs.disabled = false;
-          flag = true;
-        }
-        if (input.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase()) {
           tabs.disabled = false;
           flag = true;
         }
@@ -814,10 +793,6 @@ description : sets background color for active tab
             tabs.disabled = false;
             flag = true;
           }
-          if (element.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase()) {
-            tabs.disabled = false;
-            flag = true;
-          }
           this.asignTabPillClass(tabs);
         });
       } else if (typeof element === 'number') {
@@ -837,10 +812,6 @@ description : sets background color for active tab
       if (typeof element === 'string') {
         this.tabCollection.forEach((tabs: any) => {
           if (element.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
-            tabs.disabled = true;
-            flag = true;
-          }
-          if (element.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase()) {
             tabs.disabled = true;
             flag = true;
           }
@@ -872,9 +843,6 @@ description : sets background color for active tab
         if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
           this.closeTab(tabs);
         }
-        if (input.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase()) {
-          this.closeTab(tabs);
-        }
       });
     } else if (typeof input === 'number') {
       this.tabCollection.forEach((tabs: any, index: any) => {
@@ -893,9 +861,6 @@ description : sets background color for active tab
           if (element.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
             this.closeTab(tabs);
           }
-          if (element.trim().toLowerCase() === tabs.amexiotabtitle.trim().toLowerCase()) {
-            this.closeTab(tabs);
-          }
         });
       } else if (typeof element === 'number') {
         this.tabCollection.forEach((tabs: any, index: any) => {
@@ -910,7 +875,6 @@ description : sets background color for active tab
     this.tabCollection.forEach((tabs: any, index: any) => {
       if (input === index) {
         tabs.title = replacetab;
-        tabs.amexiotabtitle = replacetab;
       }
     });
   }
