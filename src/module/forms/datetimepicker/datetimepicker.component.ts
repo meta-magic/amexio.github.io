@@ -1628,11 +1628,11 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       } else {
       // transforms in default date format internally MM-dd-yyyy
       console.log('datestr1', this.inputRef1.nativeElement.value);
-      if(this.inputRef1.nativeElement.value !== ''){
+      if (this.inputRef1.nativeElement.value !== '') {
         this.dateModel = new Date(this.inputRef1.nativeElement.value);
-      }else{
+      } else {
         this.dateModel = '';
-      }    
+      }
     }
   }
   // date1 oninput1change
@@ -1657,11 +1657,11 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.dateModel = new Date(datestr);
     } else {
       // transforms in default date format internally MM-dd-yyyy
-      if(this.inputRef1.nativeElement.value !== ''){
+      if (this.inputRef1.nativeElement.value !== '') {
         this.dateModel = new Date(this.inputRef1.nativeElement.value);
-      }else{
+      } else {
         this.dateModel = '';
-      }  
+      }
     }
   }
 
