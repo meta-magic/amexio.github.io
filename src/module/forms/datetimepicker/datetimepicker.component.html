@@ -13,7 +13,7 @@
         <!-- (input)="onInput($event)" -->
         <ng-container *ngIf="datepicker && !timepicker">
              <input tabindex="-1" type="text" #inputref1
-            (change)="onInputChange($event)" value="{{dateModel|date:dateformat}}"
+            (change)="onInputChange($event)" value="{{dateModel == 'Invalid Date' ? '' : dateModel|date:dateformat}}"
              [attr.disabled]="disabled ? true: null"
                 [required]="required ? true: null" (blur)="onBlur()"  
                 (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(inputref1)"
