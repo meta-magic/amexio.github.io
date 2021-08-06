@@ -26,8 +26,8 @@
         </ng-container>
 
         <ng-container *ngIf="timepicker && !datepicker">
-                
-            <input type="text" [ngModel]="selectedDate | date: 'medium'" (ngModelChange)="selectedDate=$event" value="{{selectedDate|date:dateformat}} {{hrs + ' : ' + min}}"
+           
+            <input type="text" [ngModel]="selectedDate == 'Invalid Date' ? '' : selectedDate | date: 'medium'" (ngModelChange)="selectedDate=$event" value="{{ selectedDate == 'Invalid Date' ? '' : selectedDate|date:dateformat}} {{hrs + ' : ' + min}}"
                 [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)"
                 (input)="onInput($event)" (change)="change.emit()" class="input-control" 
                 [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
@@ -40,7 +40,7 @@
                 (input)="onInput($event)" (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
                 [attr.placeholder]="placeholder" /> -->
  
-                <input tabindex="-1" type="text" #inputref2 value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
+                <input tabindex="-1" type="text" #inputref2 value="{{dateModel == 'Invalid Date' ? '' : dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
                 [required]="required ? true: null" (blur)="onBlur()"  
                 (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(inputref2)"
                  (change)="onInput1Change($event)"
@@ -102,9 +102,9 @@
                     <li>
                         <span *ngIf="dropdownDatepicker">
                             <span style="cursor:pointer" (click)="dropdownDatePicker()">
-                                {{selectedDate | date:'MMMM'}}
+                                {{selectedDate  == 'Invalid Date' ? '' : selectedDate | date:'MMMM'}}
                                 <br>
-                                <span class="title">{{selectedDate | date:'y'}}</span>
+                                <span class="title">{{selectedDate  == 'Invalid Date' ? '' : selectedDate | date:'y'}}</span>
                             </span>
                             <span tabindex="1" aria-label="dropdown datepicker push button" (keyup.enter)="dropdownDatePicker()" (onClick)=" dropdownDatePicker()"
                                 style="cursor:pointer">
@@ -113,9 +113,9 @@
                         </span>
 
                         <span *ngIf="!dropdownDatepicker">
-                            {{selectedDate | date:'MMMM'}}
+                            {{selectedDate  == 'Invalid Date' ? '' : selectedDate | date:'MMMM'}}
                             <br>
-                            <span class="title" style="cursor:auto">{{selectedDate | date:'y'}}</span>
+                            <span class="title" style="cursor:auto">{{selectedDate  == 'Invalid Date' ? '' : selectedDate | date:'y'}}</span>
                         </span>
 
                     </li>
@@ -135,7 +135,8 @@
                                 (keyup.arrowdown)="arrowdown(day,daysArray,$event)" (keyup.arrowup)="arrowup(day,daysArray,$event)"
                                 (keyup.enter)="onDateClick(day, $event)" attr.aria-label="{{day.fulldate}}" (click)="onDateClick(day, $event)"
                                 class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
-                                {{ day.date | date:'d' }}
+                               
+                                {{day.date  == 'Invalid Date' ? '' : day.date | date:'d' }}
                             </span>
                         </li>
                     </ng-container>
