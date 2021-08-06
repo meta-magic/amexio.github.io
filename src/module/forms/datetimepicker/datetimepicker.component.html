@@ -135,8 +135,7 @@
                                 (keyup.arrowdown)="arrowdown(day,daysArray,$event)" (keyup.arrowup)="arrowup(day,daysArray,$event)"
                                 (keyup.enter)="onDateClick(day, $event)" attr.aria-label="{{day.fulldate}}" (click)="onDateClick(day, $event)"
                                 class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
-                               
-                                {{day.date  == 'Invalid Date' ? '' : day.date | date:'d' }}
+                                {{ (day.date !== 'Invalid Date') ? (day.date | date: 'd') : "" }}
                             </span>
                         </li>
                     </ng-container>

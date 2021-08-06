@@ -1624,10 +1624,13 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       const month = splitarr[1];
       const year = splitarr[2];
       const datestr = month + '-' + date + '-' + year;
+      console.log('datestr', datestr);
       this.dateModel = new Date(datestr);
     } else {
       // transforms in default date format internally MM-dd-yyyy
+      console.log('datestr1', this.inputRef1.nativeElement.value);
       this.dateModel = new Date(this.inputRef1.nativeElement.value);
+      
     }
     console.log('dateModel', this.dateModel , event);
   }
