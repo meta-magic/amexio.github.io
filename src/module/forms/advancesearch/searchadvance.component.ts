@@ -21,7 +21,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'amexio-searchbox-options',
   template: `
-  <form [attr.aria-expanded]="advanceSearchFlag" class="advancesearchform"
+  <form aria-expanded class="advancesearchform"
   *ngIf="advanceSearchFlag"  [style.width]="formwidth+'px'">
     <label tabindex = "0" class="search-form-label" [attr.aria-labellledby]="title">
         {{title}}
